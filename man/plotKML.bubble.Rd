@@ -8,7 +8,7 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-plotKML.bubble(SPDF, var.name, LON, LAT, file.name, icon, icon.url, plt.size, plt.size0, IconColor, altitudeMode, above.ground, extrude, z.scale, LabelScale, TimeSpan.begin, TimeSpan.end, kmz)
+plotKML.bubble(SPDF, var.name, LON, LAT, file.name, icon, icon.url, plt.size, plt.size0, IconColor, altitudeMode, above.ground, extrude, z.scale, LabelScale, signif.digits, TimeSpan.begin, TimeSpan.end, kmz)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -54,8 +54,11 @@ plotKML.bubble(SPDF, var.name, LON, LAT, file.name, icon, icon.url, plt.size, pl
   \item{z.scale}{ Elevation exaggeration
 %%     ~~Describe \code{z.scale} here~~
 }
-  \item{LabelScale}{ Scale of lebels
+  \item{LabelScale}{ Scale of labels
 %%     ~~Describe \code{LabelScale} here~~
+}
+  \item{signif.digits}{ Number of singificant digits for the labels
+%%     ~~Describe \code{signif.digits} here~~
 }
   \item{TimeSpan.begin}{ Vector of time/Date for begin period
 %%     ~~Describe \code{TimeSpan.begin} here~~
