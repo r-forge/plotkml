@@ -35,7 +35,7 @@ Munsell2FBGR(x, Munsell, transp)
 \item Munsell color system: \url{http://en.wikipedia.org/wiki/Munsell_color_system}
 %% ~put references to the literature/web site here ~
 }
-\author{  Tomislav Hengl
+\author{  Tomislav Hengl \& Dylan Beaudette
 %%  ~~who you are~~
 }
 \note{
