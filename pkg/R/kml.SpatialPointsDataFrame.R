@@ -1,9 +1,3 @@
-# obj = SpatialPointsDataFrame with a complete proj4 string;
-# zcol = name of the target variable;
-# LON/LAT = longitude / latitude column names;
-# "above.ground" can also be a vector;
-# TimeSpan.begin / end = vector of time/Date for begin/end period;
-# IconColor = column with Google formated colors - The range of values for any one color is 0 to 255 (00 to ff). The order of expression is aabbggrr, where aa=alpha (00 to ff); bb=blue (00 to ff); gg=green (00 to ff); rr=red (00 to ff). For alpha, 00 is fully transparent and ff is fully opaque.
 kml.SpatialPointsDataFrame <- function(
 
   # options on the object to plot
