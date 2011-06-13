@@ -2,7 +2,7 @@
 \alias{Munsell2FBGR}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Munsell2FBGR}
-\description{
+\description{ Converts Munsell color codes to hexadecimal FBGR color codes as specified in the \href{http://code.google.com/apis/kml/documentation/kmlreference.html}{KML reference}.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -10,17 +10,17 @@ Munsell2FBGR(x, Munsell, transp)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
+  \item{x}{  Data frame. 
 %%     ~~Describe \code{x} here~~
 }
-  \item{Munsell}{
+  \item{Munsell}{  Munsell Color code column name. The column values need to be formatted as single characters e.g. \code{10YR_4_3} where \code{10YR} is Hue, \code{4} is Chroma and \code{3} is Value and \code{_} is the delimiter.
 %%     ~~Describe \code{Munsell} here~~
 }
-  \item{transp}{
+  \item{transp}{  Transparency level in range 0-1.
 %%     ~~Describe \code{transp} here~~
 }
 }
-\details{
+\details{ FBGR is a six characters long description of transparency, Blue, Green and Red color intensities in form (\code{aabbggrr}) where aa=alpha (00 to ff); bb=blue (00 to ff); gg=green (00 to ff); rr=red (00 to ff). 
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
@@ -31,9 +31,11 @@ Munsell2FBGR(x, Munsell, transp)
 %% ...
 }
 \references{
+\item KML Reference: \url{http://code.google.com/apis/kml/documentation/kmlreference.html}
+\item Munsell color system: \url{http://en.wikipedia.org/wiki/Munsell_color_system}
 %% ~put references to the literature/web site here ~
 }
-\author{
+\author{  Tomislav Hengl \& Dylan Beaudette
 %%  ~~who you are~~
 }
 \note{
@@ -42,35 +44,16 @@ Munsell2FBGR(x, Munsell, transp)
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{
+\seealso{ \code{\link{mix3cols}}, \code{\link{mix5cols}}, \code{\link{whitening.col}}
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
 ##---- Should be DIRECTLY executable !! ----
 ##-- ==>  Define data, use random,
 ##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function(x, Munsell, transp) {
-# Munsell = munsell color codes column;
-# merge munsell color codes in format "7.5R_2_4" and RGB values:
-if(missing(transp)) { transp <- "dd" }
-for(i in 1:length(x[,Munsell])){
-x[i, "Hue"] <- strsplit(as.character(x[i, Munsell]), "_")[[1]][1]
-x[i, "Chroma"] <- as.numeric(strsplit(as.character(x[i, Munsell]), "_")[[1]][2]) 
-x[i,"Value"] <- as.numeric(strsplit(as.character(x[i, Munsell]), "_")[[1]][3])
-  }
-mcolor.RGB <- munsell2rgb(the_hue=x$Hue, the_chroma=x$Chroma, the_value=x$Value, return_triplets=TRUE)
-mcolor.RGB$Rc <- round(mcolor.RGB$r*100, 0)
-mcolor.RGB$Gc <- round(mcolor.RGB$g*100, 0)
-mcolor.RGB$Bc <- round(mcolor.RGB$b*100, 0)
-# reformat colors suited for Google Earth:
-Bc <- ifelse(mcolor.RGB$Bc<10, paste("0", mcolor.RGB$Bc, sep=""), ifelse(mcolor.RGB$Bc==100, "ff", mcolor.RGB$Bc))
-Gc <- ifelse(mcolor.RGB$Gc<10, paste("0", mcolor.RGB$Gc, sep=""), ifelse(mcolor.RGB$Gc==100, "ff", mcolor.RGB$Gc))
-Rc <- ifelse(mcolor.RGB$Rc<10, paste("0", mcolor.RGB$Rc, sep=""), ifelse(mcolor.RGB$Rc==100, "ff", mcolor.RGB$Rc))
-FBGR <- paste(transp, Bc, Gc, Rc, sep="")
-return(FBGR)
-  }
+x <- expand.grid(hue=c('10YR', '7.5YR', '5YR', '2.5R'), value=2:8, chroma=1:8)
+x$Munsell <- paste(d$hue, d$chroma, d$value, sep="_")[1:length(meuse@data[,1])]
+x$FBGR <- Munsell2FBGR(x, "Munsell")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

@@ -24,7 +24,7 @@ col.no <- length(col.pal)
 gif.pal <- c(grey(0), col.pal, rep(grey(1), 256-col.no)) # add colors for transparent pixels and undefined values
 if(missing(kmz)) { kmz <- FALSE }
 # reproject to WGS84 system:
-if(!proj4string(SGDF)=="+proj=longlat +datum=WGS84"){ #3
+if(!(proj4string(SGDF)=="+proj=longlat +datum=WGS84"|proj4string(SGDF)==" +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0")){ #3
 SGDF.ll <- reproject.grid(SGDF=SGDF, var.name=var.name, file.name=file.name, mvFlag=mvFlag, FWTools=FWTools, error.name=error.name, r.method=r.method)
 warning('projected to "+proj=longlat +datum=WGS84"')
 }
@@ -73,7 +73,9 @@ if(kmz==TRUE){
 unlink(paste(file.name, ".kmz", sep=""))
 zip(paste(file.name, ".kmz", sep=""), paste(file.name, ".kml", sep=""))
 if(plot.type=="poly") { unlink(paste(file.name, ".kml", sep="")) }
-}  }
+}  
+print('output written to KML file') 
+}
 else { stop("proj4 string required")  }  }  
 else { stop("first argument should be of class SGDF") } 
 }
