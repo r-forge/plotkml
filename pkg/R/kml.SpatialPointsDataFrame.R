@@ -1,5 +1,4 @@
-kml.SpatialPointsDataFrame <- function(
-
+setMethod("kml", "SpatialPointsDataFrame", function(
   # options on the object to plot
   obj, 
   file = "bubble_plot.kml",
@@ -19,6 +18,7 @@ kml.SpatialPointsDataFrame <- function(
   icon = "http://maps.google.com/mapfiles/kml/shapes/donut.png", 
   extrude = TRUE, 
   z.scale = 1, 
+  elevation.default = 10,
   LabelScale = 0.7, 
   kmz = FALSE,
   kml.url = "http://www.opengis.net/kml/2.2",
@@ -90,6 +90,7 @@ kml.SpatialPointsDataFrame <- function(
   }
   else if (is.na(elevation)) {
     elevation.mode <- "clampToGround"
+    elevation <- rep(elevation.default, length.out = nrow(obj))
   }
   else   
     stop("Bad elevation value")
@@ -184,4 +185,4 @@ kml.SpatialPointsDataFrame <- function(
       zip(kmz.name, file)
       file.remove(file)
     }
-}
+})
