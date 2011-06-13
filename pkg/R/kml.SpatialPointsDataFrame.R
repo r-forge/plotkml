@@ -101,7 +101,7 @@ setMethod("kml", "SpatialPointsDataFrame", function(
   cat("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", file = kml)
   cat('<kml xmlns=\"', kml.url, '\">\n', sep = "", file = kml, append = TRUE)
   cat("<Document>\n", file= kml, append = TRUE)
-  cat("<name>", as.character(substitute(obj)), "</name>\n", sep = "", file = kml, append = TRUE)
+  cat("<name>", as.character(substitute(obj, env = parent.frame())), "</name>\n", sep = "", file = kml, append = TRUE)
   cat("<open>1</open>\n", file = kml, append = TRUE)
 
   # Writing points styles
