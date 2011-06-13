@@ -1,7 +1,7 @@
 setMethod("kml", "SpatialPointsDataFrame", function(
   # options on the object to plot
   obj, 
-  file = "bubble_plot.kml",
+  file = "points.kml",
   size = as.character(NA),
   colour = as.character(NA),
   elevation = NA, 
