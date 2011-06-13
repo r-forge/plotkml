@@ -3,7 +3,7 @@ function(SGDF, var.name, var.type, file.name, col.pal, above.ground, altitudeMod
 # Writes a SGDF to ground overlay 
 if(class(SGDF)[1]=="SpatialGridDataFrame"){ #1
 if(!is.na(proj4string(SGDF))){  #2
-if(!proj4string(SGDF)=="+proj=longlat +datum=WGS84"){ #3
+if(proj4string(SGDF)=="+proj=longlat +datum=WGS84"|proj4string(SGDF)==" +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0"){ #3
 if(min(SGDF@data[,var.name], na.rm=TRUE)>-1&max(SGDF@data[,var.name], na.rm=TRUE)<256){
 # if all requirements are met, proceed with conversion
 if(missing(var.type)) { var.type <- "numeric" }

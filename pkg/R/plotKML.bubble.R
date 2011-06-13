@@ -1,15 +1,8 @@
 plotKML.bubble <-
-function(SPDF, var.name, LON, LAT, file.name, icon, icon.url, plt.size, plt.size0, IconColor, altitudeMode, above.ground, extrude, z.scale, LabelScale, TimeSpan.begin, TimeSpan.end, kmz){
-require(Rcompression)
-# SPDF = SpatialPointsDataFrame with a complete proj4 string;
-# var.name = name of the target variable;
-# LON/LAT = longitude / latitude column names;
-# "above.ground" can also be a vector;
-# TimeSpan.begin / end = vector of time/Date for begin/end period;
-# IconColor = colum with Google formated colors - The range of values for any one color is 0 to 255 (00 to ff). The order of expression is aabbggrr, where aa=alpha (00 to ff); bb=blue (00 to ff); gg=green (00 to ff); rr=red (00 to ff). For alpha, 00 is fully transparent and ff is fully opaque.
+function(SPDF, var.name, LON, LAT, file.name, icon, icon.url, plt.size, plt.size0, IconColor, altitudeMode, above.ground, extrude, z.scale, LabelScale, signif.digits, TimeSpan.begin, TimeSpan.end, kmz){
 if(class(SPDF)[1]=="SpatialPointsDataFrame"){ #1
 if(!is.na(proj4string(SPDF))){  #2
-if(!proj4string(SPDF)=="+proj=longlat +datum=WGS84"){ #3
+if(!(proj4string(SGDF)=="+proj=longlat +datum=WGS84"|proj4string(SGDF)==" +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0")){ #3
 warning('projected to "+proj=longlat +datum=WGS84"')
 SPDF <- spTransform(SPDF, CRS("+proj=longlat +datum=WGS84"))
 if(missing(LON)) { LON <- coordinates(SPDF)[,1] }
@@ -24,6 +17,7 @@ if(missing(above.ground)) { above.ground <- rep(10, length(SPDF@data[,var.name])
 if(missing(z.scale)) { z.scale <- 1 }
 if(missing(extrude)) { extrude <- 1 }
 if(missing(LabelScale)) { LabelScale <- 0.7 }
+if(missing(signif.digits)) { signif.digits <- 3 }
 if(missing(IconColor)) { IconColor <- rep("ff0000ff", length(SPDF@data[,var.name])) }
 if(missing(kmz)) { kmz <- FALSE }
 # maximum value:
@@ -61,7 +55,11 @@ print('writing points to KML file')
 pb <- txtProgressBar(min=0, max=length(SPDF@data[[1]]), style=3)
 for (i in 1:length(SPDF@data[[1]])) {
   write("  <Placemark>", filename, append = TRUE)
-  write(paste("  <name>", SPDF@data[i,var.name],"</name>", sep=""), filename, append = TRUE)
+if(is.numeric(SPDF@data[,var.name])){
+  write(paste("  <name>", signif(SPDF@data[i,var.name], signif.digits),"</name>", sep=""), filename, append = TRUE)
+} else {
+    write(paste("  <name>", SPDF@data[i,var.name], "</name>", sep=""), filename, append = TRUE)
+}
   write(paste("  <styleUrl>#pnt",i,"</styleUrl>", sep=""), filename, append = TRUE)
   if(!missing(TimeSpan.begin)&!missing(TimeSpan.end)) { 
   write('    <TimeSpan>', filename, append=TRUE)
