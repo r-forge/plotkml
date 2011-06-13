@@ -1,4 +1,6 @@
-setMethod("kml", "SpatialLinesDataFrame", function(
+
+
+kml.SpatialLinesDataFrame <- function(
   # Options on the object to plot
   obj, 
   file = "lines.kml",
@@ -87,7 +89,7 @@ setMethod("kml", "SpatialLinesDataFrame", function(
   write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>", kml)
   write(paste('<kml xmlns=\"', kml.url, '\">', sep = ""), kml, append = TRUE)
   write("\t<Document>", kml, append = TRUE)
-  write(paste("<name>", as.character(substitute(obj)), "</name>", sep = ""), kml, append = TRUE)
+  write(paste("<name>", as.character(substitute(obj, env = parent.frame())), "</name>", sep = ""), kml, append = TRUE)
   write("<open>1</open>", kml, append = TRUE)
 
   # Optionaly initiates progress bar
@@ -152,5 +154,7 @@ setMethod("kml", "SpatialLinesDataFrame", function(
     zip(kmz.name, file)
     file.remove(file)
   }
-}) 
+}
+
+setMethod("kml", "SpatialLinesDataFrame", kml.SpatialLinesDataFrame) 
 
