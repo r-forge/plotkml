@@ -1,5 +1,3 @@
-
-
 kml.SpatialLinesDataFrame <- function(
   # Options on the object to plot
   obj, 
