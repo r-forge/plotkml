@@ -2,11 +2,10 @@ kml.SpatialPointsDataFrame <- function(
 
   # options on the object to plot
   obj, 
-
   file = "bubble_plot.kml",
   size = as.character(NA),
   colour = as.character(NA),
-  elevation = 10, 
+  elevation = NA, 
 
   # color scheme
   col.region = rainbow(64),
@@ -18,7 +17,6 @@ kml.SpatialPointsDataFrame <- function(
 
   # KML options
   icon = "http://maps.google.com/mapfiles/kml/shapes/donut.png", 
-  altitudeMode = "absolute", 
   extrude = TRUE, 
   z.scale = 1, 
   LabelScale = 0.7, 
@@ -81,15 +79,20 @@ kml.SpatialPointsDataFrame <- function(
 
   # Computing the elevation values vector
   if (is.character(elevation)) {
+    # The character describes the name of a column
+    elevation.mode <- "absolute"
     elevation <- obj[[elevation]]
   }
-  else {
-    if (is.numeric(elevation)) {
-      elevation <- rep(elevation, length.out = nrow(obj))
-    }
-    else
-      stop("Bad elevation value")
+  else if (is.numeric(elevation)) {
+    # If it is numeric this is a single elevation for all points
+    elevation.mode <- "relativeToGround"
+    elevation <- rep(elevation, length.out = nrow(obj))
   }
+  else if (is.na(elevation)) {
+    elevation.mode <- "clampToGround"
+  }
+  else   
+    stop("Bad elevation value")
 
   # Writing header (Maybe to be externalised in a dedicated function
   # as I guess it'd be used in other bits of code)
@@ -153,7 +156,7 @@ kml.SpatialPointsDataFrame <- function(
       # If there's elevation information to be represented
       if (sd(elevation, na.rm = TRUE) > 0) {
         cat('\t\t\t<extrude>', as.numeric(extrude), '</extrude>\n', sep = "", file = kml, append = TRUE)
-        cat('\t\t\t<altitudeMode>', altitudeMode, '</altitudeMode>\n', sep = "", file = kml, append = TRUE)
+        cat('\t\t\t<altitudeMode>', elevation.mode, '</altitudeMode>\n', sep = "", file = kml, append = TRUE)
       }
 
       cat("\t\t\t<coordinates>", coordinates(obj)[i, 1], ",", coordinates(obj)[i, 2], ",", elevation[i]*z.scale,"</coordinates>\n", sep = "", file = kml, append = TRUE)
