@@ -43,29 +43,29 @@ SGDF.ll$mask <- ifelse(is.na(SGDF.ll$mask), 0, SGDF.ll$mask)
 if(kml.legend==TRUE&make.kml==TRUE){
 if(is.factor(SGDF@data[,var.name])|var.type=="factor"){
 if(missing(factor.labels)) { factor.labels <- levels(SGDF@data[,var.name]) }
-write.legend.gif(x=SGDF.ll, var.type="factor", var.name=var.name, legend.file.name=paste(var.name, "_legend.png", sep=""), factor.labels=factor.labels, legend.pal=col.pal)
+write.legend.gif(x=SGDF.ll, var.type="factor", var.name=var.name, legend.file.name=paste(file.name, "_legend.png", sep=""), factor.labels=factor.labels, legend.pal=col.pal)
 }
-else {  write.legend.gif(x=SGDF.ll, var.name=var.name, legend.file.name=paste(var.name, "_legend.png", sep=""), legend.pal=col.pal, z.lim=z.lim)
+else {  write.legend.gif(x=SGDF.ll, var.name=var.name, legend.file.name=paste(file.name, "_legend.png", sep=""), legend.pal=col.pal, z.lim=z.lim)
   }
 }
 if(plot.type=="gif"){
 # write a GIF with defined transparency:
 if(is.factor(SGDF@data[,var.name])|var.type=="factor") {
-write.grid2gif.KML(SGDF=SGDF.ll, var.type=var.type, var.name="mask", file.name=var.name, col.pal=gif.pal, above.ground=above.ground, altitudeMode=altitudeMode, make.legend=FALSE, make.kml==TRUE)
+write.grid2gif.KML(SGDF=SGDF.ll, var.type=var.type, var.name="mask", file.name=file.name, col.pal=gif.pal, above.ground=above.ground, altitudeMode=altitudeMode, make.legend=FALSE, make.kml==TRUE)
 } 
 else {
-write.grid2gif.KML(SGDF=SGDF.ll, var.type=var.type, var.name="mask", file.name=var.name, z.lim=z.lim, col.pal=gif.pal, above.ground=above.ground, altitudeMode=altitudeMode, make.legend=FALSE, make.kml==TRUE)  
+write.grid2gif.KML(SGDF=SGDF.ll, var.type=var.type, var.name="mask", file.name=file.name, z.lim=z.lim, col.pal=gif.pal, above.ground=above.ground, altitudeMode=altitudeMode, make.legend=FALSE, make.kml==TRUE)  
 }
 }
 else {
 if(plot.type=="poly"){
 # write a KML as polygons:
 if(is.factor(SGDF@data[,var.name])|var.type=="factor") {
-write.grid2poly.KML(SGDF=SGDF, var.type=var.type, var.name=var.name, file.name=var.name, col.pal=col.pal, above.ground=above.ground, altitudeMode=altitudeMode, make.legend=FALSE)
+write.grid2poly.KML(SGDF=SGDF, var.type=var.type, var.name=var.name, file.name=file.name, col.pal=col.pal, above.ground=above.ground, altitudeMode=altitudeMode, make.legend=FALSE)
 }
 else {
 if(!missing(error.name)) { SGDF@data[,var.name] <- ifelse(SGDF@data[,error.name]>global.var, NA, SGDF@data[,var.name]) }
-write.grid2poly.KML(SGDF=SGDF, var.type=var.type, var.name=var.name, file.name=var.name, z.lim=z.lim, col.pal=col.pal, above.ground=above.ground, altitudeMode=altitudeMode, make.legend=FALSE)
+write.grid2poly.KML(SGDF=SGDF, var.type=var.type, var.name=var.name, file.name=file.name, z.lim=z.lim, col.pal=col.pal, above.ground=above.ground, altitudeMode=altitudeMode, make.legend=FALSE)
 }
 }
 }
