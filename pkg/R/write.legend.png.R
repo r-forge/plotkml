@@ -1,15 +1,27 @@
-write.legend.gif <-
-function(x, var.type, var.name, legend.file.name, legend.pal, z.lim, factor.labels) {
-if(class(x)[1]=="SpatialGridDataFrame"|class(x)[1]=="SpatialPixelsDataFrame"|class(x)[1]=="SpatialPolygonsDataFrame"|class(x)[1]=="SpatialLinesDataFrame"){
-if(missing(var.type)) { var.type <- "numeric" }
+write.legend.png <- function(
+  # Options
+  x, 
+  var.type="numeric", 
+  var.name, 
+  legend.file.name, 
+  legend.pal, 
+  z.lim, 
+  factor.labels
+){
+require(colorspace)
+require(plotrix)
+ if(class(x)[1]=="SpatialGridDataFrame"|class(x)[1]=="SpatialPixelsDataFrame"|class(x)[1]=="SpatialPolygonsDataFrame"|class(x)[1]=="SpatialLinesDataFrame"){
 if(missing(legend.file.name)) { legend.file.name <- paste(var.name, "_legend.png", sep="") }
 if(missing(legend.pal)) { col.no <- 48; legend.pal <- rev(rainbow(65)[1:col.no]) }
-if(missing(z.lim)&var.type=="numeric") { z.lim <- c(quantile(x@data[,var.name], 0.025, na.rm=TRUE), quantile(x@data[,var.name], 0.975, na.rm=TRUE)) }
+if(missing(var.type)) { var.type <- class(x@data[,var.name]) }
+
+### Factor-type variables:
 if(var.type=="factor") {
+z.lim <- NA
 if(missing(factor.labels)){ col.no <- length(levels(as.factor(x@data[,var.name])))  }
 else { col.no <- length(factor.labels) }
 if(missing(factor.labels)) {
-### NOTE : This is a not a perfect implementation for long text levels!
+### NOTE : This is a not a perfect implementation for a factor with a lot of categories!
 leg.width <- max(nchar(levels(as.factor(x@data[,var.name]))))*5+70  # 5 pix per character
 leg.height <- length(levels(as.factor(x@data[,var.name])))*40 # 20 pix per class
 }
@@ -29,7 +41,10 @@ text(x=rep(1, col.no), y=1:col.no, labels=factor.labels, cex=.8, pos=4, offset=1
 }
 dev.off()
 }
+
+### Numeric-type variables:
 else {
+if(missing(z.lim)&class(x@data[,var.name])=="numeric") { z.lim <- c(quantile(x@data[,var.name], 0.025, na.rm=TRUE), quantile(x@data[,var.name], 0.975, na.rm=TRUE)) }
 png(file=legend.file.name, width=120, height=240, bg="transparent", pointsize=14)
 par(mar=c(.5,0,.5,4))
 plot(x=0:5, y=0:5, asp=3, type="n", axes=FALSE, xlab='', ylab='')
@@ -44,4 +59,3 @@ dev.off()
 }
 else { stop("first argument should be of class sp (Grid, Pixel, Polygons, Lines)") } 
 }
-
