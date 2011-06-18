@@ -1,7 +1,7 @@
 \name{write.legend.png}
 \alias{write.legend.png}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ Prints legends (png) for continuous and factor-type variables for Google Earth plots
+\title{ Prints legends (png) for numeric and factor-type variables for Google Earth plots
 %%  ~~function to do ... ~~
 }
 \description{ Makes a png file with legend to be used as a screen overlay in Google Earth 
