@@ -1,3 +1,9 @@
+#' Extracts the values of PROJ4 parameters
+#'
+#' @param p4s_parameters list of proj4 parameter/value strings
+#' @param param proj4 string parameter to be extracted
+#'
+#' @author Pierre Roudier
 .extractProjValue <- function(p4s_parameters, param){
   
   # Locating the current PROJ4 parameter
