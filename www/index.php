@@ -19,7 +19,12 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title><?php echo $group_name; ?></title>
 	<link href="<?php echo $themeroot; ?>styles/estilo1.css" rel="stylesheet" type="text/css" />
-  </head>
+    <style type="text/css">
+<!--
+.style1 {font-size: x-small}
+-->
+    </style>
+</head>
 
 <body>
 
@@ -43,9 +48,21 @@ echo $contents; } ?>
 
 <!-- end of project description -->
 
-<p> No content added. </p>
+<div>
+  <p>Plotting of space-time objects in Google Earth (visualization templates)</p>
+</div>
+<table width="600" border="0" cellspacing="0" cellpadding="10">
+  <tr>
+    <td><div align="center"><img src="Fig_plotKML_bubble_1_s.jpg" alt="Bubble plot (points)" width="198" height="200" /></div></td>
+    <td><img src="Fig_plotKML_anime_1_s.jpg" alt="Animations using spatial grids" width="162" height="200" /></td>
+    <td><div align="center"><img src="Fig_plotKML_grid_om_s.jpg" alt="Results of spatial prediction" width="174" height="200" /></div></td>
+    <td><div align="center"><img src="Fig_plotKML_geopath_s.jpg" alt="Geopath (between two points)" width="171" height="200" /></div></td>
+    <td><div align="center"><img src="Fig_plotKML_soilblock_s.jpg" alt="Soil profiles as 3D blocks" width="170" height="200" /></div></td>
+  </tr>
+</table>
+<p class="style1">Contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">Tomislav Hengl</a>, <a href="http://www.landcareresearch.co.nz/research/staff_page.asp?staff_num=2132" target="_blank">Pierre Rourier</a> &amp; <a href="http://casoilresource.lawr.ucdavis.edu/drupal/node/905" target="_blank">Dylan Beaudette</a></p>
 
-<p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
+<p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>.</p>
 
 </body>
 </html>
