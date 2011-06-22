@@ -85,6 +85,12 @@ kml_names <- function(obj, ...){
 
   # and use its values as rownames.
 
+  # Temporary solution - more fancy stuff could be done of course
+  if ("data" %in% slotNames(obj))
+    nm <- rownames(obj@data)
+  else
+    nm <- as.character(1:nrow(coordinates(obj)))
+  nm
 }
 
 # convert R colours to KML colours
