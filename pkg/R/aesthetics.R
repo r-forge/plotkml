@@ -41,7 +41,7 @@
 kml_aes <- function(obj, ...){
   
   # Getting parent call
-  parent_call <- sys.call()[[sys.nframe() - 1]]
+  parent_call <- sys.calls()[[sys.nframe() - 1]]
 
   # Deparse the current call
   parent_call <- structure(as.list(parent_call), class="uneval")
@@ -49,20 +49,48 @@ kml_aes <- function(obj, ...){
   ind_aes <- charmatch(called_options, names(.all_kml_aesthetics))
   called_aes <- names(.all_kml_aesthetics)[ind_aes[!is.na(ind_aes)]]
 
-  # Make a data.frame: | option name | value |
-  aes <- .kml_aes_default(obj)
+#   # Make a data.frame: | option name | value |
+#   aes <- .kml_aes_default(obj)
+# 
+#   # Modify those default values for called aesthetics
+#   for (i_aes in 1:length(called_aes)) {
+#     cur_aes <- called_aes[i_aes]
+#     fun <- paste("kml_", cur_aes, sep = "")
+#     aes[[cur_aes]] <- do.call(fun, list(obj, ...))
+#   }
 
-  # Modify those default values for called aesthetics
-  for (i_aes in 1:length(called_aes)) {
-    cur_aes <- called_aes[i_aes]
-    fun <- paste("kml_", cur_aes, sep = "")
-    aes[[cur_aes]] <- do.call(fun, list(obj, ...))
+  # Colour
+  if ("colour" %in% called_aes) {
+    aes[['colour']] <- kml_colour(...)
+
+    # Whitening
+    if ("whitening" %in% called_aes) {
+      aes[['colour']] <- kml_whitening(...)
+    }
+  }
+
+  # Size
+  if ("size" %in% called_aes) {
+    aes[['size']] <- kml_size(...)
+  }
+
+  # Width
+  if ("width" %in% called_aes) {
+    aes[['width']] <- kml_width(...)
+  }
+
+  # Alpha
+  if ("alpha" %in% called_aes) {
+    aes[['alpha']] <- kml_alpha(...)
+  }
+
+  # Altitude
+  if ("altitude" %in% called_aes) {
+    aes[['altitude']] <- kml_altitude(...)
   }
     
   aes
 }
-
-
 
 # Colour (points, polygons, lines, raster)
 kml_colour <- function(obj, colour, col.region = rainbow(64), col.default = "black"){
@@ -92,6 +120,7 @@ kml_size <- function(obj, size, size.min = 0.25, size.max = 4, size.default = 2)
     else {
       if (!is.factor(obj[[size]])) 
         obj[[size]] <- factor(obj[[size]])
+
       # compute number of levels
       nl <- nlevels(obj[[size]])
       # compute the different size values
