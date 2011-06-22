@@ -3,6 +3,7 @@
 .all_kml_aesthetics <- list(
   colour = "black",
   fill = "white",
+  shape = "http://maps.google.com/mapfiles/kml/shapes/donut.png",
   whitening = "",
   alpha = 1,
   size = 2,
@@ -41,6 +42,14 @@ kml_aes <- function(obj, ...){
     aes[['colour']] <- rep(.all_kml_aesthetics[["colour"]], length.out = nrow(coordinates(obj)))
   }
 
+  # Shape
+  if ("shape" %in% called_aes) {
+    aes[["shape"]] <- kml_shape(obj, shape, ...)
+  }
+  else {
+    aes[["shape"]] <- .all_kml_aesthetics[["shape"]]
+  }
+
   # Size
   if ("size" %in% called_aes) {
     aes[['size']] <- kml_size(obj, size, ...)
@@ -72,6 +81,8 @@ kml_aes <- function(obj, ...){
   else {
     aes[['altitude']] <- rep(.all_kml_aesthetics[["altitude"]], length.out = nrow(coordinates(obj)))
   }
+
+  # AltitudeMode
   aes[["altitudeMode"]] <- kml_altitude_mode(aes[['altitude']])
   
   aes
