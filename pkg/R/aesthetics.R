@@ -1,94 +1,79 @@
-# Aesthetics mapping
-#
-# 4 kinds of aesthetics are supported by plotKML:
-#   - colour (points, polygons, lines, raster)
-#   - opacity (points, polygons, lines, raster)
-#   - size (points)
-#   - width (lines)
-#   - + elevation (though not stricktly speaking a aesthetic)
-#
-# These functions will generate the aesthetics vector in the format needed by
-# the KML specs.
-
 # List of available aesthetics is given .all_kml_aesthetics
 # along with their default values
 .all_kml_aesthetics <- list(
   colour = "black",
+  fill = "white",
   whitening = "",
   alpha = 1,
   size = 2,
   width = 1,
-  altitude = ""
+  altitude = NA
 )
 
-
-# Creates a list of default values for
-# every available aesthetic.
+# Parsing a call
 #
-.kml_aes_default <- function(obj){
+.parse_call_for_aes <- function(call){
+  parent_call <- structure(as.list(call), class="uneval")
+  called_options <- names(parent_call)
+  ind_aes <- charmatch(called_options, names(.all_kml_aesthetics))
 
-  require(plyr)
-
-  res <- llply(.all_kml_aesthetics, rep, length.out = nrow(coordinates(obj)))
-
-  for (i_aes in .all_kml_aesthetics) {
-    res[[i_aes]] <- 
-  }
+  names(.all_kml_aesthetics)[ind_aes[!is.na(ind_aes)]]
 }
 
-# Maybe not useful - rather code it straight in
-# the layer.* functions.
+# Applying aesthetics
+# 
 kml_aes <- function(obj, ...){
   
   # Getting parent call
   parent_call <- sys.calls()[[sys.nframe() - 1]]
-
-  # Deparse the current call
-  parent_call <- structure(as.list(parent_call), class="uneval")
-  called_options <- names(parent_call)
-  ind_aes <- charmatch(called_options, names(.all_kml_aesthetics))
-  called_aes <- names(.all_kml_aesthetics)[ind_aes[!is.na(ind_aes)]]
-
-#   # Make a data.frame: | option name | value |
-#   aes <- .kml_aes_default(obj)
-# 
-#   # Modify those default values for called aesthetics
-#   for (i_aes in 1:length(called_aes)) {
-#     cur_aes <- called_aes[i_aes]
-#     fun <- paste("kml_", cur_aes, sep = "")
-#     aes[[cur_aes]] <- do.call(fun, list(obj, ...))
-#   }
+  # Parse the current call
+  called_aes <- .parse_call_for_aes(parent_call)
 
   # Colour
   if ("colour" %in% called_aes) {
-    aes[['colour']] <- kml_colour(...)
-
+    aes[['colour']] <- kml_colour(obj, colour, ...)
     # Whitening
     if ("whitening" %in% called_aes) {
-      aes[['colour']] <- kml_whitening(...)
+      aes[['colour']] <- kml_whitening(obj, whitening, aes[['colour']], ...)
     }
+  } 
+  else {
+    aes[['colour']] <- rep(.all_kml_aesthetics[["colour"]], length.out = nrow(coordinates(obj)))
   }
 
   # Size
   if ("size" %in% called_aes) {
-    aes[['size']] <- kml_size(...)
+    aes[['size']] <- kml_size(obj, size, ...)
+  } 
+  else {
+    aes[['size']] <- rep(.all_kml_aesthetics[["size"]], length.out = nrow(coordinates(obj)))
   }
 
   # Width
   if ("width" %in% called_aes) {
-    aes[['width']] <- kml_width(...)
+    aes[['width']] <- kml_width(obj, width, ...)
+  } 
+  else {
+    aes[['width']] <- rep(.all_kml_aesthetics[["width"]], length.out = nrow(coordinates(obj)))
   }
 
   # Alpha
   if ("alpha" %in% called_aes) {
-    aes[['alpha']] <- kml_alpha(...)
+    aes[['alpha']] <- kml_alpha(obj, alpha, ...)
+  } 
+  else {
+    aes[['alpha']] <- rep(.all_kml_aesthetics[["alpha"]], length.out = nrow(coordinates(obj)))
   }
 
   # Altitude
   if ("altitude" %in% called_aes) {
-    aes[['altitude']] <- kml_altitude(...)
+    aes[['altitude']] <- kml_altitude(obj, altitude, ...)
+  } 
+  else {
+    aes[['altitude']] <- rep(.all_kml_aesthetics[["altitude"]], length.out = nrow(coordinates(obj)))
   }
-    
+  aes[["altitudeMode"]] <- kml_altitude_mode(aes[['altitude']])
+  
   aes
 }
 
