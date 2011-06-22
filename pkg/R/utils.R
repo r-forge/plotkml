@@ -6,7 +6,7 @@
 kml_open <- function(
   file, 
   name = file, 
-  kml.url = kml.url = "http://www.opengis.net/kml/2.2"
+  kml.url = "http://www.opengis.net/kml/2.2"
   ){
 
   # creating the file and opening it in writing mode
