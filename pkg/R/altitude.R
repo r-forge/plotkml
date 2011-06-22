@@ -1,25 +1,25 @@
-# Elevation (points, polygons, lines, raster)
+# Altitude (points, polygons, lines, raster)
 #
-# Returns an elevation vector and a altitudeMode string
-kml_elevation <- function(obj, elevation = NA, elevation.default = 10){
+# Returns an altitude vector and a altitudeMode string
+kml_altitude <- function(obj, altitude = NA, altitude.default = 10){
 
   # Testing what has been given by the user
-  if (is.character(elevation)) {
+  if (is.character(altitude)) {
     # The character describes the name of a column
-    elevation.mode <- "absolute"
-    elevation <- obj[[elevation]]
+    altitude.mode <- "absolute"
+    altitude <- obj[[altitude]]
   }
-  else if (is.numeric(elevation)) {
-    # If it is numeric this is a single elevation for all points
-    elevation.mode <- "relativeToGround"
-    elevation <- rep(elevation, length.out = nrow(obj))
+  else if (is.numeric(altitude)) {
+    # If it is numeric this is a single altitude for all points
+    altitude.mode <- "relativeToGround"
+    altitude <- rep(altitude, length.out = nrow(obj))
   }
-  else if (is.na(elevation)) {
-    elevation.mode <- "clampToGround"
-    elevation <- rep(elevation.default, length.out = nrow(obj))
+  else if (is.na(altitude)) {
+    altitude.mode <- "clampToGround"
+    altitude <- rep(altitude.default, length.out = nrow(obj))
   }
   else   
-    stop("Bad elevation value")
+    stop("Bad altitude value")
 
-  list(elevation = elevation, elevation.mode = elevation.mode)
+  list(altitude = altitude, altitude.mode = altitude.mode)
 }
