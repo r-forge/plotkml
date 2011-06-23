@@ -2,7 +2,7 @@ plotKML.geopath <-
 function(SLDF, ID.name, elev, file.name, icon, icon.url, line.size, IconColor, altitudeMode, above.ground, visibility, extrude, tessellate, LineWidth, LabelScale, kmz){
 if(class(SLDF)[1]=="SpatialLinesDataFrame"){ #1
 if(!is.na(proj4string(SLDF))){  #2
-if(!proj4string(SLDF)=="+proj=longlat +datum=WGS84"){ #3
+if(!check_projection(SGDF)){ #3
 warning('projected to "+proj=longlat +datum=WGS84"')
 SLDF <- spTransform(SLDF, CRS("+proj=longlat +datum=WGS84")) }
 if(missing(above.ground)) { above.ground <- 10 }
