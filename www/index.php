@@ -60,7 +60,7 @@ echo $contents; } ?>
     <td><div align="center"><a href="http://globalsoilmap.org/content/soil-horizons-and-values-organic-carbon-visualized-google-earth"><img src="Fig_plotKML_soilblock_s.jpg" alt="Soil profiles as 3D blocks" width="170" height="200" border="0" /></a></div></td>
   </tr>
 </table>
-<p class="style1">Contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">Tomislav Hengl</a>, <a href="http://www.landcareresearch.co.nz/research/staff_page.asp?staff_num=2132" target="_blank">Pierre Rourier</a> &amp; <a href="http://casoilresource.lawr.ucdavis.edu/drupal/node/905" target="_blank">Dylan Beaudette</a></p>
+<p class="style1">Contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">Tomislav Hengl</a>, <a href="http://www.landcareresearch.co.nz/research/staff_page.asp?staff_num=2132" target="_blank">Pierre Roudier</a> &amp; <a href="http://casoilresource.lawr.ucdavis.edu/drupal/node/905" target="_blank">Dylan Beaudette</a></p>
 
 <p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>.</p>
 
