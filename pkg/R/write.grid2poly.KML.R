@@ -20,7 +20,7 @@ SGDF.pix <- as(SGDF[var.name], "SpatialPixelsDataFrame")
 ## Maybe the "rasterToPolygons" in the raster package would be faster?
 grd.poly <- as.SpatialPolygons.SpatialPixels(SGDF.pix)
 proj4string(grd.poly) <- SGDF@proj4string
-if(!proj4string(SGDF)=="+proj=longlat +datum=WGS84") { 
+if(!check_projection(SGDF)) { 
 grd.poly.ll <- spTransform(grd.poly, CRS("+proj=longlat +datum=WGS84")) 
 }
 else { grd.poly.ll <- grd.poly }
