@@ -28,7 +28,7 @@ if(missing(kmz)) { kmz <- FALSE }
 pb <- txtProgressBar(min=0, max=length(var.list), style=3)
 for(i in 1:length(var.list)){
 # reproject to WGS84 system if necessary:
-if(!proj4string(SGDF)=="+proj=longlat +datum=WGS84"){ #3
+if(!check_projection(SGDF)){ #3
 SGDF.ll <- reproject.grid(SGDF=SGDF, var.name=var.list[i], file.name=file.name, mvFlag=mvFlag, FWTools=FWTools, r.method=r.method)
 # warning('projected to "+proj=longlat +datum=WGS84"')
 }

@@ -8,7 +8,7 @@ if(missing(r.method)) { r.method <- "bilinear" }
 if(missing(FWTools)) { FWTools <- FALSE }
 if(missing(file.name)) { file.name <- var.name }
 if(!is.na(proj4string(SGDF))){  #2
-if(!(proj4string(SGDF)=="+proj=longlat +datum=WGS84"|proj4string(SGDF)==" +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0")){ #3
+if(!check_projection(SGDF)){ #3
 # distinguish between numeric and factor variables
 if(is.factor(SGDF@data[,var.name])){
 if(FWTools==TRUE){
