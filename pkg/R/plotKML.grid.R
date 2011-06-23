@@ -24,7 +24,7 @@ col.no <- length(col.pal)
 gif.pal <- c(grey(0), col.pal, rep(grey(1), 256-col.no)) # add colors for transparent pixels and undefined values
 if(missing(kmz)) { kmz <- FALSE }
 # reproject to WGS84 system:
-if(!(proj4string(SGDF)=="+proj=longlat +datum=WGS84"|proj4string(SGDF)==" +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0")){ #3
+if(!check_projection(SGDF)){ #3
 SGDF.ll <- reproject.grid(SGDF=SGDF, var.name=var.name, file.name=file.name, mvFlag=mvFlag, FWTools=FWTools, error.name=error.name, r.method=r.method)
 warning('projected to "+proj=longlat +datum=WGS84"')
 }
@@ -43,9 +43,9 @@ SGDF.ll$mask <- ifelse(is.na(SGDF.ll$mask), 0, SGDF.ll$mask)
 if(kml.legend==TRUE&make.kml==TRUE){
 if(is.factor(SGDF@data[,var.name])|var.type=="factor"){
 if(missing(factor.labels)) { factor.labels <- levels(SGDF@data[,var.name]) }
-write.legend.gif(x=SGDF.ll, var.type="factor", var.name=var.name, legend.file.name=paste(file.name, "_legend.png", sep=""), factor.labels=factor.labels, legend.pal=col.pal)
+write.legend.png(x=SGDF.ll, var.type="factor", var.name=var.name, legend.file.name=paste(file.name, "_legend.png", sep=""), factor.labels=factor.labels, legend.pal=col.pal)
 }
-else {  write.legend.gif(x=SGDF.ll, var.name=var.name, legend.file.name=paste(file.name, "_legend.png", sep=""), legend.pal=col.pal, z.lim=z.lim)
+else {  write.legend.png(x=SGDF.ll, var.name=var.name, legend.file.name=paste(file.name, "_legend.png", sep=""), legend.pal=col.pal, z.lim=z.lim)
   }
 }
 if(plot.type=="gif"){
