@@ -4,13 +4,10 @@
 #' @param name KML name
 #' @param kml.url KML specification URL
 kml_open <- function(
-  file, 
-  name = file, 
+  file,
+  name = file,
   kml.url = "http://www.opengis.net/kml/2.2"
   ){
-
-  # creating the file and opening it in writing mode
-  kml <- file(file, "w",  blocking = FALSE)
 
   # header
   cat("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", file = file)
@@ -28,19 +25,18 @@ kml_close <- function(
   ){
   cat("</Document>\n", file = file, append = TRUE)
   cat("</kml>\n", file = file, append = TRUE)
-  close(file)
 }
 
 #' Compresses a KML into a KMZ
 #'
 #' @param file KML file name to be compressed
-#' @param zip If there is no zip program on your path (on windows), 
-#'  you can supply the full path to a zip.exe here, in order to make 
+#' @param zip If there is no zip program on your path (on windows),
+#'  you can supply the full path to a zip.exe here, in order to make
 #'  a KMZ file
 #' @param imagefile an image file to put in the archive (for rasters)
 #' @param rm Should the kml file be removed?
 #'
-#' @author Code slightly adapted by Pierre Roudier from the KML() function in Robert 
+#' @author Code slightly adapted by Pierre Roudier from the KML() function in Robert
 #'  Hijmans's package raster. All credit goes to Robert.
 kml_compress <- function(file, zip = "", imagefile = "", rm = FALSE){
 
@@ -52,7 +48,7 @@ kml_compress <- function(file, zip = "", imagefile = "", rm = FALSE){
   if (zip == "") {
       zip <- Sys.getenv("R_ZIPCMD", "zip")
   }
-  
+
   # Build the command
   cmd <- paste(zip, kmz, file, imagefile, collapse = " ")
   # execute the command
@@ -80,7 +76,7 @@ kml_compress <- function(file, zip = "", imagefile = "", rm = FALSE){
 kml_names <- function(obj, ...){
   # Introduce a names= option/aes?
   # Try to find existing rownames
-  
+
   # Otherwise select aes that came first in the fun call
 
   # and use its values as rownames.
@@ -96,7 +92,7 @@ kml_names <- function(obj, ...){
 # convert R colours to KML colours
 #
 col2kml <- function(colour){
-   
+
   res <- rgb(t(col2rgb(colour, alpha = TRUE))/255, alpha = TRUE)
   # alpha as to be in the front
   res <- hex2kml(res)
