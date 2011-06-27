@@ -18,7 +18,7 @@ kml_altitude <- function(obj, altitude = NA, altitude.default = 10){
     altitude_mode <- "clampToGround"
     altitude <- rep(altitude.default, length.out = nrow(obj))
   }
-  else   
+  else
     stop("Bad altitude value")
 
   list(altitude = altitude, altitude.mode = altitude_mode)
@@ -30,7 +30,7 @@ kml_altitude_mode <- function(altitude){
   if (is.numeric(altitude)) {
     altitude_mode <- "relativeToGround"
   }
-  else if (is.na(altitude)) {
+  else if (all(is.na(altitude))) {
     altitude_mode <- "clampToGround"
   }
   altitude_mode
