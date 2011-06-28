@@ -1,17 +1,19 @@
-setMethod("kml", "SpatialPointsDataFrame", function(
-  # options on the object to plot
+kml.SpatialPoints <- function(
   obj,
   file = paste(as.character(substitute(obj, parent.frame())), ".kml", sep=""),
   ...,
+  overwrite = FALSE,
   kmz = FALSE
 ){
 
-  kml_open(file = file, name = as.character(substitute(obj, parent.frame())))
+  kml_open(file = file, name = as.character(substitute(obj, parent.frame())), overwrite = overwrite)
 
-  layer.SpatialPoints(obj = obj, file = file, ...)
+  kml_layer(obj = obj, file = file, ...)
 
   kml_close(file = file)
 
   if (kmz)
     kml_compress(file)
-})
+}
+
+setMethod("kml", "SpatialPoints", kml.SpatialPoints)
