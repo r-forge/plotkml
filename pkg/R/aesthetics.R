@@ -6,7 +6,7 @@
   shape = "http://maps.google.com/mapfiles/kml/shapes/donut.png",
   whitening = "",
   alpha = 1,
-  size = 2,
+  size = 1,
   width = 1,
   altitude = NA
 )
@@ -25,9 +25,9 @@
 kml_aes <- function(obj, ...){
 
   # Getting parent call
-  parent_call <- sys.calls()[[sys.nframe() - 1]]
-  parent_call <- structure(as.list(parent_call), class="uneval")
-  parent_call <- c(parent_call, list(...))
+  parent_call <- substitute(list(...))
+  parent_call <- as.list(parent_call)[-1]
+
   # Parse the current call
   called_aes <- .parse_call_for_aes(parent_call)
 
@@ -35,15 +35,25 @@ kml_aes <- function(obj, ...){
 
   # Colour
   if ("colour" %in% called_aes) {
-    aes[['colour']] <- kml_colour(obj, colour, ...)
-    # Whitening
-#     if ("whitening" %in% called_aes) {
-#       aes[['colour']] <- kml_whitening(obj, whitening, aes[['colour']], ...)
-#     }
+    # If a column name as been used
+    if (is.name(parent_call[['colour']])){
+      aes[['colour']] <- kml_colour(obj, colour = as.character(parent_call[['colour']]))
+    }
+    # Otherwise it is interpreted as a colour to use
+    else {
+      aes[['colour']] <- rep(col2kml(parent_call[['colour']]), length.out = nrow(coordinates(obj)))
+    }
+
   }
+  # using the default value
   else {
     aes[['colour']] <- rep(.all_kml_aesthetics[["colour"]], length.out = nrow(coordinates(obj)))
   }
+
+  # Whitening
+#     if ("whitening" %in% called_aes) {
+#       aes[['colour']] <- kml_whitening(obj, whitening, aes[['colour']], ...)
+#     }
 
   # Shape
   if ("shape" %in% called_aes) {
@@ -55,7 +65,14 @@ kml_aes <- function(obj, ...){
 
   # Size
   if ("size" %in% called_aes) {
-    aes[['size']] <- kml_size(obj, size, ...)
+    # If a column name as been used
+    if (is.name(parent_call[['size']])){
+      aes[['size']] <- kml_size(obj, size = as.character(parent_call[['size']]))
+    }
+    # Otherwise it is interpreted as a colour to use
+    else {
+      aes[['size']] <- rep(parent_call[['size']], length.out = nrow(coordinates(obj)))
+    }
   }
   else {
     aes[['size']] <- rep(.all_kml_aesthetics[["size"]], length.out = nrow(coordinates(obj)))
