@@ -1,6 +1,6 @@
-if (!isGeneric("layer"))
-  setGeneric("layer", function(obj, ...)
-    standardGeneric("layer")
+if (!isGeneric("kml_layer"))
+  setGeneric("kml_layer", function(obj, ...)
+    standardGeneric("kml_layer")
   )
 
 if (!isGeneric("kml"))
