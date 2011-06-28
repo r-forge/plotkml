@@ -42,8 +42,8 @@ kml_close <- function(
 #' @param imagefile an image file to put in the archive (for rasters)
 #' @param rm Should the kml file be removed?
 #'
-#' @author Code slightly adapted by Pierre Roudier from the KML() function in Robert
-#'  Hijmans's package raster. All credit goes to Robert.
+#' @author Code adapted by Pierre Roudier from the KML() function in Robert
+#'  Hijmans's package raster.
 kml_compress <- function(file, zip = "", imagefile = "", rm = FALSE){
 
   require(stringr)

@@ -8,6 +8,7 @@
   alpha = 1,
   size = 1,
   width = 1,
+  name = "",
   altitude = NA
 )
 
@@ -32,6 +33,26 @@ kml_aes <- function(obj, ...){
   called_aes <- .parse_call_for_aes(parent_call)
 
   aes <- list()
+
+  # Names
+  if ("name" %in% called_aes) {
+    if (is.name(parent_call[['name']])){
+      aes[['name']] <- obj[[as.character(parent_call[['name']])]]
+    }
+    else {
+      name <- eval(parent_call[['name']])
+      if (length(name) == nrow(coordinates(obj)))
+        aes[['name']] <- name
+      else
+        aes[['name']] <- rep(name, length.out = nrow(coordinates(obj)))
+    }
+  }
+  else {
+    if ("data" %in% slotNames(obj))
+      aes[['name']] <- rownames(obj@data)
+    else
+      aes[['name']] <- as.character(1:nrow(coordinates(obj)))
+  }
 
   # Colour
   if ("colour" %in% called_aes) {
