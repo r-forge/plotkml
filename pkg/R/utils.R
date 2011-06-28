@@ -6,8 +6,14 @@
 kml_open <- function(
   file,
   name = file,
+  overwrite = FALSE,
   kml.url = "http://www.opengis.net/kml/2.2"
   ){
+
+  if (file.exists(file) & !overwrite)
+    stop(paste("File", file, "exists. Set the overwrite option to TRUE if you want to overwrite that file, or choose a different name for it."))
+
+  file.create(file)
 
   # header
   cat("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", file = file)
