@@ -26,15 +26,11 @@
 #
 # This file gathers the layer() methods. kml.compress(), kml.open() and kml.close() are in kml.utils.R
 #
-layer.SpatialPoints <- function(
+kml_layer.SpatialPoints <- function(
   # options on the object to plot
   obj,
-  file = "points.kml",
+  file,
   title = as.character(substitute(obj, env = parent.frame())),
-#   col.region = rainbow(64),
-#   plt.size.max = 2,
-#   plt.size.min = 0.3,
-#   icon = "http://maps.google.com/mapfiles/kml/shapes/donut.png",
   extrude = TRUE,
   z.scale = 1,
   LabelScale = 0.7,
@@ -112,3 +108,5 @@ layer.SpatialPoints <- function(
   cat("</Folder>\n", file = file, append = TRUE)
 
 }
+
+setMethod("kml_layer", "SpatialPointsDataFrame", kml_layer.SpatialPoints)
