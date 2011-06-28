@@ -36,10 +36,12 @@ kml_aes <- function(obj, ...){
 
   # Names
   if ("name" %in% called_aes) {
+    # If names defined using a column of data
     if (is.name(parent_call[['name']])){
       aes[['name']] <- obj[[as.character(parent_call[['name']])]]
     }
     else {
+      # if names given as a vector
       name <- eval(parent_call[['name']])
       if (length(name) == nrow(coordinates(obj)))
         aes[['name']] <- name
@@ -48,8 +50,14 @@ kml_aes <- function(obj, ...){
     }
   }
   else {
-    if ("data" %in% slotNames(obj))
-      aes[['name']] <- rownames(obj@data)
+    if ("data" %in% slotNames(obj)) {
+      # If only one data column is represnetd, we use its values as names
+      called_aes_as_name <- which(laply(parent_call, is.name))
+      if (length(called_aes_as_name) == 1)
+        aes[['name']] <- as.character(obj[[as.character(parent_call[[called_aes_as_name]])]])
+      else
+        aes[['name']] <- rownames(obj@data)
+    }
     else
       aes[['name']] <- as.character(1:nrow(coordinates(obj)))
   }
