@@ -44,13 +44,11 @@ kml_layer.SpatialPoints <- function(
 #   if (!check)
 #     obj <- reproject(obj)
 
-  # Points names
-  points_names <- kml_names(obj)
-
   # Parsing the call for aesthetics
   aes <- kml_aes(obj, ...)
 
   # Read the relevant aesthetics
+  points_names<- aes[["name"]]
   colours <- aes[["colour"]]
   shapes <- aes[["shape"]]
   sizes <- aes[["size"]]
