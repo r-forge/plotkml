@@ -57,7 +57,7 @@ kml_aes <- function(obj, ...){
   # Colour
   if ("colour" %in% called_aes) {
     # If a column name as been used
-    if (is.name(parent_call[['colour']])){
+    if (is.name(parent_call[['colour']]) & "data" %in% slotNames(obj)){
       aes[['colour']] <- kml_colour(obj, colour = as.character(parent_call[['colour']]))
     }
     # Otherwise it is interpreted as a colour to use
