@@ -97,10 +97,13 @@ kml_names <- function(obj, ...){
 
 # convert R colours to KML colours
 #
+# KML colour follow the scheme #aabbggrr
+#
 col2kml <- function(colour){
 
+  # Getting the HEX code
   res <- rgb(t(col2rgb(colour, alpha = TRUE))/255, alpha = TRUE)
-  # alpha as to be in the front
+  # Converting from HEX to KML
   res <- hex2kml(res)
 
   res
@@ -114,9 +117,9 @@ hex2kml <- function(hex){
 
   res <- aaply(hex, 1, function(hex){
     if (str_length(hex) == 9) # if alpha is present
-      res <- paste("#", str_sub(tolower(hex), 8, 9), str_sub(tolower(hex), 2, 7), sep = "")
+      res <- paste("#", str_sub(tolower(hex), 8, 9), str_sub(tolower(hex), 6, 7), str_sub(tolower(hex), 4, 5), str_sub(tolower(hex), 2, 3), sep = "")
     else
-      res <- paste("#ff", str_sub(tolower(hex), 2, 7), sep = "")
+      res <- paste("#ff", str_sub(tolower(hex), 6, 7), str_sub(tolower(hex), 4, 5), str_sub(tolower(hex), 2, 3), sep = "")
     res
     }
   )
