@@ -46,9 +46,11 @@ kml_close <- function(
 #'  Hijmans's package raster. All credit goes to Robert.
 kml_compress <- function(file, zip = "", imagefile = "", rm = FALSE){
 
+  require(stringr)
+
   # Changing the extension to KMZ
   kmz <- file
-  raster::extension(kmz) <- ".kmz" # switch the extension to kmz
+  kmz <- str_replace(file, ".kml", ".kmz") # switch the extension to kmz
 
   # If no zip command is specified we use the generic one
   if (zip == "") {
