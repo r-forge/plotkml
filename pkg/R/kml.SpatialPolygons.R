@@ -25,8 +25,8 @@ kml.SpatialPolygonsDataFrame <- function(
 ){
 
   # Checking the projection is geo
-  if (is.na(proj4string(obj)) | proj4string(obj) != " +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0")
-    stop('plotKML <3 "+proj=longlat +datum=WGS84"')
+#   if (is.na(proj4string(obj)) | proj4string(obj) != " +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0")
+#     stop('plotKML <3 "+proj=longlat +datum=WGS84"')
 
   # If the user wants a KMZ, we store the KML in a tmp file
   if (kmz) {
