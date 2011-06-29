@@ -54,10 +54,10 @@ echo $contents; } ?>
 <table width="600" border="0" cellspacing="0" cellpadding="10">
   <tr>
     <td><div align="center"><a href="http://globalsoilmap.net/data/plotKML_examples.zip"><img src="Fig_plotKML_bubble_1_s.jpg" alt="Bubble plot (points)" width="198" height="200" border="0" /></a></div></td>
-    <td><a href="http://globalsoilmap.org/content/animated-display-uncertainty-mapping-soil-classes"><img src="Fig_plotKML_anime_1_s.jpg" alt="Animations using spatial grids" width="162" height="200" border="0" /></a></td>
-    <td><div align="center"><a href="http://globalsoilmap.org/content/prediction-or-organic-matter-geo-gif-kml"><img src="Fig_plotKML_grid_om_s.jpg" alt="Results of spatial prediction" width="174" height="200" border="0" /></a></div></td>
+    <td><a href="http://globalsoilmap.net/content/animated-display-uncertainty-mapping-soil-classes"><img src="Fig_plotKML_anime_1_s.jpg" alt="Animations using spatial grids" width="162" height="200" border="0" /></a></td>
+    <td><div align="center"><a href="http://globalsoilmap.net/content/prediction-or-organic-matter-geo-gif-kml"><img src="Fig_plotKML_grid_om_s.jpg" alt="Results of spatial prediction" width="174" height="200" border="0" /></a></div></td>
     <td><div align="center"><a href="http://globalsoilmap.net/data/plotKML_examples.zip"><img src="Fig_plotKML_geopath_s.jpg" alt="Geopath (between two points)" width="171" height="200" border="0" /></a></div></td>
-    <td><div align="center"><a href="http://globalsoilmap.org/content/soil-horizons-and-values-organic-carbon-visualized-google-earth"><img src="Fig_plotKML_soilblock_s.jpg" alt="Soil profiles as 3D blocks" width="170" height="200" border="0" /></a></div></td>
+    <td><div align="center"><a href="http://globalsoilmap.net/content/soil-horizons-and-values-organic-carbon-visualized-google-earth"><img src="Fig_plotKML_soilblock_s.jpg" alt="Soil profiles as 3D blocks" width="170" height="200" border="0" /></a></div></td>
   </tr>
 </table>
 <p class="style1">Contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">Tomislav Hengl</a>, <a href="http://www.landcareresearch.co.nz/research/staff_page.asp?staff_num=2132" target="_blank">Pierre Roudier</a> &amp; <a href="http://casoilresource.lawr.ucdavis.edu/drupal/node/905" target="_blank">Dylan Beaudette</a></p>
