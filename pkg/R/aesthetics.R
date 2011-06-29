@@ -57,7 +57,7 @@ kml_aes <- function(obj, ...) {
         if (is.name(parent_call[[called_aes]]))
           aes[['name']] <- as.character(round(obj[[as.character(parent_call[[called_aes]])]], digits = 3))
         else if (is.call(parent_call[[called_aes]]))
-          aes[['name']] <- as.character(round(with(obj@data, eval(parent_call[[called_aes]])), digits = 3))
+          aes[['name']] <- as.character(round(eval(parent_call[[called_aes]], obj@data), digits = 3))
         else
           aes[['name']] <- as.character(1:nrow(coordinates(obj)))
       }
@@ -161,7 +161,7 @@ kml_colour <- function(obj, colour, colour_scale){
   if (is.name(colour))
     x <- obj[[as.character(colour)]]
   else if (is.call(colour))
-    x <- with(obj@data, eval(colour))
+    x <- eval(colour, envir = obj@data)
 
   # If the scale is continuous
   if (is.numeric(x)) {
