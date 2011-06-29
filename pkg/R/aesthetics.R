@@ -23,7 +23,7 @@
 
 # Applying aesthetics
 #
-kml_aes <- function(obj, ...){
+kml_aes <- function(obj, ...) {
 
   # Getting parent call
   parent_call <- substitute(list(...))
@@ -51,10 +51,16 @@ kml_aes <- function(obj, ...){
   }
   else {
     if ("data" %in% slotNames(obj)) {
+
       # If only one data column is represnetd, we use its values as names
-      called_aes_as_name <- which(laply(parent_call, is.name))
-      if (length(called_aes_as_name) == 1)
-        aes[['name']] <- as.character(obj[[as.character(parent_call[[called_aes_as_name]])]])
+      if (length(called_aes) == 1) {
+        if (is.name(parent_call[[called_aes]]))
+          aes[['name']] <- as.character(round(obj[[as.character(parent_call[[called_aes]])]], digits = 3))
+        else if (is.call(parent_call[[called_aes]]))
+          aes[['name']] <- as.character(round(with(obj@data, eval(parent_call[[called_aes]])), digits = 3))
+        else
+          aes[['name']] <- as.character(1:nrow(coordinates(obj)))
+      }
       else
         aes[['name']] <- rownames(obj@data)
     }
@@ -64,10 +70,18 @@ kml_aes <- function(obj, ...){
 
   # Colour
   if ("colour" %in% called_aes) {
+
     # If a column name as been used
-    if (is.name(parent_call[['colour']]) & "data" %in% slotNames(obj)){
-      aes[['colour']] <- kml_colour(obj, colour = as.character(parent_call[['colour']]))
+    if (is.name(parent_call[['colour']]) | is.call(parent_call[['colour']]) & "data" %in% slotNames(obj)) {
+
+      # Trying to get the colour ramp
+      if ("colour_scale" %in% names(parent_call))
+        aes[['colour']] <- kml_colour(obj, colour = parent_call[['colour']], colour_scale = parent_call[['colour_scale']])
+      # Otherwise use the default colour ramp
+      else
+        aes[['colour']] <- kml_colour(obj, colour = parent_call[['colour']])
     }
+
     # Otherwise it is interpreted as a colour to use
     else {
       aes[['colour']] <- rep(col2kml(parent_call[['colour']]), length.out = nrow(coordinates(obj)))
@@ -138,20 +152,39 @@ kml_aes <- function(obj, ...){
 }
 
 # Colour (points, polygons, lines, raster)
-kml_colour <- function(obj, colour, ..., col.region = rainbow(64)){
+kml_colour <- function(obj, colour, colour_scale){
 
-  x <- obj[[colour]]
+  require(ggplot2) # for the rescale function, soon to be in the scales package
+  require(colorRamps)
+
+  # Getting the vector of values to scale
+  if (is.name(colour))
+    x <- obj[[as.character(colour)]]
+  else if (is.call(colour))
+    x <- with(obj@data, eval(colour))
 
   # If the scale is continuous
   if (is.numeric(x)) {
-    limits <- range(x, na.rm = TRUE, finite = TRUE)
-    brks <- seq(limits[1], limits[2], length.out = length(col.region))
-    grps <- cut(x, breaks = brks, include.lowest = TRUE)
-    cols <- hex2kml(col.region[grps])
+
+    if (missing(colour_scale))
+      colour_scale <- rainbow(64)
+    else
+      colour_scale <- eval(colour_scale)
+
+    x <- rescale(x) # putting values between 0 and 1
+    pal <- colorRamp(colour_scale, space = "rgb", interpolate = "linear") # creates pal function
+    cols <- col2kml(rgb(pal(x) / 255))
   }
+
   # If discrete scale
   else {
 
+    if (missing(colour_scale))
+      colour_scale <- rainbow(64)
+    else
+      colour_scale <- eval(colour_scale)
+
+    x <- as.factor(x)
   }
 
   cols
