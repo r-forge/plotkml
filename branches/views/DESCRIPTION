@@ -1,0 +1,12 @@
+Package: plotKML
+Type: Package
+Title: Plotting Spatial Data to KML
+Version: 0.1
+Date: 2011-05-25
+Packaged: 2011-01-26 12:00:00 UTC; dylan
+Author: Tomislav Hengl <tom.hengl@wur.nl>, Pierre Roudier <roudierp@landcareresearch.co.nz>, Dylan Beaudette <debeaudette@ucdavis.edu>
+Maintainer: Tomislav Hengl <tom.hengl@wur.nl>
+Description: A suite of functions to facilitate authoring of KML documents from sp-class objects. 
+License: GPL
+LazyLoad: yes
+Depends: R (>= 2.9.0)
