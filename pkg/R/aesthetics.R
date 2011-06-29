@@ -38,15 +38,15 @@ kml_aes <- function(obj, ...) {
   if ("name" %in% called_aes) {
     # If names defined using a column of data
     if (is.name(parent_call[['name']])){
-      aes[['name']] <- obj[[as.character(parent_call[['name']])]]
+      aes[['name']] <- as.character(obj[[as.character(parent_call[['name']])]])
     }
     else {
       # if names given as a vector
       name <- eval(parent_call[['name']])
       if (length(name) == nrow(coordinates(obj)))
-        aes[['name']] <- name
+        aes[['name']] <- as.character(name)
       else
-        aes[['name']] <- rep(name, length.out = nrow(coordinates(obj)))
+        aes[['name']] <- rep(as.character(name), length.out = nrow(coordinates(obj)))
     }
   }
   else {
