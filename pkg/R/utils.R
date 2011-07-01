@@ -49,8 +49,8 @@ kml_compress <- function(file, zip = "", imagefile = "", rm = FALSE){
   require(stringr)
 
   # Changing the extension to KMZ
-  kmz <- file
-  kmz <- str_replace(file, ".kml", ".kmz") # switch the extension to kmz
+  extension <- str_extract(file, pattern="*\\..*$")
+  kmz <- str_replace(file, extension, ".kmz") # switch the extension to kmz
 
   # If no zip command is specified we use the generic one
   if (zip == "") {
