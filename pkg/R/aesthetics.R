@@ -40,8 +40,8 @@ kml_aes <- function(obj, ...) {
     if (is.name(parent_call[['name']])){
       aes[['name']] <- as.character(obj[[as.character(parent_call[['name']])]])
     }
+    # if names given as a vector
     else {
-      # if names given as a vector
       name <- eval(parent_call[['name']])
       if (length(name) == nrow(coordinates(obj)))
         aes[['name']] <- as.character(name)
@@ -52,12 +52,15 @@ kml_aes <- function(obj, ...) {
   else {
     if ("data" %in% slotNames(obj)) {
 
-      # If only one data column is represnetd, we use its values as names
+      # If only one data column is represented, we use its values as names
       if (length(called_aes) == 1) {
+        # If its the name of a column
         if (is.name(parent_call[[called_aes]]))
           aes[['name']] <- as.character(round(obj[[as.character(parent_call[[called_aes]])]], digits = 3))
+        # If its a call we have to evaluate it first
         else if (is.call(parent_call[[called_aes]]))
           aes[['name']] <- as.character(round(eval(parent_call[[called_aes]], obj@data), digits = 3))
+        # default behaviour is just numbering using the N first integers
         else
           aes[['name']] <- as.character(1:nrow(coordinates(obj)))
       }
@@ -65,6 +68,7 @@ kml_aes <- function(obj, ...) {
         aes[['name']] <- rownames(obj@data)
     }
     else
+      # default behaviour is just numbering using the N first integers
       aes[['name']] <- as.character(1:nrow(coordinates(obj)))
   }
 
