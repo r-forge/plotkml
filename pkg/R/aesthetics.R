@@ -146,7 +146,8 @@ kml_aes <- function(obj, ...) {
     aes[['altitude']] <- kml_altitude(obj, altitude, ...)
   }
   else {
-    aes[['altitude']] <- rep(.all_kml_aesthetics[["altitude"]], length.out = nrow(coordinates(obj)))
+#     aes[['altitude']] <- rep(.all_kml_aesthetics[["altitude"]], length.out = nrow(coordinates(obj)))
+    aes[['altitude']] <- kml_altitude(obj)
   }
 
   # AltitudeMode
