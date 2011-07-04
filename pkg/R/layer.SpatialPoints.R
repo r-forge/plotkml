@@ -61,7 +61,7 @@ kml_layer.SpatialPoints <- function(
 
   # Writing points styles
   # =====================
-  for (i_pt in 1:nrow(obj)) {
+  for (i_pt in 1:nrow(coordinates(obj))) {
     cat('\t<Style id="','pnt', i_pt,'">\n',sep = "", file = file, append = TRUE)
 
     # Label
@@ -84,7 +84,7 @@ kml_layer.SpatialPoints <- function(
 
   # Writing points coordinates
   # ==========================
-  for (i_pt in 1:nrow(obj)) {
+  for (i_pt in 1:nrow(coordinates(obj))) {
     cat("\t<Placemark>\n", file = file, append = TRUE)
     cat("\t\t<name>", points_names[i_pt],"</name>\n", sep = "", file = file, append = TRUE)
     cat("\t\t<styleUrl>#pnt", i_pt,"</styleUrl>\n", sep = "", file = file, append = TRUE)
@@ -107,4 +107,4 @@ kml_layer.SpatialPoints <- function(
 
 }
 
-setMethod("kml_layer", "SpatialPointsDataFrame", kml_layer.SpatialPoints)
+setMethod("kml_layer", "SpatialPoints", kml_layer.SpatialPoints)
