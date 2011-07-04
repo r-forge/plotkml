@@ -17,5 +17,6 @@ kml.Spatial <- function(
 }
 
 setMethod("kml", "SpatialPoints", kml.Spatial)
+setMethod("kml", "SpatialGrid", kml.Spatial)
 setMethod("kml", "SpatialPolygons", kml.Spatial)
 setMethod("kml", "SpatialLines", kml.Spatial)
