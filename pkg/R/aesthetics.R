@@ -156,10 +156,16 @@ kml_aes <- function(obj, ...) {
 }
 
 # Colour (points, polygons, lines, raster)
-kml_colour <- function(obj, colour, colour_scale){
+kml_colour <- function(obj, colour, colour_scale, colour_default = rainbow(64)){
 
-  require(ggplot2) # for the rescale function, soon to be in the scales package
+  require(ggplot2) # /!\ for the rescale function, soon to be in the scales package /!\
   require(colorRamps)
+
+  # Retrieving colour scale
+  if (missing(colour_scale))
+    colour_scale <- colour_default
+  else
+    colour_scale <- eval(colour_scale)
 
   # Getting the vector of values to scale
   if (is.name(colour))
@@ -169,26 +175,15 @@ kml_colour <- function(obj, colour, colour_scale){
 
   # If the scale is continuous
   if (is.numeric(x)) {
-
-    if (missing(colour_scale))
-      colour_scale <- rainbow(64)
-    else
-      colour_scale <- eval(colour_scale)
-
     x <- rescale(x) # putting values between 0 and 1
     pal <- colorRamp(colour_scale, space = "rgb", interpolate = "linear") # creates pal function
     cols <- col2kml(rgb(pal(x) / 255))
   }
-
   # If discrete scale
   else {
 
-    if (missing(colour_scale))
-      colour_scale <- rainbow(64)
-    else
-      colour_scale <- eval(colour_scale)
-
     x <- as.factor(x)
+
   }
 
   cols
