@@ -33,7 +33,7 @@ kml_layer.SpatialPolygons <- function(
 
   # Style
   # =====
-  for (i.poly in 1:nrow(obj)) {  # for each line
+  for (i.poly in 1:length(obj)) {  # for each line
     write(paste('\t<Style id="', 'poly', i.poly,'">', sep = ""), file, append = TRUE)
     write("\t\t<PolyStyle>", file, append = TRUE)
     write(paste('\t\t\t<color>', colours[i.poly], '</color>', sep = ""), file, append = TRUE)
@@ -43,7 +43,7 @@ kml_layer.SpatialPolygons <- function(
 
   # Writing polygons
   # ================
-  for (i.poly in 1:nrow(obj)) {  # for each line
+  for (i.poly in 1:length(obj)) {  # for each line
 
     current.poly.coords <- obj@polygons[[i.poly]]@Polygons[[1]]@coords
     current.poly.is.hole <- obj@polygons[[i.poly]]@Polygons[[1]]@hole

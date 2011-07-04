@@ -43,10 +43,10 @@ kml_aes <- function(obj, ...) {
     # if names given as a vector
     else {
       name <- eval(parent_call[['name']])
-      if (length(name) == nrow(coordinates(obj)))
+      if (length(name) == length(obj))
         aes[['name']] <- as.character(name)
       else
-        aes[['name']] <- rep(as.character(name), length.out = nrow(coordinates(obj)))
+        aes[['name']] <- rep(as.character(name), length.out = length(obj))
     }
   }
   else {
@@ -62,14 +62,14 @@ kml_aes <- function(obj, ...) {
           aes[['name']] <- as.character(round(eval(parent_call[[called_aes]], obj@data), digits = 3))
         # default behaviour is just numbering using the N first integers
         else
-          aes[['name']] <- as.character(1:nrow(coordinates(obj)))
+          aes[['name']] <- as.character(1:length(obj))
       }
       else
         aes[['name']] <- rownames(obj@data)
     }
     else
       # default behaviour is just numbering using the N first integers
-      aes[['name']] <- as.character(1:nrow(coordinates(obj)))
+      aes[['name']] <- as.character(1:length(obj))
   }
 
   # Colour
@@ -88,13 +88,13 @@ kml_aes <- function(obj, ...) {
 
     # Otherwise it is interpreted as a colour to use
     else {
-      aes[['colour']] <- rep(col2kml(parent_call[['colour']]), length.out = nrow(coordinates(obj)))
+      aes[['colour']] <- rep(col2kml(parent_call[['colour']]), length.out = length(obj))
     }
 
   }
   # using the default value
   else {
-    aes[['colour']] <- rep(.all_kml_aesthetics[["colour"]], length.out = nrow(coordinates(obj)))
+    aes[['colour']] <- rep(.all_kml_aesthetics[["colour"]], length.out = length(obj))
   }
 
   # Whitening
@@ -107,7 +107,7 @@ kml_aes <- function(obj, ...) {
     aes[["shape"]] <- kml_shape(obj, shape, ...)
   }
   else {
-    aes[["shape"]] <- rep(.all_kml_aesthetics[["shape"]], length.out = nrow(coordinates(obj)))
+    aes[["shape"]] <- rep(.all_kml_aesthetics[["shape"]], length.out = length(obj))
   }
 
   # Size
@@ -118,11 +118,11 @@ kml_aes <- function(obj, ...) {
     }
     # Otherwise it is interpreted as a colour to use
     else {
-      aes[['size']] <- rep(parent_call[['size']], length.out = nrow(coordinates(obj)))
+      aes[['size']] <- rep(parent_call[['size']], length.out = length(obj))
     }
   }
   else {
-    aes[['size']] <- rep(.all_kml_aesthetics[["size"]], length.out = nrow(coordinates(obj)))
+    aes[['size']] <- rep(.all_kml_aesthetics[["size"]], length.out = length(obj))
   }
 
   # Width
@@ -130,7 +130,7 @@ kml_aes <- function(obj, ...) {
     aes[['width']] <- kml_width(obj, width, ...)
   }
   else {
-    aes[['width']] <- rep(.all_kml_aesthetics[["width"]], length.out = nrow(coordinates(obj)))
+    aes[['width']] <- rep(.all_kml_aesthetics[["width"]], length.out = length(obj))
   }
 
   # Alpha
@@ -138,7 +138,7 @@ kml_aes <- function(obj, ...) {
     aes[['alpha']] <- kml_alpha(obj, alpha, ...)
   }
   else {
-    aes[['alpha']] <- rep(.all_kml_aesthetics[["alpha"]], length.out = nrow(coordinates(obj)))
+    aes[['alpha']] <- rep(.all_kml_aesthetics[["alpha"]], length.out = length(obj))
   }
 
   # Altitude
@@ -146,7 +146,7 @@ kml_aes <- function(obj, ...) {
     aes[['altitude']] <- kml_altitude(obj, altitude, ...)
   }
   else {
-#     aes[['altitude']] <- rep(.all_kml_aesthetics[["altitude"]], length.out = nrow(coordinates(obj)))
+#     aes[['altitude']] <- rep(.all_kml_aesthetics[["altitude"]], length.out = length(obj))
     aes[['altitude']] <- kml_altitude(obj)
   }
 
@@ -240,7 +240,7 @@ kml_size <- function(obj, size, size.min = 0.25, size.max = 4, size.default = 2)
   }
   # If no size aesthetic is asked, or if no data slot
   else
-    size.values <- rep(size.default, length.out = nrow(obj))
+    size.values <- rep(size.default, length.out = length(obj))
 
   size.values
 }
