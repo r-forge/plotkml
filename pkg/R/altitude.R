@@ -10,10 +10,10 @@ kml_altitude <- function(obj, altitude = NA) {
   }
   else if (is.numeric(altitude)) {
     # If it is numeric this is a single altitude for all points
-    altitude <- rep(altitude, length.out = nrow(obj))
+    altitude <- rep(altitude, length.out = nrow(coordinates(obj)))
   }
   else if (is.na(altitude)) {
-    altitude <- rep(NA, length.out = nrow(obj))
+    altitude <- rep(NA, length.out = nrow(coordinates(obj)))
   }
   else
     stop("Bad altitude value")
