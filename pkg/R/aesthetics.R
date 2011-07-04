@@ -14,7 +14,7 @@
 
 # Parsing a call
 #
-.parse_call_for_aes <- function(call){
+.parse_call_for_aes <- function(call) {
   called_options <- names(call)
   ind_aes <- charmatch(called_options, names(.all_kml_aesthetics))
 
@@ -182,9 +182,7 @@ kml_colour <- function(obj, colour, colour_scale, colour_default = rainbow(64)){
   }
   # If discrete scale
   else {
-
     x <- as.factor(x)
-
   }
 
   cols
