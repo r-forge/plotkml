@@ -3,7 +3,7 @@
 .all_kml_aesthetics <- list(
   colour = "black",
   fill = "white",
-  shape = "http://maps.google.com/mapfiles/kml/shapes/donut.png",
+  shape = "http://plotkml.r-forge.r-project.org/circle.png", #"http://maps.google.com/mapfiles/kml/shapes/donut.png",
   whitening = "",
   alpha = 1,
   size = 1,
