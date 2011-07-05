@@ -54,6 +54,7 @@ kml_layer.SpatialPoints <- function(
   sizes <- aes[["size"]]
   altitude <- aes[["altitude"]]
   altitudeMode <- aes[["altitudeMode"]]
+  balloon <- aes[["balloon"]]
 
   # Folder and name of the points folder
   cat("<Folder>\n", file = file, append = TRUE)
@@ -89,7 +90,8 @@ kml_layer.SpatialPoints <- function(
     cat("\t\t<name>", points_names[i_pt],"</name>\n", sep = "", file = file, append = TRUE)
 
     # Add description with attributes
-    .df_to_kml_html_table(obj[i_pt, ], file = file)
+    if (balloon)
+      .df_to_kml_html_table(obj[i_pt, ], file = file)
 
     cat("\t\t<styleUrl>#pnt", i_pt,"</styleUrl>\n", sep = "", file = file, append = TRUE)
     cat("\t\t<Point>\n", file = file, append = TRUE)

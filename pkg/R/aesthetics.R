@@ -9,7 +9,8 @@
   size = 1,
   width = 1,
   name = "",
-  altitude = NA
+  altitude = NA,
+  balloon = FALSE
 )
 
 # Parsing a call
@@ -152,6 +153,14 @@ kml_aes <- function(obj, ...) {
 
   # AltitudeMode
   aes[["altitudeMode"]] <- kml_altitude_mode(aes[['altitude']])
+
+  # Balloon (pop ups)
+  if ("balloon" %in% called_aes) {
+    aes[['balloon']] <- parent_call[['balloon']]
+  }
+  else {
+    aes[['balloon']] <- .all_kml_aesthetics[["balloon"]]
+  }
 
   aes
 }
