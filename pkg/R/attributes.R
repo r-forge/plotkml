@@ -21,12 +21,12 @@
   table.body <- apply(df, 1, .df_row_to_html_row)
 
   # make the table
-  html.list[1] <- '<description><![CDATA['
-  html.list[2] <- '<table border="0" padding="2" spacing="1">'
-  html.list[3] <- paste(table.head, collapse = '')
-  html.list[4] <- paste(table.body, collapse = '')
-  html.list[5] <- '</table>'
-  html.list[5] <- ']]></description>\n'
+  html.list <- append(html.list, '<description><![CDATA[')
+  html.list <- append(html.list, '<table border="0" padding="2" spacing="1">')
+  html.list <- append(html.list, paste(table.head, collapse = ''))
+  html.list <- append(html.list, paste(table.body, collapse = ''))
+  html.list <- append(html.list, '</table>')
+  html.list <- append(html.list, ']]></description>\n')
 
   cat(paste(html.list, collapse = "\n"), file = file, append = TRUE)
 }
