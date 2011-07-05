@@ -88,15 +88,8 @@ kml_layer.SpatialPoints <- function(
     cat("\t<Placemark>\n", file = file, append = TRUE)
     cat("\t\t<name>", points_names[i_pt],"</name>\n", sep = "", file = file, append = TRUE)
 
-    # add description with attributes
-    df <- data.frame(long = coordinates(obj)[, 1], lat = coordinates(obj)[, 2])
-    if ("data" %in% slotNames(obj)) {
-      df <- data.frame(df, obj@data)
-    }
-    # Rounding the numeric fields for display
-    n_digits_max <- 3
-    df <- round(df[which(sapply(df, class) == "numeric")], digits = n_digits_max)
-    .df_to_kml_html_table(df[i_pt, ], file = file)
+    # Add description with attributes
+    .df_to_kml_html_table(obj[i_pt, ], file = file)
 
     cat("\t\t<styleUrl>#pnt", i_pt,"</styleUrl>\n", sep = "", file = file, append = TRUE)
     cat("\t\t<Point>\n", file = file, append = TRUE)

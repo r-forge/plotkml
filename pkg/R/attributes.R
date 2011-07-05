@@ -1,14 +1,24 @@
 # convert an attribute table associated with spatial data into an HTML <description> bubble
 # for use within Google Earth
-.df_to_kml_html_table <- function(x, file) {
+.df_to_kml_html_table <- function(x, file, n_digits_max = 3) {
+
+  df <- data.frame(long = coordinates(x)[, 1], lat = coordinates(x)[, 2])
+
+  if ("data" %in% slotNames(x)) {
+    df <- data.frame(df, x@data)
+  }
+
+  # Rounding the numeric fields for display
+  df <- round(df[which(sapply(df, class) == "numeric")], digits = n_digits_max)
+
   # empty list to store html elements
   html.list <- list()
 
   # create header
-  table.head <- c('<tr style="background-color: #D3D3D3; font-weight: bold; text-align: center; color: #000000;">', paste('<td>', names(x), '</td>', sep=''), "</tr>")
+  table.head <- c('<tr style="background-color: #D3D3D3; font-weight: bold; text-align: center; color: #000000;">', paste('<td>', names(df), '</td>', sep=''), "</tr>")
 
   # create the body
-  table.body <- apply(x, 1, .df_row_to_html_row)
+  table.body <- apply(df, 1, .df_row_to_html_row)
 
   # make the table
   html.list[1] <- '<description><![CDATA['
