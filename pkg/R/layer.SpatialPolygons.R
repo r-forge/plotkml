@@ -26,6 +26,7 @@ kml_layer.SpatialPolygons <- function(
   sizes <- aes[["size"]]
   altitude <- aes[["altitude"]]
   altitudeMode <- aes[["altitudeMode"]]
+  balloon <- aes[["balloon"]]
 
   # Folder and name of the points folder
   cat("<Folder>\n", file = file, append = TRUE)
@@ -38,7 +39,7 @@ kml_layer.SpatialPolygons <- function(
     write("\t\t<PolyStyle>", file, append = TRUE)
     write(paste('\t\t\t<color>', colours[i.poly], '</color>', sep = ""), file, append = TRUE)
     write("\t\t</PolyStyle>", file, append = TRUE)
-    write("\t</Style>", file, append = TRUE) 
+    write("\t</Style>", file, append = TRUE)
   }
 
   # Writing polygons
@@ -49,11 +50,15 @@ kml_layer.SpatialPolygons <- function(
     current.poly.is.hole <- obj@polygons[[i.poly]]@Polygons[[1]]@hole
     current.poly.length <- nrow(current.poly.coords)
     current.poly.id <- obj@polygons[[i.poly]]@ID
-    
+
     # Placemark
     write("\t<Placemark>", file, append = TRUE)
     write(paste("\t\t<name>", current.poly.id, "</name>", sep = ""), file, append = TRUE)
     write(paste('\t\t<styleUrl>#poly', i.poly, '</styleUrl>', sep = ""), file, append = TRUE)
+
+    # Add description with attributes
+    if (balloon & ("data" %in% slotNames(obj)))
+      .df_to_kml_html_table(obj@data[i.poly, ], file = file)
 
     write("\t\t<Polygon>", file, append = TRUE)
     write(paste('\t\t\t<altitudeMode>', altitudeMode, '</altitudeMode>', sep = ""), file, append = TRUE)
@@ -62,12 +67,12 @@ kml_layer.SpatialPolygons <- function(
     write("\t\t<LinearRing>", file, append = TRUE)
 
     # Vertices coordinates:
-    write("\t\t\t<coordinates>", file, append = TRUE) 
+    write("\t\t\t<coordinates>", file, append = TRUE)
     # For each vertice in the current line
     for (i.point in 1:current.poly.length) {
       write(paste('\t\t\t\t', current.poly.coords[i.point, 1], ',', current.poly.coords[i.point, 2], ',', altitude[i.point], sep = ""), file, append = TRUE)
     }
-    write("\t\t\t</coordinates>", file, append = TRUE)      
+    write("\t\t\t</coordinates>", file, append = TRUE)
 
     write("\t\t</LinearRing>", file, append = TRUE)
     write("\t\t</outerBoundaryIs>", file, append = TRUE)
