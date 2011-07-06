@@ -1,12 +1,6 @@
 # convert an attribute table associated with spatial data into an HTML <description> bubble
 # for use within Google Earth
-.df_to_kml_html_table <- function(x, file, n_digits_max = 3) {
-
-  df <- data.frame(long = coordinates(x)[, 1], lat = coordinates(x)[, 2])
-
-  if ("data" %in% slotNames(x)) {
-    df <- data.frame(df, x@data)
-  }
+.df_to_kml_html_table <- function(df, file, n_digits_max = 3) {
 
   # Rounding the numeric fields for display
   df <- round(df[which(sapply(df, class) == "numeric")], digits = n_digits_max)

@@ -25,6 +25,7 @@ kml_layer.SpatialLines <- function(
   width <- aes[["width"]]
   altitude <- aes[["altitude"]]
   altitudeMode <- aes[["altitudeMode"]]
+  balloon <- aes[["balloon"]]
 
   # Folder and name of the points folder
   cat("<Folder>\n", file = file, append = TRUE)
@@ -38,7 +39,7 @@ kml_layer.SpatialLines <- function(
     write(paste('\t\t\t<color>', colours[i.line], '</color>', sep = ""), file, append = TRUE)
     write(paste('\t\t\t<width>', width[i.line], '</width>', sep = ""), file, append = TRUE)
     write("\t\t</LineStyle>", file, append = TRUE)
-    write("\t</Style>", file, append = TRUE) 
+    write("\t</Style>", file, append = TRUE)
   }
 
   # Writing lines
@@ -53,17 +54,21 @@ kml_layer.SpatialLines <- function(
     write(paste("\t\t<name>", current.line.id, "</name>", sep = ""), file, append = TRUE)
     write(paste('\t\t<styleUrl>#line', i.line, '</styleUrl>', sep = ""), file, append = TRUE)
 
+    # Add description with attributes
+    if (balloon & ("data" %in% slotNames(obj)))
+      .df_to_kml_html_table(obj@data[i.line, ], file = file)
+
     write("\t\t<LineString>", file, append = TRUE)
 
     write(paste('\t\t\t<altitudeMode>', altitudeMode, '</altitudeMode>', sep = ""), file, append = TRUE)
-    write("\t\t\t<coordinates>", file, append = TRUE) 
+    write("\t\t\t<coordinates>", file, append = TRUE)
 
     # For each vertice in the current line
     for (i.point in 1:current.line.length) {
       write(paste('\t\t\t\t', current.line.coords[i.point, 1], ",", current.line.coords[i.point, 2], ',', altitude[i.point], sep = ""), file, append = TRUE)
     }
-    
-    write("\t\t\t</coordinates>", file, append = TRUE)      
+
+    write("\t\t\t</coordinates>", file, append = TRUE)
     write("\t\t</LineString>", file, append = TRUE)
     write("\t</Placemark>", file, append = TRUE)
   }
