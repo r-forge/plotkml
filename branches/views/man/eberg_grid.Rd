@@ -2,7 +2,7 @@
 \alias{eberg_grid}
 \title{Ebergotzen -- soil covariate layers}
 \description{
-The data set contains a set of grids (DEM --- elevation, TWI --- Topographic Wetness Index, Z --- soil zones) at resolution of 100 m. 
+The data set contains a set of grids (DEM --- elevation, TWI --- Topographic Wetness Index, Z --- topographic/geological zones) at resolution of 100 m. 
 Eberg\"{o}tzen is 10 by 10 km study area in the vicinity of the city of G\"{o}ttingen in Central
 Germany. This area has been
 extensively surveyed over the years, mainly for the purposes of developing operational
@@ -13,7 +13,7 @@ digital soil mapping techniques (Gehrt and B\"{o}hner, 2001).
   \describe{
     \item{DEM}{Elevation values from the topographic map}
     \item{TWI}{Topographic Wetness Index derived using the SAGA algorithm }
-     \item{Z}{four soil zones (soil mapping units) }
+     \item{Z}{containing factors; four soil topographic/geological units (soil mapping units) }
   } 
 } 
 \usage{
@@ -23,7 +23,7 @@ data(eberg_grid)
 \references{ 
 B\"{o}hner, J., McCloy, K. R. and Strobl, J. (Eds), 2006. SAGA --- Analysis and Modelling Applications. G\"{o}ttinger Geographische Abhandlungen, Heft 115. Verlag Erich Goltze GmbH, G\"{o}ttingen, 117 pp.
 
-Gehrt, E., B\"{o}hner, J., 2001. Vom punkt zur flache --- probleme des ``upscaling'' in der bodenkartierung. In: Diskussionsforum Bodenwissenschaften: Vom Bohrstock zum Bildschirm. FH, Osnabr\"{u}ck, pp. 17–34.
+Gehrt, E., B\"{o}hner, J., 2001. Vom punkt zur flache --- probleme des ``upscaling'' in der bodenkartierung. In: Diskussionsforum Bodenwissenschaften: Vom Bohrstock zum Bildschirm. FH, Osnabr\"{u}ck, pp. 17--34.
 
 \url{http://geomorphometry.org/content/ebergotzen}
 }
@@ -34,7 +34,5 @@ Gehrt, E., B\"{o}hner, J., 2001. Vom punkt zur flache --- probleme des ``upscali
 \keyword{datasets}
 \examples{
 data(eberg_grid)
-library(maptools)
-# proj4string(eberg_grid) <- CRS("+init=epsg:31467")
-spplot(eberg_grid["DEM"], col.regions=topo.colors(45))
+names(eberg_grid@data)
 }
