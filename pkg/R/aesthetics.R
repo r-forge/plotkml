@@ -3,13 +3,15 @@
 .all_kml_aesthetics <- list(
   colour = "black",
   fill = "white",
-  shape = "http://plotkml.r-forge.r-project.org/circle.png", #"http://maps.google.com/mapfiles/kml/shapes/donut.png",
+  shape.url = "http://plotkml.r-forge.r-project.org/", #"http://maps.google.com/mapfiles/kml/shapes/donut.png"
+  shape = "circle.png", 
   whitening = "",
   alpha = 1,
   size = 1,
   width = 1,
   name = "",
-  altitude = NA,
+  altitude = 10,
+  factor.labels = "",
   balloon = FALSE
 )
 
@@ -103,6 +105,14 @@ kml_aes <- function(obj, ...) {
 #       aes[['colour']] <- kml_whitening(obj, whitening, aes[['colour']], ...)
 #     }
 
+  # Shape.url
+  if ("shape.url" %in% called_aes) {
+    aes[["shape.url"]] <- kml_shape.url(obj, shape.url, ...)
+  }
+  else {
+    aes[["shape.url"]] <- rep(.all_kml_aesthetics[["shape.url"]], length.out = length(obj))
+  }
+  
   # Shape
   if ("shape" %in% called_aes) {
     aes[["shape"]] <- kml_shape(obj, shape, ...)
@@ -161,12 +171,15 @@ kml_aes <- function(obj, ...) {
   else {
     aes[['balloon']] <- .all_kml_aesthetics[["balloon"]]
   }
-
+  # Values
+  if ("values" %in% called_aes) {
+   
+  }
   aes
 }
 
 # Colour (points, polygons, lines, raster)
-kml_colour <- function(obj, colour, colour_scale, colour_default = rainbow(64)){
+kml_colour <- function(obj, colour, colour_scale, colour_default = rev(rainbow(65)[1:48])){
 
   require(ggplot2) # /!\ for the rescale function, soon to be in the scales package /!\
   require(colorRamps)
@@ -179,27 +192,34 @@ kml_colour <- function(obj, colour, colour_scale, colour_default = rainbow(64)){
 
   # Getting the vector of values to scale
   if (is.name(colour))
-    x <- obj[[as.character(colour)]]
+    xvar <- obj[[as.character(colour)]]
   else if (is.call(colour))
-    x <- eval(colour, envir = obj@data)
-
+    xvar <- eval(colour, envir = obj@data)
+  
   # If the scale is continuous
-  if (is.numeric(x)) {
-    x <- rescale(x) # putting values between 0 and 1
+  if (is.numeric(xvar)) {
+    x <- ggplot2::rescale(xvar) # putting values between 0 and 1
     pal <- colorRamp(colour_scale, space = "rgb", interpolate = "linear") # creates pal function
     cols <- col2kml(rgb(pal(x) / 255))
   }
+
   # If discrete scale
   else {
-    x <- as.factor(x)
+    xvar <- as.factor(xvar)
   }
 
   cols
 }
 
+
 # Shape (points)
 kml_shape <- function(obj, shape, ...){
+  shape = rep(shape, length.out = length(obj))
+}
 
+# Shape.url (points)
+kml_shape.url <- function(obj, shape.url, ...){
+  shape.url = rep(shape.url, length.out = length(obj))
 }
 
 # Opacity (points, polygons, lines, raster)
@@ -223,7 +243,7 @@ kml_whitening <- function(obj, whitening, col.vect){
 }
 
 # Size (points)
-kml_size <- function(obj, size, size.min = 0.25, size.max = 4, size.default = 2){
+kml_size <- function(obj, size, size.min = 0.25, size.max = 4, size.default = 1){
 
   if (!is.na(size) & "data" %in% slotNames(obj)) {
     # If data is numeric
