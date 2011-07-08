@@ -74,7 +74,7 @@ check_projection <- function(obj, logical = TRUE){
   # If test fails
   if (params["proj"] != "longlat" | params["datum"] != "WGS84") {
     if (!logical)
-      stop("Wrong projection.")
+      stop("Geographical coordinates required.")
     else
       res <- FALSE
   }
