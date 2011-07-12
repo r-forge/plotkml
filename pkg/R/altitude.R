@@ -1,7 +1,7 @@
 # Altitude (points, polygons, lines, raster)
 #
 # Returns an altitude vector and a altitudeMode string
-kml_altitude <- function(obj, altitude = NA) {
+kml_altitude <- function(obj, altitude = 0) {
 
   # Testing what has been given by the user
   if (is.character(altitude)) {
