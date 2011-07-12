@@ -1,37 +1,19 @@
-# This is the definition file for layer methods
-# =============================================
-#
-# The layer() method is part of the set of core functions
-# for KML generation.
-#
-# The idea is to have, beside the kml() methods for sp objects,
-# basic function to build a KML file layer by layer.
-#
-# It should allow to do something like:
-#   > kml.open(file = "/tmp/foo.kml")
-#   > layer(meuse, colour = log(zinc), col.region = rainbow(64)) # layer.SpatialPointsDataFrame is called
-#   > layer(meuse.grid, colour = attr, col.region = topo.colours(64)) # layer.SpatialPixelsDataFrame is called
-#   > kml.compress(file = "/tmp/foo.kml") # if needed - generates "/tmp/foo.kmz" instead of "/tmp/foo.kml"
-#   > kml.close(file = "/tmp/foo.kml")
-#
-# This should allow the user to writeany sp object in a KML file AND to use several folders.
-# Of course, kml() methods would just be wrappers around these. There would be:
-#   - layer.SpatialPoints(DataFrame)
-#   - layer.SpatialPolygons(DataFrame)
-#   - layer.SpatialPixels(DataFrame)
-#   - layer.SpatialLines(DataFrame)
-# One can also imagine to add:
-#   - kml.legend(), called within a layer() method, to generate a legend for the current folder
-#   - kml.text(), to put text somewhere, anytime.
-#
-# This file gathers the layer() methods. kml.compress(), kml.open() and kml.close() are in kml.utils.R
+# R function for the plotKML package
+# Author: Pierre Roudier, Tomislav Hengl
+# contact: pierre.roudier@gmail.com & tom.hengl@wur.nl
+# Date : July 2011
+# Version 0.1
+# Licence GPL v3
+
+
+# This gathers the layer() methods. kml_compress(), kml_open() and kml_close() are in utils.R
 #
 kml_layer.SpatialPoints <- function(
   # options on the object to plot
   obj,
+  var.name = as.character(substitute(obj, env = parent.frame())),
   file,
   filename,
-  title = as.character(substitute(obj, env = parent.frame())),
   extrude = TRUE,
   z.scale = 1,
   LabelScale = 0.7,
@@ -50,8 +32,8 @@ kml_layer.SpatialPoints <- function(
   
 
   # Read the relevant aesthetics
-  points_names <- aes[["name"]]
-  colours <- aes[["colour"]]
+  points_names <- aes[["placemark.name"]]
+  colours <- aes[["colours"]]
   shapes.url <- aes[["shape.url"]]
   shapes <- aes[["shape"]]
   sizes <- aes[["size"]]
@@ -61,7 +43,7 @@ kml_layer.SpatialPoints <- function(
 
   # Folder and name of the points folder
   cat("<Folder>\n", file = filename, append = TRUE)
-  cat("<name>", title, "</name>\n", sep = "", file = filename, append = TRUE)
+  cat("<name>", var.name, "</name>\n", sep = "", file = filename, append = TRUE)
 
   # Writing points styles
   # =====================
@@ -92,22 +74,22 @@ kml_layer.SpatialPoints <- function(
   pb <- txtProgressBar(min=0, max=length(obj), style=3)
   for (i_pt in 1:length(obj)) {
     cat("\t<Placemark>\n", file = filename, append = TRUE)
-    cat("\t\t<name>", points_names[i_pt],"</name>\n", sep = "", file = filename, append = TRUE)
+    cat("\t\t<name>", points_names[i_pt], "</name>\n", sep="", file = filename, append = TRUE)
 
     # Add description with attributes
     if (balloon & ("data" %in% slotNames(obj)))
       .df_to_kml_html_table(obj@data[i_pt, ], file = filename)
 
-    cat("\t\t<styleUrl>#pnt", i_pt,"</styleUrl>\n", sep = "", file = filename, append = TRUE)
+    cat("\t\t<styleUrl>#pnt", i_pt,"</styleUrl>\n", sep="", file = filename, append = TRUE)
     cat("\t\t<Point>\n", file = filename, append = TRUE)
 
     # If there's altitude information to be represented
 #     if (sd(altitude, na.rm = TRUE) > 0) {
-      cat('\t\t\t<extrude>', as.numeric(extrude), '</extrude>\n', sep = "", file = filename, append = TRUE)
-      cat('\t\t\t<altitudeMode>', altitudeMode, '</altitudeMode>\n', sep = "", file = filename, append = TRUE)
+      cat('\t\t\t<extrude>', as.numeric(extrude), '</extrude>\n', sep="", file = filename, append = TRUE)
+      cat('\t\t\t<altitudeMode>', altitudeMode, '</altitudeMode>\n', file = filename, append = TRUE)
 #     }
 
-    cat("\t\t\t<coordinates>", coordinates(obj)[i_pt, 1], ",", coordinates(obj)[i_pt, 2], ",", altitude[i_pt] * z.scale,"</coordinates>\n", sep = "", file = filename, append = TRUE)
+    cat("\t\t\t<coordinates>", coordinates(obj)[i_pt, 1], ",", coordinates(obj)[i_pt, 2], ",", altitude[i_pt] * z.scale,"</coordinates>\n", sep="", file = filename, append = TRUE)
     cat("\t\t</Point>\n", file = filename, append = TRUE)
     cat("\t</Placemark>\n", file = filename, append = TRUE)
   # update progress bar
@@ -119,17 +101,17 @@ kml_layer.SpatialPoints <- function(
 
   if(!summary(colours %in% colours[1])[[3]]==0) {
   # write a PNG:
-  kml_legend(xvar=xvar, var.name=title, legend.file=paste(var.name, '_legend.png', sep=""), legend.pal=colours,... )
-  cat('\t<ScreenOverlay>', file = filename, append = TRUE)
-  cat('\t\t<name>Legend</name>', file = filename, append = TRUE)
-  cat('\t\t<Icon>', file = filename, append = TRUE)
-  cat(paste('\t\t\t<href>', paste(var.name, '_legend.png', sep=""), '</href>', sep=""), filename, append = TRUE)
-  cat('\t\t</Icon>', file = filename, append = TRUE)
-  cat(paste('\t\t<overlayXY x="0" y="1" xunits="fraction" yunits="fraction"/>', sep=""), file = filename, append = TRUE)
-  cat(paste('\t\t<screenXY x="0" y="1" xunits="fraction" yunits="fraction"/>', sep=""), file = filename, append = TRUE)
-  cat(paste('\t\t<rotationXY x="0" y="0" xunits="fraction" yunits="fraction"/>', sep=""), file = filename, append = TRUE)
-  cat(paste('\t\t<size x="0" y="0" xunits="fraction" yunits="fraction"/>', sep=""), file = filename, append = TRUE)
-  cat('\t</ScreenOverlay>', file = filename, append = TRUE)
+  kml_legend(x=obj[[var.name]], var.name=var.name, legend.file=paste(var.name, '_legend.png', sep=""), legend.pal=colour.pal)
+  cat('\t<ScreenOverlay>\n', file = filename, append = TRUE)
+  cat('\t\t<name>Legend</name>\n', file = filename, append = TRUE)
+  cat('\t\t<Icon>\n', file = filename, append = TRUE)
+  cat('\t\t\t<href>', var.name, '_legend.png', '</href>\n', sep="", file = filename, append = TRUE)
+  cat('\t\t</Icon>\n', file = filename, append = TRUE)
+  cat('\t\t<overlayXY x="0" y="1" xunits="fraction" yunits="fraction"/>\n', file = filename, append = TRUE)
+  cat('\t\t<screenXY x="0" y="1" xunits="fraction" yunits="fraction"/>\n', file = filename, append = TRUE)
+  cat('\t\t<rotationXY x="0" y="0" xunits="fraction" yunits="fraction"/>\n', file = filename, append = TRUE)
+  cat('\t\t<size x="0" y="0" xunits="fraction" yunits="fraction"/>\n', file = filename, append = TRUE)
+  cat('\t</ScreenOverlay>\n', file = filename, append = TRUE)
 }
   
   # Closing the folder
