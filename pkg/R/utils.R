@@ -1,3 +1,10 @@
+# R function for the plotKML package
+# Author: Pierre Roudier, Tomislav Hengl
+# contact: pierre.roudier@gmail.com & tom.hengl@wur.nl
+# Date : July 2011
+# Version 0.1
+# Licence GPL v3
+
 #' Open a new KML canvas
 #'
 #' @param file KML file name
@@ -17,7 +24,7 @@ kml_open <- function(
 }
 
 #  file.create(file)
-## This one runs slower on Win OS?
+## The fastest way to write to a KML is to first connect to a file, then close it on the end.
 
   # header
   cat("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", file = filename)
@@ -84,24 +91,6 @@ kml_compress <- function(file, zip = "", imagefile = "", rm = FALSE){
 
 }
 
-# Returns a vector of names for each element (pt, line, polygon)
-# to be written in a KML folder
-kml_names <- function(obj, ...){
-  # Introduce a names= option/aes?
-  # Try to find existing rownames
-
-  # Otherwise select aes that came first in the fun call
-
-  # and use its values as rownames.
-
-  # Temporary solution - more fancy stuff could be done of course
-  if ("data" %in% slotNames(obj))
-    nm <- rownames(obj@data)
-  else
-    nm <- as.character(1:nrow(coordinates(obj)))
-  nm
-}
-
 # convert R colours to KML colours
 #
 # KML colour follow the scheme #aabbggrr
@@ -134,48 +123,58 @@ hex2kml <- function(hex){
   as.vector(res)
 }
 
+# Generates PNG legend
 #
 kml_legend <- function(
   x, 
   var.type = "numeric", 
   legend.file, 
-  legend.pal = rev(rainbow(65))[1:48], 
-  z.lim, 
+  legend.pal = rev(rainbow(65)[1:48]), 
+  z.lim = c(quantile(x, 0.025, na.rm=TRUE), quantile(x, 0.975, na.rm=TRUE)), 
   factor.labels,
   ...
   ){
 
+  require(colorspace)
+  require(plotrix)
+  
   ## Factor-type variables:
-  var.type <- class(xvar)
-   if(var.type=="factor") {
+    if(class(x) == "factor" | var.type=="factor") {
+ 
     z.lim <- NA
-    if(missing(factor.labels)){ col.no <- length(levels(as.factor(xvar)))  }
+    if(missing(factor.labels)){ col.no <- length(levels(as.factor(x)))  }
     else { col.no <- length(factor.labels) }
+ 
     if(missing(factor.labels)) {
     ### NOTE : This is a not a perfect implementation for a factor with a lot of categories!
-    leg.width <- max(nchar(levels(as.factor(xvar))))*5+70  # 5 pix per character
-    leg.height <- length(levels(as.factor(xvar)))*40 # 20 pix per class
+    leg.width <- max(nchar(levels(as.factor(x))))*5+70  # 5 pix per character
+    leg.height <- length(levels(as.factor(x)))*40 # 20 pix per class
     }
+ 
     else {
     leg.width <- max(nchar(factor.labels))*10+70  # 10 pix per character
     leg.height <- length(factor.labels)*40 # 20 pix per class
     }
+ 
     png(file=legend.file, width=leg.width, height=leg.height, bg="transparent", pointsize=14)
     # c(bottom, left, top, right)
     par(mar=c(.5,0,.5,1))
     plot(x=rep(1, col.no), y=1:col.no, axes=FALSE, xlab='', ylab='', pch=15, cex=4, col=legend.pal)
-    if(missing(factor.labels)) {
-    text(x=rep(1, col.no), y=1:col.no, labels=levels(as.factor(x)), cex=.8, pos=4, offset=1, col=rgb(0.99,0.99,0.99))
+  
+      if(missing(factor.labels)) {
+      text(x=rep(1, col.no), y=1:col.no, labels=levels(as.factor(x)), cex=.8, pos=4, offset=1, col=rgb(0.99,0.99,0.99))
+      }
+  
+       else { 
+      text(x=rep(1, col.no), y=1:col.no, labels=factor.labels, cex=.8, pos=4, offset=1, col=rgb(0.99,0.99,0.99))
     }
-    else { 
-    text(x=rep(1, col.no), y=1:col.no, labels=factor.labels, cex=.8, pos=4, offset=1, col=rgb(0.99,0.99,0.99))
-    }
-  dev.off()
+  
+   dev.off()
 }
 
   ### Numeric-type variables:
   else {
-  if(missing(z.lim)&class(xvar)=="numeric") { z.lim <- c(quantile(xvar, 0.025, na.rm=TRUE), quantile(xvar, 0.975, na.rm=TRUE)) }
+  if(class(x) == "numeric") {
   png(file=legend.file, width=120, height=240, bg="transparent", pointsize=14)
   par(mar=c(.5,0,.5,4))
   plot(x=0:5, y=0:5, asp=3, type="n", axes=FALSE, xlab='', ylab='')
@@ -184,6 +183,9 @@ kml_legend <- function(
   upper.lim <- z.lim[2]
   col.labels <- signif(c(lower.lim, (upper.lim-lower.lim)/2, upper.lim), 2)
   color.legend(xl=0, yb=0, xr=5, yt=5, legend=col.labels, rect.col=legend.pal, gradient="y", align="rb", cex=1.4, col=rgb(0.99,0.99,0.99))
+  
   dev.off()
+  }
+  else { stop("Numeric or factor vector required") }
 }
 }
