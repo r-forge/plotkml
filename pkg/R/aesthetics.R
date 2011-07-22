@@ -1,12 +1,9 @@
 # List of available aesthetics is given .all_kml_aesthetics
 # along with their default values
 .all_kml_aesthetics <- list(
-  placemark.name = "",
+  label = "",
   colours = "#ff000000",
-  colour.pal = "",
-  var.name = "",
   fill = "white",
-  shape.url = "http://plotkml.r-forge.r-project.org/", #"http://maps.google.com/mapfiles/kml/shapes/donut.png"
   shape = "circle.png", 
   whitening = "",
   alpha = 1,
@@ -42,24 +39,24 @@ kml_aes <- function(obj, ...) {
   # Names 
    if ("var.name" %in% called_aes & "data" %in% slotNames(obj)) {
    # If names defined using a column of data
-      aes[['placemark.name']] <- as.character(obj[[parent_call[['var.name']]]])
+      aes[['label']] <- as.character(obj[[parent_call[['var.name']]]])
    }
     
    else {
-   if ("placemark.name" %in% called_aes) {
+   if ("label" %in% called_aes) {
     # if names given as a vector
-      placemark.name <- eval(parent_call[['placemark.name']])
-      if (length(placemark.name) == length(obj))
-        aes[['placemark.name']] <- as.character(placemark.name)
+      label <- eval(parent_call[['label']])
+      if (length(label) == length(obj))
+        aes[['label']] <- as.character(label)
       else
-        aes[['placemark.name']] <- rep(as.character(placemark.name), length.out = length(obj))
+        aes[['label']] <- rep(as.character(label), length.out = length(obj))
     }
     else {
     if (!("data" %in% slotNames(obj))) {
-    aes[['placemark.name']] <- as.character(1:length(obj))
+    aes[['label']] <- as.character(1:length(obj))
      }
     else
-     aes[['placemark.name']] <- rownames(obj@data)
+     aes[['label']] <- rownames(obj@data)
     }
    }
 
@@ -91,14 +88,7 @@ kml_aes <- function(obj, ...) {
 #       aes[['colours']] <- kml_whitening(obj, whitening, aes[['colours']], ...)
 #     }
 
-  # Shape.url
-  if ("shape.url" %in% called_aes) {
-    aes[["shape.url"]] <- kml_shape.url(obj, shape.url, ...)
-  }
-  else {
-    aes[["shape.url"]] <- rep(.all_kml_aesthetics[["shape.url"]], length.out = length(obj))
-  }
-  
+ 
   # Shape
   if ("shape" %in% called_aes) {
     aes[["shape"]] <- kml_shape(obj, shape, ...)

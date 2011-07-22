@@ -14,6 +14,8 @@ kml_layer.SpatialPoints <- function(
   var.name = as.character(substitute(obj, env = parent.frame())),
   file,
   filename,
+  shapes.url = "http://plotkml.r-forge.r-project.org/", #"http://maps.google.com/mapfiles/kml/shapes/donut.png"
+  colour.pal = "",
   extrude = TRUE,
   z.scale = 1,
   LabelScale = 0.7,
@@ -34,7 +36,6 @@ kml_layer.SpatialPoints <- function(
   # Read the relevant aesthetics
   points_names <- aes[["placemark.name"]]
   colours <- aes[["colours"]]
-  shapes.url <- aes[["shape.url"]]
   shapes <- aes[["shape"]]
   sizes <- aes[["size"]]
   altitude <- aes[["altitude"]]
