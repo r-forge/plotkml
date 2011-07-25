@@ -20,7 +20,7 @@ kml_layer.SpatialLines <- function(
   aes <- kml_aes(obj, ...)
 
   # Read the relevant aesthetics
-  lines_names<- aes[["name"]]
+  lines_names<- aes[["labels"]]
   colours <- aes[["colour"]]
   width <- aes[["width"]]
   altitude <- aes[["altitude"]]
