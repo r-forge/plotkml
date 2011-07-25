@@ -20,7 +20,8 @@ kml_layer.SpatialPixels <- function(
   aes <- kml_aes(obj, ...)
 
   # Read the relevant aesthetics
-  cols <- kml2hex(aes[["colour"]])
+  cols <- aes[["colour"]]
+  cols <- kml2hex(cols)
   altitude <- unique(aes[["altitude"]])[1]
   altitudeMode <- aes[["altitudeMode"]]
   
@@ -31,7 +32,7 @@ kml_layer.SpatialPixels <- function(
   # Parse the current call
   colour <- charmatch("colour", names(call))
   colour_scale <- charmatch("colour_scale", names(call))
-
+  
   if (is.na(colour))
     stop("No attribute to map. Please use the colour=... option.")
 
@@ -61,8 +62,6 @@ kml_layer.SpatialPixels <- function(
   par(mar = c(0, 0, 0, 0), xaxs = "i", yaxs = "i")
   image(img, col = colour_scale, frame.plot = FALSE)
   dev.off()
-# 
-#   raster_name <- .kml_write_raster(obj = obj, colour = colour, colour_scale = colour_scale, fname = file)
 
   # Folder and name of the points folder
   cat("<Folder>\n", file = file, append = TRUE)
