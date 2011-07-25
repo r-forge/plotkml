@@ -172,14 +172,21 @@ kml_aes <- function(obj, ...) {
 }
 
 # Colour (points, polygons, lines, raster)
-kml_colour <- function(obj, colour, colour_scale, colour_default = rainbow(64)){
+kml_colour <- function(obj, colour, colour_scale){
 
   require(ggplot2) # /!\ for the rescale function, soon to be in the scales package /!\
   require(colorRamps)
+  require(RColorBrewer)
 
   # Retrieving colour scale
-  if (missing(colour_scale))
-    colour_scale <- colour_default
+  if (missing(colour_scale)) {
+    # If data is numeric
+    if (is.numeric(eval(colour, obj@data)))
+      colour_scale <- brewer.pal(n = 5, name = "RdYlGn")
+    # If data is a factor
+    else
+      colour_scale <- brewer.pal(n = 6, name = "Accent")
+  }
   else
     colour_scale <- eval(colour_scale)
 
