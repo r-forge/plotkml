@@ -1,10 +1,3 @@
-# R function for the plotKML package
-# Author: Pierre Roudier, Tomislav Hengl
-# contact: pierre.roudier@gmail.com & tom.hengl@wur.nl
-# Date : July 2011
-# Version 0.1
-# Licence GPL v3
-
 #' Open a new KML canvas
 #'
 #' @param file KML file name
@@ -12,37 +5,31 @@
 #' @param kml.url KML specification URL
 kml_open <- function(
   file,
-  filename,
-  name = strsplit(file, ".")[1],
-  overwrite = TRUE,
-  kml.url = "http://www.opengis.net/kml/2.2",
-  ...
+  name = file,
+  overwrite = FALSE,
+  kml.url = "http://www.opengis.net/kml/2.2"
   ){
 
   if (file.exists(file) & !overwrite) {
     stop(paste("File", file, "exists. Set the overwrite option to TRUE if you want to overwrite that file, or choose a different name for it."))
-}
-
-#  file.create(file)
-## The fastest way to write to a KML is to first connect to a file, then close it on the end.
+  }
 
   # header
-  cat("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", file = filename)
-  cat('<kml xmlns=\"', kml.url, '\">\n', sep = "", file = filename, append = TRUE)
-  cat("<Document>\n", file = filename, append = TRUE)
-  cat("<name>", name, "</name>\n", sep = "", file = filename, append = TRUE)
-  cat("<open>1</open>\n", file = filename, append = TRUE)
+  cat("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", file = file)
+  cat('<kml xmlns=\"', kml.url, '\">\n', sep = "", file = file, append = TRUE)
+  cat("<Document>\n", file = file, append = TRUE)
+  cat("<name>", name, "</name>\n", sep = "", file = file, append = TRUE)
+  cat("<open>1</open>\n", file = file, append = TRUE)
 }
 
 #' Closes the current KML canvas
 #'
 #' @param file KML file name to be closed
 kml_close <- function(
-  file,
-  filename
+  file
   ){
-  cat("</Document>\n", file = filename, append = TRUE)
-  cat("</kml>\n", file = filename, append = TRUE)
+  cat("</Document>\n", file = file, append = TRUE)
+  cat("</kml>\n", file = file, append = TRUE)
 }
 
 #' Compresses a KML into a KMZ
@@ -123,4 +110,18 @@ hex2kml <- function(hex){
   as.vector(res)
 }
 
+# KML spec is alpha-BGR
+#
+kml2hex <- function(kml) {
+  require(stringr)
+  require(plyr)
 
+  res <- aaply(kml, 1, function(x){
+#     res <- paste("#", str_sub(tolower(x), 8, 9), str_sub(tolower(x), 6, 7), str_sub(tolower(hex), 4, 5), str_sub(tolower(hex), 2, 3), sep = "")
+    res <- paste("#", str_sub(toupper(x), 8, 9), str_sub(toupper(x), 6, 7), str_sub(toupper(x), 4, 5), str_sub(toupper(x), 2, 3), sep = "")
+    res
+    }
+  )
+
+  as.vector(res)
+}
