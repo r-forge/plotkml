@@ -171,30 +171,47 @@ kml_aes <- function(obj, ...) {
   aes
 }
 
+# Retrieving colour scale
+.getColourScale <- function(data, colour_scale = NULL, colour_scale.numeric =  brewer.pal(n = 5, name = "RdYlGn"), colour_scale.factor = brewer.pal(n = 6, name = "Accent")) {
+  require(RColorBrewer)
+  if (is.null(colour_scale)) {
+    # If data is numeric
+    if (is.numeric(data))
+      colour_scale <- colour_scale.numeric
+    # If data is a factor
+    else
+      colour_scale <- colour_scale.factor
+  }
+  else
+    colour_scale <- eval(colour_scale)
+}
+
 # Colour (points, polygons, lines, raster)
-kml_colour <- function(obj, colour, colour_scale){
+kml_colour <- function(obj, colour, colour_scale = NULL){
 
   require(ggplot2) # /!\ for the rescale function, soon to be in the scales package /!\
   require(colorRamps)
   require(RColorBrewer)
 
-  # Retrieving colour scale
-  if (missing(colour_scale)) {
-    # If data is numeric
-    if (is.numeric(eval(colour, obj@data)))
-      colour_scale <- brewer.pal(n = 5, name = "RdYlGn")
-    # If data is a factor
-    else
-      colour_scale <- brewer.pal(n = 6, name = "Accent")
-  }
-  else
-    colour_scale <- eval(colour_scale)
+#   # Retrieving colour scale
+#   if (missing(colour_scale)) {
+#     # If data is numeric
+#     if (is.numeric(eval(colour, obj@data)))
+#       colour_scale <- brewer.pal(n = 5, name = "RdYlGn")
+#     # If data is a factor
+#     else
+#       colour_scale <- brewer.pal(n = 6, name = "Accent")
+#   }
+#   else
+#     colour_scale <- eval(colour_scale)
+  colour_scale <- .getColourScale(data = eval(colour, obj@data), colour_scale = colour_scale)
 
   # Getting the vector of values to scale
-  if (is.name(colour))
-    x <- obj[[as.character(colour)]]
-  else if (is.call(colour))
-    x <- eval(colour, envir = obj@data)
+#   if (is.name(colour))
+#     x <- obj[[as.character(colour)]]
+#   else if (is.call(colour))
+#     x <- eval(colour, envir = obj@data)
+  x <- eval(colour, envir = obj@data)
 
   # If the scale is continuous
   if (is.numeric(x)) {

@@ -17,44 +17,46 @@ kml_layer.SpatialPixels <- function(
 #     obj <- reproject(obj)
 
   # Parsing the call for aesthetics
-  aes <- kml_aes(obj, ...)
+#   aes <- kml_aes(obj, ...)
 
   # Read the relevant aesthetics
-  cols <- aes[["colour"]]
-  cols <- kml2hex(cols)
-  altitude <- unique(aes[["altitude"]])[1]
-  altitudeMode <- aes[["altitudeMode"]]
-  
+#   cols <- aes[["colour"]]
+#   cols <- kml2hex(cols)
+#   altitude <- unique(aes[["altitude"]])[1]
+#   altitudeMode <- aes[["altitudeMode"]]
+
   # Parsing the call for "colour"
   call <- substitute(list(...))
   call <- as.list(call)[-1]
 
   # Parse the current call
   colour <- charmatch("colour", names(call))
-  colour_scale <- charmatch("colour_scale", names(call))
-  
   if (is.na(colour))
     stop("No attribute to map. Please use the colour=... option.")
+  else
+    data <- eval(call[["colour"]], envir = obj@data)
+
+  altitude <- eval(call[["altitude"]], obj@data)
+  altitude <- kml_altitude(obj, altitude = altitude)
+  altitudeMode <- kml_altitude_mode(altitude)
+  colour_scale <- .getColourScale(data = data, colour_scale = eval(call[['colour_scale']], obj@data))
 
   # Creating a SpatialPixelsDataFrame object to be plotted
-  if (is.name(call[["colour"]]))
-    data <- obj[[as.character(call[["colour"]])]]
-  else if (is.call(call[["colour"]]))
-    data <- eval(call[["colour"]], envir = obj@data)
+#   if (is.name(call[["colour"]]))
+#     data <- obj[[as.character(call[["colour"]])]]
+#   else if (is.call(call[["colour"]]))
+#     data <- eval(call[["colour"]], envir = obj@data)
 
   call_name <- deparse(call[["colour"]])
   data <- data.frame(data)
   names(data) <- call_name
 
-  if (is.na(colour_scale))
-    colour_scale <- rainbow(64)
-  else
-    colour_scale <- eval(call[['colour_scale']])
+#   browser()
 
   # Building image object for PNG generation
   spdf <- SpatialPixelsDataFrame(points = coordinates(obj), data = data)
   img <- raster(spdf, layer = 1)
-  
+
   # Creating the PNG file
   raster_name <- paste(file, ".png", sep = "")
   # Plotting the image
