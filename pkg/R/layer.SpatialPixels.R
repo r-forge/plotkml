@@ -1,34 +1,3 @@
-.kml_write_raster <- function(obj, colours, file_name) {
-
-#   require(maptools)
-
-   # Building SpatialGrid for PNG generation
-#   grd <- GE_SpatialGrid(obj, asp = NA, maxPixels=1000)
-  
-  img <-  as.image.SpatialGridDataFrame(obj, attr=2)
-
-#   raster <- sampleRegular(raster, size = maxpixels, asRaster = TRUE)
-#   imagefile <- filename
-#   extension(imagefile) <- ".png"
-#   kmlfile <- filename
-#   extension(kmlfile) <- ".kml"
-#   png(filename = imagefile, width = ncol(raster), height = nrow(raster), bg = "transparent")
-#   par(mar = c(0, 0, 0, 0))
-#   image(raster, col = col, axes = FALSE)
-#   dev.off()
-
-  # Creating the PNG file
-  raster_name <- paste(file_name, ".png", sep = "")
-
-  png(file = raster_name, bg = "transparent") # , width = grd$width, height = grd$height)
-  par(mar = c(0, 0, 0, 0), xaxs = "i", yaxs = "i")
-  image(img)
-#   plot(obj, xlim = grd$xlim, ylim = grd$ylim, setParUsrBB = TRUE)
-  dev.off()
-
-  raster_name
-}
-
 kml_layer.SpatialPixels <- function(
   # options on the object to plot
   obj,
@@ -48,44 +17,65 @@ kml_layer.SpatialPixels <- function(
 #     obj <- reproject(obj)
 
   # Parsing the call for aesthetics
-#   aes <- kml_aes(obj, ...)
+  aes <- kml_aes(obj, ...)
 
   # Read the relevant aesthetics
-#   colours <- aes[["colour"]]
-#   altitude <- aes[["altitude"]]
-#   altitudeMode <- aes[["altitudeMode"]]
-
+  cols <- kml2hex(aes[["colour"]])
+  altitude <- unique(aes[["altitude"]])[1]
+  altitudeMode <- aes[["altitudeMode"]]
+  
   # Parsing the call for "colour"
   call <- substitute(list(...))
   call <- as.list(call)[-1]
 
   # Parse the current call
   colour <- charmatch("colour", names(call))
+  colour_scale <- charmatch("colour_scale", names(call))
+
   if (is.na(colour))
     stop("No attribute to map. Please use the colour=... option.")
-  
-  colour <- as.character(call[['colour']])
 
-  if (!(colour %in% names(obj@data)))
-    stop("Bad attribute.")
+  # Creating a SpatialPixelsDataFrame object to be plotted
+  if (is.name(call[["colour"]]))
+    data <- obj[[as.character(call[["colour"]])]]
+  else if (is.call(call[["colour"]]))
+    data <- eval(call[["colour"]], envir = obj@data)
+
+  call_name <- deparse(call[["colour"]])
+  data <- data.frame(data)
+  names(data) <- call_name
+
+  if (is.na(colour_scale))
+    colour_scale <- rainbow(64)
   else
-    raster_name <- .kml_write_raster(obj, colour, file)
+    colour_scale <- eval(call[['colour_scale']])
+
+  # Building image object for PNG generation
+  spdf <- SpatialPixelsDataFrame(points = coordinates(obj), data = data)
+  img <- raster(spdf, layer = 1)
+  
+  # Creating the PNG file
+  raster_name <- paste(file, ".png", sep = "")
+  # Plotting the image
+  png(file = raster_name, bg = "transparent") # , width = grd$width, height = grd$height)
+  par(mar = c(0, 0, 0, 0), xaxs = "i", yaxs = "i")
+  image(img, col = colour_scale, frame.plot = FALSE)
+  dev.off()
+# 
+#   raster_name <- .kml_write_raster(obj = obj, colour = colour, colour_scale = colour_scale, fname = file)
 
   # Folder and name of the points folder
   cat("<Folder>\n", file = file, append = TRUE)
-  cat("<name>", title, "</name>\n", sep = "", file = file, append = TRUE)
-
-  # write a raster file
-  raster_name <- .kml_write_raster(obj, colours, file_name = file)
+  cat("<name>", call_name, "</name>\n", sep = "", file = file, append = TRUE)
 
   # write into the a KML file:
   write('<GroundOverlay>', file, append = TRUE)
-  write(paste('<name>', title, '</name>', sep=""), file, append = TRUE)
+  write(paste('<name>', call_name, '</name>', sep=""), file, append = TRUE)
 
-  write(paste('<altitude>', altitude, '</altitude>', sep = ""), file, append = TRUE) 
+  write(paste('<altitude>', altitude, '</altitude>', sep = ""), file, append = TRUE)
   write(paste('<altitudeMode>', altitudeMode, '</altitudeMode>', sep = ""), file, append = TRUE)
 
-  # Using the previously generated raster file 
+  # Using the previously generated raster file
   write('<Icon>', file, append = TRUE)
   write(paste('<href>', raster_name, '</href>', sep = ""), file, append = TRUE)
   write('</Icon>', file, append = TRUE)
