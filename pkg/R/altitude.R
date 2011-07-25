@@ -13,7 +13,7 @@ kml_altitude <- function(obj, altitude = 0) {
     altitude <- rep(altitude, length.out = length(obj))
   }
   else if (is.na(altitude)) {
-    altitude <- rep(NA, length.out = length(obj))
+    altitude <- rep(.all_kml_aesthetics[["altitude"]], length.out = length(obj))
   }
   else
     stop("Bad altitude value")
