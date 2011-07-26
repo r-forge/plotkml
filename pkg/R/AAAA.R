@@ -9,6 +9,6 @@ if (!isGeneric("kml"))
   )
 
 if (!isGeneric("reproject"))
-  setGeneric("reproject", function(obj, ...)
+  setGeneric("reproject", function(obj, crs, ...)
     standardGeneric("reproject")
   )

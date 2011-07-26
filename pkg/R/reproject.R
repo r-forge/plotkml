@@ -1,24 +1,24 @@
 .referenceCrs <- "+proj=longlat +datum=WGS84"
 
-reproject.SpatialPoints <- function(obj, ...) {
-  spTransform(obj, CRS(.referenceCrs))
+reproject.SpatialPoints <- function(obj, crs = .referenceCrs, ...) {
+  spTransform(obj, CRS(crs))
 }
 
 setMethod("reproject", "SpatialPoints", reproject.SpatialPoints)
 setMethod("reproject", "SpatialPolygons", reproject.SpatialPoints)
 setMethod("reproject", "SpatialLines", reproject.SpatialPoints)
 
-reproject.Raster <- function(obj, ...) {
+reproject.Raster <- function(obj, crs = .referenceCrs, ...) {
   if (obj@data@isfactor)
     method <- "ngb"
   else
     method <- "bilinear"
-  projectRaster(obj, crs = .referenceCrs, method = method, ...)
+  projectRaster(obj, crs = crs, method = method, ...)
 }
 
 setMethod("reproject", "Raster", reproject.Raster)
 
-reproject.SpatialPixels <- function(obj, ...) {
+reproject.SpatialPixels <- function(obj, crs = .referenceCrs, ...) {
   # SpatialPixelsDataFrame
   if ("data" %in% slotNames(obj)) {
     if (ncol(obj) > 1) {
