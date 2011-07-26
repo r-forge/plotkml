@@ -12,11 +12,11 @@ kml_layer.SpatialPoints <- function(
   ){
 
   # Checking the projection is geo
-  check <- check_projection(obj, logical = FALSE)
+  check <- check_projection(obj, logical = TRUE)
 
   # Trying to reproject data if the check was not successful
-#   if (!check)
-#     obj <- reproject(obj)
+  if (!check)
+    obj <- reproject(obj)
 
   # Parsing the call for aesthetics
   aes <- kml_aes(obj, ...)
