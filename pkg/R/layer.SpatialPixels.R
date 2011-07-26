@@ -10,20 +10,11 @@ kml_layer.SpatialPixels <- function(
   ){
 
   # Checking the projection is geo
-  check <- check_projection(obj, logical = FALSE)
+  check <- check_projection(obj, logical = TRUE)
 
   # Trying to reproject data if the check was not successful
-#   if (!check)
-#     obj <- reproject(obj)
-
-  # Parsing the call for aesthetics
-#   aes <- kml_aes(obj, ...)
-
-  # Read the relevant aesthetics
-#   cols <- aes[["colour"]]
-#   cols <- kml2hex(cols)
-#   altitude <- unique(aes[["altitude"]])[1]
-#   altitudeMode <- aes[["altitudeMode"]]
+  if (!check)
+    obj <- reproject(obj)
 
   # Parsing the call for "colour"
   call <- substitute(list(...))
@@ -39,19 +30,18 @@ kml_layer.SpatialPixels <- function(
   altitude <- eval(call[["altitude"]], obj@data)
   altitude <- kml_altitude(obj, altitude = altitude)
   altitudeMode <- kml_altitude_mode(altitude)
-  colour_scale <- .getColourScale(data = data, colour_scale = eval(call[['colour_scale']], obj@data))
+
+  if (is.numeric(data))
+    pal <- .colour_scale_numeric
+  else
+    pal <- .colour_scale_factor
+
+  colour_scale <- colorRampPalette(pal)(length(data))
 
   # Creating a SpatialPixelsDataFrame object to be plotted
-#   if (is.name(call[["colour"]]))
-#     data <- obj[[as.character(call[["colour"]])]]
-#   else if (is.call(call[["colour"]]))
-#     data <- eval(call[["colour"]], envir = obj@data)
-
   call_name <- deparse(call[["colour"]])
   data <- data.frame(data)
   names(data) <- call_name
-
-#   browser()
 
   # Building image object for PNG generation
   spdf <- SpatialPixelsDataFrame(points = coordinates(obj), data = data)
@@ -59,6 +49,7 @@ kml_layer.SpatialPixels <- function(
 
   # Creating the PNG file
   raster_name <- paste(file, ".png", sep = "")
+
   # Plotting the image
   png(file = raster_name, bg = "transparent") # , width = grd$width, height = grd$height)
   par(mar = c(0, 0, 0, 0), xaxs = "i", yaxs = "i")
