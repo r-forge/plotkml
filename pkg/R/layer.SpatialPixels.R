@@ -31,10 +31,15 @@ kml_layer.SpatialPixels <- function(
   altitude <- kml_altitude(obj, altitude = altitude)
   altitudeMode <- kml_altitude_mode(altitude)
 
-  if (is.numeric(data))
-    pal <- .colour_scale_numeric
-  else
-    pal <- .colour_scale_factor
+  pal <- charmatch("colour_scale", names(call))
+  if (!is.na(pal))
+    pal <- eval(call[["colour_scale"]])
+  else {
+    if (is.numeric(data))
+      pal <- .colour_scale_numeric
+    else
+      pal <- .colour_scale_factor
+  }
 
   colour_scale <- colorRampPalette(pal)(length(data))
 
