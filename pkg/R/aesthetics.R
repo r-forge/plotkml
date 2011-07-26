@@ -150,7 +150,7 @@ kml_aes <- function(obj, ...) {
 
   # Altitude
   if ("altitude" %in% called_aes) {
-    aes[['altitude']] <- kml_altitude(obj, altitude, ...)
+    aes[['altitude']] <- kml_altitude(obj, altitude = eval(parent_call[['altitude']], obj@data))
   }
   else {
 #     aes[['altitude']] <- rep(.all_kml_aesthetics[["altitude"]], length.out = length(obj))
