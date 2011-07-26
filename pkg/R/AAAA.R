@@ -8,7 +8,12 @@ if (!isGeneric("kml"))
     standardGeneric("kml")
   )
 
+if (!isGeneric("getCRS"))
+  setGeneric("getCRS", function(obj, ...)
+    standardGeneric("getCRS")
+  )
+
 if (!isGeneric("reproject"))
-  setGeneric("reproject", function(obj, CRS, ...)
+  setGeneric("reproject", function(obj, ...)
     standardGeneric("reproject")
   )
