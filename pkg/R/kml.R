@@ -16,6 +16,5 @@ kml.Spatial <- function(
     kml_compress(file)
 }
 
-setMethod("kml", "SpatialPoints", kml.Spatial)
-setMethod("kml", "SpatialPolygons", kml.Spatial)
-setMethod("kml", "SpatialLines", kml.Spatial)
+setMethod("kml", "Spatial", kml.Spatial)
+setMethod("kml", "Raster", kml.Spatial)
