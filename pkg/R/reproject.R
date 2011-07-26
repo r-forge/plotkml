@@ -9,7 +9,11 @@ setMethod("reproject", "SpatialPolygons", reproject.SpatialPoints)
 setMethod("reproject", "SpatialLines", reproject.SpatialPoints)
 
 reproject.Raster <- function(obj, ...) {
-  projectRaster(obj, crs = .referenceCrs, ...)
+  if (obj@data@isfactor)
+    method <- "ngb"
+  else
+    method <- "bilinear"
+  projectRaster(obj, crs = .referenceCrs, method = method, ...)
 }
 
 setMethod("reproject", "Raster", reproject.Raster)
@@ -17,11 +21,15 @@ setMethod("reproject", "Raster", reproject.Raster)
 reproject.SpatialPixels <- function(obj, ...) {
   # SpatialPixelsDataFrame
   if ("data" %in% slotNames(obj)) {
-    if (ncol(obj) > 1)
+    if (ncol(obj) > 1) {
       r <- stack(obj)
-    else
+      res <- stack(llply(r@layers, reproject, ...))
+      res <- as(res, "SpatialPixelsDataFrame")
+    }
+    else {
       r <- raster(obj)
-    res <- as(reproject(r, ...), "SpatialPixelsDataFrame")
+      res <- as(reproject(r, ...), "SpatialPixelsDataFrame")
+    }
     names(res) <- names(obj)
   }
   # SpatialPixels
