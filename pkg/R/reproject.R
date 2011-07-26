@@ -8,15 +8,29 @@ setMethod("reproject", "SpatialPoints", reproject.SpatialPoints)
 setMethod("reproject", "SpatialPolygons", reproject.SpatialPoints)
 setMethod("reproject", "SpatialLines", reproject.SpatialPoints)
 
-reproject.Raster <- function(obj, CRS = .referenceCrs, ...) {
-  if (obj@data@isfactor)
+reproject.RasterStack <- function(obj, CRS = .referenceCrs, ...) {
+  stack(llply(obj@layers, reproject, CRS = CRS, ...))
+}
+
+setMethod("reproject", "RasterStack", reproject.RasterStack)
+
+reproject.RasterBrick <- function(obj, CRS = .referenceCrs, ...) {
+  brick(llply(obj@layers, reproject, CRS = CRS, ...))
+}
+
+setMethod("reproject", "RasterStack", reproject.RasterStack)
+
+reproject.RasterLayer <- function(obj, CRS = .referenceCrs, ...) {
+  if (is.factor(obj))
     method <- "ngb"
   else
     method <- "bilinear"
-  projectRaster(obj, crs = CRS, method = method, ...)
+  res <- projectRaster(obj, crs = CRS, method = method, ...)
+  layerNames(res) <- layerNames(obj)
+  res
 }
 
-setMethod("reproject", "Raster", reproject.Raster)
+setMethod("reproject", "RasterLayer", reproject.RasterLayer)
 
 reproject.SpatialPixels <- function(obj, CRS = .referenceCrs, ...) {
   # SpatialPixelsDataFrame
