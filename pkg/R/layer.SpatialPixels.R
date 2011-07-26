@@ -74,10 +74,10 @@ kml_layer.SpatialPixels <- function(
 
   # Bounding box used to drape the raster file
   write('<LatLonBox>', file, append = TRUE)
-  write(paste('<north>', obj@bbox[2, 2], '</north>', sep = ""), file, append = TRUE)
-  write(paste('<south>', obj@bbox[2, 1], '</south>', sep = ""), file, append = TRUE)
-  write(paste('<east>', obj@bbox[1, 2], '</east>', sep = ""), file, append = TRUE)
-  write(paste('<west>', obj@bbox[1, 1], '</west>', sep = ""), file, append = TRUE)
+  write(paste('<north>', bbox(obj)[2, 2], '</north>', sep = ""), file, append = TRUE)
+  write(paste('<south>', bbox(obj)[2, 1], '</south>', sep = ""), file, append = TRUE)
+  write(paste('<east>', bbox(obj)[1, 2], '</east>', sep = ""), file, append = TRUE)
+  write(paste('<west>', bbox(obj)[1, 1], '</west>', sep = ""), file, append = TRUE)
   write('</LatLonBox>', file, append = TRUE)
 
   write('</GroundOverlay>', file, append = TRUE)
