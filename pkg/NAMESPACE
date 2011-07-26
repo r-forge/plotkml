@@ -1,0 +1,13 @@
+import(sp)
+import(raster)
+import(rgdal)
+importFrom(ggplot2, rescale)
+import(stringr)
+import(plyr)
+import(RColorBrewer)
+
+export(kml_open, kml_close, kml_compress)
+
+exportMethods(kml, kml_layer, reproject)
+
+exportPattern("^[^\\.]")
