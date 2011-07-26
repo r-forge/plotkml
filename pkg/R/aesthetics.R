@@ -171,63 +171,64 @@ kml_aes <- function(obj, ...) {
   aes
 }
 
+# default colour palettes
+.colour_scale_numeric <-  brewer.pal(n = 5, name = "RdYlGn")
+.colour_scale_factor = brewer.pal(n = 6, name = "Accent")
+
 # Retrieving colour scale
-.getColourScale <- function(data, colour_scale = NULL, colour_scale.numeric =  brewer.pal(n = 5, name = "RdYlGn"), colour_scale.factor = brewer.pal(n = 6, name = "Accent")) {
+.getColourScale <- function(data, colour_scale = NULL) {
+
+  require(ggplot2)  # /!\ for the rescale function, soon to be in the scales package /!\
+  require(colorRamps)
   require(RColorBrewer)
+
   if (is.null(colour_scale)) {
     # If data is numeric
-    if (is.numeric(data))
-      colour_scale <- colour_scale.numeric
+    if (is.numeric(data)) {
+      colour_scale <- .colour_scale_numeric
+      data <- rescale(data)
+    }
     # If data is a factor
     else
-      colour_scale <- colour_scale.factor
+      colour_scale <- .colour_scale_factor
   }
   else
     colour_scale <- eval(colour_scale)
+
+  # creates pal function
+  pal <- colorRamp(colour_scale, space = "rgb", interpolate = "linear")
+
+  if (is.numeric(data)) {
+    cols <- rgb(pal(data) / 255)
+  }
+  else {
+    data <- as.factor(data)
+    values <- levels(data)
+    if (any(is.na(data)))
+      values <- c(values, NA)
+    values <- rescale(seq_len(length(values))) # putting values between 0 and 1
+    cols <- rgb(pal(values) / 255)
+    levels(data) <- cols
+    cols <- as.character(data)
+  }
+
+  cols
 }
 
 # Colour (points, polygons, lines, raster)
 kml_colour <- function(obj, colour, colour_scale = NULL){
 
-  require(ggplot2) # /!\ for the rescale function, soon to be in the scales package /!\
-  require(colorRamps)
-  require(RColorBrewer)
-
-#   # Retrieving colour scale
-#   if (missing(colour_scale)) {
-#     # If data is numeric
-#     if (is.numeric(eval(colour, obj@data)))
-#       colour_scale <- brewer.pal(n = 5, name = "RdYlGn")
-#     # If data is a factor
-#     else
-#       colour_scale <- brewer.pal(n = 6, name = "Accent")
-#   }
-#   else
-#     colour_scale <- eval(colour_scale)
-  colour_scale <- .getColourScale(data = eval(colour, obj@data), colour_scale = colour_scale)
-
   # Getting the vector of values to scale
-#   if (is.name(colour))
-#     x <- obj[[as.character(colour)]]
-#   else if (is.call(colour))
-#     x <- eval(colour, envir = obj@data)
   x <- eval(colour, envir = obj@data)
 
-  # If the scale is continuous
-  if (is.numeric(x)) {
-    x <- rescale(x) # putting values between 0 and 1
-    pal <- colorRamp(colour_scale, space = "rgb", interpolate = "linear") # creates pal function
-    cols <- col2kml(rgb(pal(x) / 255))
-  }
-  # If discrete scale
-  else {
-    x <- as.factor(x)
-    values <- levels(x)
-    if (any(is.na(x))) values <- c(values, NA)
-    values <- rescale(seq_len(length(values))) # putting values between 0 and 1
-    pal <- colorRamp(colour_scale, space = "rgb", interpolate = "linear") # creates pal function
-    cols <- col2kml(rgb(pal(values) / 255))
-    levels(x) <- cols
+   # Retrieving colour scale
+  colour_scale <- .getColourScale(data = x, colour_scale = colour_scale)
+  cols <- col2kml(colour_scale)
+
+  # In case of a factor, we need to reclass each level
+  # by its corresponding colour
+  if (!is.numeric(x)) {
+    levels(x) <- unique(cols)
     cols <- as.character(x)
   }
 
