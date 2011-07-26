@@ -9,5 +9,5 @@ Maintainer: Tomislav Hengl <tom.hengl@wur.nl>
 Description: A suite of functions to facilitate authoring of KML documents from sp-class objects.
 License: GPL
 LazyLoad: yes
-Depends: R (>= 2.9.0), sp, rgdal, raster, colorRamps, plyr, stringr
-Suggests: RColorBrewer
+Depends: R (>= 2.9.0), sp, rgdal, raster, colorRamps, plyr, stringr, RColorBrewer
+Suggests: ggplot2
