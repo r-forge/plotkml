@@ -20,9 +20,8 @@ kml_layer.SpatialPolygons <- function(
   aes <- kml_aes(obj, ...)
 
   # Read the relevant aesthetics
-  points_names<- aes[["labels"]]
+  poly_names <- aes[["labels"]]
   colours <- aes[["colour"]]
-  shapes <- aes[["shape"]]
   sizes <- aes[["size"]]
   altitude <- aes[["altitude"]]
   altitudeMode <- aes[["altitudeMode"]]
@@ -49,7 +48,7 @@ kml_layer.SpatialPolygons <- function(
     current.poly.coords <- obj@polygons[[i.poly]]@Polygons[[1]]@coords
     current.poly.is.hole <- obj@polygons[[i.poly]]@Polygons[[1]]@hole
     current.poly.length <- nrow(current.poly.coords)
-    current.poly.id <- obj@polygons[[i.poly]]@ID
+    current.poly.id <- poly_names[i.poly] # obj@polygons[[i.poly]]@ID
 
     # Placemark
     write("\t<Placemark>", file, append = TRUE)
