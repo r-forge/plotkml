@@ -52,6 +52,18 @@ parse_proj4 <- function(p4s){
   res
 }
 
+getCRS.Spatial <- function(obj) {
+  CRSargs(CRS(proj4string(obj)))
+}
+
+setMethod("getCRS", "Spatial", getCRS.Spatial)
+
+getCRS.Raster <- function(obj) {
+  CRSargs(projection(obj, asText = FALSE))
+}
+
+setMethod("getCRS", "Raster", getCRS.Raster)
+
 #' Checks that the projection is geographic and the datum is WGS84
 #' for KML creation
 #'
@@ -66,7 +78,7 @@ check_projection <- function(obj, logical = TRUE){
   require(rgdal)
 
   # Using PROJ.4 to get the PROJ4 string
-  p4s <- CRSargs(CRS(proj4string(obj)))
+  p4s <- getCRS(obj)
 
   # Parsing the PROJ4 string for proj and datum values
   params <- parse_proj4(p4s)
