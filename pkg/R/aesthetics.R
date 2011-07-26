@@ -186,7 +186,6 @@ kml_aes <- function(obj, ...) {
     # If data is numeric
     if (is.numeric(data)) {
       colour_scale <- .colour_scale_numeric
-      data <- rescale(data)
     }
     # If data is a factor
     else
@@ -199,6 +198,7 @@ kml_aes <- function(obj, ...) {
   pal <- colorRamp(colour_scale, space = "rgb", interpolate = "linear")
 
   if (is.numeric(data)) {
+    data <- rescale(data)
     cols <- rgb(pal(data) / 255)
   }
   else {

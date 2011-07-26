@@ -22,10 +22,10 @@ kml_layer.Raster <- function(
 
   # Parse the current call
   colour <- charmatch("colour", names(call))
-  
+
   if (is.na(colour))
     stop("No attribute to map. Please use the colour=... option.")
-  
+
   if (is.call(call[["colour"]])) {
     data <- data.frame(getValues(obj))
     names(data) <- layerNames(obj)
@@ -55,17 +55,22 @@ kml_layer.Raster <- function(
 #   else {
 #     # Plotting the first layer
 #   }
-  
+
   data <- getValues(obj)
 
 #   altitude <- eval(call[["altitude"]], obj@data)
   altitude <- kml_altitude(obj, altitude = NULL)
   altitudeMode <- kml_altitude_mode(altitude)
 
-  if (!is.factor(obj))
-    pal <- .colour_scale_numeric
-  else
-    pal <- .colour_scale_factor
+  pal <- charmatch("colour_scale", names(call))
+  if (!is.na(pal))
+    pal <- eval(call[["colour_scale"]])
+  else {
+    if (!is.factor(obj))
+      pal <- .colour_scale_numeric
+    else
+      pal <- .colour_scale_factor
+  }
 
   colour_scale <- colorRampPalette(pal)(length(data))
 
