@@ -7,3 +7,8 @@ if (!isGeneric("kml"))
   setGeneric("kml", function(obj, ...)
     standardGeneric("kml")
   )
+
+if (!isGeneric("reproject"))
+  setGeneric("reproject", function(obj, ...)
+    standardGeneric("reproject")
+  )
