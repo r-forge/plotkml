@@ -243,15 +243,24 @@ kml_shape <- function(obj, shape, ...){
 # Opacity (points, polygons, lines, raster)
 #
 # This function modifies the vector of KML colours
-kml_alpha <- function(obj, alpha, colours, ...){
+kml_alpha <- function(obj, alpha, colours, RGBA = FALSE, ...){
 
   if (is.numeric(alpha)) {
     # alpha should be given as a number in [0, 1]
     alpha <- round(255*alpha, digits = 0)
-    # Conversion to hex mode
-    alpha <- sprintf("%x", alpha)
+    
     # modification of the KML colours using that alpha value
-    cols <- aaply(colours, 1, function(x)  paste("#", alpha, str_sub(x, 4, 9), sep = ""))
+    if (RGBA) {
+      # Conversion to hex mode
+      alpha <- sprintf("%X", alpha)
+      # Adding hex A (alpha) to a RGB hex string
+      cols <- aaply(colours, 1, function(x) paste(x, alpha, sep = ""))
+    }
+    else {
+      # Conversion to hex mode
+      alpha <- sprintf("%x", alpha)
+      cols <- aaply(colours, 1, function(x)  paste("#", alpha, str_sub(x, 4, 9), sep = ""))
+    }
   }
   else {
     stop('implementation in progress.')
