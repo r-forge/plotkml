@@ -43,6 +43,13 @@ kml_layer.SpatialPixels <- function(
 
   colour_scale <- colorRampPalette(pal)(length(data))
 
+  # Transparency
+  alpha <- charmatch("alpha", names(call))
+  if (!is.na(alpha)) {
+    alpha <- eval(call[["alpha"]], obj@data)
+    colour_scale <- kml_alpha(obj, alpha, colours = colour_scale, RGBA = TRUE)
+  }
+
   # Creating a SpatialPixelsDataFrame object to be plotted
   call_name <- deparse(call[["colour"]])
   data <- data.frame(data)
