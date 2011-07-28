@@ -1,4 +1,5 @@
 twopoints2path <-
+require(fossil)  # Haversine Formula for Great Circle distance
 function(lon1, lon2, lat1, lat2, ID, n.points, print.geo) {
 # lon / lat = geographical coordinates on WGS84
 # n.points = number of intermediate points (derived by the model)
