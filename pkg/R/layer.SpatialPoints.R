@@ -22,7 +22,7 @@ kml_layer.SpatialPoints <- function(
   aes <- kml_aes(obj, ...)
 
   # Read the relevant aesthetics
-  points_names<- aes[["labels"]]
+  points_names <- aes[["labels"]]
   colours <- aes[["colour"]]
   shapes <- aes[["shape"]]
   sizes <- aes[["size"]]

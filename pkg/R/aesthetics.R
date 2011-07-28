@@ -1,5 +1,7 @@
 # List of available aesthetics is given .all_kml_aesthetics
 # along with their default values
+require(RColorBrewer)
+
 .all_kml_aesthetics <- list(
   colour = "black",
   fill = "white",
