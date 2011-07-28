@@ -25,7 +25,7 @@ reproject.RasterLayer <- function(obj, CRS = .referenceCrs, ...) {
     method <- "ngb"
   else
     method <- "bilinear"
-  res <- projectRaster(obj, crs = CRS, method = method, ...)
+  res <- projectRaster(obj, crs = CRS, method = method, progress='text', ...)
   layerNames(res) <- layerNames(obj)
   res
 }
