@@ -24,7 +24,7 @@ kml_altitude <- function(obj, altitude = NULL) {
 # Guesses the appropriate altitudeMode tag
 #
 kml_altitude_mode <- function(altitude){
-  if (is.numeric(altitude) & all(altitude >= 0)) {
+  if (is.numeric(altitude) & all(altitude > 0)) {
     altitude_mode <- "relativeToGround"
   }
   else {
