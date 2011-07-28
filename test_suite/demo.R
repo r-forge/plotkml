@@ -1,23 +1,7 @@
 # will be publicly available soon !
 library(plotKML)
-
-system("Rcmd build D:/R/plotKML/working/pkg")
-# fails
-system("R CMD INSTALL D:/R/plotKML/working/pkg")
-# does not work under Windows ("cannot open file 'AAAA.R': No such file or directory")
-# Code
-source('../pkg/R/AAAA.R')
-source('../pkg/R/aesthetics.R')
-source('../pkg/R/altitude.R')
-source('../pkg/R/check_projection.R')
-source('../pkg/R/layer.SpatialPoints.R')
-source('../pkg/R/layer.SpatialPolygons.R')
-source('../pkg/R/layer.SpatialLines.R')
-source('../pkg/R/layer.Raster.R')
-source('../pkg/R/kml.R')
-source('../pkg/R/utils.R')
-source('../pkg/R/attributes.R')
-source('../pkg/R/reproject.R')
+library(gstat)
+library(maptools)
 
 ##
 ## KML authoring
@@ -41,17 +25,19 @@ nc <- readShapePoly(system.file("shapes/sids.shp", package="maptools")[1], proj4
 nc.geo <- spTransform(nc, CRS("+proj=longlat +datum=WGS84"))
 
 # SpatialLines
-rm(volcano)
+data(volcano)
 volcano <- ContourLines2SLDF(contourLines(volcano))
 proj4string(volcano) <- CRS("+init=epsg:4326") # of course this is stupid
 volcano$altitude <- as.numeric(as.character(volcano$level))
 
 # Simple example: one layer
 # -------------------------
+# this is broken in r139
 kml(meuse.grid, colour = dist, file = "foo.kml", overwrite = TRUE)
 
 # Playing with two aesthetics in one plot (size and colour)
 kml(meuse, colour = log(zinc), size = cadmium, file = "foo.kml", overwrite = TRUE)
+
 # new icon:
 kml(meuse, colour = zinc, file = "foo_ball.kml", shape = "http://plotkml.r-forge.r-project.org/3Dball.png", overwrite=TRUE) 
 
