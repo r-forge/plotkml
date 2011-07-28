@@ -97,12 +97,20 @@ kml_aes <- function(obj, ...) {
     else {
       aes[['colour']] <- rep(col2kml(parent_call[['colour']]), length.out = length(obj))
     }
-
   }
+
   # using the default value
   else {
     aes[['colour']] <- rep(.all_kml_aesthetics[["colour"]], length.out = length(obj))
   }
+
+  # Alpha
+  if ("alpha" %in% called_aes) {
+    aes[['colour']] <- kml_alpha(obj, alpha  = parent_call[['alpha']], colours = aes[['colour']])
+  }
+#   else {
+#     aes[['alpha']] <- rep(.all_kml_aesthetics[["alpha"]], length.out = length(obj))
+#   }
 
   # Whitening
 #     if ("whitening" %in% called_aes) {
@@ -138,14 +146,6 @@ kml_aes <- function(obj, ...) {
   }
   else {
     aes[['width']] <- rep(.all_kml_aesthetics[["width"]], length.out = length(obj))
-  }
-
-  # Alpha
-  if ("alpha" %in% called_aes) {
-    aes[['alpha']] <- kml_alpha(obj, alpha, ...)
-  }
-  else {
-    aes[['alpha']] <- rep(.all_kml_aesthetics[["alpha"]], length.out = length(obj))
   }
 
   # Altitude
@@ -241,15 +241,29 @@ kml_shape <- function(obj, shape, ...){
 }
 
 # Opacity (points, polygons, lines, raster)
+#
+# This function modifies the vector of KML colours
 kml_alpha <- function(obj, alpha, colours, ...){
 
-  x <- obj[[alpha]]
+  if (is.numeric(alpha)) {
+    # alpha should be given as a number in [0, 1]
+    alpha <- round(255*alpha, digits = 0)
+    # Conversion to hex mode
+    alpha <- sprintf("%x", alpha)
+    # modification of the KML colours using that alpha value
+    cols <- aaply(colours, 1, function(x)  paste("#", alpha, str_sub(x, 4, 9), sep = ""))
+  }
+  else {
+    stop('implementation in progress.')
+    x <- obj[[alpha]]
 
-  if (is.numeric(x)) {
-    limits <- range(x, na.rm = TRUE, finite = TRUE)
-    brks <- seq(limits[1], limits[2], length.out = length(colours))
-    grps <- cut(x, breaks = brks, include.lowest = TRUE)
-#     alphas <-
+    if (is.numeric(x)) {
+      limits <- range(x, na.rm = TRUE, finite = TRUE)
+      brks <- seq(limits[1], limits[2], length.out = length(colours))
+      grps <- cut(x, breaks = brks, include.lowest = TRUE)
+    }
+    else
+      stop("Transparency is only available for numeric data.")
   }
 
   cols
