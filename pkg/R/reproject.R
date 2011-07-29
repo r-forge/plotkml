@@ -48,16 +48,16 @@ reproject.SpatialPixels <- function(obj, CRS = .referenceCrs, ...) {
     }
 
     names(res) <- names(obj)
-    i_na <- unique(which(!is.na(res@data[, i_nm]), arr.ind = TRUE)[,1])
 
-    res <- res[i_na, ]
+#     i_na <- unique(which(!is.na(res@data[, i_nm]), arr.ind = TRUE)[,1])
+#     res <- res[i_na, ]
   }
   # SpatialPixels
   else {
     r <- raster(obj)
     res <- as(reproject(r, CRS = CRS, ...), "SpatialPixels")
   }
-  
+
   res
 }
 
