@@ -68,7 +68,7 @@ kml_aes <- function(obj, ...) {
         }
         # If its a call we have to evaluate it first
         else if (is.call(parent_call[[called_aes]]))
-          aes[['labels']] <- as.character(round(eval(parent_call[[called_aes]], obj@data), digits = 3))
+          aes[['labels']] <- as.character(format(eval(parent_call[[called_aes]], obj@data), digits = 3))
         # default behaviour is just numbering using the N first integers
         else
           aes[['labels']] <- as.character(1:length(obj))
@@ -100,15 +100,14 @@ kml_aes <- function(obj, ...) {
       aes[['colour']] <- rep(col2kml(parent_call[['colour']]), length.out = length(obj))
     }
   }
-
   # using the default value
   else {
-    aes[['colour']] <- rep(.all_kml_aesthetics[["colour"]], length.out = length(obj))
+    aes[['colour']] <- rep(col2kml(.all_kml_aesthetics[["colour"]]), length.out = length(obj))
   }
 
   # Alpha
   if ("alpha" %in% called_aes) {
-    aes[['colour']] <- kml_alpha(obj, alpha  = parent_call[['alpha']], colours = aes[['colour']])
+    aes[['colour']] <- kml_alpha(obj, alpha  = eval(parent_call[['alpha']], obj@data), colours = aes[['colour']])
   }
 #   else {
 #     aes[['alpha']] <- rep(.all_kml_aesthetics[["alpha"]], length.out = length(obj))
@@ -239,7 +238,34 @@ kml_colour <- function(obj, colour, colour_scale = NULL){
 
 # Shape (points)
 kml_shape <- function(obj, shape, ...){
+  # Simple implementation if a URL is given
+  rep(shape, length.out = length(obj))
+}
 
+# modification of the colours using that alpha value
+.includeAlphaInColourRamp <- function(colours, alpha, RGBA = FALSE) {
+  # colours is a vector of characters describing the colour ramp values
+  # alpha is a value between 0 and 255
+  # RGBA is set to flase if for kml colour, true for RGBA colours
+
+  # Conversion to hex mode
+  alpha <- sprintf("%X", alpha)
+
+  colours <- str_sub(colours, 2, str_length(colours))
+
+  if (RGBA)
+    b <- cbind("#", colours, alpha)
+  else
+    b <- cbind('#', alpha, aaply(colours, 1, function(x) str_sub(x, 3, 9)))
+
+  res <-  apply(b, 1, function(x) paste(x, collapse = ""))
+
+  if (RGBA)
+    res <- toupper(res)
+  else
+    res <- tolower(res)
+
+  res
 }
 
 # Opacity (points, polygons, lines, raster)
@@ -247,26 +273,37 @@ kml_shape <- function(obj, shape, ...){
 # This function modifies the vector of KML colours
 kml_alpha <- function(obj, alpha, colours, RGBA = FALSE, ...){
 
+  # Alpha is constant or continuous
   if (is.numeric(alpha)) {
-    # alpha should be given as a number in [0, 1]
+    # rescaling data if continuous case
+    if (length(alpha) > 1)
+      alpha <- rescale(alpha)
+
     alpha <- round(255*alpha, digits = 0)
-    
-    # modification of the KML colours using that alpha value
-    if (RGBA) {
-      # Conversion to hex mode
-      alpha <- sprintf("%X", alpha)
-      # Adding hex A (alpha) to a RGB hex string
-      cols <- aaply(colours, 1, function(x) paste(x, alpha, sep = ""))
-    }
-    else {
-      # Conversion to hex mode
-      alpha <- sprintf("%x", alpha)
-      cols <- aaply(colours, 1, function(x)  paste("#", alpha, str_sub(x, 4, 9), sep = ""))
-    }
+    cols <- .includeAlphaInColourRamp(colours, alpha, RGBA)
+
+#     # Constant transparency
+#     if (length(alpha) == 1) {
+#       # modification of the KML colours using that alpha value
+#       if (RGBA) {
+#         # Conversion to hex mode
+#         alpha <- sprintf("%X", alpha)
+#         # Adding hex A (alpha) to a RGB hex string
+#         cols <- aaply(colours, 1, function(x) paste(x, alpha, sep = ""))
+#       }
+#       else {
+#         # Conversion to hex mode
+#         alpha <- sprintf("%x", alpha)
+#         cols <- aaply(colours, 1, function(x)  paste("#", alpha, str_sub(x, 4, 9), sep = ""))
+#       }
+#     }
+#     # transparency as an aesthetic
+#     else {
+
+#     }
   }
+  # Categorical data
   else {
-    stop('implementation in progress.')
-    x <- obj[[alpha]]
 
     if (is.numeric(x)) {
       limits <- range(x, na.rm = TRUE, finite = TRUE)
