@@ -47,8 +47,6 @@ reproject.SpatialPixels <- function(obj, CRS = .referenceCrs, ...) {
       res <- as(reproject(r, CRS = CRS, ...), "SpatialPixelsDataFrame")
     }
 
-    names(res) <- names(obj)
-
 #     i_na <- unique(which(!is.na(res@data[, i_nm]), arr.ind = TRUE)[,1])
 #     res <- res[i_na, ]
   }
