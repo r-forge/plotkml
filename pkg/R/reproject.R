@@ -56,7 +56,8 @@ reproject.SpatialPixels <- function(obj, CRS = .referenceCrs, FWTools = FALSE, m
        writeGDAL(obj[i], paste(names(obj)[i], ".tif", sep=""), "GTiff", mvFlag=mvFlag)
        unlink(paste(names(obj)[i], "_ll.sdat", sep=""))
        # reproject/resample using FWTools:
-       system(paste(gdalwarp, " ", names(obj)[i], ".tif ", names(obj)[i], "_ll.sdat -of \"SAGA\" -r bilinear -s_srs \"", proj4string(obj), "\" -t_srs \"+proj=longlat +datum=WGS84\" -srcnodata ", mvFlag, " -dstnodata -99999", sep=""))
+       cmd <- paste(gdalwarp, " ", names(obj)[i], ".tif ", names(obj)[i], "_ll.sdat -of \"SAGA\" -r bilinear -s_srs \"", proj4string(obj), "\" -t_srs \"+proj=longlat +datum=WGS84\" -srcnodata ", mvFlag, " -dstnodata -99999", sep="")
+       sss <- try(system(cmd), silent=TRUE)
       }
       res <- readGDAL(paste(names(obj)[1], "_ll.sdat", sep=""))
       names(res) <- names(obj)[i]

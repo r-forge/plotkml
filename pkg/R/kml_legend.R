@@ -102,8 +102,8 @@ kml_legend.whitening <- function(legend.res = 0.01, width=120, height=300, point
  
   ## Force transparency (requires ImageMagick):
  	if(matte!= "") {
-    im.path <- readRegistry("SOFTWARE\\ImageMagick\\Current")$BinPath
- 	  convert <- ifelse(.Platform$OS.type=="windows", shortPathName(paste(im.path, "convert.exe", sep="\\")), paste("/usr/bin", "convert", sep="/"))
+    im.path <- shortPathName(readRegistry("SOFTWARE\\ImageMagick\\Current")$BinPath)
+ 	  convert <- ifelse(.Platform$OS.type=="windows", paste(im.path, "convert.exe", sep="\\"), paste("/usr/bin", "convert", sep="/"))
 		cmd <- paste(convert, ' ', legend.file, ' -matte -transparent "#FFFFFF" ', legend.file, sep="")
 		sss <- try(system(cmd, intern=TRUE), silent=TRUE)
    }
