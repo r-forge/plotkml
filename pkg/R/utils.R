@@ -123,7 +123,7 @@ kml2hex <- function(kml) {
   require(stringr)
   require(plyr)
 
-  res <- aaply(kml, 1, function(x){
+  res <- apply(kml, 1, function(x){
 #     res <- paste("#", str_sub(tolower(x), 8, 9), str_sub(tolower(x), 6, 7), str_sub(tolower(hex), 4, 5), str_sub(tolower(hex), 2, 3), sep = "")
     res <- paste("#", str_sub(toupper(x), 8, 9), str_sub(toupper(x), 6, 7), str_sub(toupper(x), 4, 5), str_sub(toupper(x), 2, 3), sep = "")
     res
@@ -133,70 +133,41 @@ kml2hex <- function(kml) {
   as.vector(res)
 }
 
-
-# Generates PNG legend
+# Whitening (RGB) values
 #
-kml_legend <- function(
-  x, 
-  var.type = "numeric", 
-  legend.file, 
-  legend.pal = rev(rainbow(65)[1:48]), 
-  z.lim = c(quantile(x, 0.025, na.rm=TRUE), quantile(x, 0.975, na.rm=TRUE)), 
-  factor.labels,
-  ...
-  ){
-
-  require(colorspace)
-  require(plotrix)
-  
-  ## Factor-type variables:
-    if(class(x) == "factor" | var.type=="factor") {
- 
-    z.lim <- NA
-    if(missing(factor.labels)){ col.no <- length(levels(as.factor(x)))  }
-    else { col.no <- length(factor.labels) }
- 
-    if(missing(factor.labels)) {
-    ### NOTE : This is a not a perfect implementation for a factor with a lot of categories!
-    leg.width <- max(nchar(levels(as.factor(x))))*5+70  # 5 pix per character
-    leg.height <- length(levels(as.factor(x)))*40 # 20 pix per class
-    }
- 
-    else {
-    leg.width <- max(nchar(factor.labels))*10+70  # 10 pix per character
-    leg.height <- length(factor.labels)*40 # 20 pix per class
-    }
- 
-    png(file=legend.file, width=leg.width, height=leg.height, bg="transparent", pointsize=14)
-    # c(bottom, left, top, right)
-    par(mar=c(.5,0,.5,1))
-    plot(x=rep(1, col.no), y=1:col.no, axes=FALSE, xlab='', ylab='', pch=15, cex=4, col=legend.pal)
-  
-      if(missing(factor.labels)) {
-      text(x=rep(1, col.no), y=1:col.no, labels=levels(as.factor(x)), cex=.8, pos=4, offset=1, col=rgb(0.99,0.99,0.99))
-      }
-  
-       else { 
-      text(x=rep(1, col.no), y=1:col.no, labels=factor.labels, cex=.8, pos=4, offset=1, col=rgb(0.99,0.99,0.99))
-    }
-  
-   dev.off()
-}
-
-  ### Numeric-type variables:
-  else {
-  if(class(x) == "numeric") {
-  png(file=legend.file, width=120, height=240, bg="transparent", pointsize=14)
-  par(mar=c(.5,0,.5,4))
-  plot(x=0:5, y=0:5, asp=3, type="n", axes=FALSE, xlab='', ylab='')
-  # get the 2-4 significant digits
-  lower.lim <- z.lim[1]
-  upper.lim <- z.lim[2]
-  col.labels <- signif(c(lower.lim, (upper.lim-lower.lim)/2, upper.lim), 2)
-  color.legend(xl=0, yb=0, xr=5, yt=5, legend=col.labels, rect.col=legend.pal, gradient="y", align="rb", cex=1.4, col=rgb(0.99,0.99,0.99))
-  
-  dev.off()
-  }
-  else { stop("Numeric or factor vector required") }
-}
-}
+whitening <- function(
+   x,      # target variable
+   xvar,   # associated uncertainty
+   x.lim = c(min(x, na.rm=TRUE), max(x, na.rm=TRUE)), 
+   e.lim = c(.4,1), 
+   global.var = var(x, na.rm=TRUE), 
+   col.type = "RGB")  # output col.type can be "RGB" or "hex" 
+   {
+   require(colorspace)
+   
+   # Derive the normalized error:
+   er <- sqrt(xvar)/sqrt(global.var)
+   # Strech the values (z) to the inspection range:
+   tz <- (x-x.lim[1])/(x.lim[2]-x.lim[1])
+   tz <- ifelse(tz<=0, 0, ifelse(tz>1, 1, tz))
+   # Derive the Hues:
+   f1 <- -90-tz*300
+   f2 <- ifelse(f1<=-360, f1+360, f1)
+   H <- ifelse(f2>=0, f2, (f2+360))
+   # Strech the error values (e) to the inspection range:
+   er <- (er-e.lim[1])/(e.lim[2]-e.lim[1])
+   er <- ifelse(er<=0, 0, ifelse(er>1, 1, er))
+   # Derive the saturation and intensity images:
+   S <- 1-er
+   V <- 0.5*(1+er)
+   
+   # Convert the HSV values to RGB and put them as R, G, B bands:
+   if(col.type=="hex"){
+      out.cols <- hex(HSV(H, S, V))
+      return(out.cols)
+   }
+   else { 
+      out.cols <- as(HSV(H, S, V), "RGB")
+      return(out.cols)
+} 
+} 
