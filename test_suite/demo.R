@@ -1,6 +1,8 @@
 # will be publicly available soon !
 library(plotKML)
-
+library(gstat)
+library(maptools)
+library(RColorBrewer)
 
 # system("Rcmd build D:/R/plotKML/working/pkg")
 ## fails
@@ -26,40 +28,34 @@ source('../pkg/R/reproject.R')
 
 # Entering a set of spatial data
 #
-# SpatialPoints dataset
+
+## 1. meuse data set ----------------------------------------------------------
+# They are not lat-long - but plotKML can take good care of it!
 data(meuse)
+data(meuse.grid)
+# SpatialPoints dataset
 coordinates(meuse) <- ~x+y
 proj4string(meuse) <- CRS("+init=epsg:28992")
 # SpatialPixels
-data(meuse.grid)
 coordinates(meuse.grid) <- ~x+y
 proj4string(meuse.grid) <- CRS("+init=epsg:28992")
 gridded(meuse.grid) <- TRUE
-# They are not lat-long - but plotKML can take good care of it!
 
-# SpatialPolygons dataset
-nc <- readShapePoly(system.file("shapes/sids.shp", package="maptools")[1], proj4string=CRS("+proj=longlat +datum=NAD27"))
-nc.geo <- spTransform(nc, CRS("+proj=longlat +datum=WGS84"))
-
-# SpatialLines
-rm(volcano)
-volcano <- ContourLines2SLDF(contourLines(volcano))
-proj4string(volcano) <- CRS("+init=epsg:4326") # of course this is stupid
-volcano$altitude <- as.numeric(as.character(volcano$level))
 
 # Simple example: one layer
-# -------------------------
 kml(meuse.grid, colour = dist, file = "foo.kml", overwrite = TRUE)
 
 # Playing with two aesthetics in one plot (size and colour)
 kml(meuse, colour = log(zinc), size = cadmium, file = "foo.kml", overwrite = TRUE)
+
 # new icon:
 kml(meuse, colour = zinc, file = "foo_ball.kml", shape = "http://plotkml.r-forge.r-project.org/3Dball.png", overwrite=TRUE) 
 
+# attributes from @data
+kml(meuse, colour = zinc, file = "foo_attr.kml", overwrite=TRUE, balloon=TRUE)
 
-# More elaborated example: multi-layer
-# ------------------------------------
 
+# multi-layer example:
 # start output
 f.out <- kml_open('foo.kml', overwrite = TRUE)
 
@@ -71,32 +67,39 @@ kml_layer(meuse.grid, colour = exp(dist), file = f.out)
 # SpatialPointsDataFrame
 kml_layer(meuse, colour = soil, file = f.out) 
 
-# note that the default colour ramps are differnt wether it is continous or categorical data
+# note that the default colour ramps are different wether it is continous or categorical data
 
 # Close file
 kml_close(file = f.out)
+## ----------------------------------------------------------------------------
 
 
 
-# SpatialPolygons
+## 2. SpatialPolygons dataset ------------------------------------------------
+nc <- readShapePoly(system.file("shapes/sids.shp", package="maptools")[1], proj4string=CRS("+proj=longlat +datum=NAD27"))
+nc.geo <- spTransform(nc, CRS("+proj=longlat +datum=WGS84"))
+
+# single layer documents
 kml(nc.geo, '01-polygons.kml')
-library(RColorBrewer)
-kml(nc.geo, '02-polygons.kml', colour=AREA,
-colour_scale=brewer.pal(n=5, name="Blues"))
+kml(nc.geo, '02-polygons.kml', colour=AREA, colour_scale=brewer.pal(n=5, name="Blues"))
 
-# SpatialLines
-kml(volcano, file='03-lines.kml', colour=altitude, colour_scale =
-terrain.colors(10))
 
 # Multi-layer KML
 pts <- spsample(nc.geo, n = 50, type='random')
-kml_open("04-multi.kml")
-kml_layer(nc.geo, file = "04-multi.kml", colour = AREA,
-colour_scale=brewer.pal(n=5, name="Blues"))
-kml_layer(pts, file = "04-multi.kml", colour = "purple")
-kml_close("04-multi.kml")
+f.out <- kml_open("04-multi.kml")
+kml_layer(nc.geo, file = f.out, colour = AREA, colour_scale=brewer.pal(n=5, name="Blues"))
+kml_layer(pts, file = f.out, colour = "purple")
+kml_close(f.out)
 
-# have fun ;-)
+## ----------------------------------------------------------------------------
 
-# done!
 
+## 3. SpatialLines -----------------------------------------------------------
+rm(volcano)
+volcano <- ContourLines2SLDF(contourLines(volcano))
+proj4string(volcano) <- CRS("+init=epsg:4326") # of course this is stupid
+volcano$altitude <- as.numeric(as.character(volcano$level))
+
+kml(volcano, file='03-lines.kml', colour=altitude, colour_scale = terrain.colors(10))
+
+## ----------------------------------------------------------------------------
