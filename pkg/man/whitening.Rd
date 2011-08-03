@@ -31,7 +31,7 @@ whitening(x, xvar, z.lim = c(min(x, na.rm=TRUE), max(x, na.rm=TRUE)),  e.lim = c
 %%     ~~Describe \code{col.type} here~~
 }
 }
-\details{ Calculation of the whitening colour is based on the Hue-Saturation-Intensity (HSI) color model and mixing of colours. The HSI is a psychologically appealing color model: hue is used to visualize values and whitening (paleness) is used to visualize the uncertainty. Unlike standard legends for continuous variables, this legend has two axis - one for value range and one for uncertainty range. \par 
+\details{ Calculation of the whitening colour is based on the Hue-Saturation-Intensity (HSI) color model and mixing of colours. The HSI is a psychologically appealing color model: hue is used to visualize values and whitening (paleness) is used to visualize the uncertainty. Unlike standard legends for continuous variables, this legend has two axis - one for value range and one for uncertainty range.
 The standard range for \code{e.lim} is 0.4 and 1.0 (maximum). This assumes that a satisfactory prediction is when the model explains more than 85\% of the total variation (normalized error = 40\%). Otherwise, if the value of the normalized error get above 80\%, the model accounts for less than 50\% of variability.
 %%  ~~ If necessary, more details than the description above ~~
 }

@@ -1,8 +1,7 @@
 \name{tex.pal}
 \alias{tex.pal}
 \docType{data}
-\title{
-%%   ~~ data name/kind ... ~~
+\title{Text Pal (?)
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of the dataset. ~~
