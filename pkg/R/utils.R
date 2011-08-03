@@ -18,15 +18,21 @@ kml_open <- function(
   ){
 
   if (file.exists(file) & !overwrite) {
-    stop(paste("File", file, "exists. Set the overwrite option to TRUE if you want to overwrite that file, or choose a different name for it."))
+     stop(paste("File", file, "exists. Set the overwrite option to TRUE if you want to overwrite that file, or choose a different name for it."))
   }
-
+  
+  # init connection to file: consider using 'file.name' instead of 'file'
+  file <- file(file, 'w', blocking=TRUE)
+  
   # header
   cat("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", file = file)
   cat('<kml xmlns=\"', kml.url, '\">\n', sep = "", file = file, append = TRUE)
   cat("<Document>\n", file = file, append = TRUE)
   cat("<name>", name, "</name>\n", sep = "", file = file, append = TRUE)
   cat("<open>1</open>\n", file = file, append = TRUE)
+  
+  # return the file handle to the calling environment
+  return(file)
 }
 
 #' Closes the current KML canvas
@@ -37,6 +43,7 @@ kml_close <- function(
   ){
   cat("</Document>\n", file = file, append = TRUE)
   cat("</kml>\n", file = file, append = TRUE)
+  close(file)
 }
 
 #' Compresses a KML into a KMZ

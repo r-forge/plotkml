@@ -1,6 +1,7 @@
 # will be publicly available soon !
 library(plotKML)
 
+
 # system("Rcmd build D:/R/plotKML/working/pkg")
 ## fails
 # system("R CMD INSTALL D:/R/plotKML/working/pkg")
@@ -60,20 +61,22 @@ kml(meuse, colour = zinc, file = "foo_ball.kml", shape = "http://plotkml.r-forge
 # ------------------------------------
 
 # start output
-kml_open("foo.kml", overwrite = TRUE)
+f.out <- kml_open('foo.kml', overwrite = TRUE)
 
 # SpatialPixelsDataFrame
-kml_layer(meuse.grid, colour = exp(dist), file = "foo.kml") 
+kml_layer(meuse.grid, colour = exp(dist), file = f.out) 
 
 # (the formula is just showing that we can enter formulas)
 
 # SpatialPointsDataFrame
-kml_layer(meuse, colour = soil, file = "foo.kml") 
+kml_layer(meuse, colour = soil, file = f.out) 
 
 # note that the default colour ramps are differnt wether it is continous or categorical data
 
 # Close file
-kml_close(file = "foo.kml")
+kml_close(file = f.out)
+
+
 
 # SpatialPolygons
 kml(nc.geo, '01-polygons.kml')

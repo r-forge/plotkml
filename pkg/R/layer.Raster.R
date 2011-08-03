@@ -87,7 +87,7 @@ kml_layer.Raster <- function(
   call_name <- deparse(call[["colour"]])
 
   # Creating the PNG file
-  raster_name <- paste(file, ".png", sep = "")
+  raster_name <- paste(summary(file)$description, ".png", sep = "")
 
   # Plotting the image
   png(file = raster_name, bg = "transparent") # , width = grd$width, height = grd$height)
