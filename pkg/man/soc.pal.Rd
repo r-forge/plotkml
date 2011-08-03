@@ -1,8 +1,7 @@
 \name{soc.pal}
 \alias{soc.pal}
 \docType{data}
-\title{
-%%   ~~ data name/kind ... ~~
+\title{Soc Pal (?)
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of the dataset. ~~

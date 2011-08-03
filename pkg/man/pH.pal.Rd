@@ -1,8 +1,7 @@
 \name{pH.pal}
 \alias{pH.pal}
 \docType{data}
-\title{
-%%   ~~ data name/kind ... ~~
+\title{pH Pal (?)
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of the dataset. ~~
