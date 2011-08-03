@@ -1,9 +1,6 @@
 # R functions for the plotKML package
 # Author: Pierre Roudier & Tomislav Hengl
-# contact: pierre.roudier@landcare.nz; tom.hengl@wur.nl
-# Date : July 2011
-# Version 0.1
-# Licence GPL v3
+# contact: pierre.roudier@landcareresearch.co.nz.nz; tom.hengl@wur.nl
 
 #' Open a new KML canvas
 #'
@@ -20,17 +17,17 @@ kml_open <- function(
   if (file.exists(file) & !overwrite) {
      stop(paste("File", file, "exists. Set the overwrite option to TRUE if you want to overwrite that file, or choose a different name for it."))
   }
-  
+
   # init connection to file: consider using 'file.name' instead of 'file'
   file <- file(file, 'w', blocking=TRUE)
-  
+
   # header
   cat("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", file = file)
   cat('<kml xmlns=\"', kml.url, '\">\n', sep = "", file = file, append = TRUE)
   cat("<Document>\n", file = file, append = TRUE)
   cat("<name>", name, "</name>\n", sep = "", file = file, append = TRUE)
   cat("<open>1</open>\n", file = file, append = TRUE)
-  
+
   # return the file handle to the calling environment
   return(file)
 }
@@ -130,89 +127,11 @@ kml2hex <- function(kml) {
   require(stringr)
   require(plyr)
 
-  res <- apply(kml, 1, function(x){
-#     res <- paste("#", str_sub(tolower(x), 8, 9), str_sub(tolower(x), 6, 7), str_sub(tolower(hex), 4, 5), str_sub(tolower(hex), 2, 3), sep = "")
+  res <- aaply(kml, 1, function(x){
     res <- paste("#", str_sub(toupper(x), 8, 9), str_sub(toupper(x), 6, 7), str_sub(toupper(x), 4, 5), str_sub(toupper(x), 2, 3), sep = "")
     res
     }
   )
 
   as.vector(res)
-}
-
-# Whitening (RGB) values
-#
-whitening <- function(
-   x,      # target variable
-   xvar,   # associated uncertainty
-   x.lim = c(min(x, na.rm=TRUE), max(x, na.rm=TRUE)), 
-   e.lim = c(.4,1), 
-   global.var = var(x, na.rm=TRUE), 
-   col.type = "RGB")  # output col.type can be "RGB" or "hex" 
-   {
-   require(colorspace)
-   
-   # Derive the normalized error:
-   er <- sqrt(xvar)/sqrt(global.var)
-   # Strech the values (z) to the inspection range:
-   tz <- (x-x.lim[1])/(x.lim[2]-x.lim[1])
-   tz <- ifelse(tz<=0, 0, ifelse(tz>1, 1, tz))
-   # Derive the Hues:
-   f1 <- -90-tz*300
-   f2 <- ifelse(f1<=-360, f1+360, f1)
-   H <- ifelse(f2>=0, f2, (f2+360))
-   # Strech the error values (e) to the inspection range:
-   er <- (er-e.lim[1])/(e.lim[2]-e.lim[1])
-   er <- ifelse(er<=0, 0, ifelse(er>1, 1, er))
-   # Derive the saturation and intensity images:
-   S <- 1-er
-   V <- 0.5*(1+er)
-   
-   # Convert the HSV values to RGB and put them as R, G, B bands:
-   if(col.type=="hex"){
-      out.cols <- hex(HSV(H, S, V))
-      return(out.cols)
-   }
-   else { 
-      out.cols <- as(HSV(H, S, V), "RGB")
-      return(out.cols)
-} 
-} 
-
-## From 2 points to a geo-path
-geopath <- function(lon1, lon2, lat1, lat2, ID, n.points, print.geo = FALSE) {
-require(fossil)  # Haversine Formula for Great Circle distance
-# lon / lat = geographical coordinates on WGS84
-# n.points = number of intermediate points
-
-   p.1 <- matrix(c(lon1, lat1), ncol=2, dimnames=list(1,c("lon","lat")))  # source
-   p.2 <- matrix(c(lon2, lat2), ncol=2, dimnames=list(1,c("lon","lat")))  # destination
-   distc <- deg.dist(lat1=p.1[,2], long1=p.1[,1], lat2=p.2[,2], long2=p.2[,1])  # in km
-   bearingc <- earth.bear(lat1=p.1[,2], long1=p.1[,1], lat2=p.2[,2], long2=p.2[,1])  # bearing in degrees from north
-   # estimate the number of points based on the distance (the higher the distance, less points we need): 
-   if(missing(ID)) { ID <- paste(ifelse(lon1<0, "W", "E"), abs(round(lon1,0)), ifelse(lat1<0, "S", "N"), abs(round(lat1,0)), ifelse(lon2<0, "W", "E"), abs(round(lon2,0)), ifelse(lat2<0, "S", "N"), abs(round(lat2,0)), sep="") }
-   if(missing(n.points)) {
-   n.points <- round(sqrt(distc)/sqrt(2), 0)
-  }
-  if(!is.nan(n.points)) { if(n.points>0) {
-     pnts <- t(sapply(1:n.points/(n.points+1)*distc, FUN=new.lat.long, lat=p.1[,2], lon=p.1[,1], bearing=bearingc))[,c(2,1)] # intermediate points
-   # some lines are crossing the whole globe (>180 or <-180 longitudes) and need to be split in two:
-  if(is.matrix(pnts)){ if(max(LineLength(pnts, sum=FALSE))>100) {  
-    breakp <- which.max(abs(pnts[,1]-c(pnts[-1,1], pnts[length(pnts[,1]),1])))
-    pnts1 <- pnts[1:breakp,]
-    pnts2 <- pnts[(breakp+1):length(pnts[,1]),]  
-    routes <- Lines(list(Line(matrix(rbind(p.1, pnts1),ncol=2)), Line(matrix(rbind(pnts2, p.2),ncol=2))), ID=as.character(ID))
-   } 
-   
-   else {
-   routes <- Lines(list(Line(matrix(rbind(p.1, pnts, p.2),ncol=2))), ID=as.character(ID)) } 
-} } 
-   # create SpatialLines:
-   path <- SpatialLines(list(routes), CRS("+proj=longlat +datum=WGS84"))
-   }
-  if(print.geo==TRUE) {
-  print(paste("Distance:", round(distc,1)))
-  print(paste("Bearing:", round(bearingc,1)))
-  } 
-  return(path)
 }
