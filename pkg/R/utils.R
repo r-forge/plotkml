@@ -19,28 +19,28 @@ kml_open <- function(
   }
 
   # init connection to file: consider using 'file.name' instead of 'file'
-  file <- file(file, 'w', blocking=TRUE)
-
+  assign('kml.file.out', file(file, 'w', blocking=TRUE), env=plotKML.fileIO)
+  file.connection <- get('kml.file.out', env=plotKML.fileIO)
+  
   # header
-  cat("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", file = file)
-  cat('<kml xmlns=\"', kml.url, '\">\n', sep = "", file = file, append = TRUE)
-  cat("<Document>\n", file = file, append = TRUE)
-  cat("<name>", name, "</name>\n", sep = "", file = file, append = TRUE)
-  cat("<open>1</open>\n", file = file, append = TRUE)
-
-  # return the file handle to the calling environment
-  return(file)
+  cat("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", file = file.connection)
+  cat('<kml xmlns=\"', kml.url, '\">\n', sep = "", file = file.connection, append = TRUE)
+  cat("<Document>\n", file = file.connection, append = TRUE)
+  cat("<name>", name, "</name>\n", sep = "", file = file.connection, append = TRUE)
+  cat("<open>1</open>\n", file = file.connection, append = TRUE)
 }
 
 #' Closes the current KML canvas
 #'
 #' @param file KML file name to be closed
-kml_close <- function(
-  file
-  ){
-  cat("</Document>\n", file = file, append = TRUE)
-  cat("</kml>\n", file = file, append = TRUE)
-  close(file)
+kml_close <- function(){
+  
+  # get our invisible file connection from custom evnrionment
+  file.connection <- get('kml.file.out', env=plotKML.fileIO)
+  
+  cat("</Document>\n", file = file.connection, append = TRUE)
+  cat("</kml>\n", file = file.connection, append = TRUE)
+  close(file.connection)
 }
 
 #' Compresses a KML into a KMZ
