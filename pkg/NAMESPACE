@@ -1,10 +1,12 @@
-import(sp)
-import(raster)
-import(rgdal)
 importFrom(ggplot2, rescale)
 import(stringr)
 import(plyr)
+
 import(RColorBrewer)
+
+import(sp)
+import(raster)
+import(rgdal)
 
 export(kml_open, kml_close, kml_compress)
 
