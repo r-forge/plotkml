@@ -6,11 +6,11 @@ kml.Spatial <- function(
   kmz = FALSE
 ){
 
-  file.out <- kml_open(file = file, name = as.character(substitute(obj, parent.frame())), overwrite = overwrite)
+  kml_open(file = file, name = as.character(substitute(obj, parent.frame())), overwrite = overwrite)
 
-  kml_layer(obj = obj, file = file.out, ...)
+  kml_layer(obj = obj, ...)
 
-  kml_close(file = file.out)
+  kml_close()
 
   if (kmz)
     kml_compress(file)

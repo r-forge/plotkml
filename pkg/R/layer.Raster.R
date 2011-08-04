@@ -1,14 +1,16 @@
 kml_layer.Raster <- function(
   # options on the object to plot
   obj,
-  file,
   title = as.character(substitute(obj, env = parent.frame())),
   extrude = TRUE,
   z.scale = 1,
   LabelScale = 0.7,
   ...
   ){
-
+  
+  # get our invisible file connection from custom evnrionment
+  file.connection <- get('kml.file.out', env=plotKML.fileIO)
+  
   # Checking the projection is geo
   check <- check_projection(obj, logical = TRUE)
 
@@ -87,7 +89,7 @@ kml_layer.Raster <- function(
   call_name <- deparse(call[["colour"]])
 
   # Creating the PNG file
-  raster_name <- paste(summary(file)$description, ".png", sep = "")
+  raster_name <- paste(summary(file.connection)$description, ".png", sep = "")
 
   # Plotting the image
   png(file = raster_name, bg = "transparent") # , width = grd$width, height = grd$height)
@@ -96,33 +98,33 @@ kml_layer.Raster <- function(
   dev.off()
 
   # Folder and name of the points folder
-  cat("<Folder>\n", file = file, append = TRUE)
-  cat("<name>", call_name, "</name>\n", sep = "", file = file, append = TRUE)
+  cat("<Folder>\n", file = file.connection, append = TRUE)
+  cat("<name>", call_name, "</name>\n", sep = "", file = file.connection, append = TRUE)
 
   # write into the a KML file:
-  write('<GroundOverlay>', file, append = TRUE)
-  write(paste('<name>', call_name, '</name>', sep=""), file, append = TRUE)
+  write('<GroundOverlay>', file.connection, append = TRUE)
+  write(paste('<name>', call_name, '</name>', sep=""), file.connection, append = TRUE)
 
-  write(paste('<altitude>', altitude, '</altitude>', sep = ""), file, append = TRUE)
-  write(paste('<altitudeMode>', altitudeMode, '</altitudeMode>', sep = ""), file, append = TRUE)
+  write(paste('<altitude>', altitude, '</altitude>', sep = ""), file.connection, append = TRUE)
+  write(paste('<altitudeMode>', altitudeMode, '</altitudeMode>', sep = ""), file.connection, append = TRUE)
 
   # Using the previously generated raster file
-  write('<Icon>', file, append = TRUE)
-  write(paste('<href>', raster_name, '</href>', sep = ""), file, append = TRUE)
-  write('</Icon>', file, append = TRUE)
+  write('<Icon>', file.connection, append = TRUE)
+  write(paste('<href>', raster_name, '</href>', sep = ""), file.connection, append = TRUE)
+  write('</Icon>', file.connection, append = TRUE)
 
   # Bounding box used to drape the raster file
-  write('<LatLonBox>', file, append = TRUE)
-  write(paste('<north>', bbox(extent(obj))[2, 2], '</north>', sep = ""), file, append = TRUE)
-  write(paste('<south>', bbox(extent(obj))[2, 1], '</south>', sep = ""), file, append = TRUE)
-  write(paste('<east>', bbox(extent(obj))[1, 2], '</east>', sep = ""), file, append = TRUE)
-  write(paste('<west>', bbox(extent(obj))[1, 1], '</west>', sep = ""), file, append = TRUE)
-  write('</LatLonBox>', file, append = TRUE)
+  write('<LatLonBox>', file.connection, append = TRUE)
+  write(paste('<north>', bbox(extent(obj))[2, 2], '</north>', sep = ""), file.connection, append = TRUE)
+  write(paste('<south>', bbox(extent(obj))[2, 1], '</south>', sep = ""), file.connection, append = TRUE)
+  write(paste('<east>', bbox(extent(obj))[1, 2], '</east>', sep = ""), file.connection, append = TRUE)
+  write(paste('<west>', bbox(extent(obj))[1, 1], '</west>', sep = ""), file.connection, append = TRUE)
+  write('</LatLonBox>', file.connection, append = TRUE)
 
-  write('</GroundOverlay>', file, append = TRUE)
+  write('</GroundOverlay>', file.connection, append = TRUE)
 
   # Closing the folder
-  cat("</Folder>\n", file = file, append = TRUE)
+  cat("</Folder>\n", file = file.connection, append = TRUE)
 }
 
 setMethod("kml_layer", "Raster", kml_layer.Raster)

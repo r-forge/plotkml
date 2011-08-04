@@ -57,20 +57,20 @@ kml(meuse, colour = zinc, file = "foo_attr.kml", overwrite=TRUE, balloon=TRUE)
 
 # multi-layer example:
 # start output
-f.out <- kml_open('foo.kml', overwrite = TRUE)
+kml_open('foo.kml', overwrite = TRUE)
 
 # SpatialPixelsDataFrame
-kml_layer(meuse.grid, colour = exp(dist), file = f.out) 
+kml_layer(meuse.grid, colour = exp(dist)) 
 
 # (the formula is just showing that we can enter formulas)
 
 # SpatialPointsDataFrame
-kml_layer(meuse, colour = soil, file = f.out) 
+kml_layer(meuse, colour = soil) 
 
 # note that the default colour ramps are different wether it is continous or categorical data
 
 # Close file
-kml_close(file = f.out)
+kml_close()
 ## ----------------------------------------------------------------------------
 
 
@@ -80,16 +80,16 @@ nc <- readShapePoly(system.file("shapes/sids.shp", package="maptools")[1], proj4
 nc.geo <- spTransform(nc, CRS("+proj=longlat +datum=WGS84"))
 
 # single layer documents
-kml(nc.geo, '01-polygons.kml')
-kml(nc.geo, '02-polygons.kml', colour=AREA, colour_scale=brewer.pal(n=5, name="Blues"))
+kml(nc.geo, file='01-polygons.kml')
+kml(nc.geo, colour=AREA, colour_scale=brewer.pal(n=5, name="Blues"))
 
 
 # Multi-layer KML
 pts <- spsample(nc.geo, n = 50, type='random')
-f.out <- kml_open("04-multi.kml")
-kml_layer(nc.geo, file = f.out, colour = AREA, colour_scale=brewer.pal(n=5, name="Blues"))
-kml_layer(pts, file = f.out, colour = "purple")
-kml_close(f.out)
+kml_open("04-multi.kml")
+kml_layer(nc.geo, colour = AREA, colour_scale=brewer.pal(n=5, name="Blues"))
+kml_layer(pts, colour = "purple")
+kml_close()
 
 ## ----------------------------------------------------------------------------
 
