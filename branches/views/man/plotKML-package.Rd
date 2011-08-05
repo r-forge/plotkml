@@ -16,7 +16,7 @@ LazyLoad: \tab yes\cr
 
 }
 \author{
-Tomislav Hengl <tom.hengl@wur.nl>, Dylan Beaudette <debeaudette@ucdavis.edu>
+Tomislav Hengl <tom.hengl@wur.nl>, Pierre Roudier <pierre.roudier@landcare.nz>, Dylan Beaudette <debeaudette@ucdavis.edu>
 Maintainer: Tomislav Hengl <tom.hengl@wur.nl>
 }
 \references{}
