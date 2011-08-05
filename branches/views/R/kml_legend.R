@@ -1,9 +1,8 @@
-# R function for the plotKML package
-# Author: Tomislav Hengl & Pierre Roudier
-# contact: tom.hengl@wur.nl, pierre.roudier@landcare.nz
-# Date : July 2011
-# Version 0.1
-# Licence GPL v3
+# Purpose        : Writing of PNG files / legends
+# Maintainer     : Dylan Beaudette (debeaudette@ucdavis.edu)
+# Contributions  : Tomislav Hengl (tom.hengl@wur.nl); Pierre Roudier (pierre.roudier@landcare.nz);
+# Status         : not tested yet
+# Note           : Function for plotting of legends for factor-type data needs to be improved
 
 # Generate PNG legend (1D)
 #
@@ -74,7 +73,18 @@ kml_legend <- function(
 
 # Generate PNG legend for whitening (2D)
 #
-kml_legend.whitening <- function(legend.res = 0.01, width=120, height=300, pointsize = 14, x.lim, e.lim, leg.asp = 0.3*width/height, legend.file = "whitening_legend.png", matte="") {
+kml_legend.whitening <- function(
+  legend.res = 0.01, 
+  width=120, 
+  height=300, 
+  pointsize = 14, 
+  x.lim, 
+  e.lim, 
+  leg.asp = 0.3*width/height,
+  legend.file = "whitening_legend.png",
+  matte="") 
+  {
+  
   require(colorspace)
   require(pixmap)
   require(animation)
