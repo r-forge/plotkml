@@ -31,14 +31,14 @@ Hannover, Germany. The data set has been prepared for this exercise by Tomislav 
 \references{ 
 Ad-hoc-AG Boden, 2005. Bodenkundliche Kartieranleitung. 5th Ed, Bundesanstalt fur Geowissenschaften und Rohstoffe und Nieders\"{a}chsisches Landesamt f\"{u}r Bodenforshung, Hannover, p. 423.
 
-Gehrt, E., B\"{o}hner, J., 2001. Vom punkt zur flache --- probleme des ``upscaling'' in der bodenkartierung. In: Diskussionsforum Bodenwissenschaften: Vom Bohrstock zum Bildschirm. FH, Osnabr\"{u}ck, pp. 17–34.
+Gehrt, E., B\"{o}hner, J., 2001. Vom punkt zur flache --- probleme des ``upscaling'' in der bodenkartierung. In: Diskussionsforum Bodenwissenschaften: Vom Bohrstock zum Bildschirm. FH, Osnabr\"{u}ck, pp. 17-34.
 
-Skaggs, T. H., Arya, L. M., Shouse, P. J., Mohanty, B. P., 2001. Estimating Particle-Size Distribution from Limited Soil Texture Data. Soil Science Society of America Journal 65 (4): 1038–1044.
+Skaggs, T. H., Arya, L. M., Shouse, P. J., Mohanty, B. P., 2001. Estimating Particle-Size Distribution from Limited Soil Texture Data. Soil Science Society of America Journal 65 (4): 1038-1044.
 
 \url{http://geomorphometry.org/content/ebergotzen}
 }
 \note{ Texture by hand method (Ad-hoc-AG Boden, 2005) can be used to determine the content of soil
-earth fractions only to an accuracy of +-5-–10\% (Skaggs et al. 2001). A surveyor distinguishes to which of the 32 texture classes a soil samples belongs to, and then
+earth fractions only to an accuracy of +-5--10\% (Skaggs et al. 2001). A surveyor distinguishes to which of the 32 texture classes a soil samples belongs to, and then
 estimates the content of fractions. E.g. texture class \code{St2} has 10\% clay, 25\% silt and 65\% sand. 
 }
 \seealso{\link{eberg_grid}}
