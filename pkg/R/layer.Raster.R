@@ -7,16 +7,12 @@ kml_layer.Raster <- function(
   LabelScale = 0.7,
   ...
   ){
-  
+
   # get our invisible file connection from custom evnrionment
   file.connection <- get('kml.file.out', env=plotKML.fileIO)
-  
+
   # Checking the projection is geo
   check <- check_projection(obj, logical = TRUE)
-
-  # Trying to reproject data if the check was not successful
-  if (!check)
-    obj <- reproject(obj)
 
   # Parsing the call for "colour"
   call <- substitute(list(...))
@@ -30,14 +26,13 @@ kml_layer.Raster <- function(
 
   if (is.call(call[["colour"]])) {
     data <- data.frame(getValues(obj))
-    names(data) <- layerNames(obj)
     data <- eval(call[["colour"]], data)
     obj <- raster(obj)
     values(obj) <- data
   }
   else if (is.name(call[["colour"]])) {
-    i_layer <- which(layerNames(obj) == as.character(call[["colour"]]))
     if (nlayers(obj) > 1) {
+      i_layer <- which(layerNames(obj) == as.character(call[["colour"]]))
       obj <- raster(obj, layer = i_layer)
     }
   }
@@ -57,6 +52,10 @@ kml_layer.Raster <- function(
 #   else {
 #     # Plotting the first layer
 #   }
+
+  # Trying to reproject data if the check was not successful
+  if (!check)
+    obj <- reproject(obj)
 
   data <- getValues(obj)
 
