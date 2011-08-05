@@ -41,6 +41,10 @@ kml_layer.SpatialLines <- function(
     write(paste('\t\t\t<color>', colours[i.line], '</color>', sep = ""), file.connection, append = TRUE)
     write(paste('\t\t\t<width>', width[i.line], '</width>', sep = ""), file.connection, append = TRUE)
     write("\t\t</LineStyle>", file.connection, append = TRUE)
+    # balloon
+    cat("\t\t<BalloonStyle>\n", file = file.connection, append = TRUE)
+    cat("\t\t\t<text>$[description]</text>\n", file = file.connection, append = TRUE)
+    cat("\t\t</BalloonStyle>\n", file = file.connection, append = TRUE)
     write("\t</Style>", file.connection, append = TRUE)
   }
 

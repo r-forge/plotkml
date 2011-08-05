@@ -40,6 +40,10 @@ kml_layer.SpatialPolygons <- function(
     write("\t\t<PolyStyle>", file.connection, append = TRUE)
     write(paste('\t\t\t<color>', colours[i.poly], '</color>', sep = ""), file.connection, append = TRUE)
     write("\t\t</PolyStyle>", file.connection, append = TRUE)
+    # balloon
+    cat("\t\t<BalloonStyle>\n", file = file.connection, append = TRUE)
+    cat("\t\t\t<text>$[description]</text>\n", file = file.connection, append = TRUE)
+    cat("\t\t</BalloonStyle>\n", file = file.connection, append = TRUE)
     write("\t</Style>", file.connection, append = TRUE)
   }
 
