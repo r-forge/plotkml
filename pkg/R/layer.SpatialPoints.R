@@ -56,6 +56,13 @@ kml_layer.SpatialPoints <- function(
     cat('\t\t\t\t<href>', shapes[i_pt], '</href>\n', sep = "", file = file.connection, append = TRUE)
     cat("\t\t\t</Icon>\n", file = file.connection, append = TRUE)
     cat("\t\t</IconStyle>\n", file = file.connection, append = TRUE)
+    
+    # balloon
+    cat("\t\t<BalloonStyle>\n", file = file.connection, append = TRUE)
+    cat("\t\t\t<text>$[description]</text>\n", file = file.connection, append = TRUE)
+    cat("\t\t</BalloonStyle>\n", file = file.connection, append = TRUE)
+    
+    # close style tag
     cat("\t</Style>\n", file = file.connection, append = TRUE)
   }
 

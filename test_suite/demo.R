@@ -65,7 +65,7 @@ kml_layer(meuse.grid, colour = exp(dist))
 # (the formula is just showing that we can enter formulas)
 
 # SpatialPointsDataFrame
-kml_layer(meuse, colour = soil) 
+kml_layer(meuse, colour = soil, balloon=TRUE) 
 
 # note that the default colour ramps are different wether it is continous or categorical data
 
