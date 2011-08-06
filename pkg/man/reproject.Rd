@@ -54,7 +54,8 @@ eberg.geo <- reproject(eberg)
 
 # Example on raster data
 data(eberg_grid)
-eberg_grid.geo <- reproject(eberg_grid)
+# NOT RUN
+# eberg_grid.geo <- reproject(eberg_grid)
 }
 
 \keyword{ ~projection}
