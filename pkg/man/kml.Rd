@@ -45,13 +45,17 @@ data(eberg)
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")
 # Simple plot
-kml(eberg, file = "eberg-0.kml")
+# NOT RUN
+# kml(eberg, file = "eberg-0.kml")
+
 # Plot using aesthetics
-kml(eberg, colour = SAND, size = CLAY, alpha = 0.75, file = "eberg-1.kml")
+# NOT RUN
+# kml(eberg, colour = SAND, size = CLAY, alpha = 0.75, file = "eberg-1.kml")
 
 # Plotting a SpatialPixelsDataFrame or a Raster* object
 data(eberg_grid)
-kml(eberg_grid, colour = DEM, file = "eberg_grid-0.kml")
+# NOT RUN
+# kml(eberg_grid, colour = DEM, file = "eberg_grid-0.kml")
 }
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
