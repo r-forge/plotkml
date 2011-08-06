@@ -17,7 +17,7 @@ if (!isGeneric("reproject"))
   setGeneric("reproject", function(obj, ...)
     standardGeneric("reproject")
   )
-  
+
 # setup our environment for storing file handles and the like
 plotKML.fileIO <- new.env(hash=TRUE)
 
