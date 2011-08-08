@@ -11,11 +11,10 @@
 
 \description{This function reprojects spatial data to a given coordinate reference system (CRS), defaulted to geographic coordinates.}
 
-\usage{reproject(obj, CRS, ...)}
+\usage{reproject(obj, ...)}
 
 \arguments{
   \item{obj}{A Spatial* or Raster* object}
-  \item{CRS}{Character or object of class 'CRS'. PROJ.4 description of the coordinate reference system.}
   \item{\dots}{Arguments evaluated in the context of function projectRaster from the raster package}
 }
 
