@@ -6,21 +6,26 @@ library(RColorBrewer)
 
 # system("Rcmd build D:/R/plotKML/working/pkg")
 ## fails
+# copying to build directory failed
+# Warning message:
+# running command 'Rcmd build D:/R/plotKML/working/pkg' had status 1 
+
 # system("R CMD INSTALL D:/R/plotKML/working/pkg")
-## does not work under Windows ("cannot open file 'AAAA.R': No such file or directory")
-## Load functions manually:
-source('../pkg/R/AAAA.R')
-source('../pkg/R/aesthetics.R')
-source('../pkg/R/altitude.R')
-source('../pkg/R/check_projection.R')
-source('../pkg/R/layer.SpatialPoints.R')
-source('../pkg/R/layer.SpatialPolygons.R')
-source('../pkg/R/layer.SpatialLines.R')
-source('../pkg/R/layer.Raster.R')
-source('../pkg/R/kml.R')
-source('../pkg/R/utils.R')
-source('../pkg/R/attributes.R')
-source('../pkg/R/reproject.R')
+## TH: Finally manged to install on Windows machine 
+
+## Alternative, load functions manually:
+# source('../pkg/R/AAAA.R')
+# source('../pkg/R/aesthetics.R')
+# source('../pkg/R/altitude.R')
+# source('../pkg/R/check_projection.R')
+# source('../pkg/R/layer.SpatialPoints.R')
+# source('../pkg/R/layer.SpatialPolygons.R')
+# source('../pkg/R/layer.SpatialLines.R')
+# source('../pkg/R/layer.Raster.R')
+# source('../pkg/R/kml.R')
+# source('../pkg/R/utils.R')
+# source('../pkg/R/attributes.R')
+# source('../pkg/R/reproject.R')
 
 ##
 ## KML authoring
