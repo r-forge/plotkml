@@ -40,7 +40,7 @@ reproject.RasterLayer <- function(obj, CRS = .referenceCrs, ...) {
 setMethod("reproject", "RasterLayer", reproject.RasterLayer)
 
 reproject.SpatialPixels <- function(obj, CRS = .referenceCrs, ...) {
-    
+
   # SpatialPixelsDataFrame
   if ("data" %in% slotNames(obj)) {
     i_nm <- which(sapply(obj@data, class) == 'numeric')
@@ -52,7 +52,7 @@ reproject.SpatialPixels <- function(obj, CRS = .referenceCrs, ...) {
       res <- stack(llply(r@layers, reproject, CRS = CRS, ...))
       res <- as(res, "SpatialPixelsDataFrame")
     }
-    
+
     else {
       r <- raster(obj)
       res <- as(reproject(r, CRS = CRS, ...), "SpatialPixelsDataFrame")

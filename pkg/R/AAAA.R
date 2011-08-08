@@ -14,7 +14,7 @@ if (!isGeneric("getCRS"))
   )
 
 if (!isGeneric("reproject"))
-  setGeneric("reproject", function(obj, CRS, ...)
+  setGeneric("reproject", function(obj, ...)
     standardGeneric("reproject")
   )
 
