@@ -50,6 +50,8 @@
 \examples{
 # Example on vector data
 data(eberg)
+coordinates(eberg) <- ~X+Y
+proj4string(eberg) <- CRS("+init=epsg:31467")
 eberg.geo <- reproject(eberg)
 
 # Example on raster data
