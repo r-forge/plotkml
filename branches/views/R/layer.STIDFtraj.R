@@ -2,28 +2,30 @@
 # Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
 # Contributions  : Pierre Roudier (pierre.roudier@landcare.nz); Dylan Beaudette (debeaudette@ucdavis.edu); 
 # Status         : not tested yet
-# Note           : This method works only wit the Space time irregular data frame class objects from the spacetime package;
+# Note           : This method works only wit the Space time irregular data frame class objects from the spacetime package; see Time Stamps at http://kml-samples.googlecode.com
 
 kml_layer.STIDFtraj <- function(
   # options on the object to plot
   obj,
   file,
   title = as.character(substitute(obj, env = parent.frame())),
-  extrude = TRUE,
+  extrude = FALSE,
   start.icon = "http://plotkml.r-forge.r-project.org/3Dballyellow.png",
   end.icon = "http://plotkml.r-forge.r-project.org/golfhole.png",
   icon.scale = 0.5,
   z.scale = 1,
   tessellate = FALSE,
-  plot.points = FALSE,
   lsmooth = FALSE,
   densify.by = 2,
-  dtime,
+  dtime = 0, # time support
   id.name,   # Line ID (has to be a factor type column)  
   ## TH: Normally we should be able to pass the ID column via "labels"
   span = .3, # the smaller the span the lower the smoothing (chance that the fitted spline will go through the observed point)
   ...
   ){
+  
+  require(xts)
+  require(spacetime)
   
   # get our invisible file connection from custom environment
   file.connection <- get('kml.file.out', env=plotKML.fileIO)
@@ -36,7 +38,7 @@ kml_layer.STIDFtraj <- function(
     obj@sp <- reproject(obj@sp)
 
   # Parsing the call for aesthetics
-  aes <- kml_aes(obj@data, ...)   
+  aes <- kml_aes(obj, ...)   
 
   # Read the relevant aesthetics  ## TH: I am not sure if these are still usefull / at least I do not know how to use them.
   lines_names <- aes[["labels"]]  
@@ -50,10 +52,15 @@ kml_layer.STIDFtraj <- function(
   nc <- attr(obj@sp@coords, "dimname")[[2]]
    
   # Format the time slot for writing to KML:
-  if(missing(dtime)) {  ftime <- periodicity(obj@time)  }  # estimate the time support (if not indicated)
-  TimeSpan.begin <- format(as.POSIXct(unclass(as.POSIXct(time(obj@time))) - ftime$frequency/2, origin="1970-01-01"), "%Y-%m-%d %X")
-  TimeSpan.end <- format(as.POSIXct(unclass(as.POSIXct(time(obj@time))) + ftime$frequency/2, origin="1970-01-01"), "%Y-%m-%d %X")
+  if(dtime==0) {  
+    when <- format(time(obj@time), "%Y-%m-%dT%H:%M:%SZ")
+  }
+  else {
+    ftime <- periodicity(obj@time)    # estimate the time support (if not indicated)
+    TimeSpan.begin <- format(as.POSIXct(unclass(as.POSIXct(time(obj@time))) - ftime$frequency/2, origin="1970-01-01"), "%Y-%m-%dT%H:%M:%SZ")
+    TimeSpan.end <- format(as.POSIXct(unclass(as.POSIXct(time(obj@time))) + ftime$frequency/2, origin="1970-01-01"), "%Y-%m-%dT%H:%M:%SZ")
   # The dateTime is defined as yyyy-mm-ddThh:mm:sszzzzzz, where T is the separator between the date and the time, and the time zone is either Z (for UTC) or zzzzzz, which represents ±hh:mm in relation to UTC.
+  }
 
   # Folder and name of the points folder
   cat('<Folder>\n', file = file.connection, append = TRUE)
@@ -84,37 +91,39 @@ kml_layer.STIDFtraj <- function(
   # ======
   for (i.line in 1:length(lv)) {
   
-    cat('\t<Style id="', 'line_', i.line,'">\n', sep = "", file.connection, append = TRUE)
-    cat('\t\t<LineStyle>\n', file.connection, append = TRUE)
-    cat('\t\t\t<color>', colours[i.line], '</color>\n', sep = "", file.connection, append = TRUE)
-    cat('\t\t\t<width>', width[i.line], '</width>\n', sep = "", file.connection, append = TRUE)
-    cat('\t\t</LineStyle>\n', file.connection, append = TRUE)
+    cat('\t<Style id="', 'line_', i.line,'">\n', sep = "", file = file.connection, append = TRUE)
+    cat('\t\t<LineStyle>\n', file = file.connection, append = TRUE)
+    cat('\t\t\t<color>', colours[i.line], '</color>\n', sep = "", file = file.connection, append = TRUE)
+    cat('\t\t\t<width>', width[i.line], '</width>\n', sep = "", file = file.connection, append = TRUE)
+    cat('\t\t</LineStyle>\n', file = file.connection, append = TRUE)
     # balloon
     cat('\t\t<BalloonStyle>\n', file = file.connection, append = TRUE)
     cat('\t\t\t<text>$[description]</text>\n', file = file.connection, append = TRUE)
     cat('\t\t</BalloonStyle>\n', file = file.connection, append = TRUE)
-    cat('\t</Style>\n', file.connection, append = TRUE)
+    cat('\t</Style>\n', file = file.connection, append = TRUE)
   
     # Styles - points:
     # ======
   
     for(i.point in 1:length(current.line.coords[[i.line]][,1])) { # for each point
     
-    cat('\t<Style id="pnt_', i.point,'">\n', sep = "", file.connection, append = TRUE)
-    cat('\t\t<IconStyle>\n', file.connection, append = TRUE)
-    cat('\t\t\t<color>"ff0000ff"</color>\n', file.connection, append = TRUE)
-    cat('\t\t\t<scale>', icon.scale, '</scale>\n', sep = "", file.connection, append = TRUE)
-    cat('\t\t\t<Icon>\n', file.connection, append = TRUE)
+    cat('\t<Style id="pnt_', i.line, "_", i.point,'">\n', sep = "", file = file.connection, append = TRUE)
+    cat('\t\t<IconStyle>\n', file = file.connection, append = TRUE)
+        cat('\t\t\t<color>', colours[i.line], '</color>\n', sep = "", file = file.connection, append = TRUE)
         if(i.point < length(current.line.coords[[i.line]][,1])){
-        cat('\t\t\t\t<href>', start.icon, '</href>\n', sep="", file.connection, append = TRUE) 
+        cat('\t\t\t<scale>', icon.scale, '</scale>\n', sep = "", file = file.connection, append = TRUE)
+        cat('\t\t\t<Icon>\n', file = file.connection, append = TRUE)
+        cat('\t\t\t\t<href>', start.icon, '</href>\n', sep="", file = file.connection, append = TRUE) 
         } 
         else {
         # the last point:
-        cat('\t\t\t\t<href>', end.icon, '</href>\n', sep="", file.connection, append = TRUE)
+        cat('\t\t\t<scale>', 2*icon.scale, '</scale>\n', sep = "", file = file.connection, append = TRUE)
+        cat('\t\t\t<Icon>\n', file = file.connection, append = TRUE)
+        cat('\t\t\t\t<href>', end.icon, '</href>\n', sep="", file = file.connection, append = TRUE)
         }
-    cat('\t\t\t</Icon>\n', file.connection, append = TRUE)
-    cat('\t\t</IconStyle>\n', file.connection, append = TRUE)
-    cat('\t</Style>\n', file.connection, append = TRUE)
+    cat('\t\t\t</Icon>\n', file = file.connection, append = TRUE)
+    cat('\t\t</IconStyle>\n', file = file.connection, append = TRUE)
+    cat('\t</Style>\n', file = file.connection, append = TRUE)
     
     }
    } # end styles;
@@ -123,50 +132,63 @@ kml_layer.STIDFtraj <- function(
    # =============
    
    for (i.line in 1:length(lv)) {
-   
-    for(i.point in 1:length(current.line.coords[[i.line]][,1])) {
-    cat('\t<Placemark>\n', file.connection, append = TRUE)
-    cat('\t\t<styleUrl>#pnt_', i.point, '</styleUrl>\n', sep="", file.connection, append = TRUE)
-    cat('\t\t<TimeSpan>\n', file.connection, append=TRUE)
-    cat('\t\t\t<begin>', TimeSpan.begin[i.point],'</begin>\n', sep="", file.connection, append=TRUE)
-    cat('\t\t\t<end>', TimeSpan.end[i.point],'</end>\n', sep="", file.connection, append=TRUE)
-    cat('\t\t</TimeSpan>\n', file.connection, append=TRUE) 
-    cat('\t\t<Point>\n', file.connection, append = TRUE)
-    cat('\t\t\t<extrude>', as.integer(extrude), '</extrude>\n', sep="", file.connection, append = TRUE)
-    cat('\t\t\t<altitudeMode>', altitudeMode, '</altitudeMode>\n', sep="", file.connection, append = TRUE)  
-    cat('\t\t\t<coordinates>', current.line.coords[[i.line]][i.point,1],',', current.line.coords[[i.line]][i.point,2],',', current.line.coords[[i.line]][i.point,3]*z.scale, '</coordinates>\n', sep="", file.connection, append = TRUE)
-    cat('\t\t</Point>\n', file.connection, append = TRUE)
-    cat('\t</Placemark>\n', file.connection, append = TRUE)
-    }
-    
-    }
-
-    # Writing Lines
-   # =============
 
    ### create a progress bar:
    pb <- txtProgressBar(min=0, max=length(lv), style=3)
-
-   for (i.line in 1:length(lv)) {
    
-    cat('\t<Placemark>\n', file.connection, append = TRUE)
-    cat('\t\t<name>', lv[i.line], ' (length: ', ldist[[i.line]],')</name>\n', sep = "", file.connection, append = TRUE)
-    cat('\t\t<styleUrl>#line_', i.line, '</styleUrl>\n', sep = "", file.connection, append = TRUE)
+  cat('<Folder>\n', file = file.connection, append = TRUE)
+  cat('<name>', lv[i.line], '</name>\n', sep = "", file = file.connection, append = TRUE)
+   
+    for(i.point in 1:length(current.line.coords[[i.line]][,1])) {
+    cat('\t<Placemark>\n', file = file.connection, append = TRUE)
+    cat('\t\t<styleUrl>#pnt_', i.line, "_", i.point,'</styleUrl>\n', sep="", file = file.connection, append = TRUE)
+    if(dtime==0) {
+    cat('\t\t<TimeStamp>\n', file = file.connection, append=TRUE)
+    cat('\t\t\t<when>', when[i.point],'</when>\n', sep="", file = file.connection, append=TRUE)
+    cat('\t\t</TimeStamp>\n', file = file.connection, append=TRUE)
+    }
+    else {
+    cat('\t\t<TimeSpan>\n', file = file.connection, append=TRUE)
+    cat('\t\t\t<begin>', TimeSpan.begin[i.point],'</begin>\n', sep="", file = file.connection, append=TRUE)
+    cat('\t\t\t<end>', TimeSpan.end[i.point],'</end>\n', sep="", file = file.connection, append=TRUE)
+    cat('\t\t</TimeSpan>\n', file = file.connection, append=TRUE) 
+    }
+    cat('\t\t<Point>\n', file = file.connection, append = TRUE)
+    if(extrude == TRUE) {
+    cat('\t\t\t<extrude>', as.integer(extrude), '</extrude>\n', sep="", file = file.connection, append = TRUE)
+    }
+    cat('\t\t\t<altitudeMode>', altitudeMode, '</altitudeMode>\n', sep="", file = file.connection, append = TRUE)  
+    cat('\t\t\t<coordinates>', current.line.coords[[i.line]][i.point,1],',', current.line.coords[[i.line]][i.point,2],',', current.line.coords[[i.line]][i.point,3]*z.scale, '</coordinates>\n', sep="", file = file.connection, append = TRUE)
+    cat('\t\t</Point>\n', file = file.connection, append = TRUE)
+    cat('\t</Placemark>\n', file = file.connection, append = TRUE)
+    } 
+
+    # Writing Lines
+   # =============
+  
+    cat('\t<Placemark>\n', file = file.connection, append = TRUE)
+    cat('\t\t<name>length: ', ldist[[i.line]],'</name>\n', sep = "", file = file.connection, append = TRUE)
+    cat('\t\t<styleUrl>#line_', i.line, '</styleUrl>\n', sep = "", file = file.connection, append = TRUE)
 
     # Add description with attributes
     if (balloon & ("data" %in% slotNames(obj)))
       .df_to_kml_html_table(obj@data[i.line, ])
 
-    cat('\t\t<LineString>', file.connection, append = TRUE)
-    cat('\t\t\t<altitudeMode>', altitudeMode, '</altitudeMode>', sep = "", file.connection, append = TRUE)
-    cat('\t\t\t\t<coordinates>', file.connection, append = TRUE)
-       # For each vertice in the current line
-    for (i.point in 1:length(current.line.coords[[i.line]][,1])) {
-      cat('\t\t\t\t', current.line.coords[[i.line]][i.point, 1], ',', current.line.coords[[i.line]][i.point, 2], ',', current.line.coords[[i.line]][i.point,3], '\n', sep = "", file.connection, append = TRUE)
+    cat('\t\t<LineString>\n', file = file.connection, append = TRUE)
+    cat('\t\t\t<altitudeMode>', altitudeMode, '</altitudeMode>\n', sep = "", file = file.connection, append = TRUE)
+    cat('\t\t\t\t<coordinates>\n', file = file.connection, append = TRUE)
+      # For each vertice in the current line
+      for (i.point in 1:length(current.line.coords[[i.line]][,1])) {
+      cat('\t\t\t\t', current.line.coords[[i.line]][i.point, 1], ',', current.line.coords[[i.line]][i.point, 2], ',', current.line.coords[[i.line]][i.point,3], '\n', sep = "", file = file.connection, append = TRUE)
     }
-    cat('\t\t\t</coordinates>\n', file.connection, append = TRUE)
-    cat('\t\t</LineString>\n', file.connection, append = TRUE)
-    cat('\t</Placemark>\n', file.connection, append = TRUE)
+    cat('\t\t\t</coordinates>\n', file = file.connection, append = TRUE)
+    cat('\t\t</LineString>\n', file = file.connection, append = TRUE)
+    cat('\t</Placemark>\n', file = file.connection, append = TRUE)
+   
+   cat('</Folder>\n', file = file.connection, append = TRUE)
+   
+   # update progress bar
+   setTxtProgressBar(pb, i.line)
    }
    
   close(pb)
