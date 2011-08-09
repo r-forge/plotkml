@@ -1,5 +1,10 @@
-# List of available aesthetics is given .all_kml_aesthetics
-# along with their default values
+# Purpose        : List of available aesthetics is given .all_kml_aesthetics along with their default values
+# Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
+# Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Tomislav Hengl (tom.hengl@wur.nl);
+# Status         : ready for R-forge
+# Note           : Functionality for constant transparency under development;
+
+# 
 require(RColorBrewer)
 
 .all_kml_aesthetics <- list(
@@ -200,7 +205,8 @@ kml_aes <- function(obj, ...) {
 
   if (is.numeric(data)) {
     data <- rescale(data)
-    cols <- rgb(pal(data) / 255)
+    cols <- rep("#FFFFFF", length(data))
+    cols[!(is.na(data)|is.nan(data))] <- rgb(pal(data[!(is.na(data)|is.nan(data))]) / 255)
   }
   else {
     data <- as.factor(data)
@@ -208,7 +214,8 @@ kml_aes <- function(obj, ...) {
     if (any(is.na(data)))
       values <- c(values, NA)
     values <- rescale(seq_len(length(values))) # putting values between 0 and 1
-    cols <- rgb(pal(values) / 255)
+    cols <- rep("#FFFFFF", length(values))
+    cols[!(is.na(values)|is.nan(values))] <- rgb(pal(data[!(is.na(values)|is.nan(values))]) / 255)
     levels(data) <- cols
     cols <- as.character(data)
   }
