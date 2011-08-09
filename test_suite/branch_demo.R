@@ -49,8 +49,12 @@ str(spc, max.level=2)
 kml_open("spc.kml", overwrite = TRUE)
 # plot Munsell values per horizon:
 kml_layer(spc, var.name="field_ph", labels=spc@ids, max.depth=200, file = "spc.kml") 
-# this will automatically close the file
+kml_close()
 
+
+
+# Trajectory type data
+# ------------------------------------
 
 source('../branches/views/R/layer.STIDFtraj.R')
 
@@ -78,7 +82,8 @@ proj4string(stidfTrj@sp) <- CRS("+proj=utm +zone=31 +ellps=WGS84 +datum=WGS84 +u
 # start output
 kml_open("puechabon.kml", overwrite = TRUE)
 # trajectories:
-kml_layer(stidfTrj, id.name="id", colour_scale = rainbow(4)) 
+kml_layer(obj=stidfTrj, id.name="id", colour=log1p(dist), colour_scale=rev(rainbow(65)[1:48])) 
+kml_close(); kml_compress("puechabon.kml")
 
 
 # end of script;
