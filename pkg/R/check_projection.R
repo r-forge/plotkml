@@ -8,6 +8,7 @@
   
   # Locating the current PROJ4 parameter
   query <- ldply(p4s_parameters, str_locate, pattern = param)
+  if(!is.na(query[1, 1])) {  # if already projection type is missing the string is invalid
   idx <- which(!is.na(query[, 1]) & !is.na(query[, 2]))
   
   # If the PROJ4 parameter is found we extract its value
@@ -17,6 +18,8 @@
     # Extract the parameter value
     value <- str_split(param_value, param)[[1]]
     value <- value[value != ""]
+  }
+  else stop("A valid proj4 string required")
   }
   # Otherwise an empty string is returned
   else
