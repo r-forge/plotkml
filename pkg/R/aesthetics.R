@@ -13,7 +13,7 @@ require(RColorBrewer)
   shape = "http://plotkml.r-forge.r-project.org/circle.png", #"http://maps.google.com/mapfiles/kml/shapes/donut.png",
   whitening = "",
   alpha = 1,
-  size = 1,
+  size = .8,
   width = 1,
   labels = "",
   altitude = 0,
@@ -177,12 +177,14 @@ kml_aes <- function(obj, ...) {
   aes
 }
 
-# default colour palettes
-.colour_scale_numeric <-  brewer.pal(n = 5, name = "RdYlGn")
-.colour_scale_factor = brewer.pal(n = 6, name = "Accent")
+# display.brewer.all()
+## default colour palettes
+.colour_scale_numeric = rev(rainbow(65)[1:48])
+# brewer.pal(n = 5, name = "RdYlGn")
+.colour_scale_factor = brewer.pal(n = 6, name = "Set1")
 
 # Retrieving colour scale
-.getColourScale <- function(data, colour_scale = NULL) {
+.getColourScale <- function(data, z.lim, colour_scale = NULL) {
 
   require(ggplot2)  # /!\ for the rescale function, soon to be in the scales package /!\
   require(colorRamps)
@@ -204,7 +206,9 @@ kml_aes <- function(obj, ...) {
   pal <- colorRamp(colour_scale, space = "rgb", interpolate = "linear")
 
   if (is.numeric(data)) {
-    data <- rescale(data)
+    if(missing(z.lim)) { z.lim = range(data, na.rm=TRUE) }
+    data <- rescale(data, from=z.lim, clip=TRUE)
+    data <- ifelse(data<0, 0, ifelse(data>1, 1, data))
     cols <- rep("#FFFFFF", length(data))
     cols[!(is.na(data)|is.nan(data))] <- rgb(pal(data[!(is.na(data)|is.nan(data))]) / 255)
   }
@@ -212,7 +216,7 @@ kml_aes <- function(obj, ...) {
     data <- as.factor(data)
     values <- levels(data)
     if (any(is.na(data)))
-      values <- c(values, NA)
+    values <- c(values, NA)
     values <- rescale(seq_len(length(values))) # putting values between 0 and 1
     cols <- rep("#FFFFFF", length(values))
     cols[!(is.na(values)|is.nan(values))] <- rgb(pal(data[!(is.na(values)|is.nan(values))]) / 255)
