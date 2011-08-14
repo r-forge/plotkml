@@ -2,7 +2,7 @@
 # Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
 # Contributions  : Pierre Roudier (pierre.roudier@landcare.nz); Dylan Beaudette (debeaudette@ucdavis.edu); 
 # Status         : not tested yet
-# Note           : This method works only wit the Space time irregular data frame class objects from the spacetime package; see Time Stamps at http://kml-samples.googlecode.com
+# Note           : This method works only wit the Space time irregular data frame class objects from the spacetime package; see also how Time Stamps work at http://kml-samples.googlecode.com
 
 kml_layer.STIDFtraj <- function(
   # options on the object to plot
@@ -18,7 +18,7 @@ kml_layer.STIDFtraj <- function(
   lsmooth = FALSE,
   densify.by = 2,
   dtime = 0, # time support
-  id.name,   # Line ID (has to be a factor type column)  
+  id.name = names(obj@data)[which(names(obj@data)=="id")],   # trajectory ID  
   ## TH: Normally we should be able to pass the ID column via "labels"
   span = .3, # the smaller the span the lower the smoothing (chance that the fitted spline will go through the observed point)
   ...
@@ -48,7 +48,8 @@ kml_layer.STIDFtraj <- function(
   balloon <- aes[["balloon"]]
   
   # object ID names / coordinate names
-  lv <- levels(obj@data[,id.name])
+  lv <- levels(as.factor(obj@data[,id.name]))
+  line.colours <- hex2kml(brewer.pal(n=2+length(lv), name = "Set1"))
   nc <- attr(obj@sp@coords, "dimname")[[2]]
    
   # Format the time slot for writing to KML:
@@ -93,7 +94,7 @@ kml_layer.STIDFtraj <- function(
   
     cat('\t<Style id="', 'line_', i.line,'">\n', sep = "", file = file.connection, append = TRUE)
     cat('\t\t<LineStyle>\n', file = file.connection, append = TRUE)
-    cat('\t\t\t<color>', colours[i.line], '</color>\n', sep = "", file = file.connection, append = TRUE)
+    cat('\t\t\t<color>', line.colours[i.line], '</color>\n', sep = "", file = file.connection, append = TRUE)
     cat('\t\t\t<width>', width[i.line], '</width>\n', sep = "", file = file.connection, append = TRUE)
     cat('\t\t</LineStyle>\n', file = file.connection, append = TRUE)
     # balloon
@@ -104,12 +105,12 @@ kml_layer.STIDFtraj <- function(
   
     # Styles - points:
     # ======
-  
+    
     for(i.point in 1:length(current.line.coords[[i.line]][,1])) { # for each point
     
     cat('\t<Style id="pnt_', i.line, "_", i.point,'">\n', sep = "", file = file.connection, append = TRUE)
     cat('\t\t<IconStyle>\n', file = file.connection, append = TRUE)
-        cat('\t\t\t<color>', colours[i.line], '</color>\n', sep = "", file = file.connection, append = TRUE)
+        cat('\t\t\t<color>', colours[i.point], '</color>\n', sep = "", file = file.connection, append = TRUE)
         if(i.point < length(current.line.coords[[i.line]][,1])){
         cat('\t\t\t<scale>', icon.scale, '</scale>\n', sep = "", file = file.connection, append = TRUE)
         cat('\t\t\t<Icon>\n', file = file.connection, append = TRUE)
@@ -163,7 +164,10 @@ kml_layer.STIDFtraj <- function(
     cat('\t</Placemark>\n', file = file.connection, append = TRUE)
     } 
 
-    # Writing Lines
+   # update progress bar
+   setTxtProgressBar(pb, i.line)
+
+   # Writing Lines
    # =============
   
     cat('\t<Placemark>\n', file = file.connection, append = TRUE)
@@ -177,21 +181,27 @@ kml_layer.STIDFtraj <- function(
     cat('\t\t<LineString>\n', file = file.connection, append = TRUE)
     cat('\t\t\t<altitudeMode>', altitudeMode, '</altitudeMode>\n', sep = "", file = file.connection, append = TRUE)
     cat('\t\t\t\t<coordinates>\n', file = file.connection, append = TRUE)
+    
+      ### create a progress bar:
+      pb2 <- txtProgressBar(min=0, max=length(current.line.coords[[i.line]][,1]), style=3)
+      
       # For each vertice in the current line
       for (i.point in 1:length(current.line.coords[[i.line]][,1])) {
       cat('\t\t\t\t', current.line.coords[[i.line]][i.point, 1], ',', current.line.coords[[i.line]][i.point, 2], ',', current.line.coords[[i.line]][i.point,3], '\n', sep = "", file = file.connection, append = TRUE)
+       # update progress bar
+       setTxtProgressBar(pb2, i.point)
     }
+    
     cat('\t\t\t</coordinates>\n', file = file.connection, append = TRUE)
     cat('\t\t</LineString>\n', file = file.connection, append = TRUE)
     cat('\t</Placemark>\n', file = file.connection, append = TRUE)
    
    cat('</Folder>\n', file = file.connection, append = TRUE)
    
-   # update progress bar
-   setTxtProgressBar(pb, i.line)
    }
    
   close(pb)
+  close(pb2)
 
   # Closing the folder
   cat('</Folder>\n', file = file.connection, append = TRUE)
