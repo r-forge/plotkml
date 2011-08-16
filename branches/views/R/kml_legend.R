@@ -40,7 +40,7 @@ kml_legend <- function(
     png(file=legend.file, width=leg.width, height=leg.height, bg="transparent", pointsize=14)
     # c(bottom, left, top, right)
     par(mar=c(.5,0,.5,1))
-    plot(x=rep(1, col.no), y=1:col.no, axes=FALSE, xlab='', ylab='', pch=15, cex=4, col=legend.pal)
+    plot(x=rep(1, col.no), y=1:col.no, axes=FALSE, xlab='', ylab='', pch=15, cex=4, col=legend.pal, xlim=c(0,.6*leg.width), asp=.6)
   
       if(missing(factor.labels)) {
       text(x=rep(1, col.no), y=1:col.no, labels=levels(as.factor(x)), cex=.8, pos=4, offset=1, col=rgb(0.99,0.99,0.99))
