@@ -1,110 +1,141 @@
-# will be publicly available soon !
-library(plotKML)
-library(gstat)
-library(maptools)
-library(RColorBrewer)
+# Doing a local install of the package for testing purposes
+install.packages("plotKML", repos="http://R-Forge.R-project.org", lib.loc = ".")
+# In case this does not work you need to source() all the *.R files located
+# in ./plotKML/pkg/R/
 
-# system("Rcmd build D:/R/plotKML/working/pkg")
-## fails
-# copying to build directory failed
-# Warning message:
-# running command 'Rcmd build D:/R/plotKML/working/pkg' had status 1 
-
-# system("R CMD INSTALL D:/R/plotKML/working/pkg")
-## TH: Finally manged to install on Windows machine 
-
-## Alternative, load functions manually:
-# source('../pkg/R/AAAA.R')
-# source('../pkg/R/aesthetics.R')
-# source('../pkg/R/altitude.R')
-# source('../pkg/R/check_projection.R')
-# source('../pkg/R/layer.SpatialPoints.R')
-# source('../pkg/R/layer.SpatialPolygons.R')
-# source('../pkg/R/layer.SpatialLines.R')
-# source('../pkg/R/layer.Raster.R')
-# source('../pkg/R/kml.R')
-# source('../pkg/R/utils.R')
-# source('../pkg/R/attributes.R')
-# source('../pkg/R/reproject.R')
-
+## ========================== ##
 ##
-## KML authoring
+## Loading testing data
 ##
+## ========================== ##
 
-# Entering a set of spatial data
-#
+## SpatialPointsDataFrame
+data(eberg)
+coordinates(eberg) <- ~X+Y
+proj4string(eberg) <- CRS("+init=epsg:31467")
 
-## 1. meuse data set ----------------------------------------------------------
-# They are not lat-long - but plotKML can take good care of it!
-data(meuse)
-data(meuse.grid)
-# SpatialPoints dataset
-coordinates(meuse) <- ~x+y
-proj4string(meuse) <- CRS("+init=epsg:28992")
-# SpatialPixels
-coordinates(meuse.grid) <- ~x+y
-proj4string(meuse.grid) <- CRS("+init=epsg:28992")
-gridded(meuse.grid) <- TRUE
+## SpatialPixelsDataFrame
+data(eberg_grid)
 
+## SpatialLinesDataFrame
+data(eberg_contours)
 
-# Simple example: one layer
-kml(meuse.grid, colour = dist, file = "foo.kml", overwrite = TRUE)
-
-# Playing with two aesthetics in one plot (size and colour)
-kml(meuse, colour = log(zinc), size = cadmium, file = "foo.kml", overwrite = TRUE)
-
-# new icon:
-kml(meuse, colour = zinc, file = "foo_ball.kml", shape = "http://plotkml.r-forge.r-project.org/3Dball.png", overwrite=TRUE) 
-
-# attributes from @data
-kml(meuse, colour = zinc, file = "foo_attr.kml", overwrite=TRUE, balloon=TRUE)
-
-
-# multi-layer example:
-# start output
-kml_open('foo.kml', overwrite = TRUE)
-
-# SpatialPixelsDataFrame
-kml_layer(meuse.grid, colour = exp(dist)) 
-
-# (the formula is just showing that we can enter formulas)
-
-# SpatialPointsDataFrame
-kml_layer(meuse, colour = soil, balloon=TRUE) 
-
-# note that the default colour ramps are different wether it is continous or categorical data
-
-# Close file
-kml_close()
-## ----------------------------------------------------------------------------
-
-
-
-## 2. SpatialPolygons dataset ------------------------------------------------
+## SpatialPolygons
+require(maptools)
 nc <- readShapePoly(system.file("shapes/sids.shp", package="maptools")[1], proj4string=CRS("+proj=longlat +datum=NAD27"))
-nc.geo <- spTransform(nc, CRS("+proj=longlat +datum=WGS84"))
 
-# single layer documents
-kml(nc.geo, file='01-polygons.kml')
-kml(nc.geo, colour=AREA, colour_scale=brewer.pal(n=5, name="Blues"))
+## RasterStack
+eberg_raster <- stack(eberg_grid)
 
+## ========================== ##
+##
+## Different modes available  ##
+##
+## ========================== ##
 
-# Multi-layer KML
-pts <- spsample(nc.geo, n = 50, type='random')
-kml_open("04-multi.kml")
-kml_layer(nc.geo, colour = AREA, colour_scale=brewer.pal(n=5, name="Blues"))
-kml_layer(pts, colour = "purple")
+## Simple KML generation
+
+# Point data
+kml(eberg, file = "demo-01.kml")
+
+# Polygon data
+kml(nc, file = "demo-02.kml")
+
+# Lines data
+kml(eberg_contours, file = "demo-03.kml")
+
+# Lines with attribute mapping
+kml(eberg_contours, file = "demo-04.kml", colour = elevation)
+
+# Raster data
+kml(eberg_grid, file = "demo-05.kml", colour = TWI)
+
+# Other raster data class - with overwriting option
+kml(eberg_raster, file = "demo-05.kml", colour = TWI, overwrite = TRUE)
+
+## Advanced KML generation
+
+# An example of multi-layer KML file
+kml_open(file = "demo-06.kml")
+# Adding a raster layer
+kml_layer(eberg_grid, colour = TWI)
+# Adding a vector layer
+kml_layer(eberg, colour = CLAY)
+# Closing the file
 kml_close()
 
-## ----------------------------------------------------------------------------
+## ======================================= ##
+##
+## Different ways to represent information ##
+##
+## ======================================= ##
 
+# There are various aesthetics available to represent a variable, 
+# or simply used to customise your KML file
 
-## 3. SpatialLines -----------------------------------------------------------
-rm(volcano)
-volcano <- ContourLines2SLDF(contourLines(volcano))
-proj4string(volcano) <- CRS("+init=epsg:4326") # of course this is stupid
-volcano$altitude <- as.numeric(as.character(volcano$level))
+## Colour (vector data)
+# Point data
+kml(eberg, file = "demo-07.kml", colour = CLAY)
+# Polygon data
+kml(nc, file = "demo-08.kml", colour = AREA)
+# Lines data
+kml(eberg_contours, file = "demo-09.kml", colour = elevation)
 
-kml(volcano, file='03-lines.kml', colour=altitude, colour_scale = terrain.colors(10))
+## Colour (raster data)
 
-## ----------------------------------------------------------------------------
+# See previous example - the colour argument is still required for raster data
+
+## Transparency
+# Vector data
+kml(eberg, file = "demo-10.kml", colour = CLAY, alpha = 0.5)
+# Raster data
+kml(eberg_grid, file = "demo-11.kml", colour = TWI, alpha = 0.75)
+
+## Shape
+# Point data
+kml(eberg, file = "demo-12.kml", shape = "PLACE_URL_HERE")
+
+## Size
+kml(eberg, file = "demo-13.kml", size = 0.25)
+
+## Mixing different aesthetics
+kml(eberg, file = "demo-14.kml", colour = CLAY, size = 0.25, alpha = 0.75, shape = "PLACE_URL_HERE")
+
+## ====================== ##
+##
+## Tweaking the KML plots ##
+##
+## ====================== ##
+
+## Formula interface
+
+# You can specify a transformation to the attribute to map:
+kml(eberg, file = "demo-15.kml", colour = log1p(SAND))
+kml(eberg_grid, file = "demo-16.kml", colour = sqrt(TWI + 1))
+
+## Labels
+
+# No labels
+kml(eberg, file = "demo-17.kml", colour = SAND, labels = "")
+
+# Constant labels
+kml(eberg, file = "demo-18.kml", colour = SAND, labels = "hello world")
+
+# Labels from a column
+eberg$labs <- rep(letters[1:10], length.out = nrow(eberg))
+kml(eberg, file = "demo-19.kml", colour = SAND, labels = labs)
+eberg$labs <- NULL
+
+## Colour scale
+
+# Default colour scale is different wether the variable is continuous or not
+
+# Continuous data
+class(eberg_grid$TWI)
+kml(eberg_grid, file = "demo-20.kml", colour = TWI)
+# Categorical data
+class(eberg_grid$Z)
+kml(eberg_grid, file = "demo-21.kml", colour = Z)
+
+# Specifying your own colour palette
+kml(eberg_contours, file = "demo-22.kml", colour = elevation, colour_scale = topo.colors(10))
