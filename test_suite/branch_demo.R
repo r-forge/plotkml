@@ -85,5 +85,12 @@ kml_open("puechabon.kml", overwrite = TRUE)
 kml_layer(obj=stidfTrj, id.name="id", colour=log1p(dist), colour_scale=rev(rainbow(65)[1:48])) 
 kml_close(); kml_compress("puechabon.kml")
 
+# Color palettes:
+# ------------------------------------
+
+data(worldgrids_pal)
+display.pal(worldgrids_pal)
+## globcov palette with class names:
+display.pal(worldgrids_pal, sel=5, names=TRUE)
 
 # end of script;
