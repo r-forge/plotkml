@@ -8,7 +8,7 @@
   \describe{
     \item{anthroms}{Color palette used for the global map of anthroms (Ellis and Ramankutty, 2008).}
     \item{bodemfgr}{A simplified color palette for soil types.}
-     \item{corine2k}{Color palette used in the Corine 2000 project for land cover classes (Büttner et al. 2002).}
+     \item{corine2k}{Color palette used in the Corine 2000 project for land cover classes (B\"uttner, G. et al., 2002).}
      \item{glc2000}{Color palette used for the Global Land Cover 2000 mapping project (Global Land Cover 2000).}
      \item{globcov}{Color palette used for the ENVISAT-based Global Land Cover map at resolution of 300 m (GlobCover Land Cover version V2.2).}
      \item{gtkaart}{Color palette used for the Ground water levels map of the Netherlands (Gaast et al. 2005).}
@@ -25,7 +25,7 @@ data(worldgrids_pal)
 \references{
 Bicheron, P. et al. 2008. GLOBCOVER: Products Description and Validation Report. MEDIAS France, Toulouse, 47 p. \url{http://ionia1.esrin.esa.int}
 
-Büttner, G. et al. (2002) Corine Land Cover update 2000, Technical guidelines. EEA (European Environment Agency), Kopenhagen. \url{http://terrestrial.eionet.europa.eu/CLC2000}
+B\"uttner, G. et al. (2002) Corine Land Cover update 2000, Technical guidelines. EEA (European Environment Agency), Kopenhagen. \url{http://terrestrial.eionet.europa.eu/CLC2000}
 
 Ellis, E.C., Ramankutty, N. (2008) Putting people in the map: anthropogenic biomes of the world. Frontiers in Ecology and the Environment, Vol. 6, No. 8, pp. 439-447. \url{http://www.eoearth.org/article/Anthropogenic_biome_maps}
 
