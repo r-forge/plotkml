@@ -137,14 +137,11 @@ kml2hex <- function(kml) {
 }
 
 # Display default palettes:
-#
 display.pal <- function(pal, sel=1:10, names=FALSE) {
   data(SAGA_pal)
   if(missing(pal)) { pal <- SAGA_pal }
   if(names==FALSE){
-  windows.options(width=2.1, height=length(sel)*.9)
-  par(mfrow=c(length(sel),1))
-  par(mar=c(1.5,.8,1.5,.5))
+  par(fin=c(2.1, length(sel)*.9), mfrow=c(length(sel),1), mar=c(1.5,.8,1.5,.5))
   # plot palettes above each other:
   for(j in sel){
     plot(y=rep(1, length(pal[[j]])), x=1:length(pal[[j]]), axes=FALSE, xlab='', ylab='', pch=15, cex=1.5, col=pal[[j]])
@@ -157,8 +154,7 @@ display.pal <- function(pal, sel=1:10, names=FALSE) {
   pal <- pal[[sel]]
   leg.width <- (max(nchar(names(pal)))*20+150)/100
   leg.height <- length(pal)
-  windows.options(width=leg.width, height=leg.height)
-  par(mar=c(.5,0,1.5,1))
+  par(fin=c(leg.width, leg.height), mar=c(.5,0,1.5,1))
   # plot palette and class names:
   plot(x=rep(1, length(pal)), y=1:length(pal), axes=FALSE, xlab='', ylab='', pch=15, cex=1.5, col=pal, xlim=c(0,.6*leg.width), asp=.6)
   text(x=rep(1, length(pal)), y=1:length(pal), labels=names(pal), cex=.5, pos=4, offset=1)
