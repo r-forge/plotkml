@@ -1,16 +1,14 @@
 \name{gpxbtour}
 \title{GPS log of a bike ride}
-\description{
-GPS log of a bike tour from Wageningen to Muenster. The table contains 3228 records of GPS locations, speed and elevation.  
-}
+\description{GPS log of a bike tour from Wageningen to Muenster. The table contains 3228 records of GPS locations, speed and elevation.}
 \format{
   The data frame contains the following columns:
   \describe{
-    \item{lon}{geographic longitude}
-    \item{lat}{geographic latitude}
-     \item{ele}{GPS-estimated elevation in m}
+	\item{lon}{longitude (x-coordinate)}
+	\item{lat}{latitude (y-coordinate)}
+	\item{ele}{GPS-estimated elevation in m}
 	\item{speed}{GPS-estimated speed in km per hour}
-  \item{time}{XML Schema time}
+	\item{time}{XML Schema time}
 } 
 } 
 \usage{
@@ -28,23 +26,27 @@ data(gpxbtour)
 gpxbtour$ctime <- as.POSIXct(gpxbtour$time, format="\%Y-\%m-\%dT\%H:\%M:\%SZ")
 coordinates(gpxbtour) <- ~lon+lat
 proj4string(gpxbtour) <- CRS("+proj=longlat +datum=WGS84")
-## derive distance from origin:
-require(fossil)
-xy <- as.list(data.frame(t(coordinates(gpxbtour))))
-gpxbtour$dist.km <- sapply(xy, function(x) deg.dist(long1=x[1], lat1=x[2], long2=xy[[1]][1], lat2=xy[[1]][2]))
-plot(gpxbtour$dist.km, gpxbtour$speed, type="l", xlab="Distance from origin in km", ylab="speed in km per hour")
-# convert to a STIDFtraj class:
-require(spacetime)
-require(adehabitatLT)
-gpx.ltraj <- as.ltraj(coordinates(gpxbtour), gpxbtour$ctime, id = "th")
-gpx.st <- as(gpx.ltraj, "STIDFtraj")
-gpx.st$speed <- gpxbtour$speed
-gpx.st@sp@proj4string <- CRS("+proj=longlat +datum=WGS84")
-# open KML file:
-kml_open("gpxbtour.kml", overwrite = TRUE)
-# plot trajectory with speed as colour attribute:
-kml_layer(obj=gpx.st, colour=speed, z.lim=c(18,32))
-# close KML:
-kml_close()
-kml_compress("gpxbtour.kml")
+
+# extended examples:
+\dontrun{
+  ## derive distance from origin:
+  require(fossil)
+  xy <- as.list(data.frame(t(coordinates(gpxbtour))))
+  gpxbtour$dist.km <- sapply(xy, function(x) deg.dist(long1=x[1], lat1=x[2], long2=xy[[1]][1], lat2=xy[[1]][2]))
+  plot(gpxbtour$dist.km, gpxbtour$speed, type="l", xlab="Distance from origin in km", ylab="speed in km per hour")
+  # convert to a STIDFtraj class:
+  require(spacetime)
+  require(adehabitatLT)
+  gpx.ltraj <- as.ltraj(coordinates(gpxbtour), gpxbtour$ctime, id = "th")
+  gpx.st <- as(gpx.ltraj, "STIDFtraj")
+  gpx.st$speed <- gpxbtour$speed
+  gpx.st@sp@proj4string <- CRS("+proj=longlat +datum=WGS84")
+  # open KML file:
+  kml_open("gpxbtour.kml", overwrite = TRUE)
+  # plot trajectory with speed as colour attribute:
+  kml_layer(obj=gpx.st, colour=speed, z.lim=c(18,32))
+  # close KML:
+  kml_close()
+  kml_compress("gpxbtour.kml")
+}
 }

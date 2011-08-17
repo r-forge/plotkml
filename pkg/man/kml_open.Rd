@@ -4,7 +4,6 @@
 \title{Opens a KML file}
 
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
 Opens a KML file in write mode and initiates the KML header. It is then setting up a file connection accessible by other kml_*() function such as kml_layer() and kml_close() to create personalised, multi-layered KML files.
 }
 
@@ -13,9 +12,9 @@ kml_open(file, name = file, overwrite = FALSE, kml.url = "http://www.opengis.net
 }
 
 \arguments{
-  \item{file}{either a character string naming a file or a connection open for writing.  ‘""’ indicates output to the console.}
+  \item{file}{either a character string naming a file.}
   \item{name}{A name for the KML file to be created.}
-  \item{overwrite}{Logical. If ‘TRUE’, "filename" will be overwritten if it exists}
+  \item{overwrite}{Logical. If ‘TRUE’, "name" will be overwritten if it exists}
   \item{kml.url}{URL of the KML standard to be used.}
 }
 
@@ -37,9 +36,7 @@ kml_open(file, name = file, overwrite = FALSE, kml.url = "http://www.opengis.net
 
 \author{Pierre Roudier and Dylan Beaudette}
 
-\note{
-%%  ~~further notes~~
-}
+\note{}
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
@@ -48,13 +45,7 @@ kml_open(file, name = file, overwrite = FALSE, kml.url = "http://www.opengis.net
 }
 
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-"kml_open"
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~KML }
+
+\keyword{hplot}
+

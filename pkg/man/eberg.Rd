@@ -1,23 +1,15 @@
 \name{eberg}
 \alias{eberg}
-\title{Ebergotzen -- soil observations (augers)}
-\description{
-The table contains 2937 observations (augers) of soil textures and soil types. 
-Eberg\"{o}tzen is 10 by 10 km study area in the vicinity of the city of G\"{o}ttingen in Central
-Germany. This area has been
-extensively surveyed over the years, mainly for the purposes of developing operational
-digital soil mapping techniques (Gehrt and B\"{o}hner, 2001). 
-}
+\title{Ebergotzen -- soil observations by auger}
+\description{The table contains 2937 observations (augers) of soil textures and soil types. Eberg\"{o}tzen is 10 by 10 km study area in the vicinity of the city of G\"{o}ttingen in Central Germany. This area has been extensively surveyed over the years, mainly for the purposes of developing operational digital soil mapping techniques (Gehrt and B\"{o}hner, 2001).}
 \format{
   The data frame contains the following columns:
   \describe{
-    \item{ID}{universal identifier}
-    \item{X}{a numeric vector; x-coordinate (m)
-	in DHDN / Gauss-Krueger zone 3 (German coordinate system) }
-     \item{Y}{a numeric vector; y-coordinate (m)
-	in DHDN / Gauss-Krueger zone 3 (German coordinate system) }
+	\item{ID}{universal identifier}
+	\item{X}{a numeric vector; x-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) }
+	\item{Y}{a numeric vector; y-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) }
 	\item{SAND}{topsoil sand content estimated by hand; see Ad-hoc-AG Boden (2005) }
-  \item{SILT}{topsoil silt content estimated by hand }
+	\item{SILT}{topsoil silt content estimated by hand }
 	\item{CLAY}{topsoil clay content estimated by hand }
 	\item{SOILTYPE}{a vector containing factors; soil classes according to the German soil classification system (13 classes in this data set)}
   } 
@@ -25,7 +17,7 @@ digital soil mapping techniques (Gehrt and B\"{o}hner, 2001).
 \usage{
 data(eberg)
 }
-\author{ The Eberg\"{o}tzen dataset is courtesy of \href{mailto:Ernst.Gehrt@niedersachsen.de}{Gehrt Ernst}, the State Authority
+\author{ The Eberg\"{o}tzen dataset is courtesy of Gehrt Ernst (Ernst.Gehrt@niedersachsen.de), the State Authority
 for Mining, Energy and Geology,
 Hannover, Germany. The data set has been prepared for this exercise by Tomislav Hengl. }
 \references{ 
