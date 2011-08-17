@@ -180,9 +180,9 @@ kml_aes <- function(obj, ...) {
 # display.brewer.all()
 data(SAGA_pal)
 ## default colour palettes
-.colour_scale_numeric = SAGA_pal[[1]]
+.colour_scale_numeric = rev(brewer.pal(n = 5, name = "Spectral"))
 # rev(rainbow(65)[1:48])  ## Not recommended
-# brewer.pal(n = 5, name = "RdYlGn") 
+# SAGA_pal[[1]]  ## SAGA default palette
 .colour_scale_factor = brewer.pal(n = 6, name = "Set1")
 
 # Retrieving colour scale
