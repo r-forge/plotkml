@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>plotKML metadata sheet</title>
+    <style type="text/css">
+<!--
+.style1 {font-size: x-small}
+.R_code {
+font-family:"Courier New", Courier, monospace;
+font-size: x-small
+}
+.R_env {
+font-family:"Courier New", Courier, monospace;
+color:#0000FF;
+font-size: x-small
+}
+.R_arg {
+font-family:"Courier New", Courier, monospace;
+color:#FF0000;
+font-size: x-small;
+}
+-->
+    </style>
+</head>
+
+<body>
+<table width="500" border="0" cellspacing="5" cellpadding="10">
+  <caption>
+    Layer description:
+  </caption>
+  <tr>
+    <th width="150" scope="col"><div align="left">Field</div></th>
+    <th scope="col"><div align="left">Content</div></th>
+  </tr>
+  <tr>
+    <td width="150"><div align="left">R object name </div></td>
+    <td><div align="left">*Input name*</div></td>
+  </tr>
+  <tr>
+    <td width="150"><div align="left">R class type </div></td>
+    <td><div align="left">*Parse object class*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">R class package URL</div></td>
+    <td><div align="left">*Parse CRAN URL*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">R script (lineage)</div></td>
+    <td><div align="left">*Optional location of URL*</div></td>
+  </tr>
+  <tr>
+    <td width="150"><div align="left">Target variable name </div></td>
+    <td><div align="left">*Parse column name* </div></td>
+  </tr>
+  <tr>
+    <td width="150"><div align="left">Target variable description</div></td>
+    <td><div align="left">*One sentence description*</div></td>
+  </tr>
+  <tr>
+    <td width="150"><div align="left">Target variable type </div></td>
+    <td><div align="left">*Parse variable type*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Display minimum</div></td>
+    <td><div align="left">*Recommended display minimum*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Display maximum</div></td>
+    <td><div align="left">*Recommended display maximum*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Color pallete</div></td>
+    <td><div align="left">*plotKML color pallete name or URL*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Value units  </div></td>
+    <td><div align="left">*Physical units for the target variable*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Numeric resolution </div></td>
+    <td><div align="left">*Measurement precision*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left"><a href="http://trac.osgeo.org/proj/wiki/GenParms" target="_blank">proj4string</a></div></td>
+    <td><div align="left">*Parse original proj4string*</div></td>
+  </tr>
+  <tr>
+    <td width="150"><div align="left">Reference units</div></td>
+    <td><div align="left">*Meters or arcdegrees*</div></td>
+  </tr>
+  <tr>
+    <td width="150"><div align="left">West bounding coordinates</div></td>
+    <td><div align="left">*In WGS84*</div></td>
+  </tr>
+  <tr>
+    <td width="150"><div align="left">East bounding coordinates</div></td>
+    <td><div align="left">*In WGS84*</div></td>
+  </tr>
+  <tr>
+    <td width="150"><div align="left">North bounding coordinates</div></td>
+    <td><div align="left">*In WGS84*</div></td>
+  </tr>
+  <tr>
+    <td width="150"><div align="left">South bounding coordinates</div></td>
+    <td><div align="left">*In WGS84*</div></td>
+  </tr>
+  <tr>
+    <td width="150"><div align="left">Positional error radius</div></td>
+    <td><div align="left">*Average positioning accuracy* </div></td>
+  </tr>
+  <tr>
+    <td width="150"><div align="left">Originator (citation)</div></td>
+    <td><div align="left">*Legal entity* </div></td>
+  </tr>
+  <tr>
+    <td width="150"><div align="left">Publication date (citation)</div></td>
+    <td><div align="left">*%Y-%m-%d* </div></td>
+  </tr>
+  <tr>
+    <td width="150"><div align="left">Title (citation)</div></td>
+    <td><div align="left">*Object name*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Source URL (citation)</div></td>
+    <td><div align="left">*Dataset available for download?*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Source OCLC number  (citation)</div></td>
+    <td><div align="left">*<a href="http://www.oclc.org/batchprocessing/controlnumber.htm" target="_blank">OCLC control number</a>*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Abstract (description)</div></td>
+    <td><div align="left">*Short summary*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Purpose (description)</div></td>
+    <td><div align="left">*Intended purpose*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Temporal extent begin</div></td>
+    <td><div align="left">*%Y-%m-%dT%H:%M:%SZ*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Temporal extent end</div></td>
+    <td><div align="left">*%Y-%m-%dT%H:%M:%SZ*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Currentness reference</div></td>
+    <td><div align="left">*which reference should be used for currentness?*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Progress (status)</div></td>
+    <td><div align="left">*published or draft?*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Maintenance and updates</div></td>
+    <td><div align="left">*Maintainance policy*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Keywords</div></td>
+    <td><div align="left">*1-6 keywords separated by commas*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Data owner
+    </div>
+    <div align="left"> </div></td>
+    <td><div align="left">*Legal entity*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">End-user license URL </div></td>
+    <td><div align="left">*License type / URL*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Access constraints</div></td>
+    <td><div align="left">*Any access constraints?*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Use constraints</div></td>
+    <td><div align="left">*Any use constraints?*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Metadata report generated on</div></td>
+    <td><div align="left">*%Y-%m-%dT%H:%M:%SZ*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Contact (metadata producer)</div></td>
+    <td><div align="left">*Your name*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Organization (metadata producer)  </div></td>
+    <td><div align="left">*Your organization*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Address  (metadata producer)</div></td>
+    <td><div align="left">*Your mailing address*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">City (metadata producer)</div></td>
+    <td><div align="left">*City (mail)*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">State or province (metadata producer)</div></td>
+    <td><div align="left">*State or province (mail)*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Postal code (metadata producer) </div></td>
+    <td><div align="left">*Postal code (mail)*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Country  (metadata producer)</div></td>
+    <td><div align="left">*Country (mail)*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">E-mail  (metadata producer)</div></td>
+    <td><div align="left">*E-mail*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Metadata MEF URL </div></td>
+    <td><div align="left">*URL where the Metadata Exchange File can be obtained*</div></td>
+  </tr>
+  <tr>
+    <td><div align="left">Metadata standard name  </div></td>
+    <td><div align="left">*<a href="http://www.fgdc.gov/metadata/online-metadata-resources" target="_blank">Content Standard for Digital Geospatial Metadata</a>* </div></td>
+  </tr>
+  <tr>
+    <td width="150"><div align="left">Metadata standard version   </div></td>
+    <td><div align="left">FGDC-STD-001-1998</div></td>
+  </tr>
+</table>
+</body>
+</html>
