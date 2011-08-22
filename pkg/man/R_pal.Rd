@@ -13,10 +13,9 @@ data(R_pal)
 
 \url{http://cran.r-project.org/web/packages/colorspace/}
 }
-\note{"Rainbow", "heat colors", "terrain colors", "topo colors", and "bpy colors" are the standard color palettes used in R to visualize numeric/continuous variables. "SOC", "pH" and "tex" palettes are suitable for visualization of soil variables (soil organic carbon, pH and soil texture). "Blue grey and red" is the ideal palette for visualition of binary variables (in the scale 0-1), and "grey black" is a black and white color palette that contains no white color (hence can it will not confuse low values with NA values in the PNG/GIF files).}
+\note{\code{rainbow_75}, \code{heat colors}, \code{terrain_colors}, \code{topo_colors}, and \code{bpy_colors} are the standard color palettes used in R to visualize numeric/continuous variables. \code{soc_pal}, \code{pH_pal} and \code{tex_pal} palettes are suitable for visualization of soil variables (soil organic carbon, pH and soil texture). \code{blue_grey_red} recommended for visualition of binary variables (in the scale 0-1), and \code{grey_black} is a white-to-black type color palette that contains no white color (hence it will not confuse low values with NA values in the PNG/GIF files).}
 \seealso{\link{SAGA_pal}, \link{worldgrids_pal}}
 \keyword{colour palletes}
 \examples{
-data(R_pal)
 display.pal(R_pal)
 }
