@@ -74,7 +74,7 @@ kml_layer.SpatialPoints <- function(
 
     # Add description with attributes
     if (balloon & ("data" %in% slotNames(obj)))
-      .df_to_kml_html_table(obj@data[i_pt, ])
+      .df_to_kml_html_table(obj@data[i_pt, ], columns=balloon)
 
     cat("\t\t<styleUrl>#pnt", i_pt,"</styleUrl>\n", sep = "", file = file.connection, append = TRUE)
     cat("\t\t<Point>\n", file = file.connection, append = TRUE)
