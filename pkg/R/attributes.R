@@ -25,7 +25,7 @@
     
   # make the table
   html.list <- append(html.list, '<description><![CDATA[')
-  html.list <- append(html.list, '<table border="0" padding="2" spacing="1" style="width:600px;>')
+  html.list <- append(html.list, '<table border="0" padding="2" spacing="1" width="600">')
   html.list <- append(html.list, paste(table.head, collapse = ''))
   html.list <- append(html.list, paste(table.body, collapse = ''))
   html.list <- append(html.list, '</table>')
