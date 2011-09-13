@@ -12,23 +12,25 @@
   
   # otherwise, keep only requested columns
   x <- x[, columns]
-
+  x.names <- names(x)
+  
   # empty list to store html elements
   html.list <- list()
-
-  # create header
-  table.head <- c('<tr style="background-color: #D3D3D3; font-weight: bold; text-align: center; color: #000000;">', paste('<td>', names(x), '</td>', sep=''), "</tr>\n")
-
-  # create the body
-  table.body <- paste(sapply(x, function(i) { paste('<td style="width:auto;">', as.character(i), '</td>', sep = '') }), collapse='')
-  table.body <- paste('<tr style="background-color: #E9E9E9; color: #000000;">', table.body, "</tr>", collapse = '')
-    
-  # make the table
+  
+  # create vector of attribute column names, padded with HTML styling
+  att.names <- sapply(x.names, function(i) { paste('<span style="font-weight: bold; color: #000000; padding:3px;">', as.character(i), '</span>:&nbsp;', sep = '') })
+ 
+  # create vector of styled attribute values
+  att.values <- sapply(x, function(i) { paste('<span style="color: #000000; padding:3px;">', as.character(i), '</span><br>', sep = '') })
+  
+  # combine by interleaving:
+  att <- paste(att.names, att.values, collapse="\n")
+  
+  # format the output: consider adding a heuristic for adjusting ballon div width
   html.list <- append(html.list, '<description><![CDATA[')
-  html.list <- append(html.list, '<table border="0" padding="2" spacing="1" width="600">')
-  html.list <- append(html.list, paste(table.head, collapse = ''))
-  html.list <- append(html.list, paste(table.body, collapse = ''))
-  html.list <- append(html.list, '</table>')
+  html.list <- append(html.list, '<div line-height:1.25; style="width:600px; border:1px solid; padding:3px ">')
+  html.list <- append(html.list, att)
+  html.list <- append(html.list, '</div>')
   html.list <- append(html.list, ']]></description>\n')
 
   cat(paste(html.list, collapse = "\n"), file = file.connection, append = TRUE)
