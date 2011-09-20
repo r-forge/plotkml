@@ -60,36 +60,23 @@
 <browse>
 <browsen>Name of a related graphic file that provides an illustration of the data set.</browsen>
 <browsed>A text description of the illustration.</browsed>
-<browset>
-"CGM" Computer Graphics Metafile, "EPS" Encapsulated Postscript format, "EMF" Enhanced Metafile, "GIF" Graphic Interchange Format, "JPEG" Joint Photographic Experts Group format, "PBM" Portable Bit Map format, "PS" Postscript format, "TIFF" Tagged Image File Format, "WMF" Windows metafile, "XWD" X-Windows Dump, 
-</browset>
+<browset>"CGM" Computer Graphics Metafile, "EPS" Encapsulated Postscript format, "EMF" Enhanced Metafile, "GIF" Graphic Interchange Format, "JPEG" Joint Photographic Experts Group format, "PBM" Portable Bit Map format, "PS" Postscript format, "TIFF" Tagged Image File Format, "WMF" Windows metafile, "XWD" X-Windows Dump</browset>
 </browse>
-<datacred>
-Recognition of those who contributed to the data set.
-</datacred>
+<datacred>Recognition of those who contributed to the data set.</datacred>
+<native>Software and version (operating system and version), platform</native>
 </idinfo>
 <dataqual>
 <attracc>
-<attraccr>
-An explanation of the accuracy of the identification of the entities and assignments of values in the data set and a description of the	tests used.
-</attraccr>
+<attraccr>An explanation of the accuracy of the identification of the entities and assignments of values in the data set and a description of the	tests used.</attraccr>
 </attracc>
-<logic>
-An explanation of the fidelity of the relationships in the data set and the tests used.
-</logic>
-<complete>
-Information about omissions, selection criteria, generalization, definitions used, and other rules used to derive the data set.
-</complete>
+<logic>An explanation of the fidelity of the relationships in the data set and the tests used.</logic>
+<complete>Information about omissions, selection criteria, generalization, definitions used, and other rules used to derive the data set.</complete>
 <posacc>
 <horizpa>
-<horizpar>
-An explanation of the accuracy of the horizontal coordinate measurements and a description of the tests used.
-</horizpar>
+<horizpar>An explanation of the accuracy of the horizontal coordinate measurements and a description of the tests used.</horizpar>
 </horizpa>
 <vertacc>
-<vertaccr>
-An explanation of the accuracy of the vertical coordinate measurements and a description of the	tests used.
-</vertaccr>
+<vertaccr>An explanation of the accuracy of the vertical coordinate measurements and a description of the tests used.</vertaccr>
 </vertacc>
 </posacc>
 <lineage>
@@ -99,68 +86,47 @@ An explanation of the accuracy of the vertical coordinate measurements and a des
 <onlink>URL of a script that can reproduce this data.</onlink>
 </citeinfo>
 </srccite>
-<srcscale>
-The scale denominator of the representative fraction on a map.
-</srcscale>
-<typesrc>
-"paper", "stable-base material", "microfiche", "microfilm", "audiocassette", "chart", "filmstrip", "transparency", "videocassette", "videodisc", "videotape", "physical model", "computer program", "disc", "cartridge tape", "magnetic tape", "online", "CD-ROM", "electronic bulletin board", "electronic mail system"
-</typesrc>
+<srcscale>The scale denominator of the representative fraction on a map.</srcscale>
+<typesrc>"paper", "stable-base material", "microfiche", "microfilm", "audiocassette", "chart", "filmstrip", "transparency", "videocassette", "videodisc", "videotape", "physical model", "computer program", "disc", "cartridge tape", "magnetic tape", "online", "CD-ROM", "electronic bulletin board", "electronic mail system"</typesrc>
 <srctime>
 <timeinfo>
 <sngdate>
 <caldate>The year (and optionally month, or month and day).</caldate>
 </sngdate>
 </timeinfo>
-<srccurr>
-The basis on which the source time period of content information of the source data set is determined.
-</srccurr>
+<srccurr>The basis on which the source time period of content information of the source data set is determined.</srccurr>
 </srctime>
 <srccitea>Short-form alias for the source citation.</srccitea>
-<srccontr>
-Brief statement identifying the information	contributed by the source to the data set.
-</srccontr>
+<srccontr>Brief statement identifying the information contributed by the source to the data set.</srccontr>
 </srcinfo>
 <procstep>
-<procdesc>
-An explanation of the event and related parameters or tolerances.
-</procdesc>
+<procdesc>An explanation of the event and related parameters or tolerances.</procdesc>
 <procdate>The date when the event was completed.</procdate>
 </procstep>
 </lineage>
 </dataqual>
 <spdoinfo>
+<indspref>Name of types of geographic features, addressing schemes, or other means through which locations are referenced in the data set.</indspref>
 <direct>"Point", "Vector", "Raster"</direct>
 <ptvctinf>
 <sdtsterm>
-<sdtstype>
-"Point", "Entity point", "Label point", "Area point", "Node, planar graph", "Node, network", "String", "Link", "Complete chain", "Area chain", "Network chain, planar graph", "Network chain, nonplanar graph", "Circular arc, three point center",	"Elliptical arc", "Uniform B-spline", "Piecewise Bezier", "Ring with mixed composition", "Ring composed of strings", "Ring composed of chains", "Ring composed of arcs", "G-polygon", "GT-polygon composed of rings", "GT-polygon composed of chains", "Universe polygon composed of rings", "Universe polygon composed of chains", "Void polygon composed of rings", "Void polygon composed of chains",
-</sdtstype>
-<ptvctcnt>
-The total number of the point or vector object type occurring in the data set.
-</ptvctcnt>
+<sdtstype>"Point", "Entity point", "Label point", "Area point", "Node, planar graph", "Node, network", "String", "Link", "Complete chain", "Area chain", "Network chain, planar graph", "Network chain, nonplanar graph", "Circular arc, three point center",	"Elliptical arc", "Uniform B-spline", "Piecewise Bezier", "Ring with mixed composition", "Ring composed of strings", "Ring composed of chains", "Ring composed of arcs", "G-polygon", "GT-polygon composed of rings", "GT-polygon composed of chains", "Universe polygon composed of rings", "Universe polygon composed of chains", "Void polygon composed of rings", "Void polygon composed of chains"</sdtstype>
+<ptvctcnt>The total number of the point or vector object type occurring in the data set.</ptvctcnt>
 </sdtsterm>
 </ptvctinf>
 </spdoinfo>
 <spref>
 <horizsys>
 <geograph>
-<latres>
-The minimum difference between two adjacent latitude values expressed in Geographic Coordinate Units of measure.
-</latres>
-<longres>
-The minimum difference between two adjacent longitude values expressed in Geographic Coordinate Units of measure.
-</longres>
-<geogunit>
-"Decimal degrees", "Decimal minutes", "Decimal seconds", "Degrees and decimal minutes", "Degrees, minutes, and decimal seconds", "Radians", "Grads"
-</geogunit>
+<latres>The minimum difference between two adjacent latitude values expressed in Geographic Coordinate Units of measure.</latres>
+<longres>The minimum difference between two adjacent longitude values expressed in Geographic Coordinate Units of measure.</longres>
+<geogunit>"Decimal degrees", "Decimal minutes", "Decimal seconds", "Degrees and decimal minutes", "Degrees, minutes, and decimal seconds", "Radians", "Grads"</geogunit>
 </geograph>
 <geodetic>
 <horizdn>Horizontal datum EPSG Geodetic Parameter Registry name e.g. "North American Datum of 1927"</horizdn>
 <ellips>Ellipsoid EPSG Geodetic Parameter Registry name e.g. "Geodetic Reference System 80"</ellips>
 <semiaxis>Radius of the equatorial axis of the ellipsoid.</semiaxis>
-<denflat>
-The denominator of the ratio of the difference between the equatorial and polar radii of the ellipsoid when the numerator is set to 1.
-</denflat>
+<denflat>The denominator of the ratio of the difference between the equatorial and polar radii of the ellipsoid when the numerator is set to 1.</denflat>
 </geodetic>
 </horizsys>
 </spref>
@@ -174,68 +140,32 @@ The denominator of the ratio of the difference between the equatorial and polar 
 <attrlabl>The name of the attribute.</attrlabl>
 <attrdef>The description of the attribute.</attrdef>
 <attrdomv>
-<edom>
-<edomv>The name or label of a member of the set.</edomv>
-<edomvd>The description of the value.</edomvd>
-<attr></attr>
-</edom>
-</attrdomv>
-<attrdomv>
 <rdom>
 <rdommin>The least value that the attribute can be assigned.</rdommin>
 <rdommax>The greatest value that the attribute can be assigned.</rdommax>
 <attrunit>The standard of measurement for an attribute value.</attrunit>
-<attrmres>
-The smallest unit increment to which an attribute value is measured.
-</attrmres>
+<attrmres>The smallest unit increment to which an attribute value is measured.</attrmres>
 </rdom>
 </attrdomv>
-<attrdomv>
-<codesetd>
-<codesetn>The title of the codeset.</codesetn>
-<codesets>The authority for the codeset.</codesets>
-</codesetd>
-</attrdomv>
-<attrdomv>
-<udom>Description of the values and reasons why they cannot be represented.</udom>
-</attrdomv>
-<begdatea>
-Earliest or only date for which the attribute values are current.
-</begdatea>
-<enddatea>
-Latest date for which the information are current.
-</enddatea>
+<begdatea>Earliest or only date for which the attribute values are current.</begdatea>
+<enddatea>Latest date for which the information are current.</enddatea>
 <attrvai>
-<attrva>
-An estimate of the accuracy of the assignment of attribute values.
-</attrva>
-<attrvae>
-The definition of the Attribute Value Accuracy measure and units, and a description of how the estimate was derived.
-</attrvae>
+<attrva>An estimate of the accuracy of the assignment of attribute values.</attrva>
+<attrvae>The definition of the Attribute Value Accuracy measure and units, and a description of how the estimate was derived.</attrvae>
 </attrvai>
-<attrmfrq>
-"As needed", "Irregular", "None planned"
-</attrmfrq>
+<attrmfrq>"As needed", "Irregular", "None planned"</attrmfrq>
 </attr>
 </detailed>
 <overview>
-<eaover>
-Detailed summary of the information contained in a data set.
-</eaover>
-<eadetcit>
-Reference to the complete description of the entity types, attributes, and attribute values for the data set.
-</eadetcit>
+<eaover>Detailed summary of the information contained in a data set.</eaover>
+<eadetcit>Reference to the complete description of the entity types, attributes, and attribute values for the data set.</eadetcit>
 </overview>
 </eainfo>
 <distinfo>
 <distrib>
+<resdesc>The identifier by which the distributor knows the data set.</resdesc>
+<distliab>Statement of the liability assumed by the distributor.</distliab>
 </distrib>
-<resdesc>
-The identifier by which the distributor knows the data set.
-</resdesc>
-<distliab>
-Statement of the liability assumed by the distributor.
-</distliab>
 <stdorder>
 <digform>
 <digtinfo>
@@ -243,17 +173,13 @@ Statement of the liability assumed by the distributor.
 <formvern>Version number of the format.</formvern>
 <formcont>Description of the content of the data encoded in a format.</formcont>
 <filedec>"ZIP","RAR","No compression applied"</filedec>
-<transize>
-The size, or estimated size, of the transferred	data set in megabytes.
-</transize>
+<transize>The size, or estimated size, of the transferred data set in megabytes.</transize>
 </digtinfo>
 <digtopt>
 <onlinopt>
 <computer>
 <networka>
-<networkr>
-The name of the file or service from which the data set can be obtained.
-</networkr>
+<networkr>The name of the file or service from which the data set can be obtained.</networkr>
 </networka>
 </computer>
 </onlinopt>
@@ -263,18 +189,12 @@ The name of the file or service from which the data set can be obtained.
 </stdorder>
 </distinfo>
 <metainfo>
-<metd>
-The date that the metadata were created or last	updated.
-</metd>
+<metd>The date that the metadata were created or last updated.</metd>
 <metc>
 <cntinfo>
 <cntperp>
-<cntper>
-The name of the individual to which the contact	type applies.
-</cntper>
-<cntorg>
-The name of the organization to which the contact type applies.
-</cntorg>
+<cntper>The name of the individual to which the contact type applies.</cntper>
+<cntorg>The name of the organization to which the contact type applies.</cntorg>
 </cntperp>
 <cntaddr>
 <addrtype>The information provided by the address.</addrtype>
