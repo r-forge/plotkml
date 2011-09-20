@@ -1,5 +1,5 @@
 \name{grid2poly}
-\title{Converts a gridded map to a polygon map}
+\title{grid2poly}
 \description{ Converts a gridded map to a polygon map (one polygon for each cell) and (by default) reprojects polygons to WGS84 geographic coordinates.
 }
 \usage{

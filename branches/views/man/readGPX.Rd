@@ -1,5 +1,5 @@
 \name{readGPX}
-\title{Read GPX files to R}
+\title{readGPX}
 \description{ Reads tracks, waypoints, routes and metadata to R.}
 \usage{
 readGPX(gpx.file, metadata = TRUE, bounds = TRUE, waypoints = TRUE, tracks = TRUE,    routes = TRUE)
