@@ -214,6 +214,10 @@ data(SAGA_pal)
     cols <- rep("#FFFFFF", length(data))
     cols[!(is.na(data)|is.nan(data))] <- rgb(pal(data[!(is.na(data)|is.nan(data))]) / 255)
   }
+  
+  # there is a bug in here... factors don't seem to work as of r251
+  # does this function really need to rescale / pallete the data?
+  # why not use factor levels?
   else {
     data <- as.factor(data)
     values <- levels(data)
