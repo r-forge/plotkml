@@ -18,10 +18,14 @@
   \item{home_url}{Default location of all icons and auxiliary files}
   \item{googleAPIkey}{(optional) Google API key required for some operations}
 }
-\details{ The function will try to locate external software tools under either Windows or Unix platform. The external software tools are not required by default and most of operations in \link{plotKML} can be run without using them. FWTools, SAGA GIS and Python are highly recommended, however, for processing large data sets.
+\details{ The function will try to locate external software tools under either Windows or Unix platform and then save the results to \code{plotKML.opts} environment. Everytime you load \link{plotKML} it will look for software paths (unless you specify them manually). \cr 
+The external software tools are not required by default and most of operations in \link{plotKML} can be run without using them. FWTools, SAGA GIS and Python are highly recommended, however, for processing large data sets.
 }
 \references{
-%% ~put references to the literature/web site here ~
+ImageMagick (\url{http://imagemagick.org})\cr
+FWTools (\url{http://fwtools.maptools.org})\cr
+SAGA GIS (\url{http://www.saga-gis.org})\cr
+Python (\url{http://python.org})\cr
 }
 \author{Tomislav Hengl (\email{tom.hengl@wur.nl})}
 \note{ To further customize plotKML options, consider putting \code{library(plotKML); plotKML.env(...)} in your \preformatted{"/etc/Rprofile.site"}.
@@ -33,11 +37,13 @@
 \dontrun{
 pts <- paths(show.paths = TRUE)
 pts
-plotKML.options()
+plotKML.env()
 }
 gdalwarp <- get("gdalwarp", envir = plotKML.opts)
 get("home_url", envir = plotKML.opts)
-\dontrun{ system(gdalwarp) }
+\dontrun{ 
+system(paste(gdalwarp, "--help-general")) 
+}
 }
 \keyword{ ~paths}
 \keyword{environmental variables}
