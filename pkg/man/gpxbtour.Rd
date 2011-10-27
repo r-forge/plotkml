@@ -1,6 +1,9 @@
 \name{gpxbtour}
-\title{GPS log of a bike ride}
-\description{GPS log of a bike tour from Wageningen to Muenster. The table contains 3228 records of GPS locations, speed and elevation.}
+\docType{data}
+\alias{gpxbtour}
+\alias{trajectory}
+\title{GPS log of a bike tour}
+\description{GPS log of a bike tour from Wageningen to \enc{Münster}{Muenster}. The table contains 3228 records of GPS locations, speed and elevation.}
 \format{
   The data frame contains the following columns:
   \describe{
@@ -15,9 +18,8 @@
 data(gpxbtour)
 }
 \author{ Tomislav Hengl (tom.hengl@wur.nl) }
-\note{ The log was produced using the GlobalSat GH-615 GPS watch. The data log (trackpoints) was first saved to GPX exchange format (\url{http://www.topografix.com/gpx.asp}) and then imported to R using the XML package and formatted to a data frame.
+\note{ The log was produced using the GlobalSat GH-615 GPS watch. The original data log (trackpoints) was first saved to GPX exchange format (\url{http://www.topografix.com/gpx.asp}) and then imported to R using the XML package and formatted to a data frame.
 }
-\seealso{\link{eberg_contours}}
 \keyword{datasets}
 \examples{
 data(gpxbtour)

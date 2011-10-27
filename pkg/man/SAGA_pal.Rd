@@ -1,20 +1,31 @@
 \name{SAGA_pal}
-\title{SAGA colour palettes}
-\description{
-22 colour palettes used by SAGA GIS. Each colour palette consists of 20 colours in the hexadecimal system. 
-}
+\alias{color_palettes}
+\alias{SAGA_pal}
+\alias{R_pal}
+\title{Various colour palettes for visualization of numeric variables}
+\description{ \code{SAGA_pal} contains 22 colour palettes imported from SAGA GIS. \code{R_pal} 10 standard colour palettes used in R to visualize continuous and binary variables. Each colour palette consists of 20 colours in the hexadecimal system.}
 \usage{
 data(SAGA_pal)
+data(R_pal)
 }
-\author{SAGA GIS has been created by the SAGA GIS development team (lead by J. Bohner and O. Conrad, from the Institute of Geography, University of Hamburg, Germany). The colour palettes have been exported from SAGA (as ".sprm" SAGA parameter files) and ported to R by Tomislav Hengl.}
+\author{\href{http://www.saga-gis.org}{SAGA GIS} has been created by the SAGA GIS development team (lead by J. \enc{Böhner}{Boehner} and O. Conrad, from the Institute of Geography, University of Hamburg, Germany). The colour palettes have been exported from SAGA (as \code{".sprm"} SAGA parameter files) and ported to R. All palletes were prepared by Tomislav Hengl (\email{tom.hengl@wur.nl}).}
 \references{
-\url{http://www.saga-gis.org}
+Rogowitz, B.E., Treinish, L.A., (1998, December). \href{http://dx.doi.org/10.1109/6.736450}{Data visualization: the end of the rainbow}. Spectrum, IEEE, 35(12):52-59 \cr 
+Borland, D. and Russell, M. T. II, (2007). Rainbow Color Map (Still) Considered Harmful. In: Visualization Viewpoints, (Edt) Rhyne, T.-M., pp. 14-17.\cr
+\url{http://cran.r-project.org/web/packages/RColorBrewer/}\cr
+\url{http://cran.r-project.org/web/packages/colorspace/}\cr
 }
-\note{In the data visualisation literature (and the cartography literature in particular), the rainbow (sometimes also called spectral) colour ramp is generally recognized as a bad choice for visualization of sequential/continuous variables. For more info see: Rogowitz, B.E., Treinish, L.A., (1998, December). Data visualization: the end of the rainbow. Spectrum, IEEE, 35(12):52-59 (\url{http://dx.doi.org/10.1109/6.736450}) and/or Borland, D. and Russell, M. T. II, (2007). Rainbow Color Map (Still) Considered Harmful. In: Visualization Viewpoints, (Edt) Rhyne, T.-M., pp. 14-17. 
+\note{\code{rainbow_75}, \code{heat colors}, \code{terrain_colors}, \code{topo_colors}, and \code{bpy_colors} are the standard color palettes used in R to visualize numeric/continuous variables. \code{soc_pal}, \code{pH_pal} and \code{tex_pal} palettes are suitable for visualization of soil variables (soil organic carbon, pH and soil texture). \code{blue_grey_red} is recommended for visualition of binary variables (values in the range 0-1), and \code{grey_black} is a white-to-black type color palette that contains no white color (hence it will not confuse low values with NA values in the PNG/GIF files).\cr 
+Although many users will likely use \code{SG_COLORS_DEFAULT} or \code{rainbow_75} as default palettes to visualize numeric variables, it is worth mentioning that in the data visualisation literature (and the cartography literature in particular), the rainbow (sometimes also called spectral) colour ramp is generally recognized as a \emph{bad choice} for visualization of sequential/continuous variables (Rogowitz and Treinish, 1998; Borland and Russell, 2007).  
 }
-\seealso{\link{R_pal}, \link{worldgrids_pal}}
+\seealso{\link{worldgrids_pal}}
 \keyword{color palletes}
+\keyword{SAGA GIS}
+\keyword{datasets}
 \examples{
 data(SAGA_pal)
 display.pal(SAGA_pal, sel=c(1,2,7,8,10,11,17,18,19,21,22))
+dev.off()
+display.pal(R_pal)
+dev.off()
 }

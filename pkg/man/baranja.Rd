@@ -4,7 +4,7 @@
 \alias{baranja_stream}
 \title{Baranja hill case study}
 \description{Baranja hill is a 4 by 4 km large study area in the Baranja region, eastern Croatia (corresponds to a size of an aerial photograph). This data set has been extensively used to describe various DEM modelling and analysis steps (Hengl and Reuter, 2008; Hengl et al., 2010). \cr
-\code{baranja_elev} is a \code{SpatialPointsDataFrame} that contains 6370 observations of elevations (field survey and digitized from the stereo photos). \code{baranja_stream} contains observed probabilities of streams (digitized from the 1:5000 topo map).}
+\code{baranja_elev} is a \code{SpatialPointsDataFrame} object that contains 6370 observations of elevations (from field survey and digitized from the stereo images). \code{baranja_stream} contains \emph{observed} probabilities of streams (digitized from the 1:5000 topo map).}
 \usage{data(baranja_elev)}
 \author{ Tomislav Hengl (\email{tom.hengl@wur.nl}). }
 \references{
@@ -12,7 +12,7 @@ Hengl, T., Reuter, H.I. (eds), (2008) \href{http://geomorphometry.org/book}{Geom
 Hengl, T., Heuvelink, G. B. M., van Loon, E. E., (2010) \href{http://dx.doi.org/10.5194/hess-14-1153-2010}{On the uncertainty of stream networks derived from elevation data: the error propagation approach}. Hydrology and Earth System Sciences, 14:1153-1165.\cr
 \url{http://geomorphometry.org/content/baranja-hill}
 }
-\note{ Consider using 30~m resolution to produce the output maps. 
+\note{ Consider using the 30~m resolution grid (see \code{baranja_stream}) to produce the output maps. 
 }
 \examples{
 data(baranja_elev)
