@@ -7,20 +7,34 @@
 
 paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "", python = "", show.paths = TRUE){ 
   
-     require(RSAGA)
-     require(animation)
-     convert <- ani.options("convert")
-     saga_cmd <- shortPathName(normalizePath(paste(rsaga.env()$path, rsaga.env()$cmd, sep="/")))
-     saga.version <- rsaga.get.version()
      
-    if(is.null(convert)){
+     if(require(animation))
+        convert <- ani.options("convert")
+     
+     if(require(RSAGA)) {
+        saga_cmd <- shortPathName(normalizePath(paste(rsaga.env()$path, rsaga.env()$cmd, sep="/")))
+        saga.version <- rsaga.get.version()
+     }
+     else
+       saga_cmd <- NULL
+    
+    # can't test for NULL if the object doesn't exist
+    im.dir <- NULL
+    if(convert == ''){
         if(.Platform$OS.type == "windows") {
-        if(!length(x <- grep(paths <- strsplit(Sys.getenv('PATH')[[1]], ";")[[1]], pattern="Magick"))==0) {
+        # get paths and check for ImageMagick
+        paths <- strsplit(Sys.getenv('PATH')[[1]], ";")[[1]]
+        x <- grep(paths, pattern="Magick")
+        
+        # if present
+        if(!length(x) == 0) {
         im.dir <- paths[grep(paths, pattern="ImageMagick")[1]]
         convert = shQuote(normalizePath(file.path(im.dir, "convert.exe")))
         message(system(convert,  show.output.on.console = FALSE, intern = TRUE)[1])
         # message(paste("Located ImageMagick from the path: \"", im.dir, "\"", sep=""))
-        }}
+        }
+        } # end checking for Imagemagick on Windows
+        # check for all other OS... this isn't going to work
         else{
         if(!length(x <- grep(paths <- strsplit(Sys.getenv('PATH')[[1]], ":")[[1]], pattern="Magick"))==0) {
         im.dir <- paths[grep(paths, pattern="Magick")[1]]
@@ -168,11 +182,11 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
     if(show.paths){  return(lt)  }
 }
 
-
+ 
 ## Standard settings:
 plotKML.env <- function(
-    colour_scale_numeric,
-    colour_scale_factor,
+    colour_scale_numeric = '',
+    colour_scale_factor = '',
     ref_CRS,
     NAflag,
     kml_xsd,
@@ -187,9 +201,8 @@ plotKML.env <- function(
     silent = TRUE
     ){
     
-    require(RColorBrewer)
-    
-    plotKML.opts <<- new.env(hash=TRUE)
+    ## DEB: can't put this here..
+    # plotKML.opts <<- new.env(hash=TRUE)
     
     if(missing(colour_scale_numeric)) { colour_scale_numeric <- rev(brewer.pal(n = 5, name = "Spectral")) }
     if(missing(colour_scale_factor)) { colour_scale_factor <- brewer.pal(n = 6, name = "Set1") }
@@ -233,3 +246,4 @@ plotKML.env <- function(
 
 
 # end of script;
+

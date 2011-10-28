@@ -86,7 +86,6 @@ kml_aes <- function(obj, ...) {
 
   # Colour
   if ("colour" %in% called_aes) {
-  require(RColorBrewer)
 
     # If a column name as been used
     if (is.name(parent_call[['colour']]) | is.call(parent_call[['colour']]) & "data" %in% slotNames(obj)) {
@@ -176,7 +175,9 @@ kml_aes <- function(obj, ...) {
   aes
 }
 
+## DEB: why ?
 data(SAGA_pal)
+
 ## default colour palettes
 .colour_scale_numeric = get("colour_scale_numeric", envir = plotKML.opts)
 .colour_scale_factor = get("colour_scale_factor", envir = plotKML.opts)
