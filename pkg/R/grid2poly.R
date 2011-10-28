@@ -6,6 +6,9 @@
 
 grid2poly <- function(obj, reproject = TRUE, var.name, tmp.file = TRUE, method = "sp"){
 
+    require(raster)
+    require(sp)
+
     if(missing(var.name)) { var.name <- names(obj)[1] }
     # print warning:
     warning("Operation not recommended for large grids (>>10e4 pixels).", immediate. = TRUE)
@@ -24,14 +27,16 @@ grid2poly <- function(obj, reproject = TRUE, var.name, tmp.file = TRUE, method =
     if(method=="RSAGA"){
       require(RSAGA)
       if(!rsaga.env()[["cmd"]]=="NULL"){
-      require(maptools)
+      require(rgdal)
         
         if(tmp.file==TRUE){
         tf <- tempfile() 
         }
-        else { # first, write SGDF to a file:
+        else { 
         tf <- var.name
         }
+
+        # first, write SGDF to a file:
         writeGDAL(obj[var.name], paste(tf, ".sdat", sep=""), "SAGA")
         rsaga.geoprocessor(lib="shapes_grid", module=3, param=list(GRIDS=paste(tf, ".sgrd", sep=""), SHAPES=paste(tf, ".shp", sep=""), NODATA=TRUE, TYPE=1), show.output.on.console = FALSE)
         pol <- readShapePoly(paste(tf, ".shp", sep=""), proj4string=obj@proj4string)
