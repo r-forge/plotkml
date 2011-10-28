@@ -1,5 +1,10 @@
-# This file gathers the layer() methods. kml.compress(), kml.open() and kml.close() are in kml.utils.R
-#
+# Purpose        : Write SpatialPoints to KML
+# Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
+# Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Tomislav Hengl (tom.hengl@wur.nl);
+# Status         : ready for R-forge
+# Note           : This file gathers the layer() methods. kml.compress(), kml.open() and kml.close();
+
+
 kml_layer.SpatialPoints <- function(
   # options on the object to plot
   obj,

@@ -1,5 +1,9 @@
-# convert an attribute table associated with spatial data into an HTML <description> bubble
-# for use within Google Earth
+# Purpose        : Convert an attribute table associated with spatial data into an HTML <description> bubble
+# Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
+# Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Tomislav Hengl (tom.hengl@wur.nl);
+# Status         : ready for R-forge
+# Note           : required by KML writing functions;
+
 .df_to_kml_html_table <- function(x, columns=TRUE) {
   
   # get our invisible file connection from custom evnrionment
@@ -36,4 +40,4 @@
   cat(paste(html.list, collapse = "\n"), file = file.connection, append = TRUE)
 }
 
-
+# end of script;

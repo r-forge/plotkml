@@ -21,5 +21,5 @@ if (!isGeneric("reproject"))
 # setup our environment for storing file handles and the like
 plotKML.fileIO <- new.env(hash=TRUE)
 
-# locate the external software:
+# set the environmental variables:
 plotKML.env(show.env = FALSE)
