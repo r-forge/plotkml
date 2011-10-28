@@ -4,8 +4,6 @@
 # Status         : ready for R-forge
 # Note           : Functionality for constant transparency under development;
 
-# 
-require(RColorBrewer)
 
 .all_kml_aesthetics <- list(
   colour = "black",
@@ -88,6 +86,7 @@ kml_aes <- function(obj, ...) {
 
   # Colour
   if ("colour" %in% called_aes) {
+  require(RColorBrewer)
 
     # If a column name as been used
     if (is.name(parent_call[['colour']]) | is.call(parent_call[['colour']]) & "data" %in% slotNames(obj)) {
@@ -177,13 +176,10 @@ kml_aes <- function(obj, ...) {
   aes
 }
 
-# display.brewer.all()
 data(SAGA_pal)
 ## default colour palettes
-.colour_scale_numeric = rev(brewer.pal(n = 5, name = "Spectral"))
-# rev(rainbow(65)[1:48])  ## Not recommended
-# SAGA_pal[[1]]  ## SAGA default palette
-.colour_scale_factor = brewer.pal(n = 6, name = "Set1")
+.colour_scale_numeric = get("colour_scale_numeric", envir = plotKML.opts)
+.colour_scale_factor = get("colour_scale_factor", envir = plotKML.opts)
 
 # Retrieving colour scale
 .getColourScale <- function(data, z.lim, colour_scale = NULL) {
