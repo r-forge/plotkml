@@ -175,15 +175,19 @@ kml_aes <- function(obj, ...) {
   aes
 }
 
-## DEB: why ?
+<<<<<<< .mine=======## DEB: why ?
 # data(SAGA_pal)
 
 # get default color scales from plotKML.opts [needs more thought]
 .colour_scale_numeric = get("colour_scale_numeric", envir = plotKML.opts)
 .colour_scale_factor = get("colour_scale_factor", envir = plotKML.opts)
 
-# Retrieving colour scale
+>>>>>>> .theirs# Retrieving colour scale
 .getColourScale <- function(data, z.lim, colour_scale = NULL) {
+
+  ## default colour palettes
+  .colour_scale_numeric = get("colour_scale_numeric", envir = plotKML.opts)
+  .colour_scale_factor = get("colour_scale_factor", envir = plotKML.opts)
 
   if (is.null(colour_scale)) {
     # If data is numeric
@@ -366,3 +370,5 @@ kml_size <- function(obj, size, size.min = 0.25, size.max = 4, size.default = 1)
 kml_width <- function(obj, width, width.min = 0.1, width.max = 5, width.default = 1){
 
 }
+
+# end of script;
