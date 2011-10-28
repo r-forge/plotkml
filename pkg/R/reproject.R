@@ -4,15 +4,6 @@
 # Status         : tested
 # Note           : bounding box and cell size are estimated by the program;
 
-setMethod("reproject", "SpatialPoints", reproject.SpatialPoints)
-setMethod("reproject", "SpatialPolygons", reproject.SpatialPoints)
-setMethod("reproject", "SpatialLines", reproject.SpatialPoints)
-setMethod("reproject", "RasterStack", reproject.RasterStack)
-setMethod("reproject", "RasterLayer", reproject.RasterLayer)
-setMethod("reproject", "SpatialGrid", reproject.SpatialPixels)
-setMethod("reproject", "SpatialPixels", reproject.SpatialPixels)
-
-
 reproject.SpatialPoints <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), ...) {
   res <- spTransform(x = obj, CRSobj = CRS(CRS))
   return(res)
@@ -156,5 +147,16 @@ reproject.SpatialPixels <- function(obj, CRS = get("ref_CRS", envir = plotKML.op
   res <- as(res, "SpatialPixelsDataFrame")
   return(res)
 }
+
+
+## DEB: these have to be set after the defintition functions have been created 
+setMethod("reproject", signature="SpatialPoints", definition=reproject.SpatialPoints)
+setMethod("reproject", signature="SpatialPolygons", definition=reproject.SpatialPoints)
+setMethod("reproject", signature="SpatialLines", definition=reproject.SpatialPoints)
+setMethod("reproject", signature="RasterStack", definition=reproject.RasterStack)
+setMethod("reproject", signature="RasterLayer", definition=reproject.RasterLayer)
+setMethod("reproject", signature="SpatialGrid", definition=reproject.SpatialPixels)
+setMethod("reproject", signature="SpatialPixels", definition=reproject.SpatialPixels)
+
 
 # end of script;

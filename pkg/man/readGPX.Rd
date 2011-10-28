@@ -2,7 +2,7 @@
 \alias{readGPX}
 \alias{.readGPX.element}
 \title{Imports GPX (GPS track) files to R}
-\description{Read various elements from a \formatted{*.gpx} file - metadata, waypoints, tracks and routes - and converts them to tables.}
+\description{Read various elements from a *.gpx file - metadata, waypoints, tracks and routes - and converts them to tables.}
 \usage{readGPX(gpx.file, metadata = TRUE, bounds = TRUE,\cr
     waypoints = TRUE, tracks = TRUE, routes = TRUE)
 }
@@ -22,9 +22,10 @@ GPX data format (\url{http://www.topografix.com/gpx.asp})
 \author{Tomislav Hengl (\email{tom.hengl@wur.nl})}
 \seealso{\link{\code{rgdal::readOGR}}, \link{\code{kml_layer.STIDFtraj}}}
 \examples{
+\dontrun{
 gpxbtour <- readGPX(system.file("btour.gpx", package="plotKML"))
 str(gpxbtour)
-\dontrun{
+
 fells_loop <- readGPX("http://www.topografix.com/fells_loop.gpx")
 str(fells_loop)
 }

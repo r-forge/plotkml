@@ -176,11 +176,11 @@ kml_aes <- function(obj, ...) {
 }
 
 ## DEB: why ?
-data(SAGA_pal)
+# data(SAGA_pal)
 
-## default colour palettes
-.colour_scale_numeric = get("colour_scale_numeric", envir = plotKML.opts)
-.colour_scale_factor = get("colour_scale_factor", envir = plotKML.opts)
+## default colour palettes: hard-coded for now, until we get the plotKML.opts env. setup
+.colour_scale_numeric = rev(brewer.pal(n = 5, name = "Spectral")) # get("colour_scale_numeric", envir = plotKML.opts)
+.colour_scale_factor = colour_scale_factor <- brewer.pal(n = 6, name = "Set1") # get("colour_scale_factor", envir = plotKML.opts)
 
 # Retrieving colour scale
 .getColourScale <- function(data, z.lim, colour_scale = NULL) {
