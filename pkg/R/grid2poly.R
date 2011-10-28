@@ -4,7 +4,7 @@
 # Status         : working version
 # Note           : Not recommended for large grids!;
 
-grid2poly <- function(obj, reproject = TRUE, var.name, temp.file = TRUE, method = "sp"){
+grid2poly <- function(obj, reproject = TRUE, var.name, tmp.file = TRUE, method = "sp"){
 
     if(missing(var.name)) { var.name <- names(obj)[1] }
     # print warning:
@@ -26,7 +26,7 @@ grid2poly <- function(obj, reproject = TRUE, var.name, temp.file = TRUE, method 
       if(!rsaga.env()[["cmd"]]=="NULL"){
       require(maptools)
         
-        if(temp.file==TRUE){
+        if(tmp.file==TRUE){
         tf <- tempfile() 
         }
         else { # first, write SGDF to a file:
