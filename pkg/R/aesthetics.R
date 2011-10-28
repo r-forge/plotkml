@@ -185,10 +185,6 @@ data(SAGA_pal)
 # Retrieving colour scale
 .getColourScale <- function(data, z.lim, colour_scale = NULL) {
 
-  require(ggplot2)  # /!\ for the rescale function, soon to be in the scales package /!\
-  require(colorRamps)
-  require(RColorBrewer)
-
   if (is.null(colour_scale)) {
     # If data is numeric
     if (is.numeric(data)) {
