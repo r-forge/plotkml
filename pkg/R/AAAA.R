@@ -21,5 +21,12 @@ if (!isGeneric("reproject"))
 # setup our environment for storing file handles and the like
 plotKML.fileIO <- new.env(hash=TRUE)
 
+## DEB: moved this from plotKML.otions.R
+## not sure if this makes sense...
+plotKML.opts <- new.env(hash=TRUE)
+
+
+
+## DEB: can't put this here, as the function has not been defined yet...
 # set the environmental variables:
-plotKML.env(show.env = FALSE)
+# plotKML.env(show.env = FALSE)
