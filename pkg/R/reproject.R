@@ -37,7 +37,7 @@ reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
   
   # look for FWTools path:  
   if(!nzchar(gdalwarp)){
-  plotKML.env(silent = FALSE)
+  plotKML.env(silent = FALSE, show.env = FALSE)
   gdalwarp <- get("gdalwarp", envir = plotKML.opts)
   }
   
@@ -132,7 +132,7 @@ reproject.SpatialPixels <- function(obj, CRS = get("ref_CRS", envir = plotKML.op
         res@data[names(obj)[i]] <- readGDAL(paste(tf, "_ll.tif", sep=""), silent = TRUE)$band1
         }
         
-        # reformat to original factors:
+        # reformat to the original factors:
         if(is.factor(obj@data[,i])){
         res@data[,i] <- factor(res@data[,i], levels=levels(obj@data[,i]))
         }
@@ -148,8 +148,7 @@ reproject.SpatialPixels <- function(obj, CRS = get("ref_CRS", envir = plotKML.op
   return(res)
 }
 
-
-## DEB: these have to be set after the defintition functions have been created 
+# connect all methods and classes:
 setMethod("reproject", signature="SpatialPoints", definition=reproject.SpatialPoints)
 setMethod("reproject", signature="SpatialPolygons", definition=reproject.SpatialPoints)
 setMethod("reproject", signature="SpatialLines", definition=reproject.SpatialPoints)
