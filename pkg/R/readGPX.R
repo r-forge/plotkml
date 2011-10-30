@@ -14,7 +14,6 @@ readGPX <- function(
     )
 
     {    
-    require(XML)  # http://www.omegahat.org/RSXML/Tour.pdf
     options(warn = -1)    
 
     if(metadata==TRUE) { metadata <- .readGPX.element(gpx.file, "name") }    
@@ -32,7 +31,6 @@ readGPX <- function(
 .readGPX.element <- function(gpx.file, element) {
     # element = "metadata", "wpt", "rte", "trk"
     
-    require(XML)
     ret <- xmlTreeParse(gpx.file, useInternalNodes = TRUE)
     # top structure: 
     top <- xmlRoot(ret)

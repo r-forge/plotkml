@@ -1,3 +1,9 @@
+# Purpose        : Write a raster layer to KML;
+# Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
+# Contributions  : Tomislav Hengl (tom.hengl@wur.nl); Dylan Beaudette (debeaudette@ucdavis.edu); 
+# Status         : tested
+# Note           : Writes to a temp file via file.connection;
+
 kml_layer.Raster <- function(
   # options on the object to plot
   obj,
@@ -13,6 +19,10 @@ kml_layer.Raster <- function(
 
   # Checking the projection is geo
   check <- check_projection(obj, logical = TRUE)
+
+  ## default colour palettes
+  .colour_scale_numeric = get("colour_scale_numeric", envir = plotKML.opts)
+  .colour_scale_factor = get("colour_scale_factor", envir = plotKML.opts)
 
   # Parsing the call for "colour"
   call <- substitute(list(...))
@@ -127,3 +137,5 @@ kml_layer.Raster <- function(
 }
 
 setMethod("kml_layer", "Raster", kml_layer.Raster)
+
+# end of script;
