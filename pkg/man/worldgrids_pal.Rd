@@ -1,5 +1,6 @@
 \name{worldgrids_pal}
-\alias{color_palettes}
+\docType{data}
+\encoding{UTF-8}
 \title{Standard global color palettes for factor variables}
 \description{
 10 color palettes used to visualize various environmental categorical / factor variables: land cover classes, water types, anthroms, soil types and similar. Each colour palette consists of a number of colours in the hexadecimal system. 

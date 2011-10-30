@@ -1,4 +1,6 @@
 \name{SAGA_pal}
+\docType{data}
+\encoding{UTF-8}
 \alias{color_palettes}
 \alias{SAGA_pal}
 \alias{R_pal}
@@ -19,13 +21,15 @@ Borland, D. and Russell, M. T. II, (2007). Rainbow Color Map (Still) Considered 
 Possibly the most used palettes for visualization of numeric variables are \code{rev(rainbow(65)[1:48])} and \code{SAGA_pal[[1]]} (SAGA default palette). Although many users will likely use \code{SG_COLORS_DEFAULT} or \code{rainbow_75} as default palettes to visualize numeric variables, it is worth mentioning that in the data visualisation literature (and the cartography literature in particular), the rainbow (sometimes also called spectral) colour ramp is generally recognized as a \emph{bad choice} for visualization of sequential/continuous variables (Rogowitz and Treinish, 1998; Borland and Russell, 2007).  
 }
 \seealso{\link{\code{worldgrids_pal}}, \link{\code{RColorBrewer::display.brewer.all}}}
-\keyword{color palletes}
-\keyword{SAGA GIS}
-\keyword{datasets}
 \examples{
 data(SAGA_pal)
+\dontrun{
 display.pal(SAGA_pal, sel=c(1,2,7,8,10,11,17,18,19,21,22))
 dev.off()
 display.pal(R_pal)
 dev.off()
 }
+}
+\keyword{color palletes}
+\keyword{SAGA GIS}
+\keyword{datasets}

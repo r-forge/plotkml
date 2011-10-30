@@ -3,9 +3,10 @@
 \alias{paths}
 \title{plotKML specific environmental variables / paths}
 \description{The function automatically looks for FWTools, ImageMagick, Python, SAGA GIS, in the Windows Registry Hive, the Program Files directory or the usr/bin installation (Unix).}
-\usage{plotKML.env(colour_scale_numeric = "", colour_scale_factor = "", ref_CRS = "",\cr
-    kml_xsd = "", gpx_xsd = "", convert = "", gdalwarp = "", gdal_translate = "",\cr
-    python = "", home_url = "", googleAPIkey = "", show.env = TRUE)}
+\usage{plotKML.env(colour_scale_numeric = "", colour_scale_factor = "", ref_CRS = "",
+    kml_xsd = "", gpx_xsd = "", convert = "", gdalwarp = "", gdal_translate = "",
+    python = "", home_url = "", googleAPIkey = "", show.env = TRUE)
+}
 \arguments{
   \item{colour_scale_numeric}{Default colour scheme for numeric variables.}
   \item{colour_scale_factor}{Default colour scheme for factor variables.}
