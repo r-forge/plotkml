@@ -1,5 +1,6 @@
 \name{baranja}
 \docType{data}
+\encoding{UTF-8}
 \alias{baranja_elev}
 \alias{baranja_stream}
 \title{Baranja hill case study}

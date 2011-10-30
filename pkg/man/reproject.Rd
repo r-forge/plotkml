@@ -7,21 +7,21 @@
 \alias{reproject.RasterBrick}
 \title{Reprojects data to a given coordinate reference system}
 \description{This function reprojects spatial data to a given coordinate reference system (CRS), defaulted to geographic coordinates.}
-\usage{reproject(obj, ...)}
+\usage{reproject(obj, CRS = get("ref_CRS", envir = plotKML.opts), ..., program = "raster")}
 \arguments{
-  \item{obj}{A Spatial* or Raster* object}
-  \item{\dots}{Arguments evaluated in the context of function projectRaster from the raster package}
+  \item{obj}{A Spatial* or Raster* object.}
+  \item{CRS}{Proj4string. See also\code{\link{rgdal::CRS-class}}.}
+  \item{\dots}{Arguments evaluated in the context of function projectRaster from the raster package.}
+  \item{program}{Default method used for reprojecting vectors / grids.}
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+In the case of raster and/or gridded maps, by selecting \code{program = "FWTools"} \code{gdalwarp} functionality is initiated.
 }
 \references{
-%% ~put references to the literature/web site here ~
+Raster package (\url{http://CRAN.R-project.org/package=raster})
 }
-\author{Pierre Roudier and Dylan Beaudette}
-\note{
-}
-\section{Warning}{\code{obj} needs to have a proper proj4 string (CRS), other wise \code{reproject} will not run.}
+\author{Pierre Roudier, Tomislav Hengl (\email{tom.hengl@wur.nl}) and Dylan Beaudette}
+\section{Warning}{\code{obj} needs to have a proper proj4 string (CRS), otherwise \code{reproject} will not run.}
 \seealso{\code{\link{raster::projectRaster}}}
 \examples{
 # Example with vector data
@@ -33,6 +33,6 @@ eberg.geo <- reproject(eberg)
 data(eberg_grid)
 \dontrun{eberg_grid.geo <- reproject(eberg_grid)}
 # Using FWTools:
-\dontrun{eberg_grid.geo <- reproject(eberg_grid)}
+\dontrun{eberg_grid.geo <- reproject(eberg_grid, program = "FWTools")}
 }
 \keyword{ ~projection}
