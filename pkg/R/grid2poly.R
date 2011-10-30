@@ -4,12 +4,8 @@
 # Status         : working version
 # Note           : Not recommended for large grids!;
 
-grid2poly <- function(obj, reproject = TRUE, var.name, tmp.file = TRUE, method = "sp"){
+grid2poly.SpatialGridDataFrame <- function(obj, var.name = names(obj)[1], reproject = TRUE, tmp.file = TRUE, method = "sp", ... ){
 
-    require(raster)
-    require(sp)
-
-    if(missing(var.name)) { var.name <- names(obj)[1] }
     # print warning:
     warning("Operation not recommended for large grids (>>10e4 pixels).", immediate. = TRUE)
     
@@ -58,5 +54,7 @@ grid2poly <- function(obj, reproject = TRUE, var.name, tmp.file = TRUE, method =
     
     return(pol)
 } 
+
+setMethod("grid2poly", signature="SpatialGrid", definition=grid2poly.SpatialGridDataFrame)
 
 # enf of script;

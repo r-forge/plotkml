@@ -119,10 +119,10 @@ reproject.SpatialPixels <- function(obj, CRS = get("ref_CRS", envir = plotKML.op
         
         # resample to WGS84 system:
         if(is.factor(obj@data[,i])){
-        system(paste(gdalwarp, " ", tf, ".tif", " -t_srs \"", ref_CRS, "\" ", tf, "_ll.tif -dstnodata \"", NAflag, "\" -r near", sep=""), show.output.on.console = FALSE)
+        system(paste(gdalwarp, " ", tf, ".tif", " -t_srs \"", CRS, "\" ", tf, "_ll.tif -dstnodata \"", NAflag, "\" -r near", sep=""), show.output.on.console = FALSE)
         }
         else {
-        system(paste(gdalwarp, " ", tf, ".tif", " -t_srs \"", ref_CRS, "\" ", tf, "_ll.tif -dstnodata \"", NAflag, "\" -r bilinear", sep=""), show.output.on.console = FALSE)
+        system(paste(gdalwarp, " ", tf, ".tif", " -t_srs \"", CRS, "\" ", tf, "_ll.tif -dstnodata \"", NAflag, "\" -r bilinear", sep=""), show.output.on.console = FALSE)
         }
         if(i==1){
         res <- readGDAL(paste(tf, "_ll.tif", sep=""), silent = TRUE)
