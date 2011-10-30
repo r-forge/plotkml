@@ -6,7 +6,6 @@
  
 
 paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "", python = "", show.paths = TRUE){ 
-  
      
      if(require(animation))
         convert <- ani.options("convert")
@@ -18,9 +17,8 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
      else
        saga_cmd <- NULL
     
-    # can't test for NULL if the object doesn't exist
     im.dir <- NULL
-    if(convert == ''){
+    if(is.null(convert)){
         if(.Platform$OS.type == "windows") {
         # get paths and check for ImageMagick
         paths <- strsplit(Sys.getenv('PATH')[[1]], ";")[[1]]
@@ -31,10 +29,10 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
         im.dir <- paths[grep(paths, pattern="ImageMagick")[1]]
         convert = shQuote(normalizePath(file.path(im.dir, "convert.exe")))
         message(system(convert,  show.output.on.console = FALSE, intern = TRUE)[1])
-        # message(paste("Located ImageMagick from the path: \"", im.dir, "\"", sep=""))
         }
         } # end checking for Imagemagick on Windows
-        # check for all other OS... this isn't going to work
+        
+        # check for all other OS:
         else{
         if(!length(x <- grep(paths <- strsplit(Sys.getenv('PATH')[[1]], ":")[[1]], pattern="Magick"))==0) {
         im.dir <- paths[grep(paths, pattern="Magick")[1]]
@@ -42,6 +40,7 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
         message(system(convert,  show.output.on.console = FALSE, intern = TRUE)[1])
         # message(paste("Located ImageMagick from the path: \"", im.dir, "\"", sep=""))
     }}
+    
         if(is.null(im.dir)){ 
         warning("Install ImageMagick and add to PATH. See http://imagemagick.org for more info.")
         }
@@ -200,9 +199,6 @@ plotKML.env <- function(
     show.env = TRUE,
     silent = TRUE
     ){
-    
-    ## DEB: can't put this here..
-    # plotKML.opts <<- new.env(hash=TRUE)
     
     if(missing(colour_scale_numeric)) { colour_scale_numeric <- rev(brewer.pal(n = 5, name = "Spectral")) }
     if(missing(colour_scale_factor)) { colour_scale_factor <- brewer.pal(n = 6, name = "Set1") }
