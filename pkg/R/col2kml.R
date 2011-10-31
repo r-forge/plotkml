@@ -1,7 +1,7 @@
 # Purpose        : Color conversion functions
 # Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
 # Contributions  : Tomislav Hengl (tom.hengl@wur.nl); Dylan Beaudette (debeaudette@ucdavis.edu); 
-# Status         : working version
+# Dev Status     : Alpha
 # Note           : Converts from HEX to KML and back;
 
 
@@ -45,6 +45,19 @@ kml2hex <- function(kml) {
   )
 
   as.vector(res)
+}
+
+## From Munsell colour codes to FBGR codes:
+munsell2kml <- function(
+  the_hue, 
+  the_chroma,
+  the_value, 
+  alpha = 1
+  ){
+
+  res <- hex2kml(aqp::munsell2rgb(the_hue, the_value, the_chroma, alpha=alpha))
+  
+  return(res)
 }
 
 # end of script;

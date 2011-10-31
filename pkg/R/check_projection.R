@@ -46,6 +46,7 @@ parse_proj4 <- function(p4s, params){
   return(res)
 }
 
+## Get proj4string from an object
 getCRS.Spatial <- function(obj) {
   CRSargs(CRS(proj4string(obj)))
 }
