@@ -3,10 +3,10 @@
 \alias{kml_close}
 \title{Opens / closes a KML file connection}
 \description{
-Opens a KML file in write mode and initiates the KML header. It is then setting up a file connection accessible by other kml_*() function such as kml_layer() and kml_close() to create customized multi-layered KML files.
+Opens a KML file in write mode and initiates the KML header. The same file connection is further accessible by other kml_*() functions such as kml_layer() and kml_close(). This allows creation of customized multi-layered KML files.
 }
 \usage{
-kml_open(file, name = file, overwrite = FALSE, kml.url = "http://www.opengis.net/kml/2.2")
+kml_open(file, name = file, overwrite = FALSE, kml.url = get("kml_url", envir = plotKML.opts))
 }
 \arguments{
   \item{file}{either a character string naming a file.}
@@ -15,9 +15,7 @@ kml_open(file, name = file, overwrite = FALSE, kml.url = "http://www.opengis.net
   \item{kml.url}{URL of the KML standard to be used.}
 }
 \author{Pierre Roudier and Dylan Beaudette}
-\seealso{
-\code{\link{kml}}, \code{\link{kml_layer}}
-}
+\seealso{ \code{\link{kml}}, \code{\link{kml_layer}} }
 \examples{
 
 }
