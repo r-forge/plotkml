@@ -8,9 +8,6 @@
 plotKML.env(show.env = FALSE)
 # (!) this will not attempt to locate external software because this could be time consuming;
 
-# load SAGA palettes:
-data(SAGA_pal)
-
 ## R color palettes
 # Standard soil vars color legends
 # e.g. soil organic carbon:

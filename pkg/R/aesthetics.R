@@ -1,14 +1,14 @@
 # Purpose        : List of available aesthetics is given .all_kml_aesthetics along with their default values
 # Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
 # Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Tomislav Hengl (tom.hengl@wur.nl);
-# Status         : ready for R-forge
+# Dev Status     : Pre-Alpha
 # Note           : Functionality for constant transparency under development;
 
 
 .all_kml_aesthetics <- list(
   colour = "black",
   fill = "white",
-  shape = "http://plotkml.r-forge.r-project.org/circle.png", #"http://maps.google.com/mapfiles/kml/shapes/donut.png",
+  shape = paste(, "circle.png", sep=""), #"http://maps.google.com/mapfiles/kml/shapes/donut.png",
   whitening = "",
   alpha = 1,
   size = .8,
