@@ -102,3 +102,5 @@ kml_layer.SpatialPoints <- function(
 }
 
 setMethod("kml_layer", "SpatialPoints", kml_layer.SpatialPoints)
+
+# end of script;

@@ -4,6 +4,8 @@
 # Status         : pre-alpha
 # Note           : a gallery of color palettes is visiable from [http://plotkml.r-forge.r-project.org/];
 
+
+## mix 3 colors
 mix3cols <- function(
   color1, 
   color2, 
@@ -21,13 +23,14 @@ mix3cols <- function(
   if(no.col1==0) {no.col1 <- no.col1+1}
   no.col2 <- round((1-break1)*no.col, 0)
   if(no.col2==no.col) {no.col2 <- no.col2-1}  
-  col1_2 <- sapply(sapply(seq(0,1,by=1/no.col1)[-no.col1], mixcolor, color1, color2), hex)
-  col2_3 <- sapply(sapply(seq(0,1,by=1/no.col2)[-no.col2], mixcolor, color2, color3), hex)
+  col1_2 <- sapply(sapply(seq(0,1,by=1/no.col1)[-no.col1], colorspace::mixcolor, color1, color2), colorspace::hex)
+  col2_3 <- sapply(sapply(seq(0,1,by=1/no.col2)[-no.col2], colorspace::mixcolor, color2, color3), colorspace::hex)
   mixedcol <- c(col1_2, col2_3)
   return(mixedcol)
   }
 }
 
+## mix 5 colors
 mix5cols <- function(
   color1, 
   color2, 
@@ -53,10 +56,10 @@ mix5cols <- function(
   if(no.col3==no.col2) {no.col3 <- no.col3+1}
   no.col4 <- round((1-break3)*no.col, 0)
   if(no.col4==no.col) {no.col4 <- no.col4-1} 
-  col1_2 <- sapply(sapply(seq(0,1,by=1/no.col1)[-no.col1], mixcolor, color1, color2), hex)
-  col2_3 <- sapply(sapply(seq(0,1,by=1/no.col2)[-no.col2], mixcolor, color2, color3), hex)
-  col3_4 <- sapply(sapply(seq(0,1,by=1/no.col3)[-no.col3], mixcolor, color3, color4), hex)
-  col4_5 <- sapply(sapply(seq(0,1,by=1/no.col4), mixcolor, color4, color5), hex)
+  col1_2 <- sapply(sapply(seq(0,1,by=1/no.col1)[-no.col1], colorspace::mixcolor, color1, color2), colorspace::hex)
+  col2_3 <- sapply(sapply(seq(0,1,by=1/no.col2)[-no.col2], colorspace::mixcolor, color2, color3), colorspace::hex)
+  col3_4 <- sapply(sapply(seq(0,1,by=1/no.col3)[-no.col3], colorspace::mixcolor, color3, color4), colorspace::hex)
+  col4_5 <- sapply(sapply(seq(0,1,by=1/no.col4), colorspace::mixcolor, color4, color5), colorspace::hex)
   mixedcol <- c(col1_2, col2_3, col3_4, col4_5)
   return(mixedcol)
   }
