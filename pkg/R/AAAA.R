@@ -25,10 +25,21 @@ if (!isGeneric("reproject"))
     standardGeneric("reproject")
   )
 
+if (!isGeneric("grid2poly"))
+  setGeneric("grid2poly", function(obj, ...)
+    standardGeneric("grid2poly")
+  )
+
+if (!isGeneric("spMetadata"))
+  setGeneric("spMetadata", function(obj, ...)
+    standardGeneric("spMetadata")
+  )
+
 ## load required datasets:
 data(SAGA_pal)
 data(mdnames)
 data(worldgrids_pal)
+data(R_pal)
 
 ## setup our environment for storing file handles and the like
 plotKML.fileIO <- new.env(hash=TRUE)

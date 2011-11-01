@@ -8,7 +8,7 @@
 .all_kml_aesthetics <- list(
   colour = "black",
   fill = "white",
-  shape = paste(, "circle.png", sep=""), #"http://maps.google.com/mapfiles/kml/shapes/donut.png",
+  shape = paste(get("home_url", envir = plotKML.opts), "circle.png", sep=""), #"http://maps.google.com/mapfiles/kml/shapes/donut.png",
   whitening = "",
   alpha = 1,
   size = .8,

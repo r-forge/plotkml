@@ -2,7 +2,7 @@
 # Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
 # Contributions  : Tomislav Hengl (tom.hengl@wur.nl); Dylan Beaudette (debeaudette@ucdavis.edu); 
 # Status         : tested
-# Note           : bounding box and cell size are estimated by the program;
+# Note           : in the case of gridded data, bounding box and cell size are estimated by the program (raster / FWTools);
 
 reproject.SpatialPoints <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), ...) {
   res <- spTransform(x = obj, CRSobj = CRS(CRS))
