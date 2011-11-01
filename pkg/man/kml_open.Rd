@@ -3,7 +3,7 @@
 \alias{kml_close}
 \title{Opens / closes a KML file connection}
 \description{
-Opens a KML file in write mode and initiates the KML header. The same file connection is further accessible by other kml_*() functions such as kml_layer() and kml_close(). This allows creation of customized multi-layered KML files.
+Opens a KML file in write mode and initiates the KML header. The same file connection is further accessible by other \code{kml_*()} functions such as \code{\link{kml_layer()}} and \code{kml_close()}. This allows creation of customized multi-layered KML files.
 }
 \usage{
 kml_open(file, name = file, overwrite = FALSE, kml.url = get("kml_url", envir = plotKML.opts))

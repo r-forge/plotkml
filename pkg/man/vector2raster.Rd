@@ -7,7 +7,7 @@
 \description{This function converts any Spatial-PointsDataFrame, -LinesDataFrame, or -PolygonsDataFrame object to a raster map, and (optional) writes it to an external file (GDAL-supported formats). The cell size for output raster map is determined based on the density/size of features in the vector map.}
 \usage{
 vector2raster(obj, var.name = names(obj)[1], 
-cell.size, new.bbox, file.name, ...)
+cell.size, bbox, file.name, ...)
 }
 \arguments{
   \item{obj}{Spatial-PointsDataFrame,-LinesDataFrame or -PolygonsDataFrame object.}
