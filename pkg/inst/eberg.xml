@@ -3,10 +3,10 @@
 <idinfo>
 <citation>
 <citeinfo>
-<origin>Gehrt, E. and Bohner, J.</origin>
+<origin>Gehrt, E., Bohner, J., and Hengl, T.</origin>
 <pubdate>2001</pubdate>
-<title>Vom punkt zur flache - probleme des "upscaling" in der bodenkartierung</title>
-<othercit>In: Diskussionsforum Bodenwissenschaften: Vom Bohrstock zum Bildschirm. FH, Osnabruck, pp. 17-34.</othercit>
+<title>Ebergoetzen data set</title>
+<othercit>Gehrt, E., Bohner, J., (2001) Vom punkt zur flache - probleme des "upscaling" in der bodenkartierung. In: Diskussionsforum Bodenwissenschaften: Vom Bohrstock zum Bildschirm. FH, Osnabruck, pp. 17-34.</othercit>
 <onlink>http://www.worldcat.org/oclc/613721298</onlink>
 </citeinfo>
 </citation>
@@ -72,7 +72,7 @@
 <srcinfo>
 <srccite>
 <citeinfo>
-<onlink>http://plotkml.r-forge.r-project.org/demo.R</onlink>
+<onlink>http://plotkml.r-forge.r-project.org/</onlink>
 </citeinfo>
 </srccite>
 </srcinfo>
@@ -135,7 +135,18 @@
 </cntinfo>
 </distrib>
 <stdorder>
-<ordering>http://geomorphometry.org/content/ebergotzen</ordering>
+<digform>
+<digtopt>
+<onlinopt>
+<computer>
+<networka>
+<networkr>http://geomorphometry.org/content/ebergotzen</networkr>
+</networka>
+</computer>
+</onlinopt>
+</digtopt>
+</digform>
+<ordering>Ordering_Instructions</ordering>
 </stdorder>
 </distinfo>
 <metainfo>
@@ -149,8 +160,7 @@
 <cntaddr>
 <address>Droevendaalsesteeg 3</address>
 <city>WAGENINGEN</city>
-<state>
-</state>
+<state></state>
 <postal>6708PB</postal>
 <country>The Netherlands</country>
 </cntaddr>

@@ -5,7 +5,7 @@
 <citeinfo>
 <origin>The name of an organization or individual that developed the data set.</origin>
 <pubdate>The date when the data set is published or otherwise made available for release.</pubdate>
-<title>The name by which the data set is known.</title>
+<title>The name by which the data set is known (what, why, source).</title>
 <geoform>"atlas", "audio", "diagram", "document", "globe", "map", "model", "multimedia presentation", "profile", "raster digital data", "remote-sensing image", "section", "spreadsheet", "tabular digital data", "vector digital data", "video", "view"</geoform>
 <serinfo>
 <sername>The name of the series publication of which the data set is a part.</sername>
@@ -165,6 +165,11 @@
 <distrib>
 <resdesc>The identifier by which the distributor knows the data set.</resdesc>
 <distliab>Statement of the liability assumed by the distributor.</distliab>
+<cntinfo>
+<cntorgp>
+<cntorg>The name of the organization that distributes the data.</cntorg>
+</cntorgp>
+</cntinfo>
 </distrib>
 <stdorder>
 <digform>
