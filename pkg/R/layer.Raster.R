@@ -1,21 +1,22 @@
 # Purpose        : Write a raster layer to KML;
 # Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
 # Contributions  : Tomislav Hengl (tom.hengl@wur.nl); Dylan Beaudette (debeaudette@ucdavis.edu); 
-# Status         : tested
-# Note           : Writes to a temp file via file.connection;
+# Status         : pre-alpha
+# Note           : Rasters can also be written as polygons; see "?grid2poly"
 
 kml_layer.Raster <- function(
-  # options on the object to plot
-  obj,
-  title = as.character(substitute(obj, env = parent.frame())),
+  obj,  # raster object;
+  obj.title = deparse(substitute(obj, env = parent.frame())),
   extrude = TRUE,
   z.scale = 1,
-  LabelScale = 0.7,
+  LabelScale = get("LabelScale", envir = plotKML.opts),
+  metadata = TRUE,
+  attribute.table = NULL,
   ...
   ){
 
   # get our invisible file connection from custom evnrionment
-  file.connection <- get('kml.file.out', env=plotKML.fileIO)
+  kml.out <- get('kml.out', env=plotKML.fileIO)
 
   # Checking the projection is geo
   check <- check_projection(obj, logical = TRUE)
@@ -32,7 +33,7 @@ kml_layer.Raster <- function(
   colour <- charmatch("colour", names(call))
 
   if (is.na(colour))
-    stop("No attribute to map. Please use the colour=... option.")
+    stop("No attribute to map. Please use the colour = ... option.")
 
   if (is.call(call[["colour"]])) {
     data <- data.frame(getValues(obj))
@@ -64,12 +65,10 @@ kml_layer.Raster <- function(
 #   }
 
   # Trying to reproject data if the check was not successful
-  if (!check)
-    obj <- reproject(obj)
-
+  if (!check) {  obj <- reproject(obj) }
   data <- getValues(obj)
 
-#   altitude <- eval(call[["altitude"]], obj@data)
+  #   altitude <- eval(call[["altitude"]], obj@data)
   altitude <- kml_altitude(obj, altitude = NULL)
   altitudeMode <- kml_altitude_mode(altitude)
 
@@ -98,7 +97,7 @@ kml_layer.Raster <- function(
   call_name <- deparse(call[["colour"]])
 
   # Creating the PNG file
-  raster_name <- paste(summary(file.connection)$description, ".png", sep = "")
+  raster_name <- set.file.extension(paste(obj.title, as.character(call[["colour"]]), sep="_"), ".png")
 
   # Plotting the image
   png(file = raster_name, bg = "transparent") # , width = grd$width, height = grd$height)
@@ -107,33 +106,34 @@ kml_layer.Raster <- function(
   dev.off()
 
   # Folder and name of the points folder
-  cat("<Folder>\n", file = file.connection, append = TRUE)
-  cat("<name>", call_name, "</name>\n", sep = "", file = file.connection, append = TRUE)
+  pl1 = newXMLNode("Folder", parent=kml.out[["Document"]])
+  pl2 <- newXMLNode("name", obj.title, parent = pl1)
 
-  # write into the a KML file:
-  write('<GroundOverlay>', file.connection, append = TRUE)
-  write(paste('<name>', call_name, '</name>', sep=""), file.connection, append = TRUE)
-
-  write(paste('<altitude>', altitude, '</altitude>', sep = ""), file.connection, append = TRUE)
-  write(paste('<altitudeMode>', altitudeMode, '</altitudeMode>', sep = ""), file.connection, append = TRUE)
-
-  # Using the previously generated raster file
-  write('<Icon>', file.connection, append = TRUE)
-  write(paste('<href>', raster_name, '</href>', sep = ""), file.connection, append = TRUE)
-  write('</Icon>', file.connection, append = TRUE)
-
-  # Bounding box used to drape the raster file
-  write('<LatLonBox>', file.connection, append = TRUE)
-  write(paste('<north>', bbox(extent(obj))[2, 2], '</north>', sep = ""), file.connection, append = TRUE)
-  write(paste('<south>', bbox(extent(obj))[2, 1], '</south>', sep = ""), file.connection, append = TRUE)
-  write(paste('<east>', bbox(extent(obj))[1, 2], '</east>', sep = ""), file.connection, append = TRUE)
-  write(paste('<west>', bbox(extent(obj))[1, 1], '</west>', sep = ""), file.connection, append = TRUE)
-  write('</LatLonBox>', file.connection, append = TRUE)
-
-  write('</GroundOverlay>', file.connection, append = TRUE)
-
-  # Closing the folder
-  cat("</Folder>\n", file = file.connection, append = TRUE)
+  # Insert metadata:
+  if(metadata==TRUE){
+    sp.md <- spMetadata(obj, xml.file=set.file.extension(obj.title, ".xml"), generate.missing = FALSE)
+    md.txt <- kml_metadata(sp.md, asText = TRUE)
+    txt <- sprintf('<description><![CDATA[%s]]></description>', md.txt)
+    parseXMLAndAdd(txt, parent=pl1)
+  }
+  message("Parsing to KML...")
+  # Ground overlay
+  # =====================
+  pl2b <- newXMLNode("GroundOverlay", parent = pl1)
+  pl3 <- newXMLNode("name", call_name, parent = pl2b)
+  pl3b <- newXMLNode("altitude", altitude, parent = pl2b)
+  pl3b <- newXMLNode("altitudeMode", altitudeMode, parent = pl2b)
+  pl3c <- newXMLNode("Icon", parent = pl2b)
+  pl4 <- newXMLNode("href", raster_name, parent = pl3c)
+  pl3d <- newXMLNode("LatLonBox", parent = pl2b)
+  pl4b <- newXMLNode("north", bbox(extent(obj))[2, 2], parent = pl3d)
+  pl4c <- newXMLNode("south", bbox(extent(obj))[2, 1], parent = pl3d)
+  pl4d <- newXMLNode("east", bbox(extent(obj))[1, 2], parent = pl3d)
+  pl4e <- newXMLNode("west", bbox(extent(obj))[1, 1], parent = pl3d)
+  
+  # save results: 
+  assign('kml.out', kml.out, env=plotKML.fileIO)
+  
 }
 
 setMethod("kml_layer", "Raster", kml_layer.Raster)
