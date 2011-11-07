@@ -1,13 +1,15 @@
-# Purpose        : Convert SGDF to a polygon map (grid cells);
+# Purpose        : Convert SGDF/raster map to a polygon map (grid cells);
 # Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
 # Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Pierre Roudier (pierre.roudier@landcare.nz); 
 # Status         : working version
 # Note           : Not recommended for large grids!;
 
-grid2poly.SpatialGridDataFrame <- function(obj, var.name = names(obj)[1], reproject = TRUE, tmp.file = TRUE, method = "sp", ... ){
+grid2poly <- function(obj, var.name = names(obj)[1], reproject = TRUE, tmp.file = TRUE, method = "sp", saga_lib = "shapes_grid", saga_module = 3, silent = FALSE, ... ){
 
     # print warning:
-    warning("Operation not recommended for large grids (>>10e4 pixels).", immediate. = TRUE)
+    if(length(obj)>1e4){
+    warning("Operation not recommended for large grids (>>1e4 pixels).", immediate. = TRUE)
+    }
     
     if(method=="sp"){
         obj <- as(obj[var.name], "SpatialPixelsDataFrame")
@@ -34,7 +36,8 @@ grid2poly.SpatialGridDataFrame <- function(obj, var.name = names(obj)[1], reproj
 
         # first, write SGDF to a file:
         writeGDAL(obj[var.name], paste(tf, ".sdat", sep=""), "SAGA")
-        rsaga.geoprocessor(lib="shapes_grid", module=3, param=list(GRIDS=paste(tf, ".sgrd", sep=""), SHAPES=paste(tf, ".shp", sep=""), NODATA=TRUE, TYPE=1), show.output.on.console = FALSE)
+        # saga_lib name and saga_module might change in the future versions of SAGA!
+        rsaga.geoprocessor(lib=saga_lib, module=saga_module, param=list(GRIDS=paste(tf, ".sgrd", sep=""), SHAPES=paste(tf, ".shp", sep=""), NODATA=TRUE, TYPE=1), show.output.on.console = silent)
         pol <- readShapePoly(paste(tf, ".shp", sep=""), proj4string=obj@proj4string)
         }
         
@@ -55,6 +58,7 @@ grid2poly.SpatialGridDataFrame <- function(obj, var.name = names(obj)[1], reproj
     return(pol)
 } 
 
-setMethod("grid2poly", signature="SpatialGrid", definition=grid2poly.SpatialGridDataFrame)
+setMethod("grid2poly", "SpatialGrid", grid2poly)
+setMethod("grid2poly", "Raster", grid2poly)
 
 # enf of script;
