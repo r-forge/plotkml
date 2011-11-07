@@ -2,38 +2,43 @@
 # Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
 # Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Tomislav Hengl (tom.hengl@wur.nl); 
 # Status         : tested
-# Note           : These low-level functions can be nicely combined to create user-tailored KML writing functionality;
+# Note           : See [http://code.google.com/apis/kml/documentation/kmlreference.html] for more info.
 
 kml_open <- function(
-  file,
-  name = file,
-  overwrite = FALSE,
-  kml.url = "http://www.opengis.net/kml/2.2"
+  obj.name,
+  open = TRUE,
+  use.Google_gx = FALSE,
+  kml_xsd = get("kml_xsd", envir = plotKML.opts),
+  xmlns = get("kml_url", envir = plotKML.opts),
+  xmlns_gx = get("kml_gx", envir = plotKML.opts)
   ){
 
-  if (file.exists(file) & !overwrite) {
-     stop(paste("File", file, "exists. Set the overwrite option to TRUE if you want to overwrite that file, or choose a different name for it."))
-  }
-
-  # init connection to file: consider using 'file.name' instead of 'file'
-  assign('kml.file.out', file(file, 'w', blocking=TRUE), env=plotKML.fileIO)
-  file.connection <- get('kml.file.out', env=plotKML.fileIO)
-  
   # header
-  cat("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", file = file.connection)
-  cat('<kml xmlns=\"', kml.url, '\">\n', sep = "", file = file.connection, append = TRUE)
-  cat("<Document>\n", file = file.connection, append = TRUE)
-  cat("<name>", name, "</name>\n", sep = "", file = file.connection, append = TRUE)
-  cat("<open>1</open>\n", file = file.connection, append = TRUE)
+  if(use.Google_gx){
+    kml.out <- newXMLNode("kml", attrs=c(version="1.0"), namespaceDefinitions = c("xsd"=kml_xsd, "xmlns"=xmlns, "xmlns:gx"=xmlns_gx))
+  }
+  else {
+    kml.out <- newXMLNode("kml", attrs=c(version="1.0"), namespaceDefinitions = c("xsd"=kml_xsd, "xmlns"=xmlns))
+  }
+  
+  h2 <- newXMLNode("Document", parent = kml.out)
+  h3 <- newXMLNode("name", obj.name, parent = h2)
+  h4 <- newXMLNode("open", as.numeric(open), parent = h2)
+  
+  # init connection to an XML object: 
+  assign('kml.out', kml.out, env=plotKML.fileIO)
+  
 }
 
 ## Closes the current KML canvas
-kml_close <- function(){
+kml_close <- function(file.name, overwrite = FALSE, ...){
   
+  if (file.exists(file.name) & !overwrite) {
+    stop(paste("File", file.name, "already exists. Set the overwrite option to TRUE or choose a different name."))
+  }
+   
   # get our invisible file connection from custom evnrionment
-  file.connection <- get('kml.file.out', env=plotKML.fileIO)
+  kml.out <- get('kml.out', env=plotKML.fileIO)
+  saveXML(kml.out, set.file.extension(file.name, ".kml"))
   
-  cat("</Document>\n", file = file.connection, append = TRUE)
-  cat("</kml>\n", file = file.connection, append = TRUE)
-  close(file.connection)
 }
