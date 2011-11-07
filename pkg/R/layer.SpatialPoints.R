@@ -1,29 +1,29 @@
-# Purpose        : Write SpatialPoints to KML
+# Purpose        : Parsing SpatialPoints layer to KML
 # Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
 # Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Tomislav Hengl (tom.hengl@wur.nl);
-# Status         : ready for R-forge
+# Status         : Pre-alpha
 # Note           : This file gathers the layer() methods. kml.compress(), kml.open() and kml.close();
 
 
 kml_layer.SpatialPoints <- function(
-  # options on the object to plot
   obj,
-  title = as.character(substitute(obj, env = parent.frame())),
+  obj.title,
   extrude = TRUE,
   z.scale = 1,
-  LabelScale = 0.7,
+  LabelScale = get("LabelScale", envir = plotKML.opts),
+  metadata = TRUE,
+  attribute.table = NULL,
   ...
   ){
   
-  # get our invisible file connection from custom evnrionment
-  file.connection <- get('kml.file.out', env=plotKML.fileIO)
+  # invisible file connection
+  kml.out <- get('kml.out', env=plotKML.fileIO)
   
-  # Checking the projection is geo
+  # Checking the projection
   check <- check_projection(obj, logical = TRUE)
 
   # Trying to reproject data if the check was not successful
-  if (!check)
-    obj <- reproject(obj)
+  if (!check) {  obj <- reproject(obj)  }
 
   # Parsing the call for aesthetics
   aes <- kml_aes(obj, ...)
@@ -37,67 +37,46 @@ kml_layer.SpatialPoints <- function(
   altitudeMode <- aes[["altitudeMode"]]
   balloon <- aes[["balloon"]]
 
-  # Folder and name of the points folder
-  cat("<Folder>\n", file = file.connection, append = TRUE)
-  cat("<name>", title, "</name>\n", sep = "", file = file.connection, append = TRUE)
+  # ATTRIBUTE TABLE (for each placemark):
+  if ((is.logical(balloon) | class(balloon) %in% c('character','numeric')) & ("data" %in% slotNames(obj))){
+      # get selected table data:
+      att.names <- sapply(names(obj@data), function(i) { paste('<span style="font-weight: bold; color: #000000; padding: 3px;">', as.character(i), '</span>:&nbsp;', sep = '') } )    
+      att.values <- as.vector(t(sapply(obj@data, function(i) { paste('<span style="color: #000000; padding:3px;">', as.character(i), '</span><br>', sep = '') })))
+      # combine by interleaving:
+      att <- matrix(paste(att.names, att.values, sep="\n"), ncol=length(names(obj@data)), byrow=TRUE)
+      attribute.table <- apply(att, 1, paste, collapse="\n") 
+  }
 
+  # Folder and name of the points folder
+  pl1 = newXMLNode("Folder", parent=kml.out[["Document"]])
+  pl2 <- newXMLNode("name", obj.title, parent = pl1)
+
+  # Insert metadata:
+  if(metadata==TRUE){
+    sp.md <- spMetadata(obj, xml.file=set.file.extension(obj.title, ".xml"), generate.missing = FALSE)
+    md.txt <- kml_metadata(sp.md, asText = TRUE)
+    txt <- sprintf('<description><![CDATA[%s]]></description>', md.txt)
+    parseXMLAndAdd(txt, parent=pl1)
+  }
+  message("Parsing to KML...")
   # Writing points styles
   # =====================
-  for (i_pt in 1:length(obj)) {
-    cat('\t<Style id="','pnt', i_pt,'">\n',sep = "", file = file.connection, append = TRUE)
-
-    # Label
-    cat("\t\t<LabelStyle>\n", file = file.connection, append = TRUE)
-    cat('\t\t\t<scale>', LabelScale, '</scale>\n', sep = "", file = file.connection, append = TRUE)
-    cat("\t\t</LabelStyle>\n", file = file.connection, append = TRUE)
-
-    # Icon
-    cat("\t\t<IconStyle>\n", file = file.connection, append = TRUE)
-
-    # Aesthetics
-    cat('\t\t\t<color>', colours[i_pt], '</color>\n', sep = "", file = file.connection, append = TRUE)
-    cat("\t\t\t<scale>", sizes[i_pt], "</scale>\n", sep = "", file = file.connection, append = TRUE)
-    cat("\t\t\t<Icon>\n", file = file.connection, append = TRUE)
-    cat('\t\t\t\t<href>', shapes[i_pt], '</href>\n', sep = "", file = file.connection, append = TRUE)
-    cat("\t\t\t</Icon>\n", file = file.connection, append = TRUE)
-    cat("\t\t</IconStyle>\n", file = file.connection, append = TRUE)
-    
-    # balloon
-    cat("\t\t<BalloonStyle>\n", file = file.connection, append = TRUE)
-    cat("\t\t\t<text>$[description]</text>\n", file = file.connection, append = TRUE)
-    cat("\t\t</BalloonStyle>\n", file = file.connection, append = TRUE)
-    
-    # close style tag
-    cat("\t</Style>\n", file = file.connection, append = TRUE)
-  }
-
+  txts <- sprintf('<Style id="pnt%s"><LabelStyle><scale>%.1f</scale></LabelStyle><IconStyle><color>%s</color><scale>%s</scale><Icon><href>%s</href></Icon></IconStyle><BalloonStyle><text>$[description]</text></BalloonStyle></Style>', 1:length(obj), rep(LabelScale, length(obj)), colours, sizes, shapes)
+  parseXMLAndAdd(txts, parent=pl1)
   # Writing points coordinates
   # ==========================
-  for (i_pt in 1:length(obj)) {
-    cat("\t<Placemark>\n", file = file.connection, append = TRUE)
-    cat("\t\t<name>", points_names[i_pt],"</name>\n", sep = "", file = file.connection, append = TRUE)
-
-    # Add description with attributes
-    if ((is.logical(balloon) | class(balloon) %in% c('character','numeric')) & ("data" %in% slotNames(obj)))
-      .df_to_kml_html_table(obj@data[i_pt, ], columns=balloon)
-
-    cat("\t\t<styleUrl>#pnt", i_pt,"</styleUrl>\n", sep = "", file = file.connection, append = TRUE)
-    cat("\t\t<Point>\n", file = file.connection, append = TRUE)
-
-    # If there's altitude information to be represented
-#     if (sd(altitude, na.rm = TRUE) > 0) {
-      cat('\t\t\t<extrude>', as.numeric(extrude), '</extrude>\n', sep = "", file = file.connection, append = TRUE)
-      cat('\t\t\t<altitudeMode>', altitudeMode, '</altitudeMode>\n', sep = "", file = file.connection, append = TRUE)
-#     }
-
-    cat("\t\t\t<coordinates>", coordinates(obj)[i_pt, 1], ",", coordinates(obj)[i_pt, 2], ",", altitude[i_pt] * z.scale,"</coordinates>\n", sep = "", file = file.connection, append = TRUE)
-    cat("\t\t</Point>\n", file = file.connection, append = TRUE)
-    cat("\t</Placemark>\n", file = file.connection, append = TRUE)
-
+  if(length(attribute.table)>0){   
+  # Add attributes:
+      txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><description><![CDATA[%s]]></description><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%.4f,%.4f,%.0f</coordinates></Point></Placemark>', points_names, 1:length(obj), attribute.table, rep(as.numeric(extrude), length(obj)), rep(altitudeMode, length(obj)), coordinates(obj)[, 1], coordinates(obj)[, 2], altitude)
   }
+  # without attributes:
+  else{
+      txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%.4f,%.4f,%.0f</coordinates></Point></Placemark>', points_names, 1:length(obj), rep(as.numeric(extrude), length(obj)), rep(altitudeMode, length(obj)), coordinates(obj)[, 1], coordinates(obj)[, 2], altitude)     
+  }
+  parseXMLAndAdd(txtc, parent=pl1)
 
-  # Closing the folder
-  cat("</Folder>\n", file = file.connection, append = TRUE)
+  # save results: 
+  assign('kml.out', kml.out, env=plotKML.fileIO)
 
 }
 
