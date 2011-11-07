@@ -1,4 +1,5 @@
 \name{worldgrids_pal}
+\alias{worldgrids_pal}
 \docType{data}
 \encoding{UTF-8}
 \title{Standard global color palettes for factor variables}
