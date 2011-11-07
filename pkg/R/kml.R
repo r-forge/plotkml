@@ -6,21 +6,23 @@
 
 kml.Spatial <- function(
   obj,
-  file = paste(as.character(substitute(obj, parent.frame())), ".kml", sep=""),
-  name = as.character(substitute(obj, parent.frame())),
+  file.name = set.file.extension(deparse(substitute(obj, env=parent.frame())), ".kml"),
+  obj.name = "plotKML Spatial object",
+  obj.title = deparse(substitute(obj, env=parent.frame())),
   ...,
-  overwrite = FALSE,
+  overwrite = TRUE,
   kmz = FALSE
 ){
 
-  kml_open(file = file, name = name, overwrite = overwrite)
+  kml_open(obj.name = obj.name)
 
-  kml_layer(obj = obj, ...)
+  kml_layer(obj = obj, obj.title = obj.title, ...)
 
-  kml_close()
+  kml_close(file.name = file.name, overwrite = overwrite)
 
-  if (kmz)
-    kml_compress(file)
+  if (kmz == TRUE){
+    kml_compress(file.name)
+  }
 }
 
 setMethod("kml", "Spatial", kml.Spatial)
