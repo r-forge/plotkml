@@ -5,7 +5,7 @@
 # Note           : The output pixel size is determined using simple cartographic principles (see [http://dx.doi.org/10.1016/j.cageo.2005.11.008]);
 
 
-vector2raster <- function(obj, var.name = names(obj)[1], cell.size, bbox, file.name, ...){
+vector2raster <- function(obj, var.name = names(obj)[1], cell.size, bbox, file.name, silent = FALSE, ...){
     
     if(class(obj)=="SpatialPointsDataFrame"|class(obj)=="SpatialLinesDataFrame"|class(obj)=="SpatialPolygonsDataFrame"){
     require(maptools)
@@ -16,7 +16,9 @@ vector2raster <- function(obj, var.name = names(obj)[1], cell.size, bbox, file.n
     # make an empty raster based on extent:
     if(missing(cell.size)) { 
     # print warning:
+    if(length(obj)>1000){
     warning("Automated derivation of suitable cell size can be time consuming and is sensible to cartographic artifacts.", immediate. = TRUE)
+    }
     
     if(class(obj)=="SpatialPointsDataFrame"){
     require(spatstat)
@@ -24,6 +26,7 @@ vector2raster <- function(obj, var.name = names(obj)[1], cell.size, bbox, file.n
     nd <- nndist(x$x, x$y)
     ndb <- boxplot(nd, plot=FALSE)
     cell.size <- signif(ndb$stats[3]/2, 2)
+    if(silent==FALSE){message(paste("Estimated nearest neighbour distance (point pattern):", cell.size*2))}
     }
     
     if(class(obj)=="SpatialLinesDataFrame"){
@@ -31,12 +34,14 @@ vector2raster <- function(obj, var.name = names(obj)[1], cell.size, bbox, file.n
     x <- as(as(obj[var.name], "SpatialLines"), "psp")
     nd <- nndist.psp(x)  # this can be time consuming!
     ndb <- boxplot(nd, plot=FALSE)
-    cell.size <- signif(ndb$stats[3]/2, 2) 
+    cell.size <- signif(ndb$stats[3]/2, 2)
+    if(silent==FALSE){message(paste("Estimated nearest neighbour distance (line segments):", cell.size*2))}
     }
     
     if(class(obj)=="SpatialPolygonsDataFrame"){
     x <- sapply(obj@polygons, slot, "area")
     cell.size <- signif(sqrt(median(x))/2, 2)
+    if(silent==FALSE){message(paste("Estimated median polygon size:", cell.size*2))}
     }
     }
     
