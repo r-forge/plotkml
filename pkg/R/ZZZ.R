@@ -4,8 +4,15 @@
 # Status         : pre-alpha
 # Note           : for more info see [http://cran.r-project.org/doc/manuals/R-exts.html];
 
-# load plotKML.opts with some basic information
-plotKML.env(show.env = FALSE)
-# (!) this will not attempt to locate external software because this could be time consuming;
+.onLoad <- function(lib, pkg)  {
+	pkg.info <- drop(read.dcf(file=system.file("DESCRIPTION", package=pkg), fields=c("Version","Date")))
+	packageStartupMessage(paste(pkg, " version ", pkg.info["Version"], " (", pkg.info["Date"], ")", sep=""))
+
+	tst <- try( removeTmpFiles(), silent=TRUE )
+  plotKML.env(show.env = FALSE)
+  	
+  return(invisible(0))
+
+}
 
 # end of script;

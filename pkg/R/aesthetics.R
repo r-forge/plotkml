@@ -8,10 +8,10 @@
 .all_kml_aesthetics <- list(
   colour = "black",
   fill = "white",
-  shape = paste(get("home_url", envir = plotKML.opts), "circle.png", sep=""), #"http://maps.google.com/mapfiles/kml/shapes/donut.png",
+  shape = paste(get("home_url", envir = plotKML.opts), get("icon", envir = plotKML.opts), sep=""), #"http://maps.google.com/mapfiles/kml/shapes/donut.png",
   whitening = "",
   alpha = 1,
-  size = .8,
+  size = get("LabelScale", envir = plotKML.opts),
   width = 1,
   labels = "",
   altitude = 0,
@@ -46,7 +46,7 @@ kml_aes <- function(obj, ...) {
     if (is.name(parent_call[['labels']])){
       aes[['labels']] <- as.character(obj[[as.character(parent_call[['labels']])]])
     }
-    # if labelss given as a vector
+    # if labels given as a vector
     else {
       labels <- eval(parent_call[['labels']])
       if (length(labels) == length(obj))
@@ -58,7 +58,7 @@ kml_aes <- function(obj, ...) {
   else {
     if ("data" %in% slotNames(obj)) {
 
-      # If only one data column is represented, we use its values as labelss
+      # If only one data column is represented, we use its values as labels
       if (length(called_aes) == 1) {
         # If its the name of a column
         if (is.name(parent_call[[called_aes]])) {

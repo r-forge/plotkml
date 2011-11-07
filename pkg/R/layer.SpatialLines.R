@@ -8,7 +8,7 @@ kml_layer.SpatialLines <- function(
   ...
   ){
   
-  # get our invisible file connection from custom evnrionment
+  # invisible file connection
   file.connection <- get('kml.file.out', env=plotKML.fileIO)
   
   # Checking the projection is geo

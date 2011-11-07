@@ -1,7 +1,7 @@
 # Purpose        : Find paths to external packages;
 # Maintainer     : Tomislav Hengl (tom.hengl@wur.nl)
 # Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Pierre Roudier (pierre.roudier@landcare.nz)
-# Status         : tested and ready for CRAN
+# Status         : pre-alpha
 # Note           : This function helps establishing a link with external packages;
  
 
