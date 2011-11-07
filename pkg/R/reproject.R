@@ -16,7 +16,8 @@ reproject.RasterStack <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
 
 
 reproject.RasterBrick <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), ...) {
-  brick(lapply(obj@layers, reproject, CRS = CRS, ...))
+  r <- stack(obj)
+  stack(lapply(r@layers, reproject, CRS = CRS, ...))
 }
 
 
@@ -149,13 +150,14 @@ reproject.SpatialPixels <- function(obj, CRS = get("ref_CRS", envir = plotKML.op
 }
 
 # connect all methods and classes:
-setMethod("reproject", signature="SpatialPoints", definition=reproject.SpatialPoints)
-setMethod("reproject", signature="SpatialPolygons", definition=reproject.SpatialPoints)
-setMethod("reproject", signature="SpatialLines", definition=reproject.SpatialPoints)
+setMethod("reproject", signature="SpatialPointsDataFrame", definition=reproject.SpatialPoints)
+setMethod("reproject", signature="SpatialPolygonsDataFrame", definition=reproject.SpatialPoints)
+setMethod("reproject", signature="SpatialLinesDataFrame", definition=reproject.SpatialPoints)
 setMethod("reproject", signature="RasterStack", definition=reproject.RasterStack)
 setMethod("reproject", signature="RasterLayer", definition=reproject.RasterLayer)
-setMethod("reproject", signature="SpatialGrid", definition=reproject.SpatialPixels)
-setMethod("reproject", signature="SpatialPixels", definition=reproject.SpatialPixels)
+setMethod("reproject", signature="RasterBrick", definition=reproject.RasterBrick)
+setMethod("reproject", signature="SpatialGridDataFrame", definition=reproject.SpatialPixels)
+setMethod("reproject", signature="SpatialPixelsDataFrame", definition=reproject.SpatialPixels)
 
 
 # end of script;
