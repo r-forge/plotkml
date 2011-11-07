@@ -1,15 +1,7 @@
-importFrom(ggplot2, rescale)
-import(stringr)
-import(plyr)
-
-import(RColorBrewer)
-
-import(sp)
-import(raster)
-import(rgdal)
-
-export(kml_open, kml_close, kml_compress)
-
-exportMethods(kml, kml_layer, reproject)
-
+importFrom("ggplot2", rescale)
+importFrom("colorspace", coords, hex, mixcolor)
+importFrom("raster", rotate, shift)
+importFrom("sp", coordinates, overlay, bbox, Spatial, SpatialPixels, SpatialPixelsDataFrame, SpatialGrid, SpatialGridDataFrame, spplot)
+exportClasses(SpatialMetadata, sp.palette)
+exportMethods(getCRS, grid2poly, kml, kml_layer, reproject, spMetadata)
 exportPattern("^[^\\.]")

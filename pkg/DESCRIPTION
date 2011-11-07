@@ -1,9 +1,6 @@
 Package: plotKML
 Type: Package
 Title: Plotting Spatial Data to KML
-Version: 0.1-3
-Date: 2011-10-28
-Packaged: 2011-10-28 12:00:00 UTC; dylan
 Version: 0.1-2
 Date: 2011-11-02
 Packaged: 2011-08-17 12:00:00 UTC; dylan
@@ -13,8 +10,6 @@ Description: Visualization of space-time objects in Google Earth. Writes sp-clas
 License: GPL
 URL: http://plotkml.r-forge.r-project.org/
 LazyLoad: yes
-Depends: R (>= 2.10.0), methods, sp, rgdal, raster, colorRamps, plyr, stringr, RColorBrewer, ggplot2, RSAGA, XML, animation, colorspace, rjson, maptools, spatstat, aqp, Hmisc, zoo 
-Suggests: adehabitatLT, fossil, spacetime, intamap
-Depends: R (>= 2.9.0), methods, sp, rgdal, raster, colorRamps, plyr, stringr, RColorBrewer, ggplot2, colorspace
-Suggests: adehabitatLT, fossil, spacetime
+Depends: R (>= 2.10.0), methods, sp, rgdal, raster, plyr, colorspace, colorRamps, stringr, RColorBrewer, ggplot2, XML, maptools, Hmisc, zoo, spacetime 
+Suggests: adehabitatLT, fossil, intamap, spatstat, aqp, RSAGA, animation, rjson
 Enhances: sp, raster, spacetime
