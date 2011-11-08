@@ -9,9 +9,9 @@
 \description{\enc{Ebergötzen}{Ebergoetzen} is 10 by 10 km study area in the vicinity of the city of \enc{Göttingen}{Goettingen} in Central Germany. This area has been extensively surveyed over the years, mainly for the purposes of developing operational digital soil mapping techniques (Gehrt and \enc{Böhner}{Boehner}, 2001). \cr
 \code{eberg} table contains 2937 observations (augers) of soil textures and soil types. \code{eberg_grid} contains three gridded maps that can be used as covariates for spatial prediction of soil variables. \code{eberg_zones} is a polygon map showing the distribution of parent material (Silt and sand, Sandy material, Clayey derivats, Clay and loess). \code{eberg_contours} shows contours lines derived using the 25~m DEM of the area with 10~m equidistance.}
 \format{
-  The \code{eberg} data frame contains the following columns:
+The \code{eberg} data frame contains the following columns:
   \describe{
-	\item{ID}{universal identifier}
+	\item{ID}{universal identifier.}
 	\item{X}{a numeric vector; x-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) }
 	\item{Y}{a numeric vector; y-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) }
 	\item{SAND}{topsoil sand content estimated by hand; see Ad-hoc-AG Boden (2005) }
@@ -19,7 +19,7 @@
 	\item{CLAY}{topsoil clay content estimated by hand }
 	\item{SOILTYPE}{a vector containing factors; soil classes according to the German soil classification system (13 classes in this data set)}
   } \cr
-  The \code{eberg_grid} is \code{\link{SpatialGridDataFrame}} that contains the following layers:
+The \code{eberg_grid} is \code{\link{SpatialGridDataFrame}} that contains the following layers:
   \describe{
     \item{DEM}{Elevation values from the topographic map }
     \item{TWI}{Topographic Wetness Index derived using the SAGA algorithm }
@@ -49,12 +49,11 @@ str(eberg)
 }
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")
-\dontrun{
-l.sp <- list("sp.lines", eberg_contours, col="black")
+
+\dontrun{l.sp <- list("sp.lines", eberg_contours, col="black")
 spplot(eberg_grid["DEM"], col.regions = SAGA_pal[[1]], sp.layout=l.sp)
 }
-\dontrun{
-spplot(eberg_zones, sp.layout=list("sp.points", eberg, col="black", pch="+"))
+\dontrun{spplot(eberg_zones, sp.layout=list("sp.points", eberg, col="black", pch="+"))
 }
 }
 \keyword{datasets}
