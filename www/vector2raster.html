@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Converts Points, Lines and Polygons to rasters</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for vector2raster {plotKML}"><tr><td>vector2raster {plotKML}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Converts Points, Lines and Polygons to rasters</h2>
+
+<h3>Description</h3>
+
+<p>This function converts any Spatial-PointsDataFrame, -LinesDataFrame, or -PolygonsDataFrame object to a raster map, and (optional) writes it to an external file (GDAL-supported formats). The cell size for output raster map is by default determined based on the density/size of features in the vector map.</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+vector2raster(obj, var.name = names(obj)[1], 
+cell.size, bbox, file.name, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>obj</code></td>
+<td>
+Spatial-PointsDataFrame,-LinesDataFrame or -PolygonsDataFrame object.</td></tr>
+<tr valign="top"><td><code>var.name</code></td>
+<td>
+Target variables in the <code>"data"</code> slot.</td></tr>
+<tr valign="top"><td><code>cell.size</code></td>
+<td>
+(Optional) grid cell size in the output raster map.</td></tr>
+<tr valign="top"><td><code>bbox</code></td>
+<td>
+(Optional) output bounding box (class <code>"bbox"</code>) for cropping the data.</td></tr>
+<tr valign="top"><td><code>file.name</code></td>
+<td>
+(Optional) file name to export the resulting raster map.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Additional arguments to be parsed to the <code>rasterize</code> command.</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>
+This function basically extends the <code><a href="../../raster/html/rasterize.html">rasterize</a></code> function available in the raster package. <code>vector2raster</code>, however, requires no input from the user's side.<br>
+The optimal grid cell size is estimated based on the density/size of features in the map: (a) in the case of SpatialPoints cell size is determined as half the mean distance between the nearest points; (b) in the case of SpatialLines half cell size is determined as half the mean distance between the lines; (c) in the case of polygon data cell size is determined as half the median size (area) of polygons of interest. For more details see Hengl (2006).
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>)</p>
+
+
+<h3>References</h3>
+
+<p>
+
+<ul>
+<li> Hengl T., (2006) <a href="http://dx.doi.org/10.1016/j.cageo.2005.11.008">Finding the right pixel size</a>. Computers and Geosciences, 32(9): 1283-1298.
+</ul>
+
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code>raster::rasterize</code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(eberg)
+
+## Not run: 
+x &lt;- vector2raster(eberg)
+image(x)
+
+## End(Not run)
+</pre>
+
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

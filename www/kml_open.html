@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Opens / closes a KML file connection</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for kml_open {plotKML}"><tr><td>kml_open {plotKML}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Opens / closes a KML file connection</h2>
+
+<h3>Description</h3>
+
+<p>
+Opens a KML file in write mode and initiates the KML header. The same file connection is further accessible by other <code>kml_*()</code> functions such as <code>kml_layer()</code> and <code>kml_close()</code>. This allows creation of customized multi-layered KML files.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+kml_open(file, name = file, overwrite = FALSE, kml.url = get("kml_url", envir = plotKML.opts))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>file</code></td>
+<td>
+either a character string naming a file.</td></tr>
+<tr valign="top"><td><code>name</code></td>
+<td>
+A name for the KML file to be created.</td></tr>
+<tr valign="top"><td><code>overwrite</code></td>
+<td>
+Logical. If TRUE, "name" will be overwritten if it exists.</td></tr>
+<tr valign="top"><td><code>kml.url</code></td>
+<td>
+URL of the KML standard to be used.</td></tr>
+</table>
+
+
+<h3>Author(s)</h3>
+
+<p>Pierre Roudier and Dylan Beaudette</p>
+
+
+<h3>See Also</h3>
+
+<p> <code><a href="kml.html">kml</a></code>, <code>kml_layer</code> </p>
+
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+</body></html>
