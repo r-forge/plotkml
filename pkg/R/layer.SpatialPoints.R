@@ -12,7 +12,7 @@ kml_layer.SpatialPoints <- function(
   z.scale = 1,
   LabelScale = get("LabelScale", envir = plotKML.opts),
   metadata = TRUE,
-  attribute.table = NULL,
+  html.table = NULL,
   ...
   ){
   
@@ -37,14 +37,9 @@ kml_layer.SpatialPoints <- function(
   altitudeMode <- aes[["altitudeMode"]]
   balloon <- aes[["balloon"]]
 
-  # ATTRIBUTE TABLE (for each placemark):
+  # Parse ATTRIBUTE TABLE (for each placemark):
   if ((is.logical(balloon) | class(balloon) %in% c('character','numeric')) & ("data" %in% slotNames(obj))){
-      # get selected table data:
-      att.names <- sapply(names(obj@data), function(i) { paste('<span style="font-weight: bold; color: #000000; padding: 3px;">', as.character(i), '</span>:&nbsp;', sep = '') } )    
-      att.values <- as.vector(t(sapply(obj@data, function(i) { paste('<span style="color: #000000; padding:3px;">', as.character(i), '</span><br>', sep = '') })))
-      # combine by interleaving:
-      att <- matrix(paste(att.names, att.values, sep="\n"), ncol=length(names(obj@data)), byrow=TRUE)
-      attribute.table <- apply(att, 1, paste, collapse="\n") 
+     html.table <- .df2htmltable(obj@data) 
   }
 
   # Folder and name of the points folder
@@ -65,9 +60,9 @@ kml_layer.SpatialPoints <- function(
   parseXMLAndAdd(txts, parent=pl1)
   # Writing points coordinates
   # ==========================
-  if(length(attribute.table)>0){   
+  if(length(html.table)>0){   
   # Add attributes:
-      txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><description><![CDATA[%s]]></description><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%.4f,%.4f,%.0f</coordinates></Point></Placemark>', points_names, 1:length(obj), attribute.table, rep(as.numeric(extrude), length(obj)), rep(altitudeMode, length(obj)), coordinates(obj)[, 1], coordinates(obj)[, 2], altitude)
+      txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><description><![CDATA[%s]]></description><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%.4f,%.4f,%.0f</coordinates></Point></Placemark>', points_names, 1:length(obj), html.table, rep(as.numeric(extrude), length(obj)), rep(altitudeMode, length(obj)), coordinates(obj)[, 1], coordinates(obj)[, 2], altitude)
   }
   # without attributes:
   else{
