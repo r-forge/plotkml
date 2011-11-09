@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Bigfoot reports (USA)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for bigfoot {plotKML}"><tr><td>bigfoot {plotKML}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Bigfoot reports (USA)</h2>
+
+<h3>Description</h3>
+
+<p>2984 observations of bigfoot (with attached dates). The data has been obtained from the <a href="http://www.bfro.net/news/google_earth.asp">BigFoot Research Organization (BFRO) website</a>. The BFRO reports generally consist of a description of the event and where it occurred, plus the quality classification. For more info about species distribution modelling using the BFRO reports see <a href="http://dx.doi.org/10.1111/j.1365-2699.2009.02152.x">Lozier et al. (2009)</a>.<br>
+The environmental predictors in the <code>USAWgrids</code> data set represent typical gridded maps used for species distribution modelling.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>data(bigfoot)</pre>
+
+
+<h3>Format</h3>
+
+<p>
+The <code>bigfoot</code> data frame contains the following columns:
+
+<dl>
+<dt>Lon</dt><dd>a numeric vector; x-coordiante / longitude in the WGS84 system</dd>
+<dt>Lat</dt><dd>a numeric vector; y-coordinate / latitude in the WGS84 system</dd>
+<dt>NAME</dt><dd>name assigned by the observer (usually referent month / year)</dd>
+<dt>DATE</dt><dd>'POSIXct' class vector</dd>
+<dt>TYPE</dt><dd>confidence levels; according to the BFRO website: <EM><code>"Class A"</code> reports involve clear sightings in circumstances where misinterpretation or misidentification of other animals can be ruled out with greater confidence; <code>"Class B"</code> and <code>"Class C"</code> reports are less credible</EM>.</dd>
+</dl>
+
+The <code>USAWgrids</code> data frame (46,018 pixels; Washington, Oregon, Nevada and California state) contains the following columns:
+
+<dl>
+<dt>globedem</dt><dd>a numeric vector; elevations from the ETOPO1 Global Relief Model</dd>
+<dt>nlights03</dt><dd>an integer vector; lights at night image for 2003 (Version 2 DMSP-OLS Nighttime Lights Time Series)</dd>
+<dt>sroads</dt><dd>a numeric vector; distance to main roads and railroads (National Atlas of the United States)</dd>
+<dt>gcarb</dt><dd>a numeric vector; Global Biomass Carbon Map (New IPCC Tier-1 Global Biomass Carbon Map for the Year 2000)</dd>
+<dt>dTRI</dt><dd>a numeric vector; density of pollutant releases (North American Pollutant Releases and Transfers database)</dd>
+<dt>twi</dt><dd>a numeric vector; Topographic Wetness Index based on the globedem</dd>
+<dt>states</dt><dd>an integer vector; USA states</dd>
+<dt>globcov</dt><dd>land cover classes based on the MERIS FR images (GlobCover Land Cover version V2.2)</dd>
+<dt>s1</dt><dd>a numeric vector; x-coordinates in the Albers equal-area projection system</dd>
+<dt>s2</dt><dd>a numeric vector; y-coordinates in the Albers equal-area projection system</dd>
+</dl>
+
+</p>
+
+
+<h3>Note</h3>
+
+<p>According to the Time.com, a team of a dozen-plus experts from as far afield as Canada and Sweden have proclaimed themselves 95 percent certain of the mythical animal's existence on Kemerovo region territory some 3,000 kilometers east of Moscow (announced at the Tashtagol conference in 2011). Read more: <a href="http://newsfeed.time.com/2011/10/11/scientists-95-sure-bigfoot-lives-in-russian-tundra">http://newsfeed.time.com/2011/10/11/scientists-95-sure-bigfoot-lives-in-russian-tundra</a>
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p> Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>)</p>
+
+
+<h3>References</h3>
+
+<p>
+
+<ul>
+<li> Lozier, J.D., Aniello, P., Hickerson, M.J., (2009) <a href="http://dx.doi.org/10.1111/j.1365-2699.2009.02152.x">Predicting the distribution of Sasquatch in western North America: anything goes with ecological niche modelling</a>. Journal of Biogeography, 36(9):1623–1627.
+</li>
+<li>BigFoot Research Organization (<a href="http://www.bfro.net">http://www.bfro.net</a>)
+</ul>
+
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Load the BFRO records:
+data(bigfoot)
+aea.prj &lt;- "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"
+coordinates(bigfoot) &lt;- ~Lon+Lat
+proj4string(bigfoot) &lt;- CRS("+proj=latlon +datum=WGS84")
+bigfoot.aea &lt;- spTransform(bigfoot, CRS(aea.prj))
+## Covariates:
+data(USAWgrids)
+coordinates(USAWgrids) &lt;- ~s1+s2
+gridded(USAWgrids) &lt;- TRUE
+proj4string(USAWgrids) &lt;- CRS(aea.prj)
+## Not run: 
+data(SAGA_pal)
+pnts &lt;- list("sp.points", bigfoot.aea, pch="+", col="yellow")
+spplot(USAWgrids[2], col.regions=rev(SAGA_pal[[3]]), sp.layout=pnts)
+## Run species distribution modelling:
+
+## End(Not run)
+</pre>
+
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

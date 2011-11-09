@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Standard global color palettes for factor variables</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for worldgrids_pal {plotKML}"><tr><td>worldgrids_pal {plotKML}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Standard global color palettes for factor variables</h2>
+
+<h3>Description</h3>
+
+<p>
+A number of color palettes used to visualize various environmental categorical / factor variables: land cover classes, water types, anthroms, soil types and similar. Each colour palette consists of a number of colours in the hexadecimal system. 
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+data(worldgrids_pal)
+</pre>
+
+
+<h3>Format</h3>
+
+<p>
+The list contains:
+
+<dl>
+<dt>anthroms</dt><dd>Color palette used for the global map of anthroms (Ellis and Ramankutty, 2008).</dd>
+<dt>bodemfgr</dt><dd>A simplified color palette for soil types.</dd>
+<dt>corine2k</dt><dd>Color palette used in the Corine 2000 project for land cover classes (Büttner, et al., 2002).</dd>
+<dt>glc2000</dt><dd>Color palette used for the Global Land Cover 2000 mapping project (Global Land Cover 2000).</dd>
+<dt>globcov</dt><dd>Color palette used for the ENVISAT-based Global Land Cover map at resolution of 300 m (GlobCover Land Cover version V2.2).</dd>
+<dt>gtkaart</dt><dd>Color palette used for the Ground water levels map of the Netherlands (Gaast et al. 2005).</dd>
+<dt>IGBP</dt><dd>Color palette for 17 land cover classes defined by the International Geosphere Biosphere Programme (IGBP).</dd>
+<dt>lgn3</dt><dd>Color palette used for the Dutch land use map (Hazeu, 2005).</dd>
+<dt>t250vlak</dt><dd>Color palette used for the most general land use classes at scale 1:250k (TOP250NL).</dd>
+<dt>watert</dt><dd>Color palette used for the water types (generalized) in the Netherlands.</dd>
+</dl>
+
+</p>
+
+
+<h3>Note</h3>
+
+<p>These colour palettes are only valid for factor-type variables. The names of classes used in the legend can be obtained by loading the palette list.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>)</p>
+
+
+<h3>References</h3>
+
+<p>
+
+<ul>
+<li> Bicheron, P. et al. (2008) <a href="http://ionia1.esrin.esa.int">GLOBCOVER: Products Description and Validation Report</a>. MEDIAS France, Toulouse, 47 p.
+</li>
+<li>Büttner, G. et al. (2002) <a href="http://terrestrial.eionet.europa.eu/CLC2000">Corine Land Cover update 2000, Technical guidelines</a>. EEA (European Environment Agency), Kopenhagen. 
+</li>
+<li>Ellis, E.C., Ramankutty, N. (2008) <a href="http://www.eoearth.org/article/Anthropogenic_biome_maps">Putting people in the map: anthropogenic biomes of the world</a>. Frontiers in Ecology and the Environment, Vol. 6, No. 8, pp. 439-447.
+</li>
+<li>Fritz, S. et al. (2003) <a href="http://bioval.jrc.ec.europa.eu/products/glc2000/glc2000.php">Harmonisation, mosaicing and production of the Global Land Cover 2000 database</a>. JRC report EUR 20849 EN, Luxembourg, 41 p.
+</li>
+<li>Gaast, J.W.J. van der, H.R.J. Vroon en M. Pleijter, (2006) De grondwaterdynamiek in het waterschap Regge en Dinkel. Wageningen, Alterra-rapport 1335.
+</li>
+<li>Hazeu, G.W., (2005) Landelijk Grondgebruiksbestand Nederland (LGN5). Vervaardiging, nauwkeurigheid en gebruik. Wageningen, Alterra. Alterra-report 1213, 92 pp. <a href="http://lgn.nl">http://lgn.nl</a>
+</li>
+<li>Puijenbroek, P. van; Clement, J., (2008) Het oppervlaktewater getypeerd: de eerste Nederlandse watertypenkaart. Agro informatica 21(3): 21-25.
+</ul>
+
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="SAGA_pal.html">SAGA_pal</a></code>, <code><a href="SAGA_pal.html">R_pal</a></code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(worldgrids_pal)
+display.pal(worldgrids_pal)
+dev.off()
+## globcov palette with class names:
+display.pal(worldgrids_pal, sel=5, names=TRUE)
+</pre>
+
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+</body></html>
