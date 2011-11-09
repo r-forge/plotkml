@@ -15,7 +15,7 @@ The \code{HRtemp08} data frame contains the following columns:
 	\item{Lon}{a numeric vector; x-coordiante / longitude in the WGS84 system}
 	\item{Lat}{a numeric vector; y-coordinate / latitude in the WGS84 system}
 	\item{DATE}{'Date' class vector}
-	\item{TEMP}{Daily temperature measurements in degree C}
+	\item{TEMP}{daily temperature measurements in degree C}
   }
 } 
 \usage{data(HRtemp08)}
