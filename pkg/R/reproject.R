@@ -4,6 +4,7 @@
 # Status         : tested
 # Note           : in the case of gridded data, bounding box and cell size are estimated by the program (raster / FWTools);
 
+
 reproject.SpatialPoints <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), ...) {
   res <- spTransform(x = obj, CRSobj = CRS(CRS))
   return(res)
@@ -11,13 +12,15 @@ reproject.SpatialPoints <- function(obj, CRS = get("ref_CRS", envir = plotKML.op
 
 
 reproject.RasterStack <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), ...) {
-  stack(lapply(obj@layers, reproject, CRS = CRS, ...))
+  rs <- stack(lapply(obj@layers, reproject, CRS = CRS, ...))
+  return(rs)
 }
 
 
 reproject.RasterBrick <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), ...) {
   r <- stack(obj)
-  stack(lapply(r@layers, reproject, CRS = CRS, ...))
+  rs <- brick(lapply(r@layers, reproject, CRS = CRS, ...))
+  return(rs)
 }
 
 
@@ -37,7 +40,7 @@ reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
   gdalwarp <- get("gdalwarp", envir = plotKML.opts)
   
   # look for FWTools path:  
-  if(!nzchar(gdalwarp)){
+  if(nchar(gdalwarp)==0){
   plotKML.env(silent = FALSE, show.env = FALSE)
   gdalwarp <- get("gdalwarp", envir = plotKML.opts)
   }
@@ -53,10 +56,9 @@ reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
   if(method == "ngb") { method <- "near" }
   writeRaster(obj, paste(tf, ".tif", sep=""), overwrite=TRUE, NAflag=NAflag)
   # resample to WGS84 system:
-  system(paste(gdalwarp, " ", tf, ".tif", " -t_srs \"", ref_CRS, "\" ", tf, "_ll.tif -dstnodata \"", NAflag, "\" ", " -r ", method, sep=""))
-  res <- readGDAL(paste(tf, "_ll.tif", sep=""), silent = TRUE)
-  names(res) <- layerNames(obj)
-  res <- as(res, "SpatialPixelsDataFrame")
+  system(paste(gdalwarp, " ", tf, ".tif", " -t_srs \"", CRS, "\" ", tf, "_ll.tif -dstnodata \"", NAflag, "\" ", " -r ", method, sep=""))
+  res <- raster(paste(tf, "_ll.tif", sep=""), silent = TRUE)
+  layerNames(res) <- layerNames(obj)
   }
   else {
   stop("Could not locate FWTools. See 'plotKML.env()' for more info.") }
@@ -92,7 +94,7 @@ reproject.SpatialPixels <- function(obj, CRS = get("ref_CRS", envir = plotKML.op
   gdalwarp <- get("gdalwarp", envir = plotKML.opts)
   
   # look for FWTools path:  
-  if(!nzchar(gdalwarp)){
+  if(nchar(gdalwarp)==0){
   plotKML.env(silent = FALSE)
   gdalwarp <- get("gdalwarp", envir = plotKML.opts)
   }

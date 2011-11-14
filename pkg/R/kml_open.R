@@ -5,13 +5,20 @@
 # Note           : See [http://code.google.com/apis/kml/documentation/kmlreference.html] for more info.
 
 kml_open <- function(
-  obj.name,
+  file.name,
+  folder.name = file.name,
   open = TRUE,
+  overwrite = TRUE,
   use.Google_gx = FALSE,
   kml_xsd = get("kml_xsd", envir = plotKML.opts),
   xmlns = get("kml_url", envir = plotKML.opts),
-  xmlns_gx = get("kml_gx", envir = plotKML.opts)
+  xmlns_gx = get("kml_gx", envir = plotKML.opts),
+  ...
   ){
+
+  if (file.exists(file.name) & !overwrite) {
+    stop(paste("File", file.name, "already exists. Set the overwrite option to TRUE or choose a different name."))
+  }
 
   # header
   if(use.Google_gx){
@@ -22,7 +29,7 @@ kml_open <- function(
   }
   
   h2 <- newXMLNode("Document", parent = kml.out)
-  h3 <- newXMLNode("name", obj.name, parent = h2)
+  h3 <- newXMLNode("name", folder.name, parent = h2)
   h4 <- newXMLNode("open", as.numeric(open), parent = h2)
   
   # init connection to an XML object: 
@@ -32,10 +39,6 @@ kml_open <- function(
 
 ## Closes the current KML canvas
 kml_close <- function(file.name, overwrite = FALSE, ...){
-  
-  if (file.exists(file.name) & !overwrite) {
-    stop(paste("File", file.name, "already exists. Set the overwrite option to TRUE or choose a different name."))
-  }
    
   # get our invisible file connection from custom evnrionment
   kml.out <- get('kml.out', env=plotKML.fileIO)

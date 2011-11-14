@@ -84,6 +84,8 @@ plotKML.env <- function(
     icon,
     LabelScale,
     license_url,
+    metadata,
+    kmz,
     kml_xsd,
     kml_url,
     kml_gx,
@@ -106,6 +108,8 @@ plotKML.env <- function(
     if(missing(icon)) { icon <- "cross.png" }
     if(missing(LabelScale)) { LabelScale <- .7 }
     if(missing(license_url)) { license_url <- "http://creativecommons.org/licenses/by/3.0/" }
+    if(missing(metadata)) { metadata <- FALSE }
+    if(missing(kmz)) { kmz <- FALSE }
     if(missing(kml_xsd)) { kml_xsd <- "http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd" }
     if(missing(kml_url)) { kml_url <- "http://www.opengis.net/kml/2.2/" }
     if(missing(kml_gx)) { kml_gx <- "http://www.google.com/kml/ext/2.2" }
@@ -133,6 +137,8 @@ plotKML.env <- function(
     assign("icon", icon, envir=plotKML.opts)
     assign("LabelScale", LabelScale, envir=plotKML.opts)
     assign("license_url", license_url, envir=plotKML.opts)
+    assign("metadata", metadata, envir=plotKML.opts)
+    assign("kmz", kmz, envir=plotKML.opts)
     assign("kml_xsd", kml_xsd, envir=plotKML.opts)
     assign("kml_url", kml_url, envir=plotKML.opts)
     assign("kml_gx", kml_gx, envir=plotKML.opts)
@@ -145,8 +151,8 @@ plotKML.env <- function(
     assign("home_url", home_url, envir=plotKML.opts)
     assign("googleAPIkey", googleAPIkey, envir=plotKML.opts)
     
-    plotKML.opts <- list(colour_scale_numeric, colour_scale_factor, ref_CRS, NAflag, icon, LabelScale, license_url, kml_xsd, kml_url, kml_gx, gpx_xsd, fgdc_xsd, convert, gdalwarp, gdal_translate, python, home_url, googleAPIkey)
-    names(plotKML.opts) <- c("colour scale for numeric variables", "colour scale for factor variables", "referent CRS", "NA flag value", "default icon", "default label size", "default license url", "kml xsd URL", "kml URL", "kml gx URL", "gpx xsd URL", "fgdc xsd URL", "location of convert program", "location of gdalwarp program", "location of gdal_translate program", "location of python program", "data repository URL", "google API key")
+    plotKML.opts <- list(colour_scale_numeric, colour_scale_factor, ref_CRS, NAflag, icon, LabelScale, license_url, metadata, kmz, kml_xsd, kml_url, kml_gx, gpx_xsd, fgdc_xsd, convert, gdalwarp, gdal_translate, python, home_url, googleAPIkey)
+    names(plotKML.opts) <- c("colour scale for numeric variables", "colour scale for factor variables", "referent CRS", "NA flag value", "default icon", "default label size", "default license url", "print metadata", "compress to kmz", "kml xsd URL", "kml URL", "kml gx URL", "gpx xsd URL", "fgdc xsd URL", "location of convert program", "location of gdalwarp program", "location of gdal_translate program", "location of python program", "data repository URL", "google API key")
     
     if(show.env){  return(plotKML.opts)  }
  
