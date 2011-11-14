@@ -1,6 +1,6 @@
 \name{SAGA_pal}
 \docType{data}
-\encoding{UTF-8}
+\encoding{latin1}
 \alias{color_palettes}
 \alias{SAGA_pal}
 \alias{R_pal}

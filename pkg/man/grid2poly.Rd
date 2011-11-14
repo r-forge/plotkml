@@ -21,7 +21,7 @@ This operation is not recommended for large grids (>>10e4 pixels). Consider spli
 Conversion of large grids to polygons is more efficient by using SAGA GIS (\code{method = "RSAGA"}).
 }
 \author{Tomislav Hengl (\email{tom.hengl@wur.nl})}
-\seealso{\link{\code{vector2raster}}, \link{\code{raster::rasterToPolygons}}}
+\seealso{\code{\link{vector2raster}}, \code{\link{raster::rasterToPolygons}}}
 \examples{
 data(eberg_grid)
 data(SAGA_pal)

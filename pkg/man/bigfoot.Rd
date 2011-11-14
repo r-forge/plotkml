@@ -1,40 +1,39 @@
 \name{bigfoot}
 \docType{data}
-\encoding{UTF-8}
 \alias{bigfoot}
 \alias{USAWgrids}
 \title{Bigfoot reports (USA)}
-\description{2984 observations of bigfoot (with attached dates). The data has been obtained from the \href{http://www.bfro.net/news/google_earth.asp}{BigFoot Research Organization (BFRO) website}. The BFRO reports generally consist of a description of the event and where it occurred, plus the quality classification. For more info about species distribution modelling using the BFRO reports see \href{http://dx.doi.org/10.1111/j.1365-2699.2009.02152.x}{Lozier et al. (2009)}.\cr
-The environmental predictors in the \code{USAWgrids} data set represent typical gridded maps used for species distribution modelling.
+\description{2984 observations of bigfoot (with attached dates). The data has been obtained from the \href{http://www.bfro.net/news/google_earth.asp}{BigFoot Research Organization (BFRO) website}. The BFRO reports generally consist of a description of the event and where it occurred, plus the quality classification. For more info about species distribution modelling methods using the BFRO reports see \href{http://dx.doi.org/10.1111/j.1365-2699.2009.02152.x}{Lozier et al. (2009)}.\cr
+The environmental predictors in the \code{USAWgrids} data set represent typical gridded maps used in species distribution modelling projects.
 }
 \format{
 The \code{bigfoot} data frame contains the following columns:
   \describe{
-	\item{Lon}{a numeric vector; x-coordiante / longitude in the WGS84 system}
-	\item{Lat}{a numeric vector; y-coordinate / latitude in the WGS84 system}
-	\item{NAME}{name assigned by the observer (usually referent month / year)}
-	\item{DATE}{'POSIXct' class vector}
-	\item{TYPE}{confidence levels; according to the BFRO website: \emph{\code{"Class A"} reports involve clear sightings in circumstances where misinterpretation or misidentification of other animals can be ruled out with greater confidence; \code{"Class B"} and \code{"Class C"} reports are less credible}.}
+	\item{\code{Lon}}{a numeric vector; x-coordiante / longitude in the WGS84 system}
+	\item{\code{Lat}}{a numeric vector; y-coordinate / latitude in the WGS84 system}
+	\item{\code{NAME}}{name assigned by the observer (usually referent month / year)}
+	\item{\code{DATE}}{'POSIXct' class vector}
+	\item{\code{TYPE}}{confidence levels; according to the BFRO website: \emph{\code{"Class A"} reports involve clear sightings in circumstances where misinterpretation or misidentification of other animals can be ruled out with greater confidence; \code{"Class B"} and \code{"Class C"} reports are less credible}.}
   }
 The \code{USAWgrids} data frame (46,018 pixels; Washington, Oregon, Nevada and California state) contains the following columns:
   \describe{
-	\item{globedem}{a numeric vector; elevations from the ETOPO1 Global Relief Model}
-	\item{nlights03}{an integer vector; lights at night image for 2003 (Version 2 DMSP-OLS Nighttime Lights Time Series)}
-	\item{sroads}{a numeric vector; distance to main roads and railroads (National Atlas of the United States)}
-	\item{gcarb}{a numeric vector; Global Biomass Carbon Map (New IPCC Tier-1 Global Biomass Carbon Map for the Year 2000)}
-	\item{dTRI}{a numeric vector; density of pollutant releases (North American Pollutant Releases and Transfers database)}
-	\item{twi}{a numeric vector; Topographic Wetness Index based on the globedem}
-	\item{states}{an integer vector; USA states}
-	\item{globcov}{land cover classes based on the MERIS FR images (GlobCover Land Cover version V2.2)}
-	\item{s1}{a numeric vector; x-coordinates in the Albers equal-area projection system}
-  \item{s2}{a numeric vector; y-coordinates in the Albers equal-area projection system}
+	\item{\code{globedem}}{a numeric vector; elevations from the ETOPO1 Global Relief Model}
+	\item{\code{nlights03}}{an integer vector; lights at night image for 2003 (Version 2 DMSP-OLS Nighttime Lights Time Series)}
+	\item{\code{sroads}}{a numeric vector; distance to main roads and railroads (National Atlas of the United States)}
+	\item{\code{gcarb}}{a numeric vector; Global Biomass Carbon Map (New IPCC Tier-1 Global Biomass Carbon Map for the Year 2000)}
+	\item{\code{dTRI}}{a numeric vector; density of pollutant releases (North American Pollutant Releases and Transfers database)}
+	\item{\code{twi}}{a numeric vector; Topographic Wetness Index based on the globedem}
+	\item{\code{states}}{an integer vector; USA states}
+	\item{\code{globcov}}{land cover classes based on the MERIS FR images (GlobCover Land Cover version V2.2)}
+	\item{\code{s1}}{a numeric vector; x-coordinates in the Albers equal-area projection system}
+  \item{\code{s2}}{a numeric vector; y-coordinates in the Albers equal-area projection system}
 }
 } 
 \usage{data(bigfoot)}
 \author{ Tomislav Hengl (\email{tom.hengl@wur.nl})}
 \references{
 \itemize{
-\item Lozier, J.D., Aniello, P., Hickerson, M.J., (2009) \href{http://dx.doi.org/10.1111/j.1365-2699.2009.02152.x}{Predicting the distribution of Sasquatch in western North America: anything goes with ecological niche modelling}. Journal of Biogeography, 36(9):1623–1627.
+\item Lozier, J.D., Aniello, P., Hickerson, M.J., (2009) \href{http://dx.doi.org/10.1111/j.1365-2699.2009.02152.x}{Predicting the distribution of Sasquatch in western North America: anything goes with ecological niche modelling}. Journal of Biogeography, 36(9):1623-1627.
 \item BigFoot Research Organization (\url{http://www.bfro.net})
 }
 }

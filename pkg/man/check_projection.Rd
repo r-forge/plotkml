@@ -2,7 +2,7 @@
 \alias{check_projection}
 \alias{parse_proj4}
 \title{Extracts the proj4 parameters and checks if the projection matches the referent CRS}
-\description{Function \code{parse_proj4} gets the proj4 string from a space-time object and \code{check_projection} checks if the input projection is compatible with the referent projection system. The referent system is by default the 'latlon' projection with 'WGS84' datum (KML-compatible coordinates).}
+\description{Function \code{parse_proj4} gets the proj4 string from a space-time object and \code{check_projection} checks if the input projection is compatible with the referent projection system. The referent system is by default the `latlon' projection with `WGS84' datum (KML-compatible coordinates).}
 \usage{check_projection(obj, logical = TRUE, ref_CRS = get("ref_CRS", envir = plotKML.opts))}
 \arguments{
   \item{obj}{A Spatial* or Raster* object.}
@@ -10,7 +10,7 @@
   \item{ref_CRS}{The referent coordinate system.}
 }
 \details{
-A cartographic projection is KML compatible if: (a) geographical coordinates are used, and (b) that relate to the WGS84 ellispoid (\code{"+proj=longlat +datum=WGS84"}). You can also set your own local referent projection system by specifiying \code{\link{plotKML.env(ref_CRS=...)}}.
+A cartographic projection is KML compatible if: (a) geographical coordinates are used, and (b) that relate to the WGS84 ellispoid (\code{"+proj=longlat +datum=WGS84"}). You can also set your own local referent projection system by specifiying \code{plotKML.env(ref_CRS = ...)}.
 }
 \references{
 WGS84 (\url{http://spatialreference.org/ref/epsg/4326/})

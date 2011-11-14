@@ -31,9 +31,11 @@ proj4string(eberg) <- CRS("+init=epsg:31467")
 eberg.geo <- reproject(eberg)
 # Example with raster data
 data(eberg_grid)
-\dontrun{eberg_grid.geo <- reproject(eberg_grid)}
+\dontrun{
+eberg_grid.geo <- reproject(eberg_grid)}
 # Using FWTools:
-\dontrun{eberg_grid.geo <- reproject(eberg_grid, program = "FWTools")}
+\dontrun{
+eberg_grid.geo <- reproject(eberg_grid, program = "FWTools")}
 # Optional: compare processing times:
 system.time(eberg_grid_ll <- reproject(eberg_grid[1]))
 system.time(eberg_grid_ll <- reproject(eberg_grid[1], program="FWTools"))
