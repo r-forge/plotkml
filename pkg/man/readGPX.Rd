@@ -7,12 +7,12 @@
     waypoints = TRUE, tracks = TRUE, routes = TRUE)
 }
 \arguments{
-  \item{gpx.file}{Location of the gpx.file}
-  \item{metada}{Logical; should the metadata be imported?}
-  \item{bounds}{Logical; should bounding box coordinates be imported?}
-  \item{waypoint}{Logical; should all waypoints be imported?}
-  \item{track}{Logical; should all tracks be imported?}
-  \item{route}{Logical; should all routes be imported?}
+  \item{gpx.file}{location of the gpx.file}
+  \item{metada}{logical; should the metadata be imported?}
+  \item{bounds}{logical; should bounding box coordinates be imported?}
+  \item{waypoint}{logical; should all waypoints be imported?}
+  \item{track}{logical; should all tracks be imported?}
+  \item{route}{logical; should all routes be imported?}
 }
 \details{\bold{Waypoint} is a point of interest, or named feature on a map. \bold{Track} is an ordered list of points describing a path. \bold{Route} is an ordered list of waypoints representing a series of turn points leading to a destination.
 }
@@ -29,8 +29,7 @@
 gpxbtour <- readGPX(system.file("btour.gpx", package="plotKML"))
 str(gpxbtour)
 fells_loop <- readGPX("http://www.topografix.com/fells_loop.gpx")
-str(fells_loop)
-}
+str(fells_loop)}
 }
 \keyword{GPX}
 \keyword{GPS log}

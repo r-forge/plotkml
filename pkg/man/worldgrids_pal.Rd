@@ -1,24 +1,24 @@
 \name{worldgrids_pal}
 \alias{worldgrids_pal}
 \docType{data}
-\encoding{UTF-8}
+\encoding{latin1}
 \title{Standard global color palettes for factor variables}
 \description{
-A number of color palettes used to visualize various environmental categorical / factor variables: land cover classes, water types, anthroms, soil types and similar. Each colour palette consists of a number of colours in the hexadecimal system. 
+A number of color palettes used to visualize various environmental categorical / factor variables: land cover classes, water types, anthroms, soil types and similar. Each colour palette consists of a variable number of colours (hexadecimal system). Factor levels names are attached as attributes to the palette.
 }
 \format{
   The list contains:
   \describe{
-    \item{anthroms}{Color palette used for the global map of anthroms (Ellis and Ramankutty, 2008).}
-    \item{bodemfgr}{A simplified color palette for soil types.}
-     \item{corine2k}{Color palette used in the Corine 2000 project for land cover classes (\enc{Büttner}{Buttner}, et al., 2002).}
-     \item{glc2000}{Color palette used for the Global Land Cover 2000 mapping project (Global Land Cover 2000).}
-     \item{globcov}{Color palette used for the ENVISAT-based Global Land Cover map at resolution of 300 m (GlobCover Land Cover version V2.2).}
-     \item{gtkaart}{Color palette used for the Ground water levels map of the Netherlands (Gaast et al. 2005).}
-     \item{IGBP}{Color palette for 17 land cover classes defined by the International Geosphere Biosphere Programme (IGBP).}
-     \item{lgn3}{Color palette used for the Dutch land use map (Hazeu, 2005).}
-     \item{t250vlak}{Color palette used for the most general land use classes at scale 1:250k (TOP250NL).}
-     \item{watert}{Color palette used for the water types (generalized) in the Netherlands.}
+    \item{\code{anthroms}}{Color palette used for the global map of anthroms (Ellis and Ramankutty, 2008).}
+    \item{\code{bodemfgr}}{A simplified color palette for soil types.}
+     \item{\code{corine2k}}{Color palette used in the Corine 2000 project for land cover classes (\enc{Büttner}{Buttner}, et al., 2002).}
+     \item{\code{glc2000}}{Color palette used for the Global Land Cover 2000 mapping project (Global Land Cover 2000).}
+     \item{\code{globcov}}{Color palette used for the ENVISAT-based Global Land Cover map at resolution of 300 m (GlobCover Land Cover version V2.2).}
+     \item{\code{gtkaart}}{Color palette used for the Ground water levels map of the Netherlands (Gaast et al. 2005).}
+     \item{\code{IGBP}}{Color palette for 17 land cover classes defined by the International Geosphere Biosphere Programme (IGBP).}
+     \item{\code{lgn3}}{Color palette used for the Dutch land use map (Hazeu, 2005).}
+     \item{\code{t250vlak}}{Color palette used for the most general land use classes at scale 1:250k (TOP250NL).}
+     \item{\code{watert}}{Color palette used for the water types (generalized) in the Netherlands.}
   }
 }
 \usage{

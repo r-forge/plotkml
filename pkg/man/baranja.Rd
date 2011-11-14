@@ -1,13 +1,21 @@
 \name{baranja}
 \docType{data}
-\encoding{UTF-8}
+\encoding{latin1}
 \alias{barxyz}
 \alias{bargrid}
 \alias{barstr}
 \title{Baranja hill case study}
-\description{Baranja hill is a 4 by 4 km large study area in the Baranja region, eastern Croatia (corresponds to a size of an aerial photograph). This data set has been extensively used to describe various DEM modelling and analysis steps (Hengl and Reuter, 2008; Hengl et al., 2010). \cr
-\code{barxyz} is a \code{SpatialPointsDataFrame} object that contains 6370 observations of elevations (from field survey and digitized from the stereo images); \code{bargrid} contains \emph{observed} probabilities of streams (digitized from the 1:5000 topo map); \code{barstr} contains 100 simulated stream networks (SpatialLines) using \code{barxyz} as input (see examples below).}
+\description{Baranja hill is a 4 by 4 km large study area in the Baranja region, eastern Croatia (corresponds to a size of an aerial photograph). This data set has been extensively used to describe various DEM modelling and analysis steps (\href{http://geomorphometry.org/book}{Hengl and Reuter, 2008}; \href{http://dx.doi.org/10.5194/hess-14-1153-2010}{Hengl et al., 2010}). \cr
+\code{barxyz} is a \code{"SpatialPointsDataFrame"} object that contains 6370 observations of elevations (from field survey and digitized from the stereo images); \code{bargrid} contains \emph{observed} probabilities of streams (digitized from the 1:5000 topo map); \code{barstr} contains 100 simulated stream networks (\code{"SpatialLines"}) using \code{barxyz} point data as input (see examples below).}
 \usage{data(barxyz)}
+\format{
+The \code{bargrid} data frame (regular grid at 30 m intervals) contains the following columns:
+  \describe{
+	\item{\code{p.obs}}{observed probability of stream (0-1)}
+	\item{\code{x}}{a numeric vector; x-coordinate (m) in the MGI / Balkans zone 6 }
+	\item{\code{y}}{a numeric vector; y-coordinate (m) in the MGI / Balkans zone 6 }
+}
+}
 \author{ Tomislav Hengl (\email{tom.hengl@wur.nl}) }
 \references{
 \itemize{
@@ -16,7 +24,7 @@
 \item \url{http://geomorphometry.org/content/baranja-hill}
 }
 }
-\note{ Consider using the 30~m resolution grid (see \code{bargrid}) to produce the output maps. 
+\note{Consider using the 30~m resolution grid (see \code{bargrid}) to produce the output maps. 
 }
 \examples{
 library(gstat)
@@ -51,7 +59,6 @@ stream.plot <- as.list(rep(NA, N.sim))
 for(i in 1:N.sim){
   streams.plot[[i]] <- list("sp.lines", stream.list[[i]])
 }
-spplot(DEM.sim[1], col.regions=grey(seq(0.4,1,0.025)), scales=list(draw=T), sp.layout=streams.plot)
-}
+spplot(DEM.sim[1], col.regions=grey(seq(0.4,1,0.025)), scales=list(draw=T), sp.layout=streams.plot)}
 }
 \keyword{datasets}

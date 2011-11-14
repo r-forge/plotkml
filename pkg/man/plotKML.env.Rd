@@ -21,7 +21,7 @@
   \item{home_url}{Default location of all icons and auxiliary files.}
   \item{googleAPIkey}{(optional) Google API key required for some operations.}
 }
-\details{ The function will try to locate external software tools under either Windows or Unix platform and then save the results to \code{plotKML.opts} environment. \link{plotKML} does not look automatically for software paths (unless you specify this manually in your \preformatted{"Rprofile.site"}). \cr 
+\details{ The function will try to locate external software tools under either Windows or Unix platform and then save the results to \code{plotKML.opts} environment. \link{plotKML} does not look automatically for software paths (unless you specify this manually in your \code{"Rprofile.site"}). \cr 
 The external software tools are not required by default and most of operations in \link{plotKML} can be run without using them. FWTools, SAGA GIS and Python are highly recommended, however, for processing large data sets.
 }
 \references{
@@ -31,7 +31,7 @@ SAGA GIS (\url{http://www.saga-gis.org})\cr
 Python (\url{http://python.org})\cr
 }
 \author{Tomislav Hengl (\email{tom.hengl@wur.nl})}
-\note{ To further customize plotKML options, consider putting \code{library(plotKML); plotKML.env(..., show.env = FALSE)} in your \preformatted{"/etc/Rprofile.site"}.
+\note{To further customize plotKML options, consider putting \code{library(plotKML); plotKML.env(..., show.env = FALSE)} in your \code{"/etc/Rprofile.site"}.
 }
 \section{Warning}{Under Linux OS make sure you add path to executable program by using e.g.:\cr 
 \code{export PATH=INSTALL_DIRECTORY/FWTools-2.*.*/bin_safe:$PATH}
@@ -43,11 +43,11 @@ pts
 # look for paths:
 plotKML.env(silent = FALSE)
 gdalwarp <- get("gdalwarp", envir = plotKML.opts)
+# if missing you need to install it!
 system(paste(gdalwarp, "--help-general")) 
 gdal.formats <- system(paste(gdalwarp, "--formats"), intern = TRUE)
 }
 plotKML.env(show.env = FALSE)
-get("home_url", envir = plotKML.opts)
-}
+get("home_url", envir = plotKML.opts)}
 \keyword{ ~paths}
 \keyword{environmental variables}

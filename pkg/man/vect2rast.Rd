@@ -1,21 +1,18 @@
 \name{vect2rast}
 \alias{vect2rast}
-\alias{points2raster}
-\alias{lines2raster}
-\alias{poly2raster}
+\alias{rasterize}
 \title{Converts Points, Lines and Polygons to rasters}
 \description{This function converts any Spatial-PointsDataFrame, -LinesDataFrame, or -PolygonsDataFrame object to a raster map, and (optional) writes it to an external file (GDAL-supported formats). The cell size for output raster map is by default determined based on the density/size of features in the vector map.}
 \usage{
-vector2raster(obj, var.name = names(obj)[1], 
-cell.size, bbox, file.name, ...)
+vect2rast(obj, var.name = names(obj)[1], cell.size, bbox, file.name, ...)
 }
 \arguments{
-  \item{obj}{Spatial-PointsDataFrame,-LinesDataFrame or -PolygonsDataFrame object.}
-  \item{var.name}{Target variables in the \code{"data"} slot.}
-  \item{cell.size}{(Optional) grid cell size in the output raster map.}
-  \item{bbox}{(Optional) output bounding box (class \code{"bbox"}) for cropping the data.}
-  \item{file.name}{(Optional) file name to export the resulting raster map.}
-  \item{...}{Additional arguments to be parsed to the \code{rasterize} command.}
+  \item{obj}{Spatial-PointsDataFrame,-LinesDataFrame or -PolygonsDataFrame object}
+  \item{var.name}{target variables in the \code{"data"} slot}
+  \item{cell.size}{(optional) grid cell size in the output raster map}
+  \item{bbox}{(optional) output bounding box (class \code{"bbox"}) for cropping the data}
+  \item{file.name}{(optional) file name to export the resulting raster map}
+  \item{...}{additional arguments to be passed to the \code{rasterize} command}
 }
 \details{
 This function basically extends the \code{\link{rasterize}} function available in the raster package. \code{vector2raster}, however, requires no input from the user's side.\cr
