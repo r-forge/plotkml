@@ -2,23 +2,23 @@
 # Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
 # Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Tomislav Hengl (tom.hengl@wur.nl); 
 # Dev Status     : Alpha
-# Note           : Calls a number of lower level functions;
+# Note           : kml.Spatial function can only be called on a single spatial object;
 
 kml.Spatial <- function(
   obj,
   file.name = set.file.extension(deparse(substitute(obj, env=parent.frame())), ".kml"),
-  obj.name = "plotKML Spatial object",
-  obj.title = deparse(substitute(obj, env=parent.frame())),
-  ...,
   overwrite = TRUE,
-  kmz = FALSE
+  folder.name = "plotKML Spatial object",
+  obj.title = deparse(substitute(obj, env=parent.frame())),
+  kmz = get("kmz", envir = plotKML.opts),
+  ...
 ){
 
-  kml_open(obj.name = obj.name)
+  kml_open(folder.name = folder.name, overwrite = overwrite, file.name = file.name)
 
   kml_layer(obj = obj, obj.title = obj.title, ...)
 
-  kml_close(file.name = file.name, overwrite = overwrite)
+  kml_close(file.name = file.name)
 
   if (kmz == TRUE){
     kml_compress(file.name)

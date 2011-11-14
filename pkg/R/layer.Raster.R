@@ -136,6 +136,7 @@ kml_layer.Raster <- function(
   
 }
 
-setMethod("kml_layer", "Raster", kml_layer.Raster)
+setMethod("kml_layer", "RasterLayer", kml_layer.Raster)
+setMethod("kml_layer", "RasterStack", kml_layer.Raster)
 
 # end of script;

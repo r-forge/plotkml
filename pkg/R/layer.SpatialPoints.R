@@ -11,7 +11,7 @@ kml_layer.SpatialPoints <- function(
   extrude = TRUE,
   z.scale = 1,
   LabelScale = get("LabelScale", envir = plotKML.opts),
-  metadata = TRUE,
+  metadata = get("metadata", envir = plotKML.opts),
   html.table = NULL,
   ...
   ){
