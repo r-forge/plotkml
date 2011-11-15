@@ -85,7 +85,7 @@ Arguments interpreted in the context of <code>kml()</code> (see Details below)</
 
 <p>
 <code>spMetadata</code> tries to locate a metadata file in the working directory, if no <code>.xml</code> file exists, it will load the template xml file available in the system folder (<code>system.file("FGDC.xml", package="plotKML")</code>). The <code>FGDC.xml</code> file contains typical metadata entries with description and examples. For practical purposes, one metadata object can typically be associated with only one variable i.e. one column in the <code>"data"</code> slot (specified via <code>Target_variable</code>). <br>
-By default, plotKML sets the Creative Commons license, but this can be manually adjusted (see examples bellow).<br>
+By default, plotKML uses the Creative Commons license, but this can be adjusted (see examples bellow).<br>
 The <code>spMetadata</code> function tries to generate the most usefull information, so that a user can easily find out about the input data and procedures followed to generate the visualization (KML). Typical metadata entries include e.g.:
 
 <ul>
@@ -173,7 +173,6 @@ eberg.md &lt;- spMetadata(eberg, Target_variable="SAND", validate.schema = TRUE)
 saveXML(metadata(eberg.md), "eberg_SAND.xml")
 # Export to SLD format:
 metadata2SLD(eberg.md, "eberg.sld")
-
 ## End(Not run)
 </pre>
 

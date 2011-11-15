@@ -10,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>Ebergötzen is 10 by 10 km study area in the vicinity of the city of Göttingen in Central Germany. This area has been extensively surveyed over the years, mainly for the purposes of developing operational digital soil mapping techniques (Gehrt and Böhner, 2001). <br>
+<p>EbergÃ¶tzen is 10 by 10 km study area in the vicinity of the city of GÃ¶ttingen in Central Germany. This area has been extensively surveyed over the years, mainly for the purposes of developing operational digital soil mapping techniques (Gehrt and BÃ¶hner, 2001). <br>
 <code>eberg</code> table contains 2937 observations (augers) of soil textures and soil types. <code>eberg_grid</code> contains three gridded maps that can be used as covariates for spatial prediction of soil variables. <code>eberg_zones</code> is a polygon map showing the distribution of parent material (Silt and sand, Sandy material, Clayey derivats, Clay and loess). <code>eberg_contours</code> shows contours lines derived using the 25~m DEM of the area with 10~m equidistance.</p>
 
 
@@ -25,21 +25,21 @@
 The <code>eberg</code> data frame contains the following columns:
 
 <dl>
-<dt>ID</dt><dd>universal identifier.</dd>
-<dt>X</dt><dd>a numeric vector; x-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) </dd>
-<dt>Y</dt><dd>a numeric vector; y-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) </dd>
-<dt>SAND</dt><dd>topsoil sand content estimated by hand; see Ad-hoc-AG Boden (2005) </dd>
-<dt>SILT</dt><dd>topsoil silt content estimated by hand </dd>
-<dt>CLAY</dt><dd>topsoil clay content estimated by hand </dd>
-<dt>SOILTYPE</dt><dd>a vector containing factors; soil classes according to the German soil classification system (13 classes in this data set)</dd>
+<dt><code>ID</code></dt><dd>universal identifier</dd>
+<dt><code>X</code></dt><dd>a numeric vector; x-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) </dd>
+<dt><code>Y</code></dt><dd>a numeric vector; y-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) </dd>
+<dt><code>SAND</code></dt><dd>topsoil sand content estimated by hand; see Ad-hoc-AG Boden (2005) </dd>
+<dt><code>SILT</code></dt><dd>topsoil silt content estimated by hand </dd>
+<dt><code>CLAY</code></dt><dd>topsoil clay content estimated by hand </dd>
+<dt><code>SOILTYPE</code></dt><dd>a vector containing factors; soil classes according to the German soil classification system (13 classes in this data set)</dd>
 </dl>
  <br>
-The <code>eberg_grid</code> is <code><a href="../../sp/html/SpatialGridDataFrame.html">SpatialGridDataFrame</a></code> that contains the following layers:
+The <code>eberg_grid</code> is <code>SpatialGridDataFrame</code> that contains the following layers:
 
 <dl>
-<dt>DEM</dt><dd>Elevation values from the topographic map </dd>
-<dt>TWI</dt><dd>Topographic Wetness Index derived using the SAGA algorithm </dd>
-<dt>Z</dt><dd>containing factors; four soil topographic/geological units (soil mapping units) </dd>
+<dt><code>DEM</code></dt><dd>elevation values from the topographic map </dd>
+<dt><code>TWI</code></dt><dd>Topographic Wetness Index derived using the SAGA algorithm </dd>
+<dt><code>Z</code></dt><dd>containing factors; four soil topographic/geological units (soil mapping units) </dd>
 </dl>
  
 </p>
@@ -47,13 +47,13 @@ The <code>eberg_grid</code> is <code><a href="../../sp/html/SpatialGridDataFrame
 
 <h3>Note</h3>
 
-<p> Texture by hand method (Ad-hoc-AG Boden, 2005) in <code>eberg</code> can be used to determine the content of soil earth fractions only to an accuracy of ±5&ndash;10% (Skaggs et al. 2001). A surveyor distinguishes to which of the 32 texture classes a soil samples belongs to, and then estimates the content of fractions. E.g. texture class <code>St2</code> has 10% clay, 25% silt and 65% sand. 
+<p> Texture by hand method (Ad-hoc-AG Boden, 2005) in <code>eberg</code> can be used to determine the content of soil earth fractions only to an accuracy of Â±5-10% (Skaggs et al. 2001). A surveyor distinguishes to which of the 32 texture classes a soil samples belongs to, and then estimates the content of fractions. E.g. texture class <code>St2</code> has 10% clay, 25% silt and 65% sand. 
 </p>
 
 
 <h3>Author(s)</h3>
 
-<p> The Ebergötzen dataset is courtesy of Gehrt Ernst (<a href="mailto:Ernst.Gehrt@niedersachsen.de">Ernst.Gehrt@niedersachsen.de</a>), the State Authority for Mining, Energy and Geology, Hannover, Germany and Olaf Conrad, University of Hamburg (<a href="mailto:conrad@geowiss.uni-hamburg.de">conrad@geowiss.uni-hamburg.de</a>). The data set has been prepared for this exercise by Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>). </p>
+<p>The EbergÃ¶tzen dataset is courtesy of Gehrt Ernst (<a href="mailto:Ernst.Gehrt@niedersachsen.de">Ernst.Gehrt@niedersachsen.de</a>), the State Authority for Mining, Energy and Geology, Hannover, Germany and Olaf Conrad, University of Hamburg (<a href="mailto:conrad@geowiss.uni-hamburg.de">conrad@geowiss.uni-hamburg.de</a>). The data set has been prepared for this exercise by Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>).</p>
 
 
 <h3>References</h3>
@@ -61,11 +61,11 @@ The <code>eberg_grid</code> is <code><a href="../../sp/html/SpatialGridDataFrame
 <p>
  
 <ul>
-<li> Ad-hoc-AG Boden, (2005) Bodenkundliche Kartieranleitung. 5th Ed, Bundesanstalt fur Geowissenschaften und Rohstoffe und Niedersächsisches Landesamt für Bodenforshung, Hannover, p. 423.
+<li> Ad-hoc-AG Boden, (2005) Bodenkundliche Kartieranleitung. 5th Ed, Bundesanstalt fur Geowissenschaften und Rohstoffe und NiedersÃ¤chsisches Landesamt fÃ¼r Bodenforshung, Hannover, p. 423.
 </li>
-<li>Böhner, J., McCloy, K. R. and Strobl, J. (Eds), (2006) <a href="http://saga-gis.org/en/about/references.html">SAGA &mdash; Analysis and Modelling Applications</a>. Göttinger Geographische Abhandlungen, Heft 115. Verlag Erich Goltze GmbH, Göttingen, 117 pp.
+<li>BÃ¶hner, J., McCloy, K. R. and Strobl, J. (Eds), (2006) <a href="http://saga-gis.org/en/about/references.html">SAGA &mdash; Analysis and Modelling Applications</a>. GÃ¶ttinger Geographische Abhandlungen, Heft 115. Verlag Erich Goltze GmbH, GÃ¶ttingen, 117 pp.
 </li>
-<li>Gehrt, E., Böhner, J., (2001) Vom punkt zur flache &mdash; probleme des &lsquo;upscaling&rsquo; in der bodenkartierung. In: Diskussionsforum Bodenwissenschaften: Vom Bohrstock zum Bildschirm. FH, Osnabrück, pp. 17-34.
+<li>Gehrt, E., BÃ¶hner, J., (2001) Vom punkt zur flache &mdash; probleme des &lsquo;upscaling&rsquo; in der bodenkartierung. In: Diskussionsforum Bodenwissenschaften: Vom Bohrstock zum Bildschirm. FH, OsnabrÃ¼ck, pp. 17-34.
 </li>
 <li>Skaggs, T. H., Arya, L. M., Shouse, P. J., Mohanty, B. P., (2001) <a href="https://www.soils.org/publications/sssaj/articles/65/4/1038">Estimating Particle-Size Distribution from Limited Soil Texture Data</a>. Soil Science Society of America Journal 65 (4): 1038-1044.
 </li>
@@ -82,16 +82,13 @@ data(eberg)
 data(eberg_grid)
 data(eberg_zones)
 data(eberg_contours)
-
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
-
-## Not run: l.sp &lt;- list("sp.lines", eberg_contours, col="black")
+## Not run: 
+l.sp &lt;- list("sp.lines", eberg_contours, col="black")
 spplot(eberg_grid["DEM"], col.regions = SAGA_pal[[1]], sp.layout=l.sp)
-
+spplot(eberg_zones, sp.layout=list("sp.points", eberg, col="black", pch="+"))
 ## End(Not run)
-## Not run: spplot(eberg_zones, sp.layout=list("sp.points", eberg, col="black", pch="+"))
-
 </pre>
 
 <hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
