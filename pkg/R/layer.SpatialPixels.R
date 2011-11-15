@@ -1,7 +1,6 @@
 kml_layer.SpatialPixels <- function(
   # options on the object to plot
   obj,
-  title = as.character(substitute(obj, env = parent.frame())),
   extrude = TRUE,
   z.scale = 1,
   LabelScale = 0.7,
@@ -14,7 +13,7 @@ kml_layer.SpatialPixels <- function(
   else
     obj <- as(obj, "RasterLayer")
 
-  kml_layer(obj, ...)
+  kml_layer(obj, obj.title = deparse(substitute(obj, env = parent.frame())), ...)
 
 }
 

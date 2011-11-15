@@ -10,7 +10,7 @@ kml_layer.Raster <- function(
   extrude = TRUE,
   z.scale = 1,
   LabelScale = get("LabelScale", envir = plotKML.opts),
-  metadata = TRUE,
+  metadata = FALSE,
   attribute.table = NULL,
   ...
   ){
@@ -100,7 +100,7 @@ kml_layer.Raster <- function(
   raster_name <- set.file.extension(paste(obj.title, as.character(call[["colour"]]), sep="_"), ".png")
 
   # Plotting the image
-  png(file = raster_name, bg = "transparent") # , width = grd$width, height = grd$height)
+  png(file = raster_name, bg = "transparent")
   par(mar = c(0, 0, 0, 0), xaxs = "i", yaxs = "i")
   image(obj, col = colour_scale, frame.plot = FALSE)
   dev.off()

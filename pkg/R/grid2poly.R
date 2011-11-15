@@ -4,7 +4,7 @@
 # Status         : working version
 # Note           : Not recommended for large grids!;
 
-grid2poly <- function(obj, var.name = names(obj)[1], reproject = TRUE, tmp.file = TRUE, method = "sp", saga_lib = "shapes_grid", saga_module = 3, silent = FALSE, ... ){
+grid2poly <- function(obj, var.name = names(obj)[1], reproject = TRUE, method = "raster", tmp.file = TRUE, saga_lib = "shapes_grid", saga_module = 3, silent = FALSE, ... ){
 
     # print warning:
     if(length(obj)>1e4){
@@ -17,7 +17,6 @@ grid2poly <- function(obj, var.name = names(obj)[1], reproject = TRUE, tmp.file 
     }
     
     if(method=="raster"){
-        require(raster)
         r <- raster(obj[var.name])
         pol <- rasterToPolygons(r)
     }

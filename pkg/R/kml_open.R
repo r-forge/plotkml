@@ -34,6 +34,7 @@ kml_open <- function(
   
   # init connection to an XML object: 
   assign('kml.out', kml.out, env=plotKML.fileIO)
+  message("KML file header opened for parsing...")
   
 }
 
