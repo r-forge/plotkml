@@ -6,6 +6,7 @@
 
 
 reproject.SpatialPoints <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), ...) {
+  message(paste("Reprojecting coordinates to", CRS, "..."))
   res <- spTransform(x = obj, CRSobj = CRS(CRS))
   return(res)
 }
@@ -32,6 +33,7 @@ reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
   method <- "bilinear" }
   
   if(program=="raster"){
+  message(paste("Reprojecting coordinates to", CRS, "..."))
   res <- projectRaster(obj, crs = CRS, method = method, progress='text', ...)
   layerNames(res) <- layerNames(obj)
   }
@@ -49,13 +51,14 @@ reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
         tf <- tempfile() 
         }
         else { 
-        tf <- deparse(substitute(obj))
+        tf <- deparse(substitute(obj, env = parent.frame()))
         }
   
   if(nzchar(gdalwarp)){
   if(method == "ngb") { method <- "near" }
   writeRaster(obj, paste(tf, ".tif", sep=""), overwrite=TRUE, NAflag=NAflag)
   # resample to WGS84 system:
+  message(paste("Reprojecting coordinates to", CRS, "..."))
   system(paste(gdalwarp, " ", tf, ".tif", " -t_srs \"", CRS, "\" ", tf, "_ll.tif -dstnodata \"", NAflag, "\" ", " -r ", method, sep=""))
   res <- raster(paste(tf, "_ll.tif", sep=""), silent = TRUE)
   layerNames(res) <- layerNames(obj)
@@ -68,7 +71,7 @@ reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
 }
 
 
-reproject.SpatialPixels <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), tmp.file = TRUE, program = "raster", NAflag = get("NAflag", envir = plotKML.opts), ...) {
+reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), tmp.file = TRUE, program = "raster", NAflag = get("NAflag", envir = plotKML.opts), ...) {
 
   if(program=="raster"){
 
@@ -78,14 +81,15 @@ reproject.SpatialPixels <- function(obj, CRS = get("ref_CRS", envir = plotKML.op
       r <- stack(obj)
       r <- stack(lapply(r@layers, reproject, CRS = CRS, ...))
       res <- as(r, "SpatialGridDataFrame")
-      res <- as(res, "SpatialPixelsDataFrame")
+    ## TH: time consuming but preferred:
+    #  res <- as(res, "SpatialPixelsDataFrame")
       names(res) <- names(obj)
     }
 
     # single layer:
     else {
       r <- raster(obj)
-      res <- as(reproject(r, CRS = CRS, ...), "SpatialPixelsDataFrame")
+      res <- as(reproject(r, CRS = CRS, ...), "SpatialGridDataFrame")
       names(res) <- names(obj)
     }
   }
@@ -107,8 +111,8 @@ reproject.SpatialPixels <- function(obj, CRS = get("ref_CRS", envir = plotKML.op
         tf <- tempfile() 
         }
         else { 
-        tf <- paste(deparse(substitute(obj)), names(obj)[i], sep="_")
-        }
+        tf <- paste(deparse(substitute(obj, env = parent.frame())), names(obj)[i], sep="_")
+       }
 
         # write SPDF to a file:
         if(is.factor(obj@data[,i])){
@@ -122,11 +126,14 @@ reproject.SpatialPixels <- function(obj, CRS = get("ref_CRS", envir = plotKML.op
         
         # resample to WGS84 system:
         if(is.factor(obj@data[,i])){
-        system(paste(gdalwarp, " ", tf, ".tif", " -t_srs \"", CRS, "\" ", tf, "_ll.tif -dstnodata \"", NAflag, "\" -r near", sep=""), show.output.on.console = FALSE)
+        message(paste("Reprojecting coordinates to", CRS, "..."))
+        system(paste(gdalwarp, ' ', tf, '.tif', ' -t_srs \"', CRS, '\" ', tf, '_ll.tif -dstnodata \"', NAflag, '\" -r near', sep=""), show.output.on.console = FALSE)
         }
         else {
-        system(paste(gdalwarp, " ", tf, ".tif", " -t_srs \"", CRS, "\" ", tf, "_ll.tif -dstnodata \"", NAflag, "\" -r bilinear", sep=""), show.output.on.console = FALSE)
+        message(paste("Reprojecting coordinates to", CRS, "..."))
+        system(paste(gdalwarp, ' ', tf, '.tif', ' -t_srs \"', CRS, '\" ', tf, '_ll.tif -dstnodata \"', NAflag, '\" -r bilinear', sep=""), show.output.on.console = FALSE)
         }
+        # read images back to R:
         if(i==1){
         res <- readGDAL(paste(tf, "_ll.tif", sep=""), silent = TRUE)
         names(res) <- names(obj)[i]
@@ -147,19 +154,20 @@ reproject.SpatialPixels <- function(obj, CRS = get("ref_CRS", envir = plotKML.op
   
   } 
   
-  res <- as(res, "SpatialPixelsDataFrame")
+  ## TH: time consuming but preferred:
+  # res <- as(res, "SpatialPixelsDataFrame")
   return(res)
 }
 
 # connect all methods and classes:
-setMethod("reproject", signature="SpatialPointsDataFrame", definition=reproject.SpatialPoints)
-setMethod("reproject", signature="SpatialPolygonsDataFrame", definition=reproject.SpatialPoints)
-setMethod("reproject", signature="SpatialLinesDataFrame", definition=reproject.SpatialPoints)
+setMethod("reproject", signature="SpatialPoints", definition=reproject.SpatialPoints)
+setMethod("reproject", signature="SpatialPolygons", definition=reproject.SpatialPoints)
+setMethod("reproject", signature="SpatialLines", definition=reproject.SpatialPoints)
 setMethod("reproject", signature="RasterStack", definition=reproject.RasterStack)
 setMethod("reproject", signature="RasterLayer", definition=reproject.RasterLayer)
 setMethod("reproject", signature="RasterBrick", definition=reproject.RasterBrick)
-setMethod("reproject", signature="SpatialGridDataFrame", definition=reproject.SpatialPixels)
-setMethod("reproject", signature="SpatialPixelsDataFrame", definition=reproject.SpatialPixels)
+setMethod("reproject", signature="SpatialGridDataFrame", definition=reproject.SpatialGrid)
+setMethod("reproject", signature="SpatialPixelsDataFrame", definition=reproject.SpatialGrid)
 
 
 # end of script;
