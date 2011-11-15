@@ -10,8 +10,8 @@
 
 <h3>Description</h3>
 
-<p>2984 observations of bigfoot (with attached dates). The data has been obtained from the <a href="http://www.bfro.net/news/google_earth.asp">BigFoot Research Organization (BFRO) website</a>. The BFRO reports generally consist of a description of the event and where it occurred, plus the quality classification. For more info about species distribution modelling using the BFRO reports see <a href="http://dx.doi.org/10.1111/j.1365-2699.2009.02152.x">Lozier et al. (2009)</a>.<br>
-The environmental predictors in the <code>USAWgrids</code> data set represent typical gridded maps used for species distribution modelling.
+<p>2984 observations of bigfoot (with attached dates). The data has been obtained from the <a href="http://www.bfro.net/news/google_earth.asp">BigFoot Research Organization (BFRO) website</a>. The BFRO reports generally consist of a description of the event and where it occurred, plus the quality classification. For more info about species distribution modelling methods using the BFRO reports see <a href="http://dx.doi.org/10.1111/j.1365-2699.2009.02152.x">Lozier et al. (2009)</a>.<br>
+The environmental predictors in the <code>USAWgrids</code> data set represent typical gridded maps used in species distribution modelling projects.
 </p>
 
 
@@ -26,26 +26,26 @@ The environmental predictors in the <code>USAWgrids</code> data set represent ty
 The <code>bigfoot</code> data frame contains the following columns:
 
 <dl>
-<dt>Lon</dt><dd>a numeric vector; x-coordiante / longitude in the WGS84 system</dd>
-<dt>Lat</dt><dd>a numeric vector; y-coordinate / latitude in the WGS84 system</dd>
-<dt>NAME</dt><dd>name assigned by the observer (usually referent month / year)</dd>
-<dt>DATE</dt><dd>'POSIXct' class vector</dd>
-<dt>TYPE</dt><dd>confidence levels; according to the BFRO website: <EM><code>"Class A"</code> reports involve clear sightings in circumstances where misinterpretation or misidentification of other animals can be ruled out with greater confidence; <code>"Class B"</code> and <code>"Class C"</code> reports are less credible</EM>.</dd>
+<dt><code>Lon</code></dt><dd>a numeric vector; x-coordiante / longitude in the WGS84 system</dd>
+<dt><code>Lat</code></dt><dd>a numeric vector; y-coordinate / latitude in the WGS84 system</dd>
+<dt><code>NAME</code></dt><dd>name assigned by the observer (usually referent month / year)</dd>
+<dt><code>DATE</code></dt><dd>'POSIXct' class vector</dd>
+<dt><code>TYPE</code></dt><dd>confidence levels; according to the BFRO website: <EM><code>"Class A"</code> reports involve clear sightings in circumstances where misinterpretation or misidentification of other animals can be ruled out with greater confidence; <code>"Class B"</code> and <code>"Class C"</code> reports are less credible</EM>.</dd>
 </dl>
 
 The <code>USAWgrids</code> data frame (46,018 pixels; Washington, Oregon, Nevada and California state) contains the following columns:
 
 <dl>
-<dt>globedem</dt><dd>a numeric vector; elevations from the ETOPO1 Global Relief Model</dd>
-<dt>nlights03</dt><dd>an integer vector; lights at night image for 2003 (Version 2 DMSP-OLS Nighttime Lights Time Series)</dd>
-<dt>sroads</dt><dd>a numeric vector; distance to main roads and railroads (National Atlas of the United States)</dd>
-<dt>gcarb</dt><dd>a numeric vector; Global Biomass Carbon Map (New IPCC Tier-1 Global Biomass Carbon Map for the Year 2000)</dd>
-<dt>dTRI</dt><dd>a numeric vector; density of pollutant releases (North American Pollutant Releases and Transfers database)</dd>
-<dt>twi</dt><dd>a numeric vector; Topographic Wetness Index based on the globedem</dd>
-<dt>states</dt><dd>an integer vector; USA states</dd>
-<dt>globcov</dt><dd>land cover classes based on the MERIS FR images (GlobCover Land Cover version V2.2)</dd>
-<dt>s1</dt><dd>a numeric vector; x-coordinates in the Albers equal-area projection system</dd>
-<dt>s2</dt><dd>a numeric vector; y-coordinates in the Albers equal-area projection system</dd>
+<dt><code>globedem</code></dt><dd>a numeric vector; elevations from the ETOPO1 Global Relief Model</dd>
+<dt><code>nlights03</code></dt><dd>an integer vector; lights at night image for 2003 (Version 2 DMSP-OLS Nighttime Lights Time Series)</dd>
+<dt><code>sroads</code></dt><dd>a numeric vector; distance to main roads and railroads (National Atlas of the United States)</dd>
+<dt><code>gcarb</code></dt><dd>a numeric vector; Global Biomass Carbon Map (New IPCC Tier-1 Global Biomass Carbon Map for the Year 2000)</dd>
+<dt><code>dTRI</code></dt><dd>a numeric vector; density of pollutant releases (North American Pollutant Releases and Transfers database)</dd>
+<dt><code>twi</code></dt><dd>a numeric vector; Topographic Wetness Index based on the globedem</dd>
+<dt><code>states</code></dt><dd>an integer vector; USA states</dd>
+<dt><code>globcov</code></dt><dd>land cover classes based on the MERIS FR images (GlobCover Land Cover version V2.2)</dd>
+<dt><code>s1</code></dt><dd>a numeric vector; x-coordinates in the Albers equal-area projection system</dd>
+<dt><code>s2</code></dt><dd>a numeric vector; y-coordinates in the Albers equal-area projection system</dd>
 </dl>
 
 </p>
@@ -67,7 +67,7 @@ The <code>USAWgrids</code> data frame (46,018 pixels; Washington, Oregon, Nevada
 <p>
 
 <ul>
-<li> Lozier, J.D., Aniello, P., Hickerson, M.J., (2009) <a href="http://dx.doi.org/10.1111/j.1365-2699.2009.02152.x">Predicting the distribution of Sasquatch in western North America: anything goes with ecological niche modelling</a>. Journal of Biogeography, 36(9):1623–1627.
+<li> Lozier, J.D., Aniello, P., Hickerson, M.J., (2009) <a href="http://dx.doi.org/10.1111/j.1365-2699.2009.02152.x">Predicting the distribution of Sasquatch in western North America: anything goes with ecological niche modelling</a>. Journal of Biogeography, 36(9):1623-1627.
 </li>
 <li>BigFoot Research Organization (<a href="http://www.bfro.net">http://www.bfro.net</a>)
 </ul>

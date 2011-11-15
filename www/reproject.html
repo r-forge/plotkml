@@ -75,13 +75,16 @@ proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 eberg.geo &lt;- reproject(eberg)
 # Example with raster data
 data(eberg_grid)
-## Not run: eberg_grid.geo &lt;- reproject(eberg_grid)
+## Not run: 
+eberg_grid.geo &lt;- reproject(eberg_grid)
+## End(Not run)
 # Using FWTools:
-## Not run: eberg_grid.geo &lt;- reproject(eberg_grid, program = "FWTools")
+## Not run: 
+eberg_grid.geo &lt;- reproject(eberg_grid, program = "FWTools")
+## End(Not run)
 # Optional: compare processing times:
 system.time(eberg_grid_ll &lt;- reproject(eberg_grid[1]))
-system.time(eberg_grid_ll &lt;- reproject(eberg_grid[1], program="FWTools"))
-</pre>
+system.time(eberg_grid_ll &lt;- reproject(eberg_grid[1], program="FWTools"))</pre>
 
 <hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
 </body></html>

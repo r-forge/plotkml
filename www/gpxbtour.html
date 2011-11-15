@@ -10,14 +10,12 @@
 
 <h3>Description</h3>
 
-<p>GPS log of a bike tour from Wageningen (the Netherlands) to Münster (Germany). The table contains 3228 records of GPS locations, speed and elevation.</p>
+<p>GPS log of a bike tour from Wageningen (the Netherlands) to MÃ¼nster (Germany). The table contains 3228 records of GPS locations, speed and elevation.</p>
 
 
 <h3>Usage</h3>
 
-<pre>
-data(gpxbtour)
-</pre>
+<pre>data(gpxbtour)</pre>
 
 
 <h3>Format</h3>
@@ -26,11 +24,11 @@ data(gpxbtour)
 The data frame contains the following columns:
 
 <dl>
-<dt>lon</dt><dd>longitude (x-coordinate)</dd>
-<dt>lat</dt><dd>latitude (y-coordinate)</dd>
-<dt>ele</dt><dd>GPS-estimated elevation in m</dd>
-<dt>speed</dt><dd>GPS-estimated speed in km per hour</dd>
-<dt>time</dt><dd>XML Schema time</dd>
+<dt><code>lon</code></dt><dd>longitude (x-coordinate)</dd>
+<dt><code>lat</code></dt><dd>latitude (y-coordinate)</dd>
+<dt><code>ele</code></dt><dd>GPS-estimated elevation in m</dd>
+<dt><code>speed</code></dt><dd>GPS-estimated speed in km per hour</dd>
+<dt><code>time</code></dt><dd>XML Schema time</dd>
 </dl>
  
 </p>
@@ -44,41 +42,29 @@ The data frame contains the following columns:
 
 <h3>Author(s)</h3>
 
-<p> Tomislav Hengl (tom.hengl@wur.nl) </p>
+<p> Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>) </p>
 
 
 <h3>Examples</h3>
 
 <pre>
 data(gpxbtour)
-# str(gpxbtour)
 ## format the time column:
 gpxbtour$ctime &lt;- as.POSIXct(gpxbtour$time, format="%Y-%m-%dT%H:%M:%SZ")
 coordinates(gpxbtour) &lt;- ~lon+lat
 proj4string(gpxbtour) &lt;- CRS("+proj=longlat +datum=WGS84")
-
-# extended examples:
 ## Not run: 
-  ## derive distance from origin:
-  require(fossil)
-  xy &lt;- as.list(data.frame(t(coordinates(gpxbtour))))
-  gpxbtour$dist.km &lt;- sapply(xy, function(x) deg.dist(long1=x[1], lat1=x[2], long2=xy[[1]][1], lat2=xy[[1]][2]))
-  plot(gpxbtour$dist.km, gpxbtour$speed, type="l", xlab="Distance from origin in km", ylab="speed in km per hour")
-  # convert to a STIDFtraj class:
-  require(spacetime)
-  require(adehabitatLT)
-  gpx.ltraj &lt;- as.ltraj(coordinates(gpxbtour), gpxbtour$ctime, id = "th")
-  gpx.st &lt;- as(gpx.ltraj, "STIDFtraj")
-  gpx.st$speed &lt;- gpxbtour$speed
-  gpx.st@sp@proj4string &lt;- CRS("+proj=longlat +datum=WGS84")
-  # open KML file:
-  kml_open("gpxbtour.kml", overwrite = TRUE)
-  # plot trajectory with speed as colour attribute:
-  kml_layer(obj=gpx.st, colour=speed, z.lim=c(18,32))
-  # close KML:
-  kml_close()
-  kml_compress("gpxbtour.kml")
-
+# convert to a STIDFtraj class:
+require(spacetime)
+require(adehabitat)
+gpx.ltraj &lt;- as.ltraj(coordinates(gpxbtour), gpxbtour$ctime, id = "th")
+gpx.st &lt;- as(gpx.ltraj, "STIDFtraj")
+# Google maps plot:
+require(RgoogleMaps)
+llc &lt;- c(mean(gpx.st@sp@bbox[2,]), mean(gpx.st@sp@bbox[1,]))
+MyMap &lt;- GetMap.bbox(center=llc, zoom=8, destfile="map.png")
+PlotOnStaticMap(MyMap, lat=gpx.st@sp@coords[,2], lon=gpx.st@sp@coords[,1], FUN=lines, col="black", lwd=4)
+spplot(gpx.st)
 ## End(Not run)
 </pre>
 

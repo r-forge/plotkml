@@ -10,34 +10,41 @@
 
 <h3>Description</h3>
 
-<p>
-Opens a KML file in write mode and initiates the KML header. The same file connection is further accessible by other <code>kml_*()</code> functions such as <code>kml_layer()</code> and <code>kml_close()</code>. This allows creation of customized multi-layered KML files.
-</p>
+<p>Opens a KML file in write mode and initiates the KML header. The same file connection is further accessible by other <code>kml_*()</code> functions such as <code>kml_layer()</code> and <code>kml_close()</code>. This allows creation of customized multi-layered KML files.</p>
 
 
 <h3>Usage</h3>
 
 <pre>
-kml_open(file, name = file, overwrite = FALSE, kml.url = get("kml_url", envir = plotKML.opts))
+kml_open(file.name, folder.name = file.name,
+  open = TRUE, overwrite = TRUE, ...)
 </pre>
 
 
 <h3>Arguments</h3>
 
 <table summary="R argblock">
-<tr valign="top"><td><code>file</code></td>
+<tr valign="top"><td><code>file.name</code></td>
 <td>
-either a character string naming a file.</td></tr>
-<tr valign="top"><td><code>name</code></td>
+KML file name</td></tr>
+<tr valign="top"><td><code>folder.name</code></td>
 <td>
-A name for the KML file to be created.</td></tr>
+character string; KML folder name</td></tr>
 <tr valign="top"><td><code>overwrite</code></td>
 <td>
-Logical. If TRUE, "name" will be overwritten if it exists.</td></tr>
-<tr valign="top"><td><code>kml.url</code></td>
+logical; If TRUE, "name" will be overwritten if it exists</td></tr>
+<tr valign="top"><td><code>kml_xsd</code></td>
 <td>
-URL of the KML standard to be used.</td></tr>
+URL of the KML scheme to be used</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+other arguments</td></tr>
 </table>
+
+
+<h3>Details</h3>
+
+<p>See plotKML package homepage / vignette for more examples.</p>
 
 
 <h3>Author(s)</h3>
@@ -47,7 +54,18 @@ URL of the KML standard to be used.</td></tr>
 
 <h3>See Also</h3>
 
-<p> <code><a href="kml.html">kml</a></code>, <code>kml_layer</code> </p>
+<p> <code><a href="kml.html">kml</a></code>, <code>kml.Spatial</code> </p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(eberg_grid)
+kml_open("eberg_grid_DEM.kml")
+kml_layer(eberg_grid, colours=DEM)
+kml_close("eberg_grid_DEM.kml")
+# result:
+xmlRoot(xmlTreeParse("eberg_grid_DEM.kml"))[["Document"]]</pre>
 
 <hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
 </body></html>

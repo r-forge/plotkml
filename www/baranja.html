@@ -10,8 +10,8 @@
 
 <h3>Description</h3>
 
-<p>Baranja hill is a 4 by 4 km large study area in the Baranja region, eastern Croatia (corresponds to a size of an aerial photograph). This data set has been extensively used to describe various DEM modelling and analysis steps (Hengl and Reuter, 2008; Hengl et al., 2010). <br>
-<code>barxyz</code> is a <code>SpatialPointsDataFrame</code> object that contains 6370 observations of elevations (from field survey and digitized from the stereo images); <code>bargrid</code> contains <EM>observed</EM> probabilities of streams (digitized from the 1:5000 topo map); <code>barstr</code> contains 100 simulated stream networks (SpatialLines) using <code>barxyz</code> as input (see examples below).</p>
+<p>Baranja hill is a 4 by 4 km large study area in the Baranja region, eastern Croatia (corresponds to a size of an aerial photograph). This data set has been extensively used to describe various DEM modelling and analysis steps (<a href="http://geomorphometry.org/book">Hengl and Reuter, 2008</a>; <a href="http://dx.doi.org/10.5194/hess-14-1153-2010">Hengl et al., 2010</a>). <br>
+<code>barxyz</code> is a <code>"SpatialPointsDataFrame"</code> object that contains 6370 observations of elevations (from field survey and digitized from the stereo images); <code>bargrid</code> contains <EM>observed</EM> probabilities of streams (digitized from the 1:5000 topo map); <code>barstr</code> contains 100 simulated stream networks (<code>"SpatialLines"</code>) using <code>barxyz</code> point data as input (see examples below).</p>
 
 
 <h3>Usage</h3>
@@ -19,9 +19,23 @@
 <pre>data(barxyz)</pre>
 
 
+<h3>Format</h3>
+
+<p>
+The <code>bargrid</code> data frame (regular grid at 30 m intervals) contains the following columns:
+
+<dl>
+<dt><code>p.obs</code></dt><dd>observed probability of stream (0-1)</dd>
+<dt><code>x</code></dt><dd>a numeric vector; x-coordinate (m) in the MGI / Balkans zone 6 </dd>
+<dt><code>y</code></dt><dd>a numeric vector; y-coordinate (m) in the MGI / Balkans zone 6 </dd>
+</dl>
+
+</p>
+
+
 <h3>Note</h3>
 
-<p> Consider using the 30~m resolution grid (see <code>bargrid</code>) to produce the output maps. 
+<p>Consider using the 30~m resolution grid (see <code>bargrid</code>) to produce the output maps. 
 </p>
 
 
@@ -81,7 +95,6 @@ for(i in 1:N.sim){
   streams.plot[[i]] &lt;- list("sp.lines", stream.list[[i]])
 }
 spplot(DEM.sim[1], col.regions=grey(seq(0.4,1,0.025)), scales=list(draw=T), sp.layout=streams.plot)
-
 ## End(Not run)
 </pre>
 
