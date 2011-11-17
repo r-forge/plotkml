@@ -4,7 +4,7 @@
 \description{Writes a space-time trajectory object to a KML file and (optional) attaches attributes.
 }
 \usage{
-kml_layer.STIDFtraj(obj, obj.title, id.name, dtime = 0, extrude = FALSE,
+kml_layer.STIDFtraj(obj, obj.title, id.name, dtime = "", extrude = FALSE,
   start.icon, end.icon, LabelScale, z.scale = 1, metadata = FALSE, html.table = NULL)
 }
 \arguments{
