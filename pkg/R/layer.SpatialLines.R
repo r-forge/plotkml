@@ -1,86 +1,88 @@
+# Purpose        : Write line-objects (SpatialLines) to KML;
+# Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
+# Contributions  : Tomislav Hengl (tom.hengl@wur.nl); Dylan Beaudette (debeaudette@ucdavis.edu); 
+# Status         : pre-alpha
+# Note           : only 2-3 aesthetics can be used - color, width and names;
+
 kml_layer.SpatialLines <- function(
-  # options on the object to plot
   obj,
-  title = as.character(substitute(obj, env = parent.frame())),
-  extrude = TRUE,
+  obj.title = deparse(substitute(obj, env = parent.frame())),
+  extrude = FALSE,
   z.scale = 1,
-  LabelScale = 0.7,
+  metadata = FALSE,
+  html.table = NULL,
   ...
   ){
   
   # invisible file connection
-  file.connection <- get('kml.file.out', env=plotKML.fileIO)
+  kml.out <- get("kml.out", env=plotKML.fileIO)
   
   # Checking the projection is geo
   check <- check_projection(obj, logical = TRUE)
 
   # Trying to reproject data if the check was not successful
-  if (!check)
-    obj <- reproject(obj)
+  if (!check) {  obj <- reproject(obj)  }
 
   # Parsing the call for aesthetics
   aes <- kml_aes(obj, ...)
 
   # Read the relevant aesthetics
-  lines_names<- aes[["labels"]]
+  lines_names <- aes[["labels"]]
   colours <- aes[["colour"]]
   width <- aes[["width"]]
   altitude <- aes[["altitude"]]
   altitudeMode <- aes[["altitudeMode"]]
   balloon <- aes[["balloon"]]
 
-  # Folder and name of the points folder
-  cat("<Folder>\n", file = file.connection, append = TRUE)
-  cat("<name>", title, "</name>\n", sep = "", file = file.connection, append = TRUE)
-
-  # Styles
-  # ======
-  for (i.line in 1:length(obj)) {  # for each line
-    write(paste('\t<Style id="', 'line', i.line,'">', sep = ""), file.connection, append = TRUE)
-    write("\t\t<LineStyle>", file.connection, append = TRUE)
-    write(paste('\t\t\t<color>', colours[i.line], '</color>', sep = ""), file.connection, append = TRUE)
-    write(paste('\t\t\t<width>', width[i.line], '</width>', sep = ""), file.connection, append = TRUE)
-    write("\t\t</LineStyle>", file.connection, append = TRUE)
-    # balloon
-    cat("\t\t<BalloonStyle>\n", file = file.connection, append = TRUE)
-    cat("\t\t\t<text>$[description]</text>\n", file = file.connection, append = TRUE)
-    cat("\t\t</BalloonStyle>\n", file = file.connection, append = TRUE)
-    write("\t</Style>", file.connection, append = TRUE)
+  # Parse ATTRIBUTE TABLE (for each placemark):
+  if (balloon & ("data" %in% slotNames(obj))){
+      html.table <- .df2htmltable(obj@data)
   }
+  
+  message("Parsing to KML...")
+  # Folder and name of the points folder
+  pl1 = newXMLNode("Folder", parent=kml.out[["Document"]])
+  pl2 <- newXMLNode("name", paste(class(obj)), parent = pl1)
 
+  # Insert metadata:
+  if(metadata==TRUE){
+    sp.md <- spMetadata(obj, xml.file=set.file.extension(obj.title, ".xml"), generate.missing = FALSE)
+    md.txt <- kml_metadata(sp.md, asText = TRUE)
+    txt <- sprintf('<description><![CDATA[%s]]></description>', md.txt)
+    parseXMLAndAdd(txt, parent=pl1)
+  }  
+
+  # process lines:
+  lv <- length(obj@lines) 
+  coords <- NULL
+  for (i.line in 1:lv) { 
+    xyz <- slot(slot(obj@lines[[i.line]], "Lines")[[1]], "coords")
+      if(ncol(xyz)==2){ xyz <- cbind(xyz, rep(altitude[i.line], nrow(xyz))) }
+    coords[[i.line]] <- paste(xyz[,1], ',', xyz[,2], ',', xyz[,3], collapse='\n ', sep = "")
+  }
+  
+  # Line styles
+  # ======
+  txts <- sprintf('<Style id="line%s"><LineStyle><color>%s</color><width>%.0f</width></LineStyle><BalloonStyle><text>$[description]</text></BalloonStyle></Style>', 1:lv, colours, width)
+  parseXMLAndAdd(txts, parent=pl1)  
+  
   # Writing lines
   # =============
-  for (i.line in 1:length(obj)) {  # for each line
-
-    current.line.coords <- obj@lines[[i.line]]@Lines[[1]]@coords
-    current.line.length <- nrow(current.line.coords)
-    current.line.id <- lines_names[i.line]
-
-    write("\t<Placemark>", file.connection, append = TRUE)
-    write(paste("\t\t<name>", current.line.id, "</name>", sep = ""), file.connection, append = TRUE)
-    write(paste('\t\t<styleUrl>#line', i.line, '</styleUrl>', sep = ""), file.connection, append = TRUE)
-
-    # Add description with attributes
-    if (balloon & ("data" %in% slotNames(obj)))
-      .df_to_kml_html_table(obj@data[i.line, ])
-
-    write("\t\t<LineString>", file.connection, append = TRUE)
-
-    write(paste('\t\t\t<altitudeMode>', altitudeMode, '</altitudeMode>', sep = ""), file.connection, append = TRUE)
-    write("\t\t\t<coordinates>", file.connection, append = TRUE)
-
-    # For each vertice in the current line
-    for (i.point in 1:current.line.length) {
-      write(paste('\t\t\t\t', current.line.coords[i.point, 1], ",", current.line.coords[i.point, 2], ',', altitude[i.point], sep = ""), file.connection, append = TRUE)
-    }
-
-    write("\t\t\t</coordinates>", file.connection, append = TRUE)
-    write("\t\t</LineString>", file.connection, append = TRUE)
-    write("\t</Placemark>", file.connection, append = TRUE)
+  
+  if(length(html.table)>0){   
+  # Add attributes:
+      txt <- sprintf('<Placemark><name>%s</name><styleUrl>#line%s</styleUrl><description><![CDATA[%s]]></description><LineString><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%s</coordinates></LineString></Placemark>', lines_names, 1:lv, html.table, rep(as.numeric(extrude), lv), rep(altitudeMode, lv), paste(unlist(coords)))
+  }
+  # without attributes:
+  else{
+      txt <- sprintf('<Placemark><name>%s</name><styleUrl>#line%s</styleUrl><LineString><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%s</coordinates></LineString></Placemark>', lines_names, 1:lv, rep(as.numeric(extrude), lv), rep(altitudeMode, lv), paste(unlist(coords)))  
   }
 
-  # Closing the folder
-  cat("</Folder>\n", file = file.connection, append = TRUE)
+  parseXMLAndAdd(txt, parent=pl1)
+
+  # save results: 
+  assign('kml.out', kml.out, env=plotKML.fileIO)
+
 }
 
 setMethod("kml_layer", "SpatialLines", kml_layer.SpatialLines)

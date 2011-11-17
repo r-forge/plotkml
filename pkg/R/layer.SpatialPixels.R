@@ -13,7 +13,7 @@ kml_layer.SpatialPixels <- function(
   else
     obj <- as(obj, "RasterLayer")
 
-  kml_layer(obj, obj.title = deparse(substitute(obj, env = parent.frame())), ...)
+  kml_layer(obj, ...)
 
 }
 

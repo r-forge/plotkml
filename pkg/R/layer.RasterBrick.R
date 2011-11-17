@@ -2,32 +2,27 @@
 # Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
 # Contributions  : Pierre Roudier (pierre.roudier@landcare.nz); Dylan Beaudette (debeaudette@ucdavis.edu); 
 # Status         : pre-alpha
-# Note           : this function is only suitable for writing time-series of data i.e. multiple realizations of the same variables; we assume that the time dimension is set via the @zvalue slot
+# Note           : this function is only suitable for writing time-series of data i.e. multiple realizations of the same variables; we assume that the time dimension is set via the @zvalue slot;
 
 kml_layer.RasterBrick <- function(
-  obj,  # RasterBrick object;
+  obj,  
   obj.title = deparse(substitute(obj, env = parent.frame())),
-  dtime = 0, # time support in seconds
-  colour_scale = get("colour_scale_numeric", envir = plotKML.opts),
-  z.scale = 1,
-  home_url = get("home_url", envir = plotKML.opts),
-  LabelScale = get("LabelScale", envir = plotKML.opts),
-  metadata = FALSE,
-  attribute.table = NULL,
+  dtime = "", 
   tz = "GMT",
-  z.lim = c(mean(obj@data@min, na.rm=TRUE), mean(obj@data@max, na.rm=TRUE)),
+  z.lim = c(min(obj@data@min, na.rm=TRUE), max(obj@data@max, na.rm=TRUE)),
+  colour_scale = get("colour_scale_numeric", envir = plotKML.opts),
+  home_url = get("home_url", envir = plotKML.opts),
+  metadata = FALSE,
+  html.table = NULL,
   ...
   ){
   
   if(!is.numeric(obj@data@values)){
   stop('Values of class "numeric" required.') 
   }
-  if(nchar(obj@zvalue)==0){
-  stop('Vector of DateTime values or numbers required for slot @zvalue.')
-  }
   
   # Get our invisible file connection from custom environment
-  kml.out <- get('kml.out', env=plotKML.fileIO)
+  kml.out <- get("kml.out", env=plotKML.fileIO)
   
   # Checking the projection is geo
   check <- check_projection(obj, logical = TRUE)
@@ -48,18 +43,21 @@ kml_layer.RasterBrick <- function(
 
   # Format the time slot for writing to KML:
   if(!any(class(obj@zvalue) %in% "POSIXct")){
-  DateTime <- as.POSIXct(obj@zvalue, "%Y-%m-%dT%H:%M:%SZ", tz=tz)
+  if(obj@zvalue==""){
+    obj@zvalue <- format(as.POSIXct(rev(as.Date(Sys.time())-1:ncol(obj@data@values))), "%Y-%m-%dT%H:%M:%SZ")
+  }
+    DateTime <- obj@zvalue[1:ncol(obj@data@values)]
   }
   else 
-  { DateTime = obj@zvalue }
+  { DateTime = obj@zvalue[1:ncol(obj@data@values)] }
   
   if(dtime==0) {  
-    when <- DateTime
+    when <- as.POSIXct(DateTime)
   }
   else {
-    ftime <- mean(diff(unclass(DateTime)))    # estimate the time support (if not indicated)
-    TimeSpan.begin <- format(as.POSIXct(unclass(DateTime) - ftime/2, origin="1970-01-01"), "%Y-%m-%dT%H:%M:%SZ")
-    TimeSpan.end <- format(as.POSIXct(unclass(DateTime) + ftime/2, origin="1970-01-01"), "%Y-%m-%dT%H:%M:%SZ")
+    dtime <- mean(diff(unclass(as.POSIXct(DateTime))))    # estimate the time support (if not indicated)
+    TimeSpan.begin <- format(as.POSIXct(unclass(as.POSIXct(DateTime)) - dtime/2, origin="1970-01-01"), "%Y-%m-%dT%H:%M:%SZ", tz=tz)
+    TimeSpan.end <- format(as.POSIXct(unclass(as.POSIXct(DateTime)) + dtime/2, origin="1970-01-01"), "%Y-%m-%dT%H:%M:%SZ", tz=tz)
   }
 
   # Parse ATTRIBUTE TABLE (for each placemark):
@@ -67,9 +65,10 @@ kml_layer.RasterBrick <- function(
       html.table <- .df2htmltable(data.frame(layernames=obj@layernames, zvalue=obj@zvalue, unit=obj@unit))
   }
 
+  message("Parsing to KML...")
   # Name of the object
   pl1 = newXMLNode("Folder", parent=kml.out[["Document"]])
-  pl2 <- newXMLNode("name", obj.title, parent=pl1)
+  pl2 <- newXMLNode("name", paste(class(obj)), parent=pl1)
   
   # Insert metadata:
   if(metadata==TRUE){
@@ -112,7 +111,7 @@ kml_layer.RasterBrick <- function(
   parseXMLAndAdd(txtr, parent=pl1)
   
   # save results: 
-  assign('kml.out', kml.out, env=plotKML.fileIO)
+  assign("kml.out", kml.out, env=plotKML.fileIO)
   
 }
 

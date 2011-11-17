@@ -8,7 +8,8 @@
 .all_kml_aesthetics <- list(
   colour = "black",
   fill = "white",
-  shape = paste(get("home_url", envir = plotKML.opts), get("icon", envir = plotKML.opts), sep=""), #"http://maps.google.com/mapfiles/kml/shapes/donut.png",
+  shape = paste(get("home_url", envir = plotKML.opts), get("icon", envir = plotKML.opts), sep=""), 
+  #"http://maps.google.com/mapfiles/kml/shapes/donut.png",
   whitening = "",
   alpha = 1,
   size = get("LabelScale", envir = plotKML.opts),
@@ -223,7 +224,9 @@ kml_aes <- function(obj, ...) {
   cols
 }
 
+
 # Colour (points, polygons, lines, raster)
+##----------------
 kml_colour <- function(obj, colour, colour_scale = NULL){
 
   # Getting the vector of values to scale
@@ -240,10 +243,12 @@ kml_colour <- function(obj, colour, colour_scale = NULL){
     cols <- as.character(x)
   }
 
-  cols
+  return(cols)
 }
 
-# Shape (points)
+
+## Shape (points)
+##----------------
 kml_shape <- function(obj, shape, ...){
   # Simple implementation if a URL is given
   rep(shape, length.out = length(obj))
@@ -330,7 +335,7 @@ kml_whitening <- function(obj, whitening, col.vect){
 }
 
 # Size (points)
-kml_size <- function(obj, size, size.min = 0.25, size.max = 4, size.default = 1){
+kml_size <- function(obj, size, size.min = 0.25, size.max = 2.5, size.default = 1){
 
   if (!is.na(size) & "data" %in% slotNames(obj)) {
     # If data is numeric

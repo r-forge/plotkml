@@ -33,7 +33,7 @@ kml_open <- function(
   h4 <- newXMLNode("open", as.numeric(open), parent = h2)
   
   # init connection to an XML object: 
-  assign('kml.out', kml.out, env=plotKML.fileIO)
+  assign("kml.out", kml.out, env=plotKML.fileIO)
   message("KML file header opened for parsing...")
   
 }
@@ -42,7 +42,8 @@ kml_open <- function(
 kml_close <- function(file.name, overwrite = FALSE, ...){
    
   # get our invisible file connection from custom evnrionment
-  kml.out <- get('kml.out', env=plotKML.fileIO)
+  kml.out <- get("kml.out", env=plotKML.fileIO)
   saveXML(kml.out, set.file.extension(file.name, ".kml"))
+  message(paste("Closing", set.file.extension(file.name, ".kml")))
   
 }

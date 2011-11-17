@@ -1,4 +1,4 @@
-# Purpose        : Generic methods to produce a KML from a sp-type objects
+# Purpose        : Generic methods to produce a KML from a sp/raster-type objects
 # Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
 # Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Tomislav Hengl (tom.hengl@wur.nl); 
 # Dev Status     : Alpha
@@ -6,17 +6,16 @@
 
 kml.Spatial <- function(
   obj,
-  file.name = set.file.extension(deparse(substitute(obj, env=parent.frame())), ".kml"),
+  folder.name = deparse(substitute(obj, env=parent.frame())),
+  file.name = paste(deparse(substitute(obj, env=parent.frame())), ".kml", sep=""),
   overwrite = TRUE,
-  folder.name = "plotKML Spatial object",
-  obj.title = deparse(substitute(obj, env=parent.frame())),
   kmz = get("kmz", envir = plotKML.opts),
   ...
 ){
 
   kml_open(folder.name = folder.name, overwrite = overwrite, file.name = file.name)
 
-  kml_layer(obj = obj, obj.title = obj.title, ...)
+  kml_layer(obj = obj, obj.title = folder.name, ...)
 
   kml_close(file.name = file.name)
 

@@ -9,7 +9,7 @@ kml_layer.STIDFtraj <- function(
   obj.title,
   id.name = names(obj@data)[which(names(obj@data)=="id")],   # trajectory ID column 
   ## TH: Normally we should be able to pass the ID column via "labels"
-  dtime = 0, # time support
+  dtime = "", # time support
   extrude = FALSE,
 #  tessellate = FALSE,
   start.icon = paste(get("home_url", envir = plotKML.opts), "3Dballyellow.png", sep=""),
@@ -51,9 +51,9 @@ kml_layer.STIDFtraj <- function(
     when <- format(time(obj@time), "%Y-%m-%dT%H:%M:%SZ")
   }
   else {
-    ftime <- periodicity(obj@time)    # estimate the time support (if not indicated)
-    TimeSpan.begin <- format(as.POSIXct(unclass(as.POSIXct(time(obj@time))) - ftime$frequency/2, origin="1970-01-01"), "%Y-%m-%dT%H:%M:%SZ")
-    TimeSpan.end <- format(as.POSIXct(unclass(as.POSIXct(time(obj@time))) + ftime$frequency/2, origin="1970-01-01"), "%Y-%m-%dT%H:%M:%SZ")
+    dtime <- periodicity(obj@time)    # estimate the time support (if not indicated)
+    TimeSpan.begin <- format(as.POSIXct(unclass(as.POSIXct(time(obj@time))) - dtime$frequency/2, origin="1970-01-01"), "%Y-%m-%dT%H:%M:%SZ")
+    TimeSpan.end <- format(as.POSIXct(unclass(as.POSIXct(time(obj@time))) + dtime$frequency/2, origin="1970-01-01"), "%Y-%m-%dT%H:%M:%SZ")
   }
 
   # Parse ATTRIBUTE TABLE (for each placemark):
@@ -84,7 +84,7 @@ kml_layer.STIDFtraj <- function(
   for (i.line in 1:length(lv)) {  # for each line
 
     cfd <- data.frame(coordinates(obj@sp[obj@data[,id.name]==lv[i.line],]))
-    # convert to a line object (this assumes that the points are sorted chronologically!)
+    # convert to line objects (this assumes that the points are sorted chronologically!)
     cl <- Line(cfd)
     # line length:
     ldist[[i.line]] <- LineLength(cl, longlat=TRUE, sum=TRUE) 
