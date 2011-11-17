@@ -6,7 +6,7 @@
 
 
 reproject.SpatialPoints <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), ...) {
-  message(paste("Reprojecting coordinates to", CRS, "..."))
+  message(paste("Reprojecting to", CRS, "..."))
   res <- spTransform(x = obj, CRSobj = CRS(CRS))
   return(res)
 }
@@ -25,7 +25,7 @@ reproject.RasterBrick <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
 }
 
 
-reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), program = "raster", tmp.file = TRUE, NAflag = get("NAflag", envir = plotKML.opts), ...) {
+reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), program = "raster", tmp.file = TRUE, NAflag = get("NAflag", envir = plotKML.opts), show.output.on.console = FALSE, ...) {
 
   if (is.factor(obj)){  
   method <- "ngb" }
@@ -33,7 +33,7 @@ reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
   method <- "bilinear" }
   
   if(program=="raster"){
-  message(paste("Reprojecting coordinates to", CRS, "..."))
+  message(paste("Reprojecting to", CRS, "..."))
   res <- projectRaster(obj, crs = CRS, method = method, progress='text', ...)
   layerNames(res) <- layerNames(obj)
   }
@@ -58,8 +58,8 @@ reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
   if(method == "ngb") { method <- "near" }
   writeRaster(obj, paste(tf, ".tif", sep=""), overwrite=TRUE, NAflag=NAflag)
   # resample to WGS84 system:
-  message(paste("Reprojecting coordinates to", CRS, "..."))
-  system(paste(gdalwarp, " ", tf, ".tif", " -t_srs \"", CRS, "\" ", tf, "_ll.tif -dstnodata \"", NAflag, "\" ", " -r ", method, sep=""))
+  message(paste("Reprojecting to", CRS, "..."))
+  system(paste(gdalwarp, " ", tf, ".tif", " -t_srs \"", CRS, "\" ", tf, "_ll.tif -dstnodata \"", NAflag, "\" ", " -r ", method, sep=""), show.output.on.console = show.output.on.console)
   res <- raster(paste(tf, "_ll.tif", sep=""), silent = TRUE)
   layerNames(res) <- layerNames(obj)
   }
@@ -71,7 +71,7 @@ reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
 }
 
 
-reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), tmp.file = TRUE, program = "raster", NAflag = get("NAflag", envir = plotKML.opts), ...) {
+reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), tmp.file = TRUE, program = "raster", NAflag = get("NAflag", envir = plotKML.opts), show.output.on.console = FALSE, ...) {
 
   if(program=="raster"){
 
@@ -124,14 +124,13 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
         writeGDAL(obj[i], paste(tf, ".tif", sep=""), "GTiff")
         }
         
+        message(paste("Reprojecting to", CRS, "..."))
         # resample to WGS84 system:
         if(is.factor(obj@data[,i])){
-        message(paste("Reprojecting coordinates to", CRS, "..."))
-        system(paste(gdalwarp, ' ', tf, '.tif', ' -t_srs \"', CRS, '\" ', tf, '_ll.tif -dstnodata \"', NAflag, '\" -r near', sep=""), show.output.on.console = FALSE)
+        system(paste(gdalwarp, ' ', tf, '.tif', ' -t_srs \"', CRS, '\" ', tf, '_ll.tif -dstnodata \"', NAflag, '\" -r near', sep=""), show.output.on.console = show.output.on.console)
         }
         else {
-        message(paste("Reprojecting coordinates to", CRS, "..."))
-        system(paste(gdalwarp, ' ', tf, '.tif', ' -t_srs \"', CRS, '\" ', tf, '_ll.tif -dstnodata \"', NAflag, '\" -r bilinear', sep=""), show.output.on.console = FALSE)
+        system(paste(gdalwarp, ' ', tf, '.tif', ' -t_srs \"', CRS, '\" ', tf, '_ll.tif -dstnodata \"', NAflag, '\" -r bilinear', sep=""), show.output.on.console = show.output.on.console)
         }
         # read images back to R:
         if(i==1){

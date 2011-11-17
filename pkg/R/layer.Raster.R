@@ -5,13 +5,9 @@
 # Note           : Rasters can also be written as polygons; see "?grid2poly"
 
 kml_layer.Raster <- function(
-  obj,  # raster object;
+  obj,  
   obj.title = deparse(substitute(obj, env = parent.frame())),
-  extrude = TRUE,
-  z.scale = 1,
-  LabelScale = get("LabelScale", envir = plotKML.opts),
   metadata = FALSE,
-  attribute.table = NULL,
   ...
   ){
 
@@ -105,9 +101,22 @@ kml_layer.Raster <- function(
   image(obj, col = colour_scale, frame.plot = FALSE)
   dev.off()
 
-  # Folder and name of the points folder
+  ## There is a bug in Google Earth that does not allow transparency of pngs:
+  # http://groups.google.com/group/earth-free/browse_thread/thread/1cd6bc29a2b6eb76/62724be63547fab7
+  # Solution: add transparency using ImageMagick:
+  convert <- get("convert", envir = plotKML.opts)
+  if(nchar(convert)==0){
+    plotKML.env(silent = FALSE)
+    convert <- get("convert", envir = plotKML.opts)
+  }
+  if(nzchar(convert)){
+    system(paste(convert, ' ', raster_name, ' -matte -transparent "#FFFFFF" ', raster_name, sep=""))
+  }
+
+  message("Parsing to KML...")
+  # Folder name
   pl1 = newXMLNode("Folder", parent=kml.out[["Document"]])
-  pl2 <- newXMLNode("name", obj.title, parent = pl1)
+  pl2 <- newXMLNode("name", paste(class(obj)), parent = pl1)
 
   # Insert metadata:
   if(metadata==TRUE){
@@ -116,7 +125,7 @@ kml_layer.Raster <- function(
     txt <- sprintf('<description><![CDATA[%s]]></description>', md.txt)
     parseXMLAndAdd(txt, parent=pl1)
   }
-  message("Parsing to KML...")
+
   # Ground overlay
   # =====================
   pl2b <- newXMLNode("GroundOverlay", parent = pl1)
