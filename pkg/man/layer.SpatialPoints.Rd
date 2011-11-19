@@ -42,7 +42,7 @@ kml(eberg, shape = shape, colour = SILT, labels = "", colour_scale = SAGA_pal[[1
 # Two variables at the same time:
 kml(eberg, shape = shape, size = CLAY, colour = SILT, labels = "")
 # Elevation used for visualization (emphasizes hot-spots):
-kml(eberg, shape = shape, altitude = CLAY*10, extrude = TRUE, colour = CLAY, labels = "")}
+kml(eberg, shape = shape, altitude = CLAY*10, extrude = TRUE, colour = CLAY, labels = CLAY)}
 }
 \keyword{ ~KML}
 \keyword{ SpatialPoints}
