@@ -12,7 +12,7 @@ kml_layer.Raster <- function(
   ){
 
   # get our invisible file connection from custom evnrionment
-  kml.out <- get('kml.out', env=plotKML.fileIO)
+  kml.out <- get("kml.out", env=plotKML.fileIO)
 
   # Checking the projection is geo
   check <- check_projection(obj, logical = TRUE)
@@ -141,7 +141,7 @@ kml_layer.Raster <- function(
   pl4e <- newXMLNode("west", bbox(extent(obj))[1, 1], parent = pl3d)
   
   # save results: 
-  assign('kml.out', kml.out, env=plotKML.fileIO)
+  assign("kml.out", kml.out, env=plotKML.fileIO)
   
 }
 
