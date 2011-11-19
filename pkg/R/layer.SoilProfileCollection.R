@@ -55,9 +55,11 @@ kml_layer.SoilProfileCollection <- function(
   if(missing(x.min)) {   x.min <- x.range[1]-diff(x.range)/100 }
   }
 
-  ## This one uses no aesthetics
-  # aes <- kml_aes(obj, ...)
+  # Parsing the call for aesthetics
+  aes <- kml_aes(obj, ...)
 
+  # Read the relevant aesthetics
+  balloon <- aes[["balloon"]]
 
   # Folder and name of the points folder
   pl1 = newXMLNode("Folder", parent=kml.out[["Document"]])
@@ -115,20 +117,23 @@ kml_layer.SoilProfileCollection <- function(
   coords.pol[[i.site]] <- paste(c(Xp, X0), ',', c(Yp, Y0), ',', z.scale*c(Zp, Z0), collapse='\n ', sep = "")
 
 }
-  # mask out empty profiles:
 
+  # Parse ATTRIBUTE TABLE (for each placemark):
+  if ((is.logical(balloon) | class(balloon) %in% c('character','numeric')) & ("horizons" %in% slotNames(obj))){
+     html.table <- .df2htmltable(obj@horizons[unlist(prof.na),]) 
+  }
 
   if(plot.points==TRUE){
   # Writing points styles
   # =====================    
   selp <- !sapply(prof.na, function(x){length(x)==0})
   lp <- length(unlist(prof.na))
-  txts <- sprintf('<Style id="pnt%s"><LabelStyle><scale>%.1f</scale></LabelStyle><IconStyle><color>%s</color><scale>%s</scale><Icon><href>%s</href></Icon></IconStyle></Style>', paste(1:lp), rep(LabelScale, lp), rep(IconColor, lp), rep(LabelScale, lp), rep(shape, lp))
+  txts <- sprintf('<Style id="pnt%s"><LabelStyle><scale>%.1f</scale></LabelStyle><IconStyle><color>%s</color><scale>%s</scale><Icon><href>%s</href></Icon></IconStyle><BalloonStyle><text>$[description]</text></BalloonStyle></Style>', paste(1:lp), rep(LabelScale, lp), rep(IconColor, lp), rep(LabelScale, lp), rep(shape, lp))
   parseXMLAndAdd(txts, parent=pl2b)  
    
   # Coordinates of points 
   # ========================== 
-  txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%s</coordinates></Point></Placemark>', paste(unlist(points_names)), paste(1:lp), rep(as.numeric(extrude), lp), rep(altitudeMode, lp), unlist(strsplit(unlist(coords[selp]), "\n")))   
+  txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><description><![CDATA[%s]]></description><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%s</coordinates></Point></Placemark>', paste(unlist(points_names)), paste(1:lp), html.table, rep(as.numeric(extrude), lp), rep(altitudeMode, lp), unlist(strsplit(unlist(coords[selp]), "\n")))   
   parseXMLAndAdd(txtc, parent=pl2b)
   }
  
