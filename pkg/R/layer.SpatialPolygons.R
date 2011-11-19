@@ -79,11 +79,11 @@ kml_layer.SpatialPolygons <- function(
   # Polygon styles
   # ==============
   if(!length(unique(colours))==1){
-  txts <- sprintf('<Style id="poly%s"><PolyStyle><color>%s</color><outline>%s</outline><fill>%s</fill></PolyStyle><BalloonStyle><text>$[description]</text></BalloonStyle></Style>', 1:length(obj), colours, rep(as.numeric(outline), pv), as.numeric(unclass(!hole)))
+  txts <- sprintf('<Style id="poly%s"><PolyStyle><color>%s</color><outline>%s</outline><fill>%s</fill></PolyStyle><BalloonStyle><text>$[description]</text></BalloonStyle></Style>', 1:length(obj), colours, rep(as.numeric(outline), pv), as.numeric(unlist(!hole)))
   parseXMLAndAdd(txts, parent=pl1)
   }
   else {
-  txts <- sprintf('<Style id="poly%s"><PolyStyle><colorMode>random</colorMode><outline>%s</outline><fill>%s</fill></PolyStyle><BalloonStyle><text>$[description]</text></BalloonStyle></Style>', 1:length(obj), rep(as.numeric(outline), pv), as.numeric(unclass(!hole)))
+  txts <- sprintf('<Style id="poly%s"><PolyStyle><colorMode>random</colorMode><outline>%s</outline><fill>%s</fill></PolyStyle><BalloonStyle><text>$[description]</text></BalloonStyle></Style>', 1:length(obj), rep(as.numeric(outline), pv), as.numeric(unlist(!hole)))
   parseXMLAndAdd(txts, parent=pl1)
   }
 
