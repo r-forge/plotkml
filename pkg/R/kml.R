@@ -15,7 +15,7 @@ kml.Spatial <- function(
 
   kml_open(folder.name = folder.name, overwrite = overwrite, file.name = file.name)
 
-  kml_layer(obj = obj, obj.title = folder.name, ...)
+  kml_layer(obj = obj, ...)
 
   kml_close(file.name = file.name)
 

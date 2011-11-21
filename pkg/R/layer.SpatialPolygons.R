@@ -20,7 +20,7 @@ kml_layer.SpatialPolygons <- function(
   ){
   
   # invisible file connection
-  kml.out <- get('kml.out', env=plotKML.fileIO)
+  kml.out <- get("kml.out", env=plotKML.fileIO)
   
   # Checking the projection is geo
   check <- check_projection(obj, logical = TRUE)
@@ -48,8 +48,10 @@ kml_layer.SpatialPolygons <- function(
   # Folder and name of the points folder
   pl1 = newXMLNode("Folder", parent=kml.out[["Document"]])
   pl2 <- newXMLNode("name", paste(class(obj)), parent = pl1)
+  if(plot.labpt==TRUE){
   pl1b = newXMLNode("Folder", parent=kml.out[["Document"]])
   pl2b <- newXMLNode("name", "labpt", parent = pl1b)
+  }
 
   # Insert metadata:
   if(metadata==TRUE){
@@ -113,7 +115,7 @@ kml_layer.SpatialPolygons <- function(
   parseXMLAndAdd(txt, parent=pl1)
 
   # save results: 
-  assign('kml.out', kml.out, env=plotKML.fileIO)
+  assign("kml.out", kml.out, env=plotKML.fileIO)
 
 }
 

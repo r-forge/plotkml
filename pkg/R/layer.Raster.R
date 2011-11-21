@@ -8,6 +8,7 @@ kml_layer.Raster <- function(
   obj,  
   obj.title = deparse(substitute(obj, env = parent.frame())),
   metadata = FALSE,
+  plot.legend = TRUE,
   ...
   ){
 
@@ -32,10 +33,10 @@ kml_layer.Raster <- function(
     stop("No attribute to map. Please use the colour = ... option.")
 
   if (is.call(call[["colour"]])) {
-    data <- data.frame(getValues(obj))
-    data <- eval(call[["colour"]], data)
+    x <- data.frame(getValues(obj))
+    x <- eval(call[["colour"]], x)
     obj <- raster(obj)
-    values(obj) <- data
+    values(obj) <- x
   }
   else if (is.name(call[["colour"]])) {
     if (nlayers(obj) > 1) {
@@ -55,14 +56,10 @@ kml_layer.Raster <- function(
       obj <- raster(obj, layer = i_layer)
     }
   }
-#   # missing colour
-#   else {
-#     # Plotting the first layer
-#   }
 
   # Trying to reproject data if the check was not successful
   if (!check) {  obj <- reproject(obj) }
-  data <- getValues(obj)
+  x <- getValues(obj)
 
   #   altitude <- eval(call[["altitude"]], obj@data)
   altitude <- kml_altitude(obj, altitude = NULL)
@@ -78,7 +75,7 @@ kml_layer.Raster <- function(
       pal <- .colour_scale_factor
   }
 
-  colour_scale <- colorRampPalette(pal)(length(data))
+  colour_scale <- colorRampPalette(pal)(length(x))
 
     # Transparency
   alpha <- charmatch("alpha", names(call))
@@ -101,7 +98,7 @@ kml_layer.Raster <- function(
   image(obj, col = colour_scale, frame.plot = FALSE)
   dev.off()
 
-  ## There is a bug in Google Earth that does not allow transparency of pngs:
+  ## There is a bug in Google Earth that does not allow transparency of PNGs:
   # http://groups.google.com/group/earth-free/browse_thread/thread/1cd6bc29a2b6eb76/62724be63547fab7
   # Solution: add transparency using ImageMagick:
   convert <- get("convert", envir = plotKML.opts)
@@ -111,6 +108,15 @@ kml_layer.Raster <- function(
   }
   if(nzchar(convert)){
     system(paste(convert, ' ', raster_name, ' -matte -transparent "#FFFFFF" ', raster_name, sep=""))
+  }
+  else{
+  warning("PNG transparency possibly ineffective. Install ImageMagick and add to PATH. See ?kml_layer.Raster for more info.")
+  }
+
+  # plot the legend (PNG)
+  if(plot.legend == TRUE){
+  legend_name <- set.file.extension(paste(obj.title, as.character(call[["colour"]]), sep="_"), "_legend.png")  
+  kml_legend.bar(x = x, legend.file = legend_name, legend.pal = colour_scale) 
   }
 
   message("Parsing to KML...")
@@ -139,6 +145,13 @@ kml_layer.Raster <- function(
   pl4c <- newXMLNode("south", bbox(extent(obj))[2, 1], parent = pl3d)
   pl4d <- newXMLNode("east", bbox(extent(obj))[1, 2], parent = pl3d)
   pl4e <- newXMLNode("west", bbox(extent(obj))[1, 1], parent = pl3d)
+  
+  # Legend
+  # ======================
+  if(plot.legend == TRUE){
+  txtso <- sprintf('<ScreenOverlay><name>Legend</name><Icon><href>%s</href></Icon><overlayXY x="0" y="1" xunits="fraction" yunits="fraction"/><screenXY x="0" y="1" xunits="fraction" yunits="fraction"/></ScreenOverlay>', legend_name)
+  parseXMLAndAdd(txtso, parent=kml.out[["Document"]])
+  }
   
   # save results: 
   assign("kml.out", kml.out, env=plotKML.fileIO)
