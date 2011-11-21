@@ -10,14 +10,14 @@
 
 <h3>Description</h3>
 
-<p>This function converts a SpatialGridDataFrame object to a polygon map with each not-NA grid node represented with an unique polygon. By default, it will convert any projected coordinates to the lat lon system (geographic coordinates in the WGS84 system), to allow further export to KML.</p>
+<p>This function converts a SpatialGridDataFrame object to a polygon map with each available grid node represented with a polygon. To allow further export to KML, it will by default convert any projected coordinates to the lat-lon system (geographic coordinates in the WGS84 system).</p>
 
 
 <h3>Usage</h3>
 
 <pre>
 grid2poly(obj, var.name, reproject = TRUE, tmp.file = TRUE,  
-method = "raster", saga_lib = "shapes_grid", saga_module = 3, ... )
+method = c("raster", "sp", "RSAGA")[1], saga_lib = "shapes_grid", saga_module = 3, ... )
 </pre>
 
 
@@ -35,10 +35,10 @@ target variable column name</td></tr>
 logical; reproject coordinates to lat lon system?</td></tr>
 <tr valign="top"><td><code>method</code></td>
 <td>
-decide to convert grids to polygons either using <code>"sp"</code>, <code>"raster"</code> or <code>"RSAGA"</code> packages.</td></tr>
+decide to convert grids to polygons either using <code>"sp"</code>, <code>"raster"</code> or <code>"RSAGA"</code> packages</td></tr>
 <tr valign="top"><td><code>saga_lib</code></td>
 <td>
-string; SAGA GIS library name.</td></tr>
+string; SAGA GIS library name</td></tr>
 <tr valign="top"><td><code>saga_module</code></td>
 <td>
 SAGA GIS module number; see <code>?rsaga_get_modules</code> for more details</td></tr>
@@ -50,9 +50,7 @@ additional arguments that can be parsed to the <code>rasterToPolygons</code> com
 
 <h3>Details</h3>
 
-<p>
-This operation is not recommended for large grids (&gt;&gt;10e4 pixels). Consider splitting large input grids into tiles before running <code>grid2poly</code>. Conversion of large grids to polygons is more efficient by using SAGA GIS (<code>method = "RSAGA"</code>).
-</p>
+<p>This operation is not recommended for large grids (&gt;&gt;10e4 pixels). Consider splitting large input grids into tiles before running <code>grid2poly</code>. Conversion of large grids to polygons is more efficient by using SAGA GIS (<code>method = "RSAGA"</code>).</p>
 
 
 <h3>Author(s)</h3>
@@ -71,8 +69,13 @@ This operation is not recommended for large grids (&gt;&gt;10e4 pixels). Conside
 data(eberg_grid)
 data(SAGA_pal)
 ## Not run: 
-x &lt;- grid2poly(eberg_grid, "DEM")
+system.time(x &lt;- grid2poly(eberg_grid, "DEM", method = "raster"))
+system.time(x &lt;- grid2poly(eberg_grid, "DEM", method = "sp"))
+system.time(x &lt;- grid2poly(eberg_grid, "DEM", method = "SAGA"))
+# spplot (plotting large polygons in R not a good idea):
 spplot(x, col.regions=SAGA_pal[[1]])
+# plotKML:
+kml(x, colour = DEM)
 ## End(Not run)
 </pre>
 

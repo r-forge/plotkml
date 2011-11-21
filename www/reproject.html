@@ -10,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>This function reprojects spatial data to a given coordinate reference system (CRS), defaulted to geographic coordinates.</p>
+<p>This wrapper function reprojects any vector or raster spatial data to some referent coordinate system (geographic coordinates on the World Geodetic System of 1984 / WGS84 datum).</p>
 
 
 <h3>Usage</h3>
@@ -23,23 +23,23 @@
 <table summary="R argblock">
 <tr valign="top"><td><code>obj</code></td>
 <td>
-A Spatial* or Raster* object.</td></tr>
+Spatial* or Raster* object</td></tr>
 <tr valign="top"><td><code>CRS</code></td>
 <td>
-Proj4string. See also <code>rgdal::CRS-class</code>.</td></tr>
+proj4string; see also <code>rgdal::CRS-class</code></td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-Arguments evaluated in the context of function projectRaster from the raster package.</td></tr>
+arguments evaluated in the context of function <code>projectRaster</code> from the raster package</td></tr>
 <tr valign="top"><td><code>program</code></td>
 <td>
-Default method used for reprojecting vectors / grids.</td></tr>
+default method used for reprojecting vectors / grids; <code>"raster"</code> or <code>"FWTools"</code></td></tr>
 </table>
 
 
 <h3>Details</h3>
 
 <p>
-In the case of raster and/or gridded maps, by selecting <code>program = "FWTools"</code> <code>gdalwarp</code> functionality is initiated.
+In the case of raster and/or gridded maps, by selecting <code>program = "FWTools"</code> <code>gdalwarp</code> functionality is initiated. This requires that <a href="http://fwtools.maptools.org">FWTools</a> are installed and listed via <code>paths()</code>. FWTools includes OpenEV, GDAL, MapServer, PROJ.4 and OGDI.
 </p>
 
 
@@ -56,13 +56,19 @@ In the case of raster and/or gridded maps, by selecting <code>program = "FWTools
 <h3>References</h3>
 
 <p>
-Raster package (<a href="http://CRAN.R-project.org/package=raster">http://CRAN.R-project.org/package=raster</a>)
+
+<ul>
+<li> Raster package (<a href="http://CRAN.R-project.org/package=raster">http://CRAN.R-project.org/package=raster</a>)
+</li>
+<li>FWTools (<a href="http://fwtools.maptools.org">http://fwtools.maptools.org</a>)
+</ul>
+
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code>raster::projectRaster</code></p>
+<p><code><a href="plotKML.env.html">paths</a></code>, <code>raster::projectRaster</code>, <code>rgdal::spTransform</code></p>
 
 
 <h3>Examples</h3>
