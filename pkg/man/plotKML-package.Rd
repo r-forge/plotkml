@@ -21,9 +21,9 @@ Maintainer: Tomislav Hengl
 \references{
 \itemize{
 \item Home URL (\url{http://plotkml.r-forge.r-project.org/})
-\item See also: \bf{Google Earth Outreach} project (\url{http://earth.google.com/outreach/tutorials.html})
+\item See also: \strong{Google Earth Outreach} project (\url{http://earth.google.com/outreach/tutorials.html})
 }
 }
-\note{This package has been developed as a part of the \href{http://isric.org/projects/global-soil-information-facilities-gsif}{\bf{Global Soil Information Facilities}} project, which is run jointly by the ISRIC Institute and collaborators.}
+\note{This package has been developed as a part of the \href{http://isric.org/projects/global-soil-information-facilities-gsif}{\strong{Global Soil Information Facilities}} project, which is run jointly by the ISRIC Institute and collaborators.}
 \keyword{ package }
 \keyword{ GSIF }

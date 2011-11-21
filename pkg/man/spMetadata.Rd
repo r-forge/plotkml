@@ -60,7 +60,7 @@ The \code{kml_metadata} function will, by default, print out only a number of se
 }
 }
 \author{Tomislav Hengl (\email{tom.hengl@wur.nl}), Pierre Roudier, and Dylan Beaudette (\email{debeaudette@ucdavis.edu})}
-\seealso{ \code{\link{sp::Spatial}}, \code{\link{kml_layer}}}
+\seealso{ \code{sp::Spatial}, \code{\link{kml_layer}}}
 \examples{
 \dontrun{
 # Read metadata from the system file and convert to a more redable format:

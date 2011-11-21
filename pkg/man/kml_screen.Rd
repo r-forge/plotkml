@@ -1,4 +1,5 @@
 \name{kml_screen}
+\alias{kml_screen}
 \title{Put an image file as screen overlay}
 \description{Puts a selected image file (map legend or logo) on screen.}
 \usage{

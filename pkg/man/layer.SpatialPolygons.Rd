@@ -1,22 +1,22 @@
 \name{kml_layer.SpatialPolygons}
+\alias{kml_layer.SpatialPolygons}
 \alias{SpatialPolygons}
 \title{Exports objects of type SpatialPolygons* to KML}
 \description{Writes object of type SpatialPolygons* to KML with several aesthetics arguments. }
 \usage{
-kml_layer.SpatialPolygons(obj, obj.title, extrude = FALSE, tessellate = FALSE,
-   outline = TRUE, plot.labpt = FALSE, z.scale = 1, LabelScale = get("LabelScale", envir = plotKML.opts),
-   metadata = FALSE, html.table = NULL, ...)
+kml_layer.SpatialPolygons(obj, extrude = FALSE, tessellate = FALSE, outline = TRUE, 
+   plot.labpt = FALSE, z.scale = 1, LabelScale = get("LabelScale", envir = plotKML.opts),
+   spMetadata = NULL, html.table = NULL, ...)
 }
 \arguments{
   \item{obj}{object of class \code{"RasterBrick"} (a time series of images)}
-  \item{obj.title}{object title that will be inserted in the folder name}
   \item{extrude}{logical; specifies whether to connect the point to the ground with a line}
   \item{tessellate}{logical; specifies whether to connect the LinearRing to the ground}
   \item{outline}{logical; specifies whether to outline the polygon}
   \item{plot.labpt}{logical; specifies whether to add the label point (polygon centre)}
-  \item{metadata}{logical; specifies whether to print metadata in the description box}
+  \item{spMetadata}{(optional) specify the metadata object}
   \item{html.table}{optional description block (html) for each GPS point (vertices)}
-  \item{...}{additional style arguments (see \code{\link{aesthetics}})}
+  \item{...}{additional style arguments (see \code{aesthetics})}
   \item{labels}{variable to be used to attach labels to polygon centres}
   \item{colour}{variable to be used to color polygons}
   \item{alpha}{variable to be used to set transparency}
