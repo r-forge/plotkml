@@ -6,7 +6,6 @@
 
 kml_layer.STIDFtraj <- function(
   obj,
-  obj.title,
   id.name = names(obj@data)[which(names(obj@data)=="id")],   # trajectory ID column 
   ## TH: Normally we should be able to pass the ID column via "labels"
   dtime = "", # time support
@@ -16,7 +15,7 @@ kml_layer.STIDFtraj <- function(
   end.icon = paste(get("home_url", envir = plotKML.opts), "golfhole.png", sep=""),
   LabelScale = .8*get("LabelScale", envir = plotKML.opts),
   z.scale = 1,
-  metadata = get("metadata", envir = plotKML.opts),
+  spMetadata = NULL,
   html.table = NULL,
   ...
   ){
@@ -65,9 +64,8 @@ kml_layer.STIDFtraj <- function(
   pl1 = newXMLNode("Folder", parent=kml.out[["Document"]])
   
   # Insert metadata:
-  if(metadata==TRUE){
-    sp.md <- spMetadata(obj@sp, xml.file=set.file.extension(obj.title, ".xml"), generate.missing = FALSE)
-    md.txt <- kml_metadata(sp.md, asText = TRUE)
+  if(!is.null(spMetadata)){
+    md.txt <- kml_metadata(spMetadata, asText = TRUE)
     txt <- sprintf('<description><![CDATA[%s]]></description>', md.txt)
     parseXMLAndAdd(txt, parent=pl1)
   }

@@ -6,13 +6,12 @@
 
 kml_layer.RasterBrick <- function(
   obj,  
-  obj.title = deparse(substitute(obj, env = parent.frame())),
   dtime = "", 
   tz = "GMT",
   z.lim = c(min(obj@data@min, na.rm=TRUE), max(obj@data@max, na.rm=TRUE)),
   colour_scale = get("colour_scale_numeric", envir = plotKML.opts),
   home_url = get("home_url", envir = plotKML.opts),
-  metadata = FALSE,
+  spMetadata = NULL,
   html.table = NULL,
   ...
   ){
@@ -71,10 +70,8 @@ kml_layer.RasterBrick <- function(
   pl2 <- newXMLNode("name", paste(class(obj)), parent=pl1)
   
   # Insert metadata:
-  if(metadata==TRUE){
-    obj.sp <- as(obj, "SpatialGridDataFrame")
-    sp.md <- spMetadata(obj.sp, xml.file=set.file.extension(obj.title, ".xml"), generate.missing = FALSE)
-    md.txt <- kml_metadata(sp.md, asText = TRUE)
+  if(!is.null(spMetadata)){
+    md.txt <- kml_metadata(spMetadata, asText = TRUE)
     txt <- sprintf('<description><![CDATA[%s]]></description>', md.txt)
     parseXMLAndAdd(txt, parent=pl1)
   }

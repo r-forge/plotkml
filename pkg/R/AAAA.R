@@ -108,7 +108,7 @@ plotKML.env <- function(
     if(missing(icon)) { icon <- "cross.png" }
     if(missing(LabelScale)) { LabelScale <- .7 }
     if(missing(license_url)) { license_url <- "http://creativecommons.org/licenses/by/3.0/" }
-    if(missing(metadata)) { metadata <- FALSE }
+    if(missing(metadata)) { metadata <- c("idinfo_citation_citeinfo_title", "idinfo_descript_abstract", "spdoinfo_ptvctinf_sdtsterm_ptvctcnt", "idinfo_timeperd_timeinfo_rngdates_begdate", "idinfo_timeperd_timeinfo_rngdates_enddate", "distinfo_stdorder_digform_digtopt_onlinopt_computer_networka_networkr", "idinfo_citation_citeinfo_othercit", "idinfo_citation_citeinfo_onlink", "idinfo_datacred", "distinfo_distrib_cntinfo_cntorgp_cntorg", "distinfo_stdorder_digform_digtinfo_formcont", "idinfo_native") }
     if(missing(kmz)) { kmz <- FALSE }
     if(missing(kml_xsd)) { kml_xsd <- "http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd" }
     if(missing(kml_url)) { kml_url <- "http://www.opengis.net/kml/2.2/" }
