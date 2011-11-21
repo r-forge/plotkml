@@ -10,7 +10,7 @@
 \usage{reproject(obj, CRS = get("ref_CRS", envir = plotKML.opts), ..., program = "raster")}
 \arguments{
   \item{obj}{Spatial* or Raster* object}
-  \item{CRS}{proj4string; see also \code{\link{rgdal::CRS-class}}}
+  \item{CRS}{proj4string; see also \code{rgdal::CRS-class}}
   \item{\dots}{arguments evaluated in the context of function \code{projectRaster} from the raster package}
   \item{program}{default method used for reprojecting vectors / grids; \code{"raster"} or \code{"FWTools"}}
 }

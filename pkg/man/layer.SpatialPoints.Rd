@@ -1,18 +1,18 @@
 \name{kml_layer.SpatialPoints}
+\alias{kml_layer.SpatialPoints}
 \alias{SpatialPoints}
 \title{Exports objects of type SpatialPoints* to KML}
 \description{Writes object of type SpatialPoints* to KML with several aesthetics arguments. }
 \usage{
-kml_layer.SpatialPoints(obj, obj.title, extrude = FALSE,
-     LabelScale = get("LabelScale", envir = plotKML.opts, z.scale = 1, 
-     metadata = FALSE, html.table = NULL, ...)
+kml_layer.SpatialPoints(obj, extrude = FALSE, 
+    LabelScale = get("LabelScale", envir = plotKML.opts, z.scale = 1, 
+    spMetadata = NULL, html.table = NULL, ...)
 }
 \arguments{
   \item{obj}{object of class \code{"RasterBrick"} (a time series of images)}
-  \item{obj.title}{object title that will be inserted in the folder name}
   \item{extrude}{logical; specifies whether to connect the point to the ground with a line}
   \item{LabelScale}{numeric; default size of the labels}
-  \item{metadata}{logical; should metadata be printed?}
+  \item{spMetadata}{(optional) specify the metadata object}
   \item{html.table}{optional description block (html) for each GPS point (vertices)}
   \item{...}{additional style arguments (see \code{\link{aesthetics}})}
   \item{labels}{variable to be used to attach labels to spatial lines}

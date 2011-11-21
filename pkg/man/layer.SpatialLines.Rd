@@ -1,15 +1,15 @@
 \name{kml_layer.SpatialLines}
+\alias{kml_layer.SpatialLines}
 \alias{SpatialLines}
 \title{Exports objects of type SpatialLines* to KML}
 \description{Writes object of type SpatialLines* to KML with several aesthetics arguments. }
 \usage{
-kml_layer.SpatialLines(obj, obj.title, extrude = FALSE,
-   z.scale = 1, metadata = FALSE, html.table = NULL, ...)
+kml_layer.SpatialLines(obj, extrude = FALSE, z.scale = 1, spMetadata = NULL, 
+  html.table = NULL, ...)
 }
 \arguments{
   \item{obj}{object of class \code{"RasterBrick"} (a time series of images)}
-  \item{obj.title}{object title that will be inserted in the folder name}
-  \item{metadata}{logical; should metadata be printed?}
+  \item{spMetadata}{(optional) specify the metadata object}
   \item{html.table}{optional description block (html) for each GPS point (vertices)}
   \item{...}{additional style arguments (see \code{\link{aesthetics}})}
   \item{labels}{variable to be used to attach labels to spatial lines}
@@ -18,8 +18,7 @@ kml_layer.SpatialLines(obj, obj.title, extrude = FALSE,
   \item{altitude}{if not a 3D object; variable to be used to specify altitude above ground}
   \item{altitudeMode}{altitude mode type (\code{clampToGround}, \code{relativeToGround} or \code{absolute})}
 }
-\details{Only colour and width (aesthetics) are recommended.
-}
+\details{Only colour and width (aesthetics) are recommended when visualizing SpatialLines.}
 \author{Pierre Roudier (\email{pierre.roudier@landcare.nz}), Tomislav Hengl (\email{tom.hengl@wur.nl}), Dylan Beaudette (\email{debeaudette@ucdavis.edu})}
 \seealso{ \code{\link{kml}}, \code{\link{kml_open}}, \code{\link{kml_layer.SpatialPolygons}} }
 \examples{

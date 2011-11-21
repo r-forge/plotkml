@@ -1,18 +1,18 @@
 \name{readGPX}
 \alias{readGPX}
 \alias{.readGPX.element}
-\title{Imports GPX (GPS track) files to R}
-\description{Read various elements from a \preformatted{*.gpx} file - metadata, waypoints, tracks and routes - and converts them to tables.}
+\title{Imports GPX (GPS track) files}
+\description{Read various elements from a \preformatted{*.gpx} file --- metadata, waypoints, tracks and routes --- and converts them to dataframes.}
 \usage{readGPX(gpx.file, metadata = TRUE, bounds = TRUE,
     waypoints = TRUE, tracks = TRUE, routes = TRUE)
 }
 \arguments{
   \item{gpx.file}{location of the gpx.file}
-  \item{metada}{logical; should the metadata be imported?}
-  \item{bounds}{logical; should bounding box coordinates be imported?}
-  \item{waypoint}{logical; should all waypoints be imported?}
-  \item{track}{logical; should all tracks be imported?}
-  \item{route}{logical; should all routes be imported?}
+  \item{metada}{logical; species whether the metadata should be imported}
+  \item{bounds}{logical; species whether the bounding box coordinates should be imported}
+  \item{waypoint}{logical; species whether all waypoints should be imported}
+  \item{track}{logical; species whether all tracks should be imported}
+  \item{route}{logical; species whether all routes should be imported}
 }
 \details{\bold{Waypoint} is a point of interest, or named feature on a map. \bold{Track} is an ordered list of points describing a path. \bold{Route} is an ordered list of waypoints representing a series of turn points leading to a destination.
 }
@@ -23,7 +23,7 @@
 }
 }
 \author{Tomislav Hengl (\email{tom.hengl@wur.nl})}
-\seealso{\code{\link{rgdal::readOGR}}, \code{\link{kml_layer.STIDFtraj}}}
+\seealso{\code{rgdal::readOGR}, \code{kml_layer.STIDFtraj}}
 \examples{
 \dontrun{
 gpxbtour <- readGPX(system.file("btour.gpx", package="plotKML"))
