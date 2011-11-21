@@ -21,7 +21,7 @@ kml_layer.SpatialPolygons(obj, obj.title, extrude = FALSE, tessellate = FALSE,
   \item{colour}{variable to be used to color polygons}
   \item{alpha}{variable to be used to set transparency}
   \item{altitude}{if not a 3D object; variable to be used to specify altitude above ground}
-  \item{altitudeMode}{altitude mode type (\code{clampToGround}, \code{relativeToGround} or \code{absolute})}
+  \item{altitudeMode}{altitude mode type (\code{"clampToGround"}, \code{"relativeToGround"} or \code{"absolute"})}
 }
 \details{Label points are be default not plotted (we recommend adding the legend to attribute maps instead). Transparency can be set by using the alpha argument.}
 \author{Pierre Roudier (\email{pierre.roudier@landcare.nz}), Tomislav Hengl (\email{tom.hengl@wur.nl}), Dylan Beaudette (\email{debeaudette@ucdavis.edu})}
@@ -32,9 +32,7 @@ names(eberg_zones)
 \dontrun{
 # Random colors:
 kml(eberg_zones)
-kml(eberg_zones, plot.labpt = TRUE, labels = ZONES)
-# Soil mapping zones:
-kml(eberg_zones, colour = ZONES)}
+kml(eberg_zones, plot.labpt = TRUE, labels = ZONES)}
 }
 \keyword{ ~KML}
 \keyword{ SpatialPolygons}
