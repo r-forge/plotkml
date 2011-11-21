@@ -6,7 +6,7 @@
 \alias{reproject.RasterStack}
 \alias{reproject.RasterBrick}
 \title{Reprojects data to a given coordinate reference system}
-\description{This wrapper function reprojects any vector or raster spatial data to a given coordinate referent CRS (defaulted to WGS84 geographic coordinates).}
+\description{This wrapper function reprojects any vector or raster spatial data to some referent coordinate system (geographic coordinates on the World Geodetic System of 1984 / WGS84 datum).}
 \usage{reproject(obj, CRS = get("ref_CRS", envir = plotKML.opts), ..., program = "raster")}
 \arguments{
   \item{obj}{Spatial* or Raster* object}
@@ -15,7 +15,7 @@
   \item{program}{default method used for reprojecting vectors / grids; \code{"raster"} or \code{"FWTools"}}
 }
 \details{
-In the case of raster and/or gridded maps, by selecting \code{program = "FWTools"} \code{gdalwarp} functionality is initiated. This requires that \href{http://fwtools.maptools.org}{FWTools} are installed and running. FWTools includes OpenEV, GDAL, MapServer, PROJ.4 and OGDI.
+In the case of raster and/or gridded maps, by selecting \code{program = "FWTools"} \code{gdalwarp} functionality is initiated. This requires that \href{http://fwtools.maptools.org}{FWTools} are installed and listed via \code{paths()}. FWTools includes OpenEV, GDAL, MapServer, PROJ.4 and OGDI.
 }
 \references{
 \itemize{
@@ -25,7 +25,7 @@ In the case of raster and/or gridded maps, by selecting \code{program = "FWTools
 }
 \author{Pierre Roudier (\email{pierre.roudier@gmail.com}), Tomislav Hengl (\email{tom.hengl@wur.nl}) and Dylan Beaudette (\email{debeaudette@ucdavis.edu})}
 \section{Warning}{\code{obj} needs to have a proper proj4 string (CRS), otherwise \code{reproject} will not run.}
-\seealso{\code{\link{raster::projectRaster}}, \code{\link{rgdal::spTransform}}}
+\seealso{\code{\link{paths}}, \code{raster::projectRaster}, \code{rgdal::spTransform}}
 \examples{
 # Example with vector data
 data(eberg)
