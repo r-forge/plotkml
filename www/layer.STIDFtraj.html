@@ -17,8 +17,8 @@
 <h3>Usage</h3>
 
 <pre>
-kml_layer.STIDFtraj(obj, obj.title, id.name, dtime = 0, extrude = FALSE,
-  start.icon, end.icon, LabelScale, z.scale = 1, metadata = FALSE, html.table = NULL)
+kml_layer.STIDFtraj(obj, id.name, dtime = "", extrude = FALSE,
+   start.icon, end.icon, LabelScale, z.scale = 1, spMetadata = NULL, html.table = NULL)
 </pre>
 
 
@@ -28,9 +28,6 @@ kml_layer.STIDFtraj(obj, obj.title, id.name, dtime = 0, extrude = FALSE,
 <tr valign="top"><td><code>obj</code></td>
 <td>
 space-time object of class <code>"STIDFraj"</code> (spatio-temporal irregular data.frames trajectory)</td></tr>
-<tr valign="top"><td><code>obj.title</code></td>
-<td>
-object title that will be inserted in the folder name</td></tr>
 <tr valign="top"><td><code>id.name</code></td>
 <td>
 trajectory ID column name</td></tr>
@@ -42,19 +39,19 @@ temporal support - point or block</td></tr>
 logical; extrude GPS vertices?</td></tr>
 <tr valign="top"><td><code>start.icon</code></td>
 <td>
-start icon name (3Dballyellow.png)</td></tr>
+start icon name (<code>3Dballyellow.png</code>)</td></tr>
 <tr valign="top"><td><code>end.icon</code></td>
 <td>
-destination icon name (golfhole.png)</td></tr>
+destination icon name (<code>golfhole.png</code>)</td></tr>
 <tr valign="top"><td><code>LabelScale</code></td>
 <td>
 the default size of icons</td></tr>
 <tr valign="top"><td><code>z.scale</code></td>
 <td>
 vertical exaggeration</td></tr>
-<tr valign="top"><td><code>metadata</code></td>
+<tr valign="top"><td><code>spMetadata</code></td>
 <td>
-logical; should metadata be printed?</td></tr>
+(optional) specify the metadata object</td></tr>
 <tr valign="top"><td><code>html.table</code></td>
 <td>
 optional description block (html) for each GPS point (vertices)</td></tr>

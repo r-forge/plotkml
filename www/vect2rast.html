@@ -47,8 +47,8 @@ additional arguments to be passed to the <code>rasterize</code> command</td></tr
 <h3>Details</h3>
 
 <p>
-This function basically extends the <code><a href="vect2rast.html">rasterize</a></code> function available in the raster package. <code>vector2raster</code>, however, requires no input from the user's side.<br>
-The optimal grid cell size is estimated based on the density/size of features in the map: (a) in the case of SpatialPoints cell size is determined as half the mean distance between the nearest points; (b) in the case of SpatialLines half cell size is determined as half the mean distance between the lines; (c) in the case of polygon data cell size is determined as half the median size (area) of polygons of interest. For more details see <a href="http://dx.doi.org/10.1016/j.cageo.2005.11.008">Hengl (2006)</a>.
+This function basically extends the <code><a href="vect2rast.html">rasterize</a></code> function available in the raster package. the advantage of <code>vect2rast</code> is that it requires no input from the user's side i.e. it automatically determines the grid cell size based on the properties of the input data set.<br>
+The optimal grid cell size is estimated based on the density/size of features in the map (<code>nndist</code> function in <a href="http://www.spatstat.org">spatstat</a> package): (a) in the case of SpatialPoints cell size is determined as half the mean distance between the nearest points; (b) in the case of SpatialLines half cell size is determined as half the mean distance between the lines; (c) in the case of polygon data cell size is determined as half the median size (area) of polygons of interest. For more details see <a href="http://dx.doi.org/10.1016/j.cageo.2005.11.008">Hengl (2006)</a>.
 </p>
 
 
@@ -63,6 +63,8 @@ The optimal grid cell size is estimated based on the density/size of features in
 
 <ul>
 <li> Hengl T., (2006) <a href="http://dx.doi.org/10.1016/j.cageo.2005.11.008">Finding the right pixel size</a>. Computers and Geosciences, 32(9): 1283-1298.
+</li>
+<li>SpatStat package (<a href="http://www.spatstat.org">http://www.spatstat.org</a>)
 </ul>
 
 </p>
@@ -70,13 +72,14 @@ The optimal grid cell size is estimated based on the density/size of features in
 
 <h3>See Also</h3>
 
-<p><code>raster::rasterize</code></p>
+<p><code>raster::rasterize</code>, <code>spatstat::nndist</code></p>
 
 
 <h3>Examples</h3>
 
 <pre>
 data(eberg)
+coordinates(eberg) &lt;- ~X+Y
 ## Not run: 
 x &lt;- vect2rast(eberg)
 image(x)

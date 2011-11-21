@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Exports objects of type SpatialLines* to KML</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for kml_layer.SpatialLines {plotKML}"><tr><td>kml_layer.SpatialLines {plotKML}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Exports objects of type SpatialLines* to KML</h2>
+
+<h3>Description</h3>
+
+<p>Writes object of type SpatialLines* to KML with several aesthetics arguments. </p>
+
+
+<h3>Usage</h3>
+
+<pre>
+kml_layer.SpatialLines(obj, extrude = FALSE, z.scale = 1, spMetadata = NULL, 
+  html.table = NULL, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>obj</code></td>
+<td>
+object of class <code>"RasterBrick"</code> (a time series of images)</td></tr>
+<tr valign="top"><td><code>spMetadata</code></td>
+<td>
+(optional) specify the metadata object</td></tr>
+<tr valign="top"><td><code>html.table</code></td>
+<td>
+optional description block (html) for each GPS point (vertices)</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+additional style arguments (see <code>aesthetics</code>)</td></tr>
+<tr valign="top"><td><code>labels</code></td>
+<td>
+variable to be used to attach labels to spatial lines</td></tr>
+<tr valign="top"><td><code>colour</code></td>
+<td>
+variable to be used to color spatial lines</td></tr>
+<tr valign="top"><td><code>width</code></td>
+<td>
+variable to be used to specify the width of spatial lines</td></tr>
+<tr valign="top"><td><code>altitude</code></td>
+<td>
+if not a 3D object; variable to be used to specify altitude above ground</td></tr>
+<tr valign="top"><td><code>altitudeMode</code></td>
+<td>
+altitude mode type (<code>clampToGround</code>, <code>relativeToGround</code> or <code>absolute</code>)</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Only colour and width (aesthetics) are recommended when visualizing SpatialLines.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Pierre Roudier (<a href="mailto:pierre.roudier@landcare.nz">pierre.roudier@landcare.nz</a>), Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>), Dylan Beaudette (<a href="mailto:debeaudette@ucdavis.edu">debeaudette@ucdavis.edu</a>)</p>
+
+
+<h3>See Also</h3>
+
+<p> <code><a href="kml.html">kml</a></code>, <code><a href="kml_open.html">kml_open</a></code>, <code><a href="layer.SpatialPolygons.html">kml_layer.SpatialPolygons</a></code> </p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(eberg_contours)
+data(SAGA_pal)
+names(eberg_contours)
+## Not run: 
+# KML plot with elevations used as 'colour' argument:
+kml(eberg_contours, colour_scale=SAGA_pal[[1]], colour=Z)
+## End(Not run)
+</pre>
+
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+</body></html>
