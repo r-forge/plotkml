@@ -30,8 +30,7 @@ kml_metadata <- function(
         
     # selected columns:
     if(missing(sel)) {
-      sel = c("idinfo_citation_citeinfo_title", "idinfo_descript_abstract", "spdoinfo_ptvctinf_sdtsterm_ptvctcnt", "idinfo_timeperd_timeinfo_rngdates_begdate", "idinfo_timeperd_timeinfo_rngdates_enddate",  
-       "distinfo_stdorder_digform_digtopt_onlinopt_computer_networka_networkr", "idinfo_citation_citeinfo_othercit", "idinfo_citation_citeinfo_onlink", "idinfo_datacred", "distinfo_distrib_cntinfo_cntorgp_cntorg", "distinfo_stdorder_digform_digtinfo_formcont", "idinfo_native")
+      sel = get("metadata", envir = plotKML.opts)
     }
     selm <- data.frame(metadata = sel, order.no=1:length(sel))
     md <- merge(selm, metm, by="metadata", all.x=TRUE)

@@ -6,9 +6,8 @@
 
 kml_layer.Raster <- function(
   obj,  
-  obj.title = deparse(substitute(obj, env = parent.frame())),
-  metadata = FALSE,
   plot.legend = TRUE,
+  spMetadata = NULL,  
   ...
   ){
 
@@ -77,7 +76,7 @@ kml_layer.Raster <- function(
 
   colour_scale <- colorRampPalette(pal)(length(x))
 
-    # Transparency
+  # Transparency
   alpha <- charmatch("alpha", names(call))
   if (!is.na(alpha)) {
     # - constant transparency
@@ -90,7 +89,7 @@ kml_layer.Raster <- function(
   call_name <- deparse(call[["colour"]])
 
   # Creating the PNG file
-  raster_name <- set.file.extension(paste(obj.title, as.character(call[["colour"]]), sep="_"), ".png")
+  raster_name <- set.file.extension(as.character(call[["colour"]]), ".png")
 
   # Plotting the image
   png(file = raster_name, bg = "transparent")
@@ -115,7 +114,7 @@ kml_layer.Raster <- function(
 
   # plot the legend (PNG)
   if(plot.legend == TRUE){
-  legend_name <- set.file.extension(paste(obj.title, as.character(call[["colour"]]), sep="_"), "_legend.png")  
+  legend_name <- paste(as.character(call[["colour"]]), "legend.png", sep="_")  
   kml_legend.bar(x = x, legend.file = legend_name, legend.pal = colour_scale) 
   }
 
@@ -125,9 +124,8 @@ kml_layer.Raster <- function(
   pl2 <- newXMLNode("name", paste(class(obj)), parent = pl1)
 
   # Insert metadata:
-  if(metadata==TRUE){
-    sp.md <- spMetadata(obj, xml.file=set.file.extension(obj.title, ".xml"), generate.missing = FALSE)
-    md.txt <- kml_metadata(sp.md, asText = TRUE)
+  if(!is.null(spMetadata)){
+    md.txt <- kml_metadata(spMetadata, asText = TRUE)
     txt <- sprintf('<description><![CDATA[%s]]></description>', md.txt)
     parseXMLAndAdd(txt, parent=pl1)
   }

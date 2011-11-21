@@ -5,16 +5,14 @@
 # Note           : this operation can be time consuming with large grids!;
 
 kml_layer.SpatialPolygons <- function(
-  # options on the object to plot
   obj,
-  obj.title = as.character(substitute(obj, env = parent.frame())),
   extrude = TRUE,
   tessellate = FALSE,
   outline = TRUE,
   plot.labpt = FALSE,
   z.scale = 1,
   LabelScale = get("LabelScale", envir = plotKML.opts),
-  metadata = FALSE,
+  spMetadata = NULL,
   html.table = NULL,
   ...
   ){
@@ -54,9 +52,8 @@ kml_layer.SpatialPolygons <- function(
   }
 
   # Insert metadata:
-  if(metadata==TRUE){
-    sp.md <- spMetadata(obj, xml.file=set.file.extension(obj.title, ".xml"), generate.missing = FALSE)
-    md.txt <- kml_metadata(sp.md, asText = TRUE)
+  if(!is.null(spMetadata)){
+    md.txt <- kml_metadata(spMetadata, asText = TRUE)
     txt <- sprintf('<description><![CDATA[%s]]></description>', md.txt)
     parseXMLAndAdd(txt, parent=pl1)
   }

@@ -7,11 +7,10 @@
 
 kml_layer.SpatialPoints <- function(
   obj,
-  obj.title,
   extrude = TRUE,
   z.scale = 1,
   LabelScale = get("LabelScale", envir = plotKML.opts),
-  metadata = get("metadata", envir = plotKML.opts),
+  spMetadata = NULL,
   html.table = NULL,
   ...
   ){
@@ -47,9 +46,8 @@ kml_layer.SpatialPoints <- function(
   pl2 <- newXMLNode("name", paste(class(obj)), parent = pl1)
 
   # Insert metadata:
-  if(metadata==TRUE){
-    sp.md <- spMetadata(obj, xml.file=set.file.extension(obj.title, ".xml"), generate.missing = FALSE)
-    md.txt <- kml_metadata(sp.md, asText = TRUE)
+  if(!is.null(spMetadata)){
+    md.txt <- kml_metadata(spMetadata, asText = TRUE)
     txt <- sprintf('<description><![CDATA[%s]]></description>', md.txt)
     parseXMLAndAdd(txt, parent=pl1)
   }
