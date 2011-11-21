@@ -4,13 +4,13 @@
 # Status         : tested
 # Note           : You can specify location of the zip program manually using the zip = ... option.;
 
-kml_compress <- function(file, zip = "", imagefile = "", rm = FALSE){
+kml_compress <- function(file.name, zip = "", imagefile = "", rm = FALSE){
 
   require(stringr)
 
   # Changing the extension to KMZ
-  extension <- str_extract(file, pattern="*\\..*$")
-  kmz <- str_replace(file, extension, ".kmz") # switch the extension to kmz
+  extension <- str_extract(file.name, pattern="*\\..*$")
+  kmz <- str_replace(file.name, extension, ".kmz") # switch the extension to kmz
 
   # If no zip command is specified we use the generic one
   if (zip == "") {
@@ -18,7 +18,7 @@ kml_compress <- function(file, zip = "", imagefile = "", rm = FALSE){
   }
 
   # Build the command
-  cmd <- paste(zip, kmz, file, imagefile, collapse = " ")
+  cmd <- paste(zip, kmz, file.name, imagefile, collapse = " ")
   # execute the command
   execute_cmd <- try(system(cmd, intern = TRUE), silent = TRUE)
 
@@ -33,7 +33,7 @@ kml_compress <- function(file, zip = "", imagefile = "", rm = FALSE){
   else {
     # if file creation successful
     if (file.exists(kmz) & rm) {
-      x <- file.remove(file, imagefile)
+      x <- file.remove(file.name, imagefile)
     }
   }
 

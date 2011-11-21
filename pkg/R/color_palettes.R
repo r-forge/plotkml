@@ -2,72 +2,13 @@
 # Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
 # Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Pierre Roudier (pierre.roudier@landcare.nz); 
 # Status         : pre-alpha
-# Note           : a gallery of color palettes is visiable from [http://plotkml.r-forge.r-project.org/];
+# Note           : a gallery of color palettes is available at [http://plotkml.r-forge.r-project.org/];
 
-
-## mix 3 colors
-mix3cols <- function(
-  color1, 
-  color2, 
-  color3, 
-  break1 = 1/2, 
-  no.col = 47
-  ){
-
-  if(break1 <= 0 | break1 >= 1) {
-  stop('break1 must be in the (0--1) range')
-  }
-  else {
-  # round the breaks:
-  no.col1 <- round(break1*no.col, 0)
-  if(no.col1==0) {no.col1 <- no.col1+1}
-  no.col2 <- round((1-break1)*no.col, 0)
-  if(no.col2==no.col) {no.col2 <- no.col2-1}  
-  col1_2 <- sapply(sapply(seq(0,1,by=1/no.col1)[-no.col1], colorspace::mixcolor, color1, color2), colorspace::hex)
-  col2_3 <- sapply(sapply(seq(0,1,by=1/no.col2)[-no.col2], colorspace::mixcolor, color2, color3), colorspace::hex)
-  mixedcol <- c(col1_2, col2_3)
-  return(mixedcol)
-  }
-}
-
-## mix 5 colors
-mix5cols <- function(
-  color1, 
-  color2, 
-  color3, 
-  color4, 
-  color5, 
-  break1 = 1/4, 
-  break2 = 2/4, 
-  break3 = 3/4, 
-  no.col = 47
-  ){
-
-  if(break1 <= 0 | break1 >= 1 | break2 <= 0 | break2 >= 1 | break3 <= 0 | break3 >= 1 | break2 > break3 | break1 > break2) {
-  stop('breaks must be in the (0--1) range; break3 must be > break2 > break1')
-  }
-  else {
-  # Mixes three RGB colors into a pallette
-  no.col1 <- round(break1*no.col, 0)
-  if(no.col1==0) {no.col1 <- no.col1+1}
-  no.col2 <- round((break2-break1)*no.col, 0)
-  if(no.col2==no.col1) {no.col2 <- no.col2+1}
-  no.col3 <- round((break3-break2)*no.col, 0)
-  if(no.col3==no.col2) {no.col3 <- no.col3+1}
-  no.col4 <- round((1-break3)*no.col, 0)
-  if(no.col4==no.col) {no.col4 <- no.col4-1} 
-  col1_2 <- sapply(sapply(seq(0,1,by=1/no.col1)[-no.col1], colorspace::mixcolor, color1, color2), colorspace::hex)
-  col2_3 <- sapply(sapply(seq(0,1,by=1/no.col2)[-no.col2], colorspace::mixcolor, color2, color3), colorspace::hex)
-  col3_4 <- sapply(sapply(seq(0,1,by=1/no.col3)[-no.col3], colorspace::mixcolor, color3, color4), colorspace::hex)
-  col4_5 <- sapply(sapply(seq(0,1,by=1/no.col4), colorspace::mixcolor, color4, color5), colorspace::hex)
-  mixedcol <- c(col1_2, col2_3, col3_4, col4_5)
-  return(mixedcol)
-  }
-}
 
 # Display default palettes:
 display.pal <- function(pal, sel=1:10, names=FALSE) {
   
+  data(SAGA_pal)
   if(missing(pal)) { pal <- SAGA_pal }
   if(names==FALSE){ 
   dev.new(width=2.1, height=length(sel))
