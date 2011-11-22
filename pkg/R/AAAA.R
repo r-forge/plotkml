@@ -27,45 +27,33 @@ setClass("SpatialMetadata", representation(xml = "XMLInternalDocument", field.na
 })
 
 ## set generic functions:
-if (!isGeneric("metadata"))
-  setGeneric("metadata", function(obj, ...) standardGeneric("metadata")
-  )
 
 if (!isGeneric("field.names"))  
-  setGeneric("field.names", function(obj) standardGeneric("field.names")
-  )
+  setGeneric("field.names", function(obj) standardGeneric("field.names"))
 
 if (!isGeneric("sp.palette"))
-  setGeneric("sp.palette", function(obj) standardGeneric("sp.palette")
-  )
+  setGeneric("sp.palette", function(obj) standardGeneric("sp.palette"))
 
 if (!isGeneric("metadata2SLD"))
-  setGeneric("metadata2SLD", function(obj) standardGeneric("metadata2SLD")
-  )
+  setGeneric("metadata2SLD", function(obj) standardGeneric("metadata2SLD"))
 
 if (!isGeneric("kml_layer"))
-  setGeneric("kml_layer", function(obj, ...) standardGeneric("kml_layer")
-  )
+  setGeneric("kml_layer", function(obj, ...) standardGeneric("kml_layer"))
 
 if (!isGeneric("kml_metadata"))
-  setGeneric("kml_metadata", function(obj, ...) standardGeneric("kml_metadata")
-  )
+  setGeneric("kml_metadata", function(obj, ...) standardGeneric("kml_metadata"))
 
 if (!isGeneric("kml"))
-  setGeneric("kml", function(obj, ...)  standardGeneric("kml")
-  )
+  setGeneric("kml", function(obj, ...)  standardGeneric("kml"))
 
 if (!isGeneric("getCRS"))
-  setGeneric("getCRS", function(obj, ...)  standardGeneric("getCRS")
-  )
+  setGeneric("getCRS", function(obj, ...)  standardGeneric("getCRS"))
 
 if (!isGeneric("reproject"))
-  setGeneric("reproject", function(obj, ...)  standardGeneric("reproject")
-  )
+  setGeneric("reproject", function(obj, ...)  standardGeneric("reproject"))
 
 if (!isGeneric("grid2poly"))
-  setGeneric("grid2poly", function(obj, ...)  standardGeneric("grid2poly")
-  )
+  setGeneric("grid2poly", function(obj, ...)  standardGeneric("grid2poly"))
 
 ################## STANDARD ENVIRONMENTS ##############
 

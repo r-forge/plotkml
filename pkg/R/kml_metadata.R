@@ -22,7 +22,7 @@ kml_metadata <- function(
       full.names = mdnames      
     }
     
-    nx <- unlist(xmlToList(metadata(spMd), addAttributes=FALSE))
+    nx <- unlist(xmlToList(spMd@xml, addAttributes=FALSE))
     # convert to a table:
     met <- data.frame(metadata=gsub("\\.", delim.sign, attr(nx, "names")), value=paste(nx), stringsAsFactors = FALSE)
     # add more friendly names:
@@ -52,8 +52,8 @@ kml_metadata <- function(
 }
 
 setMethod("kml_metadata", "SpatialMetadata", kml_metadata)
-setMethod("metadata", signature = "SpatialMetadata", function(obj) obj@xml)
-setMethod("field.names", signature = "SpatialMetadata", function(obj) paste(obj@field.names))
-setMethod("sp.palette", signature = "SpatialMetadata", function(obj) paste(obj@palette))
+setMethod("field.names", signature = "SpatialMetadata", definition = function(obj){paste(obj@field.names)})
+setMethod("sp.palette", signature = "SpatialMetadata", definition = function(obj){paste(obj@palette)})
+
 
 # end of script;
