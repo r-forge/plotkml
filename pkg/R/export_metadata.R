@@ -11,8 +11,8 @@ metadata2SLD <- function(
     spMd,  # SpatialMetadata
     obj.name = deparse(substitute(spMd)),
     sld.file = set.file.extension(obj.name, ".sld"),
-    Citation_title = xmlValue(metadata(spMd)[["//title"]]),
-    Format_Information_Content = xmlValue(metadata(spMd)[["//formcont"]]),
+    Citation_title = xmlValue(spMd@xml[["//title"]]),
+    Format_Information_Content = xmlValue(spMd@xml[["//formcont"]]),
     ColorMap_type = "intervals",
     opacity = 1
     ){
