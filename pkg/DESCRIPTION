@@ -10,6 +10,6 @@ Description: Visualization of space-time objects in Google Earth. Writes sp-clas
 License: GPL
 URL: http://plotkml.r-forge.r-project.org/
 LazyLoad: yes
-Depends: R (>= 2.10.0), methods, sp, rgdal, raster, plyr, colorspace, colorRamps, stringr, RColorBrewer, ggplot2, XML, maptools, Hmisc, zoo, spacetime 
-Suggests: adehabitatLT, fossil, intamap, spatstat, aqp, RSAGA, animation, rjson
+Depends: R (>= 2.10.0), methods, sp, rgdal, raster, plyr, colorspace, colorRamps, stringr, RColorBrewer,  XML, Hmisc, spacetime, xts
+Suggests: ggplot2, maptools, adehabitatLT, xts, fossil, intamap, zoo, spatstat, aqp, RSAGA, animation, rjson
 Enhances: sp, raster, spacetime
