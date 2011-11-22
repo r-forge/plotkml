@@ -1,6 +1,5 @@
 \name{readGPX}
 \alias{readGPX}
-\alias{.readGPX.element}
 \title{Imports GPX (GPS track) files}
 \description{Read various elements from a \preformatted{*.gpx} file --- metadata, waypoints, tracks and routes --- and converts them to dataframes.}
 \usage{readGPX(gpx.file, metadata = TRUE, bounds = TRUE,

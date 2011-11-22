@@ -1,6 +1,5 @@
 \name{plotKML-package}
 \alias{plotKML-package}
-\alias{plotKML}
 \docType{package}
 \title{Plotting of space-time objects in Google Earth}
 \description{A suite of functions for converting sp-class objects into KML or KMZ documents for use in Google Earth.}
@@ -15,12 +14,11 @@ LazyLoad: \tab yes\cr
 }
 }
 \author{
-Tomislav Hengl (\email{tom.hengl@wur.nl}), Pierre Roudier (\email{pierre.roudier@landcare.nz}), Dylan Beaudette (\email{debeaudette@ucdavis.edu})\cr
-Maintainer: Tomislav Hengl
+Tomislav Hengl (\email{tom.hengl@wur.nl}), Pierre Roudier (\email{pierre.roudier@landcare.nz}), Dylan Beaudette (\email{debeaudette@ucdavis.edu})
 }
 \references{
 \itemize{
-\item Home URL (\url{http://plotkml.r-forge.r-project.org/})
+\item Package home URL (\url{http://plotkml.r-forge.r-project.org/})
 \item See also: \strong{Google Earth Outreach} project (\url{http://earth.google.com/outreach/tutorials.html})
 }
 }
