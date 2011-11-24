@@ -10,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p> <code>SAGA_pal</code> contains 22 colour palettes imported from SAGA GIS. <code>R_pal</code> 10 standard colour palettes used in R to visualize continuous and binary variables. Each colour palette consists of 20 colours in the hexadecimal system. Use <code>display.pal</code> function to plot different sets of palettes.</p>
+<p> <code>SAGA_pal</code> contains 22 colour palettes imported from SAGA GIS. <code>R_pal</code> 12 standard colour palettes used in R to visualize continuous and binary variables. Each colour palette consists of 20 colours in the hexadecimal system. Use <code>display.pal</code> function to plot different sets of palettes.</p>
 
 
 <h3>Usage</h3>
@@ -23,14 +23,14 @@ data(R_pal)
 
 <h3>Note</h3>
 
-<p><code>rainbow_75</code>, <code>heat colors</code>, <code>terrain_colors</code>, <code>topo_colors</code>, and <code>bpy_colors</code> are the standard color palettes used in R to visualize numeric/continuous variables. <code>soc_pal</code>, <code>pH_pal</code> and <code>tex_pal</code> palettes are suitable for visualization of soil variables (soil organic carbon, pH and soil texture). <code>blue_grey_red</code> is recommended for visualition of binary variables (values in the range 0-1), and <code>grey_black</code> is a white-to-black type color palette that contains no white color (hence it will not confuse low values with NA values in the PNG/GIF files).<br> 
-Possibly the most used palettes for visualization of numeric variables are <code>rev(rainbow(65)[1:48])</code> and <code>SAGA_pal[[1]]</code> (SAGA default palette). Although many users will likely use <code>SG_COLORS_DEFAULT</code> or <code>rainbow_75</code> as default palettes to visualize numeric variables, it is worth mentioning that in the data visualisation literature (and the cartography literature in particular), the rainbow (sometimes also called spectral) colour ramp is generally recognized as a <EM>bad choice</EM> for visualization of sequential/continuous variables (Rogowitz and Treinish, 1998; Borland and Russell, 2007).  
+<p><code>rainbow_75</code>, <code>heat colors</code>, <code>terrain_colors</code>, <code>topo_colors</code>, and <code>bpy_colors</code> are the standard color palettes used in R to visualize numeric/continuous variables. <code>soc_pal</code>, <code>pH_pal</code>, <code>tex_pal</code>, <code>BS_pal</code> and <code>CEC_pal</code> palettes are suitable for visualization of soil variables (soil organic carbon, pH, soil texture fractions, Base Saturation and Cation Exchange Capacity). <code>blue_grey_red</code> is recommended for visualition of binary variables (values in the range 0-1), and <code>grey_black</code> is a white-to-black type color palette that contains no white color (hence it will not confuse low values with NA values in the PNG/GIF files).<br> 
+Possibly the most used palettes for visualization of numeric variables are <code>rev(rainbow(65)[1:48])</code> and <code>SAGA_pal[[1]]</code> (SAGA default palette). Although many users will likely use <code>SG_COLORS_DEFAULT</code> or <code>rainbow_75</code> as default palettes to visualize numeric variables, it is worth mentioning that in the data visualisation literature (and the cartography literature in particular), the rainbow (sometimes also called spectral) colour ramp is generally recognized as a <EM>bad choice</EM> for visualization of sequential/continuous variables (<a href="http://dx.doi.org/10.1109/6.736450">Rogowitz and Treinish, 1998</a>; Borland and Russell, 2007).  
 </p>
 
 
 <h3>Author(s)</h3>
 
-<p><a href="http://www.saga-gis.org">SAGA GIS</a> has been created by the SAGA GIS development team (lead by J. Böhner and O. Conrad, from the Institute of Geography, University of Hamburg, Germany). The colour palettes have been exported from SAGA (as <code>".sprm"</code> SAGA parameter files) and ported to R. All palletes were prepared by Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>).</p>
+<p><a href="http://www.saga-gis.org">SAGA GIS</a> has been created by the SAGA GIS development team (lead by J. Böhner and O. Conrad, from the Institute of Geography, University of Hamburg, Germany). The colour palettes have been exported from SAGA (as <code>".sprm"</code> SAGA parameter files) and ported to R. All palletes described here were prepared for R by Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>).</p>
 
 
 <h3>References</h3>
@@ -63,8 +63,8 @@ data(SAGA_pal)
 display.pal(SAGA_pal, sel=c(1,2,7,8,10,11,17,18,19,21,22))
 dev.off()
 display.pal(R_pal)
+names(R_pal)
 dev.off()
-
 ## End(Not run)
 </pre>
 
