@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Imports GBIF cell density records</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for readKML.GBIFdensity {plotKML}"><tr><td>readKML.GBIFdensity {plotKML}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Imports GBIF cell density records</h2>
+
+<h3>Description</h3>
+
+<p>Read GBIF cell (1&ndash;degree) density record counts and converts them to a <code>"raster"</code> object.</p>
+
+
+<h3>Usage</h3>
+
+<pre>readKML.GBIFdensity(kml.file, gbif.url = FALSE, silent = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>kml.file</code></td>
+<td>
+GBIF cell density file (local file or URL)</td></tr>
+<tr valign="top"><td><code>gbif.url</code></td>
+<td>
+logical; species whether the cellid and taxon content information should be also imported (usually not used)</td></tr>
+<tr valign="top"><td><code>silent</code></td>
+<td>
+logical; species whether the progress bar should be printed</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>This document contains data shared through the GBIF Network &mdash; see <a href="http://data.gbif.org">http://data.gbif.org</a> for more information. GBIF records are constantly updated and every map derived refers to a certain date indicated in the <code>@zname</code> <EM>Last update</EM> slot.<br> 
+All usage of these data must be in accordance with the GBIF Data Use Agreement: <a href="http://www.gbif.org/DataProviders/Agreements/DUA">http://www.gbif.org/DataProviders/Agreements/DUA</a>.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>)</p>
+
+
+<h3>References</h3>
+
+<p>
+
+<ul>
+<li> GBIF cell density description (<a href="http://data.gbif.org/ws/rest/density">http://data.gbif.org/ws/rest/density</a>)
+</ul>
+
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code>readGPX</code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+kml.file &lt;- "taxon-celldensity-2294100.kml"
+## download.file(paste("http://data.gbif.org/occurrences/taxon/celldensity/", kml.file, sep=""), destfile=paste(getwd(), kml.file, sep="")) 
+## this will not run (you must first accept the data usage agreeent); 
+## instead, obtain the kml file via a web browser, and save it to the working directory:
+r &lt;- readKML.GBIFdensity(kml.file)
+class(r)
+summary(r)
+image(r)
+load(url("http://spatial-analyst.net/DATA/worldborders.RData"))
+lines(worldborders)
+# To import a list of files use e.g.:
+kml.list &lt;- list(kml.file)
+r.lst &lt;- lapply(kml.list, readKML.GBIFdensity, silent = TRUE)
+# mask out missing layers (empty KML files):
+mask &lt;- !sapply(r.lst, is.null)
+r.lst &lt;- brick(r.lst[mask])
+## End(Not run)
+</pre>
+
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+</body></html>
