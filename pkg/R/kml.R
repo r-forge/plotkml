@@ -27,3 +27,4 @@ kml.Spatial <- function(
 setMethod("kml", "Spatial", kml.Spatial)
 setMethod("kml", "Raster", kml.Spatial)
 setMethod("kml", "SoilProfileCollection", kml.Spatial)
+setMethod("kml", "SpatialPhotoOverlay", kml.Spatial)

@@ -8,7 +8,7 @@ kml_layer.SpatialLines <- function(
   obj,
   extrude = FALSE,
   z.scale = 1,
-  spMetadata = NULL,
+  metadata = NULL,
   html.table = NULL,
   ...
   ){
@@ -44,8 +44,8 @@ kml_layer.SpatialLines <- function(
   pl2 <- newXMLNode("name", paste(class(obj)), parent = pl1)
 
   # Insert metadata:
-  if(!is.null(spMetadata)){
-    md.txt <- kml_metadata(spMetadata, asText = TRUE)
+  if(!is.null(metadata)){
+    md.txt <- kml_metadata(metadata, asText = TRUE)
     txt <- sprintf('<description><![CDATA[%s]]></description>', md.txt)
     parseXMLAndAdd(txt, parent=pl1)
   }  

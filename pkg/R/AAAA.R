@@ -26,34 +26,112 @@ setClass("SpatialMetadata", representation(xml = "XMLInternalDocument", field.na
       return("field names as character vector required")      
 })
 
-## set generic functions:
+## A new class for SpatialPhoto:
+setClass("SpatialPhotoOverlay", representation(filename = "character", pixmap = "pixmapRGB", exif.info = "list", PhotoOverlay = "list", sp = "SpatialPoints"), validity <- function(obj) {
+    if(obj@filename==""&is.null(obj@pixmap)){
+      return("Either 'pixmap' slot or 'filename' need to be specified.")
+    }
+    if(length(obj@filename)>0){
+      return("Character of length 1 required.")
+    }
+    if(length(obj@sp)>1){
+      return("'SpatialPoints' object of length 1 required.")
+    }
+    
+    # minimum info [http://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/EXIF.html]:
+    exif.sel <- c("DateTime", "ExposureTime", "FocalLength", "Flash")
+    for(i in 1:length(exif.sel)){
+    if(length(which(names(obj@exif.info) %in% exif.sel[i]))==0)
+      return(paste("'", exif.sel[i], "' field required.", sep=""))
+    }
+    
+    # minimum info [http://code.google.com/apis/kml/documentation/kmlreference.html#photooverlay]:
+    geo.sel <- c("rotation", "leftFov", "rightFov", "bottomFov", "topFov", "near", "shape", "range", "tilt", "heading")
+    for(i in 1:length(geo.sel)){
+    if(length(which(names(obj@PhotoOverlay) %in% geo.sel[i]))==0)
+      return(paste("'", geo.sel[i], "' field required.", sep=""))
+    }
+    
+    if(obj@PhotoOverlay$rotation < 0 | obj@PhotoOverlay$rotation > 180){
+      return("Check KML validity: kml:angle180")
+    }
+    if(obj@PhotoOverlay$leftFov < -180 | obj@PhotoOverlay$leftFov > 0){
+      return("Check KML validity: kml:angle180")
+    }
+    if(obj@PhotoOverlay$rightFov < 0 | obj@PhotoOverlay$rigthFov > 180){
+      return("Check KML validity: kml:angle180")
+    }
+    if(obj@PhotoOverlay$bottomFov < -90 | obj@PhotoOverlay$bottomFov > 0){
+      return("Check KML validity: kml:angle90")
+    }
+    if(obj@PhotoOverlay$topFov < 0 | obj@PhotoOverlay$bottomFov > 90){
+      return("Check KML validity: kml:angle90")
+    }
+    if(!(obj@PhotoOverlay$shape %in% c("rectangle", "cylinder", "sphere"))){
+      return("Shape can be only one of the following: 'rectangle', 'cylinder', 'sphere'.")
+    }
+    if(obj@PhotoOverlay$range < 0){
+      return("Check KML validity: positive value required")
+    }
+    if(obj@PhotoOverlay$tilt < 0 | obj@PhotoOverlay$tilt > 90){
+      return("Check KML validity: kml:angle90")
+    }     
+    if(obj@PhotoOverlay$heading < 0 | obj@PhotoOverlay$heading > 360){
+      return("Check KML validity: kml:angle360")
+    }      
+})
 
-if (!isGeneric("field.names"))  
-  setGeneric("field.names", function(obj) standardGeneric("field.names"))
 
-if (!isGeneric("sp.palette"))
-  setGeneric("sp.palette", function(obj) standardGeneric("sp.palette"))
 
-if (!isGeneric("metadata2SLD"))
-  setGeneric("metadata2SLD", function(obj) standardGeneric("metadata2SLD"))
+################## generic functions ##############
 
-if (!isGeneric("kml_layer"))
-  setGeneric("kml_layer", function(obj, ...) standardGeneric("kml_layer"))
 
-if (!isGeneric("kml_metadata"))
-  setGeneric("kml_metadata", function(obj, ...) standardGeneric("kml_metadata"))
+if (!isGeneric("spMetadata")){
+  setGeneric("spMetadata", function(obj, ...){standardGeneric("spMetadata")})
+}
 
-if (!isGeneric("kml"))
-  setGeneric("kml", function(obj, ...)  standardGeneric("kml"))
+if (!isGeneric("spPhoto")){
+  setGeneric("spPhoto", function(obj, ...){standardGeneric("spPhoto")})
+}
 
-if (!isGeneric("getCRS"))
-  setGeneric("getCRS", function(obj, ...)  standardGeneric("getCRS"))
+if (!isGeneric("field.names")){
+  setGeneric("field.names", function(obj){standardGeneric("field.names")})
+}
 
-if (!isGeneric("reproject"))
-  setGeneric("reproject", function(obj, ...)  standardGeneric("reproject"))
+if (!isGeneric("GetPalette")){
+  setGeneric("GetPalette", function(obj){standardGeneric("GetPalette")})
+}
 
-if (!isGeneric("grid2poly"))
-  setGeneric("grid2poly", function(obj, ...)  standardGeneric("grid2poly"))
+if (!isGeneric("kml_metadata")){
+  setGeneric("kml_metadata", function(obj, ...){standardGeneric("kml_metadata")})
+}
+
+if (!isGeneric("metadata2SLD")){
+  setGeneric("metadata2SLD", function(obj, ...){standardGeneric("metadata2SLD")})
+}
+
+if (!isGeneric("kml_layer")){
+  setGeneric("kml_layer", function(obj, ...){standardGeneric("kml_layer")})
+}
+
+if (!isGeneric("kml")){
+  setGeneric("kml", function(obj, ...){standardGeneric("kml")})
+}
+
+if (!isGeneric("getCRS")){
+  setGeneric("getCRS", function(obj, ...){standardGeneric("getCRS")})
+}
+
+if (!isGeneric("reproject")){
+  setGeneric("reproject", function(obj, ...){standardGeneric("reproject")})
+}
+
+## internal methods:
+
+setMethod("field.names", "SpatialMetadata", function(obj){paste(obj@field.names)})
+
+setMethod("GetPalette", "SpatialMetadata", function(obj){paste(obj@palette)})
+
 
 ################## STANDARD ENVIRONMENTS ##############
 
@@ -72,7 +150,7 @@ plotKML.env <- function(
     icon,
     LabelScale,
     license_url,
-    metadata,
+    metadata_sel,
     kmz,
     kml_xsd,
     kml_url,
@@ -89,6 +167,7 @@ plotKML.env <- function(
     silent = TRUE
     ){
     
+    require(RColorBrewer)
     if(missing(colour_scale_numeric)) { colour_scale_numeric <- rev(brewer.pal(n = 5, name = "Spectral")) }
     if(missing(colour_scale_factor)) { colour_scale_factor <- brewer.pal(n = 6, name = "Set1") }
     if(missing(ref_CRS)) { ref_CRS <- "+proj=longlat +datum=WGS84" }
@@ -96,7 +175,7 @@ plotKML.env <- function(
     if(missing(icon)) { icon <- "cross.png" }
     if(missing(LabelScale)) { LabelScale <- .7 }
     if(missing(license_url)) { license_url <- "http://creativecommons.org/licenses/by/3.0/" }
-    if(missing(metadata)) { metadata <- c("idinfo_citation_citeinfo_title", "idinfo_descript_abstract", "spdoinfo_ptvctinf_sdtsterm_ptvctcnt", "idinfo_timeperd_timeinfo_rngdates_begdate", "idinfo_timeperd_timeinfo_rngdates_enddate", "distinfo_stdorder_digform_digtopt_onlinopt_computer_networka_networkr", "idinfo_citation_citeinfo_othercit", "idinfo_citation_citeinfo_onlink", "idinfo_datacred", "distinfo_distrib_cntinfo_cntorgp_cntorg", "distinfo_stdorder_digform_digtinfo_formcont", "idinfo_native") }
+    if(missing(metadata_sel)) { metadata_sel <- c("idinfo_citation_citeinfo_title", "idinfo_descript_abstract", "spdoinfo_ptvctinf_sdtsterm_ptvctcnt", "idinfo_timeperd_timeinfo_rngdates_begdate", "idinfo_timeperd_timeinfo_rngdates_enddate", "distinfo_stdorder_digform_digtopt_onlinopt_computer_networka_networkr", "idinfo_citation_citeinfo_othercit", "idinfo_citation_citeinfo_onlink", "idinfo_datacred", "distinfo_distrib_cntinfo_cntorgp_cntorg", "distinfo_stdorder_digform_digtinfo_formcont", "idinfo_native") }
     if(missing(kmz)) { kmz <- FALSE }
     if(missing(kml_xsd)) { kml_xsd <- "http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd" }
     if(missing(kml_url)) { kml_url <- "http://www.opengis.net/kml/2.2/" }
@@ -125,7 +204,7 @@ plotKML.env <- function(
     assign("icon", icon, envir=plotKML.opts)
     assign("LabelScale", LabelScale, envir=plotKML.opts)
     assign("license_url", license_url, envir=plotKML.opts)
-    assign("metadata", metadata, envir=plotKML.opts)
+    assign("metadata_sel", metadata_sel, envir=plotKML.opts)
     assign("kmz", kmz, envir=plotKML.opts)
     assign("kml_xsd", kml_xsd, envir=plotKML.opts)
     assign("kml_url", kml_url, envir=plotKML.opts)
@@ -139,7 +218,7 @@ plotKML.env <- function(
     assign("home_url", home_url, envir=plotKML.opts)
     assign("googleAPIkey", googleAPIkey, envir=plotKML.opts)
     
-    plotKML.opts <- list(colour_scale_numeric, colour_scale_factor, ref_CRS, NAflag, icon, LabelScale, license_url, metadata, kmz, kml_xsd, kml_url, kml_gx, gpx_xsd, fgdc_xsd, convert, gdalwarp, gdal_translate, python, home_url, googleAPIkey)
+    plotKML.opts <- list(colour_scale_numeric, colour_scale_factor, ref_CRS, NAflag, icon, LabelScale, license_url, metadata_sel, kmz, kml_xsd, kml_url, kml_gx, gpx_xsd, fgdc_xsd, convert, gdalwarp, gdal_translate, python, home_url, googleAPIkey)
     names(plotKML.opts) <- c("colour scale for numeric variables", "colour scale for factor variables", "referent CRS", "NA flag value", "default icon", "default label size", "default license url", "print metadata", "compress to kmz", "kml xsd URL", "kml URL", "kml gx URL", "gpx xsd URL", "fgdc xsd URL", "location of convert program", "location of gdalwarp program", "location of gdal_translate program", "location of python program", "data repository URL", "google API key")
     
     if(show.env){  return(plotKML.opts)  }

@@ -4,7 +4,7 @@
 # Status         : working version
 # Note           : Not recommended for large grids!;
 
-grid2poly <- function(obj, var.name = names(obj)[1], reproject = TRUE, method = c("raster", "sp", "RSAGA")[1], tmp.file = TRUE, saga_lib = "shapes_grid", saga_module = 3, silent = FALSE, ... ){
+grid2poly <- function(obj, var.name = names(obj)[1], reproject = TRUE, method = c("raster", "sp", "RSAGA")[1], tmp.file = TRUE, saga_lib = "shapes_grid", saga_module = 3, silent = FALSE){
 
     # print warning:
     if(length(obj)>1e4){
@@ -36,6 +36,7 @@ grid2poly <- function(obj, var.name = names(obj)[1], reproject = TRUE, method = 
         }
 
         # first, write SGDF to a file:
+        obj <- as(obj[var.name], "SpatialPixelsDataFrame")
         writeGDAL(obj[var.name], paste(tf, ".sdat", sep=""), "SAGA")
         # saga_lib name and saga_module might change in the future versions of SAGA!
         rsaga.geoprocessor(lib=saga_lib, module=saga_module, param=list(GRIDS=paste(tf, ".sgrd", sep=""), SHAPES=paste(tf, ".shp", sep=""), NODATA=TRUE, TYPE=1), show.output.on.console = silent)
@@ -58,8 +59,5 @@ grid2poly <- function(obj, var.name = names(obj)[1], reproject = TRUE, method = 
     
     return(pol)
 } 
-
-setMethod("grid2poly", "SpatialGrid", grid2poly)
-setMethod("grid2poly", "Raster", grid2poly)
 
 # enf of script;

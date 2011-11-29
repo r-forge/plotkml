@@ -4,32 +4,14 @@
 # Dev Status     : Pre-Alpha
 # Note           : Based on the US gov sp metadata standards [http://www.fgdc.gov/metadata/csdgm/], which can be converted to "ISO 19139" XML schema;
 
-## Read metadata from a xml.file and convert to a table:
-read.metadata <- function(xml.file, delim.sign = "_", full.names){
-
-    if(missing(full.names)){
-      data(mdnames)      
-      full.names = mdnames      
-    }
-    ret <- xmlTreeParse(xml.file, useInternalNodes = TRUE)
-    top <- xmlRoot(ret)
-    nx <- unlist(xmlToList(top, addAttributes=FALSE))
-    # convert to a table:
-    met <- data.frame(metadata=gsub("\\.", delim.sign, attr(nx, "names")), value=paste(nx), stringsAsFactors = FALSE)
-    # add more friendly names:
-    metm <- merge(x=met, y=full.names[,c("metadata","field.names")], by="metadata", all.x=TRUE)
-    
-    return(metm[,c(1,3,2)])
-}
-
 
 ## Generate a spMetadata class object:
-spMetadata <- function(
-    obj,   # some "sp" class object
-    xml.file = set.file.extension(deparse(substitute(obj)), ".xml"), # optional metadata file in the FGDC format
+spMetadata.Spatial <- function(
+    obj,   
+    xml.file = set.file.extension(deparse(substitute(obj, env=parent.frame())), ".xml"), # optional metadata file in the FGDC format
     generate.missing = TRUE,
     Citation_title,
-    Target_variable,  # targe variable
+    Target_variable,  
     Attribute_Measurement_Resolution = 1, # numeric resolution
     Attribute_Units_of_Measure = "NA", # measurement units
     Indirect_Spatial_Reference = "",
@@ -43,26 +25,15 @@ spMetadata <- function(
     validate.schema = FALSE
     )
     {
-    
-    # convert a Raster layer to SGDF:
-    if(class(obj) %in% names(getClass("Raster")@subclasses)){
-    if(nlayers(obj) > 1){
-      if(missing(Target_variable)) {
-      i_layer <- 1
-      }
-      else {
-      i_layer <- which(layerNames(obj) == Target_variable)
-      }
-      obj <- raster(obj, layer = i_layer)
-    }
-    obj <- as(obj, "SpatialGridDataFrame") 
-    }
+        
+    # Use the first column for metadata: 
+    if(missing(Target_variable)){ Target_variable <- names(obj)[1] }
         
     if(generate.missing == TRUE){
-    # Metadata template:
-    fgdc <- xmlTreeParse(system.file("FGDC.xml", package="plotKML"), useInternalNodes = TRUE)
-    top <- xmlRoot(fgdc)
-    nx <- names(unlist(xmlToList(top, addAttributes=FALSE)))
+      # Metadata template:
+      fgdc <- xmlTreeParse(system.file("FGDC.xml", package="plotKML"), useInternalNodes = TRUE)
+      top <- xmlRoot(fgdc)
+      nx <- names(unlist(xmlToList(top, addAttributes=FALSE)))
     }
     
     # If the metadata file does not exit, use the template:
@@ -83,16 +54,17 @@ spMetadata <- function(
           }
         }
     }
+    
     # If the metadata file does not exit, use the template:
     else {  
-        warning(paste("Could not locate ", xml.file, ". Using FGDC.xml. See 'spMetadata' for more details.", sep=""), call.=FALSE)
+        warning(paste("Could not locate ", xml.file, ". Using FGDC.xml. See '?spMetadata' for more details.", sep=""), call.=FALSE)
         ret <- xmlTreeParse(system.file("FGDC.xml", package="plotKML"))
         a <- xmlTreeParse(system.file("FGDC.xml", package="plotKML"), useInternalNodes = TRUE)
     }  
     
     ml <- xmlRoot(ret)
     
-    if(generate.missing){
+    if(generate.missing == TRUE){
     # compare the actual xml file and the template:
     cross <- compareXMLDocs(a=a, b=fgdc)
             
@@ -114,10 +86,7 @@ spMetadata <- function(
           if(j==7 & !x_l[j] %in% names(ml[[x_l[1]]][[x_l[2]]][[x_l[3]]][[x_l[4]]][[x_l[5]]][[x_l[6]]])) { ml[[x_l[1]]][[x_l[2]]][[x_l[3]]][[x_l[4]]][[x_l[5]]][[x_l[6]]] <- append.XMLNode(ml[[x_l[1]]][[x_l[2]]][[x_l[3]]][[x_l[4]]][[x_l[5]]][[x_l[6]]], xmlNode(x_l[j], "")) }
         }
     }}
-            
-    # Automatically generate metadata:
-    if(missing(Target_variable)){ Target_variable <- names(obj)[1] }
-    
+               
     message("Generating metadata...")
     if(xmlValue(ml[["idinfo"]][["citation"]][["citeinfo"]][["title"]]) == "") {
     if(missing(Citation_title)) {
@@ -220,13 +189,52 @@ spMetadata <- function(
     
     # make a spatial palette:
     pal <- new("sp.palette", type=class(obj@data[,Target_variable]), bounds=bounds, color = color, names = legend_names, icons = icons)
-    # make a spMetadata object:
+    # make a SpatialMetadata object:
     spmd <- new("SpatialMetadata",  xml=doc, field.names=paste(field_names), palette=pal, sp=as(obj, "Spatial")) 
     return(spmd)
 
 }
 
-setMethod("spMetadata", "Spatial", spMetadata)
-setMethod("spMetadata", "Raster", spMetadata)
+spMetadata.Raster <- function(obj, ...){
+    
+    if(!is.null(bounds)) {bounds <- obj@legend@values}
+    if(!is.null(color)) {color <- obj@legend@color}
+
+    # convert a Raster layer to SGDF:
+    if(nlayers(obj) > 1){
+      if(missing(Target_variable)) {
+      i_layer <- 1
+      }
+      else {
+      i_layer <- which(layerNames(obj) == Target_variable)
+      }
+      obj <- raster(obj, layer = i_layer)
+    }
+    obj <- as(obj, "SpatialGridDataFrame") 
+    
+    spMetadata.Spatial(obj, ...)
+}
+
+setMethod("spMetadata", "Spatial", spMetadata.Spatial)
+setMethod("spMetadata", "RasterLayer", spMetadata.Raster)
+
+
+## Read metadata from a xml.file and convert to a table:
+read.metadata <- function(xml.file, delim.sign = "_", full.names){
+
+    if(missing(full.names)){
+      data(mdnames)      
+      full.names = mdnames      
+    }
+    ret <- xmlTreeParse(xml.file, useInternalNodes = TRUE)
+    top <- xmlRoot(ret)
+    nx <- unlist(xmlToList(top, addAttributes=FALSE))
+    # convert to a table:
+    met <- data.frame(metadata=gsub("\\.", delim.sign, attr(nx, "names")), value=paste(nx), stringsAsFactors = FALSE)
+    # add more friendly names:
+    metm <- merge(x=met, y=full.names[,c("metadata","field.names")], by="metadata", all.x=TRUE)
+    
+    return(metm[,c(1,3,2)])
+}
 
 # end of script;

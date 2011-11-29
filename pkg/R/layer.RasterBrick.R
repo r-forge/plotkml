@@ -11,7 +11,7 @@ kml_layer.RasterBrick <- function(
   z.lim = c(min(obj@data@min, na.rm=TRUE), max(obj@data@max, na.rm=TRUE)),
   colour_scale = get("colour_scale_numeric", envir = plotKML.opts),
   home_url = get("home_url", envir = plotKML.opts),
-  spMetadata = NULL,
+  metadata = NULL,
   html.table = NULL,
   ...
   ){
@@ -70,8 +70,8 @@ kml_layer.RasterBrick <- function(
   pl2 <- newXMLNode("name", paste(class(obj)), parent=pl1)
   
   # Insert metadata:
-  if(!is.null(spMetadata)){
-    md.txt <- kml_metadata(spMetadata, asText = TRUE)
+  if(!is.null(metadata)){
+    md.txt <- kml_metadata(metadata, asText = TRUE)
     txt <- sprintf('<description><![CDATA[%s]]></description>', md.txt)
     parseXMLAndAdd(txt, parent=pl1)
   }

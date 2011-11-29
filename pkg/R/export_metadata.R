@@ -7,17 +7,28 @@
 
 ## Generate a SLD file (using the default legend):
 # [http://docs.geoserver.org/stable/en/user/styling/sld-introduction.html]
-metadata2SLD <- function(
-    spMd,  # SpatialMetadata
-    obj.name = deparse(substitute(spMd)),
+
+metadata2SLD.Spatial <- function(obj, Format_Information_Content = xmlValue(obj@xml[["//formcont"]]), ...){
+  if(Format_Information_Content == "SpatialPixelsDataFrame"){
+    metadata2SLD.SpatialPixels(obj, ...)
+  }
+  # ...
+  ## to be continued
+  else {
+  stop("Format_Information_Content field in 'obj@xml' must specify a valid sp class.")
+  }
+}
+
+metadata2SLD.SpatialPixels <- function(
+    obj,  # SpatialMetadata
+    obj.name = deparse(substitute(obj)),
     sld.file = set.file.extension(obj.name, ".sld"),
-    Citation_title = xmlValue(spMd@xml[["//title"]]),
-    Format_Information_Content = xmlValue(spMd@xml[["//formcont"]]),
+    Citation_title = xmlValue(obj@xml[["//title"]]),
     ColorMap_type = "intervals",
-    opacity = 1
+    opacity = 1,
+    ...
     ){
     
-#    if(Format_Information_Content == "SpatialPixelsDataFrame"){
     l1 = newXMLNode("StyledLayerDescriptor", attrs=c(version="1.0.0"), namespaceDefinitions=c("xsi:schemaLocation"="http://www.opengis.net/sld StyledLayerDescriptor.xsd", "sld"="http://www.opengis.net/sld", "ogc"="http://www.opengis.net/ogc", "gml"="http://www.opengis.net/gml"))
     l2 <- newXMLNode("NamedLayer", parent = l1)
     l3 <- newXMLNode("Name", paste(Citation_title, "(", Format_Information_Content, ")"), parent = l2)
@@ -27,10 +38,9 @@ metadata2SLD <- function(
     l5 <- newXMLNode("Rule", parent = l4b)
     l6 <- newXMLNode("RasterSymbolizer", parent = l5)
     l7 <- newXMLNode("ColorMap", attrs=c(type=ColorMap_type), parent = l6)
-    txt <- sprintf('<ColorMapEntry color="#%s" quantity="%.2f" label="%s" opacity="%.1f"/>', spMd@palette@color, spMd@palette@bounds[-1], spMd@palette@names, rep(opacity, length(spMd@palette@color)))
+    txt <- sprintf('<ColorMapEntry color="#%s" quantity="%.2f" label="%s" opacity="%.1f"/>', obj@palette@color, obj@palette@bounds[-1], obj@palette@names, rep(opacity, length(obj@palette@color)))
     parseXMLAndAdd(txt, l7)
     saveXML(l1, sld.file)
-#    }
 }
 
 
@@ -45,6 +55,6 @@ metadata2SLD <- function(
 # }    
 
 # connect all methods and classes:
-setMethod("metadata2SLD", signature="SpatialMetadata", definition=metadata2SLD)
+setMethod("metadata2SLD", "SpatialMetadata", metadata2SLD.Spatial)
 
 # end of script;
