@@ -12,7 +12,7 @@ kml_open(file.name, folder.name = file.name,
   \item{folder.name}{character string; KML folder name}
   \item{overwrite}{logical; If TRUE, "name" will be overwritten if it exists}
   \item{kml_xsd}{URL of the KML scheme to be used}
-  \item{...}{other arguments}
+  \item{\dots}{other arguments}
 }
 \author{Pierre Roudier and Dylan Beaudette}
 \details{See plotKML package homepage / vignette for more examples.}

@@ -1,4 +1,5 @@
 \name{LST}
+\alias{LST}
 \docType{data}
 \encoding{latin1}
 \title{Time series of MODIS LST images (estimated Land Surface Temperature in degrees C) at 1 km resolution}
@@ -10,7 +11,7 @@ The \code{LST} is \code{"RasterBrick"} object with the following layers:
   \describe{
 	\item{\code{LST2008_01_01}}{8-day MODIS LST mosaick for period 2007-12-29 to 2008-01-04}
 	\item{\code{LST2008_01_09}}{8-day MODIS LST mosaick for period 2008-01-05 to 2008-01-13}
-	\item{\code{...}}{...}
+	\item{\code{\dots}}{subsequent bands}
   }
 } 
 \author{ Tomislav Hengl (\email{tom.hengl@wur.nl}) and Melita Percec Tadic (\email{melita@cirus.dhz.hr}) }

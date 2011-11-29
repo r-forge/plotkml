@@ -9,7 +9,7 @@ kml_layer.SoilProfileCollection(obj, var.name, site_names = obj@site[,1],
   LabelScale, IconColor = "ff0000ff", shape = paste(get("home_url", envir = plotKML.opts), "circlesquare.png", sep=""), 
   visibility = TRUE, extrude = TRUE, tessellate = TRUE, camera.distance = .01, 
   altitudeMode = "relativeToGround", tilt = 90, heading = 0, roll = 0, 
-  spMetadata = NULL, html.table = NULL, ...)
+  metadata = NULL, html.table = NULL, \dots)
 }
 \arguments{
   \item{obj}{object of class \code{"SoilProfileCollection"} (package \href{http://CRAN.R-project.org/package=aqp}{aqp})}
@@ -25,7 +25,7 @@ kml_layer.SoilProfileCollection(obj, var.name, site_names = obj@site[,1],
   \item{tilt}{angle between the direction of the LookAt position and the normal to the surface of the earth} 
   \item{heading}{orientation towards north} 
   \item{roll}{rotation about the y axis}
-  \item{...}{additional style arguments}
+  \item{\dots}{additional style arguments}
 }
 \details{Horizon depths are typically expressed in cm, hence the default exaggeration factor (\code{z.scale}) is 10. It is highly recommended to turn off the terrain layer in Google Earth, otherwise Google Earth will deform the plots in areas of high relief.}
 \author{Tomislav Hengl (\email{tom.hengl@wur.nl}), Dylan Beaudette (\email{debeaudette@ucdavis.edu})}

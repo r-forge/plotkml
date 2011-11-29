@@ -4,14 +4,16 @@
 \title{Exports objects of type SpatialLines* to KML}
 \description{Writes object of type SpatialLines* to KML with several aesthetics arguments. }
 \usage{
-kml_layer.SpatialLines(obj, extrude = FALSE, z.scale = 1, spMetadata = NULL, 
-  html.table = NULL, ...)
+kml_layer.SpatialLines(obj, extrude = FALSE, z.scale = 1, metadata = NULL, 
+  html.table = NULL, \dots)
 }
 \arguments{
-  \item{obj}{object of class \code{"RasterBrick"} (a time series of images)}
-  \item{spMetadata}{(optional) specify the metadata object}
+  \item{obj}{object of class \code{"SpatialLines*"}}
+  \item{extrude}{logical; specifies whether to connect the LinearRing to the ground}
+  \item{z.scale}{vertical exaggeration}  
+  \item{metadata}{(optional) specify the metadata object}
   \item{html.table}{optional description block (html) for each GPS point (vertices)}
-  \item{...}{additional style arguments (see \code{\link{aesthetics}})}
+  \item{\dots}{additional style arguments (see \code{\link{aesthetics}})}
   \item{labels}{variable to be used to attach labels to spatial lines}
   \item{colour}{variable to be used to color spatial lines}
   \item{width}{variable to be used to specify the width of spatial lines}
