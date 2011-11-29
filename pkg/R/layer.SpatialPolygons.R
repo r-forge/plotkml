@@ -12,7 +12,7 @@ kml_layer.SpatialPolygons <- function(
   plot.labpt = FALSE,
   z.scale = 1,
   LabelScale = get("LabelScale", envir = plotKML.opts),
-  spMetadata = NULL,
+  metadata = NULL,
   html.table = NULL,
   ...
   ){
@@ -52,8 +52,8 @@ kml_layer.SpatialPolygons <- function(
   }
 
   # Insert metadata:
-  if(!is.null(spMetadata)){
-    md.txt <- kml_metadata(spMetadata, asText = TRUE)
+  if(!is.null(metadata)){
+    md.txt <- kml_metadata(metadata, asText = TRUE)
     txt <- sprintf('<description><![CDATA[%s]]></description>', md.txt)
     parseXMLAndAdd(txt, parent=pl1)
   }

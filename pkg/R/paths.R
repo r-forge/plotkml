@@ -7,6 +7,7 @@
 
 paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "", python = "", show.paths = TRUE){ 
      
+     require(utils)
      if(require(animation))
         convert <- ani.options("convert")
      

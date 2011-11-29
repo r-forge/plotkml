@@ -30,7 +30,7 @@ kml_layer.SoilProfileCollection <- function(
   tilt = 90, 
   heading = 0, 
   roll = 0,
-  spMetadata = NULL,
+  metadata = NULL,
   html.table = NULL,
   ...)
 {
@@ -73,8 +73,8 @@ kml_layer.SoilProfileCollection <- function(
   pl3c <- newXMLNode("name", "sites", parent = pl2c)
 
   # Insert metadata:
-  if(!is.null(spMetadata)){
-    md.txt <- kml_metadata(spMetadata, asText = TRUE)
+  if(!is.null(metadata)){
+    md.txt <- kml_metadata(metadata, asText = TRUE)
     txt <- sprintf('<description><![CDATA[%s]]></description>', md.txt)
     parseXMLAndAdd(txt, parent=pl1)
   }
@@ -216,3 +216,5 @@ for(i.site in 1:length(obj@site[,obj@idcol])) {
 
     
 setMethod("kml_layer", "SoilProfileCollection", kml_layer.SoilProfileCollection)
+
+# end of script;

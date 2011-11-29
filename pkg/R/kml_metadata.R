@@ -7,22 +7,22 @@
 
 ## Write metadata to a KML file:                             
 kml_metadata <- function(
-    spMd,   # SpatialMetadata
+    obj,   # SpatialMetadata
     sel,
     fix.enc = TRUE,
     cwidth = 150,
     twidth = 500,
-    full.names,
+    full.names = "",
     delim.sign = "_",
     asText = FALSE
     ){
         
-    if(missing(full.names)){
+    if(full.names == ""){
       data(mdnames)      
       full.names = mdnames      
     }
     
-    nx <- unlist(xmlToList(spMd@xml, addAttributes=FALSE))
+    nx <- unlist(xmlToList(obj@xml, addAttributes=FALSE))
     # convert to a table:
     met <- data.frame(metadata=gsub("\\.", delim.sign, attr(nx, "names")), value=paste(nx), stringsAsFactors = FALSE)
     # add more friendly names:
@@ -30,7 +30,7 @@ kml_metadata <- function(
         
     # selected columns:
     if(missing(sel)) {
-      sel = get("metadata", envir = plotKML.opts)
+      sel = get("metadata_sel", envir = plotKML.opts)
     }
     selm <- data.frame(metadata = sel, order.no=1:length(sel))
     md <- merge(selm, metm, by="metadata", all.x=TRUE)
@@ -50,10 +50,5 @@ kml_metadata <- function(
       return(l1) 
     }
 }
-
-setMethod("kml_metadata", "SpatialMetadata", kml_metadata)
-setMethod("field.names", signature = "SpatialMetadata", definition = function(obj){paste(obj@field.names)})
-setMethod("sp.palette", signature = "SpatialMetadata", definition = function(obj){paste(obj@palette)})
-
 
 # end of script;

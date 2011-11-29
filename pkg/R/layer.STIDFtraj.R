@@ -15,7 +15,7 @@ kml_layer.STIDFtraj <- function(
   end.icon = paste(get("home_url", envir = plotKML.opts), "golfhole.png", sep=""),
   LabelScale = .8*get("LabelScale", envir = plotKML.opts),
   z.scale = 1,
-  spMetadata = NULL,
+  metadata = NULL,
   html.table = NULL,
   ...
   ){
@@ -64,8 +64,8 @@ kml_layer.STIDFtraj <- function(
   pl1 = newXMLNode("Folder", parent=kml.out[["Document"]])
   
   # Insert metadata:
-  if(!is.null(spMetadata)){
-    md.txt <- kml_metadata(spMetadata, asText = TRUE)
+  if(!is.null(metadata)){
+    md.txt <- kml_metadata(metadata, asText = TRUE)
     txt <- sprintf('<description><![CDATA[%s]]></description>', md.txt)
     parseXMLAndAdd(txt, parent=pl1)
   }

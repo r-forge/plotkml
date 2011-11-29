@@ -18,3 +18,4 @@ kml_layer.SpatialPixels <- function(
 }
 
 setMethod("kml_layer", "SpatialPixels", kml_layer.SpatialPixels)
+setMethod("kml_layer", "SpatialGrid", kml_layer.SpatialPixels)

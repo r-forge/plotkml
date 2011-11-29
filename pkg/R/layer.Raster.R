@@ -7,7 +7,7 @@
 kml_layer.Raster <- function(
   obj,  
   plot.legend = TRUE,
-  spMetadata = NULL,  
+  metadata = NULL,  
   ...
   ){
 
@@ -124,8 +124,8 @@ kml_layer.Raster <- function(
   pl2 <- newXMLNode("name", paste(class(obj)), parent = pl1)
 
   # Insert metadata:
-  if(!is.null(spMetadata)){
-    md.txt <- kml_metadata(spMetadata, asText = TRUE)
+  if(!is.null(metadata)){
+    md.txt <- kml_metadata(metadata, asText = TRUE)
     txt <- sprintf('<description><![CDATA[%s]]></description>', md.txt)
     parseXMLAndAdd(txt, parent=pl1)
   }
