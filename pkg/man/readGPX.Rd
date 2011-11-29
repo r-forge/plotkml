@@ -1,7 +1,7 @@
 \name{readGPX}
 \alias{readGPX}
 \title{Imports GPX (GPS track) files}
-\description{Read various elements from a \preformatted{*.gpx} file --- metadata, waypoints, tracks and routes --- and converts them to dataframes.}
+\description{Read various elements from a \code{*.gpx} file --- metadata, waypoints, tracks and routes --- and converts them to dataframes.}
 \usage{readGPX(gpx.file, metadata = TRUE, bounds = TRUE,
     waypoints = TRUE, tracks = TRUE, routes = TRUE)
 }
@@ -22,7 +22,7 @@
 }
 }
 \author{Tomislav Hengl (\email{tom.hengl@wur.nl})}
-\seealso{\code{rgdal::readOGR}, \code{kml_layer.STIDFtraj}}
+\seealso{\code{rgdal::readOGR}, \code{\link{kml_layer.STIDFtraj}}}
 \examples{
 \dontrun{
 gpxbtour <- readGPX(system.file("btour.gpx", package="plotKML"))

@@ -4,7 +4,7 @@
 \title{Converts Points, Lines and Polygons to rasters}
 \description{This function converts any Spatial-PointsDataFrame, -LinesDataFrame, or -PolygonsDataFrame object to a raster map, and (optional) writes it to an external file (GDAL-supported formats). The cell size for output raster map is by default determined based on the density/size of features in the vector map.}
 \usage{
-vect2rast(obj, var.name = names(obj)[1], cell.size, bbox, file.name, ...)
+vect2rast(obj, var.name = names(obj)[1], cell.size, bbox, file.name, \dots)
 }
 \arguments{
   \item{obj}{Spatial-PointsDataFrame,-LinesDataFrame or -PolygonsDataFrame object}
@@ -12,7 +12,7 @@ vect2rast(obj, var.name = names(obj)[1], cell.size, bbox, file.name, ...)
   \item{cell.size}{(optional) grid cell size in the output raster map}
   \item{bbox}{(optional) output bounding box (class \code{"bbox"}) for cropping the data}
   \item{file.name}{(optional) file name to export the resulting raster map}
-  \item{...}{additional arguments to be passed to the \code{rasterize} command}
+  \item{\dots}{additional arguments to be passed to the \code{rasterize} command}
 }
 \details{
 This function basically extends the \code{\link{rasterize}} function available in the raster package. the advantage of \code{vect2rast} is that it requires no input from the user's side i.e. it automatically determines the grid cell size based on the properties of the input data set.\cr

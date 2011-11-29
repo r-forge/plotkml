@@ -6,7 +6,7 @@
 \usage{
 kml_layer.RasterBrick(obj, dtime = "", extrude = FALSE, tz = "GMT", z.lim = c("min", "max"),
    colour_scale = get("colour_scale_numeric", envir = plotKML.opts),
-   spMetadata = NULL, html.table = NULL,  ...)
+   metadata = NULL, html.table = NULL,  \dots)
 }
 \arguments{
   \item{obj}{object of class \code{"RasterBrick"} (a time series of images)}
@@ -15,9 +15,9 @@ kml_layer.RasterBrick(obj, dtime = "", extrude = FALSE, tz = "GMT", z.lim = c("m
   \item{tz = "GMT"}{referent time zone}
   \item{z.lim}{upper and lower limits (unique for all maps in the time series); by default -- the absolute minimum and maximum in values}
   \item{colour_scale}{color palette; by default using the color scale for numeric variables}
-  \item{spMetadata}{(optional) specify the metadata object}
-  \item{html.table}{optional description block (html) for each raster layer}
-  \item{...}{additional style arguments (see \code{aesthetics})}
+  \item{metadata}{(optional) specify the metadata object}
+  \item{html.table}{(optional) description block (html) for each raster layer}
+  \item{\dots}{additional style arguments (see \code{aesthetics})}
 }
 \details{This method is recommended for visualization of numeric bands representing the same variable i.e. time series of images. To export a stack of images of different type see \code{\link{kml_layer.Raster}}. If the \code{"@zvalue"} slot is empty, dates will be added by subtracting days from the current day with 1--day increments.
 }

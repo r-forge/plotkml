@@ -7,8 +7,7 @@
 \tabular{ll}{
 Package: \tab plotKML\cr
 Type: \tab Package\cr
-Version: \tab 0.1\cr
-Date: \tab 2011-05-25\cr
+URL: \tab \url{http://plotkml.r-forge.r-project.org/}\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }
@@ -18,10 +17,10 @@ Tomislav Hengl (\email{tom.hengl@wur.nl}), Pierre Roudier (\email{pierre.roudier
 }
 \references{
 \itemize{
-\item Package home URL (\url{http://plotkml.r-forge.r-project.org/})
+\item KML documentation (\url{http://code.google.com/apis/kml/documentation/})
 \item See also: \strong{Google Earth Outreach} project (\url{http://earth.google.com/outreach/tutorials.html})
 }
 }
-\note{This package has been developed as a part of the \href{http://isric.org/projects/global-soil-information-facilities-gsif}{\strong{Global Soil Information Facilities}} project, which is run jointly by the ISRIC Institute and collaborators.}
-\keyword{ package }
+\note{This package has been developed as a part of the \href{http://isric.org/projects/global-soil-information-facilities-gsif}{\strong{Global Soil Information Facilities}} project, which is run jointly by the ISRIC Institute and collaborators. ISRIC is a non-profit organization with a mandate to serve the international community as custodian of global soil information and to increase awareness and understanding of the role of soils in major global issues.}
+\keyword{ KML }
 \keyword{ GSIF }

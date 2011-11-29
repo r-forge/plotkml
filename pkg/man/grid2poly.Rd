@@ -6,7 +6,8 @@
 \description{This function converts a SpatialGridDataFrame object to a polygon map with each available grid node represented with a polygon. To allow further export to KML, it will by default convert any projected coordinates to the lat-lon system (geographic coordinates in the WGS84 system).}
 \usage{
 grid2poly(obj, var.name, reproject = TRUE, tmp.file = TRUE,  
-method = c("raster", "sp", "RSAGA")[1], saga_lib = "shapes_grid", saga_module = 3, ... )
+    method = c("raster", "sp", "RSAGA")[1], saga_lib = "shapes_grid", 
+    saga_module = 3, \dots)
 }
 \arguments{
   \item{obj}{SpatialGridDataFrame object}
@@ -15,7 +16,7 @@ method = c("raster", "sp", "RSAGA")[1], saga_lib = "shapes_grid", saga_module = 
   \item{method}{decide to convert grids to polygons either using \code{"sp"}, \code{"raster"} or \code{"RSAGA"} packages}
   \item{saga_lib}{string; SAGA GIS library name}
   \item{saga_module}{SAGA GIS module number; see \code{?rsaga_get_modules} for more details}
-  \item{...}{additional arguments that can be parsed to the \code{rasterToPolygons} command}
+  \item{\dots}{additional arguments that can be parsed to the \code{rasterToPolygons} command}
 }
 \details{This operation is not recommended for large grids (>>10e4 pixels). Consider splitting large input grids into tiles before running \code{grid2poly}. Conversion of large grids to polygons is more efficient by using SAGA GIS (\code{method = "RSAGA"}).}
 \author{Tomislav Hengl (\email{tom.hengl@wur.nl})}

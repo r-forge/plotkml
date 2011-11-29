@@ -6,15 +6,15 @@
 \usage{
 kml_layer.SpatialPoints(obj, extrude = FALSE, 
     LabelScale = get("LabelScale", envir = plotKML.opts), z.scale = 1, 
-    spMetadata = NULL, html.table = NULL, ...)
+    metadata = NULL, html.table = NULL, \dots)
 }
 \arguments{
   \item{obj}{object of class \code{"RasterBrick"} (a time series of images)}
   \item{extrude}{logical; specifies whether to connect the point to the ground with a line}
   \item{LabelScale}{numeric; default size of the labels}
-  \item{spMetadata}{(optional) specify the metadata object}
+  \item{metadata}{(optional) specify the metadata object}
   \item{html.table}{(optional) specify the description block (html) for each point}
-  \item{...}{additional style arguments (see \code{\link{aesthetics}})}
+  \item{\dots}{additional style arguments (see \code{\link{aesthetics}})}
   \item{labels}{variable to be used to attach labels to spatial lines}
   \item{shapes}{variable to be used to attach icons}
   \item{colour}{variable to be used to color spatial lines}

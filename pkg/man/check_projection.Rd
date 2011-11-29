@@ -5,9 +5,9 @@
 \description{Function \code{parse_proj4} gets the proj4 string from a space-time object and \code{check_projection} checks if the input projection is compatible with the referent projection system. The referent system is by default the `latlon' projection with `WGS84' datum (KML-compatible coordinates).}
 \usage{check_projection(obj, logical = TRUE, ref_CRS = get("ref_CRS", envir = plotKML.opts))}
 \arguments{
-  \item{obj}{A Spatial* or Raster* object.}
-  \item{logical}{Logical; if TRUE, a logical value is returned. If FALSE, an error is thrown if the test failed.}
-  \item{ref_CRS}{The referent coordinate system.}
+  \item{obj}{object of class \code{Spatial*} or \code{Raster*}}
+  \item{logical}{logical; if TRUE, a logical value is returned, if FALSE, an error is thrown if the test failed}
+  \item{ref_CRS}{the referent coordinate system.}
 }
 \details{
 A cartographic projection is KML compatible if: (a) geographical coordinates are used, and (b) that relate to the WGS84 ellispoid (\code{"+proj=longlat +datum=WGS84"}). You can also set your own local referent projection system by specifiying \code{plotKML.env(ref_CRS = ...)}.

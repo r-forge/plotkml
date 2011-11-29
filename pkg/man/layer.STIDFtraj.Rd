@@ -1,12 +1,12 @@
 \name{kml_layer.STIDFtraj}
 \alias{kml_layer.STIDFtraj}
 \alias{STIDFtraj}
-\title{Parse a space-time trajectory object to KML}
+\title{Writes a space-time trajectory object to KML}
 \description{Writes a space-time trajectory object to a KML file and (optional) attaches attributes.
 }
 \usage{
 kml_layer.STIDFtraj(obj, id.name, dtime = "", extrude = FALSE,
-   start.icon, end.icon, LabelScale, z.scale = 1, spMetadata = NULL, html.table = NULL)
+   start.icon, end.icon, LabelScale, z.scale = 1, metadata = NULL, html.table = NULL)
 }
 \arguments{
   \item{obj}{space-time object of class \code{"STIDFraj"} (spatio-temporal irregular data.frames trajectory)}
@@ -17,7 +17,7 @@ kml_layer.STIDFtraj(obj, id.name, dtime = "", extrude = FALSE,
   \item{end.icon}{destination icon name (\code{golfhole.png})}
   \item{LabelScale}{the default size of icons}
   \item{z.scale}{vertical exaggeration}
-  \item{spMetadata}{(optional) specify the metadata object}
+  \item{metadata}{(optional) specify the metadata object}
   \item{html.table}{optional description block (html) for each GPS point (vertices)}
 }
 \details{The dateTime is defined as yyyy-mm-ddThh:mm:sszzzzzz, where T is the separator between the date and the time, and the time zone is either Z (for UTC) or zzzzzz, which represents \\enc{±}{+-}hh:mm in relation to UTC. For more info on how Time Stamps work see \url{http://kml-samples.googlecode.com}. If the time is measured at block support, then \code{<TimeStamp><begin> </begin><end> </end></TimeStamp>} times will be inserted. Temporal support (\eqn{\Delta t}{dt}) is estimated using the \code{xts::periodicity} function (median time between observations). The begin time is then derived as \eqn{t_1 = t - .5\cdot \Delta t}{t1 = t - .5 d t}.

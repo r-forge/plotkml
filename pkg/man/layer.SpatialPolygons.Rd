@@ -6,7 +6,7 @@
 \usage{
 kml_layer.SpatialPolygons(obj, extrude = FALSE, tessellate = FALSE, outline = TRUE, 
    plot.labpt = FALSE, z.scale = 1, LabelScale = get("LabelScale", envir = plotKML.opts),
-   spMetadata = NULL, html.table = NULL, ...)
+   metadata = NULL, html.table = NULL, \dots)
 }
 \arguments{
   \item{obj}{object of class \code{"RasterBrick"} (a time series of images)}
@@ -16,7 +16,7 @@ kml_layer.SpatialPolygons(obj, extrude = FALSE, tessellate = FALSE, outline = TR
   \item{plot.labpt}{logical; specifies whether to add the label point (polygon centre)}
   \item{spMetadata}{(optional) specify the metadata object}
   \item{html.table}{optional description block (html) for each GPS point (vertices)}
-  \item{...}{additional style arguments (see \code{aesthetics})}
+  \item{\dots}{additional style arguments (see \code{aesthetics})}
   \item{labels}{variable to be used to attach labels to polygon centres}
   \item{colour}{variable to be used to color polygons}
   \item{alpha}{variable to be used to set transparency}

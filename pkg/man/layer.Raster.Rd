@@ -6,14 +6,14 @@
 \title{Exports a single or a stack of rasters to KML}
 \description{Writes rasters to PNG images (ground overlays). Works with \code{"RasterLayer"}, \code{"SpatialGrid"}, \code{"SpatialPixels"} and \code{"RasterStack"} class objects. Target attributes can be specified using aesthetics arguments (\code{"colour"}).}
 \usage{
-kml_layer.Raster(obj, spMetadata = FALSE, plot.legend = TRUE, ...
-  colour_scale = get("colour_scale_numeric", envir = plotKML.opts), ...)
+kml_layer.Raster(obj, metadata = FALSE, plot.legend = TRUE, \dots
+  colour_scale = get("colour_scale_numeric", envir = plotKML.opts), \dots)
 }
 \arguments{
   \item{obj}{object of class \code{"RasterBrick"} (a time series of images)}
-  \item{spMetadata}{(optional) specify the metadata object}
+  \item{metadata}{(optional) specify the metadata object}
   \item{plot.legend}{logical; specify whether a map legend should be generated automatically}
-  \item{...}{additional style arguments (see \code{\link{aesthetics}})}
+  \item{\dots}{additional style arguments (see \code{\link{aesthetics}})}
   \item{colour_scale}{color palette; by default using the color scale for numeric variables}
   \item{alpha}{variable to be used to set transparency}
   \item{altitude}{if not a 3D object; variable to be used to specify altitude above ground}

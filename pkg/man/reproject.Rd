@@ -7,7 +7,7 @@
 \alias{reproject.RasterBrick}
 \title{Reprojects data to a given coordinate reference system}
 \description{This wrapper function reprojects any vector or raster spatial data to some referent coordinate system (geographic coordinates on the World Geodetic System of 1984 / WGS84 datum).}
-\usage{reproject(obj, CRS = get("ref_CRS", envir = plotKML.opts), ..., program = "raster")}
+\usage{reproject(obj, CRS = get("ref_CRS", envir = plotKML.opts), \dots, program = "raster")}
 \arguments{
   \item{obj}{Spatial* or Raster* object}
   \item{CRS}{proj4string; see also \code{rgdal::CRS-class}}
