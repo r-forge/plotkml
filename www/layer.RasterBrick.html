@@ -18,7 +18,7 @@
 <pre>
 kml_layer.RasterBrick(obj, dtime = "", extrude = FALSE, tz = "GMT", z.lim = c("min", "max"),
    colour_scale = get("colour_scale_numeric", envir = plotKML.opts),
-   spMetadata = NULL, html.table = NULL,  ...)
+   metadata = NULL, html.table = NULL,  ...)
 </pre>
 
 
@@ -43,12 +43,12 @@ upper and lower limits (unique for all maps in the time series); by default &nda
 <tr valign="top"><td><code>colour_scale</code></td>
 <td>
 color palette; by default using the color scale for numeric variables</td></tr>
-<tr valign="top"><td><code>spMetadata</code></td>
+<tr valign="top"><td><code>metadata</code></td>
 <td>
 (optional) specify the metadata object</td></tr>
 <tr valign="top"><td><code>html.table</code></td>
 <td>
-optional description block (html) for each raster layer</td></tr>
+(optional) description block (html) for each raster layer</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 additional style arguments (see <code>aesthetics</code>)</td></tr>

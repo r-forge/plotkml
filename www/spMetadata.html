@@ -1,20 +1,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Functions for reading, generating and saving Spatial...</title>
+<html><head><title>R: Functions for reading, organizing and exporting Spatial...</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="../../R.css">
 </head><body>
 
 <table width="100%" summary="page for spMetadata {plotKML}"><tr><td>spMetadata {plotKML}</td><td align="right">R Documentation</td></tr></table>
 
-<h2>Functions for reading, generating and saving Spatial metadata.</h2>
+<h2>Functions for reading, organizing and exporting Spatial metadata.</h2>
 
 <h3>Description</h3>
 
 <p>
 The <code>read.metadata</code> function can be used to read the formatted metadata (<code>.xml</code>), prepared following to the <a href="http://www.fgdc.gov/metadata/csdgm/">Federal Geographic Data Committee (FGDC) Content Standard for Digital Geospatial Metadata</a>, and convert them to a more readble format (dataframe).<br>
-The <code>spMetadata</code> function will try to generate missing metadata (bounding box, location info, session info, metadata creator info) for any <code>Spatial*</code> object (from the sp package) or Raster* object (from the raster package). The resulting object of class <code>"SpatialMetadata"</code> can be used e.g. to generate a Layer description documents, that can be parsed to KML <code>&lt;description&gt;</code> by using the <code>kml_metadata</code> function.<br>
-The <code>metadata2SLD</code> function will generate a Styled Layer Description (<B>SLD</B>) file, that can be attached to a spatial layer contributed to <a href="http://docs.geoserver.org/stable/en/user/styling/sld-introduction.html">GeoServer</a>. This basically writes the <code>"sp.pallete"</code> object (legend entries, titles and colors) to an external file.<br>
-To prepare an original metadata xml file for the layer of interest, consider first downloading the <a href="http://plotkml.r-forge.r-project.org/FGDC.xml">FGDC.xml</a> template file, then enter the missing fields using e.g. the <B>Tkme</B>: Another editor for formal metadata, by Peter N. Schweitzer (U.S. Geological Survey).
+The <code>spMetadata</code> function will try to generate missing metadata (bounding box, location info, session info, metadata creator info etc) for any <code>Spatial*</code> object (from the sp package) or Raster* object (from the raster package). The resulting object of class <code>"SpatialMetadata"</code> can be used e.g. to generate a Layer description documents, that can be parsed to KML <code>&lt;description&gt;</code> tag (see <code><a href="spMetadata.html">kml_metadata</a></code> function).<br>
+The <code>metadata2SLD</code> function will generate a Styled Layer Description (<B>SLD</B>) file, that can be attached to a spatial layer contributed to <a href="http://docs.geoserver.org/stable/en/user/styling/sld-introduction.html">GeoServer</a>. This basically writes the <code>"sp.pallete"</code> object (legend entries, titles and colors) to an external file.
 </p>
 
 
@@ -32,61 +31,60 @@ To prepare an original metadata xml file for the layer of interest, consider fir
 <table summary="R argblock">
 <tr valign="top"><td><code>obj</code></td>
 <td>
-Some <code>"Spatial"</code> class object with <code>"data"</code> slot.</td></tr>
+some <code>"Spatial"</code> class object with <code>"data"</code> slot</td></tr>
 <tr valign="top"><td><code>xml.file</code></td>
 <td>
-Optional metadata file in the FGDC format. Function automatically looks for a metadata file with the same name as the object name.</td></tr>
+(optional) metadata file in the FGDC format</td></tr>
 <tr valign="top"><td><code>Citation_title</code></td>
 <td>
-One sentence title of the object.</td></tr>
+one-sentence title of the object</td></tr>
 <tr valign="top"><td><code>Target_variable</code></td>
 <td>
-Target variable i.e. column name in the data slot.</td></tr>
+target variable i.e. column name in the data slot</td></tr>
 <tr valign="top"><td><code>Attribute_Measurement_Resolution</code></td>
 <td>
 Numeric resolution (typically estimated as half the measurement precision).</td></tr>
 <tr valign="top"><td><code>Attribute_Units_of_Measure</code></td>
 <td>
-Physical units.</td></tr>
+physical units of the target variable</td></tr>
 <tr valign="top"><td><code>Enduser_license_URL</code></td>
 <td>
-End-user license specification (URL).</td></tr>
+end-user license specification (URL)</td></tr>
 <tr valign="top"><td><code>generate.missing</code></td>
 <td>
-(Logical) turns on the functionality for generating metadata automatically.</td></tr>
+logical; species whether the program should try to generate missing metadata automatically</td></tr>
 <tr valign="top"><td><code>GoogleGeocode</code></td>
 <td>
-(Logical) should R try to estimate Indirect Spatial Reference using Google maps API?</td></tr>
+logical; specifies whether R should try to estimate Indirect Spatial Reference using Google maps API</td></tr>
 <tr valign="top"><td><code>signif.digit</code></td>
 <td>
-Significant digits to round the numbers in the palette slot.</td></tr>
+integer; a number of significant digits to round the numbers in the palette slot</td></tr>
 <tr valign="top"><td><code>colour_scale</code></td>
 <td>
-Collor scheme.</td></tr>
+collor scheme used to visualize this data</td></tr>
 <tr valign="top"><td><code>bounds</code></td>
 <td>
-Upper and lower limit bounds for the target variable.</td></tr>
+numeric vector; upper and lower limit bounds for the target variable</td></tr>
 <tr valign="top"><td><code>legend_names</code></td>
 <td>
-(Optional) manually inserted legend names.</td></tr>
+(optional) manually inserted legend names</td></tr>
 <tr valign="top"><td><code>icons</code></td>
 <td>
-(Optional) manually inserted icon names for legend names.</td></tr>
+(optional) manually inserted icon names for legend names</td></tr>
 <tr valign="top"><td><code>validate.schema</code></td>
 <td>
-(Logical) should R try to validate your xml file?</td></tr>  
+logical; specieis whether R should try to validate your xml file</td></tr>  
 <tr valign="top"><td><code>...</code></td>
 <td>
-Arguments interpreted in the context of <code>kml()</code> (see Details below)</td></tr>
+arguments interpreted in the context of <code>kml()</code> (see details below)</td></tr>
 </table>
 
 
 <h3>Details</h3>
 
 <p>
-<code>spMetadata</code> tries to locate a metadata file in the working directory, if no <code>.xml</code> file exists, it will load the template xml file available in the system folder (<code>system.file("FGDC.xml", package="plotKML")</code>). The <code>FGDC.xml</code> file contains typical metadata entries with description and examples. For practical purposes, one metadata object can typically be associated with only one variable i.e. one column in the <code>"data"</code> slot (specified via <code>Target_variable</code>). <br>
-By default, plotKML uses the Creative Commons license, but this can be adjusted (see examples bellow).<br>
-The <code>spMetadata</code> function tries to generate the most usefull information, so that a user can easily find out about the input data and procedures followed to generate the visualization (KML). Typical metadata entries include e.g.:
+<code>spMetadata</code> tries to locate a metadata file in the working directory (it looks for a metadata file with the same name as the object name). If no <code>.xml</code> file exists, it will load the template xml file available in the system folder (<code>system.file("FGDC.xml", package="plotKML")</code>). The <code>FGDC.xml</code> file contains typical metadata entries with description and examples. For practical purposes, one metadata object in plotKML can be associated with only one variable i.e. one column in the <code>"data"</code> slot (specified via <code>Target_variable</code>). To prepare a metadata xml file for the layer of interest, consider using the <a href="http://plotkml.r-forge.r-project.org/FGDC.xml">FGDC.xml</a> template file; to enter the missing fields use the <a href="http://plotkml.r-forge.r-project.org/FGDC.xml">Tkme</a> program: Another editor for formal metadata, by Peter N. Schweitzer (U.S. Geological Survey).<br>
+The <code>spMetadata</code> function tries to automatically generate the most usefull information, so that a user can easily find out about the input data and procedures followed to generate the visualization (KML). Typical metadata entries include e.g.:
 
 <ul>
 <li> <code>metadata[["idinfo"]][["native"]]</code> - Session info e.g.: Produced using R version 2.12.2 (2011-02-25) running on Windows 7 x64.
@@ -96,7 +94,7 @@ The <code>spMetadata</code> function tries to generate the most usefull informat
 <li><code>metadata[["idinfo"]][["spdom"]][["bounding"]]</code> - Bounding box in the WGS84 geographical coordinates estimated by reprojecting the original bounding box.
 </ul>
 
-The <code>kml_metadata</code> function will, by default, print out only a number of selected metadata fields: <code>"Citation_title"</code>, <code>"Abstract"</code>, <code>"Object_Count"</code>, <code>"Beginning_Date"</code>, <code>"Ending_Date"</code>, <code>"Data_Order_URL"</code>, <code>"Other_Citation_Details"</code>, <code>"Citation_URL"</code>, <code>"Data_Set_Credit"</code>, <code>"Data_Distributing_Organization"</code>, <code>"Format_Information_Content"</code>, <code>"Native_Data_Set_Environment"</code>. See <code>data(mdnames)</code> for a complete list of metadata fields.
+The <code>kml_metadata</code> function will, by default, print out only a number of selected metadata fields: <code>"Citation_title"</code>, <code>"Abstract"</code>, <code>"Object_Count"</code>, <code>"Beginning_Date"</code>, <code>"Ending_Date"</code>, <code>"Data_Order_URL"</code>, <code>"Other_Citation_Details"</code>, <code>"Citation_URL"</code>, <code>"Data_Set_Credit"</code>, <code>"Data_Distributing_Organization"</code>, <code>"Format_Information_Content"</code>, <code>"Native_Data_Set_Environment"</code>. See <code>data(mdnames)</code> for a complete list of metadata fields. By default, plotKML uses the Creative Commons license, but this can be adjusted (see <code>Enduser_license_URL</code> argument above).
 </p>
 
 
@@ -112,10 +110,10 @@ A metadata slot of class "XMLInternalDocument".</td></tr>
 Corresponding metadata column names.</td></tr>
 <tr valign="top"><td><code>palette</code></td>
 <td>
-Formal class "sp.palette" - contain legend names and colors.</td></tr>
+Formal class "sp.palette" &mdash; contain legend names and colors.</td></tr>
 <tr valign="top"><td><code>sp</code></td>
 <td>
-Formal class "Spatial" - bounding box and projection system of the input object.</td></tr>
+Formal class "Spatial" &mdash; bounding box and projection system of the input object.</td></tr>
 </table>
 </p>
 
@@ -130,7 +128,7 @@ Formal class "Spatial" - bounding box and projection system of the input object.
 <p>
 
 <ul>
-<li> The Federal Geographic Data Committee, (2006) FGDC Don't Duck Metadata - A short reference guide for writing quality metadata. Vers. 1, <a href="http://www.fgdc.gov/metadata/documents/MetadataQuickGuide.pdf">http://www.fgdc.gov/metadata/documents/MetadataQuickGuide.pdf</a>
+<li> The Federal Geographic Data Committee, (2006) FGDC Don't Duck Metadata &mdash; A short reference guide for writing quality metadata. Vers. 1, <a href="http://www.fgdc.gov/metadata/documents/MetadataQuickGuide.pdf">http://www.fgdc.gov/metadata/documents/MetadataQuickGuide.pdf</a>
 </li>
 <li>Content Standard for Digital Geospatial Metadata (<a href="http://www.fgdc.gov/metadata/csdgm/">http://www.fgdc.gov/metadata/csdgm/</a>)
 </li>
@@ -153,12 +151,9 @@ Formal class "Spatial" - bounding box and projection system of the input object.
 
 <pre>
 ## Not run: 
-# Read metadata from the system file and convert to a more redable format:
+# Read metadata from the system file (convert to a more redable data.frame format):
 x &lt;- read.metadata(system.file("FGDC.xml", package="plotKML"))
 str(x)
-
-## End(Not run)
-## Not run: 
 # Generate missing metadata
 data(eberg)
 coordinates(eberg) &lt;- ~X+Y
@@ -167,12 +162,14 @@ proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 eberg.md &lt;- spMetadata(eberg, Target_variable="SAND")
 # With localy prepared metadata file:
 eberg.md &lt;- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"), Target_variable="SAND")
-# Print the results of validation (it needs internet connection):
+# Print the results of validation (it needs to be able to connect to a URL with schema):
 eberg.md &lt;- spMetadata(eberg, Target_variable="SAND", validate.schema = TRUE)
-# Write the metadata as XML:
+# Write the metadata to a file:
 saveXML(metadata(eberg.md), "eberg_SAND.xml")
 # Export to SLD format:
 metadata2SLD(eberg.md, "eberg.sld")
+# plot the layer with the metadata:
+kml(eberg, colour = SAND, metadata = eberg.md)
 ## End(Not run)
 </pre>
 
