@@ -16,7 +16,7 @@
 <h3>Usage</h3>
 
 <pre>
-kml_layer.SpatialLines(obj, extrude = FALSE, z.scale = 1, spMetadata = NULL, 
+kml_layer.SpatialLines(obj, extrude = FALSE, z.scale = 1, metadata = NULL, 
   html.table = NULL, ...)
 </pre>
 
@@ -26,8 +26,14 @@ kml_layer.SpatialLines(obj, extrude = FALSE, z.scale = 1, spMetadata = NULL,
 <table summary="R argblock">
 <tr valign="top"><td><code>obj</code></td>
 <td>
-object of class <code>"RasterBrick"</code> (a time series of images)</td></tr>
-<tr valign="top"><td><code>spMetadata</code></td>
+object of class <code>"SpatialLines*"</code></td></tr>
+<tr valign="top"><td><code>extrude</code></td>
+<td>
+logical; specifies whether to connect the LinearRing to the ground</td></tr>
+<tr valign="top"><td><code>z.scale</code></td>
+<td>
+vertical exaggeration</td></tr>  
+<tr valign="top"><td><code>metadata</code></td>
 <td>
 (optional) specify the metadata object</td></tr>
 <tr valign="top"><td><code>html.table</code></td>
