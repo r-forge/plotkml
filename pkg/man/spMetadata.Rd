@@ -19,7 +19,7 @@ The \code{metadata2SLD} function will generate a Styled Layer Description (\bold
   \item{xml.file}{(optional) metadata file in the FGDC format}
   \item{Citation_title}{one-sentence title of the object}
   \item{Target_variable}{target variable i.e. column name in the data slot}
-  \item{Attribute_Measurement_Resolution}{Numeric resolution (typically estimated as half the measurement precision).}
+  \item{Attribute_Measurement_Resolution}{numeric resolution (typically estimated as half the measurement precision).}
   \item{Attribute_Units_of_Measure}{physical units of the target variable}
   \item{Enduser_license_URL}{end-user license specification (URL)}
   \item{generate.missing}{logical; species whether the program should try to generate missing metadata automatically}
@@ -33,10 +33,10 @@ The \code{metadata2SLD} function will generate a Styled Layer Description (\bold
 \item{\dots}{arguments interpreted in the context of \code{kml()} (see details below)}
 }
 \value{
-\item{xml}{A metadata slot of class "XMLInternalDocument".}
-\item{field.names}{Corresponding metadata column names.}
-\item{palette}{Formal class "sp.palette" --- contain legend names and colors.}
-\item{sp}{Formal class "Spatial" --- bounding box and projection system of the input object.}
+\item{xml}{a metadata slot of class "XMLInternalDocument"}
+\item{field.names}{corresponding metadata column names}
+\item{palette}{formal class "sp.palette" --- contain legend names and colors}
+\item{sp}{formal class "Spatial" --- bounding box and projection system of the input object}
 }
 \details{
 \code{spMetadata} tries to locate a metadata file in the working directory (it looks for a metadata file with the same name as the object name). If no \code{.xml} file exists, it will load the template xml file available in the system folder (\code{system.file("FGDC.xml", package="plotKML")}). The \code{FGDC.xml} file contains typical metadata entries with description and examples. For practical purposes, one metadata object in plotKML can be associated with only one variable i.e. one column in the \code{"data"} slot (specified via \code{Target_variable}). To prepare a metadata xml file for the layer of interest, consider using the \href{http://plotkml.r-forge.r-project.org/FGDC.xml}{FGDC.xml} template file; to enter the missing fields use the \href{http://plotkml.r-forge.r-project.org/FGDC.xml}{Tkme} program: Another editor for formal metadata, by Peter N. Schweitzer (U.S. Geological Survey).\cr
@@ -46,7 +46,7 @@ The \code{spMetadata} function tries to automatically generate the most usefull 
 \item \code{metadata[["spdoinfo"]][["indspref"]]} - Indirect spatial reference estimated using the \href{http://code.google.com/apis/maps/documentation/webservices/}{Google Maps API Web Services}.
 \item \code{metadata[["idinfo"]][["spdom"]][["bounding"]]} - Bounding box in the WGS84 geographical coordinates estimated by reprojecting the original bounding box.
 }
-The \code{kml_metadata} function will, by default, print out only a number of selected metadata fields: \code{"Citation_title"}, \code{"Abstract"}, \code{"Object_Count"}, \code{"Beginning_Date"}, \code{"Ending_Date"}, \code{"Data_Order_URL"}, \code{"Other_Citation_Details"}, \code{"Citation_URL"}, \code{"Data_Set_Credit"}, \code{"Data_Distributing_Organization"}, \code{"Format_Information_Content"}, \code{"Native_Data_Set_Environment"}. See \code{data(mdnames)} for a complete list of metadata fields. By default, plotKML uses the Creative Commons license, but this can be adjusted (see \code{Enduser_license_URL} argument above).
+The \code{kml_metadata} function, by default, prints out only a number of selected metadata fields: \code{"Citation_title"}, \code{"Abstract"}, \code{"Object_Count"}, \code{"Beginning_Date"}, \code{"Ending_Date"}, \code{"Data_Order_URL"}, \code{"Other_Citation_Details"}, \code{"Citation_URL"}, \code{"Data_Set_Credit"}, \code{"Data_Distributing_Organization"}, \code{"Format_Information_Content"}, \code{"Native_Data_Set_Environment"}. See \code{data(mdnames)} for a complete list of metadata fields. By default, plotKML uses the Creative Commons license, but this can be adjusted by setting the \code{Enduser_license_URL} argument above.
 }
 \references{
 \itemize{
