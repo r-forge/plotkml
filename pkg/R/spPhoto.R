@@ -6,7 +6,7 @@
 
 
 ## Generate SpatialPhotoOverlay object:
-spPhoto.Point <- function(
+spPhoto <- function(
    filename,
    obj,
    pixmap,
@@ -26,7 +26,7 @@ spPhoto.Point <- function(
    topFov = 30,
    near = 50, # in meters;
    shape = c("rectangle", "cylinder", "sphere")[1],
-   range = .01, # in DD;
+   range = 1000, # in DD;
    tilt = 90,
    heading = 0,
    roll = 0,
@@ -57,6 +57,11 @@ spPhoto.Point <- function(
     filename = ""
   }
 
+  # if missing the coordinate system assume latlon:
+  if(!missing(obj)){
+  if(is.na(proj4string(obj))) { proj4string(obj) <- CRS(get("ref_CRS", envir = plotKML.opts)) }
+  }
+
   # if missing EXIF data:
   if(is.null(exif.info)){
     exif.info <- as.list(data.frame(DateTime, ExposureTime, FocalLength, Flash))
@@ -73,17 +78,29 @@ spPhoto.Point <- function(
       }
     obj <- data.frame(lon=as.numeric(exif.info$GPSLongitude), lat=as.numeric(exif.info$GPSLatitude), alt=as.numeric(exif.info$GPSAltitude))
     coordinates(obj) <- ~lon+lat+alt
-    proj4string(obj) <- CRS("+proj=latlon +datum=WGS84")
+    proj4string(obj) <- CRS(get("ref_CRS", envir = plotKML.opts))
     
     # correct the ViewVolume:
-    asp = as.numeric(exif.info$ImageWidth) / as.numeric(exif.info$ImageLength)
+    exif.info$ImageWidth <- as.numeric(exif.info$ImageWidth)
+    exif.info$ImageHeight <- as.numeric(exif.info$ImageHeight)
+    asp = exif.info$ImageWidth / exif.info$ImageHeight
     leftFov = leftFov * asp
     rightFov = rightFov * asp
+    
+    # correct the DateTime format:
+    exif.info$DateTime <- format(as.POSIXct(exif.info$DateTime, format="%Y:%m:%d %H:%M:%S", tz="GMT"), "%Y-%m-%dT%H:%M:%SZ")
     
     }
     else {
     stop("GPS Longitude/Latitude tags not available from the exif.info object.")
     }  
+  }
+  
+  # Get the heading (if available):
+  if(any(names(exif.info) %in% "GPSImgDirection")){
+      x <- as.numeric(strsplit(exif.info$GPSImgDirection, "/")[[1]])
+      try(exif.info$GPSImgDirection <- ifelse(length(x)>1, x[1]/x[2], x))
+      heading = exif.info$GPSImgDirection
   }
   
   # Photo geometry:
@@ -94,11 +111,10 @@ spPhoto.Point <- function(
   return(spPh)    
 }
 
-setMethod("spPhoto", "SpatialPoints", spPhoto.Point)
 
 
 ## Get EXIF info from Wikimedia:
-getWikiMedia.ImageInfo <- function(imagename, APIsource = "http://commons.wikimedia.org/w/api.php", module = "imageinfo", details = c("url", "metadata", "extlinks"), testURL = TRUE){ 
+getWikiMedia.ImageInfo <- function(imagename, APIsource = "http://commons.wikimedia.org/w/api.php", module = "imageinfo", details = c("url", "metadata", "size", "extlinks"), testURL = TRUE){ 
   
   if(testURL == TRUE){
     require(RCurl)
@@ -112,7 +128,7 @@ getWikiMedia.ImageInfo <- function(imagename, APIsource = "http://commons.wikime
   # Get the image URL:
   xml.lst <- NULL
   for(j in 1:length(details)){
-    if(details[j]=="url"|details[j]=="metadata"){
+    if(details[j]=="url"|details[j]=="metadata"|details[j]=="size"){
     xml.api = xmlParse(readLines(paste(APIsource, "?action=query&titles=File:", imagename, "&prop=", module, "&iiprop=", details[j], "&format=xml", sep="")))
     x <- xmlToList(xml.api[["//ii"]], addAttributes=TRUE)
     if(names(x)=="metadata"){
@@ -147,7 +163,10 @@ getWikiMedia.ImageInfo <- function(imagename, APIsource = "http://commons.wikime
   }
 
   xml.lst[["metadata"]]$GPSLongitude <- Longitude
-  xml.lst[["metadata"]]$GPSLatitude <- Latitude    
+  xml.lst[["metadata"]]$GPSLatitude <- Latitude
+  # rewrite metadata with the Wikimedia specs:
+  xml.lst[["metadata"]]$ImageWidth <- xml.lst[["size"]]$width
+  xml.lst[["metadata"]]$ImageHeight <- xml.lst[["size"]]$height    
   
   return(xml.lst)
 }  
