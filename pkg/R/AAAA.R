@@ -90,10 +90,6 @@ if (!isGeneric("spMetadata")){
   setGeneric("spMetadata", function(obj, ...){standardGeneric("spMetadata")})
 }
 
-if (!isGeneric("spPhoto")){
-  setGeneric("spPhoto", function(obj, ...){standardGeneric("spPhoto")})
-}
-
 if (!isGeneric("field.names")){
   setGeneric("field.names", function(obj){standardGeneric("field.names")})
 }

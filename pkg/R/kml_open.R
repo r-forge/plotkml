@@ -43,7 +43,9 @@ kml_close <- function(file.name, overwrite = FALSE, ...){
    
   # get our invisible file connection from custom evnrionment
   kml.out <- get("kml.out", env=plotKML.fileIO)
-  saveXML(kml.out, set.file.extension(file.name, ".kml"))
+  con = textConnection(set.file.extension(file.name, ".kml"), "w")
+  saveXML(kml.out, con)
   message(paste("Closing", set.file.extension(file.name, ".kml")))
+  close(con)
   
 }

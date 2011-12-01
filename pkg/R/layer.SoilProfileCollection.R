@@ -12,7 +12,7 @@ kml_layer.SoilProfileCollection <- function(
   var.scale,
   site_names = paste(obj@site[,obj@idcol]),
   method = c("soil_block", "depth_function")[1],
-  block.size = 3/3600,  # 3-arcsecs or 100 m 
+  block.size = 100,  # in m 
   color.name,
   z.scale = 1,
   x.min = block.size/100,
@@ -36,6 +36,7 @@ kml_layer.SoilProfileCollection <- function(
 {
 
   require(aqp)
+  require(fossil)
   # TH: this function at the moment works only with numeric variables:
   if(method=="depth_functions"&!is.numeric(obj@horizons[,var.name])) {
   stop('"var.name" argument works only with numeric variables.')
@@ -52,6 +53,10 @@ kml_layer.SoilProfileCollection <- function(
   
   LON <- as.vector(coordinates(obj@sp)[,1])
   LAT <- as.vector(coordinates(obj@sp)[,2])
+  # convert meters to decimal degrees:
+  new.ll <- new.lat.long(long = LON, lat = LAT, bearing = 90, distance = block.size/1000)
+  block.size = new.ll[2] - LON
+  x.min = block.size/100
 
   if(missing(var.scale)) {   # scaling factor in x direction (estimate automatically)
      var.range <- range(obj@horizons[,var.name], na.rm=TRUE)
@@ -119,7 +124,7 @@ for(i.site in 1:length(obj@site[,obj@idcol])) {
   # horizon centre:
   Z <- max.depth - (htop+(hbot-htop)/2)
     
-    if(method=="soil_block"){
+    if(method=="soil_block"){   
     X <- LON[i.site]
     Y <- LAT[i.site]+((block.size/2)*sqrt(2)+x.min)
     }
