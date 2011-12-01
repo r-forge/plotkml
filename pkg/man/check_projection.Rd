@@ -13,7 +13,9 @@
 A cartographic projection is KML compatible if: (a) geographical coordinates are used, and (b) that relate to the WGS84 ellispoid (\code{"+proj=longlat +datum=WGS84"}). You can also set your own local referent projection system by specifiying \code{plotKML.env(ref_CRS = ...)}.
 }
 \references{
-WGS84 (\url{http://spatialreference.org/ref/epsg/4326/})
+\itemize{
+\item WGS84 (\url{http://spatialreference.org/ref/epsg/4326/})
+}
 }
 \author{Pierre Roudier (\email{pierre.roudier@gmail.com}), Tomislav Hengl (\email{tom.hengl@wur.nl}), and Dylan Beaudette (\email{debeaudette@ucdavis.edu)}}
 \section{Warning}{\code{obj} needs to have a proper proj4 string (CRS), otherwise \code{check_projection} will not run.}
