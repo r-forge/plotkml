@@ -2,7 +2,7 @@
 \title{Whitening legend (PNG)}
 \description{Produces a PNG file that can be used in KML plots (visualization of uncertainty).}
 \usage{
-kml_legend.whitening(legend.res = 0.01, width=120, height=300, pointsize = 14, x.lim, e.lim, leg.asp = height/width, legend.file = "whitening_legend.png", matte="")
+kml_legend.whitening(legend.res = 0.01, width=120, height = 300, pointsize = 14, x.lim, e.lim, leg.asp = height/width, legend.file = "whitening_legend.png", matte = FALSE)
 }
 \arguments{
   \item{legend.res}{resolution on a 0-1 scale}
@@ -23,7 +23,7 @@ kml_legend.whitening(legend.res = 0.01, width=120, height=300, pointsize = 14, x
 \item Hengl, T., (2003) \href{http://www.geocomputation.org/2003/Papers/Hengl_Paper.pdf}{Visualisation of uncertainty using the HSI colour model: computations with colours}. 7th International Conference on GeoComputation (CD-ROM), p. 8.
 }
 }
-\author{ Tomislav Hengl (tom.hengl@wur.nl) }
+\author{ Tomislav Hengl }
 \seealso{ \code{\link{whitening}}
 }
 \examples{

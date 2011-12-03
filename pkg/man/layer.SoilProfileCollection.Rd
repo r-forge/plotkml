@@ -1,8 +1,8 @@
 \name{kml_layer.SoilProfileCollection}
 \alias{kml_layer.SoilProfileCollection}
 \alias{SoilProfileCollection}
-\title{Exports objects of type SoilProfileCollection to KML}
-\description{Writes object of type SoilProfileCollection (a number of soil profiles with site and horizon data) to KML. Several attributes such as horizontal and vertical exaggeration can be passed via arguments. }
+\title{Export a list of soil profiles to KML}
+\description{Writes object of type \code{"SoilProfileCollection"} (a number of soil profiles with site and horizon data) to KML. Several attributes such as horizontal and vertical exaggeration can be passed via arguments. }
 \usage{
 kml_layer.SoilProfileCollection(obj, var.name, site_names = obj@site[,1],
   z.scale = 1, x.min = 0, x.scale, max.depth = 300, plot.points = TRUE, 
@@ -28,8 +28,13 @@ kml_layer.SoilProfileCollection(obj, var.name, site_names = obj@site[,1],
   \item{\dots}{additional style arguments}
 }
 \details{Horizon depths are typically expressed in cm, hence the default exaggeration factor (\code{z.scale}) is 10. It is highly recommended to turn off the terrain layer in Google Earth, otherwise Google Earth will deform the plots in areas of high relief.}
-\author{Tomislav Hengl (\email{tom.hengl@wur.nl}), Dylan Beaudette (\email{debeaudette@ucdavis.edu})}
-\seealso{ \code{\link{kml}}, \code{\link{kml_open}} }
+\references{
+\itemize{
+\item Algorithms for Quantiative Pedology (\url{http://CRAN.r-project.org/package=aqp})
+}
+}
+\author{Tomislav Hengl, Dylan Beaudette and Pierre Roudier}
+\seealso{ \code{\link{kml_layer.SpatialPhotoOverlay}} }
 \examples{
 install.packages("aqp", repos="http://R-Forge.R-project.org")
 library(aqp)

@@ -22,7 +22,7 @@ data(eberg_grid)
 kml_open("eberg_grid_DEM.kml")
 kml_layer(eberg_grid, colour=DEM)
 kml_close("eberg_grid_DEM.kml")
-# result:
+# print the result:
 xmlRoot(xmlTreeParse("eberg_grid_DEM.kml"))[["Document"]]}
 \keyword{ ~KML}
 

@@ -1,15 +1,15 @@
 \name{spPhoto}
 \alias{spPhoto}
 \alias{SpatialPhotoOverlay}
-\title{Generates an object of class \code{"SpatialPhotoOverlay"}.}
+\title{Generate an object of class \code{"SpatialPhotoOverlay"}}
 \description{
-\code{spPhoto} function can be used to wrap pixel map (image), \href{http://en.wikipedia.org/wiki/Exchangeable_image_file_format}{EXIF} (Exchangeable Image File format) data, location information (standing point, \code{"SpatialPoints"}), and \code{PhotoOverlay} (geometry) parameters to create an object of class \code{"SpatialPhotoOverlay"}. This object can then be easily parsed to KML and visualized in Google Earth.
+\code{spPhoto} function can be used to wrap pixel map (\code{pixmapRGB}), \href{http://en.wikipedia.org/wiki/Exchangeable_image_file_format}{EXIF} (Exchangeable Image File format) data, location information (standing point, \code{"SpatialPoints"}), and \code{PhotoOverlay} (geometry) parameters to create an object of class \code{"SpatialPhotoOverlay"}. This object can then be parsed to KML and visualized using Google Earth.
 }
 \usage{spPhoto(filename, obj, pixmap, exif.info = NULL, ImageWidth = 0, ImageHeight = 0,
    bands = rep(rep(1, ImageHeight*ImageWidth), 3), bbox = c(0,0,3/36000*ImageWidth,3/36000*ImageHeight),
    DateTime = "", ExposureTime = "", FocalLength = "50 mm", Flash = "No Flash", rotation = 0, 
    leftFov = -30, rightFov = 30, bottomFov = -30, topFov = 30, near = 50,
-   shape = c("rectangle", "cylinder", "sphere")[1], range = .01, tilt = 90, heading = 0, roll = 0,
+   shape = c("rectangle", "cylinder", "sphere")[1], range = 1000, tilt = 90, heading = 0, roll = 0,
    test.filename = TRUE)
 }
 \arguments{
@@ -38,11 +38,11 @@
   \item{roll}{(optional) rotation about the y axis, in degrees (0 -- 180)}
   \item{test.filename}{logical; species whether a test should be first performed that the file name really exists (recommended)}
 }
-\details{The most effective way to import a field photograph to \code{SpatialPhotoOverlay} for parsing to KML is to: (\strong{a}) use the \href{http://www.sno.phy.queensu.ca/~phil/exiftool/}{EXIF tool} (courtesy of Phil Harvey) to add any important tags into the image file, (\strong{b}) once you've added all important tags, you can upload your image to a public portal such as the \href{http://commons.wikimedia.org/wiki/Special:UploadWizard}{Wikimedia Commons}, (\strong{c}) enter the missing information if necessary and add a description. Once the image preparation is completed (i.e. outsourced to Wikimedia), you only need to record the image unique name and then read all metadata from the Wikimedia server following the examples below.\cr 
+\details{The most effective way to import a field photograph to \code{SpatialPhotoOverlay} for parsing to KML is to: (\strong{a}) use the \href{http://www.sno.phy.queensu.ca/~phil/exiftool/}{EXIF tool} (courtesy of Phil Harvey) to add any important tags in the image file, (\strong{b}) once you've added all important tags, you can upload your image to a public portal such as the \href{http://commons.wikimedia.org/wiki/Special:UploadWizard}{Wikimedia Commons}, (\strong{c}) enter the missing information if necessary and add an image description. Once the image is on the server, you only need to record its unique name and then read all metadata from the Wikimedia server following the examples below.\cr 
 You can also consider importing images to R by using the \code{pixmap} package, and reading the technical information via e.g. the \href{http://www.omegahat.org/Rexif/}{\code{Rexif}} package. If the image is taken using a GPS enabled camera, by getting the EXIF metadata you can generate the complete \code{SpatialPhotoOverlay} object with minimum user interaction. Otherwise, you need to at least specify: creation date, file name, and location of the focal point of the camera (by creating a \code{"SpatialPoints"} object).
 }
 \note{The \code{spPhoto} function will try to automatically fix the aspect ratio of the \code{ViewVolume} settings (\code{leftFov}, \code{rightFov}, \code{bottomFov}, \code{topFov}), and based on the original aspect ratio as specified in the EXIF data. This might not work for all images, in which case you will have to manually adjust those parameters.\cr
-Dimension of \code{3/36000*ImageWidth} in decimal degrees is about 10 m in nature (3-arc seconds is about 100 m). 
+Dimension of \code{3/36000*ImageWidth} in decimal degrees is about 10 m in nature (3-arc seconds is about 100 m, depending on the latitude). 
 }
 \references{
 \itemize{
@@ -50,8 +50,8 @@ Dimension of \code{3/36000*ImageWidth} in decimal degrees is about 10 m in natur
 \item Wikimedia API (\url{http://www.mediawiki.org/wiki/API})
 }
 }
-\author{Tomislav Hengl (\email{tom.hengl@wur.nl})}
-\seealso{ \code{\link{getWikiMedia.ImageInfo}}, \code{pixmap::pixmapRGB}, \code{\link{kml_layer}}}
+\author{Tomislav Hengl and Dylan Beaudette}
+\seealso{ \code{\link{getWikiMedia.ImageInfo}}, \code{pixmap::pixmapRGB}, \code{\link{spMetadata}}}
 \examples{
 \dontrun{
 ## Two examples with images on Wikimedia Commons
@@ -62,7 +62,7 @@ x1 <- getWikiMedia.ImageInfo(imagename)
 # Create a SpatialPhotoOverlay:
 sm <- spPhoto(filename = x1$url$url, exif.info = x1$metadata)
 # Plot it in Google Earth
-kml(sm, method="monolith")
+kml(sm, method="monolith", kmz=TRUE)
 # (b) PhotoOverlay (geotagged photo):
 imagename = "Africa_Museum_Nijmegen.jpg"
 x2 <- getWikiMedia.ImageInfo(imagename)
