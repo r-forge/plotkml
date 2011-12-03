@@ -1,21 +1,16 @@
 \name{reproject}
 \alias{reproject}
-\alias{reproject.SpatialPoints}
-\alias{reproject.SpatialGrid}
-\alias{reproject.RasterLayer}
-\alias{reproject.RasterStack}
-\alias{reproject.RasterBrick}
 \title{Reprojects data to a given coordinate reference system}
-\description{This wrapper function reprojects any vector or raster spatial data to some referent coordinate system (geographic coordinates on the World Geodetic System of 1984 / WGS84 datum).}
+\description{This wrapper function reprojects any vector or raster spatial data to some referent coordinate system (by default: geographic coordinates on the World Geodetic System of 1984 / WGS84 datum).}
 \usage{reproject(obj, CRS = get("ref_CRS", envir = plotKML.opts), \dots, program = "raster")}
 \arguments{
   \item{obj}{Spatial* or Raster* object}
   \item{CRS}{proj4string; see also \code{rgdal::CRS-class}}
   \item{\dots}{arguments evaluated in the context of function \code{projectRaster} from the raster package}
-  \item{program}{default method used for reprojecting vectors / grids; \code{"raster"} or \code{"FWTools"}}
+  \item{program}{default program for reprojecting vectors / grids; \code{"raster"} or \code{"FWTools"}}
 }
 \details{
-In the case of raster and/or gridded maps, by selecting \code{program = "FWTools"} \code{gdalwarp} functionality is initiated. This requires that \href{http://fwtools.maptools.org}{FWTools} are installed and listed via \code{paths()}. FWTools includes OpenEV, GDAL, MapServer, PROJ.4 and OGDI.
+In the case of raster and/or gridded maps, by selecting \code{program = "FWTools"} \code{gdalwarp} functionality is initiated. This requires that \href{http://fwtools.maptools.org}{FWTools} are installed and listed via \code{paths()}. FWTools includes OpenEV, GDAL, MapServer, PROJ.4 and OGDI, and can be installed on Windows and Unix-type operating systems.
 }
 \references{
 \itemize{
@@ -23,7 +18,7 @@ In the case of raster and/or gridded maps, by selecting \code{program = "FWTools
 \item FWTools (\url{http://fwtools.maptools.org})
 }
 }
-\author{Pierre Roudier (\email{pierre.roudier@gmail.com}), Tomislav Hengl (\email{tom.hengl@wur.nl}) and Dylan Beaudette (\email{debeaudette@ucdavis.edu})}
+\author{Pierre Roudier, Tomislav Hengl and Dylan Beaudette}
 \section{Warning}{\code{obj} needs to have a proper proj4 string (CRS), otherwise \code{reproject} will not run.}
 \seealso{\code{\link{paths}}, \code{raster::projectRaster}, \code{rgdal::spTransform}}
 \examples{

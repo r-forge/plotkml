@@ -22,7 +22,7 @@ Whitening is of special interest for visualization of the prediction errors in g
 \item Hue-Saturation-Intensity color model (\url{http://en.wikipedia.org/wiki/HSL_and_HSV})
 }
 }
-\author{ Tomislav Hengl (tom.hengl@wur.nl) }
+\author{ Tomislav Hengl and Pierre Roudier }
 \seealso{ \code{\link{kml_legend.whitening}}
 }
 \examples{

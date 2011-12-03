@@ -4,7 +4,7 @@
 \alias{HRtemp08}
 \alias{HRprec08}
 \title{Daily temperatures and precipitation for Croatia for year 2008}
-\description{The daily measurements of temperature (thermometers) and precipitation (rain gauges) for year 2008 obtained from the \href{http://meteo.hr}{Croatian National Meteorological Service}. All data is projected in the \href{http://spatialreference.org/ref/epsg/32633/}{UTM zone 33N} system. 
+\description{The daily measurements of temperature (thermometers) and precipitation (rain gauges) for year 2008 kindly contributed by the \href{http://meteo.hr}{Croatian National Meteorological Service}. All data is projected in the \href{http://spatialreference.org/ref/epsg/32633/}{UTM zone 33N} system. 
 \code{HRtemp08} contains 56,608 measurements of temperature (159 stations by 365 days); \code{HRprec08} contains 175,059 measurements of precipitation sums (489 stations by 365 days). 
 }
 \usage{data(HRtemp08)}
@@ -18,7 +18,7 @@ The \code{HRtemp08}/\code{HRprec08} data frames contain the following columns:
 	\item{\code{TEMP}/\code{PREC}}{daily temperature measurements in degree C / cummulative precipitation in mm measured the day before}
   }
 } 
-\author{ Tomislav Hengl (\email{tom.hengl@wur.nl}) and Melita Percec Tadic (\email{melita@cirus.dhz.hr}) }
+\author{ Tomislav Hengl and Melita Percec Tadic }
 \references{
 \itemize{
 \item Hengl, T., Heuvelink, G.B.M., Percec Tadic, M., Pebesma, E., (2011) \href{http://dx.doi.org/10.1007/s00704-011-0464-2}{Spatio-temporal prediction of daily temperatures using time-series of MODIS LST images}. Theoretical and Applied Climatology.

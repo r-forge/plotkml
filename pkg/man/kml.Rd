@@ -16,9 +16,9 @@ This function allows the user to plot any Spatial* object (from the sp package) 
 \item{\dots}{Arguments interpreted in the context of \code{kml()} (see details below)}
 }
 \value{A KML file located as per the file option.}
-\author{Pierre Roudier (\email{pierre.roudier@landcare.nz}), Tomislav Hengl (\email{tom.hengl@wur.nl}), Dylan Beaudette (\email{debeaudette@ucdavis.edu})}
+\author{Pierre Roudier, Tomislav Hengl and Dylan Beaudette}
 \seealso{
-\code{\link{kml_open}}, \code{\link{kml_close}}, \code{\link{kml_layer}}
+\code{\link{kml_open}}, \code{\link{kml_close}}, \code{\link{kml_compress}}
 }
 \examples{
 # Plotting a SpatialPointsDataFrame object

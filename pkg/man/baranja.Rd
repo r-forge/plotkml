@@ -16,7 +16,7 @@ The \code{bargrid} data frame (regular grid at 30 m intervals) contains the foll
 	\item{\code{y}}{a numeric vector; y-coordinate (m) in the MGI / Balkans zone 6 }
 }
 }
-\author{ Tomislav Hengl (\email{tom.hengl@wur.nl}) }
+\author{ Tomislav Hengl }
 \references{
 \itemize{
 \item Hengl, T., Reuter, H.I. (eds), (2008) \href{http://geomorphometry.org/book}{Geomorphometry: Concepts, Software, Applications}. Developments in Soil Science, vol. 33, Elsevier, 772 p.

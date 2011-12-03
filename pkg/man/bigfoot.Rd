@@ -30,7 +30,7 @@ The \code{USAWgrids} data frame (46,018 pixels; Washington, Oregon, Nevada and C
 }
 } 
 \usage{data(bigfoot)}
-\author{ Tomislav Hengl (\email{tom.hengl@wur.nl})}
+\author{ Tomislav Hengl }
 \references{
 \itemize{
 \item Lozier, J.D., Aniello, P., Hickerson, M.J., (2009) \href{http://dx.doi.org/10.1111/j.1365-2699.2009.02152.x}{Predicting the distribution of Sasquatch in western North America: anything goes with ecological niche modelling}. Journal of Biogeography, 36(9):1623-1627.

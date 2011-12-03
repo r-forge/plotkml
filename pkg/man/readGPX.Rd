@@ -1,6 +1,6 @@
 \name{readGPX}
 \alias{readGPX}
-\title{Imports GPX (GPS track) files}
+\title{Import GPX (GPS track) files}
 \description{Read various elements from a \code{*.gpx} file --- metadata, waypoints, tracks and routes --- and converts them to dataframes.}
 \usage{readGPX(gpx.file, metadata = TRUE, bounds = TRUE,
     waypoints = TRUE, tracks = TRUE, routes = TRUE)
@@ -21,7 +21,7 @@
 \item XML tutorial (\url{http://www.omegahat.org/RSXML/Tour.pdf})
 }
 }
-\author{Tomislav Hengl (\email{tom.hengl@wur.nl})}
+\author{Tomislav Hengl }
 \seealso{\code{rgdal::readOGR}, \code{\link{kml_layer.STIDFtraj}}}
 \examples{
 \dontrun{
@@ -31,5 +31,5 @@ fells_loop <- readGPX("http://www.topografix.com/fells_loop.gpx")
 str(fells_loop)}
 }
 \keyword{GPX}
-\keyword{GPS log}
+\keyword{GPS}
 \keyword{trajectory}

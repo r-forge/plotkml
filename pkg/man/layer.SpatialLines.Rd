@@ -1,8 +1,8 @@
 \name{kml_layer.SpatialLines}
 \alias{kml_layer.SpatialLines}
 \alias{SpatialLines}
-\title{Exports objects of type SpatialLines* to KML}
-\description{Writes object of type SpatialLines* to KML with several aesthetics arguments. }
+\title{Export spatial lines to KML}
+\description{Writes object of class \code{"SpatialLines*"} to KML with a possibility to parse attribute variables using several aesthetics arguments. }
 \usage{
 kml_layer.SpatialLines(obj, extrude = FALSE, z.scale = 1, metadata = NULL, 
   html.table = NULL, \dots)
@@ -21,7 +21,7 @@ kml_layer.SpatialLines(obj, extrude = FALSE, z.scale = 1, metadata = NULL,
   \item{altitudeMode}{altitude mode type (\code{clampToGround}, \code{relativeToGround} or \code{absolute})}
 }
 \details{Only colour and width (aesthetics) are recommended when visualizing SpatialLines.}
-\author{Pierre Roudier (\email{pierre.roudier@landcare.nz}), Tomislav Hengl (\email{tom.hengl@wur.nl}), Dylan Beaudette (\email{debeaudette@ucdavis.edu})}
+\author{Pierre Roudier, Tomislav Hengl and Dylan Beaudette}
 \seealso{ \code{\link{kml}}, \code{\link{kml_open}}, \code{\link{kml_layer.SpatialPolygons}} }
 \examples{
 data(eberg_contours)

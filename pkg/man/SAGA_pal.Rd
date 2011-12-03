@@ -25,6 +25,7 @@ Possibly the most used palettes for visualization of numeric variables are \code
 \seealso{\code{\link{worldgrids_pal}}, \code{RColorBrewer::display.brewer.all}}
 \examples{
 data(SAGA_pal)
+data(R_pal)
 \dontrun{
 display.pal(SAGA_pal, sel=c(1,2,7,8,10,11,17,18,19,21,22))
 dev.off()
