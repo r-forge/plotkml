@@ -81,6 +81,7 @@ r.lst &lt;- lapply(kml.list, readKML.GBIFdensity, silent = TRUE)
 # mask out missing layers (empty KML files):
 mask &lt;- !sapply(r.lst, is.null)
 r.lst &lt;- brick(r.lst[mask])
+
 ## End(Not run)
 </pre>
 

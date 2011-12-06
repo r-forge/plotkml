@@ -30,6 +30,8 @@
 <td>Bigfoot reports (USA)</td></tr>
 <tr><td width="25%"><a href="check_projection.html">check_projection</a></td>
 <td>Extracts the proj4 parameters and checks if the projection matches the referent CRS</td></tr>
+<tr><td width="25%"><a href="col2kml.html">col2kml</a></td>
+<td>Convert a color strings to the KML format</td></tr>
 <tr><td width="25%"><a href="SAGA_pal.html">color_palettes</a></td>
 <td>Colour palettes for visualization of numeric variables</td></tr>
 <tr><td width="25%"><a href="eberg.html">eberg</a></td>
@@ -42,8 +44,8 @@
 <td>Ebergotzen - Digital Soil Mapping case study</td></tr>
 <tr><td width="25%"><a href="geopath.html">geopath</a></td>
 <td>Geopath - shortest trajectory line between two geographic locations</td></tr>
-<tr><td width="25%"><a href="spPhoto.html">getWikiMedia.ImageInfo</a></td>
-<td>Generate an object of class '"SpatialPhotoOverlay"'.</td></tr>
+<tr><td width="25%"><a href="getWikimedia.html">getWikiMedia.ImageInfo</a></td>
+<td>Gets EXIF information from the Wikimedia Commons multimedia repository</td></tr>
 <tr><td width="25%"><a href="gpxbtour.html">gpxbtour</a></td>
 <td>GPS log of a bike tour</td></tr>
 <tr><td width="25%"><a href="grid2poly.html">grid2poly</a></td>
@@ -52,38 +54,56 @@
 <td>Converts Gridded map to a polygon map</td></tr>
 <tr><td width="25%"><a href="grid2poly.html">grid2poly.SpatialGrid</a></td>
 <td>Converts Gridded map to a polygon map</td></tr>
+<tr><td width="25%"><a href="col2kml.html">hex2kml</a></td>
+<td>Convert a color strings to the KML format</td></tr>
 <tr><td width="25%"><a href="dailymeteo.html">HRprec08</a></td>
 <td>Daily temperatures and precipitation for Croatia for year 2008</td></tr>
 <tr><td width="25%"><a href="dailymeteo.html">HRtemp08</a></td>
 <td>Daily temperatures and precipitation for Croatia for year 2008</td></tr>
 <tr><td width="25%"><a href="kml.html">kml</a></td>
-<td>Wrapper function to plot any Spatial* or Raster* object in a KML file.</td></tr>
+<td>Write any 'Spatial*'-derived or 'Raster*' object to a KML file</td></tr>
 <tr><td width="25%"><a href="kml_open.html">kml_close</a></td>
-<td>Opens / closes a KML file connection</td></tr>
+<td>Open / close a KML file connection</td></tr>
+<tr><td width="25%"><a href="kml_compress.html">kml_compress</a></td>
+<td>Compress a KML file with auxiliary files</td></tr>
 <tr><td width="25%"><a href="layer.Raster.html">kml_layer.Raster</a></td>
-<td>Exports a single or a stack of rasters to KML</td></tr>
+<td>Export raster objects to KML</td></tr>
 <tr><td width="25%"><a href="layer.RasterBrick.html">kml_layer.RasterBrick</a></td>
-<td>Exports a time series of images to KML</td></tr>
+<td>Export a time series of images to KML</td></tr>
 <tr><td width="25%"><a href="layer.SoilProfileCollection.html">kml_layer.SoilProfileCollection</a></td>
-<td>Exports objects of type SoilProfileCollection to KML</td></tr>
+<td>Export a list of soil profiles to KML</td></tr>
 <tr><td width="25%"><a href="layer.SpatialLines.html">kml_layer.SpatialLines</a></td>
-<td>Exports objects of type SpatialLines* to KML</td></tr>
+<td>Export spatial lines to KML</td></tr>
+<tr><td width="25%"><a href="layer.SpatialPhotoOverlay.html">kml_layer.SpatialPhotoOverlay</a></td>
+<td>Exports objects of type SpatialPhotoOverlay to KML</td></tr>
 <tr><td width="25%"><a href="layer.SpatialPoints.html">kml_layer.SpatialPoints</a></td>
-<td>Exports objects of type SpatialPoints* to KML</td></tr>
+<td>Export spatial points to KML</td></tr>
 <tr><td width="25%"><a href="layer.SpatialPolygons.html">kml_layer.SpatialPolygons</a></td>
-<td>Exports objects of type SpatialPolygons* to KML</td></tr>
+<td>Export spatial polygons to KML</td></tr>
+<tr><td width="25%"><a href="layer.STIDF.html">kml_layer.STIDF</a></td>
+<td>Write irregular spatio-temporal observations (points, lines and polygons) to KML</td></tr>
 <tr><td width="25%"><a href="layer.STIDFtraj.html">kml_layer.STIDFtraj</a></td>
-<td>Writes a space-time trajectory object to KML</td></tr>
-<tr><td width="25%"><a href="spMetadata.html">kml_metadata</a></td>
-<td>Functions for reading, organizing and exporting Spatial metadata.</td></tr>
+<td>Write a space-time trajectory to KML</td></tr>
+<tr><td width="25%"><a href="legend.whitening.html">kml_legend.whitening</a></td>
+<td>Whitening legend (PNG)</td></tr>
+<tr><td width="25%"><a href="kml_metadata.html">kml_metadata</a></td>
+<td>Add metadata table to the active layer</td></tr>
 <tr><td width="25%"><a href="kml_open.html">kml_open</a></td>
-<td>Opens / closes a KML file connection</td></tr>
+<td>Open / close a KML file connection</td></tr>
 <tr><td width="25%"><a href="kml_screen.html">kml_screen</a></td>
-<td>Put an image file as screen overlay</td></tr>
+<td>Add a screen overlay</td></tr>
 <tr><td width="25%"><a href="LST.html">LST</a></td>
 <td>Time series of MODIS LST images (estimated Land Surface Temperature in degrees C) at 1 km resolution</td></tr>
-<tr><td width="25%"><a href="spMetadata.html">metadata2SLD</a></td>
-<td>Functions for reading, organizing and exporting Spatial metadata.</td></tr>
+<tr><td width="25%"><a href="makeCOLLADA.html">makeCOLLADA</a></td>
+<td>Generate a COLLADA file representing the 3D model of a rectangle</td></tr>
+<tr><td width="25%"><a href="makeCOLLADA.html">makeCOLLADA.rectangle</a></td>
+<td>Generate a COLLADA file representing the 3D model of a rectangle</td></tr>
+<tr><td width="25%"><a href="metadata2SLD.html">metadata2SLD.SpatialPixels</a></td>
+<td>Create a Styled Layer Description (*SLD*) file</td></tr>
+<tr><td width="25%"><a href="col2kml.html">munsell2kml</a></td>
+<td>Convert a color strings to the KML format</td></tr>
+<tr><td width="25%"><a href="normalizeFilename.html">normalizeFilename</a></td>
+<td>Normalize filename string</td></tr>
 <tr><td width="25%"><a href="check_projection.html">parse_proj4</a></td>
 <td>Extracts the proj4 parameters and checks if the projection matches the referent CRS</td></tr>
 <tr><td width="25%"><a href="plotKML.env.html">paths</a></td>
@@ -91,59 +111,55 @@
 <tr><td width="25%"><a href="plotKML.env.html">plotKML.env</a></td>
 <td>plotKML specific environmental variables / paths</td></tr>
 <tr><td width="25%"><a href="layer.RasterBrick.html">RasterBrick</a></td>
-<td>Exports a time series of images to KML</td></tr>
+<td>Export a time series of images to KML</td></tr>
 <tr><td width="25%"><a href="vect2rast.html">rasterize</a></td>
 <td>Converts Points, Lines and Polygons to rasters</td></tr>
 <tr><td width="25%"><a href="layer.Raster.html">RasterLayer</a></td>
-<td>Exports a single or a stack of rasters to KML</td></tr>
+<td>Export raster objects to KML</td></tr>
 <tr><td width="25%"><a href="layer.Raster.html">RasterStack</a></td>
-<td>Exports a single or a stack of rasters to KML</td></tr>
+<td>Export raster objects to KML</td></tr>
 <tr><td width="25%"><a href="spMetadata.html">read.metadata</a></td>
-<td>Functions for reading, organizing and exporting Spatial metadata.</td></tr>
+<td>Generate spatial metadata</td></tr>
 <tr><td width="25%"><a href="readGPX.html">readGPX</a></td>
-<td>Imports GPX (GPS track) files</td></tr>
+<td>Import GPX (GPS track) files</td></tr>
 <tr><td width="25%"><a href="readKML.GBIFdensity.html">readKML.GBIFdensity</a></td>
 <td>Imports GBIF cell density records</td></tr>
 <tr><td width="25%"><a href="reproject.html">reproject</a></td>
-<td>Reprojects data to a given coordinate reference system</td></tr>
-<tr><td width="25%"><a href="reproject.html">reproject.RasterBrick</a></td>
-<td>Reprojects data to a given coordinate reference system</td></tr>
-<tr><td width="25%"><a href="reproject.html">reproject.RasterLayer</a></td>
-<td>Reprojects data to a given coordinate reference system</td></tr>
-<tr><td width="25%"><a href="reproject.html">reproject.RasterStack</a></td>
-<td>Reprojects data to a given coordinate reference system</td></tr>
-<tr><td width="25%"><a href="reproject.html">reproject.SpatialGrid</a></td>
-<td>Reprojects data to a given coordinate reference system</td></tr>
-<tr><td width="25%"><a href="reproject.html">reproject.SpatialPoints</a></td>
 <td>Reprojects data to a given coordinate reference system</td></tr>
 <tr><td width="25%"><a href="SAGA_pal.html">R_pal</a></td>
 <td>Colour palettes for visualization of numeric variables</td></tr>
 <tr><td width="25%"><a href="SAGA_pal.html">SAGA_pal</a></td>
 <td>Colour palettes for visualization of numeric variables</td></tr>
 <tr><td width="25%"><a href="layer.SoilProfileCollection.html">SoilProfileCollection</a></td>
-<td>Exports objects of type SoilProfileCollection to KML</td></tr>
+<td>Export a list of soil profiles to KML</td></tr>
 <tr><td width="25%"><a href="layer.SpatialLines.html">SpatialLines</a></td>
-<td>Exports objects of type SpatialLines* to KML</td></tr>
+<td>Export spatial lines to KML</td></tr>
+<tr><td width="25%"><a href="layer.SpatialPhotoOverlay.html">SpatialPhotoOverlay</a></td>
+<td>Exports objects of type SpatialPhotoOverlay to KML</td></tr>
 <tr><td width="25%"><a href="spPhoto.html">SpatialPhotoOverlay</a></td>
-<td>Generate an object of class '"SpatialPhotoOverlay"'.</td></tr>
+<td>Generate an object of class '"SpatialPhotoOverlay"'</td></tr>
 <tr><td width="25%"><a href="layer.Raster.html">SpatialPixels</a></td>
-<td>Exports a single or a stack of rasters to KML</td></tr>
+<td>Export raster objects to KML</td></tr>
 <tr><td width="25%"><a href="layer.SpatialPoints.html">SpatialPoints</a></td>
-<td>Exports objects of type SpatialPoints* to KML</td></tr>
+<td>Export spatial points to KML</td></tr>
 <tr><td width="25%"><a href="layer.SpatialPolygons.html">SpatialPolygons</a></td>
-<td>Exports objects of type SpatialPolygons* to KML</td></tr>
+<td>Export spatial polygons to KML</td></tr>
 <tr><td width="25%"><a href="spMetadata.html">spMetadata</a></td>
-<td>Functions for reading, organizing and exporting Spatial metadata.</td></tr>
+<td>Generate spatial metadata</td></tr>
 <tr><td width="25%"><a href="spPhoto.html">spPhoto</a></td>
-<td>Generate an object of class '"SpatialPhotoOverlay"'.</td></tr>
+<td>Generate an object of class '"SpatialPhotoOverlay"'</td></tr>
+<tr><td width="25%"><a href="layer.STIDF.html">STIDF</a></td>
+<td>Write irregular spatio-temporal observations (points, lines and polygons) to KML</td></tr>
 <tr><td width="25%"><a href="layer.STIDFtraj.html">STIDFtraj</a></td>
-<td>Writes a space-time trajectory object to KML</td></tr>
+<td>Write a space-time trajectory to KML</td></tr>
 <tr><td width="25%"><a href="gpxbtour.html">trajectory</a></td>
 <td>GPS log of a bike tour</td></tr>
 <tr><td width="25%"><a href="bigfoot.html">USAWgrids</a></td>
 <td>Bigfoot reports (USA)</td></tr>
 <tr><td width="25%"><a href="vect2rast.html">vect2rast</a></td>
 <td>Converts Points, Lines and Polygons to rasters</td></tr>
+<tr><td width="25%"><a href="whitening.html">whitening</a></td>
+<td>whitening</td></tr>
 <tr><td width="25%"><a href="worldgrids_pal.html">worldgrids_pal</a></td>
 <td>Standard global color palettes for factor variables</td></tr>
 </table>

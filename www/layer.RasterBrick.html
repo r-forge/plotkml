@@ -86,6 +86,7 @@ LST_ll &lt;- reproject(LSTs, program="FWTools")
 LST_ll@zvalue &lt;- LST@zvalue[c(1,12,24)]
 # KML plot with block temporal support of 8 days:
 kml(LST_ll, colour_scale=SAGA_pal[[1]], dtime=8*24*60^2)
+
 ## End(Not run)
 </pre>
 
