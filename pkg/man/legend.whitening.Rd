@@ -29,5 +29,6 @@ kml_legend.whitening(legend.res = 0.01, width=120, height = 300, pointsize = 14,
 }
 \examples{
 \dontrun{
-kml_legend.whitening(x.lim=c(5,20), e.lim=c(.6,1))}
+kml_legend.whitening(x.lim=c(5,20), e.lim=c(.6,1))
+}
 }

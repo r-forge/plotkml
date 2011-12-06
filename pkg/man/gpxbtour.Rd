@@ -37,5 +37,6 @@ require(RgoogleMaps)
 llc <- c(mean(gpx.st@sp@bbox[2,]), mean(gpx.st@sp@bbox[1,]))
 MyMap <- GetMap.bbox(center=llc, zoom=8, destfile="map.png")
 PlotOnStaticMap(MyMap, lat=gpx.st@sp@coords[,2], lon=gpx.st@sp@coords[,1], FUN=lines, col="black", lwd=4)
-spplot(gpx.st)}
+spplot(gpx.st)
+}
 }

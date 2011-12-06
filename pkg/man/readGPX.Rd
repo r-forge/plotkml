@@ -1,7 +1,7 @@
 \name{readGPX}
 \alias{readGPX}
 \title{Import GPX (GPS track) files}
-\description{Read various elements from a \code{*.gpx} file --- metadata, waypoints, tracks and routes --- and converts them to dataframes.}
+\description{Reads various elements from a \code{*.gpx} file --- metadata, waypoints, tracks and routes --- and converts them to dataframes.}
 \usage{readGPX(gpx.file, metadata = TRUE, bounds = TRUE,
     waypoints = TRUE, tracks = TRUE, routes = TRUE)
 }
@@ -28,7 +28,8 @@
 gpxbtour <- readGPX(system.file("btour.gpx", package="plotKML"))
 str(gpxbtour)
 fells_loop <- readGPX("http://www.topografix.com/fells_loop.gpx")
-str(fells_loop)}
+str(fells_loop)
+}
 }
 \keyword{GPX}
 \keyword{GPS}

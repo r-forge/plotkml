@@ -39,7 +39,6 @@ p1
 \dontrun{
 ## Load precipitation data:
 load(url("http://plotkml.r-forge.r-project.org/HRprec08.rda"))
-## Plot measured temperatures and precipitation in Google Earth:
 }
 }
 \keyword{datasets}

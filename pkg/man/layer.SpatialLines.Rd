@@ -33,7 +33,8 @@ data(SAGA_pal)
 names(eberg_contours)
 \dontrun{
 # KML plot with elevations used as 'colour' argument:
-kml(eberg_contours, colour_scale=SAGA_pal[[1]], colour=Z)}
+kml(eberg_contours, colour_scale = SAGA_pal[[1]], colour = Z, kmz = TRUE)
+}
 }
 \keyword{ ~KML}
 \keyword{ SpatialLines}

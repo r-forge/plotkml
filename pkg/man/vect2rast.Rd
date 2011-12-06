@@ -1,8 +1,8 @@
 \name{vect2rast}
 \alias{vect2rast}
 \alias{rasterize}
-\title{Converts Points, Lines and Polygons to rasters}
-\description{This function converts any Spatial-PointsDataFrame, -LinesDataFrame, or -PolygonsDataFrame object to a raster map, and (optional) writes it to an external file (GDAL-supported formats). The cell size for output raster map is by default determined based on the density/size of features in the vector map.}
+\title{Convert points, lines and/or polygons to rasters}
+\description{Converts any \code{"Spatial-PointsDataFrame"}, \code{"-LinesDataFrame"}, or \code{"-PolygonsDataFrame"} object to a raster map, and (optional) writes it to an external file (GDAL-supported formats).}
 \usage{
 vect2rast(obj, var.name = names(obj)[1], cell.size, bbox, file.name, \dots)
 }
@@ -31,7 +31,7 @@ data(eberg)
 coordinates(eberg) <- ~X+Y
 \dontrun{
 x <- vect2rast(eberg)
-image(x)}
+image(x)
+}
 }
 \keyword{rasterize}
-\keyword{raster}

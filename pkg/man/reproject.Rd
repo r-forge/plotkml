@@ -30,13 +30,14 @@ eberg.geo <- reproject(eberg)
 # Example with raster data
 data(eberg_grid)
 \dontrun{
-eberg_grid.geo <- reproject(eberg_grid)}
+eberg_grid.geo <- reproject(eberg_grid)
 # Using FWTools:
-\dontrun{
-eberg_grid.geo <- reproject(eberg_grid, program = "FWTools")}
+eberg_grid.geo <- reproject(eberg_grid, program = "FWTools")
 # Optional: compare processing times:
 system.time(eberg_grid_ll <- reproject(eberg_grid[1]))
-system.time(eberg_grid_ll <- reproject(eberg_grid[1], program="FWTools"))}
+system.time(eberg_grid_ll <- reproject(eberg_grid[1], program="FWTools"))
+}
+}
 \keyword{ ~projection}
 \keyword{ proj4}
 \keyword{ WGS84}

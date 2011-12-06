@@ -49,6 +49,7 @@ gdalwarp <- get("gdalwarp", envir = plotKML.opts)
 system(paste(gdalwarp, "--help-general")) 
 gdal.formats <- system(paste(gdalwarp, "--formats"), intern = TRUE)}
 plotKML.env(show.env = FALSE)
-get("home_url", envir = plotKML.opts)}
+get("home_url", envir = plotKML.opts)
+}
 \keyword{ ~paths}
 \keyword{FWTools}

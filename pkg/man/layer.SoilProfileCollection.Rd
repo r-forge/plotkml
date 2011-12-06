@@ -54,7 +54,8 @@ kml(ca, method = "depth_function", file.name = "ca_bs_8_2.kml", var.name="bs_8.2
 # plot changes in cation exchange capacity by sum of cations method (pH 8.2):
 kml(ca, file.name = "ca_CEC8_2.kml", var.name="CEC8.2", IconColor = "#ff009000")
 # plot soil profile as 'block':
-kml(ca, file.name = "ca_CEC8_2_block.kml", var.name="CEC8.2", balloon = TRUE)}
+kml(ca, file.name = "ca_CEC8_2_block.kml", var.name="CEC8.2", balloon = TRUE)
+}
 }
 \keyword{ ~KML}
 \keyword{ soil}

@@ -35,7 +35,8 @@ kml.list <- list(kml.file)
 r.lst <- lapply(kml.list, readKML.GBIFdensity, silent = TRUE)
 # mask out missing layers (empty KML files):
 mask <- !sapply(r.lst, is.null)
-r.lst <- brick(r.lst[mask])}
+r.lst <- brick(r.lst[mask])
+}
 }
 \keyword{~KML}
 \keyword{GBIF}

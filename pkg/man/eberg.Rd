@@ -49,6 +49,7 @@ proj4string(eberg) <- CRS("+init=epsg:31467")
 \dontrun{
 l.sp <- list("sp.lines", eberg_contours, col="black")
 spplot(eberg_grid["DEM"], col.regions = SAGA_pal[[1]], sp.layout=l.sp)
-spplot(eberg_zones, sp.layout=list("sp.points", eberg, col="black", pch="+"))}
+spplot(eberg_zones, sp.layout=list("sp.points", eberg, col="black", pch="+"))
+}
 }
 \keyword{datasets}
