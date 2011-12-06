@@ -1,19 +1,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Functions for reading, organizing and exporting Spatial...</title>
+<html><head><title>R: Generate spatial metadata</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="../../R.css">
 </head><body>
 
 <table width="100%" summary="page for spMetadata {plotKML}"><tr><td>spMetadata {plotKML}</td><td align="right">R Documentation</td></tr></table>
 
-<h2>Functions for reading, organizing and exporting Spatial metadata.</h2>
+<h2>Generate spatial metadata</h2>
 
 <h3>Description</h3>
 
 <p>
-The <code>read.metadata</code> function can be used to read the formatted metadata (<code>.xml</code>), prepared following to the <a href="http://www.fgdc.gov/metadata/csdgm/">Federal Geographic Data Committee (FGDC) Content Standard for Digital Geospatial Metadata</a>, and convert them to a more readble format (dataframe).<br>
-The <code>spMetadata</code> function will try to generate missing metadata (bounding box, location info, session info, metadata creator info etc) for any <code>Spatial*</code> object (from the sp package) or Raster* object (from the raster package). The resulting object of class <code>"SpatialMetadata"</code> can be used e.g. to generate a Layer description documents, that can be parsed to KML <code>&lt;description&gt;</code> tag (see <code><a href="spMetadata.html">kml_metadata</a></code> function).<br>
-The <code>metadata2SLD</code> function will generate a Styled Layer Description (<B>SLD</B>) file, that can be attached to a spatial layer contributed to <a href="http://docs.geoserver.org/stable/en/user/styling/sld-introduction.html">GeoServer</a>. This basically writes the <code>"sp.pallete"</code> object (legend entries, titles and colors) to an external file.
+The <code>read.metadata</code> function can be used to read the formatted metadata (<code>.xml</code>), prepared following to the <a href="http://www.fgdc.gov/metadata/csdgm/">Federal Geographic Data Committee (FGDC) Content Standard for Digital Geospatial Metadata</a>, and convert them to a more readble format (data frame).<br>
+The <code>spMetadata</code> function will try to generate missing metadata (bounding box, location info, session info, metadata creator info etc) for any <code>Spatial*</code> object (from the sp package) or Raster* object (from the raster package). The resulting object of class <code>"SpatialMetadata"</code> can be used e.g. to generate a Layer description documents, that can be parsed to KML <code>&lt;description&gt;</code> tag (see <code><a href="kml_metadata.html">kml_metadata</a></code> function).
 </p>
 
 
@@ -43,7 +42,7 @@ one-sentence title of the object</td></tr>
 target variable i.e. column name in the data slot</td></tr>
 <tr valign="top"><td><code>Attribute_Measurement_Resolution</code></td>
 <td>
-Numeric resolution (typically estimated as half the measurement precision).</td></tr>
+numeric resolution (typically estimated as half the measurement precision).</td></tr>
 <tr valign="top"><td><code>Attribute_Units_of_Measure</code></td>
 <td>
 physical units of the target variable</td></tr>
@@ -76,7 +75,7 @@ numeric vector; upper and lower limit bounds for the target variable</td></tr>
 logical; specieis whether R should try to validate your xml file</td></tr>  
 <tr valign="top"><td><code>...</code></td>
 <td>
-arguments interpreted in the context of <code>kml()</code> (see details below)</td></tr>
+additional <code>kml()</code> arguments (see details below)</td></tr>
 </table>
 
 
@@ -87,14 +86,14 @@ arguments interpreted in the context of <code>kml()</code> (see details below)</
 The <code>spMetadata</code> function tries to automatically generate the most usefull information, so that a user can easily find out about the input data and procedures followed to generate the visualization (KML). Typical metadata entries include e.g.:
 
 <ul>
-<li> <code>metadata[["idinfo"]][["native"]]</code> - Session info e.g.: Produced using R version 2.12.2 (2011-02-25) running on Windows 7 x64.
+<li> <code>metadata[["idinfo"]][["native"]]</code> &mdash; Session info e.g.: Produced using R version 2.12.2 (2011-02-25) running on Windows 7 x64.
 </li>
-<li><code>metadata[["spdoinfo"]][["indspref"]]</code> - Indirect spatial reference estimated using the <a href="http://code.google.com/apis/maps/documentation/webservices/">Google Maps API Web Services</a>.
+<li><code>metadata[["spdoinfo"]][["indspref"]]</code> &mdash; Indirect spatial reference estimated using the <a href="http://code.google.com/apis/maps/documentation/webservices/">Google Maps API Web Services</a>.
 </li>
-<li><code>metadata[["idinfo"]][["spdom"]][["bounding"]]</code> - Bounding box in the WGS84 geographical coordinates estimated by reprojecting the original bounding box.
+<li><code>metadata[["idinfo"]][["spdom"]][["bounding"]]</code> &mdash; Bounding box in the WGS84 geographical coordinates estimated by reprojecting the original bounding box.
 </ul>
 
-The <code>kml_metadata</code> function will, by default, print out only a number of selected metadata fields: <code>"Citation_title"</code>, <code>"Abstract"</code>, <code>"Object_Count"</code>, <code>"Beginning_Date"</code>, <code>"Ending_Date"</code>, <code>"Data_Order_URL"</code>, <code>"Other_Citation_Details"</code>, <code>"Citation_URL"</code>, <code>"Data_Set_Credit"</code>, <code>"Data_Distributing_Organization"</code>, <code>"Format_Information_Content"</code>, <code>"Native_Data_Set_Environment"</code>. See <code>data(mdnames)</code> for a complete list of metadata fields. By default, plotKML uses the Creative Commons license, but this can be adjusted (see <code>Enduser_license_URL</code> argument above).
+By default, plotKML uses the Creative Commons license, but this can be adjusted by setting the <code>Enduser_license_URL</code> argument above.
 </p>
 
 
@@ -104,23 +103,23 @@ The <code>kml_metadata</code> function will, by default, print out only a number
 <table summary="R valueblock">
 <tr valign="top"><td><code>xml</code></td>
 <td>
-A metadata slot of class "XMLInternalDocument".</td></tr>
+a metadata slot of class "XMLInternalDocument"</td></tr>
 <tr valign="top"><td><code>field.names</code></td>
 <td>
-Corresponding metadata column names.</td></tr>
+corresponding metadata column names</td></tr>
 <tr valign="top"><td><code>palette</code></td>
 <td>
-Formal class "sp.palette" &mdash; contain legend names and colors.</td></tr>
+formal class "sp.palette" &mdash; contain legend names and colors</td></tr>
 <tr valign="top"><td><code>sp</code></td>
 <td>
-Formal class "Spatial" &mdash; bounding box and projection system of the input object.</td></tr>
+formal class "Spatial" &mdash; bounding box and projection system of the input object</td></tr>
 </table>
 </p>
 
 
 <h3>Author(s)</h3>
 
-<p>Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>), Pierre Roudier, and Dylan Beaudette (<a href="mailto:debeaudette@ucdavis.edu">debeaudette@ucdavis.edu</a>)</p>
+<p>Tomislav Hengl, Pierre Roudier, and Dylan Beaudette</p>
 
 
 <h3>References</h3>
@@ -144,7 +143,7 @@ Formal class "Spatial" &mdash; bounding box and projection system of the input o
 
 <h3>See Also</h3>
 
-<p> <code>sp::Spatial</code>, <code>kml_layer</code></p>
+<p> <code>sp::Spatial</code>, <code><a href="kml_open.html">kml_open</a></code></p>
 
 
 <h3>Examples</h3>

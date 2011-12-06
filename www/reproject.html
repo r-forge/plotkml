@@ -10,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>This wrapper function reprojects any vector or raster spatial data to some referent coordinate system (geographic coordinates on the World Geodetic System of 1984 / WGS84 datum).</p>
+<p>This wrapper function reprojects any vector or raster spatial data to some referent coordinate system (by default: geographic coordinates on the World Geodetic System of 1984 / WGS84 datum).</p>
 
 
 <h3>Usage</h3>
@@ -32,14 +32,14 @@ proj4string; see also <code>rgdal::CRS-class</code></td></tr>
 arguments evaluated in the context of function <code>projectRaster</code> from the raster package</td></tr>
 <tr valign="top"><td><code>program</code></td>
 <td>
-default method used for reprojecting vectors / grids; <code>"raster"</code> or <code>"FWTools"</code></td></tr>
+default program for reprojecting vectors / grids; <code>"raster"</code> or <code>"FWTools"</code></td></tr>
 </table>
 
 
 <h3>Details</h3>
 
 <p>
-In the case of raster and/or gridded maps, by selecting <code>program = "FWTools"</code> <code>gdalwarp</code> functionality is initiated. This requires that <a href="http://fwtools.maptools.org">FWTools</a> are installed and listed via <code>paths()</code>. FWTools includes OpenEV, GDAL, MapServer, PROJ.4 and OGDI.
+In the case of raster and/or gridded maps, by selecting <code>program = "FWTools"</code> <code>gdalwarp</code> functionality is initiated. This requires that <a href="http://fwtools.maptools.org">FWTools</a> are installed and listed via <code>paths()</code>. FWTools includes OpenEV, GDAL, MapServer, PROJ.4 and OGDI, and can be installed on Windows and Unix-type operating systems.
 </p>
 
 
@@ -50,7 +50,7 @@ In the case of raster and/or gridded maps, by selecting <code>program = "FWTools
 
 <h3>Author(s)</h3>
 
-<p>Pierre Roudier (<a href="mailto:pierre.roudier@gmail.com">pierre.roudier@gmail.com</a>), Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>) and Dylan Beaudette (<a href="mailto:debeaudette@ucdavis.edu">debeaudette@ucdavis.edu</a>)</p>
+<p>Pierre Roudier, Tomislav Hengl and Dylan Beaudette</p>
 
 
 <h3>References</h3>

@@ -1,18 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Generate an object of class '"SpatialPhotoOverlay"'.</title>
+<html><head><title>R: Generate an object of class '"SpatialPhotoOverlay"'</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="../../R.css">
 </head><body>
 
 <table width="100%" summary="page for spPhoto {plotKML}"><tr><td>spPhoto {plotKML}</td><td align="right">R Documentation</td></tr></table>
 
-<h2>Generate an object of class <code>"SpatialPhotoOverlay"</code>.</h2>
+<h2>Generate an object of class <code>"SpatialPhotoOverlay"</code></h2>
 
 <h3>Description</h3>
 
 <p>
-<code>spPhoto</code> method can be used to wrap pixel map (image), <a href="http://en.wikipedia.org/wiki/Exchangeable_image_file_format">EXIF</a> (Exchangeable Image File format) data, location information (standing point, <code>"SpatialPoints"</code>), and <code>PhotoOverlay</code> (geometry) parameters to create an object of class <code>"SpatialPhotoOverlay"</code>. This object can then be easily parsed to KML and visualized in Google Earth.<br>
-<code>getWikiMedia.ImageInfo</code> function fetches the EXIF data via the <a href="http://www.mediawiki.org/wiki/API">Wikimedia API</a> for any donated image. The resulting EXIF data (named list) can then be further used to construct the <code>"SpatialPhotoOverlay"</code> object.
+<code>spPhoto</code> function can be used to wrap pixel map (<code>pixmapRGB</code>), <a href="http://en.wikipedia.org/wiki/Exchangeable_image_file_format">EXIF</a> (Exchangeable Image File format) data, location information (standing point, <code>"SpatialPoints"</code>), and <code>PhotoOverlay</code> (geometry) parameters to create an object of class <code>"SpatialPhotoOverlay"</code>. This object can then be parsed to KML and visualized using Google Earth.
 </p>
 
 
@@ -22,7 +21,7 @@
    bands = rep(rep(1, ImageHeight*ImageWidth), 3), bbox = c(0,0,3/36000*ImageWidth,3/36000*ImageHeight),
    DateTime = "", ExposureTime = "", FocalLength = "50 mm", Flash = "No Flash", rotation = 0, 
    leftFov = -30, rightFov = 30, bottomFov = -30, topFov = 30, near = 50,
-   shape = c("rectangle", "cylinder", "sphere")[1], range = .01, tilt = 90, heading = 0, roll = 0,
+   shape = c("rectangle", "cylinder", "sphere")[1], range = 1000, tilt = 90, heading = 0, roll = 0,
    test.filename = TRUE)
 </pre>
 
@@ -35,7 +34,7 @@
 file name with extension (ideally an URL)</td></tr>
 <tr valign="top"><td><code>obj</code></td>
 <td>
-object of class "SpatialPoints" with a single point</td></tr>
+object of class "SpatialPoints" (requires a single point object)</td></tr>
 <tr valign="top"><td><code>pixmap</code></td>
 <td>
 object of class "pixmapRGB" (see package pixmap)</td></tr>
@@ -107,14 +106,21 @@ logical; species whether a test should be first performed that the file name rea
 
 <h3>Details</h3>
 
-<p>The most effective way to import a field photograph to <code>SpatialPhotoOverlay</code> for parsing to KML is to: (<STRONG>a</STRONG>) use the EXIF tool to <a href="http://www.sno.phy.queensu.ca/~phil/exiftool/">add any important tags</a> into the image file, (<STRONG>b</STRONG>) once all important tags have been added, it can be uploaded to a public portal such as the Wikimedia Commons, (<STRONG>c</STRONG>) further use only the image unique name following the examples below. Some examples of how to embed EXIF tags into an image file are available <a href="http://commons.wikimedia.org/wiki/Commons:EXIF">here</a>. To geocode an uploaded image consider adding <code>{{location|lat deg|lat min|lat sec|NS|long deg|long min|long sec|EW}}</code> tag to the file description.<br> 
-You can also consider importing images to R by using the <code>pixmap</code> package, and reading the technical information via e.g. the <a href="http://www.omegahat.org/Rexif/"><code>Rexif</code></a> package. If the image is taken using a GPS enabled camera, by getting the EXIF metadata you can generate the complete <code>SpatialPhotoOverlay</code> object with minimum user interaction. Otherwise, you need to at least specify: file name, and location of the focal point of the camera (i.e. create a <code>"SpatialPoints"</code> object).
+<p>The most effective way to import a field photograph to <code>SpatialPhotoOverlay</code> for parsing to KML is to: (<STRONG>a</STRONG>) use the <a href="http://www.sno.phy.queensu.ca/~phil/exiftool/">EXIF tool</a> (courtesy of Phil Harvey) to add any important tags in the image file, (<STRONG>b</STRONG>) once you've added all important tags, you can upload your image to a public portal such as the <a href="http://commons.wikimedia.org/wiki/Special:UploadWizard">Wikimedia Commons</a>, (<STRONG>c</STRONG>) enter the missing information if necessary and add an image description. Once the image is on the server, you only need to record its unique name and then read all metadata from the Wikimedia server following the examples below.<br> 
+You can also consider importing images to R by using the <code>pixmap</code> package, and reading the technical information via e.g. the <a href="http://www.omegahat.org/Rexif/"><code>Rexif</code></a> package. If the image is taken using a GPS enabled camera, by getting the EXIF metadata you can generate the complete <code>SpatialPhotoOverlay</code> object with minimum user interaction. Otherwise, you need to at least specify: creation date, file name, and location of the focal point of the camera (by creating a <code>"SpatialPoints"</code> object).
+</p>
+
+
+<h3>Note</h3>
+
+<p>The <code>spPhoto</code> function will try to automatically fix the aspect ratio of the <code>ViewVolume</code> settings (<code>leftFov</code>, <code>rightFov</code>, <code>bottomFov</code>, <code>topFov</code>), and based on the original aspect ratio as specified in the EXIF data. This might not work for all images, in which case you will have to manually adjust those parameters.<br>
+Dimension of <code>3/36000*ImageWidth</code> in decimal degrees is about 10 m in nature (3-arc seconds is about 100 m, depending on the latitude). 
 </p>
 
 
 <h3>Author(s)</h3>
 
-<p>Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>)</p>
+<p>Tomislav Hengl and Dylan Beaudette</p>
 
 
 <h3>References</h3>
@@ -132,7 +138,7 @@ You can also consider importing images to R by using the <code>pixmap</code> pac
 
 <h3>See Also</h3>
 
-<p> <code>pixmap::pixmapRGB</code>, <code>kml_layer</code></p>
+<p> <code><a href="getWikimedia.html">getWikiMedia.ImageInfo</a></code>, <code>pixmap::pixmapRGB</code>, <code><a href="spMetadata.html">spMetadata</a></code></p>
 
 
 <h3>Examples</h3>
@@ -147,16 +153,13 @@ x1 &lt;- getWikiMedia.ImageInfo(imagename)
 # Create a SpatialPhotoOverlay:
 sm &lt;- spPhoto(filename = x1$url$url, exif.info = x1$metadata)
 # Plot it in Google Earth
-kml(sm, type="monolith")
+kml(sm, method="monolith", kmz=TRUE)
 # (b) PhotoOverlay (geotagged photo):
 imagename = "Africa_Museum_Nijmegen.jpg"
 x2 &lt;- getWikiMedia.ImageInfo(imagename)
 af &lt;- spPhoto(filename = x2$url$url, exif.info = x2$metadata)
 kml(af)
 ## End(Not run)
-{ ~KML }
-{ photo}
-{ EXIF}
 </pre>
 
 <hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>

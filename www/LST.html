@@ -40,7 +40,7 @@ The <code>LST</code> is <code>"RasterBrick"</code> object with the following lay
 
 <h3>Author(s)</h3>
 
-<p> Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>) and Melita Percec Tadic (<a href="mailto:melita@cirus.dhz.hr">melita@cirus.dhz.hr</a>) </p>
+<p> Tomislav Hengl and Melita Percec Tadic </p>
 
 
 <h3>References</h3>
@@ -60,11 +60,17 @@ The <code>LST</code> is <code>"RasterBrick"</code> object with the following lay
 
 <pre>
 data(LST)
+data(SAGA_pal)
 ## Not run: 
 ## Plot temperatures, precipitation and MODIS images in Google Earth:
-
+LST_ll &lt;- reproject(LST, program="FWTools", silent = TRUE)
+# copy the dates:
+LST_ll@zvalue &lt;- LST@zvalue
+# KML plot with block temporal support of 8 days:
+kml(LST_ll, colour_scale=SAGA_pal[[1]], dtime=8*24*60^2)
 # to obtain the complete data set for whole Croatia use:
 load(url("http://plotkml.r-forge.r-project.org/MODLST.rda"))
+str(MODLST)
 ## End(Not run)
 </pre>
 

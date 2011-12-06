@@ -10,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>Derives a SpatialLines class object showing the shortest path between geographic locations and based on the Haversine Formula for Great Circle distance.</p>
+<p>Derives a SpatialLines class object showing the shortest path between the two geographic locations and based on the Haversine Formula for Great Circle distance.</p>
 
 
 <h3>Usage</h3>
@@ -37,7 +37,7 @@ latitude coordinate of the first point</td></tr>
 latitude coordinate of the second point</td></tr>
 <tr valign="top"><td><code>ID</code></td>
 <td>
-point ID vector</td></tr>
+(optional) point ID character</td></tr>
 <tr valign="top"><td><code>n.points</code></td>
 <td>
 number of intermediate points</td></tr>
@@ -49,7 +49,7 @@ prints the distance and bearing</td></tr>
 
 <h3>Details</h3>
 
-<p>The formula to derive number of points between the start and end point is: <code>round(sqrt(distc)/sqrt(2), 0)</code> where <code>distc</code> is the Great Circle Distance.</p>
+<p>Number of points between the start and end point is derived using: <code>round(sqrt(distc)/sqrt(2), 0)</code> where <code>distc</code> is the Great Circle Distance.</p>
 
 
 <h3>Value</h3>
@@ -59,7 +59,7 @@ prints the distance and bearing</td></tr>
 
 <h3>Author(s)</h3>
 
-<p> Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>)</p>
+<p> Tomislav Hengl</p>
 
 
 <h3>References</h3>

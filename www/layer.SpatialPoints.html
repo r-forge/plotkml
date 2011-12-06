@@ -1,16 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Exports objects of type SpatialPoints* to KML</title>
+<html><head><title>R: Export spatial points to KML</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="../../R.css">
 </head><body>
 
 <table width="100%" summary="page for kml_layer.SpatialPoints {plotKML}"><tr><td>kml_layer.SpatialPoints {plotKML}</td><td align="right">R Documentation</td></tr></table>
 
-<h2>Exports objects of type SpatialPoints* to KML</h2>
+<h2>Export spatial points to KML</h2>
 
 <h3>Description</h3>
 
-<p>Writes object of type SpatialPoints* to KML with several aesthetics arguments. </p>
+<p>Writes object of class <code>"SpatialPoints*"</code> to KML with a possibility to parse attribute variables using several aesthetics arguments. </p>
 
 
 <h3>Usage</h3>
@@ -18,7 +18,7 @@
 <pre>
 kml_layer.SpatialPoints(obj, extrude = FALSE, 
     LabelScale = get("LabelScale", envir = plotKML.opts), z.scale = 1, 
-    metadata = NULL, html.table = NULL, ...)
+    metadata = NULL, html.table = NULL, TimeSpan.begin = "", TimeSpan.end = "", ...)
 </pre>
 
 
@@ -27,7 +27,7 @@ kml_layer.SpatialPoints(obj, extrude = FALSE,
 <table summary="R argblock">
 <tr valign="top"><td><code>obj</code></td>
 <td>
-object of class <code>"RasterBrick"</code> (a time series of images)</td></tr>
+object of class <code>"SpatialPoints*"</code></td></tr>
 <tr valign="top"><td><code>extrude</code></td>
 <td>
 logical; specifies whether to connect the point to the ground with a line</td></tr>
@@ -40,6 +40,12 @@ numeric; default size of the labels</td></tr>
 <tr valign="top"><td><code>html.table</code></td>
 <td>
 (optional) specify the description block (html) for each point</td></tr>
+<tr valign="top"><td><code>TimeSpan.begin</code></td>
+<td>
+(optional) beginning of the referent time period</td></tr>
+<tr valign="top"><td><code>TimeSpan.end</code></td>
+<td>
+(optional) end of the referent time period</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 additional style arguments (see <code>aesthetics</code>)</td></tr>
@@ -66,18 +72,19 @@ altitude mode type (<code>clampToGround</code>, <code>relativeToGround</code> or
 
 <h3>Details</h3>
 
-<p>Although this function can be used to plot over five variables, it is highly recommended that you use a maximum of two or three aesthetics arguments (e.g. size and colour).
+<p><code>TimeSpan.begin</code> and <code>TimeSpan.end</code> are optional TimeStamp vectors (<code>yyyy-mm-ddThh:mm:sszzzzzz</code>). For observations at point support (a single moment in time), use the same time values for both <code>TimeSpan.begin</code> and <code>TimeSpan.end</code>. <code>TimeSpan.begin</code> and <code>TimeSpan.end</code> can be either a single value or a vector of values. <br>
+Although this function can be used to plot over five variables, more than three aesthetics arguments is not recommended (e.g. limit to size and colour).
 </p>
 
 
 <h3>Author(s)</h3>
 
-<p>Pierre Roudier (<a href="mailto:pierre.roudier@landcare.nz">pierre.roudier@landcare.nz</a>), Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>), Dylan Beaudette (<a href="mailto:debeaudette@ucdavis.edu">debeaudette@ucdavis.edu</a>)</p>
+<p>Pierre Roudier, Tomislav Hengl and Dylan Beaudette </p>
 
 
 <h3>See Also</h3>
 
-<p> <code><a href="kml.html">kml</a></code>, <code><a href="kml_open.html">kml_open</a></code> </p>
+<p> <code><a href="layer.STIDFtraj.html">kml_layer.STIDFtraj</a></code> </p>
 
 
 <h3>Examples</h3>
@@ -89,16 +96,15 @@ coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 names(eberg)
 ## Not run: 
-# subset:
+# subset to 20 percent:
 eberg &lt;- eberg[runif(nrow(eberg))&lt;.2,]
 # KML plot measured CLAY content:
-kml(eberg, labels=CLAY)
+kml(eberg, labels = CLAY)
 shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png"
 kml(eberg, shape = shape, colour = SILT, labels = "", colour_scale = SAGA_pal[[1]])
 # Two variables at the same time:
 kml(eberg, shape = shape, size = CLAY, colour = SILT, labels = "")
-# Elevation used for visualization 
-# two aesthetics elements emphasize hot-spots:
+# Two aesthetics elements are effective in emphasizing hot-spots:
 kml(eberg, shape = shape, altitude = CLAY*10, extrude = TRUE, colour = CLAY, labels = CLAY)
 ## End(Not run)
 </pre>

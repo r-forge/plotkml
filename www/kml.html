@@ -1,19 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Wrapper function to plot any Spatial* or Raster* object in a...</title>
+<html><head><title>R: Write any 'Spatial*'-derived or 'Raster*' object to a KML...</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="../../R.css">
 </head><body>
 
 <table width="100%" summary="page for kml {plotKML}"><tr><td>kml {plotKML}</td><td align="right">R Documentation</td></tr></table>
 
-<h2>
-Wrapper function to plot any Spatial* or Raster* object in a KML file.
-</h2>
+<h2>Write any <code>Spatial*</code>-derived or <code>Raster*</code> object to a KML file</h2>
 
 <h3>Description</h3>
 
 <p>
-This function allows the user to plot any Spatial* object (from the sp package) or Raster* object (from the raster package) to be plotted in a KML file. Various <EM>aesthetics</EM>, i.e. ways to represent information, are provided (colour, transparency, size, shape, etc.). Their availability depends on the class of the object to plot.
+This function writes any <code>Spatial*</code> object (from the sp package) or <code>Raster*</code> object (from the raster package) to a KML file. Various <EM>aesthetics</EM>, i.e. ways to represent information, can be set via colour, transparency, size, shape, etc arguments. Their availability depends on the class of the object to plot.
 </p>
 
 
@@ -42,7 +40,7 @@ logical; overwrites the existing file</td></tr>
 logical; specifies whether to compress the kml file</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-Arguments interpreted in the context of <code>kml()</code> (see details below)</td></tr>
+additional aesthetics arguments (see details below)</td></tr>
 </table>
 
 
@@ -53,13 +51,13 @@ Arguments interpreted in the context of <code>kml()</code> (see details below)</
 
 <h3>Author(s)</h3>
 
-<p>Pierre Roudier (<a href="mailto:pierre.roudier@landcare.nz">pierre.roudier@landcare.nz</a>), Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>), Dylan Beaudette (<a href="mailto:debeaudette@ucdavis.edu">debeaudette@ucdavis.edu</a>)</p>
+<p>Pierre Roudier, Tomislav Hengl and Dylan Beaudette</p>
 
 
 <h3>See Also</h3>
 
 <p>
-<code><a href="kml_open.html">kml_open</a></code>, <code><a href="kml_open.html">kml_close</a></code>, <code>kml_layer</code>
+<code><a href="kml_open.html">kml_open</a></code>, <code><a href="kml_open.html">kml_close</a></code>, <code><a href="kml_compress.html">kml_compress</a></code>
 </p>
 
 
