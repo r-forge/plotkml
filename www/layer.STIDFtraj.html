@@ -1,16 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Writes a space-time trajectory object to KML</title>
+<html><head><title>R: Write a space-time trajectory to KML</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="../../R.css">
 </head><body>
 
 <table width="100%" summary="page for kml_layer.STIDFtraj {plotKML}"><tr><td>kml_layer.STIDFtraj {plotKML}</td><td align="right">R Documentation</td></tr></table>
 
-<h2>Writes a space-time trajectory object to KML</h2>
+<h2>Write a space-time trajectory to KML</h2>
 
 <h3>Description</h3>
 
-<p>Writes a space-time trajectory object to a KML file and (optional) attaches attributes.
+<p>Writes an object of class <code>"STIDFtraj"</code> to a KML file with a possibility to parse attribute variables using several aesthetics arguments.
 </p>
 
 
@@ -33,7 +33,7 @@ space-time object of class <code>"STIDFraj"</code> (spatio-temporal irregular da
 trajectory ID column name</td></tr>
 <tr valign="top"><td><code>dtime</code></td>
 <td>
-temporal support - point or block</td></tr>
+temporal support size (in seconds)</td></tr>
 <tr valign="top"><td><code>extrude</code></td>
 <td>
 logical; extrude GPS vertices?</td></tr>
@@ -60,18 +60,31 @@ optional description block (html) for each GPS point (vertices)</td></tr>
 
 <h3>Details</h3>
 
-<p>The dateTime is defined as yyyy-mm-ddThh:mm:sszzzzzz, where T is the separator between the date and the time, and the time zone is either Z (for UTC) or zzzzzz, which represents \enc±+-hh:mm in relation to UTC. For more info on how Time Stamps work see <a href="http://kml-samples.googlecode.com">http://kml-samples.googlecode.com</a>. If the time is measured at block support, then <code>&lt;TimeStamp&gt;&lt;begin&gt; &lt;/begin&gt;&lt;end&gt; &lt;/end&gt;&lt;/TimeStamp&gt;</code> times will be inserted. Temporal support (<i>dt</i>) is estimated using the <code>xts::periodicity</code> function (median time between observations). The begin time is then derived as <i>t1 = t - .5 d t</i>.
+<p>The dateTime is defined as <code>yyyy-mm-ddThh:mm:sszzzzzz</code>, where <code>T</code> is the separator between the date and the time, and the time zone is either <code>Z</code> (for UTC) or <code>zzzzzz</code>, which represents \enc±+-hh:mm in relation to UTC. For more info on how Time Stamps work see <a href="http://kml-samples.googlecode.com">http://kml-samples.googlecode.com</a>. If the time is measured at block support, then <code>&lt;TimeStamp&gt;&lt;begin&gt; &lt;/begin&gt;&lt;end&gt; &lt;/end&gt;&lt;/TimeStamp&gt;</code> times will be inserted. Temporal support (<i>dt</i>) is estimated using the <code>xts::periodicity</code> function (median time between observations). The begin time is then derived as <i>t1 = t - .5 d t</i>.
 </p>
 
 
 <h3>Author(s)</h3>
 
-<p>Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>)</p>
+<p>Tomislav Hengl </p>
+
+
+<h3>References</h3>
+
+<p>
+
+<ul>
+<li> Pebesma, E. (2011) Classes and Methods for Spatio-Temporal Data in R. Journal of Statistical Software.
+</li>
+<li>spacetime package (<a href="http://CRAN.R-project.org/package=spacetime">http://CRAN.R-project.org/package=spacetime</a>)
+</ul>
+
+</p>
 
 
 <h3>See Also</h3>
 
-<p> <code><a href="kml.html">kml</a></code>, <code><a href="kml_open.html">kml_open</a></code>, <code><a href="readGPX.html">readGPX</a></code> </p>
+<p> <code><a href="readGPX.html">readGPX</a></code> </p>
 
 
 <h3>Examples</h3>
@@ -98,7 +111,7 @@ gpx.st@sp@proj4string &lt;- CRS("+proj=longlat +datum=WGS84")
 # open KML file:
 kml_open("gpxbtour_speed.kml")
 # plot trajectory with speed as colour attribute:
-kml_layer(obj=gpx.st, colour=speed, z.lim=c(18,32))
+kml_layer(obj = gpx.st, colour = speed, z.lim = c(18,32))
 # close KML:
 kml_close("gpxbtour_speed.kml")
 kml_compress("gpxbtour_speed.kml")

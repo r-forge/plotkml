@@ -56,7 +56,7 @@ additional arguments that can be parsed to the <code>rasterToPolygons</code> com
 
 <h3>Author(s)</h3>
 
-<p>Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>)</p>
+<p>Tomislav Hengl </p>
 
 
 <h3>See Also</h3>
@@ -73,7 +73,7 @@ data(SAGA_pal)
 system.time(x &lt;- grid2poly(eberg_grid, "DEM", method = "raster"))
 system.time(x &lt;- grid2poly(eberg_grid, "DEM", method = "sp"))
 system.time(x &lt;- grid2poly(eberg_grid, "DEM", method = "SAGA"))
-# spplot (plotting large polygons in R not a good idea):
+# spplot (plotting large polygons in R = not a good idea):
 spplot(x, col.regions=SAGA_pal[[1]])
 # plotKML:
 kml(x, colour = DEM)

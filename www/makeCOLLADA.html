@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Generate a COLLADA file representing the 3D model of a...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for makeCOLLADA {plotKML}"><tr><td>makeCOLLADA {plotKML}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Generate a COLLADA file representing the 3D model of a rectangle</h2>
+
+<h3>Description</h3>
+
+<p>Produces a COLLADA file representing the 3D model of a rectangle with the image specifies via <code>href</code> wrapped over the surface (as texture fill). This allows free rotation of any rectangular image in the 3D space.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>makeCOLLADA.rectangle(coords, filename, href, DateTime, up_axis = "Z_UP", 
+     authoring_tool = "plotKML", technique_profile = "GOOGLEEARTH", double_sided = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>coords</code></td>
+<td>
+a matrix defining the rectangle: 4 points with X, Z and Y coordinates (P1 &mdash; upper right, P2 &mdash; upper left, P3 &mdash; lower right, P4 &mdash; lower left)</td></tr>
+<tr valign="top"><td><code>filename</code></td>
+<td>
+output filename with <code>*.dae</code> extension</td></tr>
+<tr valign="top"><td><code>href</code></td>
+<td>
+location of the image used for wrapping (texture fill)</td></tr>
+<tr valign="top"><td><code>DateTime</code></td>
+<td>
+creation / update time (system time)</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+additional default arguments</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>COLLADA is managed by the nonprofit technology consortium, the Khronos Group. You can also simply drag and drop a COLLADA (<code>.dae</code>) file on top of the virtual Earth. 
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Tomislav Hengl </p>
+
+
+<h3>References</h3>
+
+<p>
+
+<ul>
+<li> COLLADA Schema (<a href="http://collada.org/mediawiki/">http://collada.org/mediawiki/</a>)
+</ul>
+
+</p>
+
+
+<h3>See Also</h3>
+
+<p> <code><a href="layer.SpatialPhotoOverlay.html">kml_layer.SpatialPhotoOverlay</a></code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+imagename = "Soil_monolith.jpg"
+x1 &lt;- getWikiMedia.ImageInfo(imagename)
+sm &lt;- spPhoto(filename = x1$url$url, exif.info = x1$metadata)
+kml(sm, method="monolith")
+xmlTreeParse("Soil_monolith_jpg.dae")
+## End(Not run)
+</pre>
+
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+</body></html>

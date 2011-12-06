@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Add metadata table to the active layer</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for kml_metadata {plotKML}"><tr><td>kml_metadata {plotKML}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Add metadata table to the active layer</h2>
+
+<h3>Description</h3>
+
+<p>Adds a selection of metadata to the description box of an active layer.</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+kml_metadata(obj, sel, fix.enc = TRUE, cwidth = 150, twidth = 500,
+    full.names = "", delim.sign = "_", asText = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>obj</code></td>
+<td>
+object of class <code>"SpatialMetadata"</code></td></tr>
+<tr valign="top"><td><code>sel</code></td>
+<td>
+a selection of metadata fields (see below)</td></tr>
+<tr valign="top"><td><code>fix.enc</code></td>
+<td>
+logical; species whether the text in the XML file should be converted to UTF8</td></tr>
+<tr valign="top"><td><code>cwidth</code></td>
+<td>
+html column width for the field names</td></tr>
+<tr valign="top"><td><code>twidth</code></td>
+<td>
+html total table width</td></tr>
+<tr valign="top"><td><code>full.names</code></td>
+<td>
+(optional) character vector; a list of full metadata names (field names)</td></tr>
+<tr valign="top"><td><code>delim.sign</code></td>
+<td>
+delimiter symbol</td></tr>
+<tr valign="top"><td><code>asText</code></td>
+<td>
+logical; return the output as XML or characters</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The <code>kml_metadata</code> function, by default, prints out only a number of selected metadata fields: <code>"Citation_title"</code>, <code>"Abstract"</code>, <code>"Object_Count"</code>, <code>"Beginning_Date"</code>, <code>"Ending_Date"</code>, <code>"Data_Order_URL"</code>, <code>"Other_Citation_Details"</code>, <code>"Citation_URL"</code>, <code>"Data_Set_Credit"</code>, <code>"Data_Distributing_Organization"</code>, <code>"Format_Information_Content"</code>, <code>"Native_Data_Set_Environment"</code>. See <code>data(mdnames)</code> for a complete list of metadata fields. </p>
+
+
+<h3>Author(s)</h3>
+
+<p> Tomislav Hengl </p>
+
+
+<h3>See Also</h3>
+
+<p> <code><a href="spMetadata.html">spMetadata</a></code></p>
+
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+</body></html>
