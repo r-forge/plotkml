@@ -16,7 +16,7 @@ All usage of these data must be in accordance with the GBIF Data Use Agreement: 
 \item GBIF cell density description (\url{http://data.gbif.org/ws/rest/density})
 }
 }
-\author{Tomislav Hengl (\email{tom.hengl@wur.nl})}
+\author{Tomislav Hengl }
 \seealso{\code{\link{readGPX}}}
 \examples{
 \dontrun{

@@ -1,4 +1,5 @@
 \name{kml_legend.whitening}
+\alias{kml_legend.whitening}
 \title{Whitening legend (PNG)}
 \description{Produces a PNG file that can be used in KML plots (visualization of uncertainty).}
 \usage{

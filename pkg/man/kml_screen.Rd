@@ -1,7 +1,7 @@
 \name{kml_screen}
 \alias{kml_screen}
-\title{Puts an image file as screen overlay}
-\description{Puts a selected image file (map legend or logo) on some position as Screen overlay.}
+\title{Add a screen overlay}
+\description{Puts a selected image file (map legend or logo) as Screen overlay.}
 \usage{
 kml_screen(image.file, sname = "", position = c("UL","ML","LL","BC","LR","MR","UR","TC")[1],
   overlayXY, screenXY, xyunits = c("fraction", "pixels", "insetPixels")[1], rotation = 0, size = c(0,0) )

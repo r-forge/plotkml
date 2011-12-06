@@ -5,7 +5,7 @@
 \description{Writes object of class \code{"SpatialLines*"} to KML with a possibility to parse attribute variables using several aesthetics arguments. }
 \usage{
 kml_layer.SpatialLines(obj, extrude = FALSE, z.scale = 1, metadata = NULL, 
-  html.table = NULL, \dots)
+  html.table = NULL, TimeSpan.begin = "", TimeSpan.end = "", \dots)
 }
 \arguments{
   \item{obj}{object of class \code{"SpatialLines*"}}
@@ -13,6 +13,8 @@ kml_layer.SpatialLines(obj, extrude = FALSE, z.scale = 1, metadata = NULL,
   \item{z.scale}{vertical exaggeration}  
   \item{metadata}{(optional) specify the metadata object}
   \item{html.table}{optional description block (html) for each GPS point (vertices)}
+  \item{TimeSpan.begin}{(optional) beginning of the referent time period}
+  \item{TimeSpan.end}{(optional) end of the referent time period}
   \item{\dots}{additional style arguments (see \code{\link{aesthetics}})}
   \item{labels}{variable to be used to attach labels to spatial lines}
   \item{colour}{variable to be used to color spatial lines}
@@ -20,7 +22,9 @@ kml_layer.SpatialLines(obj, extrude = FALSE, z.scale = 1, metadata = NULL,
   \item{altitude}{if not a 3D object; variable to be used to specify altitude above ground}
   \item{altitudeMode}{altitude mode type (\code{clampToGround}, \code{relativeToGround} or \code{absolute})}
 }
-\details{Only colour and width (aesthetics) are recommended when visualizing SpatialLines.}
+\details{Only colour and width (aesthetics) are recommended when visualizing \code{SpatialLines*} objects.\cr
+\code{TimeSpan.begin} and \code{TimeSpan.end} are optional TimeStamp vectors (\code{yyyy-mm-ddThh:mm:sszzzzzz}). Use the same time values for both \code{TimeSpan.begin} and \code{TimeSpan.end} if the measurements refer to a single moment in time. \code{TimeSpan.begin} and \code{TimeSpan.end} can be either a single value or a vector of values.
+}
 \author{Pierre Roudier, Tomislav Hengl and Dylan Beaudette}
 \seealso{ \code{\link{kml}}, \code{\link{kml_open}}, \code{\link{kml_layer.SpatialPolygons}} }
 \examples{

@@ -24,7 +24,7 @@ A number of color palettes used to visualize various environmental categorical /
 \usage{
 data(worldgrids_pal)
 }
-\author{Tomislav Hengl (\email{tom.hengl@wur.nl})}
+\author{Tomislav Hengl }
 \references{
 \itemize{
 \item Bicheron, P. et al. (2008) \href{http://ionia1.esrin.esa.int}{GLOBCOVER: Products Description and Validation Report}. MEDIAS France, Toulouse, 47 p.
