@@ -51,7 +51,7 @@ reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
         tf <- tempfile() 
         }
         else { 
-        tf <- deparse(substitute(obj, env = parent.frame()))
+        tf <- normalizeFilename(deparse(substitute(obj, env = parent.frame())))
         }
   
   if(nzchar(gdalwarp)){
@@ -111,7 +111,7 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
         tf <- tempfile() 
         }
         else { 
-        tf <- paste(deparse(substitute(obj, env = parent.frame())), names(obj)[i], sep="_")
+        tf <- paste(normalizeFilename(deparse(substitute(obj, env = parent.frame()))), names(obj)[i], sep="_")
        }
 
         # write SPDF to a file:

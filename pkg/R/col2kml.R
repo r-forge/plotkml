@@ -55,6 +55,7 @@ munsell2kml <- function(
   alpha = 1
   ){
 
+  require(aqp)
   res <- hex2kml(aqp::munsell2rgb(the_hue, the_value, the_chroma, alpha=alpha))
   
   return(res)

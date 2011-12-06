@@ -21,7 +21,7 @@ metadata2SLD.Spatial <- function(obj, Format_Information_Content = xmlValue(obj@
 
 metadata2SLD.SpatialPixels <- function(
     obj,  # SpatialMetadata
-    obj.name = deparse(substitute(obj)),
+    obj.name = normalizeFilename(deparse(substitute(obj))),
     sld.file = set.file.extension(obj.name, ".sld"),
     Citation_title = xmlValue(obj@xml[["//title"]]),
     ColorMap_type = "intervals",

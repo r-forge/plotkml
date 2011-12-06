@@ -7,8 +7,13 @@
 
 readKML.GBIFdensity <- function(kml.file, gbif.url = FALSE, silent = FALSE){
 
+  if(is.na(file.info(kml.file)$size)){
+    stop(paste(kml.file, "does not exist in the working directory"))
+  }
+  else{
   if(file.info(kml.file)$size < 1024){
-  message("File size < 1KB; possibly an empty object")
+    warning("File size < 1KB... possibly an empty object")
+  }
   }
   
   if(silent==FALSE){

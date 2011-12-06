@@ -4,16 +4,7 @@
 # Status         : pre-alpha
 # Note           : this technique requires a special 2D legend;
 
-kml_legend.whitening <- function(
-  legend.res = 0.01, 
-  width=120, 
-  height=300, 
-  pointsize = 14, 
-  x.lim, 
-  e.lim, 
-  leg.asp = 0.3*width/height,
-  legend.file = "whitening_legend.png"
-  ){
+kml_legend.whitening <- function(legend.res = 0.01, width=120, height=300, pointsize = 14, x.lim, e.lim, leg.asp = 0.3*width/height, legend.file = "whitening_legend.png", matte = FALSE){
   
   require(colorspace)
   require(pixmap)
@@ -42,6 +33,7 @@ kml_legend.whitening <- function(
   dev.off()
  
   ## Force transparency (requires ImageMagick):
+  if(matte==TRUE){
   convert <- get("convert", envir = plotKML.opts)
   if(nchar(convert)==0){
     plotKML.env(silent = FALSE)
@@ -51,7 +43,8 @@ kml_legend.whitening <- function(
     system(paste(convert, ' ', legend.file, ' -matte -transparent "#FFFFFF" ', legend.file, sep=""))
   }
   else { 
-    warning("PNG transparency possibly ineffective. Install ImageMagick and add to PATH. See ?kml_legend.whitening for more info.")
-  }   
+    warning("PNG transparency possibly ineffective. Install ImageMagick and add to PATH. See '?kml_legend.whitening' for more info.")
+  } 
+  }  
    
 }

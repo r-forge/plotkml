@@ -10,6 +10,8 @@ kml_layer.SpatialLines <- function(
   z.scale = 1,
   metadata = NULL,
   html.table = NULL,
+  TimeSpan.begin = "",
+  TimeSpan.end = "",
   ...
   ){
   
@@ -60,20 +62,49 @@ kml_layer.SpatialLines <- function(
   }
   
   # Line styles
-  # ======
+  # ============
   txts <- sprintf('<Style id="line%s"><LineStyle><color>%s</color><width>%.0f</width></LineStyle><BalloonStyle><text>$[description]</text></BalloonStyle></Style>', 1:lv, colours, width)
   parseXMLAndAdd(txts, parent=pl1)  
   
   # Writing lines
   # =============
-  
-  if(length(html.table)>0){   
-  # Add attributes:
+
+  # with attributes:
+  if(length(html.table)>0){
+  if(nzchar(TimeSpan.begin[1])&nzchar(TimeSpan.end[1])){
+      if(identical(TimeSpan.begin, TimeSpan.end)){
+      when = TimeSpan.begin
+      if(length(when)==1){ when = rep(when, lv) }
+      txt <- sprintf('<Placemark><name>%s</name><styleUrl>#line%s</styleUrl><TimeStamp><when>%s</when></TimeStamp><description><![CDATA[%s]]></description><LineString><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%s</coordinates></LineString></Placemark>', lines_names, 1:lv, when, html.table, rep(as.numeric(extrude), lv), rep(altitudeMode, lv), paste(unlist(coords)))
+      } 
+      else{
+      if(length(TimeSpan.begin)==1){ TimeSpan.begin = rep(TimeSpan.begin, lv) }
+      if(length(TimeSpan.end)==1){ TimeSpan.end = rep(TimeSpan.end, lv) }
+      txt <- sprintf('<Placemark><name>%s</name><styleUrl>#line%s</styleUrl><TimeSpan><begin>%s</begin><end>%s</end></TimeSpan><description><![CDATA[%s]]></description><LineString><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%s</coordinates></LineString></Placemark>', lines_names, 1:lv, TimeSpan.begin, TimeSpan.end, html.table, rep(as.numeric(extrude), lv), rep(altitudeMode, lv), paste(unlist(coords)))    
+      }
+  }
+  else{      
       txt <- sprintf('<Placemark><name>%s</name><styleUrl>#line%s</styleUrl><description><![CDATA[%s]]></description><LineString><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%s</coordinates></LineString></Placemark>', lines_names, 1:lv, html.table, rep(as.numeric(extrude), lv), rep(altitudeMode, lv), paste(unlist(coords)))
   }
+  }
+  
   # without attributes:
   else{
-      txt <- sprintf('<Placemark><name>%s</name><styleUrl>#line%s</styleUrl><LineString><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%s</coordinates></LineString></Placemark>', lines_names, 1:lv, rep(as.numeric(extrude), lv), rep(altitudeMode, lv), paste(unlist(coords)))  
+      if(nzchar(TimeSpan.begin[1])&nzchar(TimeSpan.end[1])){
+      if(identical(TimeSpan.begin, TimeSpan.end)){
+      when = TimeSpan.begin
+      if(length(when)==1){ when = rep(when, lv) }
+      txt <- sprintf('<Placemark><name>%s</name><styleUrl>#line%s</styleUrl><TimeStamp><when>%s</when></TimeStamp><LineString><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%s</coordinates></LineString></Placemark>', lines_names, 1:lv, when, rep(as.numeric(extrude), lv), rep(altitudeMode, lv), paste(unlist(coords)))
+     }
+      else {
+      if(length(TimeSpan.begin)==1){ TimeSpan.begin = rep(TimeSpan.begin, lv) }
+      if(length(TimeSpan.end)==1){ TimeSpan.end = rep(TimeSpan.end, lv) }   
+      txt <- sprintf('<Placemark><name>%s</name><styleUrl>#line%s</styleUrl><TimeSpan><begin>%s</begin><end>%s</end></TimeSpan><LineString><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%s</coordinates></LineString></Placemark>', lines_names, 1:lv, TimeSpan.begin, TimeSpan.end, rep(as.numeric(extrude), lv), rep(altitudeMode, lv), paste(unlist(coords)))
+      }     
+  }
+      else{
+      txt <- sprintf('<Placemark><name>%s</name><styleUrl>#line%s</styleUrl><LineString><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%s</coordinates></LineString></Placemark>', lines_names, 1:lv, rep(as.numeric(extrude), lv), rep(altitudeMode, lv), paste(unlist(coords))) 
+      }
   }
 
   parseXMLAndAdd(txt, parent=pl1)

@@ -11,6 +11,7 @@ kml_layer.SpatialPhotoOverlay <- function(
   PhotoOverlay.shape = obj@PhotoOverlay$shape,
   href = obj@filename,
   coords,
+  dae.name = "",
   heading = obj@PhotoOverlay$heading,
   tilt = obj@PhotoOverlay$tilt,
   roll = obj@PhotoOverlay$roll,    
@@ -26,7 +27,8 @@ kml_layer.SpatialPhotoOverlay <- function(
   scale.x = 1,
   scale.y = 1,
   scale.z = 1,
-  refreshMode = "once", 
+  refreshMode = "once",
+  html.table = NULL, 
   ...
   ){
 
@@ -96,7 +98,6 @@ kml_layer.SpatialPhotoOverlay <- function(
   
   # Display type:
   pl5 <- newXMLNode("shape", PhotoOverlay.shape, parent = pl1)  
-  
   }
 
   # Block model
@@ -105,16 +106,19 @@ kml_layer.SpatialPhotoOverlay <- function(
   # derive required input pars: 
   asp = obj@exif.info$ImageWidth / obj@exif.info$ImageHeight
   block.height = block.size / asp
-  dae.name = gsub(x=image.id, "\\.", "_")
+  if(dae.name==""){
+    dae.name = gsub(x=image.id, "\\.", "_")
+  }
 
   # make a COLLADA file:
   if(missing(coords)){
   X1 = block.size/2; X2 = -block.size/2; X3 = block.size/2; X4 = -block.size/2
   Y1 = 0; Y2 = 0; Y3 = 0; Y4 = 0
   ALT1 = max.depth; ALT2 = max.depth; ALT3 = max.depth-block.height; ALT4 = max.depth-block.height 
-  coords = matrix(c(X=c(X1, X2, X3, X4), Z=c(ALT1, ALT2, ALT3, ALT4), Y=c(Y1, Y2, Y3, Y4)), ncol=3)
+  coords <- matrix(c(X=c(X1, X2, X3, X4), Z=c(ALT1, ALT2, ALT3, ALT4), Y=c(Y1, Y2, Y3, Y4)), ncol=3)
   }
-  makeCOLLADA.rectangle(filename = set.file.extension(dae.name, ".dae"), DateTime = when, coords = coords, href = href)
+  
+  makeCOLLADA.rectangle(filename = set.file.extension(dae.name, ".dae"), coords = coords, href = href)
   
   # Object name:
   pl1 = newXMLNode("Folder", parent=kml.out[["Document"]])
@@ -128,7 +132,6 @@ kml_layer.SpatialPhotoOverlay <- function(
   # Parse the placemark:
   txtm <- sprintf('<Placemark><name>monolith</name><TimeStamp><when>%s</when></TimeStamp><Model id="%s"><altitudeMode>relativeToGround</altitudeMode><Location><longitude>%.5f</longitude><latitude>%.5f</latitude><altitude>%.0f</altitude></Location><Orientation><heading>%.1f</heading><tilt>%.1f</tilt><roll>%.1f</roll></Orientation><Scale><x>%.1f</x><y>%.1f</y><z>%.1f</z></Scale><Link><href>%s</href><refreshMode>%s</refreshMode></Link><ResourceMap><Alias><targetHref>%s</targetHref><sourceHref>%s</sourceHref></Alias></ResourceMap></Model></Placemark>', when, dae.name, LON, LAT, max.depth, heading, tilt, roll, scale.x, scale.y, scale.z, set.file.extension(dae.name, ".dae"), refreshMode, href, href)
   parseXMLAndAdd(txtm, parent=pl1)
-  
   }
 
   # save results: 
@@ -143,10 +146,11 @@ makeCOLLADA.rectangle <- function(coords, filename, href, DateTime, up_axis = "Z
 
   # coordinates of the bbox:
   pnts = paste(signif(as.vector(t(coords)), 5), collapse=" ")
+  if(missing(DateTime)) { DateTime <- format(Sys.time(), "%Y-%m-%dT%H:%M:%SZ") }
   
   # file header:
   doc = newXMLDoc()
-  dae.out <- newXMLNode("COLLADA", attrs=c(version="1.5.0"), namespaceDefinitions = c(xmlns="http://www.collada.org/2008/03/COLLADASchema"), parent=doc)
+  dae.out <- newXMLNode("COLLADA", attrs=c(version="1.5.0"), namespaceDefinitions = c("xmlns"="http://www.collada.org/2008/03/COLLADASchema"), parent=doc)
   txta <- sprintf('<asset><contributor><authoring_tool>%s</authoring_tool></contributor><created>%s</created><modified>%s</modified><unit meter="1" name="meter" /><up_axis>%s</up_axis></asset>', authoring_tool, DateTime, DateTime, up_axis)
   parseXMLAndAdd(txta, parent=dae.out)
 
