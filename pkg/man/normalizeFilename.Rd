@@ -1,0 +1,23 @@
+\name{normalizeFilename}
+\alias{normalizeFilename}
+\title{Normalize filename string}
+\description{Remove all reserved characters from the file name.}
+\usage{
+normalizeFilename(x, format = c("default", "8.3")[1], fix.encoding = TRUE, sub.sign = "_")
+}
+\arguments{
+  \item{x}{input character}
+  \item{format}{target format (standard or the short 8.3 file name)}
+  \item{fix.encoding}{logical; specifies whether to fix the encoding}
+  \item{sub.sign}{substitution symbol}
+}
+\details{This function removes all reserved characters: (less than), (greater than), (colon), (double quote),  (forward slash), (backslash), (vertical bar or pipe), (question mark), (asterisk), and empty spaces, from the file name. This is important when writing a list of objects to KML as it prevents from creating erroneous file names.}
+\author{Tomislav Hengl}
+\seealso{\code{utils::shortPathName}}
+\examples{
+normalizeFilename("name[\%].txt")
+normalizeFilename("name .txt")
+}
+\keyword{ PathName }
+\keyword{ filename }
+

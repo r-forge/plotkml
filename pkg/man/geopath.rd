@@ -10,7 +10,7 @@ geopath(lon1, lon2, lat1, lat2, ID, n.points, print.geo = FALSE)
   \item{lon2}{longitude coordinate of the second point}
   \item{lat1}{latitude coordinate of the first point}
   \item{lat2}{latitude coordinate of the second point}
-  \item{ID}{point ID vector}
+  \item{ID}{(optional) point ID character}
   \item{n.points}{number of intermediate points}
   \item{print.geo}{prints the distance and bearing}
 }

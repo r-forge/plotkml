@@ -1,11 +1,11 @@
 \name{kml_open}
 \alias{kml_open}
 \alias{kml_close}
-\title{Opens / closes a KML file connection}
+\title{Open / close a KML file connection}
 \description{Opens a KML file in write mode and initiates the KML header. The same file connection is further accessible by other \code{kml_*()} functions such as \code{kml_layer()} and \code{kml_close()}. This allows creation of customized multi-layered KML files.}
 \usage{
 kml_open(file.name, folder.name = file.name,
-  open = TRUE, overwrite = TRUE, kml_xsd, ...)
+  open = TRUE, overwrite = TRUE, kml_xsd, \dots)
 }
 \arguments{
   \item{file.name}{KML file name}
@@ -16,7 +16,7 @@ kml_open(file.name, folder.name = file.name,
 }
 \author{Pierre Roudier and Dylan Beaudette}
 \details{See plotKML package homepage / vignette for more examples.}
-\seealso{ \code{\link{kml}}, \code{\link{kml.Spatial}} }
+\seealso{ \code{\link{kml}} }
 \examples{
 data(eberg_grid)
 kml_open("eberg_grid_DEM.kml")

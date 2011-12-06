@@ -21,8 +21,8 @@
   \item{home_url}{the default location of all icons and auxiliary files}
   \item{googleAPIkey}{(optional) Google API key required for some operations}
 }
-\details{ The function will try to locate external software tools under either Windows or Unix platform and then save the results to \code{plotKML.opts} environment. \link{plotKML} does not look automatically for software paths (unless you specify this manually in your \code{"Rprofile.site"}). \cr 
-The external software tools are not required by default and most of operations in \link{plotKML} can be run without using them. FWTools, SAGA GIS and Python are highly recommended, however, for processing large data sets.
+\details{ The function will try to locate external software tools under either Windows or Unix platform and then save the results to \code{plotKML.opts} environment. \link{plotKML-package} does not look automatically for software paths (unless you specify this manually in your \code{"Rprofile.site"}). \cr 
+The external software tools are not required by default and most of operations in \link{plotKML-package} can be run without using them. FWTools, SAGA GIS and Python are highly recommended, however, for processing large data sets.
 }
 \references{
 \itemize{
@@ -49,7 +49,6 @@ gdalwarp <- get("gdalwarp", envir = plotKML.opts)
 system(paste(gdalwarp, "--help-general")) 
 gdal.formats <- system(paste(gdalwarp, "--formats"), intern = TRUE)}
 plotKML.env(show.env = FALSE)
-get("home_url", envir = plotKML.opts)
-}
+get("home_url", envir = plotKML.opts)}
 \keyword{ ~paths}
 \keyword{FWTools}

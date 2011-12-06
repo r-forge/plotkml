@@ -1,4 +1,5 @@
 \name{whitening}
+\alias{whitening}
 \title{whitening}
 \description{Derives a \emph{`whitenned'} color based on the Hue-Saturation-Intensity color model. This method can be used to visualize uncertainty: the original color is \emph{leached} proportionally to the uncertainty (white color indicates maximum uncertainty).}
 \usage{

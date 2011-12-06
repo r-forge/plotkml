@@ -17,7 +17,7 @@ A cartographic projection is KML compatible if: (a) geographical coordinates are
 \item WGS84 (\url{http://spatialreference.org/ref/epsg/4326/})
 }
 }
-\author{Pierre Roudier, Tomislav Hengl, and Dylan Beaudette}}
+\author{Pierre Roudier, Tomislav Hengl, and Dylan Beaudette}
 \section{Warning}{\code{obj} needs to have a proper proj4 string (CRS), otherwise \code{check_projection} will not run.}
 \seealso{\code{\link{reproject}}, \code{rgdal::CRS-class}}
 \examples{

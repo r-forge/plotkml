@@ -1,7 +1,7 @@
 \name{kml_layer.STIDFtraj}
 \alias{kml_layer.STIDFtraj}
 \alias{STIDFtraj}
-\title{Writes a space-time trajectory to KML}
+\title{Write a space-time trajectory to KML}
 \description{Writes an object of class \code{"STIDFtraj"} to a KML file with a possibility to parse attribute variables using several aesthetics arguments.
 }
 \usage{
@@ -21,6 +21,12 @@ kml_layer.STIDFtraj(obj, id.name, dtime = "", extrude = FALSE,
   \item{html.table}{optional description block (html) for each GPS point (vertices)}
 }
 \details{The dateTime is defined as \code{yyyy-mm-ddThh:mm:sszzzzzz}, where \code{T} is the separator between the date and the time, and the time zone is either \code{Z} (for UTC) or \code{zzzzzz}, which represents \\enc{±}{+-}hh:mm in relation to UTC. For more info on how Time Stamps work see \url{http://kml-samples.googlecode.com}. If the time is measured at block support, then \code{<TimeStamp><begin> </begin><end> </end></TimeStamp>} times will be inserted. Temporal support (\eqn{\Delta t}{dt}) is estimated using the \code{xts::periodicity} function (median time between observations). The begin time is then derived as \eqn{t_1 = t - .5\cdot \Delta t}{t1 = t - .5 d t}.
+}
+\references{
+\itemize{
+\item Pebesma, E. (2011) Classes and Methods for Spatio-Temporal Data in R. Journal of Statistical Software.
+\item spacetime package (\url{http://CRAN.R-project.org/package=spacetime})
+}
 }
 \author{Tomislav Hengl }
 \seealso{ \code{\link{readGPX}} }
@@ -46,10 +52,11 @@ gpx.st@sp@proj4string <- CRS("+proj=longlat +datum=WGS84")
 # open KML file:
 kml_open("gpxbtour_speed.kml")
 # plot trajectory with speed as colour attribute:
-kml_layer(obj=gpx.st, colour=speed, z.lim=c(18,32))
+kml_layer(obj = gpx.st, colour = speed, z.lim = c(18,32))
 # close KML:
 kml_close("gpxbtour_speed.kml")
 kml_compress("gpxbtour_speed.kml")}
 }
-\keyword{ ~KML}
+\keyword{ ~KML }
+\keyword{ trajectory }
 

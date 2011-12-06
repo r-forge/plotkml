@@ -24,7 +24,7 @@ The optimal grid cell size is estimated based on the density/size of features in
 \item SpatStat package (\url{http://www.spatstat.org})
 }
 }
-\author{Tomislav Hengl (\email{tom.hengl@wur.nl})}
+\author{Tomislav Hengl }
 \seealso{\code{raster::rasterize}, \code{spatstat::nndist}}
 \examples{
 data(eberg)

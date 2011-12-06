@@ -1,10 +1,8 @@
 \name{kml}
 \alias{kml}
-\title{
-Wrapper function to plot any Spatial* or Raster* object in a KML file.
-}
+\title{Write any \code{Spatial*}-derived or \code{Raster*} object to a KML file}
 \description{
-This function allows the user to plot any Spatial* object (from the sp package) or Raster* object (from the raster package) to be plotted in a KML file. Various \emph{aesthetics}, i.e. ways to represent information, are provided (colour, transparency, size, shape, etc.). Their availability depends on the class of the object to plot.
+This function writes any \code{Spatial*} object (from the sp package) or \code{Raster*} object (from the raster package) to a KML file. Various \emph{aesthetics}, i.e. ways to represent information, can be set via colour, transparency, size, shape, etc arguments. Their availability depends on the class of the object to plot.
 }
 \usage{kml(obj, folder.name, file.name, overwrite = TRUE, kmz = FALSE, \dots)}
 \arguments{
@@ -13,7 +11,7 @@ This function allows the user to plot any Spatial* object (from the sp package) 
   \item{file.name}{output file name (*.kml)}
   \item{overwrite}{logical; overwrites the existing file}
   \item{kmz}{logical; specifies whether to compress the kml file}
-\item{\dots}{Arguments interpreted in the context of \code{kml()} (see details below)}
+\item{\dots}{additional aesthetics arguments (see details below)}
 }
 \value{A KML file located as per the file option.}
 \author{Pierre Roudier, Tomislav Hengl and Dylan Beaudette}
