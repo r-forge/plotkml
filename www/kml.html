@@ -11,7 +11,7 @@
 <h3>Description</h3>
 
 <p>
-This function writes any <code>Spatial*</code> object (from the sp package) or <code>Raster*</code> object (from the raster package) to a KML file. Various <EM>aesthetics</EM>, i.e. ways to represent information, can be set via colour, transparency, size, shape, etc arguments. Their availability depends on the class of the object to plot.
+Writes any <code>Spatial*</code> object (from the sp package) or <code>Raster*</code> object (from the raster package) to a KML file. Various <EM>aesthetics</EM>, i.e. ways to represent target variables, can be set via colour, transparency, size, width, shape arguments. Their availability depends on the class of the object to plot.
 </p>
 
 
@@ -46,7 +46,7 @@ additional aesthetics arguments (see details below)</td></tr>
 
 <h3>Value</h3>
 
-<p>A KML file located as per the file option.</p>
+<p>A KML file. By default the object name with ".kml" extension.</p>
 
 
 <h3>Author(s)</h3>
@@ -78,6 +78,7 @@ kml(eberg, colour = SAND, size = CLAY, alpha = 0.75, file = "eberg-1.kml")
 data(eberg_grid)
 ## Not run: 
 kml(eberg_grid, colour = DEM, file = "eberg_grid-0.kml")
+
 ## End(Not run)
 </pre>
 

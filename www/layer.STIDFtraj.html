@@ -103,7 +103,7 @@ gpxbtour$dist.km &lt;- sapply(xy, function(x) deg.dist(long1=x[1], lat1=x[2], lo
 plot(gpxbtour$dist.km, gpxbtour$speed, type="l", xlab="Distance from origin in km", ylab="speed in km per hour")
 # convert to a STIDFtraj class:
 require(spacetime)
-require(adehabitatLT)
+require(adehabitat)
 gpx.ltraj &lt;- as.ltraj(coordinates(gpxbtour), gpxbtour$ctime, id = "th")
 gpx.st &lt;- as(gpx.ltraj, "STIDFtraj")
 gpx.st$speed &lt;- gpxbtour$speed
@@ -115,6 +115,7 @@ kml_layer(obj = gpx.st, colour = speed, z.lim = c(18,32))
 # close KML:
 kml_close("gpxbtour_speed.kml")
 kml_compress("gpxbtour_speed.kml")
+
 ## End(Not run)
 </pre>
 

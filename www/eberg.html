@@ -88,6 +88,7 @@ proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 l.sp &lt;- list("sp.lines", eberg_contours, col="black")
 spplot(eberg_grid["DEM"], col.regions = SAGA_pal[[1]], sp.layout=l.sp)
 spplot(eberg_zones, sp.layout=list("sp.points", eberg, col="black", pch="+"))
+
 ## End(Not run)
 </pre>
 

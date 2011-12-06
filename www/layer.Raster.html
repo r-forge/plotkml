@@ -10,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>Writes rasters to PNG images and makes a KML code (ground overlays). Works with <code>"RasterLayer"</code>, <code>"SpatialGrid"</code>, <code>"SpatialPixels"</code> and <code>"RasterStack"</code> class objects. Target attributes can be specified using aesthetics arguments (<code>"colour"</code>).</p>
+<p>Writes rasters to PNG images and makes a KML code (ground overlays). Works with <code>"RasterLayer"</code>, <code>"SpatialGrid"</code>, <code>"SpatialPixels"</code> and <code>"RasterStack"</code> class objects. Target attributes can be specified using aesthetics arguments (e.g. <code>"colour"</code>).</p>
 
 
 <h3>Usage</h3>
@@ -75,6 +75,7 @@ data(SAGA_pal)
 ## Not run: 
 # KML plot with a single raster:
 kml(eberg_grid, colour_scale = SAGA_pal[[1]], colour = TWI)
+
 ## End(Not run)
 </pre>
 
