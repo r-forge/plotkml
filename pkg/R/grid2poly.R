@@ -2,7 +2,7 @@
 # Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
 # Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Pierre Roudier (pierre.roudier@landcare.nz); 
 # Status         : working version
-# Note           : Not recommended for large grids!;
+# Note           : Not recommended for large grids;
 
 grid2poly <- function(obj, var.name = names(obj)[1], reproject = TRUE, method = c("raster", "sp", "RSAGA")[1], tmp.file = TRUE, saga_lib = "shapes_grid", saga_module = 3, silent = FALSE){
 
@@ -10,19 +10,14 @@ grid2poly <- function(obj, var.name = names(obj)[1], reproject = TRUE, method = 
     if(length(obj)>1e4){
     warning("Operation not recommended for large grids (>>1e4 pixels).", immediate. = TRUE)
     }
-    
-    if(method=="sp"){
-        obj <- as(obj[var.name], "SpatialPixelsDataFrame")
-        pol <- as.SpatialPolygons.SpatialPixels(obj)
-        pol <- SpatialPolygonsDataFrame(pol, data=data.frame(var.name = obj@data[,var.name]), match.ID=FALSE)
-    }
-    
+       
     if(method=="raster"){
         r <- raster(obj[var.name])
         pol <- rasterToPolygons(r)
         names(pol) <- var.name
     }
     
+    else{
     if(method=="RSAGA"){
       require(RSAGA)
       if(!rsaga.env()[["cmd"]]=="NULL"){
@@ -44,6 +39,13 @@ grid2poly <- function(obj, var.name = names(obj)[1], reproject = TRUE, method = 
         }
         
         else { stop("SAGA GIS path could not be located. See 'rsaga.env()' for more info.") }
+    }
+    
+        else {
+        obj <- as(obj[var.name], "SpatialPixelsDataFrame")
+        pol <- as.SpatialPolygons.SpatialPixels(obj)
+        pol <- SpatialPolygonsDataFrame(pol, data=data.frame(var.name = obj@data[,var.name]), match.ID=FALSE)
+    }
     }
     
     # Checking projection:

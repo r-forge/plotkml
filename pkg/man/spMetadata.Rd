@@ -76,7 +76,8 @@ saveXML(metadata(eberg.md), "eberg_SAND.xml")
 # Export to SLD format:
 metadata2SLD(eberg.md, "eberg.sld")
 # plot the layer with the metadata:
-kml(eberg, colour = SAND, metadata = eberg.md)}
+kml(eberg, file.name = "eberg_md.kml", colour = SAND, metadata = eberg.md, kmz = TRUE)
+}
 }
 \keyword{ ~KML }
 \keyword{ metadata}

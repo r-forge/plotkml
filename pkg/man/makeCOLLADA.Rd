@@ -29,7 +29,8 @@ imagename = "Soil_monolith.jpg"
 x1 <- getWikiMedia.ImageInfo(imagename)
 sm <- spPhoto(filename = x1$url$url, exif.info = x1$metadata)
 kml(sm, method="monolith")
-xmlTreeParse("Soil_monolith_jpg.dae")}
+xmlTreeParse("Soil_monolith_jpg.dae")
+}
 }
 \keyword{ ~KML }
 \keyword{ photo }

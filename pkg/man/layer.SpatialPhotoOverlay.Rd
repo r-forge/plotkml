@@ -41,7 +41,8 @@ sm <- spPhoto(filename = x1$url$url, exif.info = x1$metadata)
 kml_open("sm.kml")
 kml_layer(sm, method="monolith")
 kml_close("sm.kml")
-kml_compress("sm.kml", files="Soil_monolith_jpg.dae")}
+kml_compress("sm.kml", files="Soil_monolith_jpg.dae")
+}
 }
 \keyword{ ~KML}
 \keyword{ SpatialPoints}

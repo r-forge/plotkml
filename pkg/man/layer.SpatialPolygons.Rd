@@ -35,7 +35,9 @@ names(eberg_zones)
 \dontrun{
 # using random colors:
 kml(eberg_zones)
-kml(eberg_zones, plot.labpt = TRUE, labels = ZONES)}
+# with labels:
+kml(eberg_zones, plot.labpt = TRUE, labels = ZONES, kmz = TRUE)
+}
 }
 \keyword{ ~KML}
 \keyword{ SpatialPolygons}

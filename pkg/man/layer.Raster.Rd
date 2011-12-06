@@ -4,7 +4,7 @@
 \alias{RasterStack}
 \alias{SpatialPixels}
 \title{Export raster objects to KML}
-\description{Writes rasters to PNG images and makes a KML code (ground overlays). Works with \code{"RasterLayer"}, \code{"SpatialGrid"}, \code{"SpatialPixels"} and \code{"RasterStack"} class objects. Target attributes can be specified using aesthetics arguments (\code{"colour"}).}
+\description{Writes rasters to PNG images and makes a KML code (ground overlays). Works with \code{"RasterLayer"}, \code{"SpatialGrid"}, \code{"SpatialPixels"} and \code{"RasterStack"} class objects. Target attributes can be specified using aesthetics arguments (e.g. \code{"colour"}).}
 \usage{
 kml_layer.Raster(obj, metadata = FALSE, plot.legend = TRUE, \dots
   colour_scale = get("colour_scale_numeric", envir = plotKML.opts), \dots)
@@ -28,7 +28,8 @@ data(eberg_grid)
 data(SAGA_pal)
 \dontrun{
 # KML plot with a single raster:
-kml(eberg_grid, colour_scale = SAGA_pal[[1]], colour = TWI)}
+kml(eberg_grid, colour_scale = SAGA_pal[[1]], colour = TWI)
+}
 }
 \keyword{ ~KML}
 \keyword{ RasterLayer}

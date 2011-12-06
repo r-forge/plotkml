@@ -34,6 +34,7 @@ LST_ll@zvalue <- LST@zvalue
 kml(LST_ll, colour_scale=SAGA_pal[[1]], dtime=8*24*60^2)
 # to obtain the complete data set for whole Croatia use:
 load(url("http://plotkml.r-forge.r-project.org/MODLST.rda"))
-str(MODLST)}
+str(MODLST)
+}
 }
 \keyword{datasets}

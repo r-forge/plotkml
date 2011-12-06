@@ -30,7 +30,8 @@ kml_open("sm.kml")
 kml_layer(sm, method="monolith")
 kml_close("sm.kml")
 # compress together both the KML file and the auxiliary COLLADA file:
-kml_compress("sm.kml", files="Soil_monolith_jpg.dae")}
+kml_compress("sm.kml", files="Soil_monolith_jpg.dae")
+}
 }
 \keyword{ ~KML}
 

@@ -29,12 +29,13 @@ For a list of modules and parameters that can be used via \code{getWikiMedia.Ima
 \seealso{\code{\link{spPhoto}}, \code{Rexif::getExifPy}}
 \examples{
 \dontrun{
-## Photo taken using a GPS-enabled camera:
+# Photo taken using a GPS-enabled camera:
 imagename = "Africa_Museum_Nijmegen.jpg"
 x <- getWikiMedia.ImageInfo(imagename)
-## Get the GPS info:
-x$metadata[grep(names(x$metadata), pattern="GPS")]}
-## this results in a fairly complete list of metadata tags (including location and orientation);
+# Get the GPS info:
+x$metadata[grep(names(x$metadata), pattern="GPS")]
+# this results in a fairly complete list of metadata tags (including location and orientation);
+}
 }
 \keyword{ ~KML }
 \keyword{ wikimedia API }

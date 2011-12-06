@@ -35,7 +35,8 @@ LST_ll <- reproject(LSTs, program="FWTools")
 # copy the dates:
 LST_ll@zvalue <- LST@zvalue[c(1,12,24)]
 # KML plot with block temporal support of 8 days:
-kml(LST_ll, colour_scale=SAGA_pal[[1]], dtime=8*24*60^2)}
+kml(LST_ll, colour_scale=SAGA_pal[[1]], dtime=8*24*60^2)
+}
 }
 \keyword{ ~KML}
 \keyword{ RasterBrick}

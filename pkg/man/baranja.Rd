@@ -59,6 +59,7 @@ stream.plot <- as.list(rep(NA, N.sim))
 for(i in 1:N.sim){
   streams.plot[[i]] <- list("sp.lines", stream.list[[i]])
 }
-spplot(DEM.sim[1], col.regions=grey(seq(0.4,1,0.025)), scales=list(draw=T), sp.layout=streams.plot)}
+spplot(DEM.sim[1], col.regions=grey(seq(0.4,1,0.025)), scales=list(draw=T), sp.layout=streams.plot)
+}
 }
 \keyword{datasets}

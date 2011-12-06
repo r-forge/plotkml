@@ -50,7 +50,8 @@ sp <- SpatialPolygons(nc.poly, proj4string=CRS("+proj=longlat +datum=NAD27"))
 # create a STIDF object:
 nct <- STIDF(sp, time = time, data = data)
 # write to a KML file:
-kml(nct, colour = SID)}
+kml(nct, colour = SID)
+}
 }
 \keyword{ ~KML}
 \keyword{ spatio-temporal data}

@@ -2,7 +2,7 @@
 \alias{kml}
 \title{Write any \code{Spatial*}-derived or \code{Raster*} object to a KML file}
 \description{
-This function writes any \code{Spatial*} object (from the sp package) or \code{Raster*} object (from the raster package) to a KML file. Various \emph{aesthetics}, i.e. ways to represent information, can be set via colour, transparency, size, shape, etc arguments. Their availability depends on the class of the object to plot.
+Writes any \code{Spatial*} object (from the sp package) or \code{Raster*} object (from the raster package) to a KML file. Various \emph{aesthetics}, i.e. ways to represent target variables, can be set via colour, transparency, size, width, shape arguments. Their availability depends on the class of the object to plot.
 }
 \usage{kml(obj, folder.name, file.name, overwrite = TRUE, kmz = FALSE, \dots)}
 \arguments{
@@ -13,7 +13,7 @@ This function writes any \code{Spatial*} object (from the sp package) or \code{R
   \item{kmz}{logical; specifies whether to compress the kml file}
 \item{\dots}{additional aesthetics arguments (see details below)}
 }
-\value{A KML file located as per the file option.}
+\value{A KML file. By default the object name with ".kml" extension.}
 \author{Pierre Roudier, Tomislav Hengl and Dylan Beaudette}
 \seealso{
 \code{\link{kml_open}}, \code{\link{kml_close}}, \code{\link{kml_compress}}
@@ -31,6 +31,7 @@ kml(eberg, colour = SAND, size = CLAY, alpha = 0.75, file = "eberg-1.kml")}
 # Plotting a SpatialPixelsDataFrame or a Raster* object
 data(eberg_grid)
 \dontrun{
-kml(eberg_grid, colour = DEM, file = "eberg_grid-0.kml")}
+kml(eberg_grid, colour = DEM, file = "eberg_grid-0.kml")
+}
 }
 \keyword{ ~KML }

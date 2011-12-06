@@ -67,7 +67,8 @@ kml(sm, method="monolith", kmz=TRUE)
 imagename = "Africa_Museum_Nijmegen.jpg"
 x2 <- getWikiMedia.ImageInfo(imagename)
 af <- spPhoto(filename = x2$url$url, exif.info = x2$metadata)
-kml(af)}
+kml(af)
+}
 }
 \keyword{ ~KML }
 \keyword{ photo }
