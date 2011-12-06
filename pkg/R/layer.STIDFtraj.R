@@ -20,6 +20,7 @@ kml_layer.STIDFtraj <- function(
   ...
   ){
   
+  require(xts)
   # Get our invisible file connection from custom environment
   kml.out <- get('kml.out', env=plotKML.fileIO)
   
@@ -50,9 +51,13 @@ kml_layer.STIDFtraj <- function(
     when <- format(time(obj@time), "%Y-%m-%dT%H:%M:%SZ")
   }
   else {
-    dtime <- periodicity(obj@time)    # estimate the time support (if not indicated)
-    TimeSpan.begin <- format(as.POSIXct(unclass(as.POSIXct(time(obj@time))) - dtime$frequency/2, origin="1970-01-01"), "%Y-%m-%dT%H:%M:%SZ")
-    TimeSpan.end <- format(as.POSIXct(unclass(as.POSIXct(time(obj@time))) + dtime$frequency/2, origin="1970-01-01"), "%Y-%m-%dT%H:%M:%SZ")
+    if(length(obj@time)>1&!nzchar(dtime)){
+      period <- periodicity(obj@time) # estimate the time support (if not indicated)
+      dtime <- period$frequency
+  }
+    
+    TimeSpan.begin <- format(as.POSIXct(unclass(as.POSIXct(time(obj@time))) - dtime/2, origin="1970-01-01"), "%Y-%m-%dT%H:%M:%SZ")
+    TimeSpan.end <- format(as.POSIXct(unclass(as.POSIXct(time(obj@time))) + dtime/2, origin="1970-01-01"), "%Y-%m-%dT%H:%M:%SZ")
   }
 
   # Parse ATTRIBUTE TABLE (for each placemark):

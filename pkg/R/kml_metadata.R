@@ -27,7 +27,7 @@ kml_metadata <- function(
     met <- data.frame(metadata=gsub("\\.", delim.sign, attr(nx, "names")), value=paste(nx), stringsAsFactors = FALSE)
     # add more friendly names:
     metm <- merge(x=met, y=full.names[,c("metadata","field.names")], by="metadata", all.x=TRUE)
-        
+          
     # selected columns:
     if(missing(sel)) {
       sel = get("metadata_sel", envir = plotKML.opts)
@@ -35,6 +35,11 @@ kml_metadata <- function(
     selm <- data.frame(metadata = sel, order.no=1:length(sel))
     md <- merge(selm, metm, by="metadata", all.x=TRUE)
     md <- md[order(md$order.no),] 
+    
+    # fix encoding:
+    if(fix.enc==TRUE){
+    md <- data.frame(lapply(md, iconv, to = "UTF8"))
+    }
     
     # write to html:
     l1 <- newXMLNode("table", attrs=c(width=twidth, border="0", cellspacing="5", cellpadding="10"))

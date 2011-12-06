@@ -16,7 +16,7 @@ kml_open <- function(
   ...
   ){
 
-  if (file.exists(file.name) & !overwrite) {
+  if (file.exists(file.name) & overwrite==FALSE) {
     stop(paste("File", file.name, "already exists. Set the overwrite option to TRUE or choose a different name."))
   }
 
@@ -43,9 +43,7 @@ kml_close <- function(file.name, overwrite = FALSE, ...){
    
   # get our invisible file connection from custom evnrionment
   kml.out <- get("kml.out", env=plotKML.fileIO)
-  con = textConnection(set.file.extension(file.name, ".kml"), "w")
-  saveXML(kml.out, con)
+  saveXML(kml.out, file.name)
   message(paste("Closing", set.file.extension(file.name, ".kml")))
-  close(con)
   
 }

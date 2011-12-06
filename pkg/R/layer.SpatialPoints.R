@@ -12,6 +12,8 @@ kml_layer.SpatialPoints <- function(
   LabelScale = get("LabelScale", envir = plotKML.opts),
   metadata = NULL,
   html.table = NULL,
+  TimeSpan.begin = "",
+  TimeSpan.end = "",
   ...
   ){
   
@@ -60,14 +62,45 @@ kml_layer.SpatialPoints <- function(
   
   # Writing points coordinates
   # ==========================
-  if(length(html.table)>0){   
-  # Add attributes:
-      txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><description><![CDATA[%s]]></description><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%.5f,%.5f,%.0f</coordinates></Point></Placemark>', points_names, 1:length(obj), html.table, rep(as.numeric(extrude), length(obj)), rep(altitudeMode, length(obj)), coordinates(obj)[, 1], coordinates(obj)[, 2], altitude)
+  
+  # with attributes:
+  if(length(html.table)>0){
+  if(nzchar(TimeSpan.begin[1])&nzchar(TimeSpan.end[1])){
+      if(identical(TimeSpan.begin, TimeSpan.end)){
+      when = TimeSpan.begin
+      if(length(when)==1){ when = rep(when, length(obj)) }
+      txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><TimeStamp><when>%s</when></TimeStamp><description><![CDATA[%s]]></description><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%.5f,%.5f,%.0f</coordinates></Point></Placemark>', points_names, 1:length(obj), when, html.table, rep(as.numeric(extrude), length(obj)), rep(altitudeMode, length(obj)), coordinates(obj)[, 1], coordinates(obj)[, 2], altitude)
+      } 
+      else{
+      if(length(TimeSpan.begin)==1){ TimeSpan.begin = rep(TimeSpan.begin, length(obj)) }
+      if(length(TimeSpan.end)==1){ TimeSpan.end = rep(TimeSpan.end, length(obj)) }      
+      txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><TimeSpan><begin>%s</begin><end>%s</end></TimeSpan><description><![CDATA[%s]]></description><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%.5f,%.5f,%.0f</coordinates></Point></Placemark>', points_names, 1:length(obj), TimeSpan.begin, TimeSpan.end, html.table, rep(as.numeric(extrude), length(obj)), rep(altitudeMode, length(obj)), coordinates(obj)[, 1], coordinates(obj)[, 2], altitude)      
+      }
   }
+  else{
+      txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><description><![CDATA[%s]]></description><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%.5f,%.5f,%.0f</coordinates></Point></Placemark>', points_names, 1:length(obj), html.table, rep(as.numeric(extrude), length(obj)), rep(altitudeMode, length(obj)), coordinates(obj)[, 1], coordinates(obj)[, 2], altitude)  
+  }
+  }
+  
   # without attributes:
   else{
-      txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%.5f,%.5f,%.0f</coordinates></Point></Placemark>', points_names, 1:length(obj), rep(as.numeric(extrude), length(obj)), rep(altitudeMode, length(obj)), coordinates(obj)[, 1], coordinates(obj)[, 2], altitude)     
+      if(nzchar(TimeSpan.begin[1])&nzchar(TimeSpan.end[1])){
+      if(identical(TimeSpan.begin, TimeSpan.end)){
+      when = TimeSpan.begin
+      if(length(when)==1){ when = rep(when, length(obj)) }
+      txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><TimeStamp><when>%s</when></TimeStamp><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%.5f,%.5f,%.0f</coordinates></Point></Placemark>', points_names, 1:length(obj),  when, rep(as.numeric(extrude), length(obj)), rep(altitudeMode, length(obj)), coordinates(obj)[, 1], coordinates(obj)[, 2], altitude)
+      }
+      else {
+      if(length(TimeSpan.begin)==1){ TimeSpan.begin = rep(TimeSpan.begin, length(obj)) }
+      if(length(TimeSpan.end)==1){ TimeSpan.end = rep(TimeSpan.end, length(obj)) }      
+      txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><TimeSpan><begin>%s</begin><end>%s</end></TimeSpan><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%.5f,%.5f,%.0f</coordinates></Point></Placemark>', points_names, 1:length(obj), TimeSpan.begin, TimeSpan.end, rep(as.numeric(extrude), length(obj)), rep(altitudeMode, length(obj)), coordinates(obj)[, 1], coordinates(obj)[, 2], altitude)    
+      }     
   }
+      else{
+      txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%.5f,%.5f,%.0f</coordinates></Point></Placemark>', points_names, 1:length(obj), rep(as.numeric(extrude), length(obj)), rep(altitudeMode, length(obj)), coordinates(obj)[, 1], coordinates(obj)[, 2], altitude)      
+      }
+  }
+
   parseXMLAndAdd(txtc, parent=pl1)
 
   # save results: 

@@ -8,7 +8,7 @@
 ## Generate a spMetadata class object:
 spMetadata.Spatial <- function(
     obj,   
-    xml.file = set.file.extension(deparse(substitute(obj, env=parent.frame())), ".xml"), # optional metadata file in the FGDC format
+    xml.file = set.file.extension(normalizeFilename(deparse(substitute(obj, env=parent.frame()))), ".xml"), # optional metadata file in the FGDC format
     generate.missing = TRUE,
     Citation_title,
     Target_variable,  
@@ -90,7 +90,7 @@ spMetadata.Spatial <- function(
     message("Generating metadata...")
     if(xmlValue(ml[["idinfo"]][["citation"]][["citeinfo"]][["title"]]) == "") {
     if(missing(Citation_title)) {
-      xmlValue(ml[["idinfo"]][["citation"]][["citeinfo"]][["title"]]) <- deparse(substitute(obj))
+      xmlValue(ml[["idinfo"]][["citation"]][["citeinfo"]][["title"]]) <- normalizeFilename(deparse(substitute(obj)))
       }
       else { 
       xmlValue(ml[["idinfo"]][["citation"]][["citeinfo"]][["title"]]) <- Citation_title

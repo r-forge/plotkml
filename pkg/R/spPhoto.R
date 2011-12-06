@@ -26,7 +26,7 @@ spPhoto <- function(
    topFov = 30,
    near = 50, # in meters;
    shape = c("rectangle", "cylinder", "sphere")[1],
-   range = 1000, # in DD;
+   range = 1000, # m;
    tilt = 90,
    heading = 0,
    roll = 0,
@@ -87,7 +87,7 @@ spPhoto <- function(
     leftFov = leftFov * asp
     rightFov = rightFov * asp
     
-    # correct the DateTime format:
+    # format the DateTime field:
     exif.info$DateTime <- format(as.POSIXct(exif.info$DateTime, format="%Y:%m:%d %H:%M:%S", tz="GMT"), "%Y-%m-%dT%H:%M:%SZ")
     
     }
@@ -164,7 +164,7 @@ getWikiMedia.ImageInfo <- function(imagename, APIsource = "http://commons.wikime
 
   xml.lst[["metadata"]]$GPSLongitude <- Longitude
   xml.lst[["metadata"]]$GPSLatitude <- Latitude
-  # rewrite metadata with the Wikimedia specs:
+  # rewrite metadata with the Wikimedia specs (more reliable):
   xml.lst[["metadata"]]$ImageWidth <- xml.lst[["size"]]$width
   xml.lst[["metadata"]]$ImageHeight <- xml.lst[["size"]]$height    
   

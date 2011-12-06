@@ -4,7 +4,7 @@
 # Status         : ready for R-forge
 # Note           : required by KML writing functions;
 
-.df2htmltable <- function(x, columns=TRUE) {
+.df2htmltable <- function(x, fix.enc = TRUE, columns=TRUE) {
 
     # if the user passed in TRUE, then we want all of the columns
     if(class(columns) == 'logical'){
@@ -12,6 +12,11 @@
     }
     else{     # otherwise, keep only requested columns
     x <- x[, columns]
+    }                  
+    
+    # fix encoding:
+    if(fix.enc==TRUE){
+    x <- data.frame(lapply(x, iconv, to = "UTF8"))
     }
     
     # get selected table data:
