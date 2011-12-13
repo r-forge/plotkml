@@ -75,74 +75,74 @@ echo $contents; } ?>
 </ul>
 <hr />
 <p>&nbsp;</p>
-<table width="1020" border="0" cellspacing="0" cellpadding="10">
+<table border="0" cellpadding="10" cellspacing="0">
   <tr valign="top">
-    <td><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3AEbergotzen_two_aesthetics.png.jpg'><img width='240' alt='Ebergotzen two aesthetics.png' src='http://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Ebergotzen_two_aesthetics.png.jpg/240px-Ebergotzen_two_aesthetics.png.jpg'/></a></p>
+    <td width="220"><div align="center">
+      <p><a href='Fig_eberg_two_aesthetics.jpg'><img src='Fig_eberg_two_aestheticsthumb.jpg' alt='Ebergotzen two aesthetics.png' width='150' height="124" border="0"/></a></p>
       <p class="R_code"><strong><a href="layer.SpatialPoints.html">SpatialPoints</a> </strong> <a href="eberg.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></p>
-      </div></td>
-    <td><div align="center"><p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3ASoil_monolith_in_Google_Earth.png.jpg'><img src='http://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Soil_monolith_in_Google_Earth.png.jpg/240px-Soil_monolith_in_Google_Earth.png.jpg' alt='Soil monolith in Google Earth.png' width='240' border="0"/></a></p>
+    </div></td>
+    <td width="220"><div align="center"><p><a href='Fig_photo_overlay.jpg'><img src='Fig_photo_overlaythumb.jpg' alt='Soil monolith in Google Earth.png' width='150' height="130" border="0"/></a></p>
         <p><span class="R_code"><strong><a href="layer.SpatialPhotoOverlay.html">SpatialPhotoOverlay</a> </strong> <a href="sm.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
-    <td><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3AGroundPhoto_in_Google_Earth.png.jpg'><img width='240' alt='GroundPhoto in Google Earth.png' src='http://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/GroundPhoto_in_Google_Earth.png.jpg/240px-GroundPhoto_in_Google_Earth.png.jpg'/></a></p>
+    <td width="220"><div align="center">
+      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_monolith.jpg'><img src='Fig_monoliththumb.jpg' alt='GroundPhoto in Google Earth.png' width='129' height="150" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="layer.SpatialPhotoOverlay.html">SpatialPhotoOverlay</a> </strong> <a href="af.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
-    <td><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3ASoilProfileCollection_histogram_in_Google_Earth.png.jpg'><img width='240' alt='SoilProfileCollection histogram in Google Earth.png' src='http://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/SoilProfileCollection_histogram_in_Google_Earth.png.jpg/240px-SoilProfileCollection_histogram_in_Google_Earth.png.jpg'/></a></p>
+    <td width="220"><div align="center">
+      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_soilprofilecollection_hist.jpg'><img src='Fig_soilprofilecollection_histthumb.jpg' alt='SoilProfileCollection histogram in Google Earth.png' width='150' height="124" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="layer.SoilProfileCollection.html">SoilProfileCollection</a> </strong> <a href="ca_bs_8_2.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
-    <td><div align="center">
-        <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3ASoilProfileCollection_block_visualized_in_Google_Earth.png.jpg'><img width='240' alt='SoilProfileCollection block visualized in Google Earth.png' src='http://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/SoilProfileCollection_block_visualized_in_Google_Earth.png.jpg/240px-SoilProfileCollection_block_visualized_in_Google_Earth.png.jpg'/></a></p>
+    <td width="220"><div align="center">
+        <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_soilprofilecollection_block.jpg'><img src='Fig_soilprofilecollection_blockthumb.jpg' alt='SoilProfileCollection block visualized in Google Earth.png' width='150' height="124" border="0"/></a></p>
         <p><span class="R_code"><strong><a href="layer.SoilProfileCollection.html">SoilProfileCollection</a> </strong> <a href="ca_CEC8_2_block.kmz"> <img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
   </tr>
 </table>
-<table width="1020" border="0" cellspacing="0" cellpadding="10">
+<table border="0" cellspacing="0" cellpadding="10">
   <tr valign="top">
-    <td><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3AEbergotzen_contour_lines.jpg'><img width='240' alt='Ebergotzen contour lines' src='http://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Ebergotzen_contour_lines.jpg/240px-Ebergotzen_contour_lines.jpg'/></a></p>
+    <td width="220"><div align="center">
+      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_eberg_lines.jpg'><img src='Fig_eberg_linesthumb.jpg' alt='Ebergotzen contour lines' width='150' height="134" border="0"/></a></p>
       <p class="R_code"> <strong> <a href="layer.SpatialLines.html">SpatialLines</a> </strong> <a href="eberg_contours.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></p>
     </div></td>
-    <td><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3AEbergotzen_soil_units_polygons.png.jpg'><img width='240' alt='Ebergotzen soil units polygons.png' src='http://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Ebergotzen_soil_units_polygons.png.jpg/240px-Ebergotzen_soil_units_polygons.png.jpg'/></a></p>
+    <td width="220"><div align="center">
+      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_eberg_polygons.jpg'><img src='Fig_eberg_polygonsthumb.jpg' alt='Ebergotzen soil units polygons.png' width='150' height="124" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="layer.SpatialPolygons.html">SpatialPolygons</a> </strong> <a href="eberg_zones.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
-    <td><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3ADEM_poly_in_Google_Earth.jpg'><img width='240' alt='DEM poly in Google Earth' src='http://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/DEM_poly_in_Google_Earth.jpg/240px-DEM_poly_in_Google_Earth.jpg'/></a></p>
+    <td width="220"><div align="center">
+      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_dem_poly.jpg'><img src='Fig_dem_polythumb.jpg' alt='DEM poly in Google Earth' width='150' height="148" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="grid2poly.html">grid2poly</a> </strong> <a href="dem_poly.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
-    <td><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3ATWI_layerRaster_in_Google_Earth.jpg'><img width='240' alt='TWI layerRaster in Google Earth' src='http://upload.wikimedia.org/wikipedia/commons/thumb/2/22/TWI_layerRaster_in_Google_Earth.jpg/240px-TWI_layerRaster_in_Google_Earth.jpg'/></a></p>
+    <td width="220"><div align="center">
+      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_layerRaster_legend.jpg'><img src='Fig_layerRaster_legendthumb.jpg' alt='TWI layerRaster in Google Earth' width='150' height="148" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="layer.Raster.html">Raster</a> </strong> <a href="eberg_grid.kml"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
-    <td><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3AMetadata_in_GoogleEarth.png.jpg'><img width='240' alt='Metadata in GoogleEarth.png' src='http://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Metadata_in_GoogleEarth.png.jpg/240px-Metadata_in_GoogleEarth.png.jpg'/></a></p>
+    <td width="220"><div align="center">
+      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_metadata_GoogleEarth.jpg'><img src='Fig_metadata_GoogleEarththumb.jpg' alt='Metadata in GoogleEarth.png' width='150' height="120" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="spMetadata.html">spMetadata</a> </strong> <a href="eberg_md.kmz"> <img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
   </tr>
 </table>
-<table width="1020" border="0" cellspacing="0" cellpadding="10">
+<table border="0" cellspacing="0" cellpadding="10">
   <tr valign="top">
-    <td><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3AGPX_bicycle_Wageningen_Muenster.jpg'><img width='240' alt='GPX bicycle Wageningen Muenster' src='http://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/GPX_bicycle_Wageningen_Muenster.jpg/240px-GPX_bicycle_Wageningen_Muenster.jpg'/></a></p>
+    <td width="220"><div align="center">
+      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_gpxtour.jpg'><img src='Fig_gpxtourthumb.jpg' alt='GPX bicycle Wageningen Muenster' width='150' height="150" border="0"/></a></p>
       <p class="R_code"><strong><a href="layer.STIDFtraj.html">STIDFtraj</a> </strong> <a href="gpxbtour_speed.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></p>
     </div></td>
-    <td><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3ASpacetime_STIDF_object_polygons.png.jpg'><img width='240' alt='Spacetime STIDF object polygons.png' src='http://upload.wikimedia.org/wikipedia/commons/7/7e/Spacetime_STIDF_object_polygons.png.jpg'/></a></p>
+    <td width="220"><div align="center">
+      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_STIDF_polygons.jpg'><img src='Fig_STIDF_polygonsthumb.jpg' alt='Spacetime STIDF object polygons.png' width='150' height="139" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="layer.STIDF.html">STIDF Polygons</a> </strong> <a href="nct.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
-    <td><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3ASpatiotemporal_changes_in_HRtemp08.png.jpg'><img width='240' alt='Spatiotemporal changes in HRtemp08.png' src='http://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Spatiotemporal_changes_in_HRtemp08.png.jpg/240px-Spatiotemporal_changes_in_HRtemp08.png.jpg'/></a></p>
+    <td width="220"><div align="center">
+      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_spacetime_HRtemp08.jpg'><img src='Fig_spacetime_HRtemp08thumb.jpg' alt='Spatiotemporal changes in HRtemp08.png' width='150' height="143" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="layer.STIDF.html">STIDF Points</a> </strong> <a href="HRtemp08_jan.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
-    <td><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3ATime_series_of_MODIS_LST_rasters_in_Google_Earth.jpg'><img width='240' alt='Time series of MODIS LST rasters in Google Earth' src='http://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Time_series_of_MODIS_LST_rasters_in_Google_Earth.jpg/240px-Time_series_of_MODIS_LST_rasters_in_Google_Earth.jpg'/></a></p>
+    <td width="220"><div align="center">
+      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_time_series_rasters_LST.jpg'><img src='Fig_time_series_rasters_LSTthumb.jpg' alt='Time series of MODIS LST rasters in Google Earth' width='150' height="148" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="layer.RasterBrick.html">RasterBrick</a> </strong> <a href="LST_ll.kml"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
-    <td width="240"><div align="center">
+    <td width="220"><div align="center">
       <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3AMetadata_in_GoogleEarth.png.jpg'></a></p>
-      </div></td>
+    </div></td>
   </tr>
 </table>
 <p>&nbsp;</p>
@@ -153,7 +153,7 @@ echo $contents; } ?>
   </tr>
 </table>
 <p class="style1"> Last update: 
-  <!-- #BeginDate format:Am1 -->December 7, 2011<!-- #EndDate -->
+  <!-- #BeginDate format:Am1 -->December 13, 2011<!-- #EndDate -->
 | contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">tom.hengl@wur.nl</a> | <a href="http://www.isric.org">ISRIC</a> - World Soil Information Institute </p>
 </body>
 </html>
