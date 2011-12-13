@@ -5,7 +5,7 @@
 # Note           : The output pixel size is determined using simple cartographic principles (see [http://dx.doi.org/10.1016/j.cageo.2005.11.008]);
 
 
-vect2rast <- function(obj, var.name = names(obj)[1], cell.size, bbox, file.name, silent = FALSE, ...){
+vect2rast <- function(obj, field = names(obj)[1], cell.size, bbox, file.name, silent = FALSE, ...){
     
     if(class(obj)=="SpatialPointsDataFrame"|class(obj)=="SpatialLinesDataFrame"|class(obj)=="SpatialPolygonsDataFrame"){
     require(maptools)
@@ -22,7 +22,7 @@ vect2rast <- function(obj, var.name = names(obj)[1], cell.size, bbox, file.name,
     
     if(class(obj)=="SpatialPointsDataFrame"){
     require(spatstat)
-    x <- as(obj[var.name], "ppp")
+    x <- as(obj[field], "ppp")
     nd <- nndist(x$x, x$y)
     ndb <- boxplot(nd, plot=FALSE)
     cell.size <- signif(ndb$stats[3]/2, 2)
@@ -31,7 +31,7 @@ vect2rast <- function(obj, var.name = names(obj)[1], cell.size, bbox, file.name,
     
     if(class(obj)=="SpatialLinesDataFrame"){
     require(spatstat)
-    x <- as(as(obj[var.name], "SpatialLines"), "psp")
+    x <- as(as(obj[field], "SpatialLines"), "psp")
     nd <- nndist.psp(x)  # this can be time consuming!
     ndb <- boxplot(nd, plot=FALSE)
     cell.size <- signif(ndb$stats[3]/2, 2)
@@ -48,9 +48,14 @@ vect2rast <- function(obj, var.name = names(obj)[1], cell.size, bbox, file.name,
     x <- GridTopology(cellcentre.offset=bbox[,1], cellsize=c(cell.size,cell.size), cells.dim=c(round(abs(diff(bbox[1,])/cell.size), 0), ncols=round(abs(diff(bbox[2,])/cell.size), 0)))
     r.sp <- SpatialGrid(x, proj4string = obj@proj4string)
     r <- raster(r.sp)
-    # rasterize - convert vector to raster map:
-    in.r <- rasterize(obj[var.name], r)
+    # convert factors to integers:
+    if(is.factor(obj@data[,field])){
+       obj@data[,field] <- as.integer(obj@data[,field])
+    }
+    # rasterize - convert vector to raster map:    
+    in.r <- rasterize(obj, r, field = field)
     res <- as(in.r, "SpatialGridDataFrame")
+    names(res) = field
     
     if(!missing(file.name)){
     writeRaster(in.r, filename=file.name, overwrite=TRUE)
