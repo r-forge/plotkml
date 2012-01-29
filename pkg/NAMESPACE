@@ -1,4 +1,4 @@
-importFrom("ggplot2", rescale)
+importFrom("scales", rescale)
 importFrom("colorspace", coords, hex, mixcolor)
 importFrom("raster", rotate, shift)
 importFrom("sp", coordinates, overlay, bbox, Spatial, SpatialPixels, SpatialPixelsDataFrame, SpatialGrid, SpatialGridDataFrame, spplot)
