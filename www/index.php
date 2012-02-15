@@ -24,7 +24,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 .style1 {font-size: small}
 .R_code {
 font-family:"Courier New", Courier, monospace;
-font-size: x-small
+font-style:italic;
+font-size: x-small;
 }
 .R_env {
 font-family:"Courier New", Courier, monospace;
@@ -67,11 +68,12 @@ echo $contents; } ?>
 </div>
 <hr />
 <p class="style1">Contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">Tomislav Hengl</a>, <a href="http://www.landcareresearch.co.nz/research/staff_page.asp?staff_num=2132" target="_blank">Pierre Roudier</a> &amp; <a href="http://casoilresource.lawr.ucdavis.edu/drupal/node/905" target="_blank">Dylan Beaudette</a></p>
-<p> This package has been developed as a part of the <a href="http://isric.org/projects/global-soil-information-facilities-gsif" target="_blank">Global Soil Information Facilities</a> project, which is run jointly by the ISRIC Institute and collaborators. ISRIC is a non-profit organization with a mandate to serve the international community as custodian of global soil information and to increase awareness and understanding of the role of soils in major global issues. The <strong>plotKML project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>.</p>
+<p> This package has been developed as a part of the <a href="http://isric.org/projects/global-soil-information-facilities-gsif" target="_blank">Global Soil Information Facilities</a>, which are developed jointly by the ISRIC Institute and collaborators. ISRIC is a non-profit organization with a mandate to serve the international community as custodian of global soil information and to increase awareness and understanding of the role of soils in major global issues. The <strong>plotKML project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>.</p>
 <p>See the complete list of <strong><a href="00Index.html">functions</a></strong> and a list of <a href="settings.php"><strong>additional settings</strong></a>. </p>
 <p><strong>Installation:</strong></p>
-<p>To install this package from R-forge use (runs only on<strong> &gt; R 2.14</strong>):</p>
-<p class="R_code">install.packages(&quot;plotKML&quot;, repos=c(&quot;http://R-Forge.R-project.org&quot;, &quot;http://cran.r-project.org&quot;), dependencies = TRUE) </p>
+<p>To install this package from R-forge use (runs only on<strong> &gt;= R 2.14</strong>):</p>
+<p class="R_code">&gt; install.packages(c(&quot;XML&quot;, &quot;RSAGA&quot;, &quot;rgdal&quot;, &quot;raster&quot;, &quot;plyr&quot;, &quot;colorspace&quot;, &quot;colorRamps&quot;, &quot;spacetime&quot;, &quot;spcosa&quot;, &quot;aqp&quot;, &quot;spatstat&quot;, &quot;ggplot2&quot;, &quot;stringr&quot;)) </p>
+<p class="R_code">&gt; install.packages(&quot;plotKML&quot;, repos=c(&quot;http://R-Forge.R-project.org&quot;)) </p>
 <p><strong>Documents</strong>:</p>
 <ul>
   <li>Poster at UseR 2011: <a href="poster-plotKML-UseR2011.pdf">&quot;plotKML: a framework for visualization of space-time data&quot;</a> (PDF)</li>
@@ -85,11 +87,11 @@ echo $contents; } ?>
       <p class="R_code"><strong><a href="layer.SpatialPoints.html">SpatialPoints</a> </strong> <a href="eberg.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></p>
     </div></td>
     <td width="220"><div align="center"><p><a href='Fig_photo_overlay.jpg'><img src='Fig_photo_overlaythumb.jpg' alt='Soil monolith in Google Earth.png' width='150' height="130" border="0"/></a></p>
-        <p><span class="R_code"><strong><a href="layer.SpatialPhotoOverlay.html">SpatialPhotoOverlay</a> </strong> <a href="sm.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
+        <p><span class="R_code"><strong><a href="layer.SpatialPhotoOverlay.html">SpatialPhotoOverlay </a></strong> <a href="af.kmz"></a></span><a href="af.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></p>
     </div></td>
     <td width="220"><div align="center">
       <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_monolith.jpg'><img src='Fig_monoliththumb.jpg' alt='GroundPhoto in Google Earth.png' width='129' height="150" border="0"/></a></p>
-      <p><span class="R_code"><strong><a href="layer.SpatialPhotoOverlay.html">SpatialPhotoOverlay</a> </strong> <a href="af.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
+      <p><span class="R_code"><strong><a href="layer.SpatialPhotoOverlay.html">SpatialPhotoOverlay</a> </strong> <a href="sm.kmz"></a></span><a href="sm.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></p>
     </div></td>
     <td width="220"><div align="center">
       <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_soilprofilecollection_hist.jpg'><img src='Fig_soilprofilecollection_histthumb.jpg' alt='SoilProfileCollection histogram in Google Earth.png' width='150' height="124" border="0"/></a></p>
@@ -156,7 +158,7 @@ echo $contents; } ?>
   </tr>
 </table>
 <p class="style1"> Last update: 
-  <!-- #BeginDate format:Am1 -->January 23, 2012<!-- #EndDate -->
+  <!-- #BeginDate format:Am1 -->February 2, 2012<!-- #EndDate -->
 | contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">tom.hengl@wur.nl</a> | <a href="http://www.isric.org">ISRIC</a> - World Soil Information Institute </p>
 </body>
 </html>
