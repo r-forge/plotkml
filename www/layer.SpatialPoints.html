@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><title>R: Export spatial points to KML</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="../../R.css">
+<link rel="stylesheet" type="text/css" href="R.css">
 </head><body>
 
 <table width="100%" summary="page for kml_layer.SpatialPoints {plotKML}"><tr><td>kml_layer.SpatialPoints {plotKML}</td><td align="right">R Documentation</td></tr></table>
@@ -16,64 +16,60 @@
 <h3>Usage</h3>
 
 <pre>
-kml_layer.SpatialPoints(obj, extrude = FALSE, 
-    LabelScale = get("LabelScale", envir = plotKML.opts), z.scale = 1, 
-    metadata = NULL, html.table = NULL, TimeSpan.begin = "", TimeSpan.end = "", ...)
+kml_layer.SpatialPoints(obj, extrude = TRUE, z.scale = 1, 
+        LabelScale = get("LabelScale", envir = plotKML.opts), 
+        metadata = NULL, html.table = NULL, TimeSpan.begin = "",
+        TimeSpan.end = "", ...)
 </pre>
 
 
 <h3>Arguments</h3>
 
+
 <table summary="R argblock">
 <tr valign="top"><td><code>obj</code></td>
 <td>
-object of class <code>"SpatialPoints*"</code></td></tr>
+<p>object of class <code>"SpatialPoints*"</code></p>
+</td></tr>
 <tr valign="top"><td><code>extrude</code></td>
 <td>
-logical; specifies whether to connect the point to the ground with a line</td></tr>
+<p>logical; specifies whether to connect the point to the ground with a line</p>
+</td></tr>
+<tr valign="top"><td><code>z.scale</code></td>
+<td>
+<p>numeric; exaggeration in vertical dimension</p>
+</td></tr>
 <tr valign="top"><td><code>LabelScale</code></td>
 <td>
-numeric; default size of the labels</td></tr>
+<p>numeric; scale factor for size of labels</p>
+</td></tr>
 <tr valign="top"><td><code>metadata</code></td>
 <td>
-(optional) specify the metadata object</td></tr>
+<p>(optional) specify the metadata object</p>
+</td></tr>
 <tr valign="top"><td><code>html.table</code></td>
 <td>
-(optional) specify the description block (html) for each point</td></tr>
+<p>(optional) specify the description block (html) for each point</p>
+</td></tr>
 <tr valign="top"><td><code>TimeSpan.begin</code></td>
 <td>
-(optional) beginning of the referent time period</td></tr>
+<p>(optional) beginning of the referent time period</p>
+</td></tr>
 <tr valign="top"><td><code>TimeSpan.end</code></td>
 <td>
-(optional) end of the referent time period</td></tr>
+<p>(optional) end of the referent time period</p>
+</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-additional style arguments (see <code>aesthetics</code>)</td></tr>
-<tr valign="top"><td><code>labels</code></td>
-<td>
-variable to be used to attach labels to spatial lines</td></tr>
-<tr valign="top"><td><code>shapes</code></td>
-<td>
-variable to be used to attach icons</td></tr>
-<tr valign="top"><td><code>colour</code></td>
-<td>
-variable to be used to color spatial lines</td></tr>
-<tr valign="top"><td><code>sizes</code></td>
-<td>
-variable to be used control size of icons</td></tr>
-<tr valign="top"><td><code>altitude</code></td>
-<td>
-if not a 3D object; variable to be used to specify altitude above ground</td></tr>
-<tr valign="top"><td><code>altitudeMode</code></td>
-<td>
-altitude mode type (<code>clampToGround</code>, <code>relativeToGround</code> or <code>absolute</code>)</td></tr>
+<p>additional style arguments (see <code><a href="aesthetics.html">aesthetics</a></code>)</p>
+</td></tr>
 </table>
 
 
 <h3>Details</h3>
 
 <p><code>TimeSpan.begin</code> and <code>TimeSpan.end</code> are optional TimeStamp vectors (<code>yyyy-mm-ddThh:mm:sszzzzzz</code>). For observations at point support (a single moment in time), use the same time values for both <code>TimeSpan.begin</code> and <code>TimeSpan.end</code>. <code>TimeSpan.begin</code> and <code>TimeSpan.end</code> can be either a single value or a vector of values. <br>
-Although this function can be used to plot over five variables, more than three aesthetics arguments is not recommended (e.g. limit to size and colour).
+Optional aesthetics arguments are <code>shapes</code> (icons), <code>colour</code>, <code>sizes</code>, <code>altitude</code> (if not a 3D object; variable to be used to specify altitude above ground), <code>altitudeMode</code> (altitude mode type (<code>clampToGround</code>, <code>relativeToGround</code> or <code>absolute</code>). Although this function can be used to plot over five variables, more than three aesthetics arguments is not recommended (e.g. limit to size and colour).
 </p>
 
 
@@ -84,7 +80,7 @@ Although this function can be used to plot over five variables, more than three 
 
 <h3>See Also</h3>
 
-<p> <code><a href="layer.STIDFtraj.html">kml_layer.STIDFtraj</a></code> </p>
+ <p><code><a href="layer.STIDFtraj.html">kml_layer.STIDFtraj</a></code> </p>
 
 
 <h3>Examples</h3>
@@ -110,5 +106,5 @@ kml(eberg, shape = shape, altitude = CLAY*10, extrude = TRUE, colour = CLAY, lab
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
 </body></html>

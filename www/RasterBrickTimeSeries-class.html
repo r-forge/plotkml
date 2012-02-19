@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: A class for a regular time series of grids (extends the...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body>
+
+<table width="100%" summary="page for RasterBrickTimeSeries-class {plotKML}"><tr><td>RasterBrickTimeSeries-class {plotKML}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>A class for a regular time series of grids (extends the <code>RasterBrick-class</code>)</h2>
+
+<h3>Description</h3>
+
+<p>A class containing list of rasters, begin, end times and sample points to allow exploration of the values. Objects of this class can be directly visualized in Google Earth by using the <code><a href="plotKML-method.html">plotKML-methods</a></code>.</p>
+
+
+<h3>Slots</h3>
+
+
+    
+<dl>
+<dt><code>sampled</code>:</dt><dd><p>object of class <code>"SpatialPoints"</code>; one or more points that can be used to visualize how the values of the feature change through time</p>
+</dd>
+<dt><code>rasters</code>:</dt><dd><p>object of class <code>"RasterBrick"</code>; a time-series of raster objects</p>
+</dd>
+<dt><code>TimeSpan.begin</code>:</dt><dd><p>object of class <code>"POSIXct"</code>; begin of sampling for each raster map</p>
+</dd>
+<dt><code>TimeSpan.end</code>:</dt><dd><p>object of class <code>"POSIXct"</code>; end of sampling for each raster map</p>
+</dd>
+</dl>
+
+
+
+<h3>Methods</h3>
+
+
+
+<dl>
+<dt>plotKML</dt><dd><p><code>signature(obj = "RasterBrickTimeSeries")</code>: plots time-series of rasters in Google Earth</p>
+</dd>
+</dl>
+
+
+
+<h3>Author(s)</h3>
+
+<p> Tomislav Hengl </p>
+
+
+<h3>See Also</h3>
+
+ <p><code><a href="RasterBrickSimulations-class.html">RasterBrickSimulations-class</a></code>, <code><a href="plotKML-method.html">plotKML-methods</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre> 
+# load input data:
+data(LST)
+## Not run: 
+# fit a variogram and generate simulations:
+# derive stream networks and save to a list:
+# plot the whole project and open in Google Earth:
+# plotKML(LST.ls)
+
+## End(Not run)
+</pre>
+
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
+</body></html>

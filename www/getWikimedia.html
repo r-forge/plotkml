@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><title>R: Gets EXIF information from the Wikimedia Commons multimedia...</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="../../R.css">
+<link rel="stylesheet" type="text/css" href="R.css">
 </head><body>
 
 <table width="100%" summary="page for getWikiMedia.ImageInfo {plotKML}"><tr><td>getWikiMedia.ImageInfo {plotKML}</td><td align="right">R Documentation</td></tr></table>
@@ -10,8 +10,8 @@
 
 <h3>Description</h3>
 
-<p>
-<code>getWikiMedia.ImageInfo</code> function fetches the EXIF data via the <a href="http://www.mediawiki.org/wiki/API">Wikimedia API</a> for any donated image. The resulting EXIF data (named list) can then be further used to construct a <code>"SpatialPhotoOverlay"</code> object and then parsed to KML.
+
+<p><code>getWikiMedia.ImageInfo</code> function fetches the EXIF data via the <a href="http://www.mediawiki.org/wiki/API">Wikimedia API</a> for any donated image. The resulting EXIF data (named list) can then be further used to construct a <code>"SpatialPhotoOverlay"</code> object and then parsed to KML.
 </p>
 
 
@@ -24,22 +24,28 @@
 
 <h3>Arguments</h3>
 
+
 <table summary="R argblock">
 <tr valign="top"><td><code>imagename</code></td>
 <td>
-Wikimedia commons unique image title</td></tr>
+<p>Wikimedia commons unique image title</p>
+</td></tr>
 <tr valign="top"><td><code>APIsource</code></td>
 <td>
-location of the API service</td></tr>
+<p>location of the API service</p>
+</td></tr>
 <tr valign="top"><td><code>module</code></td>
 <td>
-default module</td></tr>
+<p>default module</p>
+</td></tr>
 <tr valign="top"><td><code>details</code></td>
 <td>
-detailed parameters of interest</td></tr>
+<p>detailed parameters of interest</p>
+</td></tr>
 <tr valign="top"><td><code>testURL</code></td>
 <td>
-logical; species if the program should first test whether the image exist at all (recommended)</td></tr>
+<p>logical; species if the program should first test whether the image exist at all (recommended)</p>
+</td></tr>
 </table>
 
 
@@ -58,17 +64,19 @@ For a list of modules and parameters that can be used via <code>getWikiMedia.Ima
 
 <h3>References</h3>
 
-<p>
+
 
 <ul>
-<li> Wikimedia API (<a href="http://www.mediawiki.org/wiki/API">http://www.mediawiki.org/wiki/API</a>)
+<li><p> Wikimedia API (<a href="http://www.mediawiki.org/wiki/API">http://www.mediawiki.org/wiki/API</a>)
+</p>
 </li>
-<li>EXIF tool (<a href="http://www.sno.phy.queensu.ca/~phil/exiftool/">http://www.sno.phy.queensu.ca/~phil/exiftool/</a>)
+<li><p> EXIF tool (<a href="http://www.sno.phy.queensu.ca/~phil/exiftool/">http://www.sno.phy.queensu.ca/~phil/exiftool/</a>)
+</p>
 </li>
-<li>EXIF Tags (<a href="http://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/EXIF.html">http://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/EXIF.html</a>)
+<li><p> EXIF Tags (<a href="http://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/EXIF.html">http://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/EXIF.html</a>)
+</p>
 </ul>
 
-</p>
 
 
 <h3>See Also</h3>
@@ -90,5 +98,5 @@ x$metadata[grep(names(x$metadata), pattern="GPS")]
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
 </body></html>

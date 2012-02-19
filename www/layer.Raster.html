@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><title>R: Export raster objects to KML</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="../../R.css">
+<link rel="stylesheet" type="text/css" href="R.css">
 </head><body>
 
 <table width="100%" summary="page for kml_layer.Raster {plotKML}"><tr><td>kml_layer.Raster {plotKML}</td><td align="right">R Documentation</td></tr></table>
@@ -16,38 +16,34 @@
 <h3>Usage</h3>
 
 <pre>
-kml_layer.Raster(obj, metadata = FALSE, plot.legend = TRUE, ...
-  colour_scale = get("colour_scale_numeric", envir = plotKML.opts), ...)
+kml_layer.Raster(obj, plot.legend = TRUE, metadata = NULL, raster_name, ...)
 </pre>
 
 
 <h3>Arguments</h3>
 
+
 <table summary="R argblock">
 <tr valign="top"><td><code>obj</code></td>
 <td>
-object of class <code>"RasterBrick"</code> (a time series of images)</td></tr>
-<tr valign="top"><td><code>metadata</code></td>
-<td>
-(optional) specify the metadata object</td></tr>
+<p>object of class <code>"RasterLayer"</code>, <code>"SpatialPixelsDataFrame"</code> or <code>"SpatialGridDataFrame"</code></p>
+</td></tr>
 <tr valign="top"><td><code>plot.legend</code></td>
 <td>
-logical; specify whether a map legend should be generated automatically</td></tr>
+<p>logical; specify whether a map legend should be generated automatically</p>
+</td></tr>
+<tr valign="top"><td><code>metadata</code></td>
+<td>
+<p>(optional) specify the metadata object</p>
+</td></tr>
+<tr valign="top"><td><code>raster_name</code></td>
+<td>
+<p>(optional) specify the output file name (PNG)</p>
+</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-additional <code>aesthetics</code> arguments</td></tr>
-<tr valign="top"><td><code>colour_scale</code></td>
-<td>
-color palette; by default using the color scale for numeric variables</td></tr>
-<tr valign="top"><td><code>alpha</code></td>
-<td>
-variable to be used to set transparency</td></tr>
-<tr valign="top"><td><code>altitude</code></td>
-<td>
-if not a 3D object; variable to be used to specify altitude above ground</td></tr>
-<tr valign="top"><td><code>altitudeMode</code></td>
-<td>
-altitude mode type (<code>"clampToGround"</code>, <code>"relativeToGround"</code> or <code>"absolute"</code>)</td></tr>  
+<p>additional <code><a href="aesthetics.html">aesthetics</a></code> arguments</p>
+</td></tr>
 </table>
 
 
@@ -64,20 +60,23 @@ altitude mode type (<code>"clampToGround"</code>, <code>"relativeToGround"</code
 
 <h3>See Also</h3>
 
-<p> <code><a href="kml.html">kml</a></code>, <code><a href="kml_open.html">kml_open</a></code>, <code><a href="layer.RasterBrick.html">kml_layer.RasterBrick</a></code> </p>
+ <p><code><a href="kml-method.html">kml-methods</a></code>, <code><a href="kml_open.html">kml_open</a></code>, <code><a href="layer.RasterBrick.html">kml_layer.RasterBrick</a></code> </p>
 
 
 <h3>Examples</h3>
 
 <pre>
 data(eberg_grid)
+coordinates(eberg_grid) &lt;- ~x+y
+gridded(eberg_grid) &lt;- TRUE
+proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
 data(SAGA_pal)
 ## Not run: 
 # KML plot with a single raster:
-kml(eberg_grid, colour_scale = SAGA_pal[[1]], colour = TWI)
+kml(eberg_grid, colour_scale = SAGA_pal[[1]], colour = TWI) 
 
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
 </body></html>

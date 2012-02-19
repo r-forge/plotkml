@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Generate spatial metadata from an sp object</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body>
+
+<table width="100%" summary="page for spMetadata.Spatial {plotKML}"><tr><td>spMetadata.Spatial {plotKML}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Generate spatial metadata from an sp object</h2>
+
+<h3>Description</h3>
+
+<p>Tries to generate metadata from an external file. If no metadata file is available, tries to fill in missing columns based on the data properties.</p>
+
+
+<h3>Usage</h3>
+
+<pre> spMetadata.Spatial(obj, xml.file, generate.missing = TRUE, Citation_title,  
+    Target_variable, Attribute_Measurement_Resolution = 1, Attribute_Units_of_Measure = "NA",
+    Indirect_Spatial_Reference = "", GoogleGeocode = FALSE, 
+    Enduser_license_URL = get("license_url", envir = plotKML.opts),
+    signif.digit = 3, colour_scale, bounds, legend_names, icons, validate.schema = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+
+<table summary="R argblock">
+<tr valign="top"><td><code>obj</code></td>
+<td>
+<p>some <code>"Spatial"</code> class object with <code>"data"</code> slot</p>
+</td></tr>
+<tr valign="top"><td><code>xml.file</code></td>
+<td>
+<p>(optional) metadata file in the FGDC format</p>
+</td></tr>
+<tr valign="top"><td><code>generate.missing</code></td>
+<td>
+<p>logical; species whether the program should try to generate missing metadata automatically</p>
+</td></tr>
+<tr valign="top"><td><code>Citation_title</code></td>
+<td>
+<p>one-sentence title of the object</p>
+</td></tr>
+<tr valign="top"><td><code>Target_variable</code></td>
+<td>
+<p>target variable i.e. column name in the data slot</p>
+</td></tr>
+<tr valign="top"><td><code>Attribute_Measurement_Resolution</code></td>
+<td>
+<p>numeric resolution (typically estimated as half the measurement precision)</p>
+</td></tr>
+<tr valign="top"><td><code>Attribute_Units_of_Measure</code></td>
+<td>
+<p>physical units of the target variable</p>
+</td></tr>
+<tr valign="top"><td><code>Indirect_Spatial_Reference</code></td>
+<td>
+<p>name of the closest geographical location, town or village</p>
+</td></tr>
+<tr valign="top"><td><code>GoogleGeocode</code></td>
+<td>
+<p>logical; specifies whether R should try to estimate Indirect Spatial Reference using Google maps API</p>
+</td></tr>
+<tr valign="top"><td><code>Enduser_license_URL</code></td>
+<td>
+<p>end-user license specification (URL)</p>
+</td></tr>
+<tr valign="top"><td><code>signif.digit</code></td>
+<td>
+<p>integer; a number of significant digits to round the numbers in the palette slot</p>
+</td></tr>
+<tr valign="top"><td><code>colour_scale</code></td>
+<td>
+<p>collor scheme used to visualize this data</p>
+</td></tr>
+<tr valign="top"><td><code>bounds</code></td>
+<td>
+<p>numeric vector; upper and lower limit bounds for the target variable</p>
+</td></tr>
+<tr valign="top"><td><code>legend_names</code></td>
+<td>
+<p>(optional) manually inserted legend names</p>
+</td></tr>
+<tr valign="top"><td><code>icons</code></td>
+<td>
+<p>(optional) manually inserted icon names for legend names</p>
+</td></tr>
+<tr valign="top"><td><code>validate.schema</code></td>
+<td>
+<p>logical; specieis whether R should try to validate your xml file</p>
+</td></tr>  
+</table>
+
+
+<h3>Details</h3>
+
+
+<p><code>spMetadata.Spatial</code> tries to locate a metadata file in the working directory (it looks for a metadata file with the same name as the object name). If no <code>.xml</code> file exists, it will load the template xml file available in the system folder (<code>system.file("FGDC.xml", package="plotKML")</code>).
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Tomislav Hengl</p>
+
+
+<h3>See Also</h3>
+
+ <p><code><a href="SpatialMetadata-class.html">SpatialMetadata-class</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(eberg)
+coordinates(eberg) &lt;- ~X+Y
+proj4string(eberg) &lt;- CRS("+init=epsg:31467")
+## Not run: 
+# No metadata file specified:
+eberg.md &lt;- spMetadata(eberg, Target_variable="SAND")
+# With localy prepared metadata file:
+eberg.md &lt;- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"), Target_variable="SAND")
+
+## End(Not run)
+</pre>
+
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
+</body></html>

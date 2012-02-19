@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><title>R: Extracts the proj4 parameters and checks if the projection...</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="../../R.css">
+<link rel="stylesheet" type="text/css" href="R.css">
 </head><body>
 
 <table width="100%" summary="page for check_projection {plotKML}"><tr><td>check_projection {plotKML}</td><td align="right">R Documentation</td></tr></table>
@@ -10,39 +10,43 @@
 
 <h3>Description</h3>
 
-<p>Function <code>parse_proj4</code> gets the proj4 string from a space-time object and <code>check_projection</code> checks if the input projection is compatible with the referent projection system. The referent system is by default the &lsquo;latlon&rsquo; projection with &lsquo;WGS84&rsquo; datum (KML-compatible coordinates).</p>
+<p>Function <code>parse_proj4</code> gets the proj4 string from a space-time object and <code>check_projection</code> checks if the input projection is compatible with the referent projection system. The referent system is by default the <code>longlat</code> projection with WGS84 datum (KML-compatible coordinates).</p>
 
 
 <h3>Usage</h3>
 
-<pre>check_projection(obj, logical = TRUE, ref_CRS = get("ref_CRS", envir = plotKML.opts))</pre>
+<pre>check_projection(obj, control = TRUE, ref_CRS = get("ref_CRS", envir = plotKML.opts))</pre>
 
 
 <h3>Arguments</h3>
 
+
 <table summary="R argblock">
 <tr valign="top"><td><code>obj</code></td>
 <td>
-object of class <code>Spatial*</code> or <code>Raster*</code></td></tr>
-<tr valign="top"><td><code>logical</code></td>
+<p>object of class <code>Spatial*</code> or <code>Raster*</code></p>
+</td></tr>
+<tr valign="top"><td><code>control</code></td>
 <td>
-logical; if TRUE, a logical value is returned, if FALSE, an error is thrown if the test failed</td></tr>
+<p>logical; if TRUE, a logical value is returned, if FALSE, an error is thrown if the test failed</p>
+</td></tr>
 <tr valign="top"><td><code>ref_CRS</code></td>
 <td>
-the referent coordinate system.</td></tr>
+<p>the referent coordinate system.</p>
+</td></tr>
 </table>
 
 
 <h3>Details</h3>
 
-<p>
-A cartographic projection is KML compatible if: (a) geographical coordinates are used, and (b) that relate to the WGS84 ellispoid (<code>"+proj=longlat +datum=WGS84"</code>). You can also set your own local referent projection system by specifiying <code>plotKML.env(ref_CRS = ...)</code>.
+
+<p>A cartographic projection is KML compatible if: (a) geographical coordinates are used, and (b) if they relate to the WGS84 ellispoid (<code>"+proj=longlat +datum=WGS84"</code>). You can also set your own local referent projection system by specifiying <code>plotKML.env(ref_CRS = ...)</code>.
 </p>
 
 
 <h3>Warning</h3>
 
-<p><code>obj</code> needs to have a proper proj4 string (CRS), otherwise <code>check_projection</code> will not run.</p>
+<p><code>obj</code> needs to have a proper proj4 string (CRS), otherwise <code>check_projection</code> will not run. If the geodetic datum is defined via the <code>+towgs</code>, consider converting the coordinates manually i.e. by using the <code>sp::spTransform</code> or the <code><a href="reproject-method.html">reproject-methods</a></code> method.</p>
 
 
 <h3>Author(s)</h3>
@@ -52,18 +56,18 @@ A cartographic projection is KML compatible if: (a) geographical coordinates are
 
 <h3>References</h3>
 
-<p>
+
 
 <ul>
-<li> WGS84 (<a href="http://spatialreference.org/ref/epsg/4326/">http://spatialreference.org/ref/epsg/4326/</a>)
+<li><p> WGS84 (<a href="http://spatialreference.org/ref/epsg/4326/">http://spatialreference.org/ref/epsg/4326/</a>)
+</p>
 </ul>
 
-</p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="reproject.html">reproject</a></code>, <code>rgdal::CRS-class</code></p>
+<p><code><a href="reproject-method.html">reproject-methods</a></code>, <code>rgdal::CRS-class</code></p>
 
 
 <h3>Examples</h3>
@@ -72,13 +76,16 @@ A cartographic projection is KML compatible if: (a) geographical coordinates are
 data(eberg)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
+## Not run: 
 check_projection(eberg)
 # not yet ready for export to KML;
 parse_proj4(proj4string(eberg))
 eberg.geo &lt;- reproject(eberg)
 check_projection(eberg.geo)
 # now ready for export;
+
+## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
 </body></html>

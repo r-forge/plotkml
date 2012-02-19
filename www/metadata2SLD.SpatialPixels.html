@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Writes a Styled Layer Description (*SLD*) file for a...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body>
+
+<table width="100%" summary="page for metadata2SLD.SpatialPixels {plotKML}"><tr><td>metadata2SLD.SpatialPixels {plotKML}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Writes a Styled Layer Description (<B>SLD</B>) file for a SpatialPixels class object</h2>
+
+<h3>Description</h3>
+
+<p>Creates a <a href="http://docs.geoserver.org/stable/en/user/styling/sld-introduction.html">Styled Layer Description</a> (<B>SLD</B>) file, that can be attached to a spatial layer contributed to GeoServer. </p>
+
+
+<h3>Usage</h3>
+
+<pre>
+metadata2SLD.SpatialPixels(obj, Format_Information_Content = xmlValue(obj@xml[["//formcont"]]),
+    obj.name = normalizeFilename(deparse(substitute(obj))), 
+    sld.file = set.file.extension(obj.name, ".sld"),
+    Citation_title = xmlValue(obj@xml[["//title"]]), 
+    ColorMap_type = "intervals", opacity = 1, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+
+<table summary="R argblock">
+<tr valign="top"><td><code>obj</code></td>
+<td>
+<p>object of class <code>"SpatialMetadata"</code></p>
+</td></tr>
+<tr valign="top"><td><code>Format_Information_Content</code></td>
+<td>
+<p>character; class of the object to be written to SLD file</p>
+</td></tr>
+<tr valign="top"><td><code>obj.name</code></td>
+<td>
+<p>character; name of the layer</p>
+</td></tr>
+<tr valign="top"><td><code>sld.file</code></td>
+<td>
+<p>character; name of the output file</p>
+</td></tr>
+<tr valign="top"><td><code>Citation_title</code></td>
+<td>
+<p>character; title of the layer</p>
+</td></tr>
+<tr valign="top"><td><code>ColorMap_type</code></td>
+<td>
+<p>character; type of the colorMap see <a href="http://docs.geoserver.org">http://docs.geoserver.org</a></p>
+</td></tr>
+<tr valign="top"><td><code>opacity</code></td>
+<td>
+<p>logical; specifies the opacity</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>additional arguments</p>
+</td></tr>
+</table>
+
+
+<h3>Author(s)</h3>
+
+<p> Tomislav Hengl </p>
+
+
+<h3>See Also</h3>
+
+ <p><code><a href="spMetadata-method.html">spMetadata</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+# Generate missing metadata
+data(eberg_grid)
+coordinates(eberg_grid) &lt;- ~x+y
+gridded(eberg_grid) &lt;- TRUE
+proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
+# With localy prepared metadata file:
+eberg_TWI &lt;- as(eberg_grid["TWI"], "SpatialPixelsDataFrame")
+eberg.md &lt;- spMetadata(eberg_TWI, Target_variable="TWI")
+# Export to SLD format:
+metadata2SLD(eberg.md, "eberg_TWI.sld")
+
+## End(Not run)
+</pre>
+
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><title>R: Baranja hill case study</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="../../R.css">
+<link rel="stylesheet" type="text/css" href="R.css">
 </head><body>
 
 <table width="100%" summary="page for baranja {plotKML}"><tr><td>baranja {plotKML}</td><td align="right">R Documentation</td></tr></table>
@@ -10,32 +10,35 @@
 
 <h3>Description</h3>
 
-<p>Baranja hill is a 4 by 4 km large study area in the Baranja region, eastern Croatia (corresponds to a size of an aerial photograph). This data set has been extensively used to describe various DEM modelling and analysis steps (<a href="http://geomorphometry.org/book">Hengl and Reuter, 2008</a>; <a href="http://dx.doi.org/10.5194/hess-14-1153-2010">Hengl et al., 2010</a>). <br>
-<code>barxyz</code> is a <code>"SpatialPointsDataFrame"</code> object that contains 6370 observations of elevations (from field survey and digitized from the stereo images); <code>bargrid</code> contains <EM>observed</EM> probabilities of streams (digitized from the 1:5000 topo map); <code>barstr</code> contains 100 simulated stream networks (<code>"SpatialLines"</code>) using <code>barxyz</code> point data as input (see examples below).</p>
+<p>Baranja hill is a 4 by 4 km large study area in the Baranja region, eastern Croatia (corresponds to a size of an aerial photograph). This data set has been extensively used to describe various DEM modelling and analysis steps (see <a href="http://geomorphometry.org/book">Hengl and Reuter, 2008</a>; <a href="http://dx.doi.org/10.5194/hess-14-1153-2010">Hengl et al., 2010</a>). <br>
+<code>barxyz</code> contains 6370 precise observations of elevations (from field survey and digitized from the stereo images); <code>bargrid</code> contains <EM>observed</EM> probabilities of streams (digitized from the 1:5000 topo map); <code>barstr</code> contains 100 simulated stream networks (<code>"SpatialLines"</code>) using <code>barxyz</code> point data as input (see examples below).</p>
 
 
 <h3>Usage</h3>
 
-<pre>data(barxyz)</pre>
+<pre>data(bargrid)</pre>
 
 
 <h3>Format</h3>
 
-<p>
-The <code>bargrid</code> data frame (regular grid at 30 m intervals) contains the following columns:
+
+<p>The <code>bargrid</code> data frame (regular grid at 30 m intervals) contains the following columns:
+</p>
 
 <dl>
-<dt><code>p.obs</code></dt><dd>observed probability of stream (0-1)</dd>
-<dt><code>x</code></dt><dd>a numeric vector; x-coordinate (m) in the MGI / Balkans zone 6 </dd>
-<dt><code>y</code></dt><dd>a numeric vector; y-coordinate (m) in the MGI / Balkans zone 6 </dd>
+<dt><code>p.obs</code></dt><dd><p>observed probability of stream (0-1)</p>
+</dd>
+<dt><code>x</code></dt><dd><p>a numeric vector; x-coordinate (m) in the MGI / Balkans zone 6 </p>
+</dd>
+<dt><code>y</code></dt><dd><p>a numeric vector; y-coordinate (m) in the MGI / Balkans zone 6 </p>
+</dd>
 </dl>
 
-</p>
 
 
 <h3>Note</h3>
 
-<p>Consider using the 30~m resolution grid (see <code>bargrid</code>) to produce the output maps. 
+<p>Consider using the 30 m resolution grid (see <code>bargrid</code>) as the target resolution (output maps). 
 </p>
 
 
@@ -46,24 +49,31 @@ The <code>bargrid</code> data frame (regular grid at 30 m intervals) contains th
 
 <h3>References</h3>
 
-<p>
+
 
 <ul>
-<li> Hengl, T., Reuter, H.I. (eds), (2008) <a href="http://geomorphometry.org/book">Geomorphometry: Concepts, Software, Applications</a>. Developments in Soil Science, vol. 33, Elsevier, 772 p.
+<li><p> Hengl, T., Reuter, H.I. (eds), (2008) <a href="http://geomorphometry.org/book">Geomorphometry: Concepts, Software, Applications</a>. Developments in Soil Science, vol. 33, Elsevier, 772 p.
+</p>
 </li>
-<li>Hengl, T., Heuvelink, G. B. M., van Loon, E. E., (2010) <a href="http://dx.doi.org/10.5194/hess-14-1153-2010">On the uncertainty of stream networks derived from elevation data: the error propagation approach</a>. Hydrology and Earth System Sciences, 14:1153-1165.
+<li><p> Hengl, T., Heuvelink, G. B. M., van Loon, E. E., (2010) <a href="http://dx.doi.org/10.5194/hess-14-1153-2010">On the uncertainty of stream networks derived from elevation data: the error propagation approach</a>. Hydrology and Earth System Sciences, 14:1153-1165.
+</p>
 </li>
-<li><a href="http://geomorphometry.org/content/baranja-hill">http://geomorphometry.org/content/baranja-hill</a>
+<li> <p><a href="http://geomorphometry.org/content/baranja-hill">http://geomorphometry.org/content/baranja-hill</a>
+</p>
 </ul>
 
-</p>
 
 
 <h3>Examples</h3>
 
 <pre>
 library(gstat)
+# sampled elevations:
 data(barxyz)
+prj = "+proj=tmerc +lat_0=0 +lon_0=18 +k=0.9999 +x_0=6500000 +y_0=0 +ellps=bessel +units=m +towgs84=550.499,164.116,475.142,5.80967,2.07902,-11.62386,0.99999445824"
+coordinates(barxyz) &lt;- ~x+y
+proj4string(barxyz) &lt;- CRS(prj)
+# grids:
 data(bargrid)
 data(barstr)
 coordinates(bargrid) &lt;- ~x+y
@@ -71,11 +81,13 @@ gridded(bargrid) &lt;- TRUE
 proj4string(bargrid) &lt;- barxyz@proj4string
 bargrid@grid
 ## Not run: 
-spplot(bargrid[1], sp.layout=list("sp.points", barxyz, col="black", pch="+"))
-## Deriving stream networks using geostatistical simulations:
+data(R_pal)
+spplot(bargrid[1], sp.layout=list("sp.points", barxyz, col="black", pch="+"), col.regions = R_pal[["blue_grey_red"]])
+# Deriving stream networks using geostatistical simulations:
 Z.ovgm &lt;- vgm(psill=1831, model="Mat", range=1051, nugget=0, kappa=1.2)
 vt.gt &lt;- gstat(id=c("Z"), formula=Z~1, data=barxyz, model=Z.ovgm, nmax=30)
 # geostatistical simulations:
+N.sim &lt;- 10
 DEM.sim &lt;- predict.gstat(vt.gt, bargrid, nsim=N.sim, debug.level=-1)
 fullgrid(DEM.sim) &lt;- TRUE
 stream.list &lt;- list(rep(NA, N.sim))
@@ -83,8 +95,8 @@ stream.list &lt;- list(rep(NA, N.sim))
 for (i in 1:N.sim) {
   writeGDAL(DEM.sim[i], paste("DEM", i, ".sdat", sep=""), "SAGA", mvFlag = -99999)
   # filter the spurious sinks:
-  rsaga.geoprocessor(lib="ta_preprocessor", module=2, param=list(DEM=paste("DEM", i, ".sgrd", sep=""), DEM_PREPROC="DEMflt.sgrd", METHOD=1), show.output.on.console=FALSE)
-  # extract the channel network:
+  rsaga.fill.sinks(in.dem=paste("DEM", i, ".sgrd", sep=""), out.dem="DEMflt.sgrd")
+  # extract the channel network SAGA GIS 2.0.6:
   rsaga.geoprocessor(lib="ta_channels", module=0, param=list(ELEVATION="DEMflt.sgrd", CHNLNTWRK=paste("channels", i, ".sgrd", sep=""), CHNLROUTE="channel_route.sgrd", SHAPES="channels.shp", INIT_GRID="DEMflt.sgrd", DIV_CELLS=3, MINLEN=40), show.output.on.console=FALSE)
   stream.list[[i]] &lt;- readOGR("channels.shp", "channels", verbose=FALSE)
   proj4string(stream.list[[i]]) &lt;- barxyz@proj4string
@@ -96,8 +108,9 @@ for(i in 1:N.sim){
 }
 spplot(DEM.sim[1], col.regions=grey(seq(0.4,1,0.025)), scales=list(draw=T), sp.layout=streams.plot)
 
+
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
 </body></html>
