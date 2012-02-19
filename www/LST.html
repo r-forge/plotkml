@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><title>R: Time series of MODIS LST images (estimated Land Surface...</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="../../R.css">
+<link rel="stylesheet" type="text/css" href="R.css">
 </head><body>
 
 <table width="100%" summary="page for LST {plotKML}"><tr><td>LST {plotKML}</td><td align="right">R Documentation</td></tr></table>
@@ -10,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p><code>LST</code> contains a spatial sub-sample (Istra region in Croatia) of 46 time series of MODIS LST images (estimated Land Surface Temperature in degrees C) at 1 km resolution. The <code>"zvalue"</code> slot in the <code>LST</code> object is the dateTime column expressed as yyyy-mm-ddThh:mm:sszzzzzz, where T is the separator between the date and the time, and the time zone is either Z (for UTC) or zzzzzz, which represents ±hh:mm in relation to UTC. The temporal support of these images is 8-days.
+<p><code>LST</code> contains a spatial sub-sample (Istra region in Croatia) of 46 time series of MODIS LST images (estimated Land Surface Temperature in degrees C) at 1 km resolution. The <code>"zvalue"</code> slot in the <code>"RasterBrick"</code> object can be used as the dateTime column expressed as yyyy-mm-ddThh:mm:sszzzzzz, where T is the separator between the date and the time, and the time zone is either Z (for UTC) or zzzzzz, which represents ±hh:mm in relation to UTC. The temporal support of these images is 8-days.
 </p>
 
 
@@ -21,16 +21,23 @@
 
 <h3>Format</h3>
 
-<p>
-The <code>LST</code> is <code>"RasterBrick"</code> object with the following layers:
+
+<p>The <code>LST</code> data frame contains the following layers:
+</p>
 
 <dl>
-<dt><code>LST2008_01_01</code></dt><dd>8-day MODIS LST mosaick for period 2007-12-29 to 2008-01-04</dd>
-<dt><code>LST2008_01_09</code></dt><dd>8-day MODIS LST mosaick for period 2008-01-05 to 2008-01-13</dd>
-<dt><code>...</code></dt><dd>subsequent bands</dd>
+<dt><code>LST2008_01_01</code></dt><dd><p>8-day MODIS LST mosaick for period 2007-12-29 to 2008-01-04</p>
+</dd>
+<dt><code>LST2008_01_09</code></dt><dd><p>8-day MODIS LST mosaick for period 2008-01-05 to 2008-01-13</p>
+</dd>
+<dt><code>...</code></dt><dd><p>subsequent bands</p>
+</dd>
+<dt><code>x</code></dt><dd><p>a numeric vector; x-coordinate (m) in the UTM system </p>
+</dd>
+<dt><code>y</code></dt><dd><p>a numeric vector; y-coordinate (m) in the UTM system </p>
+</dd>
 </dl>
 
-</p>
 
 
 <h3>Note</h3>
@@ -45,35 +52,41 @@ The <code>LST</code> is <code>"RasterBrick"</code> object with the following lay
 
 <h3>References</h3>
 
-<p>
+
 
 <ul>
-<li> Hengl, T., Heuvelink, G.B.M., Percec Tadic, M., Pebesma, E., (2011) <a href="http://dx.doi.org/10.1007/s00704-011-0464-2">Spatio-temporal prediction of daily temperatures using time-series of MODIS LST images</a>. Theoretical and Applied Climatology.
+<li><p> Hengl, T., Heuvelink, G.B.M., Percec Tadic, M., Pebesma, E., (2011) <a href="http://dx.doi.org/10.1007/s00704-011-0464-2">Spatio-temporal prediction of daily temperatures using time-series of MODIS LST images</a>. Theoretical and Applied Climatology, 107(1-2): 265-277.
+</p>
 </li>
-<li>MODIS products (<a href="https://lpdaac.usgs.gov/lpdaac/products/modis_products_table/">https://lpdaac.usgs.gov/lpdaac/products/modis_products_table/</a>)
+<li><p> MODIS products (<a href="https://lpdaac.usgs.gov/lpdaac/products/modis_products_table/">https://lpdaac.usgs.gov/lpdaac/products/modis_products_table/</a>)
+</p>
 </ul>
 
-</p>
 
 
 <h3>Examples</h3>
 
 <pre>
 data(LST)
+coordinates(LST) &lt;- ~x+y
+gridded(LST) &lt;- TRUE
+proj4string(LST) &lt;- CRS("+proj=utm +zone=33 +datum=WGS84 +units=m")
+# get the dates from the file names:
+dates &lt;- sapply(strsplit(names(LST), "LST"), function(x){x[[2]]})
+LST &lt;- brick(LST)
+LST@title = "Time series of MODIS Land Surface Temperature (8-day mosaics) images"
+LST@zvalue &lt;- format(as.Date(dates, "%Y_%m_%d"), "%Y-%m-%dT%H:%M:%SZ")
 data(SAGA_pal)
 ## Not run: 
-## Plot temperatures, precipitation and MODIS images in Google Earth:
-LST_ll &lt;- reproject(LST, program="FWTools", silent = TRUE)
+# Plot temperatures, precipitation and MODIS images in Google Earth:
+LST_ll &lt;- reproject(LST)
 # copy the dates:
 LST_ll@zvalue &lt;- LST@zvalue
 # KML plot with block temporal support of 8 days:
 kml(LST_ll, colour_scale=SAGA_pal[[1]], dtime=8*24*60^2)
-# to obtain the complete data set for whole Croatia use:
-load(url("http://plotkml.r-forge.r-project.org/MODLST.rda"))
-str(MODLST)
 
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
 </body></html>

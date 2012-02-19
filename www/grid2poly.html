@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><title>R: Converts a gridded map to a polygon map</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="../../R.css">
+<link rel="stylesheet" type="text/css" href="R.css">
 </head><body>
 
 <table width="100%" summary="page for grid2poly {plotKML}"><tr><td>grid2poly {plotKML}</td><td align="right">R Documentation</td></tr></table>
@@ -16,36 +16,52 @@
 <h3>Usage</h3>
 
 <pre>
-grid2poly(obj, var.name, reproject = TRUE, tmp.file = TRUE,  
-    method = c("raster", "sp", "RSAGA")[1], saga_lib = "shapes_grid", 
-    saga_module = 3, ...)
+grid2poly(obj, var.name = names(obj)[1], reproject = TRUE, 
+    method = c("sp", "raster", "RSAGA")[1], tmp.file = TRUE, 
+    saga_lib = "shapes_grid", saga_module = 3, silent = FALSE, ...)
 </pre>
 
 
 <h3>Arguments</h3>
 
+
 <table summary="R argblock">
 <tr valign="top"><td><code>obj</code></td>
 <td>
-SpatialGridDataFrame object</td></tr>
+<p>SpatialGridDataFrame object</p>
+</td></tr>
 <tr valign="top"><td><code>var.name</code></td>
 <td>
-target variable column name</td></tr>
+<p>target variable column name</p>
+</td></tr>
 <tr valign="top"><td><code>reproject</code></td>
 <td>
-logical; reproject coordinates to lat lon system?</td></tr>
+<p>logical; reproject coordinates to lat lon system?</p>
+</td></tr>
 <tr valign="top"><td><code>method</code></td>
 <td>
-decide to convert grids to polygons either using <code>"sp"</code>, <code>"raster"</code> or <code>"RSAGA"</code> packages</td></tr>
+<p>decide to convert grids to polygons either using <code>"sp"</code>, <code>"raster"</code> or <code>"RSAGA"</code> packages</p>
+</td></tr>
+<tr valign="top"><td><code>tmp.file</code></td>
+<td>
+<p>logical; specify whether to create a temporary file, or to actually write to the workding directory (in the case of SAGA GIS is used to convert grids)</p>
+</td></tr>
 <tr valign="top"><td><code>saga_lib</code></td>
 <td>
-string; SAGA GIS library name</td></tr>
+<p>string; SAGA GIS library name</p>
+</td></tr>
 <tr valign="top"><td><code>saga_module</code></td>
 <td>
-SAGA GIS module number; see <code>?rsaga_get_modules</code> for more details</td></tr>
+<p>SAGA GIS module number; see <code>?rsaga_get_modules</code> for more details</p>
+</td></tr>
+<tr valign="top"><td><code>silent</code></td>
+<td>
+<p>logical; specifies whether to print the SAGA GIS output</p>
+</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-additional arguments that can be parsed to the <code>rasterToPolygons</code> command</td></tr>
+<p>additional arguments that can be parsed to the <code>rasterToPolygons</code> command</p>
+</td></tr>
 </table>
 
 
@@ -61,19 +77,22 @@ additional arguments that can be parsed to the <code>rasterToPolygons</code> com
 
 <h3>See Also</h3>
 
-<p><code><a href="vect2rast.html">vect2rast</a></code>, <code>raster::rasterToPolygons</code></p>
+<p><code><a href="vect2rast-method.html">vect2rast</a></code>, <code>raster::rasterToPolygons</code></p>
 
 
 <h3>Examples</h3>
 
 <pre>
 data(eberg_grid)
+coordinates(eberg_grid) &lt;- ~x+y
+gridded(eberg_grid) &lt;- TRUE
+proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
 data(SAGA_pal)
 ## Not run: 
 system.time(dem_poly &lt;- grid2poly(eberg_grid, "DEM", method = "raster"))
 system.time(dem_poly &lt;- grid2poly(eberg_grid, "DEM", method = "sp"))
 system.time(dem_poly &lt;- grid2poly(eberg_grid, "DEM", method = "RSAGA"))
-# spplot (plotting large polygons in R = not a good idea):
+# plotting large polygons in R = not a good idea:
 spplot(dem_poly, col.regions = SAGA_pal[[1]])
 # plotKML:
 kml(dem_poly, colour_scale = SAGA_pal[[1]], colour = DEM, kmz = TRUE)
@@ -81,5 +100,5 @@ kml(dem_poly, colour_scale = SAGA_pal[[1]], colour = DEM, kmz = TRUE)
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
 </body></html>

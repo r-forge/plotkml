@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><title>R: Whitening legend (PNG)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="../../R.css">
+<link rel="stylesheet" type="text/css" href="R.css">
 </head><body>
 
 <table width="100%" summary="page for kml_legend.whitening {plotKML}"><tr><td>kml_legend.whitening {plotKML}</td><td align="right">R Documentation</td></tr></table>
@@ -16,40 +16,52 @@
 <h3>Usage</h3>
 
 <pre>
-kml_legend.whitening(legend.res = 0.01, width=120, height = 300, pointsize = 14, x.lim, e.lim, leg.asp = height/width, legend.file = "whitening_legend.png", matte = FALSE)
+kml_legend.whitening(legend.res = 0.01, width = 120, height = 300, pointsize = 14, 
+                 x.lim, e.lim, leg.asp = 0.3 *  width/height, legend.file = "whitening_legend.png",
+                 matte = FALSE)
 </pre>
 
 
 <h3>Arguments</h3>
 
+
 <table summary="R argblock">
 <tr valign="top"><td><code>legend.res</code></td>
 <td>
-resolution on a 0-1 scale</td></tr>
+<p>resolution on a 0-1 scale</p>
+</td></tr>
 <tr valign="top"><td><code>width</code></td>
 <td>
-image width</td></tr>
+<p>image width</p>
+</td></tr>
 <tr valign="top"><td><code>height</code></td>
 <td>
-image height</td></tr>
+<p>image height</p>
+</td></tr>
 <tr valign="top"><td><code>pointsize</code></td>
 <td>
-point size in units for text</td></tr>
+<p>point size in units for text</p>
+</td></tr>
 <tr valign="top"><td><code>x.lim</code></td>
 <td>
-upper and lower limits for target variable</td></tr>
+<p>upper and lower limits for target variable</p>
+</td></tr>
 <tr valign="top"><td><code>e.lim</code></td>
 <td>
-upper and lower limits for the normalized error</td></tr>
+<p>upper and lower limits for the normalized error</p>
+</td></tr>
 <tr valign="top"><td><code>leg.asp</code></td>
 <td>
-legend aspect</td></tr>
+<p>legend aspect</p>
+</td></tr>
 <tr valign="top"><td><code>legend.file</code></td>
 <td>
-file name</td></tr>
+<p>file name</p>
+</td></tr>
 <tr valign="top"><td><code>matte</code></td>
 <td>
-logical; specify whether to fix transparency using ImageMagick</td></tr>
+<p>logical; specify whether to fix transparency using ImageMagick</p>
+</td></tr>
 </table>
 
 
@@ -70,20 +82,21 @@ logical; specify whether to fix transparency using ImageMagick</td></tr>
 
 <h3>References</h3>
 
-<p>
+
 
 <ul>
-<li> Hengl, T., Heuvelink, G.M.B., Stein, A., (2004) <a href="http://dx.doi.org/10.1016/j.geoderma.2003.08.018">A generic framework for spatial prediction of soil variables based on regression-kriging</a>. Geoderma 122 (1-2): 75–93.
+<li><p> Hengl, T., Heuvelink, G.M.B., Stein, A., (2004) <a href="http://dx.doi.org/10.1016/j.geoderma.2003.08.018">A generic framework for spatial prediction of soil variables based on regression-kriging</a>. Geoderma 122 (1-2): 75-93.
+</p>
 </li>
-<li>Hengl, T., (2003) <a href="http://www.geocomputation.org/2003/Papers/Hengl_Paper.pdf">Visualisation of uncertainty using the HSI colour model: computations with colours</a>. 7th International Conference on GeoComputation (CD-ROM), p. 8.
+<li><p> Hengl, T., (2003) <a href="http://www.geocomputation.org/2003/Papers/Hengl_Paper.pdf">Visualisation of uncertainty using the HSI colour model: computations with colours</a>. 7th International Conference on GeoComputation (CD-ROM), p. 8.
+</p>
 </ul>
 
-</p>
 
 
 <h3>See Also</h3>
 
-<p> <code><a href="whitening.html">whitening</a></code>
+ <p><code><a href="whitening.html">whitening</a></code>
 </p>
 
 
@@ -96,5 +109,5 @@ kml_legend.whitening(x.lim=c(5,20), e.lim=c(.6,1))
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
 </body></html>

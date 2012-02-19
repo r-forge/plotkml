@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Daily temperatures for Croatia for year 2008</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body>
+
+<table width="100%" summary="page for HRtemp08 {plotKML}"><tr><td>HRtemp08 {plotKML}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Daily temperatures for Croatia for year 2008</h2>
+
+<h3>Description</h3>
+
+<p>The daily measurements of temperature (thermometers) for year 2008 kindly contributed by the <a href="http://meteo.hr">Croatian National Meteorological Service</a>. <code>HRtemp08</code> contains 56,608 measurements of temperature (159 stations by 365 days). 
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>data(HRtemp08)</pre>
+
+
+<h3>Format</h3>
+
+
+<p>The <code>HRtemp08</code> data frames contain the following columns:
+</p>
+
+<dl>
+<dt><code>NAME</code></dt><dd><p>name of the meteorological station</p>
+</dd>
+<dt><code>Lon</code></dt><dd><p>a numeric vector; x-coordiante / longitude in the WGS84 system</p>
+</dd>
+<dt><code>Lat</code></dt><dd><p>a numeric vector; y-coordinate / latitude in the WGS84 system</p>
+</dd>
+<dt><code>DATE</code></dt><dd><p>'Date' class vector</p>
+</dd>
+<dt><code>TEMP</code></dt><dd><p>daily temperature measurements in degree C</p>
+</dd>
+</dl>
+
+
+
+<h3>Note</h3>
+
+<p> The precision of the temperature readings in <code>HRtemp08</code> is tenth of degree C. On most climatological stations temperature is measured three times a day, at 7 a.m., 1 p.m. and 9 p.m. The daily mean can be calculated as a weighted average. 
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p> Tomislav Hengl and Melita Percec Tadic </p>
+
+
+<h3>References</h3>
+
+
+
+<ul>
+<li><p> Hengl, T., Heuvelink, G.B.M., Percec Tadic, M., Pebesma, E., (2011) <a href="http://dx.doi.org/10.1007/s00704-011-0464-2">Spatio-temporal prediction of daily temperatures using time-series of MODIS LST images</a>. Theoretical and Applied Climatology, 107(1-2): 265-277.
+</p>
+</li>
+<li><p> AGGM book datasets (<a href="http://spatial-analyst.net/book/HRclim2008">http://spatial-analyst.net/book/HRclim2008</a>)
+</p>
+</ul>
+
+
+
+<h3>See Also</h3>
+
+ <p><code><a href="HRprec08.html">HRprec08</a></code> </p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(HRtemp08)
+HRtemp08[1,]
+p1 = newXMLNode("Placemark")
+begin &lt;- format(HRtemp08[1,"DATE"]-.5, "%Y-%m-%dT%H:%M:%SZ")
+end &lt;- format(HRtemp08[1,"DATE"]+.5, "%Y-%m-%dT%H:%M:%SZ")
+txt &lt;- sprintf('&lt;name&gt;%s&lt;/name&gt;&lt;TimeStamp&gt;&lt;begin&gt;%s&lt;/begin&gt;&lt;end&gt;%s&lt;/end&gt;&lt;/TimeStamp&gt;&lt;Point&gt;&lt;coordinates&gt;%.4f,%.4f,%.0f&lt;/coordinates&gt;&lt;/Point&gt;', HRtemp08[1,"NAME"], begin, end, HRtemp08[1,"Lon"], HRtemp08[1,"Lat"], 0)
+parseXMLAndAdd(txt, parent=p1)
+p1
+</pre>
+
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
+</body></html>

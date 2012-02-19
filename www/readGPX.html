@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><title>R: Import GPX (GPS track) files</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="../../R.css">
+<link rel="stylesheet" type="text/css" href="R.css">
 </head><body>
 
 <table width="100%" summary="page for readGPX {plotKML}"><tr><td>readGPX {plotKML}</td><td align="right">R Documentation</td></tr></table>
@@ -15,32 +15,39 @@
 
 <h3>Usage</h3>
 
-<pre>readGPX(gpx.file, metadata = TRUE, bounds = TRUE,
-    waypoints = TRUE, tracks = TRUE, routes = TRUE)
+<pre>readGPX(gpx.file, metadata = TRUE, bounds = TRUE, 
+              waypoints = TRUE, tracks = TRUE, routes = TRUE)
 </pre>
 
 
 <h3>Arguments</h3>
 
+
 <table summary="R argblock">
 <tr valign="top"><td><code>gpx.file</code></td>
 <td>
-location of the gpx.file</td></tr>
-<tr valign="top"><td><code>metada</code></td>
+<p>location of the gpx.file</p>
+</td></tr>
+<tr valign="top"><td><code>metadata</code></td>
 <td>
-logical; species whether the metadata should be imported</td></tr>
+<p>logical; species whether the metadata should be imported</p>
+</td></tr>
 <tr valign="top"><td><code>bounds</code></td>
 <td>
-logical; species whether the bounding box coordinates should be imported</td></tr>
-<tr valign="top"><td><code>waypoint</code></td>
+<p>logical; species whether the bounding box coordinates should be imported</p>
+</td></tr>
+<tr valign="top"><td><code>waypoints</code></td>
 <td>
-logical; species whether all waypoints should be imported</td></tr>
-<tr valign="top"><td><code>track</code></td>
+<p>logical; species whether all waypoints should be imported</p>
+</td></tr>
+<tr valign="top"><td><code>tracks</code></td>
 <td>
-logical; species whether all tracks should be imported</td></tr>
-<tr valign="top"><td><code>route</code></td>
+<p>logical; species whether all tracks should be imported</p>
+</td></tr>
+<tr valign="top"><td><code>routes</code></td>
 <td>
-logical; species whether all routes should be imported</td></tr>
+<p>logical; species whether all routes should be imported</p>
+</td></tr>
 </table>
 
 
@@ -57,15 +64,16 @@ logical; species whether all routes should be imported</td></tr>
 
 <h3>References</h3>
 
-<p>
+
 
 <ul>
-<li> GPX data format (<a href="http://www.topografix.com/gpx.asp">http://www.topografix.com/gpx.asp</a>)
+<li><p> GPX data format (<a href="http://www.topografix.com/gpx.asp">http://www.topografix.com/gpx.asp</a>)
+</p>
 </li>
-<li>XML tutorial (<a href="http://www.omegahat.org/RSXML/Tour.pdf">http://www.omegahat.org/RSXML/Tour.pdf</a>)
+<li><p> XML tutorial (<a href="http://www.omegahat.org/RSXML/Tour.pdf">http://www.omegahat.org/RSXML/Tour.pdf</a>)
+</p>
 </ul>
 
-</p>
 
 
 <h3>See Also</h3>
@@ -85,5 +93,5 @@ str(fells_loop)
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
 </body></html>

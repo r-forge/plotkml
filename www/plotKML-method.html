@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Methods for plotting results of spatial analysis in Google...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body>
+
+<table width="100%" summary="page for plotKML-methods {plotKML}"><tr><td>plotKML-methods {plotKML}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Methods for plotting results of spatial analysis in Google Earth</h2>
+
+<h3>Description</h3>
+
+<p>The method writes inputs and outputs of spatial analysis (a list of point, gridded and polygon data usually) to KML and opens the KML file in Google Earth (or any other default package used to view KML/KMZ files).</p>
+
+
+<h3>Usage</h3>
+
+<pre>plotKML(obj, ... )
+</pre>
+
+
+<h3>Arguments</h3>
+
+
+<table summary="R argblock">
+<tr valign="top"><td><code>obj</code></td>
+<td>
+<p>input object of specific class; usually a composite object containing both inputs and outputs of analysis</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>(optional) arguments passed to the lower level functions</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p> This is a generic function to plot R objects that contain both inputs and outputs of spatial analysis. The resulting plots (referred to as <EM>&lsquo;views&rsquo;</EM>) are usually cartographically complete as they contain legends, and data and model descriptions. In principle, <code>plotKML</code> works only with complex objects such as <code>"SpatialPredictions"</code>, <code>"SpatialLinesSimulations"</code>, <code>"RasterBrickSimulations"</code>, <code>"RasterBrickTimeSeries"</code>, <code>"SpeciesDistributionMap"</code> and similar. To further customize visualizations consider combining the lower level functions <code><a href="kml_open.html">kml_open</a></code>, <code><a href="kml_open.html">kml_close</a></code>, <code><a href="kml_compress.html">kml_compress</a></code>, <code><a href="kml_screen.html">kml_screen</a></code> into your own wrapper function.
+</p>
+
+
+<h3>Note</h3>
+
+<p> Writting large spatial objects via plotKML can be time consuming. Please refer to the package documentation for more information.
+</p>
+
+
+<h3>See Also</h3>
+
+ <p><code><a href="plotKML-package.html">plotKML-package</a></code>
+</p>
+
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
+</body></html>

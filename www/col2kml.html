@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><title>R: Convert a color strings to the KML format</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="../../R.css">
+<link rel="stylesheet" type="text/css" href="R.css">
 </head><body>
 
 <table width="100%" summary="page for col2kml {plotKML}"><tr><td>col2kml {plotKML}</td><td align="right">R Documentation</td></tr></table>
@@ -15,15 +15,17 @@
 
 <h3>Usage</h3>
 
-<pre>col2kml(color)</pre>
+<pre>col2kml(colour)</pre>
 
 
 <h3>Arguments</h3>
 
+
 <table summary="R argblock">
-<tr valign="top"><td><code>color</code></td>
+<tr valign="top"><td><code>colour</code></td>
 <td>
-R color string</td></tr>
+<p>R color string</p>
+</td></tr>
 </table>
 
 
@@ -39,8 +41,8 @@ R color string</td></tr>
 
 <h3>See Also</h3>
 
-<p>
-<code>aqp::munsell2rgb</code>
+
+<p><code>aqp::munsell2rgb</code>
 </p>
 
 
@@ -50,8 +52,9 @@ R color string</td></tr>
 col2kml("white")
 col2kml(colors()[2])
 hex2kml(rgb(1,1,1))
-munsell2kml("10YR", "2", "4")
+x &lt;- munsell2kml("10YR", "2", "4")
+kml2hex(x)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
 </body></html>

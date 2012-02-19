@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><title>R: Exports objects of type SpatialPhotoOverlay to KML</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="../../R.css">
+<link rel="stylesheet" type="text/css" href="R.css">
 </head><body>
 
 <table width="100%" summary="page for kml_layer.SpatialPhotoOverlay {plotKML}"><tr><td>kml_layer.SpatialPhotoOverlay {plotKML}</td><td align="right">R Documentation</td></tr></table>
@@ -16,49 +16,119 @@
 <h3>Usage</h3>
 
 <pre>
-kml_layer.SpatialPhotoOverlay(obj, method = c("PhotoOverlay", "monolith")[1], 
-  PhotoOverlay.shape = obj@PhotoOverlay$shape, href = obj@filename, coords,
-  dae.name = "", heading = obj@PhotoOverlay$heading, tilt = obj@PhotoOverlay$tilt,
-  roll = obj@PhotoOverlay$roll, near = obj@PhotoOverlay$near, range = obj@PhotoOverlay$range,
-  leftFov = obj@PhotoOverlay$leftFov, rightFov = obj@PhotoOverlay$rightFov, bottomFov = obj@PhotoOverlay$bottomFov, 
-  topFov = obj@PhotoOverlay$topFov, altitudeMode = "clampToGround", block.size = 100,
-  max.depth = 300, scale.x = 1, scale.y = 1, scale.z = 1, refreshMode = "once", ...)
+kml_layer.SpatialPhotoOverlay(obj, method = c("PhotoOverlay", "monolith")[1],
+          PhotoOverlay.shape = obj@PhotoOverlay$shape, href = obj@filename, 
+          coords, dae.name = "", heading = obj@PhotoOverlay$heading, 
+          tilt = obj@PhotoOverlay$tilt, roll = obj@PhotoOverlay$roll, 
+          near = obj@PhotoOverlay$near, range =  obj@PhotoOverlay$range, 
+          leftFov = obj@PhotoOverlay$leftFov, rightFov = obj@PhotoOverlay$rightFov, 
+          bottomFov = obj@PhotoOverlay$bottomFov, topFov = obj@PhotoOverlay$topFov, 
+          altitudeMode = "clampToGround", block.size = 100, max.depth = 300, 
+          scale.x = 1, scale.y = 1, scale.z = 1, refreshMode = "once", 
+          html.table = NULL, ... )
 </pre>
 
 
 <h3>Arguments</h3>
 
+
 <table summary="R argblock">
 <tr valign="top"><td><code>obj</code></td>
 <td>
-object of class <code>"SpatialPhotoOverlay"</code> (a photograph with spatial coordinates, metadata and orientation)</td></tr>
+<p>object of class <code>"SpatialPhotoOverlay"</code> (a photograph with spatial coordinates, metadata and orientation)</p>
+</td></tr>
 <tr valign="top"><td><code>method</code></td>
 <td>
-visualization type: either <code>"PhotoOverlay"</code> or <code>"monolith"</code></td></tr>
+<p>visualization type: either <code>"PhotoOverlay"</code> or <code>"monolith"</code></p>
+</td></tr>
 <tr valign="top"><td><code>PhotoOverlay.shape</code></td>
 <td>
-PhotoOverlay shape value (KML)</td></tr>
+<p>PhotoOverlay shape value (KML)</p>
+</td></tr>
 <tr valign="top"><td><code>href</code></td>
 <td>
-location of the image file</td></tr>
+<p>location of the image file</p>
+</td></tr>
+<tr valign="top"><td><code>coords</code></td>
+<td>
+<p>(optional) 3D coordinates of the trapesoid corners</p>
+</td></tr>
 <tr valign="top"><td><code>dae.name</code></td>
 <td>
-(optional) COLLADA 3D model file name (without the extension)</td></tr>
-<tr valign="top"><td><code>...</code></td>
+<p>(optional) COLLADA 3D model file name (without the extension)</p>
+</td></tr>
+<tr valign="top"><td><code>heading</code></td>
 <td>
-a list of PhotoOverlay related arguments</td></tr>
+<p>a PhotoOverlay argument; direction (azimuth) of the camera, in degrees</p>
+</td></tr>
+<tr valign="top"><td><code>tilt</code></td>
+<td>
+<p>a PhotoOverlay argument; rotation, in degrees, of the camera around the X axis</p>
+</td></tr>
+<tr valign="top"><td><code>roll</code></td>
+<td>
+<p>a PhotoOverlay argument; rotation, in degrees, of the camera around the Z axis</p>
+</td></tr>  
+<tr valign="top"><td><code>near</code></td>
+<td>
+<p>a PhotoOverlay argument; measurement in meters along the viewing direction from the camera viewpoint to the PhotoOverlay shape</p>
+</td></tr>  
+<tr valign="top"><td><code>range</code></td>
+<td>
+<p>a PhotoOverlay argument; distance in meters from the point specified by &lt;longitude&gt;, &lt;latitude&gt;, and &lt;altitude&gt; to the LookAt position</p>
+</td></tr>  
+<tr valign="top"><td><code>leftFov</code></td>
+<td>
+<p>a PhotoOverlay argument; angle, in degrees, between the camera's viewing direction and the left side of the view volume</p>
+</td></tr>
+<tr valign="top"><td><code>rightFov</code></td>
+<td>
+<p>a PhotoOverlay argument; angle, in degrees, between the camera's viewing direction and the right side of the view volume</p>
+</td></tr>
+<tr valign="top"><td><code>bottomFov</code></td>
+<td>
+<p>a PhotoOverlay argument; angle, in degrees, between the camera's viewing direction and the bottom side of the view volume</p>
+</td></tr>
+<tr valign="top"><td><code>topFov</code></td>
+<td>
+<p>a PhotoOverlay argument; angle, in degrees, between the camera's viewing direction and the top side of the view volume</p>
+</td></tr>
+<tr valign="top"><td><code>altitudeMode</code></td>
+<td>
+<p>altitude mode</p>
+</td></tr>
 <tr valign="top"><td><code>block.size</code></td>
 <td>
-width of the block (100 m by default)</td></tr>
+<p>width of the block (100 m by default)</p>
+</td></tr>
 <tr valign="top"><td><code>max.depth</code></td>
 <td>
-300 m by default</td></tr>
+<p>300 m by default</p>
+</td></tr>
+<tr valign="top"><td><code>scale.x</code></td>
+<td>
+<p>exaggeration in X dimension (COLLADA rectangle)</p>
+</td></tr>
+<tr valign="top"><td><code>scale.y</code></td>
+<td>
+<p>exaggeration in Y dimension (COLLADA rectangle)</p>
+</td></tr>
+<tr valign="top"><td><code>scale.z</code></td>
+<td>
+<p>exaggeration in Z dimension (COLLADA rectangle)</p>
+</td></tr>
+<tr valign="top"><td><code>refreshMode</code></td>
+<td>
+<p>refresh mode for the COLLADA object</p>
+</td></tr>
 <tr valign="top"><td><code>html.table</code></td>
 <td>
-(optional) specify the description block (html) for each point</td></tr>
+<p>(optional) specify the description block (html) for each point</p>
+</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-other additional arguments</td></tr>
+<p>other additional arguments</p>
+</td></tr>
 </table>
 
 
@@ -75,18 +145,21 @@ other additional arguments</td></tr>
 
 <h3>References</h3>
 
-<p>
+
 
 <ul>
-<li> KML Reference (<a href="http://code.google.com/apis/kml/documentation/kmlreference.html">http://code.google.com/apis/kml/documentation/kmlreference.html</a>)
+<li><p> KML Reference (<a href="http://code.google.com/apis/kml/documentation/kmlreference.html">http://code.google.com/apis/kml/documentation/kmlreference.html</a>)
+</p>
+</li>
+<li><p> COLLADA Reference (<a href="http://collada.org/mediawiki/">http://collada.org/mediawiki/</a>)
+</p>
 </ul>
 
-</p>
 
 
 <h3>See Also</h3>
 
-<p> <code><a href="spPhoto.html">spPhoto</a></code>, <code><a href="getWikimedia.html">getWikiMedia.ImageInfo</a></code> </p>
+ <p><code><a href="spPhoto.html">spPhoto</a></code>, <code><a href="getWikimedia.html">getWikiMedia.ImageInfo</a></code> </p>
 
 
 <h3>Examples</h3>
@@ -104,5 +177,5 @@ kml_compress("sm.kml", files="Soil_monolith_jpg.dae")
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
 </body></html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><title>R: Ebergotzen - Digital Soil Mapping case study</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="../../R.css">
+<link rel="stylesheet" type="text/css" href="R.css">
 </head><body>
 
 <table width="100%" summary="page for eberg {plotKML}"><tr><td>eberg {plotKML}</td><td align="right">R Documentation</td></tr></table>
@@ -11,7 +11,7 @@
 <h3>Description</h3>
 
 <p>Ebergötzen is 10 by 10 km study area in the vicinity of the city of Göttingen in Central Germany. This area has been extensively surveyed over the years, mainly for the purposes of developing operational digital soil mapping techniques (Gehrt and Böhner, 2001). <br>
-<code>eberg</code> table contains 2937 observations (augers) of soil textures and soil types. <code>eberg_grid</code> contains three gridded maps that can be used as covariates for spatial prediction of soil variables. <code>eberg_zones</code> is a polygon map showing the distribution of parent material (Silt and sand, Sandy material, Clayey derivats, Clay and loess). <code>eberg_contours</code> shows contours lines derived using the 25 m DEM of the area with 10 m equidistance.</p>
+<code>eberg</code> table contains 2937 observations (augers) of soil textures and soil types. <code>eberg_grid</code> contains three gridded maps that can be used as covariates for spatial prediction of soil variables. <code>eberg_zones</code> is a polygon map showing the distribution of parent material (Silt and sand, Sandy material, Clayey derivats, Clay and loess). <code>eberg_contours</code> shows contour lines derived from the 25 m DEM of the area using 10 m equidistance.</p>
 
 
 <h3>Usage</h3>
@@ -21,28 +21,43 @@
 
 <h3>Format</h3>
 
-<p>
-The <code>eberg</code> data frame contains the following columns:
+
+<p>The <code>eberg</code> data frame (irregular points) contains the following columns:
+</p>
 
 <dl>
-<dt><code>ID</code></dt><dd>universal identifier</dd>
-<dt><code>X</code></dt><dd>a numeric vector; x-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) </dd>
-<dt><code>Y</code></dt><dd>a numeric vector; y-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) </dd>
-<dt><code>SAND</code></dt><dd>topsoil sand content estimated by hand; see Ad-hoc-AG Boden (2005) </dd>
-<dt><code>SILT</code></dt><dd>topsoil silt content estimated by hand </dd>
-<dt><code>CLAY</code></dt><dd>topsoil clay content estimated by hand </dd>
-<dt><code>SOILTYPE</code></dt><dd>a vector containing factors; soil classes according to the German soil classification system (13 classes in this data set)</dd>
+<dt><code>ID</code></dt><dd><p>universal identifier</p>
+</dd>
+<dt><code>X</code></dt><dd><p>a numeric vector; x-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) </p>
+</dd>
+<dt><code>Y</code></dt><dd><p>a numeric vector; y-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) </p>
+</dd>
+<dt><code>SAND</code></dt><dd><p>topsoil sand content estimated by hand; see Ad-hoc-AG Boden (2005) </p>
+</dd>
+<dt><code>SILT</code></dt><dd><p>topsoil silt content estimated by hand </p>
+</dd>
+<dt><code>CLAY</code></dt><dd><p>topsoil clay content estimated by hand </p>
+</dd>
+<dt><code>SOILTYPE</code></dt><dd><p>a vector containing factors; soil classes according to the German soil classification system (13 classes in this data set)</p>
+</dd>
 </dl>
  <br>
-The <code>eberg_grid</code> is <code>SpatialGridDataFrame</code> that contains the following layers:
+<p>The <code>eberg_grid</code> data frame (regular grid at 100 m resolution) contains the following columns:
+</p>
 
 <dl>
-<dt><code>DEM</code></dt><dd>elevation values from the topographic map </dd>
-<dt><code>TWI</code></dt><dd>Topographic Wetness Index derived using the SAGA algorithm </dd>
-<dt><code>Z</code></dt><dd>containing factors; four soil topographic/geological units (soil mapping units) </dd>
+<dt><code>DEM</code></dt><dd><p>elevation values from the topographic map </p>
+</dd>
+<dt><code>TWI</code></dt><dd><p>Topographic Wetness Index derived using the SAGA algorithm </p>
+</dd>
+<dt><code>Z</code></dt><dd><p>containing factors; four soil topographic/geological units (soil mapping units) </p>
+</dd>
+<dt><code>x</code></dt><dd><p>a numeric vector; x-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) </p>
+</dd>
+<dt><code>y</code></dt><dd><p>a numeric vector; y-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) </p>
+</dd> 
 </dl>
  
-</p>
 
 
 <h3>Note</h3>
@@ -58,21 +73,25 @@ The <code>eberg_grid</code> is <code>SpatialGridDataFrame</code> that contains t
 
 <h3>References</h3>
 
-<p>
+
  
 <ul>
-<li> Ad-hoc-AG Boden, (2005) Bodenkundliche Kartieranleitung. 5th Ed, Bundesanstalt fur Geowissenschaften und Rohstoffe und Niedersächsisches Landesamt für Bodenforshung, Hannover, p. 423.
+<li><p> Ad-hoc-AG Boden, (2005) Bodenkundliche Kartieranleitung. 5th Ed, Bundesanstalt fur Geowissenschaften und Rohstoffe und Niedersächsisches Landesamt für Bodenforshung, Hannover, p. 423.
+</p>
 </li>
-<li>Böhner, J., McCloy, K. R. and Strobl, J. (Eds), (2006) <a href="http://saga-gis.org/en/about/references.html">SAGA &mdash; Analysis and Modelling Applications</a>. Göttinger Geographische Abhandlungen, Heft 115. Verlag Erich Goltze GmbH, Göttingen, 117 pp.
+<li> <p>Böhner, J., McCloy, K. R. and Strobl, J. (Eds), (2006) <a href="http://saga-gis.org/en/about/references.html">SAGA &mdash; Analysis and Modelling Applications</a>. Göttinger Geographische Abhandlungen, Heft 115. Verlag Erich Goltze GmbH, Göttingen, 117 pp.
+</p>
 </li>
-<li>Gehrt, E., Böhner, J., (2001) Vom punkt zur flache &mdash; probleme des &lsquo;upscaling&rsquo; in der bodenkartierung. In: Diskussionsforum Bodenwissenschaften: Vom Bohrstock zum Bildschirm. FH, Osnabrück, pp. 17-34.
+<li><p> Gehrt, E., Böhner, J., (2001) Vom punkt zur flache &mdash; probleme des &lsquo;upscaling&rsquo; in der bodenkartierung. In: Diskussionsforum Bodenwissenschaften: Vom Bohrstock zum Bildschirm. FH, Osnabrück, pp. 17-34.
+</p>
 </li>
-<li>Skaggs, T. H., Arya, L. M., Shouse, P. J., Mohanty, B. P., (2001) <a href="https://www.soils.org/publications/sssaj/articles/65/4/1038">Estimating Particle-Size Distribution from Limited Soil Texture Data</a>. Soil Science Society of America Journal 65 (4): 1038-1044.
+<li><p> Skaggs, T. H., Arya, L. M., Shouse, P. J., Mohanty, B. P., (2001) <a href="https://www.soils.org/publications/sssaj/articles/65/4/1038">Estimating Particle-Size Distribution from Limited Soil Texture Data</a>. Soil Science Society of America Journal 65 (4): 1038-1044.
+</p>
 </li>
-<li> <a href="http://geomorphometry.org/content/ebergotzen">http://geomorphometry.org/content/ebergotzen</a>
+<li>  <p><a href="http://geomorphometry.org/content/ebergotzen">http://geomorphometry.org/content/ebergotzen</a>
+</p>
 </ul>
 
-</p>
 
 
 <h3>Examples</h3>
@@ -84,6 +103,9 @@ data(eberg_zones)
 data(eberg_contours)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
+coordinates(eberg_grid) &lt;- ~x+y
+gridded(eberg_grid) &lt;- TRUE
+proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
 ## Not run: 
 l.sp &lt;- list("sp.lines", eberg_contours, col="black")
 spplot(eberg_grid["DEM"], col.regions = SAGA_pal[[1]], sp.layout=l.sp)
@@ -92,5 +114,5 @@ spplot(eberg_zones, sp.layout=list("sp.points", eberg, col="black", pch="+"))
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
 </body></html>

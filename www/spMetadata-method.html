@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Methods to generate spatial metadata</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body>
+
+<table width="100%" summary="page for spMetadata-methods {plotKML}"><tr><td>spMetadata-methods {plotKML}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Methods to generate spatial metadata</h2>
+
+<h3>Description</h3>
+
+
+<p>The <code>spMetadata</code> function will try to generate missing metadata (bounding box, location info, session info, metadata creator info and similar) for any <code>Spatial*</code> object (from the sp package) or Raster* object (from the raster package). The resulting object of class <code><a href="SpatialMetadata-class.html">SpatialMetadata-class</a></code> can be used e.g. to generate a Layer description documents, that can be parsed to KML <code>&lt;description&gt;</code> tag (see <code><a href="kml_metadata.html">kml_metadata</a></code> function).<br>
+The <code>read.metadata</code> function can be used to read the formatted metadata (<code>.xml</code>), prepared following to the <a href="http://www.fgdc.gov/metadata/csdgm/">Federal Geographic Data Committee (FGDC) Content Standard for Digital Geospatial Metadata</a>, and convert them to a more readble format (data frame).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre> spMetadata(obj, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+
+<table summary="R argblock">
+<tr valign="top"><td><code>obj</code></td>
+<td>
+<p>some <code>"Spatial"</code> or <code>"Raster"</code> class object with <code>"data"</code> slot</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>additional <code>kml()</code> arguments (see details below)</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+
+<p><code>spMetadata</code> tries to locate a metadata file in the working directory (it looks for a metadata file with the same name as the object name). If no <code>.xml</code> file exists, it will load the template xml file available in the system folder (<code>system.file("FGDC.xml", package="plotKML")</code>). The <code>FGDC.xml</code> file contains typical metadata entries with description and examples. For practical purposes, one metadata object in plotKML can be associated with only one variable i.e. one column in the <code>"data"</code> slot (specified via <code>Target_variable</code>). To prepare a metadata xml file for the layer of interest, consider using the <a href="http://plotkml.r-forge.r-project.org/FGDC.xml">FGDC.xml</a> template file; to enter the missing fields use e.g. the <a href="http://geology.usgs.gov/tools/metadata/tools/doc/tkme.html">Tkme</a> software: Another editor for formal metadata, by Peter N. Schweitzer (U.S. Geological Survey).<br>
+<code>spMetadata</code> tries to automatically generate the most usefull information, so that a user can easily find out about the input data and procedures followed to generate the visualization (KML). Typical metadata entries include e.g.:
+</p>
+
+<ul>
+<li> <p><code>metadata[["idinfo"]][["native"]]</code> &mdash; Session info e.g.: Produced using R version 2.12.2 (2011-02-25) running on Windows 7 x64.
+</p>
+</li>
+<li> <p><code>metadata[["spdoinfo"]][["indspref"]]</code> &mdash; Indirect spatial reference estimated using the <a href="http://code.google.com/apis/maps/documentation/webservices/">Google Maps API Web Services</a>.
+</p>
+</li>
+<li> <p><code>metadata[["idinfo"]][["spdom"]][["bounding"]]</code> &mdash; Bounding box in the WGS84 geographical coordinates estimated by reprojecting the original bounding box.
+</p>
+</ul>
+
+<p>By default, plotKML uses the Creative Commons license, but this can be adjusted by setting the <code>Enduser_license_URL</code> argument above.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Tomislav Hengl, Pierre Roudier, and Dylan Beaudette</p>
+
+
+<h3>References</h3>
+
+
+
+<ul>
+<li><p> The Federal Geographic Data Committee, (2006) FGDC Don't Duck Metadata &mdash; A short reference guide for writing quality metadata. Vers. 1, <a href="http://www.fgdc.gov/metadata/documents/MetadataQuickGuide.pdf">http://www.fgdc.gov/metadata/documents/MetadataQuickGuide.pdf</a>
+</p>
+</li>
+<li><p> Content Standard for Digital Geospatial Metadata (<a href="http://www.fgdc.gov/metadata/csdgm/">http://www.fgdc.gov/metadata/csdgm/</a>)
+</p>
+</li>
+<li><p> Template metadata file (<a href="http://plotkml.r-forge.r-project.org/FGDC.xml">http://plotkml.r-forge.r-project.org/FGDC.xml</a>)
+</p>
+</li>
+<li><p> Tkme metadata editor (<a href="http://geology.usgs.gov/tools/metadata/tools/doc/tkme.html">http://geology.usgs.gov/tools/metadata/tools/doc/tkme.html</a>)
+</p>
+</li>
+<li><p> Creative Commons license (<a href="http://creativecommons.org/licenses/">http://creativecommons.org/licenses/</a>)
+</p>
+</ul>
+
+
+
+<h3>See Also</h3>
+
+ <p><code><a href="SpatialMetadata-class.html">SpatialMetadata-class</a></code>, <code><a href="spMetadata.Spatial.html">spMetadata.Spatial</a></code>, <code>sp::Spatial</code>, <code><a href="kml_open.html">kml_open</a></code> </p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+# Read metadata from the system file (convert to a more redable data.frame format):
+x &lt;- read.metadata(system.file("FGDC.xml", package="plotKML"))
+str(x)
+# Generate missing metadata
+data(eberg)
+coordinates(eberg) &lt;- ~X+Y
+proj4string(eberg) &lt;- CRS("+init=epsg:31467")
+# No metadata file specified:
+eberg.md &lt;- spMetadata(eberg, Target_variable="SAND")
+# With localy prepared metadata file:
+eberg.md &lt;- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"), Target_variable="SAND")
+# Print the results of validation (it needs to be able to connect to a URL with schema):
+eberg.md &lt;- spMetadata(eberg, Target_variable="SAND", validate.schema = TRUE)
+# Write the metadata to a file:
+saveXML(metadata(eberg.md), "eberg_SAND.xml")
+# Export to SLD format:
+metadata2SLD(eberg.md, "eberg.sld")
+# plot the layer with the metadata:
+kml(eberg, file.name = "eberg_md.kml", colour = SAND, metadata = eberg.md, kmz = TRUE)
+
+## End(Not run)
+</pre>
+
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
+</body></html>

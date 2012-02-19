@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><title>R: Export a time series of images to KML</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="../../R.css">
+<link rel="stylesheet" type="text/css" href="R.css">
 </head><body>
 
 <table width="100%" summary="page for kml_layer.RasterBrick {plotKML}"><tr><td>kml_layer.RasterBrick {plotKML}</td><td align="right">R Documentation</td></tr></table>
@@ -16,42 +16,59 @@
 <h3>Usage</h3>
 
 <pre>
-kml_layer.RasterBrick(obj, dtime = "", extrude = FALSE, tz = "GMT", z.lim = c("min", "max"),
-   colour_scale = get("colour_scale_numeric", envir = plotKML.opts),
-   metadata = NULL, html.table = NULL,  ...)
+kml_layer.RasterBrick(obj, plot.legend = TRUE, dtime = "", tz = "GMT", 
+                 z.lim = c(min(obj@data@min, na.rm = TRUE),
+                 max(obj@data@max, na.rm = TRUE)), 
+                 colour_scale = get("colour_scale_numeric", envir = plotKML.opts),
+                 home_url = get("home_url", envir = plotKML.opts),
+                 metadata = NULL, html.table = NULL, ...)
 </pre>
 
 
 <h3>Arguments</h3>
 
+
 <table summary="R argblock">
 <tr valign="top"><td><code>obj</code></td>
 <td>
-object of class <code>"RasterBrick"</code> (a time series of images)</td></tr>
+<p>object of class <code>"RasterBrick"</code> (a time series of images)</p>
+</td></tr>
+<tr valign="top"><td><code>plot.legend</code></td>
+<td>
+<p>logical; specify whether a map legend should be generated automatically</p>
+</td></tr>
 <tr valign="top"><td><code>dtime</code></td>
 <td>
-temporal support (point or block) expressed in seconds</td></tr>
-<tr valign="top"><td><code>extrude</code></td>
+<p>temporal support (point or block) expressed in seconds</p>
+</td></tr>
+<tr valign="top"><td><code>tz</code></td>
 <td>
-logical</td></tr>
-<tr valign="top"><td><code>tz = "GMT"</code></td>
-<td>
-referent time zone</td></tr>
+<p>referent time zone</p>
+</td></tr>
 <tr valign="top"><td><code>z.lim</code></td>
 <td>
-upper and lower limits (unique for all maps in the time series); the function by default uses the absolute minimum and maximum in values</td></tr>
+<p>upper and lower limits (unique for all maps in the time series); the function by default uses the absolute minimum and maximum in values</p>
+</td></tr>
 <tr valign="top"><td><code>colour_scale</code></td>
 <td>
-color palette; by default uses the color scale for numeric variables</td></tr>
+<p>color palette; by default uses the color scale for numeric variables</p>
+</td></tr>
+<tr valign="top"><td><code>home_url</code></td>
+<td>
+<p>(optional) URL directory / location of the images</p>
+</td></tr>
 <tr valign="top"><td><code>metadata</code></td>
 <td>
-(optional) the metadata object</td></tr>
+<p>(optional) the metadata object</p>
+</td></tr>
 <tr valign="top"><td><code>html.table</code></td>
 <td>
-(optional) the description block (html)</td></tr>
+<p>(optional) the description block (html)</p>
+</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-additional arguments (see <code>aesthetics</code>)</td></tr>
+<p>additional arguments (see <code>aesthetics</code>)</p>
+</td></tr>
 </table>
 
 
@@ -68,13 +85,21 @@ additional arguments (see <code>aesthetics</code>)</td></tr>
 
 <h3>See Also</h3>
 
-<p> <code><a href="kml.html">kml</a></code>, <code><a href="kml_open.html">kml_open</a></code>, <code><a href="layer.Raster.html">kml_layer.Raster</a></code> </p>
+ <p><code><a href="kml-method.html">kml-methods</a></code>, <code><a href="kml_open.html">kml_open</a></code>, <code><a href="layer.Raster.html">kml_layer.Raster</a></code> </p>
 
 
 <h3>Examples</h3>
 
 <pre>
 data(LST)
+coordinates(LST) &lt;- ~x+y
+gridded(LST) &lt;- TRUE
+proj4string(LST) &lt;- CRS("+proj=utm +zone=33 +datum=WGS84 +units=m")
+# get the dates from the file names:
+dates &lt;- sapply(strsplit(names(LST), "LST"), function(x){x[[2]]})
+LST &lt;- brick(LST)
+LST@title = "Time series of MODIS Land Surface Temperature (8-day mosaick) images"
+LST@zvalue &lt;- format(as.Date(dates, "%Y_%m_%d"), "%Y-%m-%dT%H:%M:%SZ")
 data(SAGA_pal)
 # time dimension defined via zvalue slot:
 LST@zvalue[c(1,12,24)]
@@ -90,5 +115,5 @@ kml(LST_ll, colour_scale=SAGA_pal[[1]], dtime=8*24*60^2)
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
 </body></html>

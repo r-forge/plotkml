@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><title>R: Open / close a KML file connection</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="../../R.css">
+<link rel="stylesheet" type="text/css" href="R.css">
 </head><body>
 
 <table width="100%" summary="page for kml_open {plotKML}"><tr><td>kml_open {plotKML}</td><td align="right">R Documentation</td></tr></table>
@@ -16,29 +16,58 @@
 <h3>Usage</h3>
 
 <pre>
-kml_open(file.name, folder.name = file.name,
-  open = TRUE, overwrite = TRUE, kml_xsd, ...)
+kml_open(file.name, folder.name = file.name, kml_open = TRUE,
+          kml_visibility = TRUE, overwrite = TRUE, use.Google_gx = FALSE, 
+          kml_xsd = get("kml_xsd", envir = plotKML.opts),
+          xmlns = get("kml_url", envir = plotKML.opts), 
+          xmlns_gx = get("kml_gx", envir = plotKML.opts), ...)
 </pre>
 
 
 <h3>Arguments</h3>
 
+
 <table summary="R argblock">
 <tr valign="top"><td><code>file.name</code></td>
 <td>
-KML file name</td></tr>
+<p>KML file name</p>
+</td></tr>
 <tr valign="top"><td><code>folder.name</code></td>
 <td>
-character string; KML folder name</td></tr>
+<p>character string; KML folder name</p>
+</td></tr>
+<tr valign="top"><td><code>kml_open</code></td>
+<td>
+<p>logical; specify whether to open the folder by default</p>
+</td></tr>
+<tr valign="top"><td><code>kml_visibility</code></td>
+<td>
+<p>logical; specify whether to make the whole folder visible</p>
+</td></tr>
 <tr valign="top"><td><code>overwrite</code></td>
 <td>
-logical; If TRUE, "name" will be overwritten if it exists</td></tr>
+<p>logical; if TRUE, &quot;name&quot; will be overwritten if it exists</p>
+</td></tr>
+<tr valign="top"><td><code>use.Google_gx</code></td>
+<td>
+<p>logical; specify whether to use the Google's extended schema</p>
+</td></tr>
 <tr valign="top"><td><code>kml_xsd</code></td>
 <td>
-URL of the KML scheme to be used</td></tr>
+<p>URL of the KML scheme to be used</p>
+</td></tr>
+<tr valign="top"><td><code>xmlns</code></td>
+<td>
+<p>URL of the OGC KML standard</p>
+</td></tr>
+<tr valign="top"><td><code>xmlns_gx</code></td>
+<td>
+<p>URL of the extended standard</p>
+</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-other arguments</td></tr>
+<p>other arguments</p>
+</td></tr>
 </table>
 
 
@@ -54,18 +83,25 @@ other arguments</td></tr>
 
 <h3>See Also</h3>
 
-<p> <code><a href="kml.html">kml</a></code> </p>
+ <p><code><a href="kml-method.html">kml-methods</a></code> </p>
 
 
 <h3>Examples</h3>
 
 <pre>
 data(eberg_grid)
+coordinates(eberg_grid) &lt;- ~x+y
+gridded(eberg_grid) &lt;- TRUE
+proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
+## Not run: 
 kml_open("eberg_grid_DEM.kml")
 kml_layer(eberg_grid, colour=DEM)
 kml_close("eberg_grid_DEM.kml")
 # print the result:
-xmlRoot(xmlTreeParse("eberg_grid_DEM.kml"))[["Document"]]</pre>
+xmlRoot(xmlTreeParse("eberg_grid_DEM.kml"))[["Document"]]
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-2 <a href="00Index.html">Index</a>]</div>
+## End(Not run)
+</pre>
+
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
 </body></html>

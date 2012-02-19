@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Methods to write any 'Spatial*'-derived or 'Raster*' objects...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body>
+
+<table width="100%" summary="page for kml_layer-methods {plotKML}"><tr><td>kml_layer-methods {plotKML}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Methods to write any <code>Spatial*</code>-derived or <code>Raster*</code> objects to a KML connection</h2>
+
+<h3>Description</h3>
+
+
+<p>Writes any <code>Spatial*</code> object (from the sp package) or <code>Raster*</code> object (from the raster package) to a KML file (connection) as a separate layer. Various <EM>aesthetics</EM>, i.e. ways to represent target variables, can be set via colour, transparency, size, width, shape arguments. Their availability depends on the class of the object to plot.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>kml_layer(obj, ...)</pre>
+
+
+<h3>Arguments</h3>
+
+
+<table summary="R argblock">
+<tr valign="top"><td><code>obj</code></td>
+<td>
+<p>object inheriting from the <code>Spatial*</code> or the <code>Raster*</code> classes</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>additional aesthetics arguments; see <code>kml_aes</code></p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>An XML object that can be further parsed to a KML file (via an open connection).</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Pierre Roudier, Tomislav Hengl and Dylan Beaudette</p>
+
+
+<h3>See Also</h3>
+
+
+<p><code><a href="kml-method.html">kml-methods</a></code>, <code><a href="kml_open.html">kml_open</a></code>, <code><a href="kml_open.html">kml_close</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(eberg_grid)
+coordinates(eberg_grid) &lt;- ~x+y
+gridded(eberg_grid) &lt;- TRUE
+proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
+data(SAGA_pal)
+data(R_pal)
+## Not run: 
+# Plot two layers one after the other:
+kml_open("eberg_grids.kml")
+kml_layer(eberg_grid, colour=DEM, colour_scale=R_pal[["terrain_colors"]])
+kml_layer(eberg_grid, colour=TWI, colour_scale=SAGA_pal[[1]])
+kml_close("eberg_grids.kml")
+# print the result:
+xmlRoot(xmlTreeParse("eberg_grids.kml"))[["Document"]]
+
+## End(Not run)
+</pre>
+
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
+</body></html>

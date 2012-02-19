@@ -146,11 +146,34 @@ echo $contents; } ?>
       <p><span class="R_code"><strong><a href="layer.RasterBrick.html">RasterBrick</a> </strong> <a href="LST_ll.kml"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
     <td width="220"><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3AMetadata_in_GoogleEarth.png.jpg'></a></p>
+      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3AMetadata_in_GoogleEarth.png.jpg'></a><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_SpatialPredictions_meuse.jpg'><img src='Fig_SpatialPredictions_meusethumb.jpg' alt='SpatialPredictions in Google Earth' width='150' height="162" border="0"/></a></p>
+      <p><span class="R_code"><strong><a href="SpatialPredictions-class.html">SpatialPredictions</a> </strong> <a href="om.rk.kml"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
   </tr>
 </table>
-<p>&nbsp;</p>
+<table border="0" cellpadding="10" cellspacing="0">
+  <tr valign="top">
+    <td width="220"><div align="center">
+      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_simulations_streams.jpg'><img src='Fig_simulations_streamsthumb.jpg' alt='Simulated streams' width='150' height="150" border="0"/></a></p>
+      <p class="R_code"><strong><a href="SpatialVectorsSimulations-class.html">VectorsSimulations</a> </strong> <a href="bar_sum.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></p>
+    </div></td>
+    <td width="220"><div align="center">
+      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_rasterbricksimulations.jpg'><img src='Fig_rasterbricksimulationsthumb.jpg' alt='Rasterbricksimulations' width='150' height="183" border="0"/></a></p>
+      <p><span class="R_code"><strong><a href="RasterBrickSimulations-class.html">RasterBrickSimulations</a> </strong> <a href="bardem_sims.kml"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
+    </div></td>
+    <td width="220"><div align="center">
+      <p>&nbsp;</p>
+      </div></td>
+    <td width="220"><div align="center">
+      <p>&nbsp;</p>
+      </div></td>
+    <td width="220"><div align="center">
+      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3AMetadata_in_GoogleEarth.png.jpg'></a><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_SpatialPredictions_meuse.jpg'></a></p>
+      <p><span class="R_code"><strong><a href="SpatialPredictions-class.html"></a> </strong> <a href="om.rk.kml"></a></span></p>
+    </div></td>
+  </tr>
+</table>
+<br />
 <hr />
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -158,7 +181,7 @@ echo $contents; } ?>
   </tr>
 </table>
 <p class="style1"> Last update: 
-  <!-- #BeginDate format:Am1 -->February 2, 2012<!-- #EndDate -->
+  <!-- #BeginDate format:Am1 -->February 19, 2012<!-- #EndDate -->
 | contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">tom.hengl@wur.nl</a> | <a href="http://www.isric.org">ISRIC</a> - World Soil Information Institute </p>
 </body>
 </html>
