@@ -16,17 +16,12 @@ kml_layer.SpatialLines(obj, extrude = FALSE, z.scale = 1, metadata = NULL,
   \item{TimeSpan.begin}{(optional) beginning of the referent time period}
   \item{TimeSpan.end}{(optional) end of the referent time period}
   \item{\dots}{additional style arguments (see \code{\link{aesthetics}})}
-  \item{labels}{variable to be used to attach labels to spatial lines}
-  \item{colour}{variable to be used to color spatial lines}
-  \item{width}{variable to be used to specify the width of spatial lines}
-  \item{altitude}{if not a 3D object; variable to be used to specify altitude above ground}
-  \item{altitudeMode}{altitude mode type (\code{clampToGround}, \code{relativeToGround} or \code{absolute})}
 }
 \details{Only colour and width (aesthetics) are recommended when visualizing \code{SpatialLines*} objects.\cr
 \code{TimeSpan.begin} and \code{TimeSpan.end} are optional TimeStamp vectors (\code{yyyy-mm-ddThh:mm:sszzzzzz}). Use the same time values for both \code{TimeSpan.begin} and \code{TimeSpan.end} if the measurements refer to a single moment in time. \code{TimeSpan.begin} and \code{TimeSpan.end} can be either a single value or a vector of values.
 }
 \author{Pierre Roudier, Tomislav Hengl and Dylan Beaudette}
-\seealso{ \code{\link{kml}}, \code{\link{kml_open}}, \code{\link{kml_layer.SpatialPolygons}} }
+\seealso{ \code{\link{kml-methods}}, \code{\link{kml_open}}, \code{\link{kml_layer.SpatialPolygons}} }
 \examples{
 data(eberg_contours)
 data(SAGA_pal)

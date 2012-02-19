@@ -4,28 +4,24 @@
 \title{Export spatial points to KML}
 \description{Writes object of class \code{"SpatialPoints*"} to KML with a possibility to parse attribute variables using several aesthetics arguments. }
 \usage{
-kml_layer.SpatialPoints(obj, extrude = FALSE, 
-    LabelScale = get("LabelScale", envir = plotKML.opts), z.scale = 1, 
-    metadata = NULL, html.table = NULL, TimeSpan.begin = "", TimeSpan.end = "", \dots)
+kml_layer.SpatialPoints(obj, extrude = TRUE, z.scale = 1, 
+        LabelScale = get("LabelScale", envir = plotKML.opts), 
+        metadata = NULL, html.table = NULL, TimeSpan.begin = "",
+        TimeSpan.end = "", \dots)
 }
 \arguments{
   \item{obj}{object of class \code{"SpatialPoints*"}}
   \item{extrude}{logical; specifies whether to connect the point to the ground with a line}
-  \item{LabelScale}{numeric; default size of the labels}
+  \item{z.scale}{numeric; exaggeration in vertical dimension}
+  \item{LabelScale}{numeric; scale factor for size of labels}
   \item{metadata}{(optional) specify the metadata object}
   \item{html.table}{(optional) specify the description block (html) for each point}
   \item{TimeSpan.begin}{(optional) beginning of the referent time period}
   \item{TimeSpan.end}{(optional) end of the referent time period}
   \item{\dots}{additional style arguments (see \code{\link{aesthetics}})}
-  \item{labels}{variable to be used to attach labels to spatial lines}
-  \item{shapes}{variable to be used to attach icons}
-  \item{colour}{variable to be used to color spatial lines}
-  \item{sizes}{variable to be used control size of icons}
-  \item{altitude}{if not a 3D object; variable to be used to specify altitude above ground}
-  \item{altitudeMode}{altitude mode type (\code{clampToGround}, \code{relativeToGround} or \code{absolute})}
 }
 \details{\code{TimeSpan.begin} and \code{TimeSpan.end} are optional TimeStamp vectors (\code{yyyy-mm-ddThh:mm:sszzzzzz}). For observations at point support (a single moment in time), use the same time values for both \code{TimeSpan.begin} and \code{TimeSpan.end}. \code{TimeSpan.begin} and \code{TimeSpan.end} can be either a single value or a vector of values. \cr
-Although this function can be used to plot over five variables, more than three aesthetics arguments is not recommended (e.g. limit to size and colour).
+Optional aesthetics arguments are \code{shapes} (icons), \code{colour}, \code{sizes}, \code{altitude} (if not a 3D object; variable to be used to specify altitude above ground), \code{altitudeMode} (altitude mode type (\code{clampToGround}, \code{relativeToGround} or \code{absolute}). Although this function can be used to plot over five variables, more than three aesthetics arguments is not recommended (e.g. limit to size and colour).
 }
 \author{Pierre Roudier, Tomislav Hengl and Dylan Beaudette }
 \seealso{ \code{\link{kml_layer.STIDFtraj}} }

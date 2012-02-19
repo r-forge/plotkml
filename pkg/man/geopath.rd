@@ -26,6 +26,9 @@ geopath(lon1, lon2, lat1, lat2, ID, n.points, print.geo = FALSE)
 \seealso{ \code{\link{kml_layer.SpatialLines}}, \code{\link{kml_layer.STIDFtraj}}, \code{fossil::earth.bear}}
 \examples{
 ams.ny <- geopath(lon1=4.892222, lon2=-74.005973, lat1=52.373056, lat2=40.714353, print.geo=TRUE)
-kml(ams.ny)}
+\dontrun{
+kml(ams.ny)
+}
+}
 \keyword{ ~path }
 \keyword{ ~bearing }

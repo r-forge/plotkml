@@ -1,0 +1,48 @@
+\name{gstatModel-class}
+\docType{class}
+\alias{gstatModel-class}
+\alias{predict,gstatModel}
+\title{A class for a linear geostatistical model}
+\description{A class containing fitted parameters of a linear geostatistical model. It contains regression (GLM) and the kriging part (variogram).}
+\section{Slots}{
+  \describe{
+    \item{\code{regModel}:}{object of class \code{"glm"}; fitted GLM}
+    \item{\code{sp}:}{object of class \code{"SpatialPointsDataFrame"}; observation locations}
+    \item{\code{vgmModel}:}{object of class \code{"data.frame"}; the fitted gstat variogram model parameters}
+  }
+}
+\section{Methods}{
+  \describe{
+	\item{summary}{\code{signature(obj = "gstatModel")}: plots all objects in Google Earth}
+	\item{predict}{\code{signature(obj = "gstatModel")}: summarize object by showing the mapping accuracy (cross-validation) and the amount of variation explained by the model }
+  }
+}
+\note{ \code{"SpatialPredictions"} saves results of predictions for a single target variable, which can be of type numeric or factor. Multiple variables can be combined into a list.\cr 
+When using \code{nsim} argument with the \code{predict} method, the output result will of \code{\link{RasterBrickSimulations-class}} i.e. \emph{N} number of equiprobable realizations. To generate an object of \code{\link{SpatialPredictions-class}}, leave \code{nsim = 0}. 
+}
+\author{ Tomislav Hengl }
+\seealso{ \code{\link{SpatialPredictions-class}}, \code{\link{RasterBrickSimulations-class}}, \code{gstat::gstat-class}
+}
+\examples{ 
+# load observations:
+data(meuse)
+coordinates(meuse) <- ~x+y
+proj4string(meuse) <- CRS("+init=epsg:28992")
+# load grids:
+data(meuse.grid)
+coordinates(meuse.grid) <- ~x+y
+gridded(meuse.grid) <- TRUE
+proj4string(meuse.grid) <- CRS("+init=epsg:28992")
+# fit a model:
+omm <- fit.gstatModel(observations = meuse, formulaString = om~dist, covariates = meuse.grid)
+show(omm@regModel)
+# produce SpatialPredictions:
+om.rk <- predict(omm, predictionLocations = meuse.grid)
+# overview of the prediction process:
+show(om.rk)
+# plot the whole project and open in Google Earth:
+\dontrun{
+plotKML(om.rk)
+}
+}
+\keyword{classes}

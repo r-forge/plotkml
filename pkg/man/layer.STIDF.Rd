@@ -1,4 +1,5 @@
 \name{kml_layer.STIDF}
+\encoding{latin1}
 \alias{kml_layer.STIDF}
 \alias{STIDF}
 \title{Write irregular spatio-temporal observations (points, lines and polygons) to KML}
@@ -12,7 +13,7 @@ kml_layer.STIDF(obj, dtime = "", \dots)
   \item{dtime}{temporal support size (in seconds)}
   \item{\dots}{additional arguments that can be passed to the \code{kml_layer.Spatial} method}
 }
-\details{An object of class \code{"STIDF"} contains a slot of type \code{"Spatial*"}, which is parsed via the \code{kml_layer.Spatial} method depending on the type of spatial object (points, lines, polygons). The dateTime is defined as \code{yyyy-mm-ddThh:mm:sszzzzzz}, where \code{T} is the separator between the date and the time, and the time zone is either \code{Z} (for UTC) or \code{zzzzzz}, which represents \\enc{±}{+-}hh:mm in relation to UTC. For more info on how Time Stamps work see \url{http://kml-samples.googlecode.com}. If the time is measured at block support, then \code{<TimeStamp><begin> </begin><end> </end></TimeStamp>} times will be inserted. Temporal support (\eqn{\Delta t}{dt}) is estimated using the \code{xts::periodicity} function (median time between observations). The begin time is then derived as \eqn{t_1 = t - .5\cdot \Delta t}{t1 = t - .5 d t}.
+\details{An object of class \code{"STIDF"} contains a slot of type \code{"Spatial*"}, which is parsed via the \code{kml_layer.Spatial} method depending on the type of spatial object (points, lines, polygons). The dateTime is defined as \code{yyyy-mm-ddThh:mm:sszzzzzz}, where \code{T} is the separator between the date and the time, and the time zone is either \code{Z} (for UTC) or \code{zzzzzz}, which represents \enc{±}{+-}hh:mm in relation to UTC. For more info on how Time Stamps work see \url{http://kml-samples.googlecode.com}. If the time is measured at block support, then \code{<TimeStamp><begin> </begin><end> </end></TimeStamp>} times will be inserted. Temporal support (\eqn{\Delta t}{dt}) is estimated using the \code{xts::periodicity} function (median time between observations). The begin time is then derived as \eqn{t_1 = t - .5\cdot \Delta t}{t1 = t - .5 d t}.
 }
 \references{
 \itemize{
@@ -26,7 +27,6 @@ kml_layer.STIDF(obj, dtime = "", \dots)
 data(HRtemp08)
 # format the time column:
 HRtemp08$ctime <- as.POSIXct(HRtemp08$DATE, format="\%Y-\%m-\%dT\%H:\%M:\%SZ")
-shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png"
 \dontrun{
 # create a STIDF object:
 library(spacetime)
@@ -35,6 +35,7 @@ proj4string(sp) <- CRS("+proj=longlat +datum=WGS84")
 HRtemp08.st <- STIDF(sp, time = HRtemp08$ctime, data = HRtemp08[,c("NAME","TEMP")])
 # write to a KML file:
 HRtemp08_jan <- HRtemp08.st[1:500]
+shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png"
 kml(HRtemp08_jan, dtime = 24*3600, colour = TEMP, shape = shape, labels = "", kmz = TRUE)
 ## North Carolina SIDS data set:
 library("maptools")

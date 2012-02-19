@@ -12,7 +12,10 @@
   \item{filename}{output filename with \code{*.dae} extension}
   \item{href}{location of the image used for wrapping (texture fill)}
   \item{DateTime}{creation / update time (system time)}
-  \item{\dots}{additional default arguments}
+  \item{up_axis}{specify which axis is errected}
+  \item{authoring_tool}{specify authoring tool}
+  \item{technique_profile}{specify technique profile}  
+  \item{double_sided}{logical; specify whether to drape image on both sides}
 }
 \details{COLLADA is managed by the nonprofit technology consortium, the Khronos Group. You can also simply drag and drop a COLLADA (\code{.dae}) file on top of the virtual Earth. 
 }

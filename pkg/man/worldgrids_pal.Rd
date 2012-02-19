@@ -41,8 +41,10 @@ data(worldgrids_pal)
 \keyword{colour palletes}
 \examples{
 data(worldgrids_pal)
+\dontrun{
 display.pal(worldgrids_pal)
 dev.off()
 ## globcov palette with class names:
 display.pal(worldgrids_pal, sel=5, names=TRUE)
+}
 }

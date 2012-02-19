@@ -4,30 +4,50 @@
 \title{Export a list of soil profiles to KML}
 \description{Writes object of type \code{"SoilProfileCollection"} (a number of soil profiles with site and horizon data) to KML. Several attributes such as horizontal and vertical exaggeration can be passed via arguments. }
 \usage{
-kml_layer.SoilProfileCollection(obj, var.name, site_names = obj@site[,1],
-  z.scale = 1, x.min = 0, x.scale, max.depth = 300, plot.points = TRUE, 
-  LabelScale, IconColor = "ff0000ff", shape = paste(get("home_url", envir = plotKML.opts), "circlesquare.png", sep=""), 
-  visibility = TRUE, extrude = TRUE, tessellate = TRUE, camera.distance = .01, 
-  altitudeMode = "relativeToGround", tilt = 90, heading = 0, roll = 0, 
-  metadata = NULL, html.table = NULL, \dots)
+kml_layer.SoilProfileCollection(obj, var.name, var.min = 0, var.scale, 
+           site_names = paste(obj@site[, obj@idcol]), 
+           method = c("soil_block", "depth_function")[1], block.size = 100, 
+           color.name, z.scale = 1, x.min = block.size/100, max.depth = 300,
+           plot.points = TRUE, LabelScale = get("LabelScale", envir = plotKML.opts) * 0.7,
+           IconColor = "#ff0000ff", 
+           shape = paste(get("home_url", envir = plotKML.opts), "circlesquare.png", sep = ""), 
+           outline = TRUE, visibility = TRUE, extrude = TRUE, tessellate = TRUE, 
+           altitudeMode = "relativeToGround", camera.distance = 0.01, 
+           tilt = 90, heading = 0, roll = 0, 
+           metadata = NULL, html.table = NULL, \dots )
 }
 \arguments{
   \item{obj}{object of class \code{"SoilProfileCollection"} (package \href{http://CRAN.R-project.org/package=aqp}{aqp})}
   \item{var.name}{target column name in the \code{horizons} slot}
+  \item{var.min}{smallest value}
+  \item{var.scale}{exaggeration in vertical dimension}
   \item{site_names}{site names as listed in the site table}
-  \item{z.scale}{exaggeration in vertical dimension}
+  \item{method}{visualization type (soil block or depth-function)}  
+  \item{block.size}{(optional) size of the block of land}  
+  \item{color.name}{(optional) column name carrying the color information for each horizon}
+  \item{z.scale}{exaggeration in horizontal direction}
   \item{x.min}{offset in longitude direction (in decimal degrees)}  
-  \item{x.scale}{exaggeration in horizontal direction}
   \item{max.depth}{maximum height/depht of a profile in cm}
   \item{plot.points}{logical; specifies whether to plot horizon centres with attribute values}
+  \item{LabelScale}{numeric; specifies size of the labels for each horizon}
+  \item{IconColor}{colors for the labels for each horizon}
+  \item{shape}{default icon for Google placemarks} 
+  \item{outline}{logical; specifies whether to draw outline for the soil-depth functions (or simply a line)}  
+  \item{visibility}{logical; specifies whether to make the layer visible}
+  \item{extrude}{logical; specifies whether to extrude horizon centers}
+  \item{tessellate}{logical; specifies whether to tessellate polygons}
+  \item{altitudeMode}{by default \code{relativeToGround}}    
   \item{camera.distance}{distance from a profile in arc degrees}
-  \item{altitudeMode}{by default \code{relativeToGround}}
   \item{tilt}{angle between the direction of the LookAt position and the normal to the surface of the earth} 
   \item{heading}{orientation towards north} 
   \item{roll}{rotation about the y axis}
+  \item{metadata}{(optional) spatial metadata for the input object}
+  \item{html.table}{(optional) tabular content (attributes) for each horizon}
   \item{\dots}{additional style arguments}
 }
-\details{Horizon depths are typically expressed in cm, hence the default exaggeration factor (\code{z.scale}) is 10. It is highly recommended to turn off the terrain layer in Google Earth, otherwise Google Earth will deform the plots in areas of high relief.}
+\details{Horizon depths are typically expressed in cm, hence the default exaggeration factor (\code{z.scale}) is 10. It is highly recommended to turn off the terrain layer in Google Earth, otherwise Google Earth will deform the plots in areas of high relief. }
+\note{The spatial exaggeration needs to be used because often the detail in the background imagery in Google Earth is limited to a spatial accuracy of 2--20 m, hence there is no point of zooming into objects of size of few meters. These exaggeration factors were selected empirically and will need to be adjusted as the detail in the background imagery increases.
+}
 \references{
 \itemize{
 \item Algorithms for Quantiative Pedology (\url{http://CRAN.r-project.org/package=aqp})
@@ -36,7 +56,7 @@ kml_layer.SoilProfileCollection(obj, var.name, site_names = obj@site[,1],
 \author{Tomislav Hengl, Dylan Beaudette and Pierre Roudier}
 \seealso{ \code{\link{kml_layer.SpatialPhotoOverlay}} }
 \examples{
-install.packages("aqp", repos="http://R-Forge.R-project.org")
+# install.packages("aqp", repos="http://R-Forge.R-project.org")
 library(aqp)
 data(ca630)
 # Promote to SoilProfileCollection

@@ -1,0 +1,49 @@
+\name{SpatialPredictions-class}
+\docType{class}
+\alias{SpatialPredictions-class}
+\title{A class for spatial predictions produced using gstat}
+\description{A class containing input and output maps generated through the process of geostatistical mapping. Object of this class can be directly visualized in Google Earth by using the \code{\link{plotKML-methods}}.}
+\section{Slots}{
+  \describe{
+    \item{\code{variable}:}{object of class \code{"character"}; variable name}
+    \item{\code{observed}:}{object of class \code{"SpatialPointsDataFrame"} (must be 2D); see \code{sp::SpatialPointsDataFrame} }
+    \item{\code{glm}:}{object of class \code{"glm"}; contains the summary of the regression model}
+    \item{\code{vgmModel}:}{object of class \code{"data.frame"}; contains the variogram parameters passed from gstat}
+    \item{\code{predicted}:}{object of class \code{"SpatialPixelsDataFrame"}; see \code{sp::SpatialPixelsDataFrame}}
+    \item{\code{validation}:}{object of class \code{"SpatialPointsDataFrame"} containing results of validation}
+  }
+}
+\section{Methods}{
+  \describe{
+	\item{plotKML}{\code{signature(obj = "SpatialPredictions")}: plots all objects in Google Earth}
+	\item{summary}{\code{signature(obj = "SpatialPredictions")}: summarize object by showing the mapping accuracy (cross-validation) and the amount of variation explained by the model }
+  }
+}
+\note{ \code{"SpatialPredictions"} saves results of predictions for a single target variable, which can be of type numeric or factor. Multiple variables can be combined into a list.
+}
+\author{ Tomislav Hengl }
+\seealso{ \code{\link{fit.gstatModel}}, \code{gstat::gstat-class}, \code{\link{RasterBrickSimulations-class}}
+}
+\examples{ 
+# load observations:
+data(meuse)
+coordinates(meuse) <- ~x+y
+proj4string(meuse) <- CRS("+init=epsg:28992")
+# load grids:
+data(meuse.grid)
+coordinates(meuse.grid) <- ~x+y
+gridded(meuse.grid) <- TRUE
+proj4string(meuse.grid) <- CRS("+init=epsg:28992")
+# fit a model:
+omm <- fit.gstatModel(observations = meuse, formulaString = om~dist, covariates = meuse.grid)
+show(omm@regModel)
+# produce SpatialPredictions:
+om.rk <- predict(omm, predictionLocations = meuse.grid)
+# overview of the prediction process:
+show(om.rk)
+# plot the whole project in Google Earth:
+\dontrun{
+plotKML(om.rk)
+}
+}
+\keyword{classes}
