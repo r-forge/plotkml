@@ -8,19 +8,21 @@
 ## Generate a SLD file (using the default legend):
 # [http://docs.geoserver.org/stable/en/user/styling/sld-introduction.html]
 
-metadata2SLD.Spatial <- function(obj, Format_Information_Content = xmlValue(obj@xml[["//formcont"]]), ...){
-  if(Format_Information_Content == "SpatialPixelsDataFrame"){
+metadata2SLD.Spatial <- function(obj, ...){
+
+  if(xmlValue(obj@xml[["//formcont"]]) == "SpatialPixelsDataFrame"){
     metadata2SLD.SpatialPixels(obj, ...)
   }
   # ...
   ## to be continued
   else {
-  stop("Format_Information_Content field in 'obj@xml' must specify a valid sp class.")
+  stop("Format_Information_Content field in 'obj@xml' must specify an applicable sp class.")
   }
 }
 
 metadata2SLD.SpatialPixels <- function(
     obj,  # SpatialMetadata
+    Format_Information_Content = xmlValue(obj@xml[["//formcont"]]),
     obj.name = normalizeFilename(deparse(substitute(obj))),
     sld.file = set.file.extension(obj.name, ".sld"),
     Citation_title = xmlValue(obj@xml[["//title"]]),
@@ -28,6 +30,8 @@ metadata2SLD.SpatialPixels <- function(
     opacity = 1,
     ...
     ){
+    
+    require(RSAGA)
     
     l1 = newXMLNode("StyledLayerDescriptor", attrs=c(version="1.0.0"), namespaceDefinitions=c("xsi:schemaLocation"="http://www.opengis.net/sld StyledLayerDescriptor.xsd", "sld"="http://www.opengis.net/sld", "ogc"="http://www.opengis.net/ogc", "gml"="http://www.opengis.net/gml"))
     l2 <- newXMLNode("NamedLayer", parent = l1)

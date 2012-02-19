@@ -32,14 +32,15 @@ kml_layer.SpatialPhotoOverlay <- function(
   ...
   ){
 
+  require(RSAGA)
   # get our invisible file connection from custom evnrionment
   kml.out <- get("kml.out", env=plotKML.fileIO)
   
   # check the projection:
-  check <- check_projection(obj@sp, logical = TRUE) 
+  prj.check <- check_projection(obj@sp, control = TRUE) 
 
   # Trying to reproject data if the check was not successful
-  if (!check) { obj@sp <- reproject(obj@sp) }  
+  if (!prj.check) { obj@sp <- reproject(obj@sp) }  
   
   when <- obj@exif.info[["DateTime"]]
   LON <- as.vector(coordinates(obj@sp)[,1])

@@ -8,8 +8,6 @@
 # Display default palettes:
 display.pal <- function(pal, sel=1:10, names=FALSE) {
   
-  data(SAGA_pal)
-  if(missing(pal)) { pal <- SAGA_pal }
   if(names==FALSE){ 
   dev.new(width=2.1, height=length(sel))
 	## not needed	

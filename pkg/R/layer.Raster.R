@@ -7,15 +7,17 @@
 kml_layer.Raster <- function(
   obj,  
   plot.legend = TRUE,
-  metadata = NULL,  
+  metadata = NULL,
+  raster_name,  
   ...
   ){
 
+  require(RSAGA)
   # get our invisible file connection from custom evnrionment
   kml.out <- get("kml.out", env=plotKML.fileIO)
 
-  # Checking the projection is geo
-  check <- check_projection(obj, logical = TRUE)
+  # Checking the projection 
+  prj.check <- check_projection(obj, control = TRUE)
 
   ## default colour palettes
   .colour_scale_numeric = get("colour_scale_numeric", envir = plotKML.opts)
@@ -57,7 +59,7 @@ kml_layer.Raster <- function(
   }
 
   # Trying to reproject data if the check was not successful
-  if (!check) {  obj <- reproject(obj) }
+  if(!prj.check) {  obj <- reproject(obj) }
   x <- getValues(obj)
 
   #   altitude <- eval(call[["altitude"]], obj@data)
@@ -89,7 +91,9 @@ kml_layer.Raster <- function(
   call_name <- deparse(call[["colour"]])
 
   # Creating the PNG file
-  raster_name <- set.file.extension(as.character(call[["colour"]]), ".png")
+  if(missing(raster_name)){
+    raster_name <- set.file.extension(as.character(call[["colour"]]), ".png")
+  }
 
   # Plotting the image
   png(file = raster_name, bg = "transparent")
@@ -114,8 +118,12 @@ kml_layer.Raster <- function(
 
   # plot the legend (PNG)
   if(plot.legend == TRUE){
-  legend_name <- paste(as.character(call[["colour"]]), "legend.png", sep="_")  
-  kml_legend.bar(x = x, legend.file = legend_name, legend.pal = colour_scale) 
+    if(missing(raster_name)){
+      legend_name <- paste(as.character(call[["colour"]]), "legend.png", sep="_")
+    } else {
+      legend_name <- paste(strsplit(raster_name, "\\.")[[1]][1], "legend.png", sep="_")      
+    }
+    kml_legend.bar(x = x, legend.file = legend_name, legend.pal = colour_scale) 
   }
 
   message("Parsing to KML...")

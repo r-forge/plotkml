@@ -23,10 +23,10 @@ kml_layer.SpatialPolygons <- function(
   kml.out <- get("kml.out", env=plotKML.fileIO)
   
   # Checking the projection is geo
-  check <- check_projection(obj, logical = TRUE)
+  prj.check <- check_projection(obj, control = TRUE)
 
   # Trying to reproject data if the check was not successful
-  if (!check) {  obj <- reproject(obj)  }
+  if (!prj.check) {  obj <- reproject(obj)  }
 
   # Parsing the call for aesthetics
   aes <- kml_aes(obj, ...)
@@ -48,6 +48,7 @@ kml_layer.SpatialPolygons <- function(
   # Folder and name of the points folder
   pl1 = newXMLNode("Folder", parent=kml.out[["Document"]])
   pl2 <- newXMLNode("name", paste(class(obj)), parent = pl1)
+
   if(plot.labpt==TRUE){
   pl1b = newXMLNode("Folder", parent=kml.out[["Document"]])
   pl2b <- newXMLNode("name", "labpt", parent = pl1b)

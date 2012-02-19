@@ -5,7 +5,8 @@
 # Note           : this function is only suitable for writing time-series of data i.e. multiple realizations of the same variables; we assume that the time dimension is set via the @zvalue slot;
 
 kml_layer.RasterBrick <- function(
-  obj,  
+  obj,
+  plot.legend = TRUE,  
   dtime = "", 
   tz = "GMT",
   z.lim = c(min(obj@data@min, na.rm=TRUE), max(obj@data@max, na.rm=TRUE)),
@@ -16,6 +17,8 @@ kml_layer.RasterBrick <- function(
   ...
   ){
   
+  require(RSAGA)
+  
   if(!is.numeric(obj@data@values)){
   stop('Values of class "numeric" required.') 
   }
@@ -24,10 +27,10 @@ kml_layer.RasterBrick <- function(
   kml.out <- get("kml.out", env=plotKML.fileIO)
   
   # Checking the projection is geo
-  check <- check_projection(obj, logical = TRUE)
+  prj.check <- check_projection(obj, control = TRUE)
 
   # Trying to reproject data if the check was not successful
-  if (!check) { obj <- reproject(obj) }
+  if (!prj.check) { obj <- reproject(obj) }
 
   # Parsing the call for aesthetics
   aes <- kml_aes(obj, ...)   
@@ -41,14 +44,15 @@ kml_layer.RasterBrick <- function(
   altitudeMode <- kml_altitude_mode(altitude)
 
   # Format the time slot for writing to KML:
-  if(!any(class(obj@zvalue) %in% "POSIXct")){
-  if(obj@zvalue==""){
-    obj@zvalue <- format(as.POSIXct(rev(as.Date(Sys.time())-1:ncol(obj@data@values))), "%Y-%m-%dT%H:%M:%SZ")
-  }
-    DateTime <- obj@zvalue[1:ncol(obj@data@values)]
-  }
-  else 
-  { DateTime = obj@zvalue[1:ncol(obj@data@values)] }
+  if(!any(class(obj@zvalue) %in% "POSIXct")|!any(class(obj@zvalue) %in% "character")){
+    if(any(obj@zvalue=="")){
+      obj@zvalue <- format(as.POSIXct(rev(as.Date(Sys.time())-1:ncol(obj@data@values))), "%Y-%m-%dT%H:%M:%SZ")
+    }
+      DateTime <- obj@zvalue[1:ncol(obj@data@values)]
+    }
+    else { 
+      DateTime <- obj@zvalue[1:ncol(obj@data@values)] 
+   }
   
   if(dtime==0) {  
     when <- as.POSIXct(DateTime)
@@ -62,6 +66,13 @@ kml_layer.RasterBrick <- function(
   # Parse ATTRIBUTE TABLE (for each placemark):
   if (balloon & ("layernames" %in% slotNames(obj))){
       html.table <- .df2htmltable(data.frame(layernames=obj@layernames, zvalue=obj@zvalue, unit=obj@unit))
+  }
+
+  # plot the legend (PNG)
+  if(plot.legend == TRUE){
+    legend_name <- paste(normalizeFilename(deparse(substitute(obj, env=parent.frame()))), "legend.png", sep="_")      
+    colour_scale_legend <- colorRampPalette(colour_scale)(50)
+    kml_legend.bar(x = z.lim, legend.file = legend_name, legend.pal = colour_scale_legend) 
   }
 
   message("Parsing to KML...")
@@ -106,6 +117,13 @@ kml_layer.RasterBrick <- function(
   }}}
 
   parseXMLAndAdd(txtr, parent=pl1)
+
+  # Legend
+  # ======================
+  if(plot.legend == TRUE){
+  txtso <- sprintf('<ScreenOverlay><name>Legend</name><Icon><href>%s</href></Icon><overlayXY x="0" y="1" xunits="fraction" yunits="fraction"/><screenXY x="0" y="1" xunits="fraction" yunits="fraction"/></ScreenOverlay>', legend_name)
+  parseXMLAndAdd(txtso, parent=kml.out[["Document"]])
+  }
   
   # save results: 
   assign("kml.out", kml.out, env=plotKML.fileIO)

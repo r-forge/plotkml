@@ -46,10 +46,10 @@ kml_layer.SoilProfileCollection <- function(
   kml.out <- get("kml.out", env=plotKML.fileIO)
   
   # check the projection:
-  check <- check_projection(obj@sp, logical = TRUE) 
+  prj.check <- check_projection(obj@sp, control = TRUE) 
 
   # Trying to reproject data if the check was not successful
-  if (!check) { obj@sp <- reproject(obj@sp) }  
+  if (!prj.check) { obj@sp <- reproject(obj@sp) }  
   
   LON <- as.vector(coordinates(obj@sp)[,1])
   LAT <- as.vector(coordinates(obj@sp)[,2])
@@ -74,6 +74,7 @@ kml_layer.SoilProfileCollection <- function(
   # Folder and name of the points folder
   pl1 = newXMLNode("Folder", parent=kml.out[["Document"]])
   pl2 <- newXMLNode("name", paste(class(obj)), parent = pl1)
+
   pl2c = newXMLNode("Folder", parent=pl1)
   pl3c <- newXMLNode("name", "sites", parent = pl2c)
 

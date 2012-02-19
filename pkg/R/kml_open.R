@@ -7,7 +7,8 @@
 kml_open <- function(
   file.name,
   folder.name = file.name,
-  open = TRUE,
+  kml_open = TRUE,
+  kml_visibility = TRUE,
   overwrite = TRUE,
   use.Google_gx = FALSE,
   kml_xsd = get("kml_xsd", envir = plotKML.opts),
@@ -30,7 +31,10 @@ kml_open <- function(
   
   h2 <- newXMLNode("Document", parent = kml.out)
   h3 <- newXMLNode("name", folder.name, parent = h2)
-  h4 <- newXMLNode("open", as.numeric(open), parent = h2)
+  if(kml_visibility==FALSE){
+    h4 <- newXMLNode("visibility", as.numeric(kml_visibility), parent = h2)
+  }
+  h5 <- newXMLNode("open", as.numeric(kml_open), parent = h2)
   
   # init connection to an XML object: 
   assign("kml.out", kml.out, env=plotKML.fileIO)
@@ -40,10 +44,13 @@ kml_open <- function(
 
 ## Closes the current KML canvas
 kml_close <- function(file.name, overwrite = FALSE, ...){
-   
+  
+  require(RSAGA) 
   # get our invisible file connection from custom evnrionment
   kml.out <- get("kml.out", env=plotKML.fileIO)
   saveXML(kml.out, file.name)
   message(paste("Closing", set.file.extension(file.name, ".kml")))
   
 }
+
+# end of script;

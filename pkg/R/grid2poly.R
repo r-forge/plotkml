@@ -4,7 +4,7 @@
 # Status         : working version
 # Note           : Not recommended for large grids;
 
-grid2poly <- function(obj, var.name = names(obj)[1], reproject = TRUE, method = c("raster", "sp", "RSAGA")[1], tmp.file = TRUE, saga_lib = "shapes_grid", saga_module = 3, silent = FALSE){
+grid2poly <- function(obj, var.name = names(obj)[1], reproject = TRUE, method = c("sp", "raster", "RSAGA")[1], tmp.file = TRUE, saga_lib = "shapes_grid", saga_module = 3, silent = FALSE, ...){
 
     # print warning:
     if(length(obj)>1e4){
@@ -34,6 +34,7 @@ grid2poly <- function(obj, var.name = names(obj)[1], reproject = TRUE, method = 
         obj <- as(obj[var.name], "SpatialPixelsDataFrame")
         writeGDAL(obj[var.name], paste(tf, ".sdat", sep=""), "SAGA")
         # saga_lib name and saga_module might change in the future versions of SAGA!
+        # SAGA GIS 2.0.8
         rsaga.geoprocessor(lib=saga_lib, module=saga_module, param=list(GRIDS=paste(tf, ".sgrd", sep=""), SHAPES=paste(tf, ".shp", sep=""), NODATA=TRUE, TYPE=1), show.output.on.console = silent)
         pol <- readShapePoly(paste(tf, ".shp", sep=""), proj4string=obj@proj4string)
         }
@@ -49,10 +50,10 @@ grid2poly <- function(obj, var.name = names(obj)[1], reproject = TRUE, method = 
     }
     
     # Checking projection:
-    check <- check_projection(pol, logical = TRUE)
+    prj.check <- check_projection(pol, control = TRUE)
 
     # Trying to reproject data if the check was not successful
-    if (!check&reproject==TRUE) {  pol <- reproject(pol)  }
+    if (!prj.check&reproject==TRUE) {  pol <- reproject(pol)  }
 
     # Convert to SPolyDF:
     dm <- data.frame(obj@data[,var.name])

@@ -19,10 +19,10 @@ kml_layer.SpatialLines <- function(
   kml.out <- get("kml.out", env=plotKML.fileIO)
   
   # Checking the projection is geo
-  check <- check_projection(obj, logical = TRUE)
+  prj.check <- check_projection(obj, control = TRUE)
 
   # Trying to reproject data if the check was not successful
-  if (!check) {  obj <- reproject(obj)  }
+  if (!prj.check) {  obj <- reproject(obj)  }
 
   # Parsing the call for aesthetics
   aes <- kml_aes(obj, ...)

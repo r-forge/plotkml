@@ -6,7 +6,7 @@
 
 
 ## Fix characters following the naming conventions [http://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx]:
-normalizeFilename <- function(x, format = c("default", "8.3")[1], fix.encoding = TRUE, sub.sign = "_"){
+normalizeFilename <- function(x, form = c("default", "8.3")[1], fix.encoding = TRUE, sub.sign = "_"){
 
    require(utils)
    # reserved characters:
@@ -15,7 +15,7 @@ normalizeFilename <- function(x, format = c("default", "8.3")[1], fix.encoding =
       x <- gsub(pattern=i, replacement=sub.sign, x)
    }
    # shorten the path:
-   if(format == "8.3"){
+   if(form == "8.3"){
       x <- shortPathName(x)
    }
    if(fix.encoding==TRUE){

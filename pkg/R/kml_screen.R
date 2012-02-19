@@ -31,21 +31,21 @@ kml_screen <- function(
   
   # Parse KML code:
   if(size[1] == 0&size[2] == 0&rotation == 0){
-  txt <- sprintf('<ScreenOverlay><name>%s</name><Icon><href>%s</href></Icon><overlayXY %s xunits="%s" yunits="%s"/><screenXY %s xunits="%s" yunits="%s"/></ScreenOverlay>', sname, image.file, overlayXY, xyunits, xyunits, screenXY, xyunits, xyunits)
+  screen_txt <- sprintf('<ScreenOverlay><name>%s</name><Icon><href>%s</href></Icon><overlayXY %s xunits="%s" yunits="%s"/><screenXY %s xunits="%s" yunits="%s"/></ScreenOverlay>', sname, image.file, overlayXY, xyunits, xyunits, screenXY, xyunits, xyunits)
   }
   else { if(size[1] == 0&size[2] == 0&rotation != 0){
-  txt <- sprintf('<ScreenOverlay><name>%s</name><Icon><href>%s</href></Icon><overlayXY %s xunits="%s" yunits="%s"/><screenXY %s xunits="%s" yunits="%s"/><rotation>%.1f</rotation></ScreenOverlay>', sname, image.file, overlayXY, xyunits, xyunits, screenXY, xyunits, xyunits, rotation)
+  screen_txt <- sprintf('<ScreenOverlay><name>%s</name><Icon><href>%s</href></Icon><overlayXY %s xunits="%s" yunits="%s"/><screenXY %s xunits="%s" yunits="%s"/><rotation>%.1f</rotation></ScreenOverlay>', sname, image.file, overlayXY, xyunits, xyunits, screenXY, xyunits, xyunits, rotation)
   }
   else { if(size[1] != 0&size[2] != 0&rotation == 0){
-  txt <- sprintf('<ScreenOverlay><name>%s</name><Icon><href>%s</href></Icon><overlayXY %s xunits="%s" yunits="%s"/><screenXY %s xunits="%s" yunits="%s"/><size x="%s" y="%s" xunits="%s" yunits="%s"/></ScreenOverlay>', sname, image.file, overlayXY, xyunits, xyunits, screenXY, xyunits, xyunits, size[1], size[2], xyunits, xyunits)
+  screen_txt <- sprintf('<ScreenOverlay><name>%s</name><Icon><href>%s</href></Icon><overlayXY %s xunits="%s" yunits="%s"/><screenXY %s xunits="%s" yunits="%s"/><size x="%s" y="%s" xunits="%s" yunits="%s"/></ScreenOverlay>', sname, image.file, overlayXY, xyunits, xyunits, screenXY, xyunits, xyunits, size[1], size[2], xyunits, xyunits)
   }
   else {
-  txt <- sprintf('<ScreenOverlay><name>%s</name><Icon><href>%s</href></Icon><overlayXY %s xunits="%s" yunits="%s"/><screenXY %s xunits="%s" yunits="%s"/><size x="%s" y="%s" xunits="%s" yunits="%s"/></ScreenOverlay><rotation>%.1f</rotation>', sname, image.file, overlayXY, xyunits, xyunits, screenXY, xyunits, xyunits, size[1], size[2], xyunits, xyunits, rotation)
+  screen_txt <- sprintf('<ScreenOverlay><name>%s</name><Icon><href>%s</href></Icon><overlayXY %s xunits="%s" yunits="%s"/><screenXY %s xunits="%s" yunits="%s"/><size x="%s" y="%s" xunits="%s" yunits="%s"/></ScreenOverlay><rotation>%.1f</rotation>', sname, image.file, overlayXY, xyunits, xyunits, screenXY, xyunits, xyunits, size[1], size[2], xyunits, xyunits, rotation)
   }}}
   
-  parseXMLAndAdd(txt, parent=kml.out[["Document"]])
+  parseXMLAndAdd(screen_txt, parent=kml.out[["Document"]])
   
   # save to a connection: 
-  assign("kml.out", kml.out, env=plotKML.fileIO)
+  assign('kml.out', kml.out, env=plotKML.fileIO)
   
 }

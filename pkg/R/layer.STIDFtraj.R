@@ -21,14 +21,15 @@ kml_layer.STIDFtraj <- function(
   ){
   
   require(xts)
+  require(grDevices)
   # Get our invisible file connection from custom environment
   kml.out <- get('kml.out', env=plotKML.fileIO)
   
   # Checking the projection is geo
-  check <- check_projection(obj@sp, logical = TRUE)
+  prj.check <- check_projection(obj@sp, control = TRUE)
 
   # Trying to reproject data if the check was not successful
-  if (!check) { obj@sp <- reproject(obj@sp) }
+  if (!prj.check) { obj@sp <- reproject(obj@sp) }
 
   # Parsing the call for aesthetics
   aes <- kml_aes(obj, ...)   
