@@ -1,12 +1,18 @@
 \name{kml_layer.STIDFtraj}
+\encoding{latin1}
 \alias{kml_layer.STIDFtraj}
 \alias{STIDFtraj}
 \title{Write a space-time trajectory to KML}
 \description{Writes an object of class \code{"STIDFtraj"} to a KML file with a possibility to parse attribute variables using several aesthetics arguments.
 }
 \usage{
-kml_layer.STIDFtraj(obj, id.name, dtime = "", extrude = FALSE,
-   start.icon, end.icon, LabelScale, z.scale = 1, metadata = NULL, html.table = NULL)
+kml_layer.STIDFtraj(obj, id.name = names(obj@data)[which(names(obj@data)== "id")],
+                 dtime = "", extrude = FALSE, 
+                 start.icon = paste(get("home_url", envir = plotKML.opts),
+                 "3Dballyellow.png", sep = ""), 
+                 end.icon = paste(get("home_url", envir = plotKML.opts), "golfhole.png", sep = ""), 
+                 LabelScale = 0.8 * get("LabelScale", envir = plotKML.opts), z.scale = 1,
+                 metadata = NULL, html.table = NULL, \dots )
 }
 \arguments{
   \item{obj}{space-time object of class \code{"STIDFraj"} (spatio-temporal irregular data.frames trajectory)}
@@ -19,8 +25,9 @@ kml_layer.STIDFtraj(obj, id.name, dtime = "", extrude = FALSE,
   \item{z.scale}{vertical exaggeration}
   \item{metadata}{(optional) specify the metadata object}
   \item{html.table}{optional description block (html) for each GPS point (vertices)}
+  \item{\dots}{other optional arguments}
 }
-\details{The dateTime is defined as \code{yyyy-mm-ddThh:mm:sszzzzzz}, where \code{T} is the separator between the date and the time, and the time zone is either \code{Z} (for UTC) or \code{zzzzzz}, which represents \\enc{±}{+-}hh:mm in relation to UTC. For more info on how Time Stamps work see \url{http://kml-samples.googlecode.com}. If the time is measured at block support, then \code{<TimeStamp><begin> </begin><end> </end></TimeStamp>} times will be inserted. Temporal support (\eqn{\Delta t}{dt}) is estimated using the \code{xts::periodicity} function (median time between observations). The begin time is then derived as \eqn{t_1 = t - .5\cdot \Delta t}{t1 = t - .5 d t}.
+\details{The dateTime is defined as \code{yyyy-mm-ddThh:mm:sszzzzzz}, where \code{T} is the separator between the date and the time, and the time zone is either \code{Z} (for UTC) or \code{zzzzzz}, which represents \enc{±}{+-}hh:mm in relation to UTC. For more info on how Time Stamps work see \url{http://kml-samples.googlecode.com}. If the time is measured at block support, then \code{<TimeStamp><begin> </begin><end> </end></TimeStamp>} times will be inserted. Temporal support (\eqn{\Delta t}{dt}) is estimated using the \code{xts::periodicity} function (median time between observations). The begin time is then derived as \eqn{t_1 = t - .5\cdot \Delta t}{t1 = t - .5 d t}.
 }
 \references{
 \itemize{

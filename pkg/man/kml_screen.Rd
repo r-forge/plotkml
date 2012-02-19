@@ -1,7 +1,7 @@
 \name{kml_screen}
 \alias{kml_screen}
 \title{Add a screen overlay}
-\description{Puts a selected image file (map legend or logo) as Screen overlay.}
+\description{Adds an image file (map legend or logo) as screen overlay. The same file connection is further accessible by other \code{kml_*()} functions such as \code{kml_layer()} and \code{kml_close()}. This allows creation of customized multi-layered KML files.}
 \usage{
 kml_screen(image.file, sname = "", position = c("UL","ML","LL","BC","LR","MR","UR","TC")[1],
   overlayXY, screenXY, xyunits = c("fraction", "pixels", "insetPixels")[1], rotation = 0, size = c(0,0) )
@@ -23,8 +23,8 @@ kml_screen(image.file, sname = "", position = c("UL","ML","LL","BC","LR","MR","U
 \item KML Reference (\url{http://code.google.com/apis/kml/documentation/})
 }
 }
-\author{ Tomislav Hengl (tom.hengl@wur.nl) }
-\seealso{ \code{\link{kml}}
+\author{ Tomislav Hengl }
+\seealso{ \code{\link{kml-methods}}
 }
 \examples{
 data(eberg_zones)

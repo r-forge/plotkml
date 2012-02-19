@@ -2,7 +2,7 @@
 \alias{plotKML-package}
 \docType{package}
 \title{Plotting of space-time objects in Google Earth}
-\description{A suite of functions for converting space-time (sp, raster and spacetime-class) objects into KML or KMZ documents for use in Google Earth.}
+\description{A suite of functions for converting 2D and 3D spatio-temporal (sp, raster and spacetime package classes) objects into KML or KMZ documents for use in Google Earth.}
 \details{
 \tabular{ll}{
 Package: \tab plotKML\cr
@@ -18,7 +18,7 @@ Tomislav Hengl (\email{tom.hengl@wur.nl}), Pierre Roudier (\email{pierre.roudier
 \references{
 \itemize{
 \item KML documentation (\url{http://code.google.com/apis/kml/documentation/})
-\item See also: \strong{Google Earth Outreach} project (\url{http://earth.google.com/outreach/tutorials.html})
+\item \strong{Google Earth Outreach} project (\url{http://earth.google.com/outreach/tutorials.html})
 \item RKML package (\url{www.omegahat.org/RKML/})
 }
 }
