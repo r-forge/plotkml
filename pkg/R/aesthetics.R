@@ -9,7 +9,6 @@
   colour = "black",
   fill = "white",
   shape = paste(get("home_url", envir = plotKML.opts), get("icon", envir = plotKML.opts), sep=""), 
-  #"http://maps.google.com/mapfiles/kml/shapes/donut.png",
   whitening = "",
   alpha = 1,
   size = get("LabelScale", envir = plotKML.opts),
@@ -124,7 +123,7 @@ kml_aes <- function(obj, ...) {
 
   # Shape
   if ("shape" %in% called_aes) {
-    aes[["shape"]] <- kml_shape(obj, shape, ...)
+    aes[["shape"]] <- kml_shape(obj, ...)
   }
   else {
     aes[["shape"]] <- rep(.all_kml_aesthetics[["shape"]], length.out = length(obj))
@@ -147,9 +146,9 @@ kml_aes <- function(obj, ...) {
 
   # Width
   if ("width" %in% called_aes) {
-    aes[['width']] <- kml_width(obj, width, ...)
-  }
-  else {
+#    aes[['width']] <- kml_width(obj, ...)
+#  }
+#  else {
     aes[['width']] <- rep(.all_kml_aesthetics[["width"]], length.out = length(obj))
   }
 
@@ -317,10 +316,10 @@ kml_alpha <- function(obj, alpha, colours, RGBA = FALSE, ...){
   # Categorical data
   else {
 
-    if (is.numeric(x)) {
-      limits <- range(x, na.rm = TRUE, finite = TRUE)
+    if (is.numeric(obj)) {
+      limits <- range(obj, na.rm = TRUE, finite = TRUE)
       brks <- seq(limits[1], limits[2], length.out = length(colours))
-      grps <- cut(x, breaks = brks, include.lowest = TRUE)
+      grps <- cut(obj, breaks = brks, include.lowest = TRUE)
     }
     else
       stop("Transparency is only available for numeric data.")
@@ -330,9 +329,9 @@ kml_alpha <- function(obj, alpha, colours, RGBA = FALSE, ...){
 }
 
 # Whitening of a given coloured layer (update of the colour vector)
-kml_whitening <- function(obj, whitening, col.vect){
-
-}
+# kml_whitening <- function(obj, whitening, col.vect){
+# 
+# }
 
 # Size (points)
 kml_size <- function(obj, size, size.min = 0.25, size.max = 2.5, size.default = 1){
@@ -365,8 +364,8 @@ kml_size <- function(obj, size, size.min = 0.25, size.max = 2.5, size.default = 
 }
 
 # Width (lines)
-kml_width <- function(obj, width, width.min = 0.1, width.max = 5, width.default = 1){
-
-}
+# kml_width <- function(obj, width, width.min = 0.1, width.max = 5, width.default = 1){
+#  
+# }
 
 # end of script;

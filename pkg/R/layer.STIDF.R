@@ -26,19 +26,26 @@ kml_layer.STIDF <- function(
   }
   
   # Check the data type:
-  if(class(obj@sp)=="SpatialPoints"){
+  if(class(obj@sp)=="SpatialPoints"|class(obj@sp)=="SpatialPointsDataFrame"){
     sp <- SpatialPointsDataFrame(obj@sp, obj@data)   
     kml_layer.SpatialPoints(obj = sp, TimeSpan.begin = TimeSpan.begin, TimeSpan.end = TimeSpan.end,  ...)
+  } 
+  else {
+    if(class(obj@sp)=="SpatialPolygons"|class(obj@sp)=="SpatialPolygonsDataFrame"){
+      sp <- SpatialPolygonsDataFrame(obj@sp, obj@data)   
+      kml_layer.SpatialPolygons(obj = sp, TimeSpan.begin = TimeSpan.begin, TimeSpan.end = TimeSpan.end,  ...)  
+    }
+  else {
+    if(class(obj@sp)=="SpatialLines"|class(obj@sp)=="SpatialLinesDataFrame"){
+      sp <- SpatialLinesDataFrame(obj@sp, obj@data)   
+      kml_layer.SpatialLines(obj = sp, TimeSpan.begin = TimeSpan.begin, TimeSpan.end = TimeSpan.end,  ...)
   }
-  if(class(obj@sp)=="SpatialPolygons"){
-    sp <- SpatialPolygonsDataFrame(obj@sp, obj@data)   
-    kml_layer.SpatialPolygons(obj = sp, TimeSpan.begin = TimeSpan.begin, TimeSpan.end = TimeSpan.end,  ...)  
-  }
-  if(class(obj@sp)=="SpatialLines"){
-    sp <- SpatialLinesDataFrame(obj@sp, obj@data)   
-    kml_layer.SpatialLines(obj = sp, TimeSpan.begin = TimeSpan.begin, TimeSpan.end = TimeSpan.end,  ...)
-  }
+  else { 
+  stop("The STIDF object does not extend SpatialPoints*, SpatialLines* or SpatialPolygons*")
+  }}}
 
 }
 
 setMethod("kml_layer", "STIDF", kml_layer.STIDF)
+
+# end of script;

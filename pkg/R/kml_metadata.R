@@ -4,25 +4,15 @@
 # Dev Status     : Pre-Alpha
 # Note           : Based on the US gov sp metadata standards [http://www.fgdc.gov/metadata/csdgm/];
 
-
-## Write metadata to a KML file:                             
-kml_metadata <- function(
-    obj,   # SpatialMetadata
-    sel,
-    fix.enc = TRUE,
-    cwidth = 150,
-    twidth = 500,
-    full.names = "",
-    delim.sign = "_",
-    asText = FALSE
-    ){
-        
-    if(full.names == ""){
-      data(mdnames)      
-      full.names = mdnames      
+## summary for an object of type "SpatialMetadata":
+setMethod("summary", signature(object = "SpatialMetadata"), function(object, sel,
+    fix.enc = TRUE, full.names = "", delim.sign = "_"){
+    
+    if(full.names == ""){     
+      full.names = read.table(system.file("mdnames.csv", package="plotKML"), sep=";")      
     }
     
-    nx <- unlist(xmlToList(obj@xml, addAttributes=FALSE))
+    nx <- unlist(xmlToList(object@xml, addAttributes=FALSE))
     # convert to a table:
     met <- data.frame(metadata=gsub("\\.", delim.sign, attr(nx, "names")), value=paste(nx), stringsAsFactors = FALSE)
     # add more friendly names:
@@ -38,9 +28,22 @@ kml_metadata <- function(
     
     # fix encoding:
     if(fix.enc==TRUE){
-    md <- data.frame(lapply(md, iconv, to = "UTF8"))
+      md <- data.frame(lapply(md, iconv, to = "UTF8"))
     }
     
+    return(md)
+})
+
+
+## Write metadata to a KML file:                             
+kml_metadata <- function(
+    obj,   # SpatialMetadata
+    cwidth = 150,
+    twidth = 500,
+    asText = FALSE
+    ){
+    
+    md <- summary(obj)    
     # write to html:
     l1 <- newXMLNode("table", attrs=c(width=twidth, border="0", cellspacing="5", cellpadding="10"))
     l2 <- newXMLNode("caption", "Spatial metadata summary:", parent = l1)

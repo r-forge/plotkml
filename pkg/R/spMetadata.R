@@ -4,11 +4,14 @@
 # Dev Status     : Pre-Alpha
 # Note           : Based on the US gov sp metadata standards [http://www.fgdc.gov/metadata/csdgm/], which can be converted to "ISO 19139" XML schema;
 
+## internal methods:
+setMethod("GetNames", "SpatialMetadata", function(obj){paste(obj@field.names)})
+setMethod("GetPalette", "SpatialMetadata", function(obj){paste(obj@palette)})
 
 ## Generate a spMetadata class object:
 spMetadata.Spatial <- function(
     obj,   
-    xml.file = set.file.extension(normalizeFilename(deparse(substitute(obj, env=parent.frame()))), ".xml"), # optional metadata file in the FGDC format
+    xml.file, # optional metadata file in the FGDC format
     generate.missing = TRUE,
     Citation_title,
     Target_variable,  
@@ -25,9 +28,12 @@ spMetadata.Spatial <- function(
     validate.schema = FALSE
     )
     {
+    
+    require(RSAGA)
         
     # Use the first column for metadata: 
     if(missing(Target_variable)){ Target_variable <- names(obj)[1] }
+    if(missing(xml.file)){ xml.file <- set.file.extension(normalizeFilename(deparse(substitute(obj, env=parent.frame()))), ".xml") }
         
     if(generate.missing == TRUE){
       # Metadata template:
@@ -147,7 +153,7 @@ spMetadata.Spatial <- function(
     # convert to a table:
     met <- data.frame(metadata=gsub("\\.", "_", names(ny)), value=paste(ny))
     # add friendly names:
-    data(mdnames)
+    mdnames <- read.table(system.file("mdnames.csv", package="plotKML"), sep=";")
     field_names <- merge(met, mdnames[,c("metadata","field.names")], by="metadata", all.x=TRUE)[,"field.names"]
     
     # generate metadata doc:
@@ -195,7 +201,7 @@ spMetadata.Spatial <- function(
 
 }
 
-spMetadata.Raster <- function(obj, ...){
+spMetadata.Raster <- function(obj, Target_variable, bounds, color, ...){
     
     if(!is.null(bounds)) {bounds <- obj@legend@values}
     if(!is.null(color)) {color <- obj@legend@color}
@@ -222,9 +228,8 @@ setMethod("spMetadata", "RasterLayer", spMetadata.Raster)
 ## Read metadata from a xml.file and convert to a table:
 read.metadata <- function(xml.file, delim.sign = "_", full.names){
 
-    if(missing(full.names)){
-      data(mdnames)      
-      full.names = mdnames      
+    if(missing(full.names)){    
+      full.names = read.table(system.file("mdnames.csv", package="plotKML"), sep=";")      
     }
     ret <- xmlTreeParse(xml.file, useInternalNodes = TRUE)
     top <- xmlRoot(ret)

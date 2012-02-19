@@ -18,7 +18,7 @@
     value <- strsplit(param_value, param)[[1]]
     value <- value[value != ""]
   }
-  else { stop(paste("Proj4string does not contain", param, "parameter. See 'CRS-methods' for more details."))
+  else { stop(paste("Proj4string does not contain", param, "parameter.\n Consider converting to the referent CRS", get("ref_CRS", envir = plotKML.opts),"manually."))
   }
 
   return(value)
@@ -39,29 +39,61 @@ parse_proj4 <- function(p4s, params){
   # Splitting the whole PROJ4 string
   p4s_parameters <- str_split(p4s, " ")[[1]]
   # Extraction of the values of parameters specified above
-  res <- laply(params, .extractProjValue, p4s_parameters = p4s_parameters)
+  x <- laply(params, .extractProjValue, p4s_parameters = p4s_parameters)
   # colnames for better looking result
-  names(res) <- param_names
+  value <- sapply(sapply(params, strsplit, "\\+"), function(x){x[2]})
+  param_names <- sapply(strsplit(value, "="), function(x){x[1]})
+  names(x) <- param_names
 
-  return(res)
+  return(x)
 }
 
 ## Get proj4string from an object
 getCRS.Spatial <- function(obj) {
+  require(sp)
   CRSargs(CRS(proj4string(obj)))
 }
 
 setMethod("getCRS", "Spatial", getCRS.Spatial)
 
 getCRS.Raster <- function(obj) {
+  require(raster)
   CRSargs(projection(obj, asText = FALSE))
 }
 
 setMethod("getCRS", "Raster", getCRS.Raster)
 
+
+## check projection for Raster objects
+setMethod("is.projected", signature(obj = "Raster"),
+	function(obj) {
+		p4str <- getCRS(obj)
+		if (is.na(p4str) || nchar(p4str) == 0) 
+
+			return(as.logical(NA))
+		else {
+
+			x <- grep("longlat", p4str, fixed=TRUE)
+
+			if (length(x) == 0)
+				return(TRUE)
+			else
+				return(FALSE)
+		}
+	}
+)
+
 ## check proj4string
-check_projection <- function(obj, logical = TRUE, ref_CRS = get("ref_CRS", envir = plotKML.opts)){
+check_projection <- function(obj, control = TRUE, ref_CRS = get("ref_CRS", envir = plotKML.opts)){
+   
+  require(sp)
+  #  First, check if it is in the metric system or unprojected:
+  if(ref_CRS=="+proj=longlat +datum=WGS84"&is.projected(obj)){
+    ret = FALSE
+  }
   
+  else {
+
   # Using PROJ.4 to get the PROJ4 string
   p4s <- getCRS(obj)
 
@@ -79,21 +111,23 @@ check_projection <- function(obj, logical = TRUE, ref_CRS = get("ref_CRS", envir
 
   # If test fails
   if (sum(is.na(match(params, target_params)))>0) {
-    if (!logical)
-      stop(paste("'", ref_CRS, "' coordinate system required."))
+    if (control==FALSE)
+      stop(paste("'", ref_CRS, "' coordinate system required"))
     else
-      res <- FALSE
+      ret <- FALSE
   }
   # If test succeed
-  else
-    res <- TRUE
+  else {
+      ret <- TRUE
+    }
   }
   
   else {
     stop("A valid proj4string required. See 'CRS-methods' for more details.")
     }
+  }
 
-  return(res)
+  return(ret)
 }
 
 # end of script;

@@ -12,7 +12,7 @@ kml.Spatial <- function(
   ...
 ){
 
-  kml_open(folder.name = folder.name, file.name = file.name)
+  kml_open(folder.name = folder.name, file.name = file.name, ...)
 
   kml_layer(obj = obj, ...)
 
@@ -28,3 +28,5 @@ setMethod("kml", "Raster", kml.Spatial)
 setMethod("kml", "SoilProfileCollection", kml.Spatial)
 setMethod("kml", "SpatialPhotoOverlay", kml.Spatial)
 setMethod("kml", "STIDF", kml.Spatial)
+
+# end of script;

@@ -1,18 +1,24 @@
 # Purpose        : Clean up / closing settings;
-# Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
-# Contributions  : Tomislav Hengl (tom.hengl@wur.nl); Dylan Beaudette (debeaudette@ucdavis.edu); 
+# Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
+# Contributions  : ; 
 # Status         : pre-alpha
 # Note           : for more info see [http://cran.r-project.org/doc/manuals/R-exts.html];
 
-.onLoad <- function(lib, pkg)  {
-	pkg.info <- drop(read.dcf(file=system.file("DESCRIPTION", package=pkg), fields=c("Version","Date")))
-	packageStartupMessage(paste(pkg, " version ", pkg.info["Version"], " (", pkg.info["Date"], ")", sep=""))
+.onLoad <- function(libname, pkgname)  {
+  
+  # print on start-up:
+	pkg.info <- drop(read.dcf(file=system.file("DESCRIPTION", package=pkgname), fields=c("Version","Date")))
+	packageStartupMessage(paste(pkgname, " version ", pkg.info["Version"], " (", pkg.info["Date"], ")", sep=""))
 
 	tst <- try( removeTmpFiles(), silent=TRUE )
-  plotKML.env(show.env = FALSE)
-  	
-  return(invisible(0))
 
+  # create env variables:
+  plotKML.env(show.env = FALSE)
+  
+  packageStartupMessage(paste("URL:", get("home_url", envir = plotKML.opts)))
+
+  return(invisible(0))
+  	
 }
 
 # end of script;
