@@ -1,15 +1,20 @@
 Package: plotKML
 Type: Package
-Title: Plotting Spatial Data to KML
-Version: 0.1-2
-Date: 2011-11-02
-Packaged: 2011-08-17 12:00:00 UTC; dylan
+Title: Visualization of spatial and spatio-temporal objects in Google Earth
+Version: 0.1-4
+Date: 2012-02-18
+Packaged: 2012-02-18 12:00:00 UTC; thengl
 Author: Tomislav Hengl <tom.hengl@wur.nl>, Pierre Roudier <roudierp@landcareresearch.co.nz>, Dylan Beaudette <debeaudette@ucdavis.edu>
 Maintainer: Tomislav Hengl <tom.hengl@wur.nl>
-Description: Visualization of space-time objects in Google Earth. Writes sp-class and similar objects to KML following some basic cartographic rules.
+Description: Writes sp-class, spacetime, raster-class and similar objects to KML following some basic cartographic rules. Suitable for visualization of complete analysis outputs.
 License: GPL
 URL: http://plotkml.r-forge.r-project.org/
 LazyLoad: yes
+<<<<<<< .mine
+Depends: R (>= 2.12.0), methods, scales, XML, sp, pixmap, rgdal, raster, plyr, colorspace, grDevices, plotrix, colorRamps, stringr, RColorBrewer, Hmisc, gstat, spacetime, xts, spcosa, aqp
+Suggests: utils, maptools, fossil, dismo, intamap, zoo, rjson, animation, spatstat, RSAGA, RCurl, ggplot2
+Enhances: sp, raster=======
 Depends: R (>= 2.10.0), methods, XML, sp, pixmap, rgdal, raster, plyr, colorspace, colorRamps, stringr, RColorBrewer, Hmisc, spacetime, xts
 Suggests: utils, ggplot2, maptools, adehabitatLT, xts, fossil, intamap, zoo, spatstat, aqp, RSAGA, animation, rjson
 Enhances: sp, raster, spacetime
+>>>>>>> .r355
