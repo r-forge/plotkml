@@ -80,7 +80,7 @@ data(meuse.grid)
 coordinates(meuse.grid) &lt;- ~x+y
 gridded(meuse.grid) &lt;- TRUE
 # fit a model:
-omm &lt;- fit.gstatModel(observations = meuse, formulaString = om~dist, covariates = meuse.grid)
+omm &lt;- fit.gstatModel(observations = meuse, om~dist, covariates = meuse.grid)
 show(omm@regModel)
 om.sp &lt;- SpatialPointsDataFrame(omm@sp, data = omm@regModel$model)
 ## Not run: 
@@ -90,5 +90,5 @@ plot(variogram(om~1, om.sp))
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

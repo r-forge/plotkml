@@ -67,7 +67,7 @@ grid2poly(obj, var.name = names(obj)[1], reproject = TRUE,
 
 <h3>Details</h3>
 
-<p><code>grid2poly</code> is not recommended for large grids (&gt;&gt;10e4 pixels). Consider splitting large input grids into tiles before running <code>grid2poly</code>. For converting large grids to polygons we recommend using SAGA GIS (<code>method = "RSAGA"</code>).</p>
+<p><code>grid2poly</code> is not recommended for large grids (&gt;&gt;10e4 pixels). Consider splitting large input grids into tiles before running <code>grid2poly</code>. For converting large grids to polygons consider using SAGA GIS (<code>method = "RSAGA"</code>) instead of using the default sp method.</p>
 
 
 <h3>Author(s)</h3>
@@ -100,5 +100,5 @@ kml(dem_poly, colour_scale = SAGA_pal[[1]], colour = DEM, kmz = TRUE)
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

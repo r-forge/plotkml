@@ -1,12 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Export spatial polygons to KML</title>
+<html><head><title>R: Writes spatial polygons to KML</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="R.css">
 </head><body>
 
 <table width="100%" summary="page for kml_layer.SpatialPolygons {plotKML}"><tr><td>kml_layer.SpatialPolygons {plotKML}</td><td align="right">R Documentation</td></tr></table>
 
-<h2>Export spatial polygons to KML</h2>
+<h2>Writes spatial polygons to KML</h2>
 
 <h3>Description</h3>
 
@@ -16,9 +16,11 @@
 <h3>Usage</h3>
 
 <pre>
-kml_layer.SpatialPolygons(obj, extrude = TRUE, tessellate = FALSE, outline = TRUE, 
-        plot.labpt = FALSE, z.scale = 1, LabelScale = get("LabelScale", envir = plotKML.opts), 
-        metadata =  NULL, html.table = NULL, TimeSpan.begin = "",  TimeSpan.end = "", ...)
+kml_layer.SpatialPolygons(obj, extrude = TRUE, tessellate = FALSE, 
+        outline = TRUE, plot.labpt = FALSE, z.scale = 1, 
+        LabelScale = get("LabelScale", envir = plotKML.opts), 
+        metadata =  NULL, html.table = NULL, 
+        TimeSpan.begin = "",  TimeSpan.end = "", ...)
 </pre>
 
 
@@ -80,7 +82,9 @@ kml_layer.SpatialPolygons(obj, extrude = TRUE, tessellate = FALSE, outline = TRU
 <h3>Details</h3>
 
 <p>Label points are be default not plotted. We recommend adding the legend to attribute maps instead. Transparency can be set by using the alpha argument.<br> 
-<code>TimeSpan.begin</code> and <code>TimeSpan.end</code> are optional TimeStamp vectors (<code>yyyy-mm-ddThh:mm:sszzzzzz</code>). Use the same time values for both <code>TimeSpan.begin</code> and <code>TimeSpan.end</code> if the measurements refer to a single moment in time. <code>TimeSpan.begin</code> and <code>TimeSpan.end</code> can be either a single value or a vector of values.</p>
+<code>TimeSpan.begin</code> and <code>TimeSpan.end</code> are optional TimeStamp vectors:<br> 
+<code>yyyy-mm-ddThh:mm:sszzzzzz</code><br> 
+Use the same time values for both <code>TimeSpan.begin</code> and <code>TimeSpan.end</code> if the measurements refer to a single moment in time. <code>TimeSpan.begin</code> and <code>TimeSpan.end</code> can be either a single value or a vector of values.</p>
 
 
 <h3>Author(s)</h3>
@@ -107,5 +111,5 @@ kml(eberg_zones, plot.labpt = TRUE, labels = ZONES, kmz = TRUE)
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

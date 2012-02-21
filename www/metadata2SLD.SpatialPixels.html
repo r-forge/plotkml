@@ -1,22 +1,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Writes a Styled Layer Description (*SLD*) file for a...</title>
+<html><head><title>R: Writes a Styled Layer Description (*SLD*) file</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="R.css">
 </head><body>
 
 <table width="100%" summary="page for metadata2SLD.SpatialPixels {plotKML}"><tr><td>metadata2SLD.SpatialPixels {plotKML}</td><td align="right">R Documentation</td></tr></table>
 
-<h2>Writes a Styled Layer Description (<B>SLD</B>) file for a SpatialPixels class object</h2>
+<h2>Writes a Styled Layer Description (<B>SLD</B>) file</h2>
 
 <h3>Description</h3>
 
-<p>Creates a <a href="http://docs.geoserver.org/stable/en/user/styling/sld-introduction.html">Styled Layer Description</a> (<B>SLD</B>) file, that can be attached to a spatial layer contributed to GeoServer. </p>
+<p>Writes a <a href="http://docs.geoserver.org/stable/en/user/styling/sld-introduction.html">Styled Layer Description</a> (<B>SLD</B>) file, that can be attached to a spatial layer contributed to GeoServer. </p>
 
 
 <h3>Usage</h3>
 
 <pre>
-metadata2SLD.SpatialPixels(obj, Format_Information_Content = xmlValue(obj@xml[["//formcont"]]),
+metadata2SLD.SpatialPixels(obj, 
+    Format_Information_Content = xmlValue(obj@xml[["//formcont"]]),
     obj.name = normalizeFilename(deparse(substitute(obj))), 
     sld.file = set.file.extension(obj.name, ".sld"),
     Citation_title = xmlValue(obj@xml[["//title"]]), 
@@ -92,5 +93,5 @@ metadata2SLD(eberg.md, "eberg_TWI.sld")
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

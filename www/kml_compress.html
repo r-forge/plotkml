@@ -50,7 +50,11 @@ kml_compress(file.name, zip = "", files = "", rm = FALSE, ...)
 <h3>Details</h3>
 
 <p>The KMZ file can carry the model files (<code>.dae</code>), textures and ground overlay images. For practical purposes, we recommend that you, instead of compressing the images together with the KML file, consider serving the ground overlay images via a server i.e. as network links. <br>
-If no internal ZIP program exists, the function looks for the system ZIP program <code>Sys.getenv("R_ZIPCMD", "zip")</code>. External ZIP program can also be specified via the <code>zip</code> argument.</p>
+If no internal ZIP program exists, the function looks for the system ZIP program:<br> 
+</p>
+<p><code>Sys.getenv("R_ZIPCMD", "zip")</code><br>
+</p>
+<p>External ZIP program can also be specified via the <code>zip</code> argument.</p>
 
 
 <h3>Author(s)</h3>
@@ -63,7 +67,7 @@ If no internal ZIP program exists, the function looks for the system ZIP program
 
 
 <ul>
-<li><p> KML Reference (<a href="http://code.google.com/apis/kml/documentation/">http://code.google.com/apis/kml/documentation/</a>)
+<li><p> KMZ description (<a href="http://code.google.com/apis/kml/documentation/">http://code.google.com/apis/kml/documentation/</a>)
 </p>
 </ul>
 
@@ -90,5 +94,5 @@ kml_compress("sm.kml", files="Soil_monolith_jpg.dae")
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

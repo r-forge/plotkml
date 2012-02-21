@@ -70,9 +70,10 @@ All usage of these data must be in accordance with the GBIF Data Use Agreement: 
 <pre>
 ## Not run: 
 kml.file &lt;- "taxon-celldensity-2294100.kml"
-## download.file(paste("http://data.gbif.org/occurrences/taxon/celldensity/", kml.file, sep=""), destfile=paste(getwd(), kml.file, sep="")) 
-## this will not run (you must first accept the data usage agreeent); 
-## instead, obtain the kml file via a web browser, and save it to the working directory:
+# download.file(paste("http://data.gbif.org/occurrences/taxon/celldensity/", kml.file, sep=""),
+# destfile=paste(getwd(), kml.file, sep="")) 
+# this will not run (you must first accept the data usage agreeent); 
+# instead, obtain the kml file via a web browser, and save it to the working directory:
 r &lt;- readKML.GBIFdensity(kml.file)
 class(r)
 summary(r)
@@ -89,5 +90,5 @@ r.lst &lt;- brick(r.lst[mask])
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-5 <a href="00Index.html">Index</a>]</div>
 </body></html>
