@@ -3,7 +3,8 @@
 \title{Normalize filename string}
 \description{Remove all reserved characters from the file name.}
 \usage{
-normalizeFilename(x, form = c("default", "8.3")[1], fix.encoding = TRUE, sub.sign = "_")
+normalizeFilename(x, form = c("default", "8.3")[1], 
+                 fix.encoding = TRUE, sub.sign = "_")
 }
 \arguments{
   \item{x}{input character}

@@ -5,11 +5,11 @@
 \description{Writes a series of images to PNGs and uses them to create ground overlays. Works only with \code{"RasterBrick"} class objects with time dimension specified via the \code{"@zvalue"}.}
 \usage{
 kml_layer.RasterBrick(obj, plot.legend = TRUE, dtime = "", tz = "GMT", 
-                 z.lim = c(min(obj@data@min, na.rm = TRUE),
-                 max(obj@data@max, na.rm = TRUE)), 
-                 colour_scale = get("colour_scale_numeric", envir = plotKML.opts),
-                 home_url = get("home_url", envir = plotKML.opts),
-                 metadata = NULL, html.table = NULL, \dots)
+          z.lim = c(min(obj@data@min, na.rm = TRUE),
+          max(obj@data@max, na.rm = TRUE)), 
+          colour_scale = get("colour_scale_numeric", envir = plotKML.opts),
+          home_url = get("home_url", envir = plotKML.opts),
+          metadata = NULL, html.table = NULL, \dots)
 }
 \arguments{
   \item{obj}{object of class \code{"RasterBrick"} (a time series of images)}
@@ -35,7 +35,7 @@ proj4string(LST) <- CRS("+proj=utm +zone=33 +datum=WGS84 +units=m")
 # get the dates from the file names:
 dates <- sapply(strsplit(names(LST), "LST"), function(x){x[[2]]})
 LST <- brick(LST)
-LST@title = "Time series of MODIS Land Surface Temperature (8-day mosaick) images"
+LST@title = "Time series of MODIS Land Surface Temperature images"
 LST@zvalue <- format(as.Date(dates, "\%Y_\%m_\%d"), "\%Y-\%m-\%dT\%H:\%M:\%SZ")
 data(SAGA_pal)
 # time dimension defined via zvalue slot:

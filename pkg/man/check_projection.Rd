@@ -3,7 +3,9 @@
 \alias{parse_proj4}
 \title{Extracts the proj4 parameters and checks if the projection matches the referent CRS}
 \description{Function \code{parse_proj4} gets the proj4 string from a space-time object and \code{check_projection} checks if the input projection is compatible with the referent projection system. The referent system is by default the \code{longlat} projection with WGS84 datum (KML-compatible coordinates).}
-\usage{check_projection(obj, control = TRUE, ref_CRS = get("ref_CRS", envir = plotKML.opts))}
+\usage{check_projection(obj, control = TRUE, 
+                 ref_CRS = get("ref_CRS", envir = plotKML.opts))
+}
 \arguments{
   \item{obj}{object of class \code{Spatial*} or \code{Raster*}}
   \item{control}{logical; if TRUE, a logical value is returned, if FALSE, an error is thrown if the test failed}
@@ -24,13 +26,11 @@ A cartographic projection is KML compatible if: (a) geographical coordinates are
 data(eberg)
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")
-\dontrun{
 check_projection(eberg)
 # not yet ready for export to KML;
 parse_proj4(proj4string(eberg))
 eberg.geo <- reproject(eberg)
 check_projection(eberg.geo)
-# now ready for export;
-}
+# ... now ready for export
 }
 \keyword{ ~projection}

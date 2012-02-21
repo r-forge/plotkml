@@ -4,10 +4,12 @@
 \title{Generate spatial metadata from an sp object}
 \description{Tries to generate metadata from an external file. If no metadata file is available, tries to fill in missing columns based on the data properties.}
 \usage{ spMetadata.Spatial(obj, xml.file, generate.missing = TRUE, Citation_title,  
-    Target_variable, Attribute_Measurement_Resolution = 1, Attribute_Units_of_Measure = "NA",
+    Target_variable, Attribute_Measurement_Resolution = 1, 
+    Attribute_Units_of_Measure = "NA",
     Indirect_Spatial_Reference = "", GoogleGeocode = FALSE, 
     Enduser_license_URL = get("license_url", envir = plotKML.opts),
-    signif.digit = 3, colour_scale, bounds, legend_names, icons, validate.schema = FALSE)
+    signif.digit = 3, colour_scale, bounds, legend_names, icons, 
+    validate.schema = FALSE)
 }
 \arguments{
   \item{obj}{some \code{"Spatial"} class object with \code{"data"} slot}
@@ -41,7 +43,8 @@ proj4string(eberg) <- CRS("+init=epsg:31467")
 # No metadata file specified:
 eberg.md <- spMetadata(eberg, Target_variable="SAND")
 # With localy prepared metadata file:
-eberg.md <- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"), Target_variable="SAND")
+eberg.md <- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"), 
+Target_variable="SAND")
 }
 }
 \keyword{ metadata}

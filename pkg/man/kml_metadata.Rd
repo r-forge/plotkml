@@ -11,6 +11,21 @@ kml_metadata(obj, cwidth = 150, twidth = 500, asText = FALSE)
   \item{twidth}{html total table width}
   \item{asText}{logical; return the output as XML or characters}
 }
-\details{The \code{kml_metadata} function, by default, prints out only a number of selected metadata fields: \code{"Citation_title"}, \code{"Abstract"}, \code{"Object_Count"}, \code{"Beginning_Date"}, \code{"Ending_Date"}, \code{"Data_Order_URL"}, \code{"Other_Citation_Details"}, \code{"Citation_URL"}, \code{"Data_Set_Credit"}, \code{"Data_Distributing_Organization"}, \code{"Format_Information_Content"}, \code{"Native_Data_Set_Environment"}. See \code{data(mdnames)} for a complete list of metadata fields. }
+\details{The \code{kml_metadata} function, by default, prints out only a number of selected metadata fields: 
+\enumerate{
+ \item \code{"Citation_title"},
+ \item \code{"Abstract"},
+ \item \code{"Object_Count"},
+ \item \code{"Beginning_Date"},
+ \item \code{"Ending_Date"},
+ \item \code{"Data_Order_URL"},
+ \item \code{"Other_Citation_Details"},
+ \item \code{"Citation_URL"},
+ \item \code{"Data_Set_Credit"},
+ \item \code{"Data_Distributing_Organization"},
+ \item \code{"Format_Information_Content"}, 
+ \item \code{"Native_Data_Set_Environment"} 
+}
+See \code{data(mdnames)} for a complete list of metadata fields. }
 \author{ Tomislav Hengl }
 \seealso{ \code{\link{spMetadata}}}

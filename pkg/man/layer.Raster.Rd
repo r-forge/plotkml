@@ -2,7 +2,7 @@
 \alias{kml_layer.Raster}
 \alias{kml_layer.SpatialPixels}
 \alias{RasterLayer}
-\title{Export raster objects to KML}
+\title{Writes raster objects to KML}
 \description{Writes rasters to PNG images and makes a KML code (ground overlays). Works with \code{"RasterLayer"}, \code{"SpatialGrid"}, \code{"SpatialPixels"} and \code{"RasterStack"} class objects. Target attributes can be specified using aesthetics arguments (e.g. \code{"colour"}).}
 \usage{
 kml_layer.Raster(obj, plot.legend = TRUE, metadata = NULL, raster_name, \dots)

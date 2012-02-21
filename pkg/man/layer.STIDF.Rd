@@ -13,7 +13,7 @@ kml_layer.STIDF(obj, dtime = "", \dots)
   \item{dtime}{temporal support size (in seconds)}
   \item{\dots}{additional arguments that can be passed to the \code{kml_layer.Spatial} method}
 }
-\details{An object of class \code{"STIDF"} contains a slot of type \code{"Spatial*"}, which is parsed via the \code{kml_layer.Spatial} method depending on the type of spatial object (points, lines, polygons). The dateTime is defined as \code{yyyy-mm-ddThh:mm:sszzzzzz}, where \code{T} is the separator between the date and the time, and the time zone is either \code{Z} (for UTC) or \code{zzzzzz}, which represents \enc{±}{+-}hh:mm in relation to UTC. For more info on how Time Stamps work see \url{http://kml-samples.googlecode.com}. If the time is measured at block support, then \code{<TimeStamp><begin> </begin><end> </end></TimeStamp>} times will be inserted. Temporal support (\eqn{\Delta t}{dt}) is estimated using the \code{xts::periodicity} function (median time between observations). The begin time is then derived as \eqn{t_1 = t - .5\cdot \Delta t}{t1 = t - .5 d t}.
+\details{An object of class \code{"STIDF"} contains a slot of type \code{"Spatial*"}, which is parsed via the \code{kml_layer} method depending on the type of spatial object (points, lines, polygons). The dateTime is defined as \code{yyyy-mm-ddThh:mm:sszzzzzz}, where \code{T} is the separator between the date and the time, and the time zone is either \code{Z} (for UTC) or \code{zzzzzz}, which represents \enc{±}{+-}hh:mm in relation to UTC. For more info on how Time Stamps work see \url{http://kml-samples.googlecode.com}. If the time is measured at block support, then \code{<TimeStamp><begin> </begin><end> </end></TimeStamp>} times will be inserted. Temporal support (\eqn{\Delta t}{dt}) is estimated using the \code{xts::periodicity} function (median time between observations). The begin time is then derived as \eqn{t_1 = t - .5\cdot \Delta t}{t1 = t - .5 d t}.
 }
 \references{
 \itemize{
@@ -41,8 +41,10 @@ kml(HRtemp08_jan, dtime = 24*3600, colour = TEMP, shape = shape, labels = "", km
 library("maptools")
 fname <- system.file("shapes/sids.shp", package="maptools")[1]
 nc <- readShapePoly(fname, proj4string=CRS("+proj=longlat +datum=NAD27"))
-time <- as.POSIXct(strptime(c(rep("1974-01-01", length(nc)), rep("1979-01-01", length(nc))), format="%Y-%m-%d"), tz = "GMT")
-data <- data.frame(BIR = c(nc$BIR74, nc$BIR79), NWBIR = c(nc$NWBIR74, nc$NWBIR79), SID = c(nc$SID74, nc$SID79))
+time <- as.POSIXct(strptime(c(rep("1974-01-01", length(nc)), 
+rep("1979-01-01", length(nc))), format="%Y-%m-%d"), tz = "GMT")
+data <- data.frame(BIR = c(nc$BIR74, nc$BIR79), NWBIR = c(nc$NWBIR74, nc$NWBIR79), 
+SID = c(nc$SID74, nc$SID79))
 # copy polygons:
 nc.poly <- rep(slot(nc, "polygons"), 2)
 # fix the polygon IDs:

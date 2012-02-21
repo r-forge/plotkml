@@ -6,7 +6,7 @@
 
 .onLoad <- function(libname, pkgname)  {
   
-  # print on start-up:
+  ## print on start-up:
 	pkg.info <- drop(read.dcf(file=system.file("DESCRIPTION", package=pkgname), fields=c("Version","Date")))
 	packageStartupMessage(paste(pkgname, " version ", pkg.info["Version"], " (", pkg.info["Date"], ")", sep=""))
 

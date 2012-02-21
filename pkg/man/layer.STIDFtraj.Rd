@@ -7,12 +7,11 @@
 }
 \usage{
 kml_layer.STIDFtraj(obj, id.name = names(obj@data)[which(names(obj@data)== "id")],
-                 dtime = "", extrude = FALSE, 
-                 start.icon = paste(get("home_url", envir = plotKML.opts),
-                 "3Dballyellow.png", sep = ""), 
-                 end.icon = paste(get("home_url", envir = plotKML.opts), "golfhole.png", sep = ""), 
-                 LabelScale = 0.8 * get("LabelScale", envir = plotKML.opts), z.scale = 1,
-                 metadata = NULL, html.table = NULL, \dots )
+       dtime = "", extrude = FALSE, 
+       start.icon = paste(get("home_url", envir = plotKML.opts), "3Dballyellow.png", sep = ""), 
+       end.icon = paste(get("home_url", envir = plotKML.opts), "golfhole.png", sep = ""), 
+       LabelScale = 0.8 * get("LabelScale", envir = plotKML.opts), z.scale = 1,
+       metadata = NULL, html.table = NULL, \dots )
 }
 \arguments{
   \item{obj}{space-time object of class \code{"STIDFraj"} (spatio-temporal irregular data.frames trajectory)}
@@ -27,7 +26,9 @@ kml_layer.STIDFtraj(obj, id.name = names(obj@data)[which(names(obj@data)== "id")
   \item{html.table}{optional description block (html) for each GPS point (vertices)}
   \item{\dots}{other optional arguments}
 }
-\details{The dateTime is defined as \code{yyyy-mm-ddThh:mm:sszzzzzz}, where \code{T} is the separator between the date and the time, and the time zone is either \code{Z} (for UTC) or \code{zzzzzz}, which represents \enc{±}{+-}hh:mm in relation to UTC. For more info on how Time Stamps work see \url{http://kml-samples.googlecode.com}. If the time is measured at block support, then \code{<TimeStamp><begin> </begin><end> </end></TimeStamp>} times will be inserted. Temporal support (\eqn{\Delta t}{dt}) is estimated using the \code{xts::periodicity} function (median time between observations). The begin time is then derived as \eqn{t_1 = t - .5\cdot \Delta t}{t1 = t - .5 d t}.
+\details{The dateTime is defined as \code{yyyy-mm-ddThh:mm:sszzzzzz}, where \code{T} is the separator between the date and the time, and the time zone is either \code{Z} (for UTC) or \code{zzzzzz}, which represents \enc{±}{+-}hh:mm in relation to UTC. For more info on how Time Stamps work see \url{http://kml-samples.googlecode.com}. If the time is measured at block support, then:\cr 
+\code{<TimeStamp><begin> </begin><end> </end></TimeStamp>} \cr
+times will be inserted. Temporal support (\eqn{\Delta t}{dt}) is estimated using the \code{xts::periodicity} function (median time between observations). The begin time is then derived as \eqn{t_1 = t - .5\cdot \Delta t}{t1 = t - .5 d t}.
 }
 \references{
 \itemize{
@@ -47,8 +48,10 @@ proj4string(gpxbtour) <- CRS("+proj=longlat +datum=WGS84")
 # derive distance from origin:
 require(fossil)
 xy <- as.list(data.frame(t(coordinates(gpxbtour))))
-gpxbtour$dist.km <- sapply(xy, function(x) deg.dist(long1=x[1], lat1=x[2], long2=xy[[1]][1], lat2=xy[[1]][2]))
-plot(gpxbtour$dist.km, gpxbtour$speed, type="l", xlab="Distance from origin in km", ylab="speed in km per hour")
+gpxbtour$dist.km <- sapply(xy, function(x) 
+deg.dist(long1=x[1], lat1=x[2], long2=xy[[1]][1], lat2=xy[[1]][2]))
+plot(gpxbtour$dist.km, gpxbtour$speed, type="l", 
+xlab="Distance from origin in km", ylab="speed in km per hour")
 # convert to a STIDFtraj class:
 require(spacetime)
 require(adehabitat)

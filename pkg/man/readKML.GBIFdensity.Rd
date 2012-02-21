@@ -21,9 +21,10 @@ All usage of these data must be in accordance with the GBIF Data Use Agreement: 
 \examples{
 \dontrun{
 kml.file <- "taxon-celldensity-2294100.kml"
-## download.file(paste("http://data.gbif.org/occurrences/taxon/celldensity/", kml.file, sep=""), destfile=paste(getwd(), kml.file, sep="")) 
-## this will not run (you must first accept the data usage agreeent); 
-## instead, obtain the kml file via a web browser, and save it to the working directory:
+# download.file(paste("http://data.gbif.org/occurrences/taxon/celldensity/", kml.file, sep=""),
+# destfile=paste(getwd(), kml.file, sep="")) 
+# this will not run (you must first accept the data usage agreeent); 
+# instead, obtain the kml file via a web browser, and save it to the working directory:
 r <- readKML.GBIFdensity(kml.file)
 class(r)
 summary(r)

@@ -3,9 +3,9 @@
 \title{Converts points to rasters}
 \description{Converts object of class \code{"SpatialPoints*"} to a raster map, and (optional) writes it to an external file (GDAL-supported formats; it used the SAGA GIS format by default).}
 \usage{
-vect2rast.SpatialPoints(obj, fname = names(obj)[1], cell.size, bbox, file.name, silent = FALSE, 
-      method = c("raster", "SAGA")[1], FIELD = 0, MULTIPLE = 1, 
-      LINE_TYPE = 0, GRID_TYPE = 2, \dots )
+vect2rast.SpatialPoints(obj, fname = names(obj)[1], cell.size, bbox, 
+      file.name, silent = FALSE, method = c("raster", "SAGA")[1], FIELD = 0, 
+      MULTIPLE = 1, LINE_TYPE = 0, GRID_TYPE = 2, \dots )
 }
 \arguments{
   \item{obj}{\code{"SpatialPoints*"} object}

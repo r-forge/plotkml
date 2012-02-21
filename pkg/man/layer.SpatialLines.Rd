@@ -1,7 +1,7 @@
 \name{kml_layer.SpatialLines}
 \alias{kml_layer.SpatialLines}
 \alias{SpatialLines}
-\title{Export spatial lines to KML}
+\title{Writes spatial lines to KML}
 \description{Writes object of class \code{"SpatialLines*"} to KML with a possibility to parse attribute variables using several aesthetics arguments. }
 \usage{
 kml_layer.SpatialLines(obj, extrude = FALSE, z.scale = 1, metadata = NULL, 
@@ -18,7 +18,9 @@ kml_layer.SpatialLines(obj, extrude = FALSE, z.scale = 1, metadata = NULL,
   \item{\dots}{additional style arguments (see \code{\link{aesthetics}})}
 }
 \details{Only colour and width (aesthetics) are recommended when visualizing \code{SpatialLines*} objects.\cr
-\code{TimeSpan.begin} and \code{TimeSpan.end} are optional TimeStamp vectors (\code{yyyy-mm-ddThh:mm:sszzzzzz}). Use the same time values for both \code{TimeSpan.begin} and \code{TimeSpan.end} if the measurements refer to a single moment in time. \code{TimeSpan.begin} and \code{TimeSpan.end} can be either a single value or a vector of values.
+\code{TimeSpan.begin} and \code{TimeSpan.end} are optional TimeStamp vectors in the format:\cr 
+\code{yyyy-mm-ddThh:mm:sszzzzzz} \cr
+Use the same time values for both \code{TimeSpan.begin} and \code{TimeSpan.end} if the measurements refer to a single moment in time. \code{TimeSpan.begin} and \code{TimeSpan.end} can be either a single value or a vector of values.
 }
 \author{Pierre Roudier, Tomislav Hengl and Dylan Beaudette}
 \seealso{ \code{\link{kml-methods}}, \code{\link{kml_open}}, \code{\link{kml_layer.SpatialPolygons}} }

@@ -1,6 +1,6 @@
 \name{fit.gstatModel-methods}
 \docType{methods}
-\alias{fit.gstatModel-methods}
+\alias{fit.gstatModel-method}
 \alias{fit.gstatModel}
 \alias{fit.gstatModel,SpatialPointsDataFrame,formula,SpatialPixelsDataFrame-method}
 \title{Methods to fit a regression-kriging model}
@@ -31,7 +31,7 @@ data(meuse.grid)
 coordinates(meuse.grid) <- ~x+y
 gridded(meuse.grid) <- TRUE
 # fit a model:
-omm <- fit.gstatModel(observations = meuse, formulaString = om~dist, covariates = meuse.grid)
+omm <- fit.gstatModel(observations = meuse, om~dist, covariates = meuse.grid)
 show(omm@regModel)
 om.sp <- SpatialPointsDataFrame(omm@sp, data = omm@regModel$model)
 \dontrun{

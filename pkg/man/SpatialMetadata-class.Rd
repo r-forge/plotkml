@@ -31,7 +31,8 @@ data(eberg)
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")
 # Add metadata:
-eberg.md <- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"), Target_variable="SAND")
+eberg.md <- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"), 
+Target_variable="SAND")
 GetPalette(eberg.md)
 x <- summary(eberg.md)
 fix(x)
