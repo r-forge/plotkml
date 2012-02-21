@@ -1,16 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Time series of MODIS LST images (estimated Land Surface...</title>
+<html><head><title>R: Time series of MODIS LST images</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="R.css">
 </head><body>
 
 <table width="100%" summary="page for LST {plotKML}"><tr><td>LST {plotKML}</td><td align="right">R Documentation</td></tr></table>
 
-<h2>Time series of MODIS LST images (estimated Land Surface Temperature in degrees C) at 1 km resolution</h2>
+<h2>Time series of MODIS LST images</h2>
 
 <h3>Description</h3>
 
-<p><code>LST</code> contains a spatial sub-sample (Istra region in Croatia) of 46 time series of MODIS LST images (estimated Land Surface Temperature in degrees C) at 1 km resolution. The <code>"zvalue"</code> slot in the <code>"RasterBrick"</code> object can be used as the dateTime column expressed as yyyy-mm-ddThh:mm:sszzzzzz, where T is the separator between the date and the time, and the time zone is either Z (for UTC) or zzzzzz, which represents ±hh:mm in relation to UTC. The temporal support of these images is 8-days.
+<p><code>LST</code> contains a spatial sub-sample (Istra region in Croatia) of 46 time series of MODIS LST images (estimated Land Surface Temperature in degrees C) at 1 km resolution. The temporal support size of these images is 8-days.
 </p>
 
 
@@ -42,7 +42,7 @@
 
 <h3>Note</h3>
 
-<p>Time series of 46 day-time and night-time 8-day composite LST images (<a href="https://lpdaac.usgs.gov/lpdaac/products/modis_products_table/land_surface_temperature_emissivity/8_day_l3_global_1km/mod11a2">MOD11A2</a> product bands <code>1</code> and <code>5</code>) was obtained from the NASA's FTP server (<a href="ftp://e4ftl01u.ecs.nasa.gov">ftp://e4ftl01u.ecs.nasa.gov</a>). The original 8-day composite images were created by patching together images from a period of ±4 days, so that the proportion of clouds can be reduced to a minimum.</p>
+<p>Time series of 46 day-time and night-time 8-day composite LST images (<a href="https://lpdaac.usgs.gov/lpdaac/products/modis_products_table/land_surface_temperature_emissivity/8_day_l3_global_1km/mod11a2">MOD11A2</a> product bands <code>1</code> and <code>5</code>) was obtained from the NASA's FTP server (<a href="ftp://e4ftl01u.ecs.nasa.gov">ftp://e4ftl01u.ecs.nasa.gov</a>). The original 8-day composite images were created by patching together images from a period of ±4 days, so that the proportion of clouds can be reduced to a minimum. The <code>"zvalue"</code> slot in the <code>"RasterBrick"</code> object can be used as the dateTime column expressed as <code>yyyy-mm-ddThh:mm:sszzzzzz</code>, where T is the separator between the date and the time, and the time zone is either Z (for UTC) or zzzzzz, which represents ±hh:mm in relation to UTC.</p>
 
 
 <h3>Author(s)</h3>
@@ -88,5 +88,5 @@ kml(LST_ll, colour_scale=SAGA_pal[[1]], dtime=8*24*60^2)
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

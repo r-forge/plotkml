@@ -42,7 +42,7 @@ kml_layer.STIDF(obj, dtime = "", ...)
 
 <h3>Details</h3>
 
-<p>An object of class <code>"STIDF"</code> contains a slot of type <code>"Spatial*"</code>, which is parsed via the <code>kml_layer.Spatial</code> method depending on the type of spatial object (points, lines, polygons). The dateTime is defined as <code>yyyy-mm-ddThh:mm:sszzzzzz</code>, where <code>T</code> is the separator between the date and the time, and the time zone is either <code>Z</code> (for UTC) or <code>zzzzzz</code>, which represents ±hh:mm in relation to UTC. For more info on how Time Stamps work see <a href="http://kml-samples.googlecode.com">http://kml-samples.googlecode.com</a>. If the time is measured at block support, then <code>&lt;TimeStamp&gt;&lt;begin&gt; &lt;/begin&gt;&lt;end&gt; &lt;/end&gt;&lt;/TimeStamp&gt;</code> times will be inserted. Temporal support (<i>dt</i>) is estimated using the <code>xts::periodicity</code> function (median time between observations). The begin time is then derived as <i>t1 = t - .5 d t</i>.
+<p>An object of class <code>"STIDF"</code> contains a slot of type <code>"Spatial*"</code>, which is parsed via the <code>kml_layer</code> method depending on the type of spatial object (points, lines, polygons). The dateTime is defined as <code>yyyy-mm-ddThh:mm:sszzzzzz</code>, where <code>T</code> is the separator between the date and the time, and the time zone is either <code>Z</code> (for UTC) or <code>zzzzzz</code>, which represents ±hh:mm in relation to UTC. For more info on how Time Stamps work see <a href="http://kml-samples.googlecode.com">http://kml-samples.googlecode.com</a>. If the time is measured at block support, then <code>&lt;TimeStamp&gt;&lt;begin&gt; &lt;/begin&gt;&lt;end&gt; &lt;/end&gt;&lt;/TimeStamp&gt;</code> times will be inserted. Temporal support (<i>dt</i>) is estimated using the <code>xts::periodicity</code> function (median time between observations). The begin time is then derived as <i>t1 = t - .5 d t</i>.
 </p>
 
 
@@ -90,8 +90,10 @@ kml(HRtemp08_jan, dtime = 24*3600, colour = TEMP, shape = shape, labels = "", km
 library("maptools")
 fname &lt;- system.file("shapes/sids.shp", package="maptools")[1]
 nc &lt;- readShapePoly(fname, proj4string=CRS("+proj=longlat +datum=NAD27"))
-time &lt;- as.POSIXct(strptime(c(rep("1974-01-01", length(nc)), rep("1979-01-01", length(nc))), format="
-data &lt;- data.frame(BIR = c(nc$BIR74, nc$BIR79), NWBIR = c(nc$NWBIR74, nc$NWBIR79), SID = c(nc$SID74, nc$SID79))
+time &lt;- as.POSIXct(strptime(c(rep("1974-01-01", length(nc)), 
+rep("1979-01-01", length(nc))), format="
+data &lt;- data.frame(BIR = c(nc$BIR74, nc$BIR79), NWBIR = c(nc$NWBIR74, nc$NWBIR79), 
+SID = c(nc$SID74, nc$SID79))
 # copy polygons:
 nc.poly &lt;- rep(slot(nc, "polygons"), 2)
 # fix the polygon IDs:
@@ -105,5 +107,5 @@ kml(nct, colour = SID)
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

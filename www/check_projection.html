@@ -15,7 +15,9 @@
 
 <h3>Usage</h3>
 
-<pre>check_projection(obj, control = TRUE, ref_CRS = get("ref_CRS", envir = plotKML.opts))</pre>
+<pre>check_projection(obj, control = TRUE, 
+                 ref_CRS = get("ref_CRS", envir = plotKML.opts))
+</pre>
 
 
 <h3>Arguments</h3>
@@ -76,16 +78,13 @@
 data(eberg)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
-## Not run: 
 check_projection(eberg)
 # not yet ready for export to KML;
 parse_proj4(proj4string(eberg))
 eberg.geo &lt;- reproject(eberg)
 check_projection(eberg.geo)
-# now ready for export;
-
-## End(Not run)
+# ... now ready for export
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.1-5 <a href="00Index.html">Index</a>]</div>
 </body></html>
