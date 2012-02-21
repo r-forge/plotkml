@@ -32,7 +32,9 @@ HRtemp08[1,]
 p1 = newXMLNode("Placemark")
 begin <- format(HRtemp08[1,"DATE"]-.5, "\%Y-\%m-\%dT\%H:\%M:\%SZ")
 end <- format(HRtemp08[1,"DATE"]+.5, "\%Y-\%m-\%dT\%H:\%M:\%SZ")
-txt <- sprintf('<name>\%s</name><TimeStamp><begin>\%s</begin><end>\%s</end></TimeStamp><Point><coordinates>\%.4f,\%.4f,\%.0f</coordinates></Point>', HRtemp08[1,"NAME"], begin, end, HRtemp08[1,"Lon"], HRtemp08[1,"Lat"], 0)
+txt <- sprintf('<name>\%s</name><TimeStamp><begin>\%s</begin><end>\%s</end></TimeStamp>
+<Point><coordinates>\%.4f,\%.4f,\%.0f</coordinates></Point>', HRtemp08[1,"NAME"], 
+begin, end, HRtemp08[1,"Lon"], HRtemp08[1,"Lat"], 0)
 parseXMLAndAdd(txt, parent=p1)
 p1
 }

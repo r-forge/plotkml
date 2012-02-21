@@ -4,15 +4,15 @@
 \description{Writes object of type SpatialPhotoOverlay to KML together with a COLLADA 3D model file (optional).}
 \usage{
 kml_layer.SpatialPhotoOverlay(obj, method = c("PhotoOverlay", "monolith")[1],
-          PhotoOverlay.shape = obj@PhotoOverlay$shape, href = obj@filename, 
-          coords, dae.name = "", heading = obj@PhotoOverlay$heading, 
-          tilt = obj@PhotoOverlay$tilt, roll = obj@PhotoOverlay$roll, 
-          near = obj@PhotoOverlay$near, range =  obj@PhotoOverlay$range, 
-          leftFov = obj@PhotoOverlay$leftFov, rightFov = obj@PhotoOverlay$rightFov, 
-          bottomFov = obj@PhotoOverlay$bottomFov, topFov = obj@PhotoOverlay$topFov, 
-          altitudeMode = "clampToGround", block.size = 100, max.depth = 300, 
-          scale.x = 1, scale.y = 1, scale.z = 1, refreshMode = "once", 
-          html.table = NULL, \dots )
+       PhotoOverlay.shape = obj@PhotoOverlay$shape, href = obj@filename, 
+       coords, dae.name = "", heading = obj@PhotoOverlay$heading, 
+       tilt = obj@PhotoOverlay$tilt, roll = obj@PhotoOverlay$roll, 
+       near = obj@PhotoOverlay$near, range =  obj@PhotoOverlay$range, 
+       leftFov = obj@PhotoOverlay$leftFov, rightFov = obj@PhotoOverlay$rightFov, 
+       bottomFov = obj@PhotoOverlay$bottomFov, topFov = obj@PhotoOverlay$topFov, 
+       altitudeMode = "clampToGround", block.size = 100, max.depth = 300, 
+       scale.x = 1, scale.y = 1, scale.z = 1, refreshMode = "once", 
+       html.table = NULL, \dots )
 }
 \arguments{
   \item{obj}{object of class \code{"SpatialPhotoOverlay"} (a photograph with spatial coordinates, metadata and orientation)}

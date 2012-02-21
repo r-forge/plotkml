@@ -1,9 +1,10 @@
 \name{metadata2SLD.SpatialPixels}
 \alias{metadata2SLD.SpatialPixels}
-\title{Writes a Styled Layer Description (\bold{SLD}) file for a SpatialPixels class object}
-\description{Creates a \href{http://docs.geoserver.org/stable/en/user/styling/sld-introduction.html}{Styled Layer Description} (\bold{SLD}) file, that can be attached to a spatial layer contributed to GeoServer. }
+\title{Writes a Styled Layer Description (\bold{SLD}) file}
+\description{Writes a \href{http://docs.geoserver.org/stable/en/user/styling/sld-introduction.html}{Styled Layer Description} (\bold{SLD}) file, that can be attached to a spatial layer contributed to GeoServer. }
 \usage{
-metadata2SLD.SpatialPixels(obj, Format_Information_Content = xmlValue(obj@xml[["//formcont"]]),
+metadata2SLD.SpatialPixels(obj, 
+    Format_Information_Content = xmlValue(obj@xml[["//formcont"]]),
     obj.name = normalizeFilename(deparse(substitute(obj))), 
     sld.file = set.file.extension(obj.name, ".sld"),
     Citation_title = xmlValue(obj@xml[["//title"]]), 

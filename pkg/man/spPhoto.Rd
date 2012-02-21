@@ -5,12 +5,14 @@
 \description{
 \code{spPhoto} function can be used to wrap pixel map (\code{pixmapRGB}), \href{http://en.wikipedia.org/wiki/Exchangeable_image_file_format}{EXIF} (Exchangeable Image File format) data, spatial location information (standing point), and \code{PhotoOverlay} (geometry) parameters to create an object of class \code{"SpatialPhotoOverlay"}. This object can then be parsed to KML and visualized using Google Earth.
 }
-\usage{spPhoto(filename, obj, pixmap, exif.info = NULL, ImageWidth = 0, ImageHeight = 0,
-   bands = rep(rep(1, ImageHeight*ImageWidth), 3), bbox = c(0,0,3/36000*ImageWidth,3/36000*ImageHeight),
-   DateTime = "", ExposureTime = "", FocalLength = "50 mm", Flash = "No Flash", rotation = 0, 
-   leftFov = -30, rightFov = 30, bottomFov = -30, topFov = 30, near = 50,
-   shape = c("rectangle", "cylinder", "sphere")[1], range = 1000, tilt = 90, heading = 0, roll = 0,
-   test.filename = TRUE)
+\usage{spPhoto(filename, obj, pixmap, exif.info = NULL, ImageWidth = 0, 
+   ImageHeight = 0, bands = rep(rep(1, ImageHeight*ImageWidth), 3), 
+   bbox = c(0,0,3/36000*ImageWidth,3/36000*ImageHeight),
+   DateTime = "", ExposureTime = "", FocalLength = "50 mm", 
+   Flash = "No Flash", rotation = 0, leftFov = -30, rightFov = 30, 
+   bottomFov = -30, topFov = 30, near = 50, 
+   shape = c("rectangle", "cylinder", "sphere")[1], range = 1000, tilt = 90, 
+   heading = 0, roll = 0, test.filename = TRUE)
 }
 \arguments{
   \item{filename}{file name with extension (ideally an URL)}

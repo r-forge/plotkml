@@ -1,7 +1,7 @@
 \name{kml_layer.SpatialPoints}
 \alias{kml_layer.SpatialPoints}
 \alias{SpatialPoints}
-\title{Export spatial points to KML}
+\title{Writes spatial points to KML}
 \description{Writes object of class \code{"SpatialPoints*"} to KML with a possibility to parse attribute variables using several aesthetics arguments. }
 \usage{
 kml_layer.SpatialPoints(obj, extrude = TRUE, z.scale = 1, 
@@ -20,7 +20,9 @@ kml_layer.SpatialPoints(obj, extrude = TRUE, z.scale = 1,
   \item{TimeSpan.end}{(optional) end of the referent time period}
   \item{\dots}{additional style arguments (see \code{\link{aesthetics}})}
 }
-\details{\code{TimeSpan.begin} and \code{TimeSpan.end} are optional TimeStamp vectors (\code{yyyy-mm-ddThh:mm:sszzzzzz}). For observations at point support (a single moment in time), use the same time values for both \code{TimeSpan.begin} and \code{TimeSpan.end}. \code{TimeSpan.begin} and \code{TimeSpan.end} can be either a single value or a vector of values. \cr
+\details{\code{TimeSpan.begin} and \code{TimeSpan.end} are optional TimeStamp vectors:\cr 
+\code{yyyy-mm-ddThh:mm:sszzzzzz}\cr
+For observations at point support (a single moment in time), use the same time values for both \code{TimeSpan.begin} and \code{TimeSpan.end}. \code{TimeSpan.begin} and \code{TimeSpan.end} can be either a single value or a vector of values. \cr
 Optional aesthetics arguments are \code{shapes} (icons), \code{colour}, \code{sizes}, \code{altitude} (if not a 3D object; variable to be used to specify altitude above ground), \code{altitudeMode} (altitude mode type (\code{clampToGround}, \code{relativeToGround} or \code{absolute}). Although this function can be used to plot over five variables, more than three aesthetics arguments is not recommended (e.g. limit to size and colour).
 }
 \author{Pierre Roudier, Tomislav Hengl and Dylan Beaudette }
@@ -41,7 +43,8 @@ kml(eberg, shape = shape, colour = SILT, labels = "", colour_scale = SAGA_pal[[1
 # Two variables at the same time:
 kml(eberg, shape = shape, size = CLAY, colour = SILT, labels = "")
 # Two aesthetics elements are effective in emphasizing hot-spots:
-kml(eberg, shape = shape, altitude = CLAY*10, extrude = TRUE, colour = CLAY, labels = CLAY, kmz = TRUE)
+kml(eberg, shape = shape, altitude = CLAY*10, extrude = TRUE, 
+colour = CLAY, labels = CLAY, kmz = TRUE)
 }
 }
 \keyword{ ~KML}

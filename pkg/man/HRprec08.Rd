@@ -36,7 +36,8 @@ coordinates(prec.2008.05.01) <- ~Lon+Lat
 proj4string(prec.2008.05.01) <- CRS("+proj=lonlat +datum=WGS84")
 shape = "http://plotkml.r-forge.r-project.org/circle.png"
 data(SAGA_pal)
-kml(prec.2008.05.01, size = PREC, shape = shape, colour = PREC, colour_scale = SAGA_pal[[9]], labels = PREC)
+kml(prec.2008.05.01, size = PREC, shape = shape, colour = PREC, 
+colour_scale = SAGA_pal[[9]], labels = PREC)
 }
 }
 \keyword{datasets}

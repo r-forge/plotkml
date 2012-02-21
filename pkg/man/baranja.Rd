@@ -30,7 +30,8 @@ The \code{bargrid} data frame (regular grid at 30 m intervals) contains the foll
 library(gstat)
 # sampled elevations:
 data(barxyz)
-prj = "+proj=tmerc +lat_0=0 +lon_0=18 +k=0.9999 +x_0=6500000 +y_0=0 +ellps=bessel +units=m +towgs84=550.499,164.116,475.142,5.80967,2.07902,-11.62386,0.99999445824"
+prj = "+proj=tmerc +lat_0=0 +lon_0=18 +k=0.9999 +x_0=6500000 +y_0=0 +ellps=bessel +units=m 
++towgs84=550.499,164.116,475.142,5.80967,2.07902,-11.62386,0.99999445824"
 coordinates(barxyz) <- ~x+y
 proj4string(barxyz) <- CRS(prj)
 # grids:
@@ -42,7 +43,8 @@ proj4string(bargrid) <- barxyz@proj4string
 bargrid@grid
 \dontrun{
 data(R_pal)
-spplot(bargrid[1], sp.layout=list("sp.points", barxyz, col="black", pch="+"), col.regions = R_pal[["blue_grey_red"]])
+pnt = list("sp.points", barxyz, col="black", pch="+")
+spplot(bargrid[1], sp.layout=pnt, col.regions = R_pal[["blue_grey_red"]])
 # Deriving stream networks using geostatistical simulations:
 Z.ovgm <- vgm(psill=1831, model="Mat", range=1051, nugget=0, kappa=1.2)
 vt.gt <- gstat(id=c("Z"), formula=Z~1, data=barxyz, model=Z.ovgm, nmax=30)
@@ -51,13 +53,16 @@ N.sim <- 10
 DEM.sim <- predict.gstat(vt.gt, bargrid, nsim=N.sim, debug.level=-1)
 fullgrid(DEM.sim) <- TRUE
 stream.list <- list(rep(NA, N.sim))
-# derive stream networks in SAGA GIS:
+# derive stream networks in SAGA GIS 2.0.8:
 for (i in 1:N.sim) {
   writeGDAL(DEM.sim[i], paste("DEM", i, ".sdat", sep=""), "SAGA", mvFlag = -99999)
   # filter the spurious sinks:
   rsaga.fill.sinks(in.dem=paste("DEM", i, ".sgrd", sep=""), out.dem="DEMflt.sgrd")
   # extract the channel network SAGA GIS 2.0.6:
-  rsaga.geoprocessor(lib="ta_channels", module=0, param=list(ELEVATION="DEMflt.sgrd", CHNLNTWRK=paste("channels", i, ".sgrd", sep=""), CHNLROUTE="channel_route.sgrd", SHAPES="channels.shp", INIT_GRID="DEMflt.sgrd", DIV_CELLS=3, MINLEN=40), show.output.on.console=FALSE)
+  rsaga.geoprocessor(lib="ta_channels", module=0, param=list(ELEVATION="DEMflt.sgrd", 
+  CHNLNTWRK=paste("channels", i, ".sgrd", sep=""), CHNLROUTE="channel_route.sgrd", 
+  SHAPES="channels.shp", INIT_GRID="DEMflt.sgrd", DIV_CELLS=3, MINLEN=40), 
+  show.output.on.console=FALSE)
   stream.list[[i]] <- readOGR("channels.shp", "channels", verbose=FALSE)
   proj4string(stream.list[[i]]) <- barxyz@proj4string
 }
@@ -66,8 +71,8 @@ stream.plot <- as.list(rep(NA, N.sim))
 for(i in 1:N.sim){
   streams.plot[[i]] <- list("sp.lines", stream.list[[i]])
 }
-spplot(DEM.sim[1], col.regions=grey(seq(0.4,1,0.025)), scales=list(draw=T), sp.layout=streams.plot)
-
+spplot(DEM.sim[1], col.regions=grey(seq(0.4,1,0.025)), scales=list(draw=T), 
+sp.layout=streams.plot)
 }
 }
 \keyword{datasets}

@@ -199,7 +199,7 @@ kml_aes <- function(obj, ...) {
 
   if (is.numeric(data)) {
     if(missing(z.lim)) { z.lim = range(data, na.rm=TRUE) }
-    data <- ggplot2::rescale(data, from=z.lim, clip=TRUE)
+    data <- scales::rescale(data, from=z.lim, clip=TRUE)
     data <- ifelse(data<0, 0, ifelse(data>1, 1, data))
     cols <- rep("#FFFFFF", length(data))
     cols[!(is.na(data)|is.nan(data))] <- rgb(pal(data[!(is.na(data)|is.nan(data))]) / 255)
@@ -213,7 +213,7 @@ kml_aes <- function(obj, ...) {
     values <- levels(data)
     if (any(is.na(data)))
     values <- c(values, NA)
-    values <- ggplot2::rescale(seq_len(length(values))) # putting values between 0 and 1
+    values <- scales::rescale(seq_len(length(values))) # putting values between 0 and 1
     cols <- rep("#FFFFFF", length(values))
     cols[!(is.na(values)|is.nan(values))] <- rgb(pal(data[!(is.na(values)|is.nan(values))]) / 255)
     levels(data) <- cols
@@ -288,7 +288,7 @@ kml_alpha <- function(obj, alpha, colours, RGBA = FALSE, ...){
   if (is.numeric(alpha)) {
     # rescaling data if continuous case
     if (length(alpha) > 1)
-      alpha <- ggplot2::rescale(alpha)
+      alpha <- scales::rescale(alpha)
 
     alpha <- round(255*alpha, digits = 0)
     cols <- .includeAlphaInColourRamp(colours, alpha, RGBA)

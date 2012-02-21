@@ -1,7 +1,7 @@
 \name{plotKML-package}
 \alias{plotKML-package}
 \docType{package}
-\title{Plotting of space-time objects in Google Earth}
+\title{Visualization of spatial and spatio-temporal objects in Google Earth}
 \description{A suite of functions for converting 2D and 3D spatio-temporal (sp, raster and spacetime package classes) objects into KML or KMZ documents for use in Google Earth.}
 \details{
 \tabular{ll}{
@@ -19,7 +19,6 @@ Tomislav Hengl (\email{tom.hengl@wur.nl}), Pierre Roudier (\email{pierre.roudier
 \itemize{
 \item KML documentation (\url{http://code.google.com/apis/kml/documentation/})
 \item \strong{Google Earth Outreach} project (\url{http://earth.google.com/outreach/tutorials.html})
-\item RKML package (\url{www.omegahat.org/RKML/})
 }
 }
 \note{This package has been developed as a part of the \href{http://isric.org/projects/global-soil-information-facilities-gsif}{\strong{Global Soil Information Facilities}} project, which is run jointly by the ISRIC Institute and collaborators. ISRIC is a non-profit organization with a mandate to serve the international community as custodian of global soil information and to increase awareness and understanding of the role of soils in major global issues.}

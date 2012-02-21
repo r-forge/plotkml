@@ -1,6 +1,5 @@
 \name{kml_layer-methods}
 \docType{methods}
-\alias{kml_layer-methods}
 \alias{kml_layer}
 \alias{kml_alpha}
 \alias{kml_altitude}
@@ -20,7 +19,7 @@
 \alias{kml_layer,SpatialPixels-method}
 \alias{kml_layer,SpatialPoints-method}
 \alias{kml_layer,SpatialPolygons-method}
-\title{Methods to write any \code{Spatial*}-derived or \code{Raster*} objects to a KML connection}
+\title{Write objects to a KML connection}
 \description{
 Writes any \code{Spatial*} object (from the sp package) or \code{Raster*} object (from the raster package) to a KML file (connection) as a separate layer. Various \emph{aesthetics}, i.e. ways to represent target variables, can be set via colour, transparency, size, width, shape arguments. Their availability depends on the class of the object to plot.
 }

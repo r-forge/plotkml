@@ -3,15 +3,17 @@
 \title{Add a screen overlay}
 \description{Adds an image file (map legend or logo) as screen overlay. The same file connection is further accessible by other \code{kml_*()} functions such as \code{kml_layer()} and \code{kml_close()}. This allows creation of customized multi-layered KML files.}
 \usage{
-kml_screen(image.file, sname = "", position = c("UL","ML","LL","BC","LR","MR","UR","TC")[1],
-  overlayXY, screenXY, xyunits = c("fraction", "pixels", "insetPixels")[1], rotation = 0, size = c(0,0) )
+kml_screen(image.file, sname = "", 
+     position = c("UL","ML","LL","BC","LR","MR","UR","TC")[1],
+     overlayXY, screenXY, xyunits = c("fraction", "pixels", "insetPixels")[1], 
+     rotation = 0, size = c(0,0) )
 }
 \arguments{
   \item{image.file}{image file to be used for screen overlay}
   \item{sname}{screen overlay name}
   \item{position}{one of the nine standard positions}
-  \item{overlayXY}{manually specified tie point on the overlay image e.g. \code{overlayXY = 'x="0" y="1"'}}
-  \item{screenXY}{manually specified matching tie point on the scren e.g. \code{screenXY = 'x="0" y="1"'}}
+  \item{overlayXY}{manually specified tie point on the overlay image e.g. \code{'x="0" y="1"'}}
+  \item{screenXY}{manually specified matching tie point on the scren e.g. \code{'x="0" y="1"'}}
   \item{xyunits}{values of the XY units ((\code{"pixels"}, \code{"fraction"}, or \code{"insetPixels"})}
   \item{rotation}{(optional) rotation in degrees clock-wise}
   \item{size}{size correction in \emph{x} and \emph{y} direction}

@@ -1,7 +1,6 @@
 \name{getCRS-methods}
 \docType{methods}
 \alias{getCRS}
-\alias{getCRS-methods}
 \alias{getCRS.Raster}
 \alias{getCRS.Spatial}
 \alias{getCRS,Raster-method}

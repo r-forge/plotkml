@@ -28,7 +28,8 @@ gridded(bargrid) <- TRUE
 # output topology:
 cell.size = bargrid@grid@cellsize[1]
 bbox = bargrid@bbox
-gridT = GridTopology(cellcentre.offset=bbox[,1], cellsize=c(cell.size,cell.size), cells.dim=c(round(abs(diff(bbox[1,])/cell.size), 0), ncols=round(abs(diff(bbox[2,])/cell.size), 0)))
+gridT = GridTopology(cellcentre.offset=bbox[,1], cellsize=c(cell.size,cell.size), 
+cells.dim=c(round(abs(diff(bbox[1,])/cell.size), 0), ncols=round(abs(diff(bbox[2,])/cell.size), 0)))
 \dontrun{
 # derive summaries (observed frequency and the entropy or error):
 bar_sum <- aggregate(gridT, barstr[1:5])  # NOTE: this operation is time consuming!!

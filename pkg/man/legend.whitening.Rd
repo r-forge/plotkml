@@ -4,7 +4,8 @@
 \description{Produces a PNG file that can be used in KML plots (visualization of uncertainty).}
 \usage{
 kml_legend.whitening(legend.res = 0.01, width = 120, height = 300, pointsize = 14, 
-                 x.lim, e.lim, leg.asp = 0.3 *  width/height, legend.file = "whitening_legend.png",
+                 x.lim, e.lim, leg.asp = 0.3 *  width/height, 
+                 legend.file = "whitening_legend.png",
                  matte = FALSE)
 }
 \arguments{

@@ -1,20 +1,21 @@
 \name{kml_layer.SoilProfileCollection}
 \alias{kml_layer.SoilProfileCollection}
 \alias{SoilProfileCollection}
-\title{Export a list of soil profiles to KML}
+\title{Writes a list of soil profiles to KML}
 \description{Writes object of type \code{"SoilProfileCollection"} (a number of soil profiles with site and horizon data) to KML. Several attributes such as horizontal and vertical exaggeration can be passed via arguments. }
 \usage{
 kml_layer.SoilProfileCollection(obj, var.name, var.min = 0, var.scale, 
-           site_names = paste(obj@site[, obj@idcol]), 
-           method = c("soil_block", "depth_function")[1], block.size = 100, 
-           color.name, z.scale = 1, x.min = block.size/100, max.depth = 300,
-           plot.points = TRUE, LabelScale = get("LabelScale", envir = plotKML.opts) * 0.7,
-           IconColor = "#ff0000ff", 
-           shape = paste(get("home_url", envir = plotKML.opts), "circlesquare.png", sep = ""), 
-           outline = TRUE, visibility = TRUE, extrude = TRUE, tessellate = TRUE, 
-           altitudeMode = "relativeToGround", camera.distance = 0.01, 
-           tilt = 90, heading = 0, roll = 0, 
-           metadata = NULL, html.table = NULL, \dots )
+     site_names = paste(obj@site[, obj@idcol]), 
+     method = c("soil_block", "depth_function")[1], block.size = 100, 
+     color.name, z.scale = 1, x.min = block.size/100, max.depth = 300,
+     plot.points = TRUE, 
+     LabelScale = get("LabelScale", envir = plotKML.opts) * 0.7,
+     IconColor = "#ff0000ff", 
+     shape = paste(get("home_url", envir = plotKML.opts), "circlesquare.png", sep = ""), 
+     outline = TRUE, visibility = TRUE, extrude = TRUE, tessellate = TRUE, 
+     altitudeMode = "relativeToGround", camera.distance = 0.01, 
+     tilt = 90, heading = 0, roll = 0, 
+     metadata = NULL, html.table = NULL, \dots )
 }
 \arguments{
   \item{obj}{object of class \code{"SoilProfileCollection"} (package \href{http://CRAN.R-project.org/package=aqp}{aqp})}
@@ -50,7 +51,7 @@ kml_layer.SoilProfileCollection(obj, var.name, var.min = 0, var.scale,
 }
 \references{
 \itemize{
-\item Algorithms for Quantiative Pedology (\url{http://CRAN.r-project.org/package=aqp})
+\item Algorithms for Quantitative Pedology (\url{http://CRAN.r-project.org/package=aqp})
 }
 }
 \author{Tomislav Hengl, Dylan Beaudette and Pierre Roudier}
@@ -70,7 +71,8 @@ coordinates(ca) <- ~ lon + lat
 proj4string(ca) <- "+proj=latlong +datum=NAD83"
 \dontrun{
 # plot changes in base saturation by sum of cations method (pH 8.2):
-kml(ca, method = "depth_function", file.name = "ca_bs_8_2.kml", var.name="bs_8.2", balloon = TRUE)
+kml(ca, method = "depth_function", file.name = "ca_bs_8_2.kml", 
+var.name="bs_8.2", balloon = TRUE)
 # plot changes in cation exchange capacity by sum of cations method (pH 8.2):
 kml(ca, file.name = "ca_CEC8_2.kml", var.name="CEC8.2", IconColor = "#ff009000")
 # plot soil profile as 'block':

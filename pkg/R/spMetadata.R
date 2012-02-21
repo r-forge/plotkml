@@ -190,7 +190,7 @@ spMetadata.Spatial <- function(
     }
     
     cols <- colorRamp(colour_scale, space = "rgb", interpolate = "linear")
-    cdata <- ggplot2::rescale(bounds.c, clip=TRUE)
+    cdata <- scales::rescale(bounds.c, clip=TRUE)
     color <- rgb(cols(cdata)/255)
     
     # make a spatial palette:

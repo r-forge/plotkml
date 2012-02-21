@@ -1,6 +1,5 @@
 \name{spMetadata-methods}
 \docType{methods}
-\alias{spMetadata-methods}
 \alias{spMetadata}
 \alias{spMetadata,RasterLayer-method}
 \alias{spMetadata,Spatial-method}

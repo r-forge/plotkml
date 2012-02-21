@@ -2,7 +2,7 @@
 \docType{class}
 \alias{RasterBrickTimeSeries-class}
 \alias{plotKML,RasterBrickTimeSeries}
-\title{A class for a regular time series of grids (extends the \code{RasterBrick-class})}
+\title{A class for a time series of regular grids}
 \description{A class containing list of rasters, begin, end times and sample points to allow exploration of the values. Objects of this class can be directly visualized in Google Earth by using the \code{\link{plotKML-methods}}.}
 \section{Slots}{
   \describe{    

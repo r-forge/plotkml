@@ -1,7 +1,7 @@
 \name{kml-methods}
 \docType{methods}
-\alias{kml-methods}
 \alias{kml}
+\alias{kml-methods}
 \alias{plotKML.fileIO}
 \alias{kml.Spatial}
 \alias{kml,Raster-method}
@@ -9,7 +9,7 @@
 \alias{kml,SoilProfileCollection-method}
 \alias{kml,Spatial-method}
 \alias{kml,SpatialPhotoOverlay-method}
-\title{Methods to write any \code{Spatial*}-derived, \code{Raster*}, \code{SoilProfileCollection} and \code{SpatialPhotoOverlay} object to a KML file}
+\title{Write to a KML file}
 \description{
 Writes any \code{Spatial*} object (from the sp package) or \code{Raster*} object (from the raster package) to a KML file via the \code{plotKML.fileIO} environment. Various \emph{aesthetics} parameters can be set via \code{colour}, \code{alpha}, \code{size}, \code{shape} arguments. Their availability depends on the class of the object to plot.
 }
