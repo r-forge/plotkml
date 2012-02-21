@@ -1,4 +1,3 @@
-<<<<<<< .mine
 importFrom(scales, rescale)
 importFrom(grDevices, rgb)
 importFrom(RColorBrewer, brewer.pal)
@@ -11,14 +10,4 @@ importFrom(aqp, SoilProfileCollection)
 importFrom(pixmap, pixmapRGB)
 exportClasses(SpatialMetadata, sp.palette, SpatialPhotoOverlay, SpatialPredictions, gstatModel, SpatialVectorsSimulations, RasterBrickSimulations, RasterBrickTimeSeries)
 exportMethods(getCRS, GetNames, GetPalette, kml, kml_layer, reproject, spMetadata, metadata2SLD, plotKML, fit.gstatModel, vect2rast)
-=======
-importFrom("scales", rescale)
-importFrom("colorspace", coords, hex, mixcolor)
-importFrom("raster", rotate, shift)
-importFrom("sp", coordinates, overlay, bbox, Spatial, SpatialPixels, SpatialPixelsDataFrame, SpatialGrid, SpatialGridDataFrame, spplot)
-importFrom("aqp", SoilProfileCollection)
-importFrom("pixmap", pixmapRGB)
-exportClasses(SpatialMetadata, sp.palette)
-exportMethods(getCRS, field.names, GetPalette, kml, kml_layer, kml_metadata, reproject, spMetadata, metadata2SLD)
->>>>>>> .r355
 exportPattern("^[^\\.]")
