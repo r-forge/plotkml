@@ -14,7 +14,7 @@ kml_layer.Raster(obj, plot.legend = TRUE, metadata = NULL, raster_name, \dots)
   \item{raster_name}{(optional) specify the output file name (PNG)}
   \item{\dots}{additional \code{\link{aesthetics}} arguments}
 }  
-\details{Google Earth does not properly handle a 24-bit PNG file which has a single transparent color (read more at \href{http://groups.google.com/group/earth-help/}{Google Earth Help}). To force transparency, plotKML will try to set it using the \code{-matte -transparent "\#FFFFFF"} option in the \href{http://www.imagemagick.org/Usage/masking/}{ImageMagick convert program} (ImageMagick needs to be installed separately and located using \code{plotKML.env()}).
+\details{Google Earth does not properly handle a 24-bit PNG file which has a single transparent color (read more at \url{http://groups.google.com/group/earth-help/}{Google Earth Help}). To force transparency, plotKML will try to set it using the \code{-matte -transparent "\#FFFFFF"} option in the \url{http://www.imagemagick.org/Usage/masking/}{ImageMagick convert program} (ImageMagick needs to be installed separately and located using \code{plotKML.env()}).
 }
 \author{Tomislav Hengl, Pierre Roudier and Dylan Beaudette}
 \seealso{ \code{\link{kml-methods}}, \code{\link{kml_open}}, \code{\link{kml_layer.RasterBrick}} }
