@@ -11,7 +11,7 @@
 <h3>Description</h3>
 
 
-<p>The <code>spMetadata</code> function will try to generate missing metadata (bounding box, location info, session info, metadata creator info and similar) for any <code>Spatial*</code> object (from the sp package) or Raster* object (from the raster package). The resulting object of class <code><a href="SpatialMetadata-class.html">SpatialMetadata-class</a></code> can be used e.g. to generate a Layer description documents, that can be parsed to KML <code>&lt;description&gt;</code> tag (see <code><a href="kml_metadata.html">kml_metadata</a></code> function).<br>
+<p>The <code>spMetadata</code> function will try to generate missing metadata (bounding box, location info, session info, metadata creator info and similar) for any <code>Spatial*</code> object (from the sp package) or Raster* object (from the raster package). The resulting object of class <code><a href="SpatialMetadata-class.html">SpatialMetadata-class</a></code> can be used e.g. to generate a Layer description documents (<code>&lt;description&gt;</code> tag).<br>
 The <code>read.metadata</code> function can be used to read the formatted metadata (<code>.xml</code>), prepared following to the <a href="http://www.fgdc.gov/metadata/csdgm/">Federal Geographic Data Committee (FGDC) Content Standard for Digital Geospatial Metadata</a>, and convert them to a more readble format (data frame).
 </p>
 
@@ -89,7 +89,7 @@ The <code>read.metadata</code> function can be used to read the formatted metada
 
 <h3>See Also</h3>
 
- <p><code><a href="SpatialMetadata-class.html">SpatialMetadata-class</a></code>, <code><a href="spMetadata.Spatial.html">spMetadata.Spatial</a></code>, <code>sp::Spatial</code>, <code><a href="kml_open.html">kml_open</a></code> </p>
+ <p><code><a href="kml_metadata.html">kml_metadata</a></code>, <code><a href="SpatialMetadata-class.html">SpatialMetadata-class</a></code>, <code><a href="spMetadata.Spatial.html">spMetadata.Spatial</a></code>, <code>sp::Spatial</code>, <code><a href="kml_open.html">kml_open</a></code> </p>
 
 
 <h3>Examples</h3>
@@ -106,7 +106,8 @@ proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 # No metadata file specified:
 eberg.md &lt;- spMetadata(eberg, Target_variable="SAND")
 # With localy prepared metadata file:
-eberg.md &lt;- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"), Target_variable="SAND")
+eberg.md &lt;- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"), 
+Target_variable="SAND")
 # Print the results of validation (it needs to be able to connect to a URL with schema):
 eberg.md &lt;- spMetadata(eberg, Target_variable="SAND", validate.schema = TRUE)
 # Write the metadata to a file:
