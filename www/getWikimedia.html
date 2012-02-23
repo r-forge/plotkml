@@ -58,7 +58,7 @@ To geocode an uploaded image consider adding:<br>
 </p>
 <p><code>{{location|lat deg|lat min|lat sec|NS|long deg|long min|long sec|EW}}</code> <br>
 </p>
-<p>tag to the file description, in which case <code>getWikiMedia.ImageInfo</code> will automatically look for the attached coordinates via the external links. For practical purposes, function <code>getWikiMedia.ImageInfo</code> will rewrite some important EXIF metadata (image width and height) using the actual image properties determined by the Wikimedia system, because this information is often more reliable.<br> 
+<p>tag to the file description, in which case <code>getWikiMedia.ImageInfo</code> will automatically look for the attached coordinates via the external links. For practical purposes and because the image properties information determined by the Wikimedia system can are more reliable, the function will rewrite some important EXIF metadata (image width and height) using the actual values determined by Wikimedia server.<br> 
 For a list of modules and parameters that can be used via <code>getWikiMedia.ImageInfo</code>, please refer to <a href="http://www.mediawiki.org/wiki/API">Wikimedia API manual</a>.
 </p>
 
