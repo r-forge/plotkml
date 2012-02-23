@@ -17,4 +17,5 @@ metadata2SLD(obj, \dots)
 \author{ Tomislav Hengl }
 \seealso{ \code{\link{metadata2SLD.SpatialPixels}}, \code{\link{spMetadata}}
 }
-\keyword{ ~SLD }
+\keyword{spatial}
+\keyword{methods}

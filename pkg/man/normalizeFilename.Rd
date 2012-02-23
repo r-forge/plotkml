@@ -19,6 +19,5 @@ normalizeFilename(x, form = c("default", "8.3")[1],
 normalizeFilename("name[\%].txt")
 normalizeFilename("name .txt")
 }
-\keyword{ PathName }
-\keyword{ filename }
+\keyword{ utilities }
 

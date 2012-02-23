@@ -22,5 +22,5 @@
 }
 \seealso{ \code{\link{plotKML-package}}
 }
-\keyword{ ~KML}
-\keyword{ visualization }
+\keyword{spatial}
+\keyword{methods}

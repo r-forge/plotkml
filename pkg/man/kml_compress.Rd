@@ -37,5 +37,5 @@ kml_close("sm.kml")
 kml_compress("sm.kml", files="Soil_monolith_jpg.dae")
 }
 }
-\keyword{ compress}
+\keyword{utilities}
 

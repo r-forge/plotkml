@@ -35,6 +35,5 @@ names(R_pal)
 dev.off()
 }
 }
-\keyword{colour palletes}
-\keyword{SAGA GIS}
+\keyword{color}
 \keyword{datasets}

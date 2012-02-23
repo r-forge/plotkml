@@ -19,7 +19,7 @@ The \code{eberg} data frame (irregular points) contains the following columns:
 	\item{\code{SILT}}{topsoil silt content estimated by hand }
 	\item{\code{CLAY}}{topsoil clay content estimated by hand }
 	\item{\code{SOILTYPE}}{a vector containing factors; soil classes according to the German soil classification system (13 classes in this data set)}
-  } \cr
+} 
 The \code{eberg_grid} data frame (regular grid at 100 m resolution) contains the following columns:
   \describe{
   \item{\code{DEM}}{elevation values from the topographic map }
@@ -27,7 +27,7 @@ The \code{eberg_grid} data frame (regular grid at 100 m resolution) contains the
   \item{\code{Z}}{containing factors; four soil topographic/geological units (soil mapping units) }
 	\item{\code{x}}{a numeric vector; x-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) }
 	\item{\code{y}}{a numeric vector; y-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) } 
-  } 
+} 
 } 
 \author{The \enc{Ebergötzen}{Ebergoetzen} dataset is courtesy of Gehrt Ernst (\email{Ernst.Gehrt@niedersachsen.de}), the State Authority for Mining, Energy and Geology, Hannover, Germany and Olaf Conrad, University of Hamburg (\email{conrad@geowiss.uni-hamburg.de}). The data set has been prepared for this exercise by Tomislav Hengl (\email{tom.hengl@wur.nl}).}
 \references{

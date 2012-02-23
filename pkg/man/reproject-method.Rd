@@ -55,6 +55,5 @@ system.time(eberg_grid_ll <- reproject(eberg_grid[1]))
 system.time(eberg_grid_ll <- reproject(eberg_grid[1], program="FWTools"))
 }
 }
-\keyword{ ~projection}
-\keyword{ proj4}
-\keyword{ WGS84}
+\keyword{spatial}
+

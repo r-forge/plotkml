@@ -38,6 +38,4 @@ kml(sm, method="monolith")
 xmlTreeParse("Soil_monolith_jpg.dae")
 }
 }
-\keyword{ ~KML }
-\keyword{ photo }
-\keyword{ COLLADA }
+\keyword{spatial}

@@ -21,7 +21,7 @@ To geocode an uploaded image consider adding:\cr
 
 \code{{{location|lat deg|lat min|lat sec|NS|long deg|long min|long sec|EW}}} \cr
 
-tag to the file description, in which case \code{getWikiMedia.ImageInfo} will automatically look for the attached coordinates via the external links. For practical purposes, function \code{getWikiMedia.ImageInfo} will rewrite some important EXIF metadata (image width and height) using the actual image properties determined by the Wikimedia system, because this information is often more reliable.\cr 
+tag to the file description, in which case \code{getWikiMedia.ImageInfo} will automatically look for the attached coordinates via the external links. For practical purposes and because the image properties information determined by the Wikimedia system can are more reliable, the function will rewrite some important EXIF metadata (image width and height) using the actual values determined by Wikimedia server.\cr 
 For a list of modules and parameters that can be used via \code{getWikiMedia.ImageInfo}, please refer to \href{http://www.mediawiki.org/wiki/API}{Wikimedia API manual}.
 }
 \references{
@@ -43,6 +43,3 @@ x$metadata[grep(names(x$metadata), pattern="GPS")]
 # complete list of metadata tags (including location and orientation);
 }
 }
-\keyword{ ~KML }
-\keyword{ wikimedia API }
-\keyword{ EXIF }

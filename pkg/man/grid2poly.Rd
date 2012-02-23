@@ -37,5 +37,4 @@ spplot(dem_poly, col.regions = SAGA_pal[[1]])
 kml(dem_poly, colour_scale = SAGA_pal[[1]], colour = DEM, kmz = TRUE)
 }
 }
-\keyword{polygon}
-\keyword{grid cell}
+\keyword{spatial}

@@ -21,6 +21,5 @@ hex2kml(rgb(1,1,1))
 x <- munsell2kml("10YR", "2", "4")
 kml2hex(x)
 }
-\keyword{ ~KML }
-\keyword{ ~color }
+\keyword{color}
 

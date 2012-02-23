@@ -38,5 +38,5 @@ kml_close("eberg_grid_DEM.kml")
 xmlRoot(xmlTreeParse("eberg_grid_DEM.kml"))[["Document"]]
 }
 }
-\keyword{ ~KML}
+\keyword{spatial}
 

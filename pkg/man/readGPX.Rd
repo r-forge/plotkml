@@ -31,6 +31,4 @@ fells_loop <- readGPX("http://www.topografix.com/fells_loop.gpx")
 str(fells_loop)
 }
 }
-\keyword{GPX}
-\keyword{GPS}
-\keyword{trajectory}
+\keyword{spatial}

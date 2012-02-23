@@ -43,4 +43,4 @@ image(x)
 x <- vect2rast(eberg_zones, method = "SAGA")
 }
 }
-\keyword{rasterize}
+\keyword{spatial}

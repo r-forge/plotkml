@@ -27,8 +27,10 @@ kml_layer.STIDFtraj(obj, id.name = names(obj@data)[which(names(obj@data)== "id")
   \item{\dots}{other optional arguments}
 }
 \details{The dateTime is defined as \code{yyyy-mm-ddThh:mm:sszzzzzz}, where \code{T} is the separator between the date and the time, and the time zone is either \code{Z} (for UTC) or \code{zzzzzz}, which represents \enc{±}{+-}hh:mm in relation to UTC. For more info on how Time Stamps work see \url{http://kml-samples.googlecode.com}. If the time is measured at block support, then:\cr 
+
 \code{<TimeStamp><begin> </begin><end> </end></TimeStamp>} \cr
-times will be inserted. Temporal support (\eqn{\Delta t}{dt}) is estimated using the \code{xts::periodicity} function (median time between observations). The begin time is then derived as \eqn{t_1 = t - .5\cdot \Delta t}{t1 = t - .5 d t}.
+
+tags will be inserted. Temporal support (\eqn{\Delta t}{dt}) is estimated using the \code{xts::periodicity} function (median time between observations). The begin time is then derived as \eqn{t_1 = t - .5\cdot \Delta t}{t1 = t - .5 d t}.
 }
 \references{
 \itemize{
@@ -68,6 +70,5 @@ kml_close("gpxbtour_speed.kml")
 kml_compress("gpxbtour_speed.kml")
 }
 }
-\keyword{ ~KML }
-\keyword{ trajectory }
+\keyword{spatial}
 

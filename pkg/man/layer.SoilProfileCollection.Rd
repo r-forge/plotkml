@@ -79,6 +79,6 @@ kml(ca, file.name = "ca_CEC8_2.kml", var.name="CEC8.2", IconColor = "#ff009000")
 kml(ca, file.name = "ca_CEC8_2_block.kml", var.name="CEC8.2", balloon = TRUE)
 }
 }
-\keyword{ ~KML}
-\keyword{ soil}
+\keyword{spatial}
+
 

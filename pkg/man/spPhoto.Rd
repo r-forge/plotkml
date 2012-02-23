@@ -79,6 +79,4 @@ af <- spPhoto(filename = x2$url$url, exif.info = x2$metadata)
 kml(af)
 }
 }
-\keyword{ ~KML }
-\keyword{ photo }
-\keyword{ EXIF }
+\keyword{spatial}
