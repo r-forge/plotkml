@@ -38,7 +38,6 @@ data(worldgrids_pal)
 }
 \note{These colour palettes are only valid for factor-type variables. The names of classes used in the legend can be obtained by loading the palette list.}
 \seealso{\code{\link{SAGA_pal}}, \code{\link{R_pal}}}
-\keyword{colour palletes}
 \examples{
 data(worldgrids_pal)
 \dontrun{
@@ -48,3 +47,4 @@ dev.off()
 display.pal(worldgrids_pal, sel=5, names=TRUE)
 }
 }
+\keyword{color}

@@ -25,8 +25,10 @@ kml_layer.SpatialPolygons(obj, extrude = TRUE, tessellate = FALSE,
   \item{\dots}{additional style arguments (see \code{aesthetics})}
 }
 \details{Label points are be default not plotted. We recommend adding the legend to attribute maps instead. Transparency can be set by using the alpha argument.\cr 
-\code{TimeSpan.begin} and \code{TimeSpan.end} are optional TimeStamp vectors:\cr 
+\code{TimeSpan.begin} and \code{TimeSpan.end} are optional TimeStamp vectors:\cr
+ 
 \code{yyyy-mm-ddThh:mm:sszzzzzz}\cr 
+
 Use the same time values for both \code{TimeSpan.begin} and \code{TimeSpan.end} if the measurements refer to a single moment in time. \code{TimeSpan.begin} and \code{TimeSpan.end} can be either a single value or a vector of values.}
 \author{Pierre Roudier, Tomislav Hengl and Dylan Beaudette}
 \seealso{ \code{\link{kml_layer.SpatialLines}}, \code{\link{kml_layer.STIDF}} }
@@ -40,6 +42,4 @@ kml(eberg_zones)
 kml(eberg_zones, plot.labpt = TRUE, labels = ZONES, kmz = TRUE)
 }
 }
-\keyword{ ~KML}
-\keyword{ SpatialPolygons}
-
+\keyword{spatial}

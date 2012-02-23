@@ -37,4 +37,4 @@ eberg.md <- spMetadata(eberg_TWI, Target_variable="TWI")
 metadata2SLD(eberg.md, "eberg_TWI.sld")
 }
 }
-\keyword{ ~SLD }
+\keyword{spatial}

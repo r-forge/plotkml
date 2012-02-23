@@ -32,4 +32,4 @@ x <- vect2rast(eberg, fname = "SAND")
 image(x)
 }
 }
-\keyword{rasterize}
+\keyword{spatial}

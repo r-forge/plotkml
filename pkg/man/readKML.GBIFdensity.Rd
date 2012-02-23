@@ -39,5 +39,4 @@ mask <- !sapply(r.lst, is.null)
 r.lst <- brick(r.lst[mask])
 }
 }
-\keyword{~KML}
-\keyword{GBIF}
+\keyword{spatial}

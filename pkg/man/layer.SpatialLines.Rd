@@ -33,6 +33,5 @@ names(eberg_contours)
 kml(eberg_contours, colour_scale = SAGA_pal[[1]], colour = Z, kmz = TRUE)
 }
 }
-\keyword{ ~KML}
-\keyword{ SpatialLines}
+\keyword{spatial}
 

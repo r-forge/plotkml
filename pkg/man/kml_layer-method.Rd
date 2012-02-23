@@ -50,4 +50,5 @@ kml_close("eberg_grids.kml")
 xmlRoot(xmlTreeParse("eberg_grids.kml"))[["Document"]]
 }
 }
-\keyword{ ~KML }
+\keyword{spatial}
+\keyword{methods}

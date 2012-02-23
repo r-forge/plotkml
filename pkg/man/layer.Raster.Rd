@@ -29,6 +29,6 @@ data(SAGA_pal)
 kml(eberg_grid, colour_scale = SAGA_pal[[1]], colour = TWI) 
 }
 }
-\keyword{ ~KML}
-\keyword{ RasterLayer}
+\keyword{spatial}
+
 

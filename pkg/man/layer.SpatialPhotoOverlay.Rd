@@ -61,6 +61,4 @@ kml_close("sm.kml")
 kml_compress("sm.kml", files="Soil_monolith_jpg.dae")
 }
 }
-\keyword{ ~KML}
-\keyword{ SpatialPoints}
-
+\keyword{spatial}

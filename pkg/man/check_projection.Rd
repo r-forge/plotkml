@@ -33,4 +33,4 @@ eberg.geo <- reproject(eberg)
 check_projection(eberg.geo)
 # ... now ready for export
 }
-\keyword{ ~projection}
+\keyword{spatial}

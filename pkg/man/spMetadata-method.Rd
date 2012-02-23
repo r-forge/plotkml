@@ -6,7 +6,7 @@
 \alias{read.metadata}
 \title{Methods to generate spatial metadata}
 \description{
-The \code{spMetadata} function will try to generate missing metadata (bounding box, location info, session info, metadata creator info and similar) for any \code{Spatial*} object (from the sp package) or Raster* object (from the raster package). The resulting object of class \code{\link{SpatialMetadata-class}} can be used e.g. to generate a Layer description documents, that can be parsed to KML \code{<description>} tag (see \code{\link{kml_metadata}} function).\cr
+The \code{spMetadata} function will try to generate missing metadata (bounding box, location info, session info, metadata creator info and similar) for any \code{Spatial*} object (from the sp package) or Raster* object (from the raster package). The resulting object of class \code{\link{SpatialMetadata-class}} can be used e.g. to generate a Layer description documents (\code{<description>} tag).\cr
 The \code{read.metadata} function can be used to read the formatted metadata (\code{.xml}), prepared following to the \href{http://www.fgdc.gov/metadata/csdgm/}{Federal Geographic Data Committee (FGDC) Content Standard for Digital Geospatial Metadata}, and convert them to a more readble format (data frame).
 }
 \usage{ spMetadata(obj, \dots)
@@ -35,7 +35,7 @@ By default, plotKML uses the Creative Commons license, but this can be adjusted 
 }
 }
 \author{Tomislav Hengl, Pierre Roudier, and Dylan Beaudette}
-\seealso{ \code{\link{SpatialMetadata-class}}, \code{\link{spMetadata.Spatial}}, \code{sp::Spatial}, \code{\link{kml_open}} }
+\seealso{ \code{\link{kml_metadata}}, \code{\link{SpatialMetadata-class}}, \code{\link{spMetadata.Spatial}}, \code{sp::Spatial}, \code{\link{kml_open}} }
 \examples{
 \dontrun{
 # Read metadata from the system file (convert to a more redable data.frame format):
@@ -48,7 +48,8 @@ proj4string(eberg) <- CRS("+init=epsg:31467")
 # No metadata file specified:
 eberg.md <- spMetadata(eberg, Target_variable="SAND")
 # With localy prepared metadata file:
-eberg.md <- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"), Target_variable="SAND")
+eberg.md <- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"), 
+Target_variable="SAND")
 # Print the results of validation (it needs to be able to connect to a URL with schema):
 eberg.md <- spMetadata(eberg, Target_variable="SAND", validate.schema = TRUE)
 # Write the metadata to a file:
@@ -59,5 +60,5 @@ metadata2SLD(eberg.md, "eberg.sld")
 kml(eberg, file.name = "eberg_md.kml", colour = SAND, metadata = eberg.md, kmz = TRUE)
 }
 }
-\keyword{ ~KML }
-\keyword{ metadata}
+\keyword{spatial}
+\keyword{methods}

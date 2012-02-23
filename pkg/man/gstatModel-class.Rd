@@ -17,10 +17,11 @@
 	\item{predict}{\code{signature(obj = "gstatModel")}: makes predictions for a set of given predictionLocations (gridded maps) }
   }
 }
-\note{ \code{"SpatialPredictions"} saves results of predictions for a single target variable, which can be of type numeric or factor. Multiple variables can be combined into a list.\cr 
-When using \code{nsim} argument with the \code{predict} method, the output result will of type:\cr
+\note{ \code{"SpatialPredictions"} saves results of predictions for a single target variable, which can be of type numeric or factor. Multiple variables can be combined into a list. When using \code{nsim} argument with the \code{predict} method, the output result will be of type:\cr
  \code{\link{RasterBrickSimulations-class}} \cr
-i.e. \emph{N} number of equiprobable realizations. To generate an object of type \code{\link{SpatialPredictions-class}}, leave \code{nsim = 0}. 
+i.e. \emph{N} number of equiprobable realizations. To generate an object of type:\cr 
+\code{\link{SpatialPredictions-class}}\cr
+leave \code{nsim = 0}. 
 }
 \author{ Tomislav Hengl }
 \seealso{ \code{\link{SpatialPredictions-class}}, \code{\link{RasterBrickSimulations-class}}, \code{gstat::gstat-class}

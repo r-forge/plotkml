@@ -47,4 +47,4 @@ eberg.md <- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML
 Target_variable="SAND")
 }
 }
-\keyword{ metadata}
+\keyword{spatial}

@@ -28,4 +28,5 @@ getCRS(r)
 r.ll <- reproject(r)
 getCRS(r.ll)
 }
-\keyword{ ~CRS }
+\keyword{spatial}
+\keyword{methods}

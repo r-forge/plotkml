@@ -21,7 +21,9 @@ kml_layer.SpatialPoints(obj, extrude = TRUE, z.scale = 1,
   \item{\dots}{additional style arguments (see \code{\link{aesthetics}})}
 }
 \details{\code{TimeSpan.begin} and \code{TimeSpan.end} are optional TimeStamp vectors:\cr 
+
 \code{yyyy-mm-ddThh:mm:sszzzzzz}\cr
+
 For observations at point support (a single moment in time), use the same time values for both \code{TimeSpan.begin} and \code{TimeSpan.end}. \code{TimeSpan.begin} and \code{TimeSpan.end} can be either a single value or a vector of values. \cr
 Optional aesthetics arguments are \code{shapes} (icons), \code{colour}, \code{sizes}, \code{altitude} (if not a 3D object; variable to be used to specify altitude above ground), \code{altitudeMode} (altitude mode type (\code{clampToGround}, \code{relativeToGround} or \code{absolute}). Although this function can be used to plot over five variables, more than three aesthetics arguments is not recommended (e.g. limit to size and colour).
 }
@@ -47,6 +49,5 @@ kml(eberg, shape = shape, altitude = CLAY*10, extrude = TRUE,
 colour = CLAY, labels = CLAY, kmz = TRUE)
 }
 }
-\keyword{ ~KML}
-\keyword{ SpatialPoints}
+\keyword{spatial}
 

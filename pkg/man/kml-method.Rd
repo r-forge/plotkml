@@ -45,4 +45,5 @@ proj4string(eberg_grid) <- CRS("+init=epsg:31467")
 kml(eberg_grid, colour = DEM, file = "eberg_grid-0.kml")
 }
 }
-\keyword{ ~KML }
+\keyword{spatial}
+\keyword{methods}
