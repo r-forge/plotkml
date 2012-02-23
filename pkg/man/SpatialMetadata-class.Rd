@@ -7,7 +7,7 @@
 \alias{GetNames,SpatialMetadata-method}
 \alias{GetNames}
 \title{A class for spatial metadata}
-\description{A class containing spatial metadata in the \href{http://www.fgdc.gov/metadata/csdgm/}{Federal Geographic Data Committee (FGDC) Content Standard for Digital Geospatial Metadata}.}
+\description{A class containing spatial metadata in the \url{http://www.fgdc.gov/metadata/csdgm/}{Federal Geographic Data Committee (FGDC) Content Standard for Digital Geospatial Metadata}.}
 \section{Slots}{
   \describe{
     \item{\code{xml}:}{object of class "XMLInternalDocument"; a metadata slot}
