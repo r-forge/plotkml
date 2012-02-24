@@ -18,7 +18,7 @@ kml_layer.SoilProfileCollection(obj, var.name, var.min = 0, var.scale,
      metadata = NULL, html.table = NULL, \dots )
 }
 \arguments{
-  \item{obj}{object of class \code{"SoilProfileCollection"} (package \url{http://CRAN.R-project.org/package=aqp}{aqp})}
+  \item{obj}{object of class \code{"SoilProfileCollection"} (package \href{http://CRAN.R-project.org/package=aqp}{aqp})}
   \item{var.name}{target column name in the \code{horizons} slot}
   \item{var.min}{smallest value}
   \item{var.scale}{exaggeration in vertical dimension}

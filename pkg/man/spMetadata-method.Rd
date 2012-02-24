@@ -7,7 +7,7 @@
 \title{Methods to generate spatial metadata}
 \description{
 The \code{spMetadata} function will try to generate missing metadata (bounding box, location info, session info, metadata creator info and similar) for any \code{Spatial*} object (from the sp package) or Raster* object (from the raster package). The resulting object of class \code{\link{SpatialMetadata-class}} can be used e.g. to generate a Layer description documents (\code{<description>} tag).\cr
-The \code{read.metadata} function can be used to read the formatted metadata (\code{.xml}), prepared following to the \url{http://www.fgdc.gov/metadata/csdgm/}{Federal Geographic Data Committee (FGDC) Content Standard for Digital Geospatial Metadata}, and convert them to a more readble format (data frame).
+The \code{read.metadata} function can be used to read the formatted metadata (\code{.xml}), prepared following to the \href{http://www.fgdc.gov/metadata/csdgm/}{Federal Geographic Data Committee (FGDC) Content Standard for Digital Geospatial Metadata}, and convert them to a more readble format (data frame).
 }
 \usage{ spMetadata(obj, \dots)
 }
@@ -16,11 +16,11 @@ The \code{read.metadata} function can be used to read the formatted metadata (\c
   \item{\dots}{additional \code{kml()} arguments (see details below)}
 }
 \details{
-\code{spMetadata} tries to locate a metadata file in the working directory (it looks for a metadata file with the same name as the object name). If no \code{.xml} file exists, it will load the template xml file available in the system folder (\code{system.file("FGDC.xml", package="plotKML")}). The \code{FGDC.xml} file contains typical metadata entries with description and examples. For practical purposes, one metadata object in plotKML can be associated with only one variable i.e. one column in the \code{"data"} slot (specified via \code{Target_variable}). To prepare a metadata xml file for the layer of interest, consider using the \url{http://plotkml.r-forge.r-project.org/FGDC.xml}{FGDC.xml} template file; to enter the missing fields use e.g. the \url{http://geology.usgs.gov/tools/metadata/tools/doc/tkme.html}{Tkme} software: Another editor for formal metadata, by Peter N. Schweitzer (U.S. Geological Survey).\cr
+\code{spMetadata} tries to locate a metadata file in the working directory (it looks for a metadata file with the same name as the object name). If no \code{.xml} file exists, it will load the template xml file available in the system folder (\code{system.file("FGDC.xml", package="plotKML")}). The \code{FGDC.xml} file contains typical metadata entries with description and examples. For practical purposes, one metadata object in plotKML can be associated with only one variable i.e. one column in the \code{"data"} slot (specified via \code{Target_variable}). To prepare a metadata xml file for the layer of interest, consider using the \href{http://plotkml.r-forge.r-project.org/FGDC.xml}{FGDC.xml} template file; to enter the missing fields use e.g. the \href{http://geology.usgs.gov/tools/metadata/tools/doc/tkme.html}{Tkme} software: Another editor for formal metadata, by Peter N. Schweitzer (U.S. Geological Survey).\cr
 \code{spMetadata} tries to automatically generate the most usefull information, so that a user can easily find out about the input data and procedures followed to generate the visualization (KML). Typical metadata entries include e.g.:
 \itemize{
 \item \code{metadata[["idinfo"]][["native"]]} --- Session info e.g.: Produced using R version 2.12.2 (2011-02-25) running on Windows 7 x64.
-\item \code{metadata[["spdoinfo"]][["indspref"]]} --- Indirect spatial reference estimated using the \url{http://code.google.com/apis/maps/documentation/webservices/}{Google Maps API Web Services}.
+\item \code{metadata[["spdoinfo"]][["indspref"]]} --- Indirect spatial reference estimated using the \href{http://code.google.com/apis/maps/documentation/webservices/}{Google Maps API Web Services}.
 \item \code{metadata[["idinfo"]][["spdom"]][["bounding"]]} --- Bounding box in the WGS84 geographical coordinates estimated by reprojecting the original bounding box.
 }
 By default, plotKML uses the Creative Commons license, but this can be adjusted by setting the \code{Enduser_license_URL} argument above.

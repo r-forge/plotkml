@@ -23,8 +23,8 @@ kml_legend.whitening(legend.res = 0.01, width = 120, height = 300, pointsize = 1
 \note{Google Earth does not properly handle a 24-bit PNG file which has a single transparent color. In order to force transparency in the output PNG, the function with try using ImageMagick convert function (ImageMagick needs to be installed separately and located using \code{plotKML.env()}).}
 \references{
 \itemize{
-\item Hengl, T., Heuvelink, G.M.B., Stein, A., (2004) \url{http://dx.doi.org/10.1016/j.geoderma.2003.08.018}{A generic framework for spatial prediction of soil variables based on regression-kriging}. Geoderma 122 (1-2): 75-93.
-\item Hengl, T., (2003) \url{http://www.geocomputation.org/2003/Papers/Hengl_Paper.pdf}{Visualisation of uncertainty using the HSI colour model: computations with colours}. 7th International Conference on GeoComputation (CD-ROM), p. 8.
+\item Hengl, T., Heuvelink, G.M.B., Stein, A., (2004) \href{http://dx.doi.org/10.1016/j.geoderma.2003.08.018}{A generic framework for spatial prediction of soil variables based on regression-kriging}. Geoderma 122 (1-2): 75-93.
+\item Hengl, T., (2003) \href{http://www.geocomputation.org/2003/Papers/Hengl_Paper.pdf}{Visualisation of uncertainty using the HSI colour model: computations with colours}. 7th International Conference on GeoComputation (CD-ROM), p. 8.
 }
 }
 \author{ Tomislav Hengl }
