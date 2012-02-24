@@ -24,7 +24,7 @@ fit.gstatModel(observations, formulaString, covariates, \dots )
 }
 \references{
 \itemize{
-\item Hengl, T. (2009) \url{http://spatial-analyst.net/book/}{A Practical Guide to Geostatistical Mapping}, 2nd Edt. University of Amsterdam, www.lulu.com, 291 p.
+\item Hengl, T. (2009) \href{http://spatial-analyst.net/book/}{A Practical Guide to Geostatistical Mapping}, 2nd Edt. University of Amsterdam, www.lulu.com, 291 p.
 }
 }
 \author{ Tomislav Hengl}
