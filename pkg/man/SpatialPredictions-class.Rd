@@ -19,6 +19,12 @@
 	\item{summary}{\code{signature(obj = "SpatialPredictions")}: summarize object by showing the mapping accuracy (cross-validation) and the amount of variation explained by the model }
   }
 }
+\references{
+\itemize{
+\item Hengl, T. (2009) \href{http://spatial-analyst.net/book/}{A Practical Guide to Geostatistical Mapping}, 2nd Edt. University of Amsterdam, www.lulu.com, 291 p.
+\item Hengl, T., Nikolic, M., MacMillan, R.A., (2012) \href{http://dx.doi.org/10.1016/j.jag.2012.02.005}{Mapping efficiency and information content}. International Journal of Applied Earth Observation and Geoinformation.
+}
+}
 \note{ \code{"SpatialPredictions"} saves results of predictions for a single target variable, which can be of type numeric or factor. Multiple variables can be combined into a list.
 }
 \author{ Tomislav Hengl }
