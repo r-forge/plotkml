@@ -14,8 +14,10 @@ geopath(lon1, lon2, lat1, lat2, ID, n.points, print.geo = FALSE)
   \item{n.points}{number of intermediate points}
   \item{print.geo}{prints the distance and bearing}
 }
-\details{Number of points between the start and end point is derived using a simple formula:\cr 
+\details{Number of points between the start and end point is derived using a simple formula:\cr
+ 
 \code{round(sqrt(distc)/sqrt(2), 0)}\cr 
+
 where \code{distc} is the Great Circle Distance.}
 \value{Bearing is expressed in degrees from north. Distance is expressed in kilometers (Great Circle Distance).}
 \references{

@@ -25,8 +25,6 @@
 \seealso{\code{rgdal::readOGR}, \code{\link{kml_layer.STIDFtraj}}}
 \examples{
 \dontrun{
-gpxbtour <- readGPX(system.file("btour.gpx", package="plotKML"))
-str(gpxbtour)
 fells_loop <- readGPX("http://www.topografix.com/fells_loop.gpx")
 str(fells_loop)
 }
