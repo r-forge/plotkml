@@ -36,11 +36,11 @@ kml_legend.whitening <- function(legend.res = 0.01, width=120, height=300, point
   if(matte==TRUE){
   convert <- get("convert", envir = plotKML.opts)
   if(nchar(convert)==0){
-    plotKML.env(silent = FALSE)
+    plotKML.env(silent = FALSE, show.env = FALSE)
     convert <- get("convert", envir = plotKML.opts)
-  }
-  if(nzchar(convert)){
-    system(paste(convert, ' ', legend.file, ' -matte -transparent "#FFFFFF" ', legend.file, sep=""))
+    if(!nchar(convert)==0){
+      system(paste(convert, ' ', legend.file, ' -matte -transparent "#FFFFFF" ', legend.file, sep=""))
+    }
   }
   else { 
     warning("PNG transparency possibly ineffective. Install ImageMagick and add to PATH. See '?kml_legend.whitening' for more info.")
@@ -48,3 +48,5 @@ kml_legend.whitening <- function(legend.res = 0.01, width=120, height=300, point
   }  
    
 }
+
+# end of script;
