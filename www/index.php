@@ -72,8 +72,16 @@ echo $contents; } ?>
 <p>The <strong>plotKML project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. See the complete list of <strong><a href="00Index.html">functions</a></strong> and a list of <a href="settings.php"><strong>additional settings</strong></a>. </p>
 <p><strong>Installation:</strong></p>
 <p>To install this package from R-forge use (works only on<strong> &gt;= R 2.14!</strong>):</p>
-<p class="R_code">&gt; install.packages(c(&quot;XML&quot;, &quot;RSAGA&quot;, &quot;rgdal&quot;, &quot;raster&quot;, &quot;plyr&quot;, &quot;colorspace&quot;, &quot;colorRamps&quot;, &quot;spacetime&quot;, &quot;spcosa&quot;, &quot;aqp&quot;, &quot;spatstat&quot;, &quot;scales&quot;, &quot;stringr&quot;)) </p>
+<p class="R_code">&gt; install.packages(c(&quot;XML&quot;, &quot;RSAGA&quot;, &quot;rgdal&quot;, &quot;raster&quot;, &quot;plyr&quot;, &quot;colorspace&quot;, &quot;colorRamps&quot;, &quot;spacetime&quot;,  &quot;aqp&quot;, &quot;spatstat&quot;, &quot;scales&quot;, &quot;stringr&quot;)) </p>
 <p class="R_code">&gt; install.packages(&quot;plotKML&quot;, repos=c(&quot;http://R-Forge.R-project.org&quot;)) </p>
+<p>Alternatively, you can install the most recent snapshot of the package directly from the source by using e.g.:</p>
+<p class="R_code">&gt; download.file(&quot;http://plotkml.r-forge.r-project.org/plotKML_0.1-6.tar.gz&quot;, &quot;plotKML_0.1-6.tar.gz&quot;)<br />
+&gt; system(&quot;R CMD INSTALL plotKML_0.1-6.tar.gz&quot;) </p>
+<p><strong>News:</strong></p>
+<ul>
+  <li>Feb 2012: official release of the package (CRAN) expected - end of March 2012; </li>
+  <li>Feb 2012: the package is at the moment in the pre-alpha version; 10% missing functionality and validity checking required; </li>
+</ul>
 <p><strong>Documents</strong>:</p>
 <ul>
   <li>Poster at UseR 2011: <a href="poster-plotKML-UseR2011.pdf">&quot;plotKML: a framework for visualization of space-time data&quot;</a> (PDF)</li>
@@ -181,7 +189,7 @@ echo $contents; } ?>
   </tr>
 </table>
 <p class="style1"> Last update: 
-  <!-- #BeginDate format:Am1 -->February 21, 2012<!-- #EndDate -->
+  <!-- #BeginDate format:Am1 -->February 29, 2012<!-- #EndDate -->
 | contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">tom.hengl@wur.nl</a> | <a href="http://www.isric.org">ISRIC</a> - World Soil Information Institute </p>
 </body>
 </html>
