@@ -43,8 +43,8 @@ reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
   
   # look for FWTools path:  
   if(nchar(gdalwarp)==0){
-  plotKML.env(silent = FALSE, show.env = FALSE)
-  gdalwarp <- get("gdalwarp", envir = plotKML.opts)
+    plotKML.env(silent = FALSE, show.env = FALSE)
+    gdalwarp <- get("gdalwarp", envir = plotKML.opts)
   }
   
   if(tmp.file==TRUE){
@@ -54,14 +54,14 @@ reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
         tf <- normalizeFilename(deparse(substitute(obj, env = parent.frame())))
         }
   
-  if(nzchar(gdalwarp)){
-  if(method == "ngb") { method <- "near" }
-  writeRaster(obj, paste(tf, ".tif", sep=""), overwrite=TRUE, NAflag=NAflag)
-  # resample to WGS84 system:
-  message(paste("Reprojecting to", CRS, "..."))
-  system(paste(gdalwarp, " ", tf, ".tif", " -t_srs \"", CRS, "\" ", tf, "_ll.tif -dstnodata \"", NAflag, "\" ", " -r ", method, sep=""), show.output.on.console = show.output.on.console)
-  res <- raster(paste(tf, "_ll.tif", sep=""), silent = TRUE)
-  layerNames(res) <- layerNames(obj)
+  if(!nchar(gdalwarp)==0){
+    if(method == "ngb") { method <- "near" }
+    writeRaster(obj, paste(tf, ".tif", sep=""), overwrite=TRUE, NAflag=NAflag)
+    # resample to WGS84 system:
+    message(paste("Reprojecting to", CRS, "..."))
+    system(paste(gdalwarp, " ", tf, ".tif", " -t_srs \"", CRS, "\" ", tf, "_ll.tif -dstnodata \"", NAflag, "\" ", " -r ", method, sep=""), show.output.on.console = show.output.on.console)
+    res <- raster(paste(tf, "_ll.tif", sep=""), silent = TRUE)
+    layerNames(res) <- layerNames(obj)
   }
   else {
   stop("Could not locate FWTools. See 'plotKML.env()' for more info.") }
@@ -99,11 +99,11 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
   
   # look for FWTools path:  
   if(nchar(gdalwarp)==0){
-  plotKML.env(silent = FALSE)
-  gdalwarp <- get("gdalwarp", envir = plotKML.opts)
+    plotKML.env(silent = FALSE)
+    gdalwarp <- get("gdalwarp", envir = plotKML.opts)
   }
   
-  if(nzchar(gdalwarp)){
+  if(!nchar(gdalwarp)==0){
   
     for(i in 1:ncol(obj)){
   

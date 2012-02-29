@@ -17,15 +17,15 @@ plotKML.opts <- new.env(hash=TRUE, parent = parent.frame())
 paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "", python = "", show.paths = TRUE){ 
      
      require(utils)
-     if(require(animation))
+     if(require(animation)){
         convert <- ani.options("convert")
+     }
      
      if(require(RSAGA)) {
         saga_cmd <- shortPathName(normalizePath(paste(rsaga.env()$path, rsaga.env()$cmd, sep="/")))
         saga.version <- rsaga.get.version()
      }
-     else
-       saga_cmd <- NULL
+     else {   saga_cmd <- NULL  }
     
     im.dir <- NULL
     if(is.null(convert)){
