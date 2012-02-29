@@ -31,7 +31,7 @@ Writes any \code{Spatial*} object (from the sp package) or \code{Raster*} object
 \value{An XML object that can be further parsed to a KML file (via an open connection).}
 \author{Pierre Roudier, Tomislav Hengl and Dylan Beaudette}
 \seealso{
-\code{\link{kml-methods}}, \code{\link{kml_open}}, \code{\link{kml_close}}
+\code{\link{kml_layer.SpatialPoints}}, \code{\link{kml_layer.Raster}}, \code{\link{kml_layer.SpatialLines}}, \code{\link{kml_layer.SpatialPolygons}}, \code{\link{kml_layer.STIDF}}, \code{\link{kml_layer.STIDFtraj}}, \code{\link{kml_layer.SoilProfileCollection}}, \code{\link{kml-methods}}, \code{\link{kml_open}}, \code{\link{kml_close}}
 }
 \examples{
 data(eberg_grid)

@@ -7,7 +7,7 @@
 }
 \usage{spPhoto(filename, obj, pixmap, exif.info = NULL, ImageWidth = 0, 
    ImageHeight = 0, bands = rep(rep(1, ImageHeight*ImageWidth), 3), 
-   bbox = c(0,0,3/36000*ImageWidth,3/36000*ImageHeight),
+   bbox = c(0, 0, 3/36000*ImageWidth, 3/36000*ImageHeight),
    DateTime = "", ExposureTime = "", FocalLength = "50 mm", 
    Flash = "No Flash", rotation = 0, leftFov = -30, rightFov = 30, 
    bottomFov = -30, topFov = 30, near = 50, 
@@ -47,7 +47,7 @@
 \item{PhotoOverlay}{list of the camera geometry parameters (KML specifications)}
 \item{sp}{location of the camera (\code{"SpatialPoints"} class)}
 }
-\details{The most effective way to import a field photograph to \code{SpatialPhotoOverlay} for parsing to KML is to: (\strong{a}) use the \href{http://www.sno.phy.queensu.ca/~phil/exiftool/}{EXIF tool} (courtesy of Phil Harvey) to add any important tags in the image file, (\strong{b}) once you've added all important tags, you can upload your image to a public portal such as the \href{http://commons.wikimedia.org/wiki/Special:UploadWizard}{Wikimedia Commons}, (\strong{c}) enter the missing information if necessary and add an image description. Once the image is on the server, you only need to record its unique name and then read all metadata from the Wikimedia server following the examples below.\cr 
+\details{The most effective way to import a field photograph to \code{SpatialPhotoOverlay} for parsing to KML is to: (\strong{a}) use the \href{http://www.sno.phy.queensu.ca/~phil/exiftool/}{EXIF tool} (courtesy of Phil Harvey) to add any important tags in the image file, (\strong{b}) once you've added all important tags, you can upload your image either to a local installation of Mediawiki or to a public portal such as the \href{http://commons.wikimedia.org/wiki/Special:UploadWizard}{Wikimedia Commons}, (\strong{c}) enter the missing information if necessary and add an image description. Once the image is on the server, you only need to record its unique name and then read all metadata from the Wikimedia server following the examples below.\cr 
 You can also consider importing images to R by using the \code{pixmap} package, and reading the technical information via e.g. the \href{http://www.omegahat.org/Rexif/}{\code{Rexif}} package. If the image is taken using a GPS enabled camera, by getting the EXIF metadata you can generate the complete \code{SpatialPhotoOverlay} object with minimum user interaction. Otherwise, you need to at least specify: creation date, file name, and location of the focal point of the camera (e.g. by creating \code{"SpatialPoints"} object).
 }
 \note{The \code{spPhoto} function will try to automatically fix the aspect ratio of the \code{ViewVolume} settings (\code{leftFov}, \code{rightFov}, \code{bottomFov}, \code{topFov}), and based on the original aspect ratio as specified in the EXIF data. This might not work for all images, in which case you will have to manually adjust those parameters.\cr
