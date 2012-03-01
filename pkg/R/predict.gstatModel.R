@@ -11,7 +11,6 @@ setMethod("fit.gstatModel", signature(observations = "SpatialPointsDataFrame", f
 
   require(gstat)
   require(stats)
-  if(!class(covariates)=="SpatialPixelsDataFrame"){ warning("Method 'estimate' requires gridded data of a class 'SpatialPixelsDataFrame'") }
   
   # the function only works with 2D maps:
   if(length(attr(coordinates(observations), "dimnames")[[2]])>2){
@@ -88,16 +87,16 @@ setMethod("predict", signature(object = "gstatModel"), function(object, predicti
   }
 
   # predict regression model:
-  rp <- predict(object@regModel, newdata=predictionLocations, type="link", se.fit = TRUE)
-  msk = as.integer(attr(rp$fit, "names"))
+  rp <- stats::predict.glm(object@regModel, newdata=predictionLocations, type="link", se.fit = TRUE, na.action = na.pass)
   variable = all.vars(object@regModel$formula)[1] # target variable
   # the vgm for residuals:
   vgmmodel = object@vgmModel
   class(vgmmodel) <- c("variogramModel", "data.frame")
   # observed values:
   observed <- SpatialPointsDataFrame(object@sp, data=object@regModel$model)
-  if(!proj4string(observed)==proj4string(predictionLocations))
-  { observed <- spTransform(observed, predictionLocations@proj4string) }
+  if(!proj4string(observed)==proj4string(predictionLocations)){
+    stop("proj4string at observed and predictionLocations don't match")
+  }
 
   # back-transform function:
   linkfun <- object@regModel$family$linkfun
@@ -110,13 +109,14 @@ setMethod("predict", signature(object = "gstatModel"), function(object, predicti
   # model summary:
   sum.glm = summary(object@regModel)
   class(sum.glm) = "list"
+  # copy GLM predictions to the predictionLocations
+  predictionLocations@data[, paste(variable, "glmfit", sep=".")] <- rp$fit
   
   if(method == "KED"){
-      predictionLocations@data[msk, paste(variable, "glmfit", sep=".")] <- rp$fit
       formString <- as.formula(paste(paste(variable, "link", sep="."), "~", paste(variable, "glmfit", sep="."), sep=""))
       if(nsim==0){
       message("Generating predictions using the trend model (KED method)...")
-      rk <- krige(formString, locations=observed, newdata=predictionLocations, model = vgmmodel, nmin = nmin, nmax = nmax, debug.level = debug.level, ...)
+      rk <- krige(formula=formString, locations=observed, newdata=predictionLocations, model = vgmmodel, nmin = nmin, nmax = nmax, debug.level = debug.level, ...)
       # mask extrapolation areas:
       rk@data[,paste(variable, "svar", sep=".")] = rk$var1.var / var(observed@data[,paste(variable, "link", sep=".")], na.rm=TRUE)
       rk$var1.pred <- ifelse(rk@data[,paste(variable, "svar", sep=".")] > 1, NA, rk$var1.pred) 
@@ -139,8 +139,7 @@ setMethod("predict", signature(object = "gstatModel"), function(object, predicti
 
   else {  
    if(method == "RK"){
-      predictionLocations@data[msk, paste(variable, "glmfit", sep=".")] <- rp$fit
-      predictionLocations@data[msk, "se.fit"] <- rp$se.fit
+      predictionLocations@data[, "se.fit"] <- rp$se.fit
       # predict the residuals:
       formString <- as.formula(paste(paste(variable, "residual", sep="."), "~", 1, sep=""))
       if(nsim==0){

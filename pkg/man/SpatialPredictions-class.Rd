@@ -37,8 +37,7 @@ coordinates(meuse) <- ~x+y
 proj4string(meuse) <- CRS("+init=epsg:28992")
 # load grids:
 data(meuse.grid)
-coordinates(meuse.grid) <- ~x+y
-gridded(meuse.grid) <- TRUE
+gridded(meuse.grid) <- ~x+y
 proj4string(meuse.grid) <- CRS("+init=epsg:28992")
 # fit a model:
 omm <- fit.gstatModel(observations = meuse, formulaString = om~dist, covariates = meuse.grid)

@@ -15,7 +15,7 @@ kml_layer.SoilProfileCollection <- function(
   block.size = 100,  # in m 
   color.name,
   z.scale = 1,
-  x.min = block.size/100,
+  x.min,
   max.depth = 300,
   plot.points = TRUE,
   LabelScale = get("LabelScale", envir = plotKML.opts)*.7,
@@ -54,9 +54,9 @@ kml_layer.SoilProfileCollection <- function(
   LON <- as.vector(coordinates(obj@sp)[,1])
   LAT <- as.vector(coordinates(obj@sp)[,2])
   # convert meters to decimal degrees:
-  new.ll <- new.lat.long(long = LON, lat = LAT, bearing = 90, distance = block.size/1000)
-  block.size = new.ll[2] - LON
-  x.min = block.size/100
+  new.ll <- new.lat.long(long = mean(LON), lat = mean(LAT), bearing = 90, distance = block.size/1000)
+  block.size = new.ll[2] - mean(LON)
+  if(missing(x.min)){  x.min = block.size/100  }
 
   if(missing(var.scale)) {   # scaling factor in x direction (estimate automatically)
      var.range <- range(obj@horizons[,var.name], na.rm=TRUE)
