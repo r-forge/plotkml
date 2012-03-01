@@ -199,7 +199,7 @@ kml_aes <- function(obj, ...) {
 
   if (is.numeric(data)) {
     if(missing(z.lim)) { z.lim = range(data, na.rm=TRUE) }
-    data <- scales::rescale(data, from=z.lim, clip=TRUE)
+    data <- scales::rescale(data, from=z.lim)
     data <- ifelse(data<0, 0, ifelse(data>1, 1, data))
     cols <- rep("#FFFFFF", length(data))
     cols[!(is.na(data)|is.nan(data))] <- rgb(pal(data[!(is.na(data)|is.nan(data))]) / 255)
