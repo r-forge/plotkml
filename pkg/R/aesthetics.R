@@ -229,17 +229,17 @@ kml_aes <- function(obj, ...) {
 kml_colour <- function(obj, colour, colour_scale = NULL){
 
   # Getting the vector of values to scale
-  x <- eval(colour, envir = obj@data)
+  values <- eval(colour, envir = obj@data) 
 
-   # Retrieving colour scale
-  colour_scale <- .getColourScale(data = x, colour_scale = colour_scale)
+  # Retrieving colour scale
+  colour_scale <- .getColourScale(data = values, colour_scale = colour_scale)
   cols <- col2kml(colour_scale)
 
   # In case of a factor, we need to reclass each level
   # by its corresponding colour
-  if (!is.numeric(x)) {
-    levels(x) <- unique(cols)
-    cols <- as.character(x)
+  if (!is.numeric(values)) {
+    levels(values) <- unique(cols)
+    cols <- as.character(values)
   }
 
   return(cols)

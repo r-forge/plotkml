@@ -24,7 +24,13 @@ plotKML.SpatialPredictions <- function(
   varname <- paste(obj@variable)
   svarname <- paste(obj@variable, ".", "svar", sep="")
   pred <- obj@predicted[varname]
-  
+  names(pred) = "predicted"
+  svar <- obj@predicted[svarname]
+  names(svar) = "variance"
+  # sampling locations:
+  locs <- obj@observed
+  labs <- paste(locs@data[,varname])
+    
   # summary properties of the RK model:
   if(obj.summary==TRUE){
     xx <- summary(obj)
@@ -37,7 +43,7 @@ plotKML.SpatialPredictions <- function(
     pol <- grid2poly(pred)
   }
 
-  kml_open(folder.name = folder.name, file.name = file.name)
+  kml_open(folder.name = folder.name, file.name = file.name, ...)
   
   # add a description for the whole folder:
   kml.out <- get("kml.out", env=plotKML.fileIO)
@@ -45,21 +51,17 @@ plotKML.SpatialPredictions <- function(
   parseXMLAndAdd(description_txt, parent=kml.out[["Document"]])  
   assign('kml.out', kml.out, env=plotKML.fileIO)
   
-  if(grid2poly == TRUE){  
-    kml_layer(obj = pol, colour = varname)
+  if(grid2poly == TRUE){ 
+    kml_layer(obj = pol, colour = predicted, ...)
   }
   else {
-    kml_layer(obj = pred, colour = varname, raster_name = paste(varname, "_predicted.png", sep=""))
+    kml_layer(obj = pred, colour = predicted, raster_name = paste(varname, "_predicted.png", sep=""), ...)
   }
 
   if(plot.svar==TRUE){
-    svar <- obj@predicted[svarname]
-    kml_layer(obj = svar, colour = svarname, colour_scale = colour_scale_svar, raster_name = paste(svarname, "_svar.png", sep=""), plot.legend = FALSE)  
+    kml_layer(obj = svar, colour = variance, colour_scale = colour_scale_svar, raster_name = paste(svarname, "_svar.png", sep=""), plot.legend = FALSE)  
   }
   
-  # sampling locations:
-  locs <- obj@observed
-  labs <- obj@observed@data[,varname]
   kml_layer(obj = locs, points_names = labs)  
 
   # plot the correlation graph and variogram:
@@ -93,8 +95,6 @@ plotKML.SpatialPredictions <- function(
 }
 
 setMethod("plotKML", "SpatialPredictions", plotKML.SpatialPredictions)
-# setMethod("plotKML", "SpatialSimulations", plotKML.SpatialSimulations)
-
 
 
 # end of script;

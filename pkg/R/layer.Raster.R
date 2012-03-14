@@ -19,10 +19,6 @@ kml_layer.Raster <- function(
   # Checking the projection 
   prj.check <- check_projection(obj, control = TRUE)
 
-  ## default colour palettes
-  .colour_scale_numeric = get("colour_scale_numeric", envir = plotKML.opts)
-  .colour_scale_factor = get("colour_scale_factor", envir = plotKML.opts)
-
   # Parsing the call for "colour"
   call <- substitute(list(...))
   call <- as.list(call)[-1]
@@ -70,6 +66,9 @@ kml_layer.Raster <- function(
   if (!is.na(pal))
     pal <- eval(call[["colour_scale"]])
   else {
+  ## default colour palettes
+  .colour_scale_numeric = get("colour_scale_numeric", envir = plotKML.opts)
+  .colour_scale_factor = get("colour_scale_factor", envir = plotKML.opts)
     if (!is.factor(obj))
       pal <- .colour_scale_numeric
     else
@@ -108,10 +107,10 @@ kml_layer.Raster <- function(
   if(nchar(convert)==0){
     plotKML.env(silent = FALSE, show.env = FALSE)
     convert <- get("convert", envir = plotKML.opts)
-    # if it does manages to find ImageMagick:
-    if(!nchar(convert)==0){
-      system(paste(convert, ' ', raster_name, ' -matte -transparent "#FFFFFF" ', raster_name, sep=""))
   }
+  # if it does manages to find ImageMagick:
+  if(!nchar(convert)==0){
+      system(paste(convert, ' ', raster_name, ' -matte -transparent "#FFFFFF" ', raster_name, sep=""))
   }
   else{
   warning("PNG transparency possibly ineffective. Install ImageMagick and add to PATH. See ?kml_layer.Raster for more info.")

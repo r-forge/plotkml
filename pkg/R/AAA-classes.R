@@ -83,8 +83,8 @@ setClass("SpatialPhotoOverlay", representation(filename = "character", pixmap = 
 ## A new class for models fitted in gstat:
 setClass("gstatModel", representation(regModel = "glm", sp = "SpatialPoints", vgmModel = "data.frame"), validity = function(object) {
     cn = c("model", "psill", "range", "kappa", "ang1", "ang2", "ang3", "anis1", "anis2")
-    if(!any(names(object@vgmModel) %in% cn))
-      return(paste("Expecting only columns names:", cn))
+    if(any(!(names(object@vgmModel) %in% cn)))
+      return(paste("Expecting only column names:", cn))
     if(!all(cn %in% names(object@vgmModel))){
       x <- cn[!(cn %in% names(object@vgmModel))]
       return(paste("Missing column names:", x)) 
@@ -93,9 +93,9 @@ setClass("gstatModel", representation(regModel = "glm", sp = "SpatialPoints", vg
 
 ## A new class for SpatialPredictions:
 setClass("SpatialPredictions", representation(variable = "character", observed = "SpatialPointsDataFrame", glm = "list", vgmModel = "data.frame", predicted = "SpatialPixelsDataFrame", validation = "SpatialPointsDataFrame"), validity = function(object) {
-    if(!any(object@variable %in% names(object@observed@data)))
+    if(any(!(object@variable %in% names(object@observed@data))))
       return("Variable name not available in the 'data' slot")
-    if(!any(object@variable %in% names(object@predicted@data)))
+    if(any(!(object@variable %in% names(object@predicted@data))))
       return("Variable name not available in the 'predicted' slot")
     if(length(object@validation) <50)
       warning("Validation data critically small (<50) for reliable validation")  
