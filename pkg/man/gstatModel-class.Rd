@@ -18,10 +18,14 @@
   }
 }
 \note{ \code{"SpatialPredictions"} saves results of predictions for a single target variable, which can be of type numeric or factor. Multiple variables can be combined into a list. When using \code{nsim} argument with the \code{predict} method, the output result will be of type:\cr
+
  \code{\link{RasterBrickSimulations-class}} \cr
+
 i.e. \emph{N} number of equiprobable realizations. To generate an object of type:\cr 
+
 \code{\link{SpatialPredictions-class}}\cr
-leave \code{nsim = 0}. 
+
+use \code{nsim = 0}. 
 }
 \author{ Tomislav Hengl }
 \seealso{ \code{\link{SpatialPredictions-class}}, \code{\link{RasterBrickSimulations-class}}, \code{gstat::gstat-class}

@@ -21,13 +21,5 @@
 \seealso{ \code{\link{RasterBrickSimulations-class}}, \code{\link{plotKML-methods}}
 }
 \examples{ 
-# load input data:
-data(LST)
-\dontrun{
-# fit a variogram and generate simulations:
-# derive stream networks and save to a list:
-# plot the whole project and open in Google Earth:
-# plotKML(LST.ls)
-}
 }
 \keyword{classes}

@@ -63,7 +63,7 @@ kml_legend.bar <- function(
   par(mar=c(.5,0,.5,4))
   plot(x=0:5, y=0:5, asp=3, type="n", axes=FALSE, xlab='', ylab='')
   # get the 2-4 significant digits
-  col.labels <- signif(c(zlim[1], (zlim[2]-zlim[1])/2, zlim[2]), 2)
+  col.labels <- signif(c(zlim[1], mean(zlim), zlim[2]), 2)
   color.legend(xl=0, yb=0, xr=5, yt=5, legend=col.labels, rect.col=legend.pal, gradient="y", align="rb", cex=1.4, col=rgb(0.99,0.99,0.99))
   
   dev.off()

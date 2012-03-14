@@ -39,7 +39,7 @@ kml_layer.SoilProfileCollection <- function(
   require(fossil)
   # TH: this function at the moment works only with numeric variables:
   if(method=="depth_functions"&!is.numeric(obj@horizons[,var.name])) {
-  stop('"var.name" argument works only with numeric variables.')
+  stop('numeric variable required')
   }
 
   # get our invisible file connection from custom evnrionment
@@ -158,7 +158,12 @@ for(i.site in 1:length(obj@site[,obj@idcol])) {
   YB <- c(LAT[i.site]-(block.size/2)*sqrt(2), LAT[i.site]-(block.size/2)*sqrt(2), LAT[i.site]+(block.size/2)*sqrt(2), LAT[i.site]+(block.size/2)*sqrt(2), LAT[i.site]-(block.size/2)*sqrt(2))
   ZB <- rep(max.depth, 5)
   coordsB[[i.site]] <- paste(XB, ',', YB, ',', z.scale*ZB, collapse='\n ', sep = "") 
-  }}
+  }
+    else {
+      coords.pol[[i.site]] <- ""
+      coordsB[[i.site]] <- ""
+    }
+  }
   
     else {
   Xp <- round(c(as.vector(t(matrix(rep(LON[i.site]+var.scale*(xval-var.min), 2), ncol=2))), rep(LON[i.site], 2), LON[i.site]+var.scale*(xval[1]-var.min)), 6)

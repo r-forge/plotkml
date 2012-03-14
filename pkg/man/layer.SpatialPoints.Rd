@@ -7,7 +7,7 @@
 kml_layer.SpatialPoints(obj, extrude = TRUE, z.scale = 1, 
         LabelScale = get("LabelScale", envir = plotKML.opts), 
         metadata = NULL, html.table = NULL, TimeSpan.begin = "",
-        TimeSpan.end = "", \dots)
+        TimeSpan.end = "", points_names, \dots)
 }
 \arguments{
   \item{obj}{object of class \code{"SpatialPoints*"}}
@@ -18,6 +18,7 @@ kml_layer.SpatialPoints(obj, extrude = TRUE, z.scale = 1,
   \item{html.table}{(optional) specify the description block (html) for each point}
   \item{TimeSpan.begin}{(optional) beginning of the referent time period}
   \item{TimeSpan.end}{(optional) end of the referent time period}
+  \item{points_names}{character; forces the point labels (size of the character vector must equal the number of the points)}
   \item{\dots}{additional style arguments (see \code{\link{aesthetics}})}
 }
 \details{\code{TimeSpan.begin} and \code{TimeSpan.end} are optional TimeStamp vectors:\cr 
