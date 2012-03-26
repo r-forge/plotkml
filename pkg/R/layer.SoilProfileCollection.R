@@ -1,8 +1,11 @@
 # Purpose        : Parsing "SoilProfileCollection" objects to KML
 # Maintainer     : Dylan Beaudette (debeaudette@ucdavis.edu)
 # Contributions  : Tomislav Hengl (tom.hengl@wur.nl); Pierre Roudier (pierre.roudier@landcare.nz);
-# Status         : not tested yet
+# Status         : buggy
 # Note           : plots either a histogram or blocks (horizons);
+
+## TODO: verify loops, NA replacement, and subsetting. I don't get intented results with GE > 6.0. Ill send a screen shot.
+
 
 
 kml_layer.SoilProfileCollection <- function(
@@ -10,7 +13,7 @@ kml_layer.SoilProfileCollection <- function(
   var.name,
   var.min = 0,  
   var.scale,
-  site_names = paste(obj@site[,obj@idcol]),
+  site_names = profile_id(obj),
   method = c("soil_block", "depth_function")[1],
   block.size = 100,  # in m 
   color.name,
@@ -37,29 +40,36 @@ kml_layer.SoilProfileCollection <- function(
 
   require(aqp)
   require(fossil)
+  
+  # extract components of the SPC
+  h <- horizons(obj)
+  h.depth.cols <- horizonDepths(obj)
+  sp <- as(obj, 'SpatialPointsDataFrame')
+  h.var <- h[[var.name]]
+  
   # TH: this function at the moment works only with numeric variables:
-  if(method=="depth_functions"&!is.numeric(obj@horizons[,var.name])) {
-  stop('numeric variable required')
+  if(method=="depth_functions"&!is.numeric(h.var)) {
+  	stop('numeric variable required')
   }
 
   # get our invisible file connection from custom evnrionment
   kml.out <- get("kml.out", env=plotKML.fileIO)
   
   # check the projection:
-  prj.check <- check_projection(obj@sp, control = TRUE) 
+  prj.check <- check_projection(sp, control = TRUE) 
 
   # Trying to reproject data if the check was not successful
-  if (!prj.check) { obj@sp <- reproject(obj@sp) }  
+  if (!prj.check) { sp <- reproject(sp) }  
   
-  LON <- as.vector(coordinates(obj@sp)[,1])
-  LAT <- as.vector(coordinates(obj@sp)[,2])
+  LON <- as.vector(coordinates(sp)[,1])
+  LAT <- as.vector(coordinates(sp)[,2])
   # convert meters to decimal degrees:
   new.ll <- new.lat.long(long = mean(LON), lat = mean(LAT), bearing = 90, distance = block.size/1000)
   block.size = new.ll[2] - mean(LON)
   if(missing(x.min)){  x.min = block.size/100  }
 
   if(missing(var.scale)) {   # scaling factor in x direction (estimate automatically)
-     var.range <- range(obj@horizons[,var.name], na.rm=TRUE)
+     var.range <- range(h.var, na.rm=TRUE)
      var.scale <- 0.003/diff(var.range)
   if(missing(var.min)) {   var.min <- var.range[1]-diff(var.range)/100 }
   }
@@ -102,13 +112,13 @@ kml_layer.SoilProfileCollection <- function(
   prof.na <- NULL
   soil_color <- NULL
   
-for(i.site in 1:length(obj@site[,obj@idcol])) {
+for(i.site in 1:length(site_names)) {
   
   # select columns of interest / mask out NA horizons:
-  prof.na[[i.site]] <- which(obj@horizons[obj@idcol]==site_names[i.site] & !is.na(obj@horizons[,var.name]))
-  xval <- obj@horizons[prof.na[[i.site]],var.name]
-  htop <- obj@horizons[prof.na[[i.site]],obj@depthcols[1]]
-  hbot <- obj@horizons[prof.na[[i.site]],obj@depthcols[2]]
+  prof.na[[i.site]] <- which(h[[idname(obj)]] == site_names[i.site] & !is.na(h.var))
+  xval <- h.var[prof.na[[i.site]]]
+  htop <- h[prof.na[[i.site]], h.depth.cols[1]]
+  hbot <- h[prof.na[[i.site]], h.depth.cols[2]]
   
   if(plot.points==TRUE){
   points_names[[i.site]] <- signif(xval, 3)
@@ -119,7 +129,7 @@ for(i.site in 1:length(obj@site[,obj@idcol])) {
     soil_color[[i.site]] <- col2kml(pal(length(xval)))
     }
     else { 
-    soil_color[[i.site]] <- col2kml(obj@horizons[prof.na[[i.site]], color.name])
+    soil_color[[i.site]] <- col2kml(h[prof.na[[i.site]], color.name])
     }
   
   # horizon centre:
@@ -153,7 +163,7 @@ for(i.site in 1:length(obj@site[,obj@idcol])) {
     }
   coords.pol[[i.site]] <- unlist(XYZp)
 
-  # skyscreeper:
+  # skyscraper:
   XB <- c(LON[i.site]-block.size/2, LON[i.site]+block.size/2, LON[i.site]+block.size/2, LON[i.site]-block.size/2, LON[i.site]-block.size/2)
   YB <- c(LAT[i.site]-(block.size/2)*sqrt(2), LAT[i.site]-(block.size/2)*sqrt(2), LAT[i.site]+(block.size/2)*sqrt(2), LAT[i.site]+(block.size/2)*sqrt(2), LAT[i.site]-(block.size/2)*sqrt(2))
   ZB <- rep(max.depth, 5)
@@ -176,7 +186,7 @@ for(i.site in 1:length(obj@site[,obj@idcol])) {
 
   # Parse ATTRIBUTE TABLE (for each placemark):
   if ((is.logical(balloon) | class(balloon) %in% c('character','numeric')) & ("horizons" %in% slotNames(obj))){
-     html.table <- .df2htmltable(obj@horizons[unlist(prof.na),]) 
+     html.table <- .df2htmltable(h[unlist(prof.na),]) 
   }
 
   if(plot.points==TRUE){
