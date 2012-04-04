@@ -67,7 +67,7 @@ echo $contents; } ?>
   <p>Visualization of spatial and spatio-temporal objects in Google Earth</p>
 </div>
 <hr />
-<p class="style1">Contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">Tomislav Hengl</a>, <a href="http://www.landcareresearch.co.nz/research/staff_page.asp?staff_num=2132" target="_blank">Pierre Roudier</a>, <a href="http://52north.org/">Daniel Nüst</a> &amp; <a href="http://casoilresource.lawr.ucdavis.edu/drupal/node/905" target="_blank">Dylan Beaudette</a></p>
+<p class="style1">Contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">Tomislav Hengl</a>, <a href="http://www.landcareresearch.co.nz/research/staff_page.asp?staff_num=2132" target="_blank">Pierre Roudier</a>, <a href="http://52north.org/52-north-team/daniel-nuest">Daniel Nüst</a> &amp; <a href="http://casoilresource.lawr.ucdavis.edu/drupal/node/905" target="_blank">Dylan Beaudette</a></p>
 <p> This package has been developed as a part of the <a href="http://isric.org/projects/global-soil-information-facilities-gsif" target="_blank">Global Soil Information Facilities</a>, which are developed jointly by the ISRIC Institute and collaborators. ISRIC is a non-profit organization with a mandate to serve the international community as custodian of global soil information and to increase awareness and understanding of the role of soils in major global issues. </p>
 <p>The <strong>plotKML project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. See the complete list of <strong><a href="00Index.html">functions</a></strong> and a list of <a href="settings.php"><strong>additional settings</strong></a>. </p>
 <p><strong>Installation:</strong></p>
@@ -84,6 +84,8 @@ echo $contents; } ?>
 </ul>
 <p><strong>Documents</strong>:</p>
 <ul>
+  <li>Poster at DSM 2012 conference: <a href="poster_plotKML_DSM2012.pdf">&quot;plotKML: a platform for scientific visualization of 2D and 3D soil
+  data in Google Earth&quot;</a> (PDF)</li>
   <li>Poster at UseR 2011: <a href="poster-plotKML-UseR2011.pdf">&quot;plotKML: a framework for visualization of space-time data&quot;</a> (PDF)</li>
 </ul>
 <hr />
