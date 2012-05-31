@@ -30,8 +30,7 @@ The \code{LST} data frame contains the following layers:
 where T is the separator between the date and the time, and the time zone is either Z (for UTC) or zzzzzz, which represents \enc{±}{+-}hh:mm in relation to UTC.}
 \examples{
 data(LST)
-coordinates(LST) <- ~x+y
-gridded(LST) <- TRUE
+gridded(LST) <- ~x+y
 proj4string(LST) <- CRS("+proj=utm +zone=33 +datum=WGS84 +units=m")
 # get the dates from the file names:
 dates <- sapply(strsplit(names(LST), "LST"), function(x){x[[2]]})
@@ -39,8 +38,7 @@ LST <- brick(LST)
 LST@title = "Time series of MODIS Land Surface Temperature (8-day mosaics) images"
 LST@zvalue <- format(as.Date(dates, "\%Y_\%m_\%d"), "\%Y-\%m-\%dT\%H:\%M:\%SZ")
 data(SAGA_pal)
-\dontrun{
-# Plot temperatures, precipitation and MODIS images in Google Earth:
+\dontrun{# plot MODIS images in Google Earth:
 LST_ll <- reproject(LST)
 # copy the dates:
 LST_ll@zvalue <- LST@zvalue

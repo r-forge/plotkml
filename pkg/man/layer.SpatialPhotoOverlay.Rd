@@ -51,7 +51,7 @@ kml_layer.SpatialPhotoOverlay(obj, method = c("PhotoOverlay", "monolith")[1],
 \author{Tomislav Hengl }
 \seealso{ \code{\link{spPhoto}}, \code{\link{getWikiMedia.ImageInfo}} }
 \examples{
-\dontrun{
+\dontrun{# display spatially referenced photograph in Google Earth:
 imagename = "Soil_monolith.jpg"
 x1 <- getWikiMedia.ImageInfo(imagename)
 sm <- spPhoto(filename = x1$url$url, exif.info = x1$metadata)

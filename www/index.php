@@ -6,7 +6,7 @@
 
 $domain=ereg_replace('[^\.]*\.(.*)$','\1',$_SERVER['HTTP_HOST']);
 $group_name=ereg_replace('([^\.]*)\..*$','\1',$_SERVER['HTTP_HOST']);
-$themeroot='https://r-forge.r-project.org/themes/rforge/';
+$themeroot='http://r-forge.r-project.org/themes/rforge/';
 
 echo '<?xml version="1.0" encoding="UTF-8"?>';
 ?>
@@ -67,7 +67,7 @@ echo $contents; } ?>
   <p>Visualization of spatial and spatio-temporal objects in Google Earth</p>
 </div>
 <hr />
-<p class="style1">Contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">Tomislav Hengl</a>, <a href="http://www.landcareresearch.co.nz/research/staff_page.asp?staff_num=2132" target="_blank">Pierre Roudier</a>, <a href="http://52north.org/52-north-team/daniel-nuest">Daniel Nüst</a> &amp; <a href="http://casoilresource.lawr.ucdavis.edu/drupal/node/905" target="_blank">Dylan Beaudette</a></p>
+<p class="style1">Contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">Tomislav Hengl</a>, <a href="http://www.landcareresearch.co.nz/research/staff_page.asp?staff_num=2132" target="_blank">Pierre Roudier</a>,  <a href="http://casoilresource.lawr.ucdavis.edu/drupal/node/905" target="_blank">Dylan Beaudette</a> &amp; <a href="http://52north.org/52-north-team/daniel-nuest">Daniel Nüst</a></p>
 <p> This package has been developed as a part of the <a href="http://isric.org/projects/global-soil-information-facilities-gsif" target="_blank">Global Soil Information Facilities</a>, which are developed jointly by the ISRIC Institute and collaborators. ISRIC is a non-profit organization with a mandate to serve the international community as custodian of global soil information and to increase awareness and understanding of the role of soils in major global issues. </p>
 <p>The <strong>plotKML project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. See the complete list of <strong><a href="00Index.html">functions</a></strong> and a list of <a href="settings.php"><strong>additional settings</strong></a>. </p>
 <p><strong>Installation:</strong></p>
@@ -75,11 +75,12 @@ echo $contents; } ?>
 <p class="R_code">&gt; install.packages(c(&quot;XML&quot;, &quot;RSAGA&quot;, &quot;rgdal&quot;, &quot;raster&quot;, &quot;plyr&quot;, &quot;colorspace&quot;, &quot;colorRamps&quot;, &quot;spacetime&quot;,  &quot;aqp&quot;, &quot;spatstat&quot;, &quot;scales&quot;, &quot;stringr&quot;, &quot;plotrix&quot;, &quot;pixmap&quot;)) </p>
 <p class="R_code">&gt; install.packages(&quot;plotKML&quot;, repos=c(&quot;http://R-Forge.R-project.org&quot;)) </p>
 <p>Alternatively, you can install the most recent snapshot of the package directly from the source by using e.g.:</p>
-<p class="R_code">&gt; download.file(&quot;http://plotkml.r-forge.r-project.org/plotKML_0.1-6.tar.gz&quot;, &quot;plotKML_0.1-6.tar.gz&quot;)<br />
-&gt; system(&quot;R CMD INSTALL plotKML_0.1-6.tar.gz&quot;) </p>
+<p class="R_code">&gt; download.file(&quot;http://plotkml.r-forge.r-project.org/plotKML_0.2-1.tar.gz&quot;, &quot;plotKML_0.2-1.tar.gz&quot;)<br />
+&gt; system(&quot;R CMD INSTALL plotKML_0.2-1.tar.gz&quot;) </p>
 <p><strong>News:</strong></p>
 <ul>
-  <li>Feb 2012: official release of the package (CRAN) expected - end of April 2012; </li>
+  <li>May 2012: fixed some bugs with writing PNG (kml_layer.Raster); </li>
+  <li>Feb 2012: official release of the package (CRAN) expected - end of June 2012; </li>
   <li>Feb 2012: the package is at the moment in the pre-alpha version; 10% missing functionality and validity checking required; </li>
 </ul>
 <p><strong>Documents</strong>:</p>
@@ -191,7 +192,7 @@ echo $contents; } ?>
   </tr>
 </table>
 <p class="style1"> Last update: 
-  <!-- #BeginDate format:Am1 -->April 4, 2012<!-- #EndDate -->
+  <!-- #BeginDate format:Am1 -->May 31, 2012<!-- #EndDate -->
 | contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">tom.hengl@wur.nl</a> | <a href="http://www.isric.org">ISRIC</a> - World Soil Information Institute </p>
 </body>
 </html>

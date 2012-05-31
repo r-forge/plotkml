@@ -46,8 +46,7 @@ data(gpxbtour)
 gpxbtour$ctime <- as.POSIXct(gpxbtour$time, format="\%Y-\%m-\%dT\%H:\%M:\%SZ")
 coordinates(gpxbtour) <- ~lon+lat
 proj4string(gpxbtour) <- CRS("+proj=longlat +datum=WGS84")
-\dontrun{
-# derive distance from origin:
+\dontrun{# derive distance from origin:
 require(fossil)
 xy <- as.list(data.frame(t(coordinates(gpxbtour))))
 gpxbtour$dist.km <- sapply(xy, function(x) 

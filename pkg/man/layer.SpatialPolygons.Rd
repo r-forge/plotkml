@@ -35,8 +35,7 @@ Use the same time values for both \code{TimeSpan.begin} and \code{TimeSpan.end} 
 \examples{
 data(eberg_zones)
 names(eberg_zones)
-\dontrun{
-# using random colors:
+\dontrun{# visualize zones using random colors:
 kml(eberg_zones)
 # with labels:
 kml(eberg_zones, plot.labpt = TRUE, labels = ZONES, kmz = TRUE)

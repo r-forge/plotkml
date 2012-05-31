@@ -24,16 +24,15 @@ metadata2SLD.SpatialPixels(obj,
 \seealso{ \code{\link{spMetadata}}
 }
 \examples{
-\dontrun{
-# Generate missing metadata
+\dontrun{# generate missing metadata
 data(eberg_grid)
 coordinates(eberg_grid) <- ~x+y
 gridded(eberg_grid) <- TRUE
 proj4string(eberg_grid) <- CRS("+init=epsg:31467")
-# With localy prepared metadata file:
-eberg_TWI <- as(eberg_grid["TWI"], "SpatialPixelsDataFrame")
-eberg.md <- spMetadata(eberg_TWI, Target_variable="TWI")
-# Export to SLD format:
+# with localy prepared metadata file:
+eberg_TWI <- as(eberg_grid["TWISRT6"], "SpatialPixelsDataFrame")
+eberg.md <- spMetadata(eberg_TWI, Target_variable="TWISRT6")
+# export to SLD format:
 metadata2SLD(eberg.md, "eberg_TWI.sld")
 }
 }

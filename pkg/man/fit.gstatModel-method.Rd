@@ -14,10 +14,10 @@ fit.gstatModel(observations, formulaString, covariates, \dots )
   \item{covariates}{object of type \code{"SpatialPixelsDataFrame"}}
   \item{\dots}{other optional arguments that can be passed to \code{glm} and/or \code{fit.variogram}}
 }
-\details{Optional arguments are \code{vgmFun} --- variogram model type passed from gstat; \code{family} --- character string defyning the GLM family (for more info see \code{stats::glm}); \code{stepwise} --- specifies wether to run step-wise regression on top of GLM to get an optimal subset of predictors. The method by default assumes that the target variable follows a log-normal distribution \code{family = gaussian(log)}, i.e. that the target variable is \emph{definite positive}. Geostatistics is commonly used to interpolate quantities of material e.g. concentrations of heavy metals in soil, so the assumption is that in the target variable most frequently follows a log-normal distribution. Other possible distributions are:
+\details{Optional arguments are \code{vgmFun} --- variogram model type passed from gstat; \code{family} --- character string defyning the GLM family (for more info see \code{stats::glm}); \code{stepwise} --- specifies wether to run step-wise regression on top of GLM to get an optimal subset of predictors. The method by default assumes that the target variable follows a normal distribution \code{family = gaussian}. Other possible distributions are:
 \describe{
- \item{log-normal distribution}{\code{family = gaussian(log)} (default setting)}
- \item{normal distribution}{\code{family = gaussian}}
+ \item{normal distribution}{\code{family = gaussian} (default setting)}
+ \item{log-normal distribution}{\code{family = gaussian(log)}}
  \item{binomial variable}{\code{family = binomial(logit)}}
  \item{variable following a poisson distribution}{\code{family = poisson(log)}}
 }
@@ -38,11 +38,11 @@ data(meuse.grid)
 coordinates(meuse.grid) <- ~x+y
 gridded(meuse.grid) <- TRUE
 # fit a model:
-omm <- fit.gstatModel(observations = meuse, om~dist, covariates = meuse.grid)
+omm <- fit.gstatModel(observations = meuse, om~dist, covariates = meuse.grid,
+family = gaussian(log))
 show(omm@regModel)
 om.sp <- SpatialPointsDataFrame(omm@sp, data = omm@regModel$model)
-\dontrun{
-# plot a variogram:
+\dontrun{# plot a variogram:
 plot(variogram(om~1, om.sp))
 }
 }

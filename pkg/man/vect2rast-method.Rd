@@ -19,7 +19,7 @@ vect2rast(obj, \dots )
 \value{Returns an object of type \code{"SpatialGridDataFrame"}.}
 \details{
 This function basically extends the \code{\link{rasterize}} function available in the raster package. The advantage of \code{vect2rast}, however, is that it requires no input from the user's side i.e. it automatically determines the grid cell size based on the properties of the input data set. \cr
-The optimal grid cell size is estimated based on the density/size of features in the map (\code{nndist} function in \href{http://www.spatstat.org}{spatstat} package): (a) in the case of \code{"SpatialPoints"} cell size is determined as half the mean distance between the nearest points; (b) in the case of \code{"SpatialLines"} half cell size is determined as half the mean distance between the lines; (c) in the case of polygon data cell size is determined as half the median size (area) of polygons of interest. For more details see \href{http://dx.doi.org/10.1016/j.cageo.2005.11.008}{Hengl (2006)}. To process large vector maps consider using \code{method="SAGA"}.
+The optimal grid cell size is estimated based on the density/size of features in the map (\code{nndist} function in \href{http://www.spatstat.org}{spatstat} package): (a) in the case of \code{"SpatialPoints"} cell size is determined as half the mean distance between the nearest points; (b) in the case of \code{"SpatialLines"} half cell size is determined as half the mean distance between the lines; (c) in the case of polygon data cell size is determined as half the median size (area) of polygons of interest. For more details see \href{http://dx.doi.org/10.1016/j.cageo.2005.11.008}{Hengl (2006)}. To process larger vector maps consider using \code{method="SAGA"}.
 }
 \references{
 \itemize{
@@ -34,12 +34,13 @@ The optimal grid cell size is estimated based on the density/size of features in
 data(eberg)
 coordinates(eberg) <- ~X+Y
 data(eberg_zones)
-\dontrun{
-x <- vect2rast(eberg, fname = "SAND")
+\dontrun{# point map:
+x <- vect2rast(eberg, fname = "SNDMHT_A")
 image(x)
+# polygon map:
 x <- vect2rast(eberg_zones)
 image(x)
-# for large data sets use:
+# for large data sets use SAGA GIS:
 x <- vect2rast(eberg_zones, method = "SAGA")
 }
 }

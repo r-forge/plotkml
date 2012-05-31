@@ -26,7 +26,7 @@ If no internal ZIP program exists, the function looks for the system ZIP program
 External ZIP program can also be specified via the \code{zip} argument.}
 \seealso{ \code{\link{kml-methods}}, \code{\link{kml_open}} }
 \examples{
-\dontrun{
+\dontrun{# get image info from Wikimedia:
 imagename = "Soil_monolith.jpg"
 x1 <- getWikiMedia.ImageInfo(imagename)
 sm <- spPhoto(filename = x1$url$url, exif.info = x1$metadata)

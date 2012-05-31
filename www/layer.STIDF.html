@@ -84,8 +84,7 @@ kml_layer.STIDF(obj, dtime = "", ...)
 data(HRtemp08)
 # format the time column:
 HRtemp08$ctime &lt;- as.POSIXct(HRtemp08$DATE, format="%Y-%m-%dT%H:%M:%SZ")
-## Not run: 
-# create a STIDF object:
+## Not run: # create a STIDF object:
 library(spacetime)
 sp &lt;- SpatialPoints(HRtemp08[,c("Lon","Lat")])
 proj4string(sp) &lt;- CRS("+proj=longlat +datum=WGS84")
@@ -115,5 +114,5 @@ kml(nct, colour = SID)
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-6 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.2-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

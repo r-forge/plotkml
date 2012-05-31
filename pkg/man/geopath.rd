@@ -31,7 +31,7 @@ where \code{distc} is the Great Circle Distance.}
 \examples{
 ams.ny <- geopath(lon1=4.892222, lon2=-74.005973, lat1=52.373056, lat2=40.714353, 
 print.geo=TRUE)
-\dontrun{
+\dontrun{# write to a file:
 kml(ams.ny)
 }
 }

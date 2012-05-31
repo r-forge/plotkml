@@ -20,7 +20,7 @@
 }
 \note{ Writting large spatial objects via plotKML can be time consuming. Please refer to the package documentation for more information.
 }
-\seealso{ \code{\link{SpatialPredictions-class}}, \code{\link{SpatialLinesSimulations-class}}, \code{\link{RasterBrickSimulations-class}}, \code{\link{RasterBrickTimeSeries-class}}   
+\seealso{ \code{\link{SpatialPredictions-class}}, \code{\link{SpatialVectorsSimulations-class}}, \code{\link{RasterBrickSimulations-class}}, \code{\link{RasterBrickTimeSeries-class}}   
 }
 \keyword{spatial}
 \keyword{methods}

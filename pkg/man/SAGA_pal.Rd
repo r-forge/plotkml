@@ -27,7 +27,7 @@ Possibly the most used palettes for visualization of numeric variables are \code
 \examples{
 data(SAGA_pal)
 data(R_pal)
-\dontrun{
+\dontrun{# visualize SAGA GIS palettes:
 display.pal(pal=SAGA_pal, sel=c(1,2,7,8,10,11,17,18,19,21,22))
 dev.off()
 display.pal(R_pal)

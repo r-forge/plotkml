@@ -36,18 +36,17 @@ data(SAGA_pal)
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")
 names(eberg)
-\dontrun{
-# subset to 20 percent:
+\dontrun{# subset to 20 percent:
 eberg <- eberg[runif(nrow(eberg))<.2,]
 # KML plot measured CLAY content:
-kml(eberg, labels = CLAY)
+kml(eberg, labels = CLYMHT_A)
 shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png"
-kml(eberg, shape = shape, colour = SILT, labels = "", colour_scale = SAGA_pal[[1]])
+kml(eberg, shape = shape, colour = SLTMHT_A, labels = "", colour_scale = SAGA_pal[[1]])
 # Two variables at the same time:
-kml(eberg, shape = shape, size = CLAY, colour = SILT, labels = "")
+kml(eberg, shape = shape, size = CLYMHT_A, colour = SLTMHT_A, labels = "")
 # Two aesthetics elements are effective in emphasizing hot-spots:
-kml(eberg, shape = shape, altitude = CLAY*10, extrude = TRUE, 
-colour = CLAY, labels = CLAY, kmz = TRUE)
+kml(eberg, shape = shape, altitude = CLYMHT_A*10, extrude = TRUE, 
+colour = CLYMHT_A, labels = CLYMHT_A, kmz = TRUE)
 }
 }
 \keyword{spatial}

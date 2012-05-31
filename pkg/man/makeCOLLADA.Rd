@@ -30,7 +30,7 @@ makeCOLLADA.rectangle(coords, filename, href, DateTime,
 \author{Tomislav Hengl }
 \seealso{ \code{\link{kml_layer.SpatialPhotoOverlay}}}
 \examples{
-\dontrun{
+\dontrun{# image previously uploaded to Wikimedia commons:
 imagename = "Soil_monolith.jpg"
 x1 <- getWikiMedia.ImageInfo(imagename)
 sm <- spPhoto(filename = x1$url$url, exif.info = x1$metadata)

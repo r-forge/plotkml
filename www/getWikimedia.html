@@ -93,16 +93,15 @@ For a list of modules and parameters that can be used via <code>getWikiMedia.Ima
 <h3>Examples</h3>
 
 <pre>
-## Not run: 
-# Photo taken using a GPS-enabled camera:
+## Not run: # Photo taken using a GPS-enabled camera:
 imagename = "Africa_Museum_Nijmegen.jpg"
 x &lt;- getWikiMedia.ImageInfo(imagename)
 # Get the GPS info:
 x$metadata[grep(names(x$metadata), pattern="GPS")]
-# complete list of metadata tags (including location and orientation);
+# prints the complete list of metadata tags;
 
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-6 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.2-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

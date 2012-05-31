@@ -43,6 +43,7 @@ vect2rast.SpatialPoints <- function(obj, fname = names(obj)[1], cell.size, bbox,
        obj@data[,fname] <- as.integer(obj@data[,fname])
       }
       # rasterize - convert vector to a raster map:    
+      obj <- obj[!is.na(obj@data[,fname]),]
       in.r <- rasterize(obj, r, field = fname)
       res <- as(in.r, "SpatialGridDataFrame")
       names(res) = fname
@@ -117,6 +118,7 @@ vect2rast.SpatialLines <- function(obj, fname = names(obj)[1], cell.size, bbox, 
        obj@data[,fname] <- as.integer(obj@data[,fname])
       }
       # rasterize - convert vector to a raster map:    
+      obj <- obj[!is.na(obj@data[,fname]),]
       in.r <- rasterize(obj, r, field = fname)
       res <- as(in.r, "SpatialGridDataFrame")
       names(res) = fname
@@ -189,6 +191,7 @@ vect2rast.SpatialPolygons <- function(obj, fname = names(obj)[1], cell.size, bbo
        obj@data[,fname] <- as.integer(obj@data[,fname])
       }
       # rasterize - convert vector to a raster map:    
+      obj <- obj[!is.na(obj@data[,fname]),]
       in.r <- rasterize(obj, r, field = fname)
       res <- as(in.r, "SpatialGridDataFrame")
       names(res) = fname

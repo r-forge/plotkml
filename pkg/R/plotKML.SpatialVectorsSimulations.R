@@ -86,7 +86,18 @@ plotKML.SpatialVectorsSimulations <- function(
   if (kmz == TRUE){
       kml_compress(file.name = file.name)
   }
-  system(paste("open ", shortPathName(normalizePath(paste(getwd(), "/", file.name, sep=""))), sep=""))
+  # open KML file in the default browser:
+  if(.Platform$OS.type == "windows") {
+      system(paste("open ", shortPathName(normalizePath(paste(getwd(), "/", file.name, sep=""))), sep=""))
+  } 
+  else {
+      if(.Platform$pkgType == "mac.binary.leopard"){
+        system(paste("open ", normalizePath(paste(getwd(), "/", file.name, sep="")), sep=""))
+        }
+      else{
+        system(paste("gnome-open ", normalizePath(paste(getwd(), "/", file.name, sep="")), sep=""))
+      }
+  }
 }
 
 setMethod("plotKML", "SpatialVectorsSimulations", plotKML.SpatialVectorsSimulations)

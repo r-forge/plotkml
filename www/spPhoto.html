@@ -175,7 +175,7 @@ Dimension of <code>3/36000*ImageWidth</code> in decimal degrees is about 10 m in
 
 <h3>Author(s)</h3>
 
-<p>Tomislav Hengl and Dylan Beaudette</p>
+<p>Tomislav Hengl</p>
 
 
 <h3>References</h3>
@@ -200,15 +200,14 @@ Dimension of <code>3/36000*ImageWidth</code> in decimal degrees is about 10 m in
 <h3>Examples</h3>
 
 <pre>
-## Not run: 
-# Two examples with images on Wikimedia Commons
-# (1) Soil monolith (manually entered coordinates):
+## Not run: # two examples with images on Wikimedia Commons
+# (1) soil monolith (manually entered coordinates):
 imagename = "Soil_monolith.jpg"
-# Import EXIF data using the Wikimedia API:
+# import EXIF data using the Wikimedia API:
 x1 &lt;- getWikiMedia.ImageInfo(imagename)
-# Create a SpatialPhotoOverlay:
+# create a SpatialPhotoOverlay:
 sm &lt;- spPhoto(filename = x1$url$url, exif.info = x1$metadata)
-# Plot it in Google Earth
+# plot it in Google Earth
 kml(sm, method="monolith", kmz=TRUE)
 # (2) PhotoOverlay (geotagged photo):
 imagename = "Africa_Museum_Nijmegen.jpg"
@@ -219,5 +218,5 @@ kml(af)
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-6 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.2-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

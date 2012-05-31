@@ -16,7 +16,9 @@ normalizeFilename <- function(x, form = c("default", "8.3")[1], fix.encoding = T
    }
    # shorten the path:
    if(form == "8.3"){
-      x <- shortPathName(x)
+      if(.Platform$OS.type == "windows") {
+       x <- shortPathName(x)
+      }
    }
    if(fix.encoding==TRUE){
       x <- iconv(x, to = "UTF8")

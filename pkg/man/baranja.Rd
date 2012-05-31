@@ -41,7 +41,7 @@ coordinates(bargrid) <- ~x+y
 gridded(bargrid) <- TRUE
 proj4string(bargrid) <- barxyz@proj4string
 bargrid@grid
-\dontrun{
+\dontrun{# Example with simulated streams:
 data(R_pal)
 pnt = list("sp.points", barxyz, col="black", pch="+")
 spplot(bargrid[1], sp.layout=pnt, col.regions = R_pal[["blue_grey_red"]])

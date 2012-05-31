@@ -25,11 +25,14 @@ vect2rast.SpatialPoints(obj, fname = names(obj)[1], cell.size, bbox,
 \author{Tomislav Hengl }
 \seealso{\code{\link{vect2rast}}}
 \examples{
-data(eberg)
-coordinates(eberg) <- ~X+Y
-\dontrun{
-x <- vect2rast(eberg, fname = "SAND")
-image(x)
+require(gstat)
+data(meuse)
+coordinates(meuse) <- ~x+y
+\dontrun{# point map:
+x <- vect2rast(meuse, fname = "om")
+data(SAGA_pal)
+sp.p <- list("sp.points", meuse, pch="+", cex=1.5, col="black")
+spplot(x, col.regions=SAGA_pal[[1]], sp.layout=sp.p)
 }
 }
 \keyword{spatial}

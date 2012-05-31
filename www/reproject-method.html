@@ -72,26 +72,25 @@
 <h3>Examples</h3>
 
 <pre>
-# Example with vector data
+# example with vector data
 data(eberg)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 eberg.geo &lt;- reproject(eberg)
-# Example with raster data
-data(eberg_grid)
-coordinates(eberg_grid) &lt;- ~x+y
-gridded(eberg_grid) &lt;- TRUE
-proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
-## Not run: 
-eberg_grid.geo &lt;- reproject(eberg_grid)
-# Using FWTools:
-eberg_grid.geo &lt;- reproject(eberg_grid, program = "FWTools")
-# Optional: compare processing times:
-system.time(eberg_grid_ll &lt;- reproject(eberg_grid[1]))
-system.time(eberg_grid_ll &lt;- reproject(eberg_grid[1], program="FWTools"))
+# example with raster data
+data(eberg_grid25)
+gridded(eberg_grid25) &lt;- ~x+y
+proj4string(eberg_grid25) &lt;- CRS("+init=epsg:31467")
+## Not run: # reproject to geographical coords (can take few minutes!):
+eberg_grid_ll &lt;- reproject(eberg_grid25)
+# much faster when using FWTools:
+eberg_grid_ll2 &lt;- reproject(eberg_grid25, program = "FWTools")
+# optional: compare processing times:
+system.time(eberg_grid_ll &lt;- reproject(eberg_grid25[1]))
+system.time(eberg_grid_ll2 &lt;- reproject(eberg_grid25[1], program="FWTools"))
 
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-6 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.2-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

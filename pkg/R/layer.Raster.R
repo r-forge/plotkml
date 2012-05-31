@@ -27,7 +27,7 @@ kml_layer.Raster <- function(
   colour <- charmatch("colour", names(call))
 
   if (is.na(colour))
-    stop("No attribute to map. Please use the colour = ... option.")
+    stop("No attribute selected. Please use the colour = ... option.")
 
   if (is.call(call[["colour"]])) {
     x <- data.frame(getValues(obj))

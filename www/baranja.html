@@ -81,7 +81,7 @@ coordinates(bargrid) &lt;- ~x+y
 gridded(bargrid) &lt;- TRUE
 proj4string(bargrid) &lt;- barxyz@proj4string
 bargrid@grid
-## Not run: 
+## Not run: # Example with simulated streams:
 data(R_pal)
 pnt = list("sp.points", barxyz, col="black", pch="+")
 spplot(bargrid[1], sp.layout=pnt, col.regions = R_pal[["blue_grey_red"]])
@@ -117,5 +117,5 @@ sp.layout=streams.plot)
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-6 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.2-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

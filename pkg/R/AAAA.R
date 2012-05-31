@@ -22,7 +22,8 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
      }
      
      if(require(RSAGA)) {
-        saga_cmd <- shortPathName(normalizePath(paste(rsaga.env()$path, rsaga.env()$cmd, sep="/")))
+        if(.Platform$OS.type == "windows") { saga_cmd <- shortPathName(normalizePath(paste(rsaga.env()$path, rsaga.env()$cmd, sep="/"))) }
+        else { saga_cmd <- paste(rsaga.env()$path, rsaga.env()$cmd, sep="/") } 
         saga.version <- rsaga.get.version()
      }
      else {   saga_cmd <- NULL  }
@@ -160,7 +161,7 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
     fw.dir <- paths[grep(paths, pattern="FWTools")[1]]
     gdalwarp = "gdalwarp"
     gdal_translate = "gdal_translate"
-    message(paste("Located FWTools from the path: \"", shortPathName(fw.dir), "\"", sep=""))
+    message(paste("Located FWTools from the path: \"", fw.dir, "\"", sep=""))
       }
     else { 
         warning("Install FWTools and add to PATH. See http://fwtools.maptools.org for more info.")
@@ -170,7 +171,7 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
     if(!length(x <- grep(paths <- strsplit(Sys.getenv('PATH')[[1]], ":")[[1]], pattern="Python"))==0) {
     py.dir <- paths[grep(paths, pattern="Python")[1]]
     python = "python"
-    message(paste("Located Python from the path: \"", shortPathName(py.dir), "\"", sep=""))
+    message(paste("Located Python from the path: \"", py.dir, "\"", sep=""))
       }
     else { 
         warning("Install Python and add to PATH. See http://python.org for more info.")

@@ -95,30 +95,29 @@ The <code>read.metadata</code> function can be used to read the formatted metada
 <h3>Examples</h3>
 
 <pre>
-## Not run: 
-# Read metadata from the system file (convert to a more redable data.frame format):
+## Not run: # read metadata from the system file:
 x &lt;- read.metadata(system.file("FGDC.xml", package="plotKML"))
 str(x)
-# Generate missing metadata
+# generate missing metadata
 data(eberg)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
-# No metadata file specified:
-eberg.md &lt;- spMetadata(eberg, Target_variable="SAND")
-# With localy prepared metadata file:
+# no metadata file specified:
+eberg.md &lt;- spMetadata(eberg, Target_variable="SNDMHT_A")
+# with localy prepared metadata file:
 eberg.md &lt;- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"), 
-Target_variable="SAND")
-# Print the results of validation (it needs to be able to connect to a URL with schema):
-eberg.md &lt;- spMetadata(eberg, Target_variable="SAND", validate.schema = TRUE)
-# Write the metadata to a file:
+Target_variable="SNDMHT_A")
+# print the results of validation (it needs to be able to connect to a URL with schema):
+eberg.md &lt;- spMetadata(eberg, Target_variable="SNDMHT_A", validate.schema = TRUE)
+# write the metadata to a file:
 saveXML(metadata(eberg.md), "eberg_SAND.xml")
-# Export to SLD format:
+# export to SLD format:
 metadata2SLD(eberg.md, "eberg.sld")
 # plot the layer with the metadata:
-kml(eberg, file.name = "eberg_md.kml", colour = SAND, metadata = eberg.md, kmz = TRUE)
+kml(eberg, file.name = "eberg_md.kml", colour = SNDMHT_A, metadata = eberg.md, kmz = TRUE)
 
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-6 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.2-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

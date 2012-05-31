@@ -29,11 +29,11 @@ The \code{HRprec08} data frames contain the following columns:
 \seealso{ \code{\link{HRtemp08}} }
 \examples{
 data(HRprec08)
-\dontrun{
 # subset:
 prec.2008.05.01 <- HRprec08[HRprec08$DATE=="2008-05-01",]
 coordinates(prec.2008.05.01) <- ~Lon+Lat
 proj4string(prec.2008.05.01) <- CRS("+proj=lonlat +datum=WGS84")
+\dontrun{# write to KML:
 shape = "http://plotkml.r-forge.r-project.org/circle.png"
 data(SAGA_pal)
 kml(prec.2008.05.01, size = PREC, shape = shape, colour = PREC, 

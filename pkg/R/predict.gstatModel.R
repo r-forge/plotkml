@@ -7,7 +7,7 @@
 
 
 # Fit a RK model and return an object of class "gstatModel":
-setMethod("fit.gstatModel", signature(observations = "SpatialPointsDataFrame", formulaString = "formula", covariates = "SpatialPixelsDataFrame"), function(observations, formulaString, covariates, vgmFun = "Exp", family = gaussian(log), stepwise = TRUE, ...){
+setMethod("fit.gstatModel", signature(observations = "SpatialPointsDataFrame", formulaString = "formula", covariates = "SpatialPixelsDataFrame"), function(observations, formulaString, covariates, vgmFun = "Exp", family = gaussian, stepwise = TRUE, ...){
 
   require(gstat)
   require(stats)
@@ -243,7 +243,7 @@ setMethod("show", signature(object = "SpatialPredictions"), function(object){
   cat("  Resolution (x)     :", object@predicted@grid@cellsize[1], "\n")
   cat("  Resolution (y)     :", object@predicted@grid@cellsize[2], "\n")
   cat("  Resolution (units) :", lengthunits, "\n")
-  cat("  GLM call           :", deparse(object@glm$call), "\n")
+  cat("  GLM call formula   :", deparse(object@glm$call$formula), "\n")
   cat("  Family             :", object@glm$family$family, "\n")  
   cat("  Link function      :", object@glm$family$link, "\n")    
   cat("  Vgm model          :", paste(object@vgmModel$model[2]), "\n")

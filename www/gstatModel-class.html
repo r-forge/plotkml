@@ -44,10 +44,14 @@
 <h3>Note</h3>
 
  <p><code>"SpatialPredictions"</code> saves results of predictions for a single target variable, which can be of type numeric or factor. Multiple variables can be combined into a list. When using <code>nsim</code> argument with the <code>predict</code> method, the output result will be of type:<br>
-<code><a href="RasterBrickSimulations-class.html">RasterBrickSimulations-class</a></code> <br>
-i.e. <EM>N</EM> number of equiprobable realizations. To generate an object of type:<br> 
-<code><a href="SpatialPredictions-class.html">SpatialPredictions-class</a></code><br>
-leave <code>nsim = 0</code>. 
+</p>
+<p><code><a href="RasterBrickSimulations-class.html">RasterBrickSimulations-class</a></code> <br>
+</p>
+<p>i.e. <EM>N</EM> number of equiprobable realizations. To generate an object of type:<br> 
+</p>
+<p><code><a href="SpatialPredictions-class.html">SpatialPredictions-class</a></code><br>
+</p>
+<p>use <code>nsim = 0</code>. 
 </p>
 
 
@@ -82,12 +86,11 @@ show(omm@regModel)
 om.rk &lt;- predict(omm, predictionLocations = meuse.grid)
 # overview of the prediction process:
 show(om.rk)
-# plot the whole project and open in Google Earth:
-## Not run: 
+## Not run: # plot the whole project and open in Google Earth:
 plotKML(om.rk)
 
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-6 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.2-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

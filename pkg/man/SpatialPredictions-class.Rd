@@ -46,8 +46,7 @@ show(omm@regModel)
 om.rk <- predict(omm, predictionLocations = meuse.grid)
 # overview of the prediction process:
 show(om.rk)
-# plot the whole project in Google Earth:
-\dontrun{
+\dontrun{# plot the whole geostatical mapping project in Google Earth:
 plotKML(om.rk)
 }
 }

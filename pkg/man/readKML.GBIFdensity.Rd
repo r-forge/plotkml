@@ -19,7 +19,7 @@ All usage of these data must be in accordance with the GBIF Data Use Agreement: 
 \author{Tomislav Hengl }
 \seealso{\code{\link{readGPX}}}
 \examples{
-\dontrun{
+\dontrun{# reading taxon density maps:
 kml.file <- "taxon-celldensity-2294100.kml"
 # download.file(paste("http://data.gbif.org/occurrences/taxon/celldensity/", kml.file, sep=""),
 # destfile=paste(getwd(), kml.file, sep="")) 
@@ -29,9 +29,14 @@ r <- readKML.GBIFdensity(kml.file)
 class(r)
 summary(r)
 image(r)
-load(url("http://spatial-analyst.net/DATA/worldborders.RData"))
-lines(worldborders)
-# To import a list of files use e.g.:
+# add world borders:
+require(maps)
+country.m = map('world', plot=FALSE, fill=TRUE)
+IDs <- sapply(strsplit(country.m$names, ":"), function(x) x[1])
+require(maptools)
+country <- as(map2SpatialPolygons(country.m, IDs=IDs), "SpatialLines")
+lines(country)
+# to import a list of files, use e.g.:
 kml.list <- list(kml.file)
 r.lst <- lapply(kml.list, readKML.GBIFdensity, silent = TRUE)
 # mask out missing layers (empty KML files):
