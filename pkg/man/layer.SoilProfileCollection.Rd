@@ -69,8 +69,7 @@ site(ca) <- ~ mlra + ssa + lon + lat + cntrl_depth_to_top + cntrl_depth_to_bot +
 coordinates(ca) <- ~ lon + lat
 # assign CRS data
 proj4string(ca) <- "+proj=latlong +datum=NAD83"
-\dontrun{
-# plot changes in base saturation by sum of cations method (pH 8.2):
+\dontrun{# plot changes in base saturation by sum of cations method (pH 8.2):
 kml(ca, method = "depth_function", file.name = "ca_bs_8_2.kml", 
 var.name="bs_8.2", balloon = TRUE)
 # plot changes in cation exchange capacity by sum of cations method (pH 8.2):

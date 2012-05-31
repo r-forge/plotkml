@@ -39,12 +39,11 @@
 data(eberg)
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")
-\dontrun{
-# No metadata file specified:
-eberg.md <- spMetadata(eberg, Target_variable="SAND")
-# With localy prepared metadata file:
+\dontrun{# (a) no metadata file exist:
+eberg.md <- spMetadata(eberg, Target_variable="SNDMHT_A")
+# (b) with localy prepared metadata file:
 eberg.md <- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"), 
-Target_variable="SAND")
+Target_variable="SNDMHT_A")
 }
 }
 \keyword{spatial}

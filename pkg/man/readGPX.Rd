@@ -24,7 +24,7 @@
 \author{Tomislav Hengl }
 \seealso{\code{rgdal::readOGR}, \code{\link{kml_layer.STIDFtraj}}}
 \examples{
-\dontrun{
+\dontrun{# read GPX file from web:
 fells_loop <- readGPX("http://www.topografix.com/fells_loop.gpx")
 str(fells_loop)
 }

@@ -55,10 +55,9 @@ in your \code{"/etc/Rprofile.site"}.
 \code{export PATH=INSTALL_DIRECTORY/FWTools-2.*.*/bin_safe:$PATH}
 }
 \examples{
-\dontrun{
+\dontrun{# look for paths:
 pts <- paths()
 pts
-# look for paths:
 plotKML.env(silent = FALSE)
 gdalwarp <- get("gdalwarp", envir = plotKML.opts)
 # if missing you need to install it!

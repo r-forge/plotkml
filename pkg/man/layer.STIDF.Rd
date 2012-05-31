@@ -35,8 +35,7 @@ tags will be inserted. Temporal support (\eqn{\Delta t}{dt}) is estimated using 
 data(HRtemp08)
 # format the time column:
 HRtemp08$ctime <- as.POSIXct(HRtemp08$DATE, format="\%Y-\%m-\%dT\%H:\%M:\%SZ")
-\dontrun{
-# create a STIDF object:
+\dontrun{# create a STIDF object:
 library(spacetime)
 sp <- SpatialPoints(HRtemp08[,c("Lon","Lat")])
 proj4string(sp) <- CRS("+proj=longlat +datum=WGS84")

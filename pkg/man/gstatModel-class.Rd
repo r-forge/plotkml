@@ -48,8 +48,7 @@ show(omm@regModel)
 om.rk <- predict(omm, predictionLocations = meuse.grid)
 # overview of the prediction process:
 show(om.rk)
-# plot the whole project and open in Google Earth:
-\dontrun{
+\dontrun{# plot the whole project and open in Google Earth:
 plotKML(om.rk)
 }
 }

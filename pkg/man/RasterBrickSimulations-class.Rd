@@ -31,8 +31,7 @@ data(bargrid)
 coordinates(bargrid) <- ~x+y
 gridded(bargrid) <- TRUE
 proj4string(bargrid) <- CRS(prj)
-\dontrun{
-# fit a variogram and generate simulations:
+\dontrun{# fit a variogram and generate simulations:
 Z.ovgm <- vgm(psill=1352, model="Mat", range=650, nugget=0, kappa=1.2)
 sel <- runif(length(barxyz$Z))<.2  # Note: this operation can be time consuming
 sims <- krige(Z~1, barxyz[sel,], bargrid, model=Z.ovgm, nmax=20, nsim=10, debug.level=-1) 

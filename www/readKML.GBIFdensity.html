@@ -68,7 +68,7 @@ All usage of these data must be in accordance with the GBIF Data Use Agreement: 
 <h3>Examples</h3>
 
 <pre>
-## Not run: 
+## Not run: # reading taxon density maps:
 kml.file &lt;- "taxon-celldensity-2294100.kml"
 # download.file(paste("http://data.gbif.org/occurrences/taxon/celldensity/", kml.file, sep=""),
 # destfile=paste(getwd(), kml.file, sep="")) 
@@ -78,9 +78,14 @@ r &lt;- readKML.GBIFdensity(kml.file)
 class(r)
 summary(r)
 image(r)
-load(url("http://spatial-analyst.net/DATA/worldborders.RData"))
-lines(worldborders)
-# To import a list of files use e.g.:
+# add world borders:
+require(maps)
+country.m = map('world', plot=FALSE, fill=TRUE)
+IDs &lt;- sapply(strsplit(country.m$names, ":"), function(x) x[1])
+require(maptools)
+country &lt;- as(map2SpatialPolygons(country.m, IDs=IDs), "SpatialLines")
+lines(country)
+# to import a list of files, use e.g.:
 kml.list &lt;- list(kml.file)
 r.lst &lt;- lapply(kml.list, readKML.GBIFdensity, silent = TRUE)
 # mask out missing layers (empty KML files):
@@ -90,5 +95,5 @@ r.lst &lt;- brick(r.lst[mask])
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-6 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.2-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

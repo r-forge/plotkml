@@ -40,10 +40,9 @@ data(worldgrids_pal)
 \seealso{\code{\link{SAGA_pal}}, \code{\link{R_pal}}}
 \examples{
 data(worldgrids_pal)
-\dontrun{
+\dontrun{# globcov palette with class names:
 display.pal(worldgrids_pal)
 dev.off()
-## globcov palette with class names:
 display.pal(worldgrids_pal, sel=5, names=TRUE)
 }
 }

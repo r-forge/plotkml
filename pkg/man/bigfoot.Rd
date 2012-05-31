@@ -49,10 +49,9 @@ proj4string(bigfoot) <- CRS("+proj=latlon +datum=WGS84")
 bigfoot.aea <- spTransform(bigfoot, CRS(aea.prj))
 # Load the covariates:
 data(USAWgrids)
-coordinates(USAWgrids) <- ~s1+s2
-gridded(USAWgrids) <- TRUE
+gridded(USAWgrids) <- ~s1+s2
 proj4string(USAWgrids) <- CRS(aea.prj)
-\dontrun{
+\dontrun{# Visualize data:
 data(SAGA_pal)
 pnts <- list("sp.points", bigfoot.aea, pch="+", col="yellow")
 spplot(USAWgrids[2], col.regions=rev(SAGA_pal[[3]]), sp.layout=pnts)

@@ -1,8 +1,8 @@
 # Purpose        : Generation of SpatialPhotoOverlay object 
 # Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
-# Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Pierre Roudier (pierre.roudier@landcare.nz); 
+# Contributions  : ; 
 # Dev Status     : Pre-Alpha
-# Note           : Combination of the pixmap package and EXIF (Rexif) package functionality;
+# Note           : Combination of the pixmap package and EXIF information [http://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/EXIF.html];
 
 
 ## Generate SpatialPhotoOverlay object:
@@ -59,7 +59,7 @@ spPhoto <- function(
 
   # if missing the coordinate system assume latlon:
   if(!missing(obj)){
-  if(is.na(proj4string(obj))) { proj4string(obj) <- CRS(get("ref_CRS", envir = plotKML.opts)) }
+    if(is.na(proj4string(obj))) { proj4string(obj) <- CRS(get("ref_CRS", envir = plotKML.opts)) }
   }
 
   # if missing EXIF data:
@@ -70,15 +70,21 @@ spPhoto <- function(
     # try to guess coordinates from EXIF data:
     if(missing(obj)&any(names(exif.info) %in% "GPSLongitude")){
       if(any(names(exif.info) %in% "GPSAltitude")){
-      x <- as.numeric(strsplit(exif.info$GPSAltitude, "/")[[1]])
-      try(exif.info$GPSAltitude <- ifelse(length(x)>1, x[1]/x[2], x))
+        x <- as.numeric(strsplit(exif.info$GPSAltitude, "/")[[1]])
+        try(exif.info$GPSAltitude <- ifelse(length(x)>1, x[1]/x[2], x))
       }
       else {
-      exif.info$GPSAltitude <- 0
+        exif.info$GPSAltitude <- 0
       }
+    
     obj <- data.frame(lon=as.numeric(exif.info$GPSLongitude), lat=as.numeric(exif.info$GPSLatitude), alt=as.numeric(exif.info$GPSAltitude))
     coordinates(obj) <- ~lon+lat+alt
     proj4string(obj) <- CRS(get("ref_CRS", envir = plotKML.opts))
+    
+    }
+    else {
+      stop("GPS Longitude/Latitude tags not available from the exif.info object.")
+    } 
     
     # correct the ViewVolume:
     exif.info$ImageWidth <- as.numeric(exif.info$ImageWidth)
@@ -90,10 +96,17 @@ spPhoto <- function(
     # format the DateTime field:
     exif.info$DateTime <- format(as.POSIXct(exif.info$DateTime, format="%Y:%m:%d %H:%M:%S", tz="GMT"), "%Y-%m-%dT%H:%M:%SZ")
     
+    # add missing columns:
+    if(!any(names(exif.info) %in% "ExposureTime")){
+       exif.info$ExposureTime <- ExposureTime
     }
-    else {
-    stop("GPS Longitude/Latitude tags not available from the exif.info object.")
-    }  
+    if(!any(names(exif.info) %in% "FocalLength")){
+       exif.info$FocalLength <- FocalLength
+    }
+    if(!any(names(exif.info) %in% "Flash")){
+       exif.info$Flash <- Flash
+    }
+    
   }
   
   # Get the heading (if available):

@@ -40,8 +40,7 @@ LST@zvalue <- format(as.Date(dates, "\%Y_\%m_\%d"), "\%Y-\%m-\%dT\%H:\%M:\%SZ")
 data(SAGA_pal)
 # time dimension defined via zvalue slot:
 LST@zvalue[c(1,12,24)]
-\dontrun{
-# subset to 3 images:
+\dontrun{# subset to 3 images:
 LSTs <- brick(raster(LST, 1), raster(LST, 12), raster(LST, 24))
 LST_ll <- reproject(LSTs, program="FWTools")
 # copy the dates:

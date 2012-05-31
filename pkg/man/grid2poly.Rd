@@ -27,14 +27,14 @@ coordinates(eberg_grid) <- ~x+y
 gridded(eberg_grid) <- TRUE
 proj4string(eberg_grid) <- CRS("+init=epsg:31467")
 data(SAGA_pal)
-\dontrun{
-system.time(dem_poly <- grid2poly(eberg_grid, "DEM", method = "raster"))
-system.time(dem_poly <- grid2poly(eberg_grid, "DEM", method = "sp"))
-system.time(dem_poly <- grid2poly(eberg_grid, "DEM", method = "RSAGA"))
-# plotting large polygons in R = not a good idea:
-spplot(dem_poly, col.regions = SAGA_pal[[1]])
-# plotKML:
-kml(dem_poly, colour_scale = SAGA_pal[[1]], colour = DEM, kmz = TRUE)
+\dontrun{# compare various methods:
+system.time(dem_poly <- grid2poly(eberg_grid, "DEMSRT6", method = "raster"))
+system.time(dem_poly <- grid2poly(eberg_grid, "DEMSRT6", method = "sp"))
+system.time(dem_poly <- grid2poly(eberg_grid, "DEMSRT6", method = "RSAGA"))
+# plotting large polygons in R -> not a good idea
+## spplot(dem_poly, col.regions = SAGA_pal[[1]])
+# intead, we visualize the data in Google Earth:
+kml(dem_poly, colour_scale = SAGA_pal[[1]], colour = DEMSRT6, kmz = TRUE)
 }
 }
 \keyword{spatial}

@@ -34,12 +34,11 @@ For a list of modules and parameters that can be used via \code{getWikiMedia.Ima
 \author{Tomislav Hengl }
 \seealso{\code{\link{spPhoto}}, \code{Rexif::getExifPy}}
 \examples{
-\dontrun{
-# Photo taken using a GPS-enabled camera:
+\dontrun{# Photo taken using a GPS-enabled camera:
 imagename = "Africa_Museum_Nijmegen.jpg"
 x <- getWikiMedia.ImageInfo(imagename)
 # Get the GPS info:
 x$metadata[grep(names(x$metadata), pattern="GPS")]
-# complete list of metadata tags (including location and orientation);
+# prints the complete list of metadata tags;
 }
 }

@@ -59,18 +59,17 @@ Dimension of \code{3/36000*ImageWidth} in decimal degrees is about 10 m in natur
 \item Wikimedia API (\url{http://www.mediawiki.org/wiki/API})
 }
 }
-\author{Tomislav Hengl and Dylan Beaudette}
+\author{Tomislav Hengl}
 \seealso{ \code{\link{getWikiMedia.ImageInfo}}, \code{pixmap::pixmapRGB}, \code{\link{spMetadata}}}
 \examples{
-\dontrun{
-# Two examples with images on Wikimedia Commons
-# (1) Soil monolith (manually entered coordinates):
+\dontrun{# two examples with images on Wikimedia Commons
+# (1) soil monolith (manually entered coordinates):
 imagename = "Soil_monolith.jpg"
-# Import EXIF data using the Wikimedia API:
+# import EXIF data using the Wikimedia API:
 x1 <- getWikiMedia.ImageInfo(imagename)
-# Create a SpatialPhotoOverlay:
+# create a SpatialPhotoOverlay:
 sm <- spPhoto(filename = x1$url$url, exif.info = x1$metadata)
-# Plot it in Google Earth
+# plot it in Google Earth
 kml(sm, method="monolith", kmz=TRUE)
 # (2) PhotoOverlay (geotagged photo):
 imagename = "Africa_Museum_Nijmegen.jpg"

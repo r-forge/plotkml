@@ -37,27 +37,26 @@ By default, plotKML uses the Creative Commons license, but this can be adjusted 
 \author{Tomislav Hengl, Pierre Roudier, and Dylan Beaudette}
 \seealso{ \code{\link{kml_metadata}}, \code{\link{SpatialMetadata-class}}, \code{\link{spMetadata.Spatial}}, \code{sp::Spatial}, \code{\link{kml_open}} }
 \examples{
-\dontrun{
-# Read metadata from the system file (convert to a more redable data.frame format):
+\dontrun{# read metadata from the system file:
 x <- read.metadata(system.file("FGDC.xml", package="plotKML"))
 str(x)
-# Generate missing metadata
+# generate missing metadata
 data(eberg)
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")
-# No metadata file specified:
-eberg.md <- spMetadata(eberg, Target_variable="SAND")
-# With localy prepared metadata file:
+# no metadata file specified:
+eberg.md <- spMetadata(eberg, Target_variable="SNDMHT_A")
+# with localy prepared metadata file:
 eberg.md <- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"), 
-Target_variable="SAND")
-# Print the results of validation (it needs to be able to connect to a URL with schema):
-eberg.md <- spMetadata(eberg, Target_variable="SAND", validate.schema = TRUE)
-# Write the metadata to a file:
+Target_variable="SNDMHT_A")
+# print the results of validation (it needs to be able to connect to a URL with schema):
+eberg.md <- spMetadata(eberg, Target_variable="SNDMHT_A", validate.schema = TRUE)
+# write the metadata to a file:
 saveXML(metadata(eberg.md), "eberg_SAND.xml")
-# Export to SLD format:
+# export to SLD format:
 metadata2SLD(eberg.md, "eberg.sld")
 # plot the layer with the metadata:
-kml(eberg, file.name = "eberg_md.kml", colour = SAND, metadata = eberg.md, kmz = TRUE)
+kml(eberg, file.name = "eberg_md.kml", colour = SNDMHT_A, metadata = eberg.md, kmz = TRUE)
 }
 }
 \keyword{spatial}

@@ -72,8 +72,7 @@
 
 <pre>
 data(LST)
-coordinates(LST) &lt;- ~x+y
-gridded(LST) &lt;- TRUE
+gridded(LST) &lt;- ~x+y
 proj4string(LST) &lt;- CRS("+proj=utm +zone=33 +datum=WGS84 +units=m")
 # get the dates from the file names:
 dates &lt;- sapply(strsplit(names(LST), "LST"), function(x){x[[2]]})
@@ -81,8 +80,7 @@ LST &lt;- brick(LST)
 LST@title = "Time series of MODIS Land Surface Temperature (8-day mosaics) images"
 LST@zvalue &lt;- format(as.Date(dates, "%Y_%m_%d"), "%Y-%m-%dT%H:%M:%SZ")
 data(SAGA_pal)
-## Not run: 
-# Plot temperatures, precipitation and MODIS images in Google Earth:
+## Not run: # plot MODIS images in Google Earth:
 LST_ll &lt;- reproject(LST)
 # copy the dates:
 LST_ll@zvalue &lt;- LST@zvalue
@@ -92,5 +90,5 @@ kml(LST_ll, colour_scale=SAGA_pal[[1]], dtime=8*24*60^2)
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-6 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.2-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

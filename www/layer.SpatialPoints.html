@@ -19,7 +19,7 @@
 kml_layer.SpatialPoints(obj, extrude = TRUE, z.scale = 1, 
         LabelScale = get("LabelScale", envir = plotKML.opts), 
         metadata = NULL, html.table = NULL, TimeSpan.begin = "",
-        TimeSpan.end = "", ...)
+        TimeSpan.end = "", points_names, ...)
 </pre>
 
 
@@ -59,6 +59,10 @@ kml_layer.SpatialPoints(obj, extrude = TRUE, z.scale = 1,
 <td>
 <p>(optional) end of the referent time period</p>
 </td></tr>
+<tr valign="top"><td><code>points_names</code></td>
+<td>
+<p>character; forces the point labels (size of the character vector must equal the number of the points)</p>
+</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>additional style arguments (see <code><a href="aesthetics.html">aesthetics</a></code>)</p>
@@ -95,21 +99,20 @@ data(SAGA_pal)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 names(eberg)
-## Not run: 
-# subset to 20 percent:
+## Not run: # subset to 20 percent:
 eberg &lt;- eberg[runif(nrow(eberg))&lt;.2,]
 # KML plot measured CLAY content:
-kml(eberg, labels = CLAY)
+kml(eberg, labels = CLYMHT_A)
 shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png"
-kml(eberg, shape = shape, colour = SILT, labels = "", colour_scale = SAGA_pal[[1]])
+kml(eberg, shape = shape, colour = SLTMHT_A, labels = "", colour_scale = SAGA_pal[[1]])
 # Two variables at the same time:
-kml(eberg, shape = shape, size = CLAY, colour = SILT, labels = "")
+kml(eberg, shape = shape, size = CLYMHT_A, colour = SLTMHT_A, labels = "")
 # Two aesthetics elements are effective in emphasizing hot-spots:
-kml(eberg, shape = shape, altitude = CLAY*10, extrude = TRUE, 
-colour = CLAY, labels = CLAY, kmz = TRUE)
+kml(eberg, shape = shape, altitude = CLYMHT_A*10, extrude = TRUE, 
+colour = CLYMHT_A, labels = CLYMHT_A, kmz = TRUE)
 
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-6 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.2-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

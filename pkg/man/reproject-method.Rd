@@ -36,23 +36,22 @@ In the case of raster and/or gridded maps, by selecting \code{program = "FWTools
 \section{Warning}{\code{obj} needs to have a proper proj4 string (CRS), otherwise \code{reproject} will not run.}
 \seealso{\code{\link{paths}}, \code{raster::projectRaster}, \code{rgdal::spTransform}, \code{rgdal::CRS-class}}
 \examples{
-# Example with vector data
+# example with vector data
 data(eberg)
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")
 eberg.geo <- reproject(eberg)
-# Example with raster data
-data(eberg_grid)
-coordinates(eberg_grid) <- ~x+y
-gridded(eberg_grid) <- TRUE
-proj4string(eberg_grid) <- CRS("+init=epsg:31467")
-\dontrun{
-eberg_grid.geo <- reproject(eberg_grid)
-# Using FWTools:
-eberg_grid.geo <- reproject(eberg_grid, program = "FWTools")
-# Optional: compare processing times:
-system.time(eberg_grid_ll <- reproject(eberg_grid[1]))
-system.time(eberg_grid_ll <- reproject(eberg_grid[1], program="FWTools"))
+# example with raster data
+data(eberg_grid25)
+gridded(eberg_grid25) <- ~x+y
+proj4string(eberg_grid25) <- CRS("+init=epsg:31467")
+\dontrun{# reproject to geographical coords (can take few minutes!):
+eberg_grid_ll <- reproject(eberg_grid25)
+# much faster when using FWTools:
+eberg_grid_ll2 <- reproject(eberg_grid25, program = "FWTools")
+# optional: compare processing times:
+system.time(eberg_grid_ll <- reproject(eberg_grid25[1]))
+system.time(eberg_grid_ll2 <- reproject(eberg_grid25[1], program="FWTools"))
 }
 }
 \keyword{spatial}

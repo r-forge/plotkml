@@ -18,7 +18,7 @@ display.pal(pal, sel=1:10, names=FALSE)
 # SAGA GIS palette (http://saga-gis.org/en/about/software.html)
 data(SAGA_pal)
 names(SAGA_pal)
-\dontrun{
+\dontrun{# display palettes:
 display.pal(pal=SAGA_pal, sel=c(1,2,7,8,10,11,17,18,19,21,22))
 dev.off()
 data(worldgrids_pal)

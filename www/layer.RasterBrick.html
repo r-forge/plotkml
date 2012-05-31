@@ -103,8 +103,7 @@ LST@zvalue &lt;- format(as.Date(dates, "%Y_%m_%d"), "%Y-%m-%dT%H:%M:%SZ")
 data(SAGA_pal)
 # time dimension defined via zvalue slot:
 LST@zvalue[c(1,12,24)]
-## Not run: 
-# subset to 3 images:
+## Not run: # subset to 3 images:
 LSTs &lt;- brick(raster(LST, 1), raster(LST, 12), raster(LST, 24))
 LST_ll &lt;- reproject(LSTs, program="FWTools")
 # copy the dates:
@@ -115,5 +114,5 @@ kml(LST_ll, colour_scale=SAGA_pal[[1]], dtime=8*24*60^2)
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-6 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.2-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

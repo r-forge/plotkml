@@ -93,9 +93,9 @@ data(eberg_grid)
 coordinates(eberg_grid) &lt;- ~x+y
 gridded(eberg_grid) &lt;- TRUE
 proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
-## Not run: 
+## Not run: # Open, write layer and close KML file:
 kml_open("eberg_grid_DEM.kml")
-kml_layer(eberg_grid, colour=DEM)
+kml_layer(eberg_grid, colour=DEMSRT6)
 kml_close("eberg_grid_DEM.kml")
 # print the result:
 xmlRoot(xmlTreeParse("eberg_grid_DEM.kml"))[["Document"]]
@@ -103,5 +103,5 @@ xmlRoot(xmlTreeParse("eberg_grid_DEM.kml"))[["Document"]]
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-6 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.2-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

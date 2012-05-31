@@ -58,8 +58,7 @@ data(gpxbtour)
 gpxbtour$ctime &lt;- as.POSIXct(gpxbtour$time, format="%Y-%m-%dT%H:%M:%SZ")
 coordinates(gpxbtour) &lt;- ~lon+lat
 proj4string(gpxbtour) &lt;- CRS("+proj=longlat +datum=WGS84")
-## Not run: 
-# convert to a STIDFtraj class:
+## Not run: # convert to a STIDFtraj class:
 require(spacetime)
 require(adehabitat)
 gpx.ltraj &lt;- as.ltraj(coordinates(gpxbtour), gpxbtour$ctime, id = "th")
@@ -75,5 +74,5 @@ spplot(gpx.st)
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-6 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.2-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

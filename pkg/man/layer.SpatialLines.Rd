@@ -28,8 +28,7 @@ Use the same time values for both \code{TimeSpan.begin} and \code{TimeSpan.end} 
 data(eberg_contours)
 data(SAGA_pal)
 names(eberg_contours)
-\dontrun{
-# KML plot with elevations used as 'colour' argument:
+\dontrun{# KML plot with elevations used as 'colour' argument:
 kml(eberg_contours, colour_scale = SAGA_pal[[1]], colour = Z, kmz = TRUE)
 }
 }

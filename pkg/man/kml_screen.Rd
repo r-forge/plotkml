@@ -30,7 +30,7 @@ kml_screen(image.file, sname = "",
 }
 \examples{
 data(eberg_zones)
-\dontrun{
+\dontrun{# add logo in the top-center:
 kml_open("eberg_zones.kml")
 kml_layer(eberg_zones)
 logo = "http://meta.isric.org/images/ISRIC_right.png"

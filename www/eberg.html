@@ -10,8 +10,8 @@
 
 <h3>Description</h3>
 
-<p>Ebergötzen is 10 by 10 km study area in the vicinity of the city of Göttingen in Central Germany. This area has been extensively surveyed over the years, mainly for the purposes of developing operational digital soil mapping techniques (Gehrt and Böhner, 2001). <br>
-<code>eberg</code> table contains 2937 observations (augers) of soil textures and soil types. <code>eberg_grid</code> contains three gridded maps that can be used as covariates for spatial prediction of soil variables. <code>eberg_zones</code> is a polygon map showing the distribution of parent material (Silt and sand, Sandy material, Clayey derivats, Clay and loess). <code>eberg_contours</code> shows contour lines derived from the 25 m DEM of the area using 10 m equidistance.</p>
+<p>Ebergötzen is 10 by 10 km study area in the vicinity of the city of Göttingen in Central Germany. This area has been extensively surveyed over the years, mainly for the purposes of developing operational digital soil mapping techniques (Gehrt and Böhner, 2001), and has been used by the SAGA GIS development team to demonstrate various processing steps. <br>
+<code>eberg</code> table contains 3670 observations (augers) of soil textures at five depths (0-10, 10-30, 30-50, 50-70, and 70-90), and field records of soil types according to the German soil classification system. <code>eberg_grid</code> contains gridded maps at 100 m resolution that can be used as covariates for spatial prediction of soil variables. <code>eberg_grid25</code> contains grids at finer resolution (25 m). <code>eberg_zones</code> is a polygon map showing the distribution of parent material (Silt and sand, Sandy material, Clayey derivats, Clay and loess). <code>eberg_contours</code> shows contour lines derived from the 25 m DEM of the area using 10 m equidistance.</p>
 
 
 <h3>Usage</h3>
@@ -28,17 +28,23 @@
 <dl>
 <dt><code>ID</code></dt><dd><p>universal identifier</p>
 </dd>
+<dt><code>soiltype</code></dt><dd><p>a vector containing factors; abbreviated soil class names according to the German soil classification system (13 classes in this data set)</p>
+</dd>
+<dt><code>TAXGRSC</code></dt><dd><p>a vector containing factors; soil classes according to the German soil classification system: &quot;Auenboden&quot; (A), &quot;Braunerde&quot; (B), &quot;Pelosol&quot; (D), &quot;Gley&quot; (G), &quot;Moor&quot; (Ha), &quot;HMoor&quot; (Hw), &quot;Kolluvisol&quot; (K), &quot;Parabraunerde&quot; (L), &quot;Ranker&quot; (N), &quot;Regosol&quot; (Q), &quot;Pseudogley&quot; (S), &quot;Pararendzina&quot; (Z)</p>
+</dd>
 <dt><code>X</code></dt><dd><p>a numeric vector; x-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) </p>
 </dd>
 <dt><code>Y</code></dt><dd><p>a numeric vector; y-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) </p>
 </dd>
-<dt><code>SAND</code></dt><dd><p>topsoil sand content estimated by hand; see Ad-hoc-AG Boden (2005) </p>
+<dt><code>UHDICM_*</code></dt><dd><p>a numeric vector; upper horizon depth in cm per horizon</p>
 </dd>
-<dt><code>SILT</code></dt><dd><p>topsoil silt content estimated by hand </p>
+<dt><code>LHDICM_*</code></dt><dd><p>a numeric vector; lower horizon depth in cm per horizon</p>
 </dd>
-<dt><code>CLAY</code></dt><dd><p>topsoil clay content estimated by hand </p>
+<dt><code>SNDMHT_*</code></dt><dd><p>a numeric vector; topsoil sand content estimated by hand per horizon (0-100); see Ad-hoc-AG Boden (2005) for more details</p>
 </dd>
-<dt><code>SOILTYPE</code></dt><dd><p>a vector containing factors; soil classes according to the German soil classification system (13 classes in this data set)</p>
+<dt><code>SLTMHT_*</code></dt><dd><p>a numeric vector; topsoil silt content estimated by hand per horizon (0-100)</p>
+</dd>
+<dt><code>CLYMHT_*</code></dt><dd><p>a numeric vector; topsoil clay content estimated by hand per horizon (0-100)</p>
 </dd>
 </dl>
  
@@ -46,11 +52,33 @@
 </p>
 
 <dl>
-<dt><code>DEM</code></dt><dd><p>elevation values from the topographic map </p>
+<dt><code>PRMGEO6</code></dt><dd><p>a vector containing factors, parent material classes from the geological map (mapping units)</p>
 </dd>
-<dt><code>TWI</code></dt><dd><p>Topographic Wetness Index derived using the SAGA algorithm </p>
+<dt><code>DEMSRT6</code></dt><dd><p>a numeric vector; elevation values from the SRTM DEM</p>
 </dd>
-<dt><code>Z</code></dt><dd><p>containing factors; four soil topographic/geological units (soil mapping units) </p>
+<dt><code>TWISRT6</code></dt><dd><p>a numeric vector; Topographic Wetness Index derived using the SAGA algorithm</p>
+</dd>
+<dt><code>TIRAST6</code></dt><dd><p>a numeric vector; Thermal Infrared (TIR) reflection values from the ASTER L1 image band 14 (2010-06-05T10:26:50Z) obtained via the NASA's <a href="http://glovis.usgs.gov">GloVis browser</a></p>
+</dd>
+<dt><code>LNCCOR6</code></dt><dd><p>a vector containing factors; <a href="http://www.eea.europa.eu/data-and-maps/data/corine-land-cover-2006-raster-1">Corine Land Cover 2006</a> classes</p>
+</dd>
+<dt><code>x</code></dt><dd><p>a numeric vector; x-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system)</p>
+</dd>
+<dt><code>y</code></dt><dd><p>a numeric vector; y-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system)</p>
+</dd> 
+</dl>
+
+<p>The <code>eberg_grid25</code> data frame (regular grid at 25 m resolution) contains the following columns:
+</p>
+
+<dl>
+<dt><code>DEMTOPx</code></dt><dd><p>a numeric vector; elevation values from the topographic map</p>
+</dd>
+<dt><code>HBTSOLx</code></dt><dd><p>a vector containing factors; main soil type according to the German soil classification system (see above) determined per crop field</p>
+</dd> 
+<dt><code>TWITOPx</code></dt><dd><p>a numeric vector; Topographic Wetness Index derived using the SAGA algorithm </p>
+</dd>
+<dt><code>NVILANx</code></dt><dd><p>a numeric vector; NDVI image derived using the Landsat image from the <a href="http://image2000.jrc.ec.europa.eu/">Image 2000 project</a></p>
 </dd>
 <dt><code>x</code></dt><dd><p>a numeric vector; x-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) </p>
 </dd>
@@ -62,13 +90,13 @@
 
 <h3>Note</h3>
 
-<p> Texture by hand method can be used to determine the content of soil earth fractions only to an accuracy of ±5-10% (<a href="https://www.soils.org/publications/sssaj/articles/65/4/1038">Skaggs et al. 2001</a>). A surveyor distinguishes to which of the 32 texture classes a soil samples belongs to, and then estimates the content of fractions. E.g. texture class <code>St2</code> has 10% clay, 25% silt and 65% sand (Ad-hoc-AG Boden, 2005). 
+<p> Texture by hand method can be used to determine the content of soil earth fractions only to an accuracy of ±5-10% (<a href="https://www.soils.org/publications/sssaj/articles/65/4/1038">Skaggs et al. 2001</a>). A surveyor distinguishes to which of the 32 texture classes a soil samples belongs to, and then estimates the content of fractions; e.g. texture class <code>St2</code> has 10% clay, 25% silt and 65% sand (Ad-hoc-AG Boden, 2005). 
 </p>
 
 
 <h3>Author(s)</h3>
 
-<p>The Ebergötzen dataset is courtesy of Gehrt Ernst (<a href="mailto:Ernst.Gehrt@niedersachsen.de">Ernst.Gehrt@niedersachsen.de</a>), the State Authority for Mining, Energy and Geology, Hannover, Germany and Olaf Conrad, University of Hamburg (<a href="mailto:conrad@geowiss.uni-hamburg.de">conrad@geowiss.uni-hamburg.de</a>). The data set has been prepared for this exercise by Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>).</p>
+<p>The Ebergötzen dataset is courtesy of Gehrt Ernst (<a href="mailto:Ernst.Gehrt@niedersachsen.de">Ernst.Gehrt@niedersachsen.de</a>), the State Authority for Mining, Energy and Geology, Hannover, Germany and Olaf Conrad, University of Hamburg (<a href="mailto:conrad@geowiss.uni-hamburg.de">conrad@geowiss.uni-hamburg.de</a>). The original data set has been prepared for this exercise by Tomislav Hengl (<a href="mailto:tom.hengl@wur.nl">tom.hengl@wur.nl</a>).</p>
 
 
 <h3>References</h3>
@@ -103,16 +131,16 @@ data(eberg_zones)
 data(eberg_contours)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
-coordinates(eberg_grid) &lt;- ~x+y
-gridded(eberg_grid) &lt;- TRUE
+gridded(eberg_grid) &lt;- ~x+y
 proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
-## Not run: 
+## Not run: # visualize the maps:
+data(SAGA_pal)
 l.sp &lt;- list("sp.lines", eberg_contours, col="black")
-spplot(eberg_grid["DEM"], col.regions = SAGA_pal[[1]], sp.layout=l.sp)
+spplot(eberg_grid["DEMSRT6"], col.regions = SAGA_pal[[1]], sp.layout=l.sp)
 spplot(eberg_zones, sp.layout=list("sp.points", eberg, col="black", pch="+"))
 
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-6 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.2-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

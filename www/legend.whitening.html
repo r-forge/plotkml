@@ -29,35 +29,35 @@ kml_legend.whitening(legend.res = 0.01, width = 120, height = 300, pointsize = 1
 <table summary="R argblock">
 <tr valign="top"><td><code>legend.res</code></td>
 <td>
-<p>resolution on a 0-1 scale</p>
+<p>numeric; resolution on a 0-1 scale</p>
 </td></tr>
 <tr valign="top"><td><code>width</code></td>
 <td>
-<p>image width</p>
+<p>integer; image width</p>
 </td></tr>
 <tr valign="top"><td><code>height</code></td>
 <td>
-<p>image height</p>
+<p>integer; image height</p>
 </td></tr>
 <tr valign="top"><td><code>pointsize</code></td>
 <td>
-<p>point size in units for text</p>
+<p>integer; point size in units for text</p>
 </td></tr>
 <tr valign="top"><td><code>x.lim</code></td>
 <td>
-<p>upper and lower limits for target variable</p>
+<p>numeric; upper and lower limits for target variable</p>
 </td></tr>
 <tr valign="top"><td><code>e.lim</code></td>
 <td>
-<p>upper and lower limits for the normalized error</p>
+<p>numeric; upper and lower limits for the normalized error</p>
 </td></tr>
 <tr valign="top"><td><code>leg.asp</code></td>
 <td>
-<p>legend aspect</p>
+<p>numeric; legend aspect</p>
 </td></tr>
 <tr valign="top"><td><code>legend.file</code></td>
 <td>
-<p>file name</p>
+<p>character; output PNG file name</p>
 </td></tr>
 <tr valign="top"><td><code>matte</code></td>
 <td>
@@ -73,7 +73,7 @@ kml_legend.whitening(legend.res = 0.01, width = 120, height = 300, pointsize = 1
 
 <h3>Note</h3>
 
-<p>Google Earth does not properly handle a 24-bit PNG file which has a single transparent color. In order to force transparency in the output PNG, the function with try using ImageMagick convert function (ImageMagick needs to be installed separately and located using <code>plotKML.env()</code>).</p>
+<p>Google Earth does not properly handle a 24-bit PNG file which has a single transparent color. In order to force transparency in the output PNG, the function with try using ImageMagick convert function. ImageMagick needs to be installed separately and located using <code>plotKML.env()</code>.</p>
 
 
 <h3>Author(s)</h3>
@@ -104,11 +104,11 @@ kml_legend.whitening(legend.res = 0.01, width = 120, height = 300, pointsize = 1
 <h3>Examples</h3>
 
 <pre>
-## Not run: 
+## Not run: # create the 2D legend for whitening (PNG file):
 kml_legend.whitening(x.lim=c(5,20), e.lim=c(.6,1))
 
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.1-6 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.2-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

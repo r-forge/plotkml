@@ -8,7 +8,7 @@
 ## Color palette:
 setClass("sp.palette", representation(type = 'character', bounds = 'vector', color = 'character', names = 'character', icons = 'character'), validity = function(object) {
    if(!class(object@bounds)=="numeric")
-      return('Vector with (upper and lower limits) required')
+      return('Vector with upper and lower limits required')
    if((length(object@bounds)-1)!=length(object@color)|(length(object@bounds)-1)!=length(x@names))
       return('Size of bounds (-1), colors and element names must be equal')
    if(any(nchar(object@color)<7|nchar(object@color)>9))
@@ -30,7 +30,7 @@ setClass("SpatialPhotoOverlay", representation(filename = "character", pixmap = 
     if(length(object@filename)==0&is.null(object@pixmap)){
       return("Either 'pixmap' slot or 'filename' need to be specified.")
     }
-    if(length(object@filename)>0){
+    if(length(object@filename)>1){
       return("Character of length 1 required.")
     }
     if(length(object@sp)>1){
@@ -57,13 +57,13 @@ setClass("SpatialPhotoOverlay", representation(filename = "character", pixmap = 
     if(object@PhotoOverlay$leftFov < -180 | object@PhotoOverlay$leftFov > 0){
       return("Check KML validity: kml:angle180")
     }
-    if(object@PhotoOverlay$rightFov < 0 | object@PhotoOverlay$rigthFov > 180){
+    if(object@PhotoOverlay$rightFov < 0 | object@PhotoOverlay$rightFov > 180){
       return("Check KML validity: kml:angle180")
     }
     if(object@PhotoOverlay$bottomFov < -90 | object@PhotoOverlay$bottomFov > 0){
       return("Check KML validity: kml:angle90")
     }
-    if(object@PhotoOverlay$topFov < 0 | object@PhotoOverlay$bottomFov > 90){
+    if(object@PhotoOverlay$topFov < 0 | object@PhotoOverlay$topFov > 90){
       return("Check KML validity: kml:angle90")
     }
     if(!(object@PhotoOverlay$shape %in% c("rectangle", "cylinder", "sphere"))){
@@ -101,14 +101,14 @@ setClass("SpatialPredictions", representation(variable = "character", observed =
       warning("Validation data critically small (<50) for reliable validation")  
     object.ov <- overlay(object@predicted, object@observed)
     if(length(object.ov)==0)
-      return("'Predicted' and 'observed' spatial objects do not overlap when combined using the overlay function")
+      return("'Predicted' and 'observed' spatial objects do not overlap spatially")
 })
 
 ## New classes for SpatialSimulations:
 setClass("SpatialVectorsSimulations", representation(realizations = "list", summaries = "SpatialGridDataFrame"), validity = function(object) {
    object.ov <- overlay(object@summaries, as(object@realizations[[1]], "SpatialPoints"))
     if(length(object.ov)==0)
-      return("'Realizations' and 'summaries' spatial objects do not overlap when combined using the overlay function")
+      return("'Realizations' and 'summaries' spatial objects do not overlap spatially")
     if(length(names(object@summaries))<2)
       return("The 'summaries' slot should contain at least two layers (aggregate values and information entropy)")
 })
@@ -123,7 +123,7 @@ setClass("RasterBrickSimulations", representation(variable = "character", sample
 #setClass("SpatialSamplingPattern", representation(pattern = "SamplingPattern", sp.domain = "Stratification"), validity = function(object) {
 #    object.ov <- overlay(object@sp.domain@grid, object@pattern@sample)
 #    if(length(object.ov)==0)
-#      return("'Sample' and 'grid' slots do not overlap when combined using the overlay function")
+#      return("'Sample' and 'grid' do not overlap spatially")
 #})
 
 ## A new class for RasterBrickTimeSeries:
@@ -133,7 +133,17 @@ setClass("RasterBrickTimeSeries", representation(sampled = "SpatialPointsDataFra
 })
 
 ### A new class for SpeciesDistributionMap:
-#setClass("SpeciesDistributionMap", representation(occurences = "ppp", model = "MaxEnt", sp.domain = "SpatialPolygons", rasters = "Raster"))
+#setClass("SpeciesDistributionMap", representation(occurences = "ppp", model = "MaxEnt", sp.domain = "SpatialPolygons", rasters = "Raster"), validity = function(object) {
+#    if(length(object@occurences) <5)
+#      warning("Occurences critically small (<5) for reliable validation")  
+    
+#    xy <- as.ppp.SpatialPoints(object@occurences)
+#    object.ov <- extract(x=object@rasters, y=xy)
+#    if(length(object.ov)==0)
+#      return("'Occurences' and 'rasters' do not overlap spatially")
+#    if(is.na(object@rasters@crs@projargs))
+#      return("Proj4 string must be specified")  
+#})
 
 
 
