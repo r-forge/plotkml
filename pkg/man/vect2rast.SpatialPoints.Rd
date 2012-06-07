@@ -25,7 +25,7 @@ vect2rast.SpatialPoints(obj, fname = names(obj)[1], cell.size, bbox,
 \author{Tomislav Hengl }
 \seealso{\code{\link{vect2rast}}}
 \examples{
-require(gstat)
+library(gstat)
 data(meuse)
 coordinates(meuse) <- ~x+y
 \dontrun{# point map:

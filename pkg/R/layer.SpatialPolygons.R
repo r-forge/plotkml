@@ -16,11 +16,12 @@ kml_layer.SpatialPolygons <- function(
   html.table = NULL,
   TimeSpan.begin = "",
   TimeSpan.end = "",
+  colorMode = "normal",
   ...
   ){
   
   # invisible file connection
-  kml.out <- get("kml.out", env=plotKML.fileIO)
+  kml.out <- get("kml.out", envir=plotKML.fileIO)
   
   # Checking the projection is geo
   prj.check <- check_projection(obj, control = TRUE)
@@ -36,7 +37,7 @@ kml_layer.SpatialPolygons <- function(
   colours <- aes[["colour"]]
   sizes <- aes[["size"]]
   shapes <- aes[["shape"]]
-  altitude <- aes[["altitude"]]
+  altitude <- aes[["altitude"]]  # this only works if the altitudes have not been defined in the original sp class
   altitudeMode <- aes[["altitudeMode"]]
   balloon <- aes[["balloon"]]
 
@@ -50,8 +51,8 @@ kml_layer.SpatialPolygons <- function(
   pl2 <- newXMLNode("name", paste(class(obj)), parent = pl1)
 
   if(plot.labpt==TRUE){
-  pl1b = newXMLNode("Folder", parent=kml.out[["Document"]])
-  pl2b <- newXMLNode("name", "labpt", parent = pl1b)
+    pl1b = newXMLNode("Folder", parent=kml.out[["Document"]])
+    pl2b <- newXMLNode("name", "labpt", parent = pl1b)
   }
 
   # Insert metadata:
@@ -62,80 +63,104 @@ kml_layer.SpatialPolygons <- function(
   }
   message("Parsing to KML...")  
 
-  # process polygons:
+  # number of polygons:
   pv <- length(obj@polygons)
+  # number of Polygons:
+  pvn <- lapply(lapply(obj@polygons, slot, "Polygons"), length)
   # parse coordinates:
-  coords <- NULL
-  hole <- NULL
-  labpt <- NULL
-  for (i.poly in 1:pv) { 
-    xyz <- slot(slot(obj@polygons[[i.poly]], "Polygons")[[1]], "coords")
-    cxyz <- slot(slot(obj@polygons[[i.poly]], "Polygons")[[1]], "labpt")
-    hole[[i.poly]] <- slot(slot(obj@polygons[[i.poly]], "Polygons")[[1]], "hole")
-      if(ncol(xyz)==2){  xyz <- cbind(xyz, rep(altitude[i.poly], nrow(xyz)))  }
-    coords[[i.poly]] <- paste(xyz[,1], ',', xyz[,2], ',', xyz[,3], collapse='\n ', sep = "")
-    labpt[[i.poly]] <- paste(cxyz[1], ',', cxyz[2], ',', altitude[i.poly], collapse='\n ', sep = "")
+  coords <- rep(list(NULL), pv)
+  hole <- rep(list(NULL), pv)
+  labpt <- rep(list(NULL), pv)
+  for(i.poly in 1:pv) { 
+    for(i.Poly in 1:pvn[[i.poly]]){
+    # get coordinates / hole definition:
+    xyz <- slot(slot(obj@polygons[[i.poly]], "Polygons")[[i.Poly]], "coords")
+    cxyz <- slot(slot(obj@polygons[[i.poly]], "Polygons")[[i.Poly]], "labpt")
+    # if altitude is missing, add the default altitudes:
+    if(ncol(xyz)==2){  xyz <- cbind(xyz, rep(altitude[i.poly], nrow(xyz)))  }
+    # format coords for writing to KML [https://developers.google.com/kml/documentation/kmlreference#polygon]:
+    hole[[i.poly]][[i.Poly]] <- slot(slot(obj@polygons[[i.poly]], "Polygons")[[i.Poly]], "hole")
+    coords[[i.poly]][[i.Poly]] <- paste(xyz[,1], ',', xyz[,2], ',', xyz[,3], collapse='\n ', sep = "")
+    labpt[[i.poly]][[i.Poly]] <- paste(cxyz[1], ',', cxyz[2], ',', altitude[i.poly], collapse='\n ', sep = "")
+    }
   }
+
+  # reformatted aesthetics (one "polygons" can have multiple "Polygons"):
+  poly_names.l <- list(NULL)
+  for(i.poly in 1:pv){ poly_names.l[[i.poly]] <- as.vector(rep(poly_names[i.poly], pvn[[i.poly]])) }
 
 
   # Polygon styles
   # ==============
-  if(!length(unique(colours))==1){
-  txts <- sprintf('<Style id="poly%s"><PolyStyle><color>%s</color><outline>%s</outline><fill>%s</fill></PolyStyle><BalloonStyle><text>$[description]</text></BalloonStyle></Style>', 1:pv, colours, rep(as.numeric(outline), pv), as.numeric(unlist(!hole)))
-  parseXMLAndAdd(txts, parent=pl1)
+  if(!length(unique(colours))==1|colorMode=="normal"){
+    colours.l <- list(NULL)
+    for(i.poly in 1:pv){ colours.l[[i.poly]] <- as.vector(rep(colours[i.poly], pvn[[i.poly]])) }    
+    txts <- sprintf('<Style id="poly%s"><PolyStyle><color>%s</color><outline>%s</outline><fill>%s</fill></PolyStyle><BalloonStyle><text>$[description]</text></BalloonStyle></Style>', 1:sum(unlist(pvn)), unlist(colours.l), rep(as.numeric(outline), sum(unlist(pvn))), as.numeric(!(unlist(hole))))
+    parseXMLAndAdd(txts, parent=pl1)
   }
   else {
-  txts <- sprintf('<Style id="poly%s"><PolyStyle><colorMode>random</colorMode><outline>%s</outline><fill>%s</fill></PolyStyle><BalloonStyle><text>$[description]</text></BalloonStyle></Style>', 1:pv, rep(as.numeric(outline), pv), as.numeric(unlist(!hole)))
-  parseXMLAndAdd(txts, parent=pl1)
+    # random colours:
+    txts <- sprintf('<Style id="poly%s"><PolyStyle><colorMode>random</colorMode><outline>%s</outline><fill>%s</fill></PolyStyle><BalloonStyle><text>$[description]</text></BalloonStyle></Style>', 1:sum(unlist(pvn)), rep(as.numeric(outline), sum(unlist(pvn))), as.numeric(!(unlist(hole))))
+    parseXMLAndAdd(txts, parent=pl1)
   }
 
   # Point styles
   # ==============
   if(plot.labpt == TRUE){
-  txtsp <- sprintf('<Style id="pnt%s"><LabelStyle><scale>%.1f</scale></LabelStyle><IconStyle><color>ffffffff</color><scale>%s</scale><Icon><href>%s</href></Icon></IconStyle><BalloonStyle><text>$[description]</text></BalloonStyle></Style>', 1:pv, rep(LabelScale, pv), sizes, shapes)
-  parseXMLAndAdd(txtsp, parent=pl1b)
+    sizes.l <- list(NULL)
+    shapes.l <- list(NULL)
+    for(i.poly in 1:pv){sizes.l[[i.poly]] <- as.vector(rep(sizes[i.poly], pvn[[i.poly]])) }
+    for(i.poly in 1:pv){shapes.l[[i.poly]] <- as.vector(rep(shapes[i.poly], pvn[[i.poly]])) }    
+    txtsp <- sprintf('<Style id="pnt%s"><LabelStyle><scale>%.1f</scale></LabelStyle><IconStyle><color>ffffffff</color><scale>%s</scale><Icon><href>%s</href></Icon></IconStyle><BalloonStyle><text>$[description]</text></BalloonStyle></Style>', 1:sum(unlist(pvn)), rep(LabelScale, sum(unlist(pvn))), unlist(sizes.l), unlist(shapes.l))
+    parseXMLAndAdd(txtsp, parent=pl1b)
 
   # Writing labpt
   # ================  
+  # check if time span has been defined:
   if(nzchar(TimeSpan.begin[1])&nzchar(TimeSpan.end[1])){
       if(identical(TimeSpan.begin, TimeSpan.end)){
       when = TimeSpan.begin
-      if(length(when)==1){ when = rep(when, pv) }
-      txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><TimeStamp><when>%s</when></TimeStamp><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%s</coordinates></Point></Placemark>', poly_names, 1:pv, when, rep(as.numeric(extrude), pv), rep(altitudeMode, pv), paste(unlist(labpt)))  
+      if(length(when)==1){ when = rep(when, sum(unlist(pvn))) }
+      txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><TimeStamp><when>%s</when></TimeStamp><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%s</coordinates></Point></Placemark>', unlist(poly_names.l), 1:sum(unlist(pvn)), when, rep(as.numeric(extrude), sum(unlist(pvn))), rep(altitudeMode, sum(unlist(pvn))), paste(unlist(labpt)))  
       } 
       else{
-      if(length(TimeSpan.begin)==1){ TimeSpan.begin = rep(TimeSpan.begin, pv) }
-      if(length(TimeSpan.end)==1){ TimeSpan.end = rep(TimeSpan.end, pv) }
-      txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><TimeSpan><begin>%s</begin><end>%s</end></TimeSpan><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%s</coordinates></Point></Placemark>', poly_names, 1:pv, TimeSpan.begin, TimeSpan.end, rep(as.numeric(extrude), pv), rep(altitudeMode, pv), paste(unlist(labpt)))
+      # fixed begin/end times:
+      if(length(TimeSpan.begin)==1){ TimeSpan.begin = rep(TimeSpan.begin, sum(unlist(pvn))) }
+      if(length(TimeSpan.end)==1){ TimeSpan.end = rep(TimeSpan.end, sum(unlist(pvn))) }
+      txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><TimeSpan><begin>%s</begin><end>%s</end></TimeSpan><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%s</coordinates></Point></Placemark>', unlist(poly_names.l), 1:sum(unlist(pvn)), TimeSpan.begin, TimeSpan.end, rep(as.numeric(extrude), sum(unlist(pvn))), rep(altitudeMode, sum(unlist(pvn))), paste(unlist(labpt)))
       }
   }
+  # time span undefined:
       else{      
-      txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%s</coordinates></Point></Placemark>', poly_names, 1:pv, rep(as.numeric(extrude), pv), rep(altitudeMode, pv), paste(unlist(labpt)))
+      txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%s</coordinates></Point></Placemark>', unlist(poly_names.l), 1:sum(unlist(pvn)), rep(as.numeric(extrude), sum(unlist(pvn))), rep(altitudeMode, sum(unlist(pvn))), paste(unlist(labpt)))
   }
 
   parseXMLAndAdd(txtc, parent=pl1b)
-
   }
+  # finished writing the labels
 
   # Writing polygons
   # ================
   
   if(length(html.table)>0){   
+    html.table.l <- list(NULL)
+    for(i.poly in 1:pv){html.table.l[[i.poly]] <- as.vector(rep(html.table[i.poly], pvn[[i.poly]])) }    
+  
   # with attributes:
     if(nzchar(TimeSpan.begin[1])&nzchar(TimeSpan.end[1])){
       if(identical(TimeSpan.begin, TimeSpan.end)){
       when = TimeSpan.begin
-      if(length(when)==1){ when = rep(when, pv) }
-      txt <- sprintf('<Placemark><name>%s</name><styleUrl>#poly%s</styleUrl><TimeStamp><when>%s</when></TimeStamp><description><![CDATA[%s]]></description><Polygon><extrude>%.0f</extrude><tessellate>%.0f</tessellate><altitudeMode>%s</altitudeMode><outerBoundaryIs><LinearRing><coordinates>%s</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark>', poly_names, 1:pv, when, html.table, rep(as.numeric(extrude), pv), rep(as.numeric(tessellate), pv), rep(altitudeMode, pv), paste(unlist(coords)))
+      if(length(when)==1){ when = rep(when, sum(unlist(pvn))) }
+        txt <- sprintf('<Placemark><name>%s</name><styleUrl>#poly%s</styleUrl><TimeStamp><when>%s</when></TimeStamp><description><![CDATA[%s]]></description><Polygon><extrude>%.0f</extrude><tessellate>%.0f</tessellate><altitudeMode>%s</altitudeMode><outerBoundaryIs><LinearRing><coordinates>%s</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark>', unlist(poly_names.l), 1:sum(unlist(pvn)), when, unlist(html.table.l), rep(as.numeric(extrude), sum(unlist(pvn))), rep(as.numeric(tessellate), sum(unlist(pvn))), rep(altitudeMode, sum(unlist(pvn))), paste(unlist(coords)))
       } 
       else{
-      if(length(TimeSpan.begin)==1){ TimeSpan.begin = rep(TimeSpan.begin, pv) }
-      if(length(TimeSpan.end)==1){ TimeSpan.end = rep(TimeSpan.end, pv) }
-      txt <- sprintf('<Placemark><name>%s</name><styleUrl>#poly%s</styleUrl><description><TimeSpan><begin>%s</begin><end>%s</end></TimeSpan><![CDATA[%s]]></description><Polygon><extrude>%.0f</extrude><tessellate>%.0f</tessellate><altitudeMode>%s</altitudeMode><outerBoundaryIs><LinearRing><coordinates>%s</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark>', poly_names, 1:pv, TimeSpan.begin, TimeSpan.end, html.table, rep(as.numeric(extrude), pv), rep(as.numeric(tessellate), pv), rep(altitudeMode, pv), paste(unlist(coords)))
+      if(length(TimeSpan.begin)==1){ TimeSpan.begin = rep(TimeSpan.begin, sum(unlist(pvn))) }
+      if(length(TimeSpan.end)==1){ TimeSpan.end = rep(TimeSpan.end, sum(unlist(pvn))) }
+        txt <- sprintf('<Placemark><name>%s</name><styleUrl>#poly%s</styleUrl><description><TimeSpan><begin>%s</begin><end>%s</end></TimeSpan><![CDATA[%s]]></description><Polygon><extrude>%.0f</extrude><tessellate>%.0f</tessellate><altitudeMode>%s</altitudeMode><outerBoundaryIs><LinearRing><coordinates>%s</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark>', unlist(poly_names.l), 1:sum(unlist(pvn)), TimeSpan.begin, TimeSpan.end, unlist(html.table.l), rep(as.numeric(extrude), sum(unlist(pvn))), rep(as.numeric(tessellate), sum(unlist(pvn))), rep(altitudeMode, sum(unlist(pvn))), paste(unlist(coords)))
       }
   }
       else{ 
-      txt <- sprintf('<Placemark><name>%s</name><styleUrl>#poly%s</styleUrl><description><![CDATA[%s]]></description><Polygon><extrude>%.0f</extrude><tessellate>%.0f</tessellate><altitudeMode>%s</altitudeMode><outerBoundaryIs><LinearRing><coordinates>%s</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark>', poly_names, 1:pv, html.table, rep(as.numeric(extrude), pv), rep(as.numeric(tessellate), pv), rep(altitudeMode, pv), paste(unlist(coords))) 
+        txt <- sprintf('<Placemark><name>%s</name><styleUrl>#poly%s</styleUrl><description><![CDATA[%s]]></description><Polygon><extrude>%.0f</extrude><tessellate>%.0f</tessellate><altitudeMode>%s</altitudeMode><outerBoundaryIs><LinearRing><coordinates>%s</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark>', unlist(poly_names.l), 1:paste(unlist(coords)), unlist(html.table.l), rep(as.numeric(extrude), sum(unlist(pvn))), rep(as.numeric(tessellate), sum(unlist(pvn))), rep(altitudeMode, sum(unlist(pvn))), paste(unlist(coords))) 
   }
   }
 
@@ -144,25 +169,27 @@ kml_layer.SpatialPolygons <- function(
       if(nzchar(TimeSpan.begin[1])&nzchar(TimeSpan.end[1])){
       if(identical(TimeSpan.begin, TimeSpan.end)){
       when = TimeSpan.begin
-      if(length(when)==1){ when = rep(when, pv) }
-      txt <- sprintf('<Placemark><name>%s</name><styleUrl>#poly%s</styleUrl><TimeStamp><when>%s</when></TimeStamp><Polygon><extrude>%.0f</extrude><tessellate>%.0f</tessellate><altitudeMode>%s</altitudeMode><outerBoundaryIs><LinearRing><coordinates>%s</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark>', poly_names, 1:pv, when, rep(as.numeric(extrude), pv), rep(as.numeric(tessellate), pv), rep(altitudeMode, pv), paste(unlist(coords)))  
+      if(length(when)==1){ when = rep(when, sum(unlist(pvn))) }
+      txt <- sprintf('<Placemark><name>%s</name><styleUrl>#poly%s</styleUrl><TimeStamp><when>%s</when></TimeStamp><Polygon><extrude>%.0f</extrude><tessellate>%.0f</tessellate><altitudeMode>%s</altitudeMode><outerBoundaryIs><LinearRing><coordinates>%s</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark>', unlist(poly_names.l), 1:sum(unlist(pvn)), when, rep(as.numeric(extrude), sum(unlist(pvn))), rep(as.numeric(tessellate), sum(unlist(pvn))), rep(altitudeMode, sum(unlist(pvn))), paste(unlist(coords)))  
      }
       else {
-      if(length(TimeSpan.begin)==1){ TimeSpan.begin = rep(TimeSpan.begin, pv) }
-      if(length(TimeSpan.end)==1){ TimeSpan.end = rep(TimeSpan.end, pv) }   
-      txt <- sprintf('<Placemark><name>%s</name><styleUrl>#poly%s</styleUrl><TimeSpan><begin>%s</begin><end>%s</end></TimeSpan><Polygon><extrude>%.0f</extrude><tessellate>%.0f</tessellate><altitudeMode>%s</altitudeMode><outerBoundaryIs><LinearRing><coordinates>%s</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark>', poly_names, 1:pv, TimeSpan.begin, TimeSpan.end, rep(as.numeric(extrude), pv), rep(as.numeric(tessellate), pv), rep(altitudeMode, pv), paste(unlist(coords)))     
+      if(length(TimeSpan.begin)==1){ TimeSpan.begin = rep(TimeSpan.begin, sum(unlist(pvn))) }
+      if(length(TimeSpan.end)==1){ TimeSpan.end = rep(TimeSpan.end, sum(unlist(pvn))) }   
+      txt <- sprintf('<Placemark><name>%s</name><styleUrl>#poly%s</styleUrl><TimeSpan><begin>%s</begin><end>%s</end></TimeSpan><Polygon><extrude>%.0f</extrude><tessellate>%.0f</tessellate><altitudeMode>%s</altitudeMode><outerBoundaryIs><LinearRing><coordinates>%s</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark>', unlist(poly_names.l), 1:sum(unlist(pvn)), TimeSpan.begin, TimeSpan.end, rep(as.numeric(extrude), sum(unlist(pvn))), rep(as.numeric(tessellate), sum(unlist(pvn))), rep(altitudeMode, sum(unlist(pvn))), paste(unlist(coords)))     
       }     
   }
       else{
-      txt <- sprintf('<Placemark><name>%s</name><styleUrl>#poly%s</styleUrl><Polygon><extrude>%.0f</extrude><tessellate>%.0f</tessellate><altitudeMode>%s</altitudeMode><outerBoundaryIs><LinearRing><coordinates>%s</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark>', poly_names, 1:pv, rep(as.numeric(extrude), pv), rep(as.numeric(tessellate), pv), rep(altitudeMode, pv), paste(unlist(coords)))
+      txt <- sprintf('<Placemark><name>%s</name><styleUrl>#poly%s</styleUrl><Polygon><extrude>%.0f</extrude><tessellate>%.0f</tessellate><altitudeMode>%s</altitudeMode><outerBoundaryIs><LinearRing><coordinates>%s</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark>', unlist(poly_names.l), 1:sum(unlist(pvn)), rep(as.numeric(extrude), sum(unlist(pvn))), rep(as.numeric(tessellate), sum(unlist(pvn))), rep(altitudeMode, sum(unlist(pvn))), paste(unlist(coords)))
             }
   }
 
   parseXMLAndAdd(txt, parent=pl1)
 
   # save results: 
-  assign("kml.out", kml.out, env=plotKML.fileIO)
+  assign("kml.out", kml.out, envir=plotKML.fileIO)
 
 }
 
 setMethod("kml_layer", "SpatialPolygons", kml_layer.SpatialPolygons)
+
+# end of script;

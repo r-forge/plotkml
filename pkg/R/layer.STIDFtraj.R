@@ -23,7 +23,7 @@ kml_layer.STIDFtraj <- function(
   require(xts)
   require(grDevices)
   # Get our invisible file connection from custom environment
-  kml.out <- get('kml.out', env=plotKML.fileIO)
+  kml.out <- get('kml.out', envir=plotKML.fileIO)
   
   # Checking the projection is geo
   prj.check <- check_projection(obj@sp, control = TRUE)
@@ -162,7 +162,7 @@ kml_layer.STIDFtraj <- function(
   parseXMLAndAdd(txtl, parent=pl1)
    
   # save results: 
-  assign('kml.out', kml.out, env=plotKML.fileIO)
+  assign('kml.out', kml.out, envir=plotKML.fileIO)
 }
 
 setMethod("kml_layer", "STIDFtraj", kml_layer.STIDFtraj)

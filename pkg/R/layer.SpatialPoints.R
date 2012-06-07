@@ -1,6 +1,6 @@
 # Purpose        : Parsing SpatialPoints layer to KML
 # Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
-# Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Tomislav Hengl (tom.hengl@wur.nl);
+# Contributions  : Tomislav Hengl (tom.hengl@wur.nl); Dylan Beaudette (debeaudette@ucdavis.edu); 
 # Status         : Pre-alpha
 # Note           : This file gathers the layer() methods. kml.compress(), kml.open() and kml.close();
 
@@ -19,7 +19,7 @@ kml_layer.SpatialPoints <- function(
   ){
   
   # invisible file connection
-  kml.out <- get('kml.out', env=plotKML.fileIO)
+  kml.out <- get('kml.out', envir=plotKML.fileIO)
   
   # Checking the projection
   prj.check <- check_projection(obj, control = TRUE)
@@ -105,7 +105,7 @@ kml_layer.SpatialPoints <- function(
   parseXMLAndAdd(txtc, parent=pl1)
 
   # save results: 
-  assign('kml.out', kml.out, env=plotKML.fileIO)
+  assign('kml.out', kml.out, envir=plotKML.fileIO)
 
 }
 

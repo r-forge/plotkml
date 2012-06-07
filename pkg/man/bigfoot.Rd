@@ -3,8 +3,7 @@
 \alias{bigfoot}
 \alias{USAWgrids}
 \title{Bigfoot reports (USA)}
-\description{2984 observations of bigfoot (with attached dates). The data has been obtained from the \href{http://www.bfro.net/news/google_earth.asp}{BigFoot Research Organization (BFRO) website}. The BFRO reports generally consist of a description of the event and where it occurred, plus the quality classification. For more info about species distribution modelling methods using the BFRO reports see \href{http://dx.doi.org/10.1111/j.1365-2699.2009.02152.x}{Lozier et al. (2009)}.\cr
-The environmental predictors in the \code{USAWgrids} data set represent typical gridded maps used in species distribution modelling projects.
+\description{2984 observations of bigfoot (with attached dates). The field occurrence records have been obtained from the \href{http://www.bfro.net/news/google_earth.asp}{BigFoot Research Organization (BFRO) website}. The BFRO reports generally consist of a description of the event and where it occurred, plus the quality classification. Similar data set has been used by \href{http://dx.doi.org/10.1111/j.1365-2699.2009.02152.x}{Lozier et al. (2009)} to demonstrate possible miss-interpretations of the results of species distribution modeling. The maps in the \code{USAWgrids} data set represent typical gridded environmental covariates used for species distribution modeling.
 }
 \format{
 The \code{bigfoot} data frame contains the following columns:
@@ -13,7 +12,7 @@ The \code{bigfoot} data frame contains the following columns:
 	\item{\code{Lat}}{a numeric vector; y-coordinate / latitude in the WGS84 system}
 	\item{\code{NAME}}{name assigned by the observer (usually referent month / year)}
 	\item{\code{DATE}}{'POSIXct' class vector}
-	\item{\code{TYPE}}{confidence levels; according to the BFRO website: \emph{\code{"Class A"} reports involve clear sightings in circumstances where misinterpretation or misidentification of other animals can be ruled out with greater confidence; \code{"Class B"} and \code{"Class C"} reports are less credible}.}
+	\item{\code{TYPE}}{confidence levels; according to the BFRO website: \emph{"Class A" reports involve clear sightings in circumstances where misinterpretation or misidentification of other animals can be ruled out with greater confidence; "Class B" and "Class C" reports are less credible}.}
   }
 The \code{USAWgrids} data frame (46,018 pixels; Washington, Oregon, Nevada and California state) contains the following columns:
   \describe{
@@ -55,7 +54,6 @@ proj4string(USAWgrids) <- CRS(aea.prj)
 data(SAGA_pal)
 pnts <- list("sp.points", bigfoot.aea, pch="+", col="yellow")
 spplot(USAWgrids[2], col.regions=rev(SAGA_pal[[3]]), sp.layout=pnts)
-# Next: run species distribution modelling:
 }
 }
 \keyword{datasets}

@@ -1,6 +1,7 @@
 \name{plotKML-package}
 \alias{plotKML-package}
 \docType{package}
+\encoding{latin1}
 \title{Visualization of spatial and spatio-temporal objects in Google Earth}
 \description{A suite of functions for converting 2D and 3D spatio-temporal (sp, raster and spacetime package classes) objects into KML or KMZ documents for use in Google Earth.}
 \details{
@@ -13,7 +14,7 @@ LazyLoad: \tab yes\cr
 }
 }
 \author{
-Tomislav Hengl (\email{tom.hengl@wur.nl}), Pierre Roudier (\email{pierre.roudier@landcare.nz}), Dylan Beaudette (\email{debeaudette@ucdavis.edu})
+Tomislav Hengl (\email{tom.hengl@wur.nl}), Pierre Roudier (\email{pierre.roudier@landcare.nz}), Dylan Beaudette (\email{debeaudette@ucdavis.edu}), Daniel \enc{Nuest}{Nüst} (\email{d.nuest@52north.org})
 }
 \references{
 \itemize{

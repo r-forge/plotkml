@@ -17,7 +17,7 @@ kml_screen <- function(
   ){
 
   # get our invisible file connection from custom evnrionment
-  kml.out <- get("kml.out", env=plotKML.fileIO)
+  kml.out <- get("kml.out", envir=plotKML.fileIO)
   
   # if nothing is specified estimate position of the overlay based on "position":
   if(position=="UL"&missing(screenXY)&missing(overlayXY)){ overlayXY = 'x="0" y="1"'; screenXY = 'x="0" y="1"' }
@@ -46,6 +46,6 @@ kml_screen <- function(
   parseXMLAndAdd(screen_txt, parent=kml.out[["Document"]])
   
   # save to a connection: 
-  assign('kml.out', kml.out, env=plotKML.fileIO)
+  assign('kml.out', kml.out, envir=plotKML.fileIO)
   
 }

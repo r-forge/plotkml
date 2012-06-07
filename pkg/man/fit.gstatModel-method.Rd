@@ -2,7 +2,7 @@
 \docType{methods}
 \alias{fit.gstatModel-method}
 \alias{fit.gstatModel}
-\alias{fit.gstatModel,SpatialPointsDataFrame,formula,SpatialPixelsDataFrame-method}
+\alias{fit.gstatModel,SpatialPointsDataFrame-method}
 \title{Methods to fit a regression-kriging model}
 \description{Tries to automatically fit a regression-kriging model for a given set of points and covariates (object of type \code{"SpatialPixelsDataFrame"}; 2-dimensional objects only applicable). It runs GLM following the \code{formulaString} model and then fits variogram for residuals usign the \code{fit.variogram} method from the package gstat. Creates an output object of class \code{\link{gstatModel-class}}.}
 \usage{
@@ -14,7 +14,7 @@ fit.gstatModel(observations, formulaString, covariates, \dots )
   \item{covariates}{object of type \code{"SpatialPixelsDataFrame"}}
   \item{\dots}{other optional arguments that can be passed to \code{glm} and/or \code{fit.variogram}}
 }
-\details{Optional arguments are \code{vgmFun} --- variogram model type passed from gstat; \code{family} --- character string defyning the GLM family (for more info see \code{stats::glm}); \code{stepwise} --- specifies wether to run step-wise regression on top of GLM to get an optimal subset of predictors. The method by default assumes that the target variable follows a normal distribution \code{family = gaussian}. Other possible distributions are:
+\details{Optional arguments are \code{vgmFun} --- variogram model type passed from gstat; \code{family} --- character string defyning the GLM family (for more info see \code{stats::glm}); \code{stepwise} --- specifies wether to run step-wise regression on top of GLM to get an optimal subset of predictors. The method by default assumes that the target variable follows a normal distribution \code{family = gaussian}. Possible distributions are:
 \describe{
  \item{normal distribution}{\code{family = gaussian} (default setting)}
  \item{log-normal distribution}{\code{family = gaussian(log)}}
@@ -39,7 +39,7 @@ coordinates(meuse.grid) <- ~x+y
 gridded(meuse.grid) <- TRUE
 # fit a model:
 omm <- fit.gstatModel(observations = meuse, om~dist, covariates = meuse.grid,
-family = gaussian(log))
+  family = gaussian(log))
 show(omm@regModel)
 om.sp <- SpatialPointsDataFrame(omm@sp, data = omm@regModel$model)
 \dontrun{# plot a variogram:

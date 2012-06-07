@@ -24,7 +24,7 @@ kml_layer.RasterBrick <- function(
   }
   
   # Get our invisible file connection from custom environment
-  kml.out <- get("kml.out", env=plotKML.fileIO)
+  kml.out <- get("kml.out", envir=plotKML.fileIO)
   
   # Checking the projection is geo
   prj.check <- check_projection(obj, control = TRUE)
@@ -92,7 +92,7 @@ kml_layer.RasterBrick <- function(
 
   # Plotting the image
   for(j in 1:length(raster_name)){
-  png(file = raster_name[j], bg = "transparent")
+  png(filename = raster_name[j], bg = "transparent")
   par(mar = c(0, 0, 0, 0), xaxs = "i", yaxs = "i")
   image(raster(obj, j), col = colour_scale, zlim = z.lim, frame.plot = FALSE)
   dev.off()
@@ -126,7 +126,7 @@ kml_layer.RasterBrick <- function(
   }
   
   # save results: 
-  assign("kml.out", kml.out, env=plotKML.fileIO)
+  assign("kml.out", kml.out, envir=plotKML.fileIO)
   
 }
 
