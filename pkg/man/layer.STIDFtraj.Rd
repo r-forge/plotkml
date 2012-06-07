@@ -47,15 +47,15 @@ gpxbtour$ctime <- as.POSIXct(gpxbtour$time, format="\%Y-\%m-\%dT\%H:\%M:\%SZ")
 coordinates(gpxbtour) <- ~lon+lat
 proj4string(gpxbtour) <- CRS("+proj=longlat +datum=WGS84")
 \dontrun{# derive distance from origin:
-require(fossil)
+library(fossil)
 xy <- as.list(data.frame(t(coordinates(gpxbtour))))
 gpxbtour$dist.km <- sapply(xy, function(x) 
 deg.dist(long1=x[1], lat1=x[2], long2=xy[[1]][1], lat2=xy[[1]][2]))
 plot(gpxbtour$dist.km, gpxbtour$speed, type="l", 
 xlab="Distance from origin in km", ylab="speed in km per hour")
 # convert to a STIDFtraj class:
-require(spacetime)
-require(adehabitat)
+library(spacetime)
+library(adehabitat)
 gpx.ltraj <- as.ltraj(coordinates(gpxbtour), gpxbtour$ctime, id = "th")
 gpx.st <- as(gpx.ltraj, "STIDFtraj")
 gpx.st$speed <- gpxbtour$speed

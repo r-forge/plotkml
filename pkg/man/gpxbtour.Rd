@@ -26,12 +26,12 @@ gpxbtour$ctime <- as.POSIXct(gpxbtour$time, format="\%Y-\%m-\%dT\%H:\%M:\%SZ")
 coordinates(gpxbtour) <- ~lon+lat
 proj4string(gpxbtour) <- CRS("+proj=longlat +datum=WGS84")
 \dontrun{# convert to a STIDFtraj class:
-require(spacetime)
-require(adehabitat)
+library(spacetime)
+library(adehabitat)
 gpx.ltraj <- as.ltraj(coordinates(gpxbtour), gpxbtour$ctime, id = "th")
 gpx.st <- as(gpx.ltraj, "STIDFtraj")
 # Google maps plot:
-require(RgoogleMaps)
+library(RgoogleMaps)
 llc <- c(mean(gpx.st@sp@bbox[2,]), mean(gpx.st@sp@bbox[1,]))
 MyMap <- GetMap.bbox(center=llc, zoom=8, destfile="map.png")
 PlotOnStaticMap(MyMap, lat=gpx.st@sp@coords[,2], lon=gpx.st@sp@coords[,1], 

@@ -3,9 +3,10 @@
 \encoding{latin1}
 \alias{eberg}
 \alias{eberg_grid}
+\alias{eberg_grid25}
 \alias{eberg_zones}
 \alias{eberg_contours}
-\title{Ebergotzen --- Digital Soil Mapping case study}
+\title{Ebergotzen --- soil mapping case study}
 \description{\enc{Ebergötzen}{Ebergoetzen} is 10 by 10 km study area in the vicinity of the city of \enc{Göttingen}{Goettingen} in Central Germany. This area has been extensively surveyed over the years, mainly for the purposes of developing operational digital soil mapping techniques (Gehrt and \enc{Böhner}{Boehner}, 2001), and has been used by the SAGA GIS development team to demonstrate various processing steps. \cr
 \code{eberg} table contains 3670 observations (augers) of soil textures at five depths (0-10, 10-30, 30-50, 50-70, and 70-90), and field records of soil types according to the German soil classification system. \code{eberg_grid} contains gridded maps at 100 m resolution that can be used as covariates for spatial prediction of soil variables. \code{eberg_grid25} contains grids at finer resolution (25 m). \code{eberg_zones} is a polygon map showing the distribution of parent material (Silt and sand, Sandy material, Clayey derivats, Clay and loess). \code{eberg_contours} shows contour lines derived from the 25 m DEM of the area using 10 m equidistance.}
 \usage{data(eberg)}
@@ -13,8 +14,8 @@
 The \code{eberg} data frame (irregular points) contains the following columns:
   \describe{
 	\item{\code{ID}}{universal identifier}
-	\item{\code{soiltype}}{a vector containing factors; abbreviated soil class names according to the German soil classification system (13 classes in this data set)}
-	\item{\code{TAXGRSC}}{a vector containing factors; soil classes according to the German soil classification system: "Auenboden" (A), "Braunerde" (B), "Pelosol" (D), "Gley" (G), "Moor" (Ha), "HMoor" (Hw), "Kolluvisol" (K), "Parabraunerde" (L), "Ranker" (N), "Regosol" (Q), "Pseudogley" (S), "Pararendzina" (Z)}
+	\item{\code{soiltype}}{a vector containing factors; abbreviated soil class names according to the German soil classification system (see "TAXGRSC" column)}
+	\item{\code{TAXGRSC}}{a vector containing factors; soil classes according to the German soil classification system: "Auenboden" (A), "Braunerde" (B), "Pelosol" (D), "Gley" (G), "Moor" (Ha), "HMoor" (Hw), "Kolluvisol" (K), "Parabraunerde" (L), "Ranker" (N), "Regosol" (Q), "Rendzina" (R), "Pseudogley" (S), "Pararendzina" (Z)}
 	\item{\code{X}}{a numeric vector; x-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) }
 	\item{\code{Y}}{a numeric vector; y-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) }
 	\item{\code{UHDICM_*}}{a numeric vector; upper horizon depth in cm per horizon}
@@ -36,7 +37,7 @@ The \code{eberg_grid} data frame (regular grid at 100 m resolution) contains the
 The \code{eberg_grid25} data frame (regular grid at 25 m resolution) contains the following columns:
   \describe{
   \item{\code{DEMTOPx}}{a numeric vector; elevation values from the topographic map}
-  \item{\code{HBTSOLx}}{a vector containing factors; main soil type according to the German soil classification system (see above) determined per crop field} 
+  \item{\code{HBTSOLx}}{a vector containing factors; main soil type according to the German soil classification system (see column "soiltype" above) estimated per crop field} 
   \item{\code{TWITOPx}}{a numeric vector; Topographic Wetness Index derived using the SAGA algorithm }
   \item{\code{NVILANx}}{a numeric vector; NDVI image derived using the Landsat image from the \href{http://image2000.jrc.ec.europa.eu/}{Image 2000 project}}
 	\item{\code{x}}{a numeric vector; x-coordinate (m) in DHDN / Gauss-Krueger zone 3 (German coordinate system) }

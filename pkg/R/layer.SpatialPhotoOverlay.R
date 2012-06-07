@@ -34,7 +34,7 @@ kml_layer.SpatialPhotoOverlay <- function(
 
   require(RSAGA)
   # get our invisible file connection from custom evnrionment
-  kml.out <- get("kml.out", env=plotKML.fileIO)
+  kml.out <- get("kml.out", envir=plotKML.fileIO)
   
   # check the projection:
   prj.check <- check_projection(obj@sp, control = TRUE) 
@@ -136,7 +136,7 @@ kml_layer.SpatialPhotoOverlay <- function(
   }
 
   # save results: 
-  assign("kml.out", kml.out, env=plotKML.fileIO)
+  assign("kml.out", kml.out, envir=plotKML.fileIO)
 }
     
 setMethod("kml_layer", "SpatialPhotoOverlay", kml_layer.SpatialPhotoOverlay)

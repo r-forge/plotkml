@@ -16,7 +16,7 @@ kml_layer.SpatialLines <- function(
   ){
   
   # invisible file connection
-  kml.out <- get("kml.out", env=plotKML.fileIO)
+  kml.out <- get("kml.out", envir=plotKML.fileIO)
   
   # Checking the projection is geo
   prj.check <- check_projection(obj, control = TRUE)
@@ -110,7 +110,7 @@ kml_layer.SpatialLines <- function(
   parseXMLAndAdd(txt, parent=pl1)
 
   # save results: 
-  assign('kml.out', kml.out, env=plotKML.fileIO)
+  assign('kml.out', kml.out, envir=plotKML.fileIO)
 
 }
 

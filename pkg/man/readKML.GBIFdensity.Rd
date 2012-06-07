@@ -30,10 +30,10 @@ class(r)
 summary(r)
 image(r)
 # add world borders:
-require(maps)
+library(maps)
 country.m = map('world', plot=FALSE, fill=TRUE)
 IDs <- sapply(strsplit(country.m$names, ":"), function(x) x[1])
-require(maptools)
+library(maptools)
 country <- as(map2SpatialPolygons(country.m, IDs=IDs), "SpatialLines")
 lines(country)
 # to import a list of files, use e.g.:

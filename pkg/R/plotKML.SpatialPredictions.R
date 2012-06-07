@@ -43,13 +43,13 @@ plotKML.SpatialPredictions <- function(
     pol <- grid2poly(pred)
   }
 
-  kml_open(folder.name = folder.name, file.name = file.name, ...)
+  kml_open(folder.name = folder.name, file.name = file.name)
   
   # add a description for the whole folder:
-  kml.out <- get("kml.out", env=plotKML.fileIO)
+  kml.out <- get("kml.out", envir=plotKML.fileIO)
   description_txt <- sprintf('<description><![CDATA[%s]]></description>', html)
   parseXMLAndAdd(description_txt, parent=kml.out[["Document"]])  
-  assign('kml.out', kml.out, env=plotKML.fileIO)
+  assign('kml.out', kml.out, envir=plotKML.fileIO)
   
   if(grid2poly == TRUE){ 
     kml_layer(obj = pol, colour = predicted, ...)
@@ -65,7 +65,7 @@ plotKML.SpatialPredictions <- function(
   kml_layer(obj = locs, points_names = labs)  
 
   # plot the correlation graph and variogram:
-  png(file=paste(varname, "_gstatplots.png", sep=""), width=pngwidth, height=pngheight, bg="white", pointsize=pngpointsize)
+  png(filename=paste(varname, "_gstatplots.png", sep=""), width=pngwidth, height=pngheight, bg="white", pointsize=pngpointsize)
   par(mfrow=c(3,1))
   par(mar=c(4.5,4.5,.8,.8))
   plot(y=obj@validation$var1.pred, x=obj@validation$observed, pch=19, asp=1, col = "red", xlab='observed', col.main = rgb(0.99,0.99,0.99), ylab='predicted')
@@ -92,17 +92,7 @@ plotKML.SpatialPredictions <- function(
       kml_compress(file.name = file.name)
   }
   # open KML file in the default browser:
-  if(.Platform$OS.type == "windows") {
-      system(paste("open ", shortPathName(normalizePath(paste(getwd(), "/", file.name, sep=""))), sep=""))
-  } 
-  else {
-      if(.Platform$pkgType == "mac.binary.leopard"){
-        system(paste("open ", normalizePath(paste(getwd(), "/", file.name, sep="")), sep=""))
-        }
-      else{
-        system(paste("gnome-open ", normalizePath(paste(getwd(), "/", file.name, sep="")), sep=""))
-      }
-  }
+  kml_View(file.name)
 }
 
 setMethod("plotKML", "SpatialPredictions", plotKML.SpatialPredictions)

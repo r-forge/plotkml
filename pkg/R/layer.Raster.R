@@ -8,13 +8,13 @@ kml_layer.Raster <- function(
   obj,  
   plot.legend = TRUE,
   metadata = NULL,
-  raster_name,  
+  raster_name, 
   ...
   ){
 
   require(RSAGA)
   # get our invisible file connection from custom evnrionment
-  kml.out <- get("kml.out", env=plotKML.fileIO)
+  kml.out <- get("kml.out", envir=plotKML.fileIO)
 
   # Checking the projection 
   prj.check <- check_projection(obj, control = TRUE)
@@ -95,7 +95,7 @@ kml_layer.Raster <- function(
   }
 
   # Plotting the image
-  png(file = raster_name, bg = "transparent")
+  png(filename = raster_name, bg = "transparent")
   par(mar = c(0, 0, 0, 0), xaxs = "i", yaxs = "i")
   image(obj, col = colour_scale, frame.plot = FALSE)
   dev.off()
@@ -160,7 +160,7 @@ kml_layer.Raster <- function(
   }
   
   # save results: 
-  assign("kml.out", kml.out, env=plotKML.fileIO)
+  assign("kml.out", kml.out, envir=plotKML.fileIO)
   
 }
 

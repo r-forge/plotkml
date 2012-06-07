@@ -20,6 +20,4 @@
 \author{ Tomislav Hengl }
 \seealso{ \code{\link{RasterBrickSimulations-class}}, \code{\link{plotKML-methods}}
 }
-\examples{ 
-}
 \keyword{classes}

@@ -22,6 +22,7 @@ kml_layer.SpatialPolygons(obj, extrude = TRUE, tessellate = FALSE,
   \item{html.table}{optional description block (html) for each GPS point (vertices)}
   \item{TimeSpan.begin}{(optional) beginning of the referent time period}
   \item{TimeSpan.end}{(optional) end of the referent time period}
+  \item{colorMode}{(optional) KML color mode (normal or random)}
   \item{\dots}{additional style arguments (see \code{aesthetics})}
 }
 \details{Label points are be default not plotted. We recommend adding the legend to attribute maps instead. Transparency can be set by using the alpha argument.\cr 

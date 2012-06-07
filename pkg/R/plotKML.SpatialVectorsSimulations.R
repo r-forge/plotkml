@@ -58,10 +58,10 @@ plotKML.SpatialVectorsSimulations <- function(
   kml_open(folder.name = folder.name, file.name = file.name)
   
   # add a description for the whole folder:
-  kml.out <- get("kml.out", env=plotKML.fileIO)
+  kml.out <- get("kml.out", envir=plotKML.fileIO)
   description_txt <- sprintf('<description><![CDATA[%s]]></description>', html)
   parseXMLAndAdd(description_txt, parent=kml.out[["Document"]])  
-  assign('kml.out', kml.out, env=plotKML.fileIO)
+  assign('kml.out', kml.out, envir=plotKML.fileIO)
   
   if(grid2poly == TRUE){  
     kml_layer(obj = pol, colour = observed, ...)
@@ -101,11 +101,5 @@ plotKML.SpatialVectorsSimulations <- function(
 }
 
 setMethod("plotKML", "SpatialVectorsSimulations", plotKML.SpatialVectorsSimulations)
-
-
-
-
-
-
 
 # end of script;

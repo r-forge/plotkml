@@ -50,7 +50,7 @@ spMetadata.Spatial <- function(
         
         if(validate.schema == TRUE){
         message("Connecting to the FGDC schema...")
-        try(xsd <- xmlTreeParse(get("fgdc_xsd", envir = plotKML.opts), isSchema =TRUE, useInternal = TRUE))
+        try(xsd <- xmlTreeParse(get("fgdc_xsd", envir = plotKML.opts), isSchema =TRUE, useInternalNodes = TRUE))
         # validate if the schema is OK:
         try(xsd.val <- xmlSchemaValidate(xsd, a))
         # print the results of validation:

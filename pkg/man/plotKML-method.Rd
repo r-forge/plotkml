@@ -8,6 +8,8 @@
 \alias{plotKML,RasterBrickSimulations-method}
 \alias{plotKML.SpatialVectorsSimulations}
 \alias{plotKML,SpatialVectorsSimulations-method}
+\alias{plotKML.SpatialMaxEntOutput}
+\alias{plotKML,SpatialMaxEntOutput-method}
 \title{Methods for plotting results of spatial analysis in Google Earth}
 \description{The method writes inputs and outputs of spatial analysis (a list of point, gridded and polygon data usually) to KML and opens the KML file in Google Earth (or any other default package used to view KML/KMZ files).}
 \usage{plotKML(obj, \dots )

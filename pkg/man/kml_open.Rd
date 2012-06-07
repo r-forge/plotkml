@@ -1,8 +1,9 @@
 \name{kml_open}
 \alias{kml_open}
 \alias{kml_close}
+\alias{kml_View}
 \title{Open / close a KML file connection}
-\description{Opens a KML file in write mode and initiates the KML header. The same file connection is further accessible by other \code{kml_*()} functions such as \code{kml_layer()} and \code{kml_close()}. This allows creation of customized multi-layered KML files.}
+\description{Opens a KML file in write mode and initiates the KML header. The same file connection is further accessible by other \code{kml_*()} functions such as \code{kml_layer()} and \code{kml_close()}. \code{kml_View} tries to open the produced file using the default application.}
 \usage{
 kml_open(file.name, folder.name = file.name, kml_open = TRUE,
           kml_visibility = TRUE, overwrite = TRUE, use.Google_gx = FALSE, 
@@ -22,20 +23,22 @@ kml_open(file.name, folder.name = file.name, kml_open = TRUE,
   \item{xmlns_gx}{URL of the extended standard}
   \item{\dots}{other arguments}
 }
-\author{Pierre Roudier and Dylan Beaudette}
-\details{See plotKML package homepage / vignette for more examples.}
+\author{Pierre Roudier, Tomislav Hengl and Dylan Beaudette}
+\details{These lower level functions can be used to create customized multi-layered KML files. See plotKML package homepage / manual for more examples.}
 \seealso{ \code{\link{kml-methods}} }
 \examples{
 data(eberg_grid)
 coordinates(eberg_grid) <- ~x+y
 gridded(eberg_grid) <- TRUE
 proj4string(eberg_grid) <- CRS("+init=epsg:31467")
-\dontrun{# Open, write layer and close KML file:
+\dontrun{# Open, write layer and view KML file:
 kml_open("eberg_grid_DEM.kml")
 kml_layer(eberg_grid, colour=DEMSRT6)
 kml_close("eberg_grid_DEM.kml")
 # print the result:
 xmlRoot(xmlTreeParse("eberg_grid_DEM.kml"))[["Document"]]
+# open in Google Earth:
+kml_View("eberg_grid_DEM.kml")
 }
 }
 \keyword{spatial}

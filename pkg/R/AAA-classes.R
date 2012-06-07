@@ -133,17 +133,15 @@ setClass("RasterBrickTimeSeries", representation(sampled = "SpatialPointsDataFra
 })
 
 ### A new class for SpeciesDistributionMap:
-#setClass("SpeciesDistributionMap", representation(occurences = "ppp", model = "MaxEnt", sp.domain = "SpatialPolygons", rasters = "Raster"), validity = function(object) {
-#    if(length(object@occurences) <5)
-#      warning("Occurences critically small (<5) for reliable validation")  
-    
-#    xy <- as.ppp.SpatialPoints(object@occurences)
-#    object.ov <- extract(x=object@rasters, y=xy)
-#    if(length(object.ov)==0)
-#      return("'Occurences' and 'rasters' do not overlap spatially")
-#    if(is.na(object@rasters@crs@projargs))
-#      return("Proj4 string must be specified")  
-#})
+setClass("SpatialMaxEntOutput", representation(sciname = "character", occurrences = "SpatialPoints", TimeSpan.begin = "POSIXct", TimeSpan.end = "POSIXct", maxent = "MaxEnt", sp.domain = "SpatialPolygonsDataFrame", predicted = "RasterLayer"), validity = function(object) {
+    if(length(object@occurrences) <5)
+      warning("Occurences critically small (<5) for reliable validation")  
+    object.ov <- extract(x=object@predicted, y=object@occurrences)
+    if(length(object.ov)==0)
+      return("'Occurences' and 'rasters' do not overlap spatially")
+    if(is.na(object@predicted@crs@projargs))
+      return("Proj4 string must be specified")  
+})
 
 
 

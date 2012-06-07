@@ -37,7 +37,7 @@ kml_legend.bar <- function(
     if(missing(height)) { height <- length(factor.labels)*40 } # 20 pix per class
     }
  
-    png(file=legend.file, width=width, height=height, bg="transparent", pointsize=pointsize)
+    png(filename=legend.file, width=width, height=height, bg="transparent", pointsize=pointsize)
     # c(bottom, left, top, right)
     par(mar=c(.5,0,.5,1))
     plot(x=rep(1, col.no), y=1:col.no, axes=FALSE, xlab='', ylab='', pch=15, cex=4, col=legend.pal, xlim=c(0,.6*width), asp=.6)
@@ -59,7 +59,7 @@ kml_legend.bar <- function(
   
   if(missing(width)) { width <- 120 } 
   if(missing(height)) { height <- 240 } 
-  png(file=legend.file, width=120, height=240, bg="transparent", pointsize=pointsize)
+  png(filename=legend.file, width=120, height=240, bg="transparent", pointsize=pointsize)
   par(mar=c(.5,0,.5,4))
   plot(x=0:5, y=0:5, asp=3, type="n", axes=FALSE, xlab='', ylab='')
   # get the 2-4 significant digits

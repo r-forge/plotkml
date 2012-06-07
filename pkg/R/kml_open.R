@@ -1,6 +1,6 @@
 # Purpose        : Open and close KML file;
 # Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
-# Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Tomislav Hengl (tom.hengl@wur.nl); 
+# Contributions  : Tomislav Hengl (tom.hengl@wur.nl); Dylan Beaudette (debeaudette@ucdavis.edu);  
 # Status         : tested
 # Note           : See [http://code.google.com/apis/kml/documentation/kmlreference.html] for more info.
 
@@ -37,7 +37,7 @@ kml_open <- function(
   h5 <- newXMLNode("open", as.numeric(kml_open), parent = h2)
   
   # init connection to an XML object: 
-  assign("kml.out", kml.out, env=plotKML.fileIO)
+  assign("kml.out", kml.out, envir=plotKML.fileIO)
   message("KML file header opened for parsing...")
   
 }
@@ -47,10 +47,34 @@ kml_close <- function(file.name, overwrite = FALSE, ...){
   
   require(RSAGA) 
   # get our invisible file connection from custom evnrionment
-  kml.out <- get("kml.out", env=plotKML.fileIO)
+  kml.out <- get("kml.out", envir=plotKML.fileIO)
   saveXML(kml.out, file.name)
   message(paste("Closing", set.file.extension(file.name, ".kml")))
   
+}
+
+## Open the KML file using the default OS application:
+kml_View <- function(file.name){
+  if(.Platform$OS.type == "windows") {
+      require(raster)
+      ext <- extension(file.name)
+      if(!inherits(try({ x <- utils::readRegistry(ext, hive="HCR") }, silent = TRUE), "try-error")){
+        if(nzchar(x[which(names(x) %in% 'Content Type')][[1]])){
+          system(paste("open ", shortPathName(normalizePath(paste(getwd(), "/", file.name, sep=""))), sep=""))
+        }
+      }
+      else{
+        warning(paste("No MIME type detected for", ext, "file extension."))
+      }
+  } 
+  else {
+      if(.Platform$pkgType == "mac.binary.leopard"){
+        system(paste("open ", normalizePath(paste(getwd(), "/", file.name, sep="")), sep=""))
+        }
+      else{
+        system(paste("gnome-open ", normalizePath(paste(getwd(), "/", file.name, sep="")), sep=""))
+      }
+  }
 }
 
 # end of script;
