@@ -37,6 +37,7 @@ In the case of raster and/or gridded maps, by selecting \code{program = "FWTools
 \seealso{\code{\link{paths}}, \code{raster::projectRaster}, \code{rgdal::spTransform}, \code{rgdal::CRS-class}}
 \examples{
 # example with vector data
+library(rgdal)
 data(eberg)
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")

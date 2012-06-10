@@ -40,9 +40,10 @@ kml_layer.SpatialPoints <- function(
   balloon <- aes[["balloon"]]
 
   # Parse ATTRIBUTE TABLE (for each placemark):
-  if ((is.logical(balloon) | class(balloon) %in% c('character','numeric')) & ("data" %in% slotNames(obj))){
-     html.table <- .df2htmltable(obj@data) 
-  }
+  if(is.null(html.table)){
+    if((is.logical(balloon) | class(balloon) %in% c('character','numeric')) & ("data" %in% slotNames(obj))){
+      html.table <- .df2htmltable(obj@data) 
+    }}
 
   # Folder and name of the points folder
   pl1 = newXMLNode("Folder", parent=kml.out[["Document"]])

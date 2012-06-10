@@ -10,6 +10,10 @@
 \alias{plotKML,SpatialVectorsSimulations-method}
 \alias{plotKML.SpatialMaxEntOutput}
 \alias{plotKML,SpatialMaxEntOutput-method}
+\alias{plotKML.RasterBrickTimeSeries}
+\alias{plotKML,RasterBrickTimeSeries-method}
+\alias{plotKML.SpatialSamplingPattern}
+\alias{plotKML,SpatialSamplingPattern-method}
 \title{Methods for plotting results of spatial analysis in Google Earth}
 \description{The method writes inputs and outputs of spatial analysis (a list of point, gridded and polygon data usually) to KML and opens the KML file in Google Earth (or any other default package used to view KML/KMZ files).}
 \usage{plotKML(obj, \dots )
@@ -22,7 +26,7 @@
 }
 \note{ Writting large spatial objects via plotKML can be time consuming. Please refer to the package documentation for more information.
 }
-\seealso{ \code{\link{SpatialPredictions-class}}, \code{\link{SpatialVectorsSimulations-class}}, \code{\link{RasterBrickSimulations-class}}, \code{\link{RasterBrickTimeSeries-class}}   
+\seealso{ \code{\link{SpatialPredictions-class}}, \code{\link{SpatialVectorsSimulations-class}}, \code{\link{RasterBrickSimulations-class}}, \code{\link{RasterBrickTimeSeries-class}}, \code{\link{SpatialSamplingPattern-class}}   
 }
 \keyword{spatial}
 \keyword{methods}

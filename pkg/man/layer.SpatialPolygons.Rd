@@ -7,8 +7,8 @@
 kml_layer.SpatialPolygons(obj, extrude = TRUE, tessellate = FALSE, 
         outline = TRUE, plot.labpt = FALSE, z.scale = 1, 
         LabelScale = get("LabelScale", envir = plotKML.opts), 
-        metadata =  NULL, html.table = NULL, 
-        TimeSpan.begin = "",  TimeSpan.end = "", \dots)
+        metadata =  NULL, html.table = NULL, TimeSpan.begin = "", 
+        TimeSpan.end = "", colorMode = "normal", \dots)
 }
 \arguments{
   \item{obj}{object of class \code{"SpatialPolygons*"}}
@@ -37,9 +37,9 @@ Use the same time values for both \code{TimeSpan.begin} and \code{TimeSpan.end} 
 data(eberg_zones)
 names(eberg_zones)
 \dontrun{# visualize zones using random colors:
-kml(eberg_zones)
+kml(eberg_zones, colorMode = "random")
 # with labels:
-kml(eberg_zones, plot.labpt = TRUE, labels = ZONES, kmz = TRUE)
+kml(eberg_zones, colour = ZONES, plot.labpt = TRUE, labels = ZONES, kmz = TRUE)
 }
 }
 \keyword{spatial}

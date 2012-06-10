@@ -52,14 +52,14 @@ plotKML.SpatialPredictions <- function(
   assign('kml.out', kml.out, envir=plotKML.fileIO)
   
   if(grid2poly == TRUE){ 
-    kml_layer(obj = pol, colour = predicted, ...)
+    kml_layer(obj = pol, colour = "predicted", ...)
   }
   else {
-    kml_layer(obj = pred, colour = predicted, raster_name = paste(varname, "_predicted.png", sep=""), ...)
+    kml_layer(obj = pred, colour = "predicted", raster_name = paste(varname, "_predicted.png", sep=""), ...)
   }
 
   if(plot.svar==TRUE){
-    kml_layer(obj = svar, colour = variance, colour_scale = colour_scale_svar, raster_name = paste(svarname, "_svar.png", sep=""), plot.legend = FALSE)  
+    kml_layer(obj = svar, colour = "variance", colour_scale = colour_scale_svar, raster_name = paste(svarname, "_svar.png", sep=""), plot.legend = FALSE)  
   }
   
   kml_layer(obj = locs, points_names = labs)  

@@ -32,7 +32,7 @@ data(LST)
 coordinates(LST) <- ~x+y
 gridded(LST) <- TRUE
 proj4string(LST) <- CRS("+proj=utm +zone=33 +datum=WGS84 +units=m")
-# get the dates from the file names:
+\dontrun{# get the dates from the file names:
 dates <- sapply(strsplit(names(LST), "LST"), function(x){x[[2]]})
 LST <- brick(LST)
 LST@title = "Time series of MODIS Land Surface Temperature images"
@@ -40,7 +40,7 @@ LST@zvalue <- format(as.Date(dates, "\%Y_\%m_\%d"), "\%Y-\%m-\%dT\%H:\%M:\%SZ")
 data(SAGA_pal)
 # time dimension defined via zvalue slot:
 LST@zvalue[c(1,12,24)]
-\dontrun{# subset to 3 images:
+# subset to 3 images:
 LSTs <- brick(raster(LST, 1), raster(LST, 12), raster(LST, 24))
 LST_ll <- reproject(LSTs, program="FWTools")
 # copy the dates:

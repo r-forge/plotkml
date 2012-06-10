@@ -14,7 +14,7 @@ LazyLoad: \tab yes\cr
 }
 }
 \author{
-Tomislav Hengl (\email{tom.hengl@wur.nl}), Pierre Roudier (\email{pierre.roudier@landcare.nz}), Dylan Beaudette (\email{debeaudette@ucdavis.edu}), Daniel \enc{Nuest}{Nüst} (\email{d.nuest@52north.org})
+Tomislav Hengl (\email{tom.hengl@wur.nl}), Pierre Roudier (\email{pierre.roudier@landcare.nz}), Dylan Beaudette (\email{debeaudette@ucdavis.edu}), Daniel \enc{Nüst}{Nuest} (\email{d.nuest@52north.org})
 }
 \references{
 \itemize{

@@ -54,7 +54,7 @@ kml_layer.RasterBrick <- function(
       DateTime <- obj@zvalue[1:ncol(obj@data@values)] 
    }
   
-  if(dtime==0) {  
+  if(all(dtime==0)) {  
     when <- as.POSIXct(DateTime)
   }
   else {
@@ -101,15 +101,15 @@ kml_layer.RasterBrick <- function(
 
   # Ground overlays:
   # =============
-  if(length(html.table)>0 & dtime==0){
+  if(length(html.table)>0 & all(dtime==0)){
     txtr <- sprintf('<GroundOverlay><name>%s</name><description><![CDATA[%s]]></description><TimeStamp><when>%s</when></TimeStamp><altitude>%.0f</altitude><altitudeMode>%s</altitudeMode><Icon><href>%s</href></Icon><LatLonBox><north>%.5f</north><south>%.5f</south><east>%.5f</east><west>%.5f</west></LatLonBox></GroundOverlay>', obj@layernames, html.table, when, rep(altitude, length(raster_name)), rep(altitudeMode, length(raster_name)), paste(raster_name), rep(bbox(extent(obj))[2, 2], length(raster_name)), rep(bbox(extent(obj))[2, 1], length(raster_name)), rep(bbox(extent(obj))[1, 2], length(raster_name)), rep(bbox(extent(obj))[1, 1], length(raster_name))) 
   }
   else {
-  if(length(html.table)>0 & !dtime==0){  # with attributes / block temporal support 
+  if(length(html.table)>0 & any(!dtime==0)){  # with attributes / block temporal support 
     txtr <- sprintf('<GroundOverlay><name>%s</name><description><![CDATA[%s]]></description><TimeSpan><begin>%s</begin><end>%s</end></TimeSpan><altitude>%.0f</altitude><altitudeMode>%s</altitudeMode><Icon><href>%s</href></Icon><LatLonBox><north>%.5f</north><south>%.5f</south><east>%.5f</east><west>%.5f</west></LatLonBox></GroundOverlay>', obj@layernames, html.table, TimeSpan.begin, TimeSpan.end, rep(altitude, length(raster_name)), rep(altitudeMode, length(raster_name)), paste(raster_name), rep(bbox(extent(obj))[2, 2], length(raster_name)), rep(bbox(extent(obj))[2, 1], length(raster_name)), rep(bbox(extent(obj))[1, 2], length(raster_name)), rep(bbox(extent(obj))[1, 1], length(raster_name)))
   }
   else {
-  if(is.null(html.table) & !dtime==0){   # no attributes / block temporal support 
+  if(is.null(html.table) & any(!dtime==0)){   # no attributes / block temporal support 
     txtr <- sprintf('<GroundOverlay><name>%s</name><TimeSpan><begin>%s</begin><end>%s</end></TimeSpan><altitude>%.0f</altitude><altitudeMode>%s</altitudeMode><Icon><href>%s</href></Icon><LatLonBox><north>%.5f</north><south>%.5f</south><east>%.5f</east><west>%.5f</west></LatLonBox></GroundOverlay>', obj@layernames, TimeSpan.begin, TimeSpan.end, rep(altitude, length(raster_name)), rep(altitudeMode, length(raster_name)), paste(raster_name), rep(bbox(extent(obj))[2, 2], length(raster_name)), rep(bbox(extent(obj))[2, 1], length(raster_name)), rep(bbox(extent(obj))[1, 2], length(raster_name)), rep(bbox(extent(obj))[1, 1], length(raster_name)))
   }
   else {  # no attributes / point temporal support 

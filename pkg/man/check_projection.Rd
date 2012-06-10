@@ -20,9 +20,10 @@ A cartographic projection is KML compatible if: (a) geographical coordinates are
 }
 }
 \author{Pierre Roudier, Tomislav Hengl, and Dylan Beaudette}
-\section{Warning}{\code{obj} needs to have a proper proj4 string (CRS), otherwise \code{check_projection} will not run. If the geodetic datum is defined via the \code{+towgs}, consider converting the coordinates manually i.e. by using the \code{sp::spTransform} or the \code{\link{reproject-methods}} method.}
+\section{Warning}{\code{obj} needs to have a proper proj4 string (CRS), otherwise \code{check_projection} will not run. If the geodetic datum is defined via the \code{+towgs}, consider converting the coordinates manually i.e. by using the \code{rgdal::spTransform} or the \code{\link{reproject-methods}} method.}
 \seealso{\code{\link{reproject-methods}}, \code{rgdal::CRS-class}}
 \examples{
+library(rgdal)
 data(eberg)
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")

@@ -39,7 +39,7 @@ LST@title = "Time series of MODIS Land Surface Temperature (8-day mosaics) image
 LST@zvalue <- format(as.Date(dates, "\%Y_\%m_\%d"), "\%Y-\%m-\%dT\%H:\%M:\%SZ")
 data(SAGA_pal)
 # plot MODIS images in Google Earth:
-LST_ll <- reproject(LST)
+LST_ll <- reproject(LST)  # reprojecting rasters takes few minutes;
 # copy the dates:
 LST_ll@zvalue <- LST@zvalue
 # KML plot with block temporal support of 8 days:
