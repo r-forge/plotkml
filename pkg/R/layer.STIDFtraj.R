@@ -1,7 +1,7 @@
 # Purpose        : Writing of Trajectory-type objects to KML
 # Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
 # Contributions  : Pierre Roudier (pierre.roudier@landcare.nz); Dylan Beaudette (debeaudette@ucdavis.edu); 
-# Status         : Pre-Alpha
+# Status         : Alpha
 # Note           : This method works only with the Space time irregular data frame class objects from the spacetime package; see also how Time Stamps work at [http://kml-samples.googlecode.com]
 
 kml_layer.STIDFtraj <- function(
@@ -48,7 +48,7 @@ kml_layer.STIDFtraj <- function(
   nc <- attr(obj@sp@coords, "dimname")[[2]]
    
   # Format the time slot for writing to KML:
-  if(dtime==0) {  
+  if(all(dtime==0)) {  
     when <- format(time(obj@time), "%Y-%m-%dT%H:%M:%SZ")
   }
   else {
@@ -137,15 +137,15 @@ kml_layer.STIDFtraj <- function(
   n1 <- nx - nt[i.line]
   # Parse point coordinates:
   ## TH: I do not know how to make the following code more compact.
-  if(length(html.table)>0 & dtime==0){  # with attributes / point temporal support  
+  if(length(html.table)>0 & all(dtime==0)){  # with attributes / point temporal support  
     txtl <- sprintf('<Placemark><styleUrl>#pnt_%s</styleUrl><description><![CDATA[%s]]></description><TimeStamp><when>%s</when></TimeStamp><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%.5f,%.5f,%.0f</coordinates></Point></Placemark>', (n1+1):nx, html.table[(n1+1):nx], when[(n1+1):nx], rep(as.integer(extrude), nt[i.line]), rep(altitudeMode, nt[i.line]), current.line.coords[[i.line]][,1], current.line.coords[[i.line]][,2], current.line.coords[[i.line]][,3])
   }
   else {
-  if(length(html.table)>0 & !dtime==0){  # with attributes / block temporal support 
+  if(length(html.table)>0 & any(!dtime==0)){  # with attributes / block temporal support 
     txtl <- sprintf('<Placemark><styleUrl>#pnt_%s</styleUrl><description><![CDATA[%s]]></description><TimeStamp><begin>%s</begin><end>%s</end></TimeStamp><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%.5f,%.5f,%.0f</coordinates></Point></Placemark>', (n1+1):nx, html.table[(n1+1):nx], TimeSpan.begin[(n1+1):nx], TimeSpan.end[(n1+1):nx], rep(as.integer(extrude), nt[i.line]), rep(altitudeMode, nt[i.line]), current.line.coords[[i.line]][,1], current.line.coords[[i.line]][,2], current.line.coords[[i.line]][,3])
   }
   else {
-  if(is.null(html.table) & !dtime==0){   # no attributes / block temporal support 
+  if(is.null(html.table) & any(!dtime==0)){   # no attributes / block temporal support 
     txtl <- sprintf('<Placemark><styleUrl>#pnt_%s</styleUrl><TimeStamp><begin>%s</begin><end>%s</end></TimeStamp><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%.5f,%.5f,%.0f</coordinates></Point></Placemark>', (n1+1):nx, TimeSpan.begin[(n1+1):nx], TimeSpan.end[(n1+1):nx], rep(as.integer(extrude), nt[i.line]), rep(altitudeMode, nt[i.line]), current.line.coords[[i.line]][,1], current.line.coords[[i.line]][,2], current.line.coords[[i.line]][,3])
   }
   else {  # no attributes / point temporal support 
@@ -166,3 +166,5 @@ kml_layer.STIDFtraj <- function(
 }
 
 setMethod("kml_layer", "STIDFtraj", kml_layer.STIDFtraj)
+
+# end of script;

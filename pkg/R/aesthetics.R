@@ -188,11 +188,13 @@ kml_aes <- function(obj, ...) {
       colour_scale <- .colour_scale_numeric
     }
     # If data is a factor
-    else
+    else {
       colour_scale <- .colour_scale_factor
+    }
   }
-  else
+  else {
     colour_scale <- eval(colour_scale)
+  }
 
   # creates pal function
   pal <- colorRamp(colour_scale, space = "rgb", interpolate = "linear")
@@ -205,17 +207,13 @@ kml_aes <- function(obj, ...) {
     cols[!(is.na(data)|is.nan(data))] <- rgb(pal(data[!(is.na(data)|is.nan(data))]) / 255)
   }
   
-  # there is a bug in here... factors don't seem to work as of r251
-  # does this function really need to rescale / pallete the data?
-  # why not use factor levels?
+  # factor variable:
   else {
     data <- as.factor(data)
-    values <- levels(data)
-    if (any(is.na(data)))
-    values <- c(values, NA)
-    values <- scales::rescale(seq_len(length(values))) # putting values between 0 and 1
-    cols <- rep("#FFFFFF", length(values))
-    cols[!(is.na(values)|is.nan(values))] <- rgb(pal(data[!(is.na(values)|is.nan(values))]) / 255)
+    values <- as.integer(levels(data))
+    cols <- rep("#FFFFFF", length(values))    
+    values <- scales::rescale(values) # putting values between 0 and 1
+    cols[!(is.na(values)|is.nan(values))] <- rgb(pal(values[!(is.na(values)|is.nan(values))]) / 255)
     levels(data) <- cols
     cols <- as.character(data)
   }

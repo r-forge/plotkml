@@ -120,16 +120,19 @@ setClass("RasterBrickSimulations", representation(variable = "character", sample
 
 
 ## A new class for SamplingPatterns:
-#setClass("SpatialSamplingPattern", representation(pattern = "SamplingPattern", sp.domain = "Stratification"), validity = function(object) {
-#    object.ov <- overlay(object@sp.domain@grid, object@pattern@sample)
-#    if(length(object.ov)==0)
-#      return("'Sample' and 'grid' do not overlap spatially")
-#})
+setClass("SpatialSamplingPattern", representation(method = "character", pattern = "SpatialPoints", sp.domain = "SpatialPolygonsDataFrame"), validity = function(object) {
+    ov <- overlay(object@sp.domain, object@pattern)
+    if(length(ov)==0)
+      return("'Pattern' and 'sp.domain' do not overlap spatially")
+})
 
 ## A new class for RasterBrickTimeSeries:
-setClass("RasterBrickTimeSeries", representation(sampled = "SpatialPointsDataFrame", rasters = "RasterBrick", TimeSpan.begin = "POSIXct", TimeSpan.end = "POSIXct"), validity = function(object) {
+setClass("RasterBrickTimeSeries", representation(variable = "character", sampled = "SpatialPointsDataFrame", rasters = "RasterBrick", TimeSpan.begin = "POSIXct", TimeSpan.end = "POSIXct"), validity = function(object) {
     if(!(length(object@TimeSpan.begin)==length(object@TimeSpan.end)&length(object@TimeSpan.begin)==ncol(object@rasters@data@values)))
       return("Length of the 'TimeSpan.begin' and 'TimeSpan.end' slots and the total number of rasters do not match")
+    ov <- extract(obj@rasters, obj@sampled)
+    if(!nrow(ov)==length(obj@sampled))
+      return("Not all points can be overlaid using the data in the @rasters slot")
 })
 
 ### A new class for SpeciesDistributionMap:

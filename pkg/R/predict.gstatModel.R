@@ -182,6 +182,8 @@ setMethod("predict", signature(object = "gstatModel"), function(object, predicti
 
 ## Get a summary as a data frame:
 setMethod("summary", signature(object = "SpatialPredictions"), function(object){
+   require(rgdal)
+   
    z <- NULL
    z$variable = object@variable
    z$minium = range(object@observed@data[,object@variable])[1]
@@ -223,6 +225,8 @@ setMethod("summary", signature(object = "SpatialPredictions"), function(object){
 
 ## Summary for an object of type SpatialPredictions:
 setMethod("show", signature(object = "SpatialPredictions"), function(object){
+  require(rgdal)
+  
   cat("  Variable           :", object@variable, "\n")
   cat("  Minium value       :", range(object@observed@data[,object@variable])[1], "\n")
   cat("  Maximum value      :", range(object@observed@data[,object@variable])[2], "\n")  

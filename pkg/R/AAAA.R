@@ -223,7 +223,7 @@ plotKML.env <- function(
     require(RColorBrewer)
     require(grDevices)
     if(missing(colour_scale_numeric)) { colour_scale_numeric <- rev(brewer.pal(n = 5, name = "RdYlBu")) }
-    if(missing(colour_scale_factor)) { colour_scale_factor <- brewer.pal(n = 6, name = "Set1") }
+    if(missing(colour_scale_factor)) { colour_scale_factor <- brewer.pal(n = 9, name = "Set1") }
     if(missing(colour_scale_svar)) { colour_scale_svar <- brewer.pal(n = 5, name = "Oranges") }
     if(missing(ref_CRS)) { ref_CRS <- "+proj=longlat +datum=WGS84" }
     if(missing(NAflag)) { NAflag <- -99999 }

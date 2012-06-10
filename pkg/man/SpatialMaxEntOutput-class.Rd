@@ -33,6 +33,7 @@
 }
 \examples{ 
 # load occurences:
+library(rgdal)
 data(bigfoot)
 aea.prj <- "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 
 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"
@@ -45,6 +46,7 @@ gridded(USAWgrids) <- ~s1+s2
 proj4string(USAWgrids) <- CRS(aea.prj)
 \dontrun{# USA borders:
 library(maps)
+data(R_pal)
 state.m = map('state', plot=FALSE, fill=TRUE)
 IDs <- sapply(strsplit(state.m$names, ":"), function(x) x[1])
 library(maptools)
@@ -66,10 +68,15 @@ if (file.exists(jar)) {
   me <- maxent(predictors, xy, factors='globcov')
   # predict distribution of Big Foot:
   bigfoot.pr <- predict(me, predictors, progress='window')
-  par(mfrow=c(1,2))
-  plot(bigfoot.pr, main='MaxEnt predictions', axes=FALSE)
+  par(mfrow=c(1,2), mar=c(.5,.5,3.5,0.5), oma=c(0,0,0,0))
+  image(bigfoot.pr, col=R_pal[["blue_grey_red"]], main='MaxEnt predictions', 
+     axes = FALSE, xlab="", ylab="")
+  rx <- range(bigfoot.pr@data@values, na.rm=TRUE)
+  rx <- rev(as.character(round(c(rx[1],NA,mean(rx),NA,rx[2]), 2))) 
+  legend("topleft", rx, fill=rev(R_pal[["blue_grey_red"]][c(1,5,10,15,20)]), 
+     horiz=FALSE, cex=.6, bty="n")
   lines(states.aea)
-  points(bigfoot.aea[sel.ov,], pch="+", cex=.5)
+  points(bigfoot.aea[sel.ov,], pch="+", cex=.7)
   # run cross-validation
   fold <- kfold(xy, k=5)
   # randomly take 20% of observations:
@@ -79,7 +86,8 @@ if (file.exists(jar)) {
   # this allows estimation of the threshold probability:
   threshold <- ev@t[which.max(ev@TPR + ev@TNR)]
   # which allows us to derive the potential homerange for this species:
-  plot(bigfoot.pr > threshold, main='presence/absence', axes=FALSE, legend=FALSE)
+  image(bigfoot.pr > threshold, col=c("wheat","green"), main='presence/absence', 
+      axes = FALSE, xlab="", ylab="")
   lines(states.aea)
   dev.off()
   # prepare data for plotKML:
