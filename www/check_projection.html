@@ -48,7 +48,7 @@
 
 <h3>Warning</h3>
 
-<p><code>obj</code> needs to have a proper proj4 string (CRS), otherwise <code>check_projection</code> will not run. If the geodetic datum is defined via the <code>+towgs</code>, consider converting the coordinates manually i.e. by using the <code>sp::spTransform</code> or the <code><a href="reproject-method.html">reproject-methods</a></code> method.</p>
+<p><code>obj</code> needs to have a proper proj4 string (CRS), otherwise <code>check_projection</code> will not run. If the geodetic datum is defined via the <code>+towgs</code>, consider converting the coordinates manually i.e. by using the <code>rgdal::spTransform</code> or the <code><a href="reproject-method.html">reproject-methods</a></code> method.</p>
 
 
 <h3>Author(s)</h3>
@@ -75,6 +75,7 @@
 <h3>Examples</h3>
 
 <pre>
+library(rgdal)
 data(eberg)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")

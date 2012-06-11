@@ -1,0 +1,42 @@
+Mon Jun 11 11:46:45 EST 2012
+MaxEnt version 3.3.3k
+Reading file absence
+readGrid: max memory 477233152, total allocated 191889408, free 169289272, used 22600136, increment 22600136
+Reading samples from presence
+Read samples: max memory 477233152, total allocated 191889408, free 156011568, used 35877840, increment 13277704
+Adding samples to background in feature space
+Command line used:  autorun -e C:/Users/HENGL001/AppData/Local/Temp/R_raster_tmp/maxent/7269297934/absence -o C:/Users/HENGL001/AppData/Local/Temp/R_raster_tmp/maxent/7269297934 -s C:/Users/HENGL001/AppData/Local/Temp/R_raster_tmp/maxent/7269297934/presence -z
+Command line to repeat: java density.MaxEnt nowarnings noprefixes outputdirectory=C:/Users/HENGL001/AppData/Local/Temp/R_raster_tmp/maxent/7269297934 samplesfile=C:/Users/HENGL001/AppData/Local/Temp/R_raster_tmp/maxent/7269297934/presence environmentallayers=C:/Users/HENGL001/AppData/Local/Temp/R_raster_tmp/maxent/7269297934/absence autorun novisible noprefixes -t globcov
+Species: species
+Layers: gcarb globcov globedem nlights03 sdroads twi
+Layertypes: Continuous Categorical Continuous Continuous Continuous Continuous
+outputdirectory: C:/Users/HENGL001/AppData/Local/Temp/R_raster_tmp/maxent/7269297934
+samplesfile: C:/Users/HENGL001/AppData/Local/Temp/R_raster_tmp/maxent/7269297934/presence
+environmentallayers: C:/Users/HENGL001/AppData/Local/Temp/R_raster_tmp/maxent/7269297934/absence
+autorun: true
+visible: false
+prefixes: false
+
+getSamples: max memory 477233152, total allocated 191889408, free 150044648, used 41844760, increment 5966920
+Making features
+makeFeatures: max memory 477233152, total allocated 191889408, free 147992200, used 43897208, increment 2052448
+species: 
+Regularization values: linear/quadratic/product: 0.050, categorical: 0.250, threshold: 1.000, hinge: 0.500
+Time since start: 2.546
+708 samples
+Density: max memory 477233152, total allocated 191889408, free 182979376, used 8910032, increment -34987176
+linearPredictor: max memory 477233152, total allocated 191889408, free 182979376, used 8910032, increment 0
+Deactivating (globcov=16.0)
+Deactivating (globcov=18.0)
+Deactivating (globcov=19.0)
+FeaturedSpace: max memory 477233152, total allocated 191889408, free 182979376, used 8910032, increment 0
+Sequential: max memory 477233152, total allocated 191889408, free 182979376, used 8910032, increment 0
+Initial loss: 9.262363400043334
+Time since start: 16.658
+500: time = 13.656000 loss = 8.551333
+Resulting gain: 0.7110308554360323
+Time since start: 32.081
+Projecting...
+Writing file C:\Users\HENGL001\AppData\Local\Temp\R_raster_tmp\maxent\7269297934\species.csv
+Time since start: 34.703
+Ending

@@ -7,7 +7,7 @@
 \section{Slots}{
   \describe{    
     \item{\code{variable}:}{object of class \code{"character"}; variable name} 
-    \item{\code{sampled}:}{object of class \code{"SpatialPoints"}; one or more points that can be used to visualize how the values of the target variable change with time}
+    \item{\code{sampled}:}{object of class \code{"SpatialPoints"}; one or more points that can be used to visualize temporal changes in the target variable}
     \item{\code{rasters}:}{object of class \code{"RasterBrick"}; a time-series of raster objects}
     \item{\code{TimeSpan.begin}:}{object of class \code{"POSIXct"}; begin of sampling for each raster map}
     \item{\code{TimeSpan.end}:}{object of class \code{"POSIXct"}; end of sampling for each raster map}
@@ -31,7 +31,7 @@ datesf <- format(as.Date(dates, "\%Y_\%m_\%d"), "\%Y-\%m-\%dT\%H:\%M:\%SZ")
 TimeSpan.begin = as.POSIXct(unclass(as.POSIXct(datesf))-4*24*60*60, origin="1970-01-01") 
 TimeSpan.end = as.POSIXct(unclass(as.POSIXct(datesf))+4*24*60*60, origin="1970-01-01")
 LST_ll <- reproject(LST)
-# climatic stations:
+# pick few climatic stations:
 data(HRtemp08)
 pnts <- HRtemp08[which(HRtemp08$NAME=="Pazin")[1],]
 pnts <- rbind(pnts, HRtemp08[which(HRtemp08$NAME=="Crni Lug - NP Risnjak")[1],])

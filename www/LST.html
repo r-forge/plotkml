@@ -74,14 +74,14 @@
 data(LST)
 gridded(LST) &lt;- ~x+y
 proj4string(LST) &lt;- CRS("+proj=utm +zone=33 +datum=WGS84 +units=m")
-# get the dates from the file names:
+## Not run: # get the dates from the file names:
 dates &lt;- sapply(strsplit(names(LST), "LST"), function(x){x[[2]]})
 LST &lt;- brick(LST)
 LST@title = "Time series of MODIS Land Surface Temperature (8-day mosaics) images"
 LST@zvalue &lt;- format(as.Date(dates, "%Y_%m_%d"), "%Y-%m-%dT%H:%M:%SZ")
 data(SAGA_pal)
-## Not run: # plot MODIS images in Google Earth:
-LST_ll &lt;- reproject(LST)
+# plot MODIS images in Google Earth:
+LST_ll &lt;- reproject(LST)  # reprojecting rasters takes few minutes;
 # copy the dates:
 LST_ll@zvalue &lt;- LST@zvalue
 # KML plot with block temporal support of 8 days:

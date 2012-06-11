@@ -73,6 +73,7 @@
 
 <pre>
 # example with vector data
+library(rgdal)
 data(eberg)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")

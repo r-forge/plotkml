@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: A class for spatial samples produced using various 'spsample'...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body>
+
+<table width="100%" summary="page for SpatialSamplingPattern-class {plotKML}"><tr><td>SpatialSamplingPattern-class {plotKML}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>A class for spatial samples produced using various <code>spsample</code> methods</h2>
+
+<h3>Description</h3>
+
+<p>A class containing input and output maps generated as equiprobable simulations of the same discrete object (for example multiple realizations of stream networks). Objects of this type can be directly visualized in Google Earth by using the <code><a href="plotKML-method.html">plotKML-methods</a></code>.</p>
+
+
+<h3>Slots</h3>
+
+
+    
+<dl>
+<dt><code>method</code>:</dt><dd><p>object of class <code>"character"</code>; sampling optimisation method</p>
+</dd>
+<dt><code>pattern</code>:</dt><dd><p>object of class <code>"SpatialPoints"</code>; sampling points</p>
+</dd>
+<dt><code>sp.domain</code>:</dt><dd><p>object of class <code>"SpatialPolygonsDataFrame"</code>; spatial domain / strata</p>
+</dd>
+</dl>
+
+
+
+<h3>Methods</h3>
+
+
+
+<dl>
+<dt>plotKML</dt><dd><p><code>signature(obj = "SpatialSamplingPattern")</code>: plots generated sampling plan in Google Earth</p>
+</dd>
+</dl>
+
+
+
+<h3>Author(s)</h3>
+
+<p> Tomislav Hengl </p>
+
+
+<h3>See Also</h3>
+
+ <p><code>spcosa::spsample</code>, <code><a href="plotKML-method.html">plotKML-methods</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre> 
+library(spcosa)
+# read a polygon map:
+shpFarmsum &lt;- readOGR(dsn = system.file("maps", package = "spcosa"), layer = "farmsum")
+# stratify `Farmsum' into 50 strata
+myStratification &lt;- stratify(shpFarmsum, nStrata = 50)
+# sample two sampling units per stratum
+mySamplingPattern &lt;- spsample(myStratification, n = 2)
+# plot the resulting sampling pattern
+plot(myStratification, mySamplingPattern)
+## Not run: # attach the correct proj4 string:
+library(RCurl)
+nl.rd &lt;- getURL("http://spatialreference.org/ref/sr-org/6781/proj4/")
+proj4string(mySamplingPattern@sample) &lt;- CRS(nl.rd) 
+# prepare spatial domain (polygons):
+sp.domain &lt;- as.SpatialPolygons.SpatialPixels(myStratification@cells)
+sp.domain &lt;- SpatialPolygonsDataFrame(sp.domain, data.frame(ID=as.factor(myStratification@stratumId)), match.ID = FALSE)
+proj4string(sp.domain) &lt;- CRS(nl.rd) 
+# create new object:
+mySamplingPattern.ssp &lt;- new("SpatialSamplingPattern", method = class(mySamplingPattern), 
+    pattern = mySamplingPattern@sample, sp.domain = sp.domain)
+# the same plot now in Google Earth:
+shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png"
+plotKML(mySamplingPattern.ssp, shape = shape)
+
+## End(Not run)
+</pre>
+
+<hr><div align="center">[Package <em>plotKML</em> version 0.2-1 <a href="00Index.html">Index</a>]</div>
+</body></html>

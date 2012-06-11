@@ -2,10 +2,10 @@
 \docType{class}
 \alias{SpatialMaxEntOutput-class}
 \title{A class for outputs of analysis produced using the dismo package (MaxEnt)}
-\description{A class containing input and output data produced by running the "MaxEnt" (Maximum Entropy) species distribution modeling. Object of this class can be directly visualized in Google Earth by using the \code{\link{plotKML-methods}}.}
+\description{A class containing input and output data produced by running the \code{maxent} (Maximum Entropy) species distribution modeling algorithm. Object of this class can be directly visualized in Google Earth by using the \code{\link{plotKML-methods}}.}
 \section{Slots}{
   \describe{
-    \item{\code{sciname}:}{object of class \code{"character"}; vector of species name compatible with the rgbif package; usually latin "genus" and "species" name}
+    \item{\code{sciname}:}{object of class \code{"character"}; vector of species name compatible with the \code{rgbif} package; usually latin "genus" and "species" name}
     \item{\code{occurrences}:}{object of class \code{"SpatialPoints"}; occurrence-only records}
     \item{\code{TimeSpan.begin}:}{object of class \code{"POSIXct"}; begin of sampling}
     \item{\code{TimeSpan.end}:}{object of class \code{"POSIXct"}; end of sampling}
@@ -62,7 +62,7 @@ library(dismo)
 jar <- paste(system.file(package="dismo"), "/java/maxent.jar", sep='')
 if (file.exists(jar)) {
   predictors <- stack(USAWgrids[sel.grids])
-  # prepare the occurrence only records:
+  # prepare the occurrence-only records:
   xy <- data.frame(bigfoot.aea@coords[sel.ov,])
   # fit a MaxEnt model (can take few minutes!):
   me <- maxent(predictors, xy, factors='globcov')

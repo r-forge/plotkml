@@ -2,31 +2,29 @@
 # Maintainer     : Tomislav Hengl (tom.hengl@wur.nl); 
 # Contributions  : ;
 # Dev Status     : Alpha
-# Note           : Only Google Earth 5.0 (and later) supports plain text content, as well as full HTML and JavaScript, within description balloons.;
+# Note           : Only Google Earth 5.0 (and later) supports plain text content, as well as full HTML and JavaScript, within description balloons;
 
 plotKML.SpatialMaxEntOutput <- function(
   obj,
   folder.name = normalizeFilename(deparse(substitute(obj, env=parent.frame()))),
   file.name = paste(normalizeFilename(deparse(substitute(obj, env=parent.frame()))), ".kml", sep=""),
   html.file = obj@maxent@html,
-  iframe.width = 1000,
+  iframe.width = 800,
   iframe.height = 800,
   pngwidth = 280, 
   pngheight = 280,
   pngpointsize = 14,
   shape = "http://plotkml.r-forge.r-project.org/icon17.png",
   kmz = TRUE,
+  layer = names(obj@predicted)[1],
+  TimeSpan.begin = obj@TimeSpan.begin,
+  TimeSpan.end = obj@TimeSpan.end,
   ...
 ){
 
   # objects:
   spname <- obj@sciname
   pr <- as(obj@predicted, "SpatialPixelsDataFrame")
-  names(pr) = "layer"
-  spd <- obj@sp.domain
-  pnt <- obj@occurrences
-  TimeSpan.begin = obj@TimeSpan.begin
-  TimeSpan.end = obj@TimeSpan.end
 
   # start writing the object:
   kml_open(folder.name = folder.name, file.name = file.name)
@@ -39,11 +37,11 @@ plotKML.SpatialMaxEntOutput <- function(
   assign('kml.out', kml.out, envir=plotKML.fileIO)
 
   # occurrences:
-  kml_layer.SpatialPoints(obj = pnt, shape = shape, TimeSpan.begin = TimeSpan.begin, TimeSpan.end = TimeSpan.end, labels = "", ...)
+  kml_layer.SpatialPoints(obj = obj@occurrences, shape = shape, TimeSpan.begin = TimeSpan.begin, TimeSpan.end = TimeSpan.end, labels = "", ...)
   # spatial domain (green colour):
-  kml_layer(obj = spd, colour = rep(rgb(t(col2rgb("dark green"))/255), length(obj)))
+  kml_layer(obj = obj@sp.domain, colour = rep(rgb(t(col2rgb("dark green"))/255), length(obj)))
   # predicted values:
-  kml_layer(obj = pr, colour = "layer", z.lim = c(0,1), ...)
+  kml_layer(obj = pr, colour = layer, z.lim = c(0,1), ...)
 
   # plot the contributions to the model:
   png(filename=paste(spname, "_var_contribution.png", sep=""), width=pngwidth, height=pngheight, bg="white", pointsize=pngpointsize)
@@ -65,7 +63,8 @@ plotKML.SpatialMaxEntOutput <- function(
 
 setMethod("plotKML", "SpatialMaxEntOutput", plotKML.SpatialMaxEntOutput)
 
-# copied from the Dismo package (it does not export t)
+
+# copied from the Dismo package (it does not export 'dismo::plot' method)
 setMethod("plot", signature(x='MaxEnt', y='missing'), 
 	function(x, sort=TRUE, main='Variable contribution', xlab='Percentage') {
 		r <- x@results

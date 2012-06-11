@@ -12,7 +12,7 @@ kml_legend.bar <- function(
   pointsize = 14, 
   legend.file, 
   legend.pal, 
-  zlim = range(x, na.rm=TRUE), 
+  zlim = range(x, na.rm = TRUE, finite = TRUE), 
   factor.labels = levels(as.factor(x))
   ){
 

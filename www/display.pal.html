@@ -68,9 +68,9 @@ data(worldgrids_pal)
 worldgrids_pal[["globcov"]]
 display.pal(pal=worldgrids_pal, sel=c(5), names = TRUE)
 dev.off()
-# make your own icon (http://www.statmethods.net/advgraphs/parameters.html):
+# make icons (http://www.statmethods.net/advgraphs/parameters.html):
 for(i in 0:25){
-  png(file=paste("icon", i, ".png", sep=""), width=45, height=45, 
+  png(filename=paste("icon", i, ".png", sep=""), width=45, height=45, 
   bg="transparent", pointsize=16)
   par(mar=c(0,0,0,0))
   plot(x=1, y=1, axes=FALSE, xlab='', ylab='', pch=i, cex=4, lwd=2)

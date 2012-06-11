@@ -2,7 +2,7 @@
 \docType{class}
 \alias{SpatialSamplingPattern-class}
 \alias{plotKML,SpatialSamplingPattern}
-\title{A class for spatial samples produced using various spsample methods}
+\title{A class for spatial samples produced using various \code{spsample} methods}
 \description{A class containing input and output maps generated as equiprobable simulations of the same discrete object (for example multiple realizations of stream networks). Objects of this type can be directly visualized in Google Earth by using the \code{\link{plotKML-methods}}.}
 \section{Slots}{
   \describe{    
@@ -33,14 +33,16 @@ plot(myStratification, mySamplingPattern)
 library(RCurl)
 nl.rd <- getURL("http://spatialreference.org/ref/sr-org/6781/proj4/")
 proj4string(mySamplingPattern@sample) <- CRS(nl.rd) 
+# prepare spatial domain (polygons):
 sp.domain <- as.SpatialPolygons.SpatialPixels(myStratification@cells)
 sp.domain <- SpatialPolygonsDataFrame(sp.domain, data.frame(ID=as.factor(myStratification@stratumId)), match.ID = FALSE)
 proj4string(sp.domain) <- CRS(nl.rd) 
 # create new object:
-mySamplingPattern.smp <- new("SpatialSamplingPattern", method = class(mySamplingPattern), 
+mySamplingPattern.ssp <- new("SpatialSamplingPattern", method = class(mySamplingPattern), 
     pattern = mySamplingPattern@sample, sp.domain = sp.domain)
-# now, plot the same map in Google Earth:
-plotKML(mySamplingPattern.smp)
+# the same plot now in Google Earth:
+shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png"
+plotKML(mySamplingPattern.ssp, shape = shape)
 }
 }
 \keyword{classes}

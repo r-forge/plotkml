@@ -59,7 +59,7 @@ kml_layer.SoilProfileCollection <- function(
   if(missing(x.min)){  x.min = block.size/100  }
 
   if(missing(var.scale)) {   # scaling factor in x direction (estimate automatically)
-     var.range <- range(obj@horizons[,var.name], na.rm=TRUE)
+     var.range <- range(obj@horizons[,var.name], na.rm = TRUE, finite = TRUE)
      var.scale <- 0.003/diff(var.range)
   if(missing(var.min)) {   var.min <- var.range[1]-diff(var.range)/100 }
   }

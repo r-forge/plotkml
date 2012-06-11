@@ -10,12 +10,11 @@ plotKML.SpatialSamplingPattern <- function(
   folder.name = normalizeFilename(deparse(substitute(obj, env=parent.frame()))),
   file.name = paste(normalizeFilename(deparse(substitute(obj, env=parent.frame()))), ".kml", sep=""),
   kmz = TRUE,
+  ID = names(obj@sp.domain)[1],
   ...
 ){
-
-  # objects to plot:
-  locs <- obj@pattern
-  names(obj@sp.domain)[1] <- "ID"
+ 
+  # open the KML file for writing:
   kml_open(folder.name = folder.name, file.name = file.name)
   
   # add a description for the whole folder:
@@ -25,8 +24,8 @@ plotKML.SpatialSamplingPattern <- function(
   assign('kml.out', kml.out, envir=plotKML.fileIO)  
 
   # plot strata and points:
-  kml_layer.SpatialPolygons(obj = obj@sp.domain, colour = ID, ...)
-  kml_layer.SpatialPoints(obj = locs)
+  kml_layer.SpatialPolygons(obj = obj@sp.domain, colour = ID)
+  kml_layer.SpatialPoints(obj = obj@pattern, ...)
 
   # close the file:
   kml_close(file.name = file.name)
