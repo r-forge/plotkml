@@ -7,7 +7,7 @@
 .onLoad <- function(libname, pkgname)  {
   
   ## print on start-up:
-	pkg.info <- drop(read.dcf(file=system.file("DESCRIPTION", package=pkgname), fields=c("Version","Date")))
+	pkg.info <- utils::packageDescription('plotKML')
 	packageStartupMessage(paste(pkgname, " version ", pkg.info["Version"], " (", pkg.info["Date"], ")", sep=""))
 
 	tst <- try( removeTmpFiles(), silent=TRUE )

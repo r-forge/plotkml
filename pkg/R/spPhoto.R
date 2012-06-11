@@ -39,16 +39,18 @@ spPhoto <- function(
     try(con.file <- file(filename))
     if(!any(class(con.file) %in% "url")){   
       if(is.na(file.info(filename)$size)){
-      stop(paste("File", filename, "could not be located."))      
+        stop(paste("File", filename, "could not be located."))      
       }
     }
     else{
     require(RCurl)
     z <- getURI(filename, .opts=curlOptions(header=TRUE, nobody=TRUE, transfertext=TRUE, failonerror=FALSE))
       if(!length(x <- grep(z, pattern="404 Not Found"))==0){
-      stop(paste("File", filename, "could not be located."))
+        stop(paste("File", filename, "could not be located."))
       }
-      pixmap <- pixmapRGB(bands, ImageHeight, ImageWidth, bbox = bbox) 
+      else{
+        pixmap <- pixmapRGB(bands, ImageHeight, ImageWidth, bbox = bbox) 
+      }
     }    
   }
     
@@ -120,7 +122,7 @@ spPhoto <- function(
   PhotoOverlay <- as.list(data.frame(rotation, leftFov, rightFov, bottomFov, topFov, near, shape, range, tilt, heading, roll))
   
   # make a SpatialPhotoOverlay object:
-  spPh <- new("SpatialPhotoOverlay",  filename = filename, pixmap = pixmap, exif.info = exif.info, PhotoOverlay = PhotoOverlay, sp = obj) 
+  spPh <- new("SpatialPhotoOverlay", filename = filename, pixmap = pixmap, exif.info = exif.info, PhotoOverlay = PhotoOverlay, sp = obj) 
   return(spPh)    
 }
 
