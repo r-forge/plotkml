@@ -30,9 +30,6 @@ setClass("SpatialPhotoOverlay", representation(filename = "character", pixmap = 
     if(length(object@filename)==0&is.null(object@pixmap)){
       return("Either 'pixmap' slot or 'filename' need to be specified.")
     }
-    if(length(object@filename)>1){
-      return("Character of length 1 required.")
-    }
     if(length(object@sp)>1){
       return("'SpatialPoints' object of length 1 required.")
     }
