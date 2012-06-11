@@ -200,7 +200,7 @@ kml_aes <- function(obj, ...) {
   pal <- colorRamp(colour_scale, space = "rgb", interpolate = "linear")
 
   if (is.numeric(data)) {
-    if(missing(z.lim)) { z.lim = range(data, na.rm=TRUE) }
+    if(missing(z.lim)) { z.lim = range(data, na.rm = TRUE, finite = TRUE) }
     data <- scales::rescale(data, from=z.lim)
     data <- ifelse(data<0, 0, ifelse(data>1, 1, data))
     cols <- rep("#FFFFFF", length(data))
@@ -224,13 +224,13 @@ kml_aes <- function(obj, ...) {
 
 # Colour (points, polygons, lines, raster)
 ##----------------
-kml_colour <- function(obj, colour, colour_scale = NULL){
+kml_colour <- function(obj, colour, colour_scale = NULL, ...){
 
   # Getting the vector of values to scale
   values <- eval(colour, envir = obj@data) 
 
   # Retrieving colour scale
-  colour_scale <- .getColourScale(data = values, colour_scale = colour_scale)
+  colour_scale <- .getColourScale(data = values, colour_scale = colour_scale, ...)
   cols <- col2kml(colour_scale)
 
   # In case of a factor, we need to reclass each level

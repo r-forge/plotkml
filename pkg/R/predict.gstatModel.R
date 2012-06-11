@@ -213,7 +213,7 @@ setMethod("summary", signature(object = "SpatialPredictions"), function(object){
    # breaks:
    linkfun <- object@glm$family$linkfun
    invfun <- object@glm$family$linkinv
-   xz <- range(linkfun(object@predicted@data[,object@variable]), na.rm = TRUE)
+   xz <- range(linkfun(object@predicted@data[,object@variable]), na.rm = TRUE, finite = TRUE)
    xc <- cut(linkfun(object@predicted@data[,object@variable]), breaks = seq(xz[1], xz[2], by=RMSE/2), include.lowest = TRUE)
    z$breaks = invfun(seq(xz[1], xz[2], by=RMSE/2))
    z$bonds = summary(xc)

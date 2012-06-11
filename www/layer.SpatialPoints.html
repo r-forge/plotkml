@@ -101,13 +101,14 @@ proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 names(eberg)
 ## Not run: # subset to 20 percent:
 eberg &lt;- eberg[runif(nrow(eberg))&lt;.2,]
-# KML plot measured CLAY content:
+# plot the measured CLAY content:
 kml(eberg, labels = CLYMHT_A)
 shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png"
+# color only:
 kml(eberg, shape = shape, colour = SLTMHT_A, labels = "", colour_scale = SAGA_pal[[1]])
-# Two variables at the same time:
+# two variables at the same time:
 kml(eberg, shape = shape, size = CLYMHT_A, colour = SLTMHT_A, labels = "")
-# Two aesthetics elements are effective in emphasizing hot-spots:
+# two aesthetics elements are effective in emphasizing hot-spots:
 kml(eberg, shape = shape, altitude = CLYMHT_A*10, extrude = TRUE, 
 colour = CLYMHT_A, labels = CLYMHT_A, kmz = TRUE)
 

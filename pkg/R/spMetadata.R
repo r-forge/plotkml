@@ -164,7 +164,7 @@ spMetadata.Spatial <- function(
     # color palette:
     if(missing(bounds)){
     if(is.numeric(obj@data[,Target_variable])){
-        bounds <- seq(range(obj@data[,Target_variable], na.rm=TRUE)[1], range(obj@data[,Target_variable], na.rm=TRUE)[2], Attribute_Measurement_Resolution/2)  ## half the numeric resolution!
+        bounds <- seq(range(obj@data[,Target_variable], na.rm = TRUE, finite = TRUE)[1], range(obj@data[,Target_variable], na.rm = TRUE, finite = TRUE)[2], Attribute_Measurement_Resolution/2)  ## half the numeric resolution!
         bounds.c <- signif((bounds[-1]+bounds[-length(bounds)])/2, signif.digit)
         if(missing(legend_names)) { legend_names <- as.character(bounds.c) }
     } 

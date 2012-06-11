@@ -71,16 +71,16 @@ echo $contents; } ?>
 <p> This package has been developed as a part of the <a href="http://isric.org/projects/global-soil-information-facilities-gsif" target="_blank">Global Soil Information Facilities</a>, which are developed jointly by the ISRIC Institute and collaborators. ISRIC is a non-profit organization with a mandate to serve the international community as custodian of global soil information and to increase awareness and understanding of the role of soils in major global issues. </p>
 <p>The <strong>plotKML project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. See the complete list of <strong><a href="00Index.html">functions</a></strong> and a list of <a href="settings.php"><strong>additional settings</strong></a>. </p>
 <p><strong>Installation:</strong></p>
-<p>To install this package from R-forge use (works only on<strong> &gt;= R 2.14!</strong>):</p>
-<p class="R_code">&gt; install.packages(c(&quot;XML&quot;, &quot;RSAGA&quot;, &quot;rgdal&quot;, &quot;raster&quot;, &quot;plyr&quot;, &quot;colorspace&quot;, &quot;colorRamps&quot;, &quot;spacetime&quot;,  &quot;aqp&quot;, &quot;spatstat&quot;, &quot;scales&quot;, &quot;stringr&quot;, &quot;plotrix&quot;, &quot;pixmap&quot;)) </p>
+<p>To install this package from <a href="https://r-forge.r-project.org/R/?group_id=1106" target="_blank">R-forge</a> use (works only on<strong> &gt;= R 2.14!</strong>):</p>
+<p class="R_code">&gt; install.packages(c(&quot;XML&quot;, &quot;RSAGA&quot;, &quot;rgdal&quot;, &quot;raster&quot;, &quot;plyr&quot;, &quot;colorspace&quot;, &quot;colorRamps&quot;, &quot;spacetime&quot;,  &quot;aqp&quot;, &quot;spatstat&quot;, &quot;scales&quot;, &quot;stringr&quot;, &quot;plotrix&quot;, &quot;pixmap&quot;, &quot;dismo&quot; )) </p>
 <p class="R_code">&gt; install.packages(&quot;plotKML&quot;, repos=c(&quot;http://R-Forge.R-project.org&quot;)) </p>
 <p>Alternatively, you can install the most recent snapshot of the package directly from the source by using e.g.:</p>
 <p class="R_code">&gt; download.file(&quot;http://plotkml.r-forge.r-project.org/plotKML_0.2-1.tar.gz&quot;, &quot;plotKML_0.2-1.tar.gz&quot;)<br />
 &gt; system(&quot;R CMD INSTALL plotKML_0.2-1.tar.gz&quot;) </p>
 <p><strong>News:</strong></p>
 <ul>
+  <li>Sept 2012: <a href="http://www.geostat-course.org/R_development_workshop" target="_blank">R development workshop</a>  at IfGI Muenster (<a href="http://www.geostat-course.org/R_development_workshop" target="_blank"></a>sign-up to join this workshop); </li>
   <li>May 2012: fixed some bugs with writing PNG (kml_layer.Raster); </li>
-  <li>Feb 2012: official release of the package (CRAN) expected - end of June 2012; </li>
   <li>Feb 2012: the package is at the moment in the pre-alpha version; 10% missing functionality and validity checking required; </li>
 </ul>
 <p><strong>Documents</strong>:</p>
@@ -173,14 +173,16 @@ echo $contents; } ?>
       <p><span class="R_code"><strong><a href="RasterBrickSimulations-class.html">RasterBrickSimulations</a> </strong> <a href="bardem_sims.kml"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
     <td width="220"><div align="center">
-      <p>&nbsp;</p>
-      </div></td>
+      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_RasterBrickTimeSeries.jpg'><img src='Fig_RasterBrickTimeSeriesthumb.jpg' alt='RasterBrickTimeSeries' width='150' height="150" border="0"/></a></p>
+      <p><span class="R_code"><strong><a href="RasterBrickTimeSeries-class.html">RasterBrickTimeSeries</a> </strong> <a href="LST.ts.kml"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
+    </div></td>
     <td width="220"><div align="center">
-      <p>&nbsp;</p>
-      </div></td>
+      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_SpatialMaxEntOutput.jpg'><img src='Fig_SpatialMaxEntOutputthumb.jpg' alt='SpatialMaxEntOutput' width='150' height="123" border="0"/></a></p>
+      <p><span class="R_code"><strong><a href="SpatialMaxEntOutput-class.html">SpatialMaxEntOutput</a> </strong> <a href="bigfoot.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
+    </div></td>
     <td width="220"><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3AMetadata_in_GoogleEarth.png.jpg'></a><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_SpatialPredictions_meuse.jpg'></a></p>
-      <p><span class="R_code"><strong><a href="SpatialPredictions-class.html"></a> </strong> <a href="om.rk.kml"></a></span></p>
+      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3AMetadata_in_GoogleEarth.png.jpg'></a><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_SpatialSamplingPattern.jpg'><img src='Fig_SpatialSamplingPatternthumb.jpg' alt='SpatialSamplingPattern' width='150' height="102" border="0"/></a></p>
+      <p><span class="R_code"><strong><a href="SpatialSamplingPattern-class.html">SpatialSamplingPattern</a> </strong> <a href="mySamplingPattern.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
   </tr>
 </table>
@@ -188,11 +190,11 @@ echo $contents; } ?>
 <hr />
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <th scope="col"><div align="left"><a href="http://www.isric.org" target="_blank"><img src="http://meta.isric.org/images/ISRIC_right.png" alt="ISRIC logo" width="703" height="80" border="0" longdesc="http://www.isric.org" /></a></div></th>
+    <th scope="col"><div align="left"><a href="http://www.isric.org" target="_blank"><img src="ISRIC_logo_RGB.preview.jpg" alt="ISRIC logo" width="640" height="196" border="0" longdesc="http://www.isric.org" /></a></div></th>
   </tr>
 </table>
 <p class="style1"> Last update: 
-  <!-- #BeginDate format:Am1 -->May 31, 2012<!-- #EndDate -->
+  <!-- #BeginDate format:Am1 -->June 11, 2012<!-- #EndDate -->
 | contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">tom.hengl@wur.nl</a> | <a href="http://www.isric.org">ISRIC</a> - World Soil Information Institute </p>
 </body>
 </html>

@@ -45,7 +45,7 @@ fit.gstatModel(observations, formulaString, covariates, ... )
 
 <h3>Details</h3>
 
-<p>Optional arguments are <code>vgmFun</code> &mdash; variogram model type passed from gstat; <code>family</code> &mdash; character string defyning the GLM family (for more info see <code>stats::glm</code>); <code>stepwise</code> &mdash; specifies wether to run step-wise regression on top of GLM to get an optimal subset of predictors. The method by default assumes that the target variable follows a normal distribution <code>family = gaussian</code>. Other possible distributions are:
+<p>Optional arguments are <code>vgmFun</code> &mdash; variogram model type passed from gstat; <code>family</code> &mdash; character string defyning the GLM family (for more info see <code>stats::glm</code>); <code>stepwise</code> &mdash; specifies wether to run step-wise regression on top of GLM to get an optimal subset of predictors. The method by default assumes that the target variable follows a normal distribution <code>family = gaussian</code>. Possible distributions are:
 </p>
 
 <dl>
@@ -94,7 +94,7 @@ coordinates(meuse.grid) &lt;- ~x+y
 gridded(meuse.grid) &lt;- TRUE
 # fit a model:
 omm &lt;- fit.gstatModel(observations = meuse, om~dist, covariates = meuse.grid,
-family = gaussian(log))
+  family = gaussian(log))
 show(omm@regModel)
 om.sp &lt;- SpatialPointsDataFrame(omm@sp, data = omm@regModel$model)
 ## Not run: # plot a variogram:

@@ -10,8 +10,7 @@
 
 <h3>Description</h3>
 
-<p>2984 observations of bigfoot (with attached dates). The data has been obtained from the <a href="http://www.bfro.net/news/google_earth.asp">BigFoot Research Organization (BFRO) website</a>. The BFRO reports generally consist of a description of the event and where it occurred, plus the quality classification. For more info about species distribution modelling methods using the BFRO reports see <a href="http://dx.doi.org/10.1111/j.1365-2699.2009.02152.x">Lozier et al. (2009)</a>.<br>
-The environmental predictors in the <code>USAWgrids</code> data set represent typical gridded maps used in species distribution modelling projects.
+<p>2984 observations of bigfoot (with attached dates). The field occurrence records have been obtained from the <a href="http://www.bfro.net/news/google_earth.asp">BigFoot Research Organization (BFRO) website</a>. The BFRO reports generally consist of a description of the event and where it occurred, plus the quality classification. Similar data set has been used by <a href="http://dx.doi.org/10.1111/j.1365-2699.2009.02152.x">Lozier et al. (2009)</a> to demonstrate possible miss-interpretations of the results of species distribution modeling. The maps in the <code>USAWgrids</code> data set represent typical gridded environmental covariates used for species distribution modeling.
 </p>
 
 
@@ -35,7 +34,7 @@ The environmental predictors in the <code>USAWgrids</code> data set represent ty
 </dd>
 <dt><code>DATE</code></dt><dd><p>'POSIXct' class vector</p>
 </dd>
-<dt><code>TYPE</code></dt><dd><p>confidence levels; according to the BFRO website: <EM><code>"Class A"</code> reports involve clear sightings in circumstances where misinterpretation or misidentification of other animals can be ruled out with greater confidence; <code>"Class B"</code> and <code>"Class C"</code> reports are less credible</EM>.</p>
+<dt><code>TYPE</code></dt><dd><p>confidence levels; according to the BFRO website: <EM>&quot;Class A&quot; reports involve clear sightings in circumstances where misinterpretation or misidentification of other animals can be ruled out with greater confidence; &quot;Class B&quot; and &quot;Class C&quot; reports are less credible</EM>.</p>
 </dd>
 </dl>
 
@@ -95,6 +94,7 @@ The environmental predictors in the <code>USAWgrids</code> data set represent ty
 <h3>Examples</h3>
 
 <pre>
+library(rgdal)
 # Load the BFRO records:
 data(bigfoot)
 aea.prj &lt;- "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 
@@ -110,7 +110,6 @@ proj4string(USAWgrids) &lt;- CRS(aea.prj)
 data(SAGA_pal)
 pnts &lt;- list("sp.points", bigfoot.aea, pch="+", col="yellow")
 spplot(USAWgrids[2], col.regions=rev(SAGA_pal[[3]]), sp.layout=pnts)
-# Next: run species distribution modelling:
 
 ## End(Not run)
 </pre>
