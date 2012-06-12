@@ -77,6 +77,7 @@ echo $contents; } ?>
 <p>Alternatively, you can install the most recent snapshot of the package directly from the source by using e.g.:</p>
 <p class="R_code">&gt; download.file(&quot;http://download.r-forge.r-project.org/src/contrib/plotKML_0.2-1.tar.gz&quot;, &quot;plotKML_0.2-1.tar.gz&quot;)<br />
 &gt; system(&quot;R CMD INSTALL plotKML_0.2-1.tar.gz&quot;) </p>
+<p><iframe src="https://docs.google.com/present/embed?id=dhbpzjb4_91cvx3x2f2" frameborder="0" width="410" height="342"></iframe></p>
 <p><strong>News:</strong></p>
 <ul>
   <li>Sept 10-12, 2012: <a href="http://www.geostat-course.org/R_development_workshop" target="_blank">R development workshop</a>  at IfGI Muenster (<a href="http://www.geostat-course.org/R_development_workshop" target="_blank"></a>sign-up to join this workshop); </li>
