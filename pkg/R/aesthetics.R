@@ -1,6 +1,6 @@
 # Purpose        : List of available aesthetics is given .all_kml_aesthetics along with their default values
 # Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
-# Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Tomislav Hengl (tom.hengl@wur.nl);
+# Contributions  : Tomislav Hengl (tom.hengl@wur.nl); Dylan Beaudette (debeaudette@ucdavis.edu); 
 # Dev Status     : Pre-Alpha
 # Note           : Functionality for constant transparency under development;
 
@@ -209,11 +209,13 @@ kml_aes <- function(obj, ...) {
   
   # factor variable:
   else {
+    # if it is not numeric, it must be a factor:
     data <- as.factor(data)
-    values <- as.integer(levels(data))
+    values <- 1:length(levels(data))
     cols <- rep("#FFFFFF", length(values))    
     values <- scales::rescale(values) # putting values between 0 and 1
     cols[!(is.na(values)|is.nan(values))] <- rgb(pal(values[!(is.na(values)|is.nan(values))]) / 255)
+    # In case of a factor variable, reclassify each level by its corresponding colour:
     levels(data) <- cols
     cols <- as.character(data)
   }
@@ -227,18 +229,11 @@ kml_aes <- function(obj, ...) {
 kml_colour <- function(obj, colour, colour_scale = NULL, ...){
 
   # Getting the vector of values to scale
-  values <- eval(colour, envir = obj@data) 
+  x <- eval(colour, envir = obj@data) 
 
   # Retrieving colour scale
-  colour_scale <- .getColourScale(data = values, colour_scale = colour_scale, ...)
-  cols <- col2kml(colour_scale)
-
-  # In case of a factor, we need to reclass each level
-  # by its corresponding colour
-  if (!is.numeric(values)) {
-    levels(values) <- unique(cols)
-    cols <- as.character(values)
-  }
+  cols <- .getColourScale(data = x, colour_scale = colour_scale, ...)
+  cols <- col2kml(cols)
 
   return(cols)
 }

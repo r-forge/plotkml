@@ -79,7 +79,8 @@ echo $contents; } ?>
 &gt; system(&quot;R CMD INSTALL plotKML_0.2-1.tar.gz&quot;) </p>
 <p><strong>News:</strong></p>
 <ul>
-  <li>Sept 2012: <a href="http://www.geostat-course.org/R_development_workshop" target="_blank">R development workshop</a>  at IfGI Muenster (<a href="http://www.geostat-course.org/R_development_workshop" target="_blank"></a>sign-up to join this workshop); </li>
+  <li>Sept 10-12, 2012: <a href="http://www.geostat-course.org/R_development_workshop" target="_blank">R development workshop</a>  at IfGI Muenster (<a href="http://www.geostat-course.org/R_development_workshop" target="_blank"></a>sign-up to join this workshop); </li>
+  <li>Jun 11, 2012: the package has been sent to the <a href="https://r-forge.r-project.org/R/?group_id=1106">build machines</a> (CRAN);  </li>
   <li>May 2012: fixed some bugs with writing PNG (kml_layer.Raster); </li>
   <li>Feb 2012: the package is at the moment in the pre-alpha version; 10% missing functionality and validity checking required; </li>
 </ul>
@@ -190,11 +191,11 @@ echo $contents; } ?>
 <hr />
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <th scope="col"><div align="left"><a href="http://www.isric.org" target="_blank"><img src="ISRIC_logo_RGB.preview.jpg" alt="ISRIC logo" width="640" height="196" border="0" longdesc="http://www.isric.org" /></a></div></th>
+    <th scope="col"><div align="left"><a href="http://isric.org/projects/global-soil-information-facilities-gsif" target="_blank"><img src="ISRIC_logo.jpg" alt="ISRIC logo" width="363" height="98" border="0" longdesc="http://www.isric.org" /></a></div></th>
   </tr>
 </table>
 <p class="style1"> Last update: 
-  <!-- #BeginDate format:Am1 -->June 11, 2012<!-- #EndDate -->
+  <!-- #BeginDate format:Am1 -->June 12, 2012<!-- #EndDate -->
 | contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">tom.hengl@wur.nl</a> | <a href="http://www.isric.org">ISRIC</a> - World Soil Information Institute </p>
 </body>
 </html>
