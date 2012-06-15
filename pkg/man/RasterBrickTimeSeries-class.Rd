@@ -39,8 +39,8 @@ pnts <- rbind(pnts, HRtemp08[which(HRtemp08$NAME=="Cres")[1],])
 coordinates(pnts) <- ~Lon + Lat
 proj4string(pnts) <- CRS("+proj=longlat +datum=WGS84")
 # get the dates from the file names:
-LST <- brick(LST)
-LST@title = "Time series of MODIS Land Surface Temperature (8-day mosaics) images"
+LST_ll <- brick(LST_ll)
+LST_ll@title = "Time series of MODIS Land Surface Temperature (8-day mosaics) images"
 LST.ts <- new("RasterBrickTimeSeries", variable = "LST", 
   sampled = pnts, rasters = LST_ll, TimeSpan.begin = TimeSpan.begin, TimeSpan.end = TimeSpan.end)
 data(SAGA_pal)
