@@ -127,8 +127,8 @@ setClass("SpatialSamplingPattern", representation(method = "character", pattern 
 setClass("RasterBrickTimeSeries", representation(variable = "character", sampled = "SpatialPointsDataFrame", rasters = "RasterBrick", TimeSpan.begin = "POSIXct", TimeSpan.end = "POSIXct"), validity = function(object) {
     if(!(length(object@TimeSpan.begin)==length(object@TimeSpan.end)&length(object@TimeSpan.begin)==ncol(object@rasters@data@values)))
       return("Length of the 'TimeSpan.begin' and 'TimeSpan.end' slots and the total number of rasters do not match")
-    ov <- extract(obj@rasters, obj@sampled)
-    if(!nrow(ov)==length(obj@sampled))
+    ov <- extract(object@rasters, object@sampled)
+    if(!nrow(ov)==length(object@sampled))
       return("Not all points can be overlaid using the data in the @rasters slot")
 })
 
