@@ -75,8 +75,8 @@ echo $contents; } ?>
 <p class="R_code">&gt; install.packages(c(&quot;XML&quot;, &quot;RSAGA&quot;, &quot;rgdal&quot;, &quot;raster&quot;, &quot;plyr&quot;, &quot;colorspace&quot;, &quot;colorRamps&quot;, &quot;spacetime&quot;,  &quot;aqp&quot;, &quot;spatstat&quot;, &quot;scales&quot;, &quot;stringr&quot;, &quot;plotrix&quot;, &quot;pixmap&quot;, &quot;dismo&quot;)) </p>
 <p class="R_code">&gt; install.packages(&quot;plotKML&quot;, repos=c(&quot;http://R-Forge.R-project.org&quot;)) </p>
 <p>Alternatively, you can install the most recent snapshot of the package directly from the source by using e.g.:</p>
-<p class="R_code">&gt; download.file(&quot;http://download.r-forge.r-project.org/src/contrib/plotKML_0.2-2.tar.gz&quot;, &quot;plotKML_0.2-2.tar.gz&quot;)<br />
-&gt; system(&quot;R CMD INSTALL plotKML_0.2-2.tar.gz&quot;) </p>
+<p class="R_code">&gt; download.file(&quot;http://download.r-forge.r-project.org/src/contrib/plotKML_0.2-3.tar.gz&quot;, &quot;plotKML_0.2-3.tar.gz&quot;)<br />
+&gt; system(&quot;R CMD INSTALL plotKML_0.2-3.tar.gz&quot;) </p>
 <p><iframe src="https://docs.google.com/present/embed?id=dhbpzjb4_91cvx3x2f2" frameborder="0" width="410" height="342"></iframe></p>
 <p><strong>News:</strong></p>
 <ul>
@@ -196,7 +196,7 @@ echo $contents; } ?>
   </tr>
 </table>
 <p class="style1"> Last update: 
-  <!-- #BeginDate format:Am1 -->June 15, 2012<!-- #EndDate -->
+  <!-- #BeginDate format:Am1 -->June 20, 2012<!-- #EndDate -->
 | contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">tom.hengl@wur.nl</a> | <a href="http://www.isric.org">ISRIC</a> - World Soil Information Institute </p>
 </body>
 </html>

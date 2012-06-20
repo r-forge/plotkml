@@ -24,7 +24,7 @@ plotKML.RasterBrickTimeSeries <- function(
   TimeSpan.begin <- obj@TimeSpan.begin
   TimeSpan.end <- obj@TimeSpan.end
   # copy mean times:
-  obj@rasters@zvalue <- paste(as.POSIXct(unclass(as.POSIXct(TimeSpan.begin))+(unclass(as.POSIXct(TimeSpan.end))-unclass(as.POSIXct(TimeSpan.begin)))/2, origin="1970-01-01"))
+  obj@rasters <- setZ(obj@rasters, paste(as.POSIXct(unclass(as.POSIXct(TimeSpan.begin))+(unclass(as.POSIXct(TimeSpan.end))-unclass(as.POSIXct(TimeSpan.begin)))/2, origin="1970-01-01")))
   dtime = unclass(as.POSIXct(TimeSpan.end)) - unclass(as.POSIXct(TimeSpan.begin))
 
   # open KML for writing:  
@@ -50,8 +50,8 @@ plotKML.RasterBrickTimeSeries <- function(
   for(i in 1:nrow(ov)){
     png(filename=png_names[i], width=pngwidth, height=pngheight, bg="white", pointsize=pngpointsize)
     par(mar=c(4.5,4.5,.8,.8))
-    plot(as.Date(as.POSIXct(obj@rasters@zvalue)), ov[i,], type="l", xlab="Date", ylab=varname, col="grey", lwd=2)
-    points(as.Date(as.POSIXct(obj@rasters@zvalue)), ov[i,], pch="+", cex=.6)
+    plot(as.Date(as.POSIXct(getZ(obj@rasters))), ov[i,], type="l", xlab="Date", ylab=varname, col="grey", lwd=2)
+    points(as.Date(as.POSIXct(getZ(obj@rasters))), ov[i,], pch="+", cex=.6)
     dev.off()
   }
   

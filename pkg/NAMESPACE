@@ -1,3 +1,4 @@
+import("spacetime")
 importFrom(scales, rescale)
 importFrom(grDevices, rgb)
 importFrom(RColorBrewer, brewer.pal)
