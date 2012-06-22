@@ -33,7 +33,6 @@
 }
 \examples{ 
 # load occurences:
-library(rgdal)
 data(bigfoot)
 aea.prj <- "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 
 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"
@@ -65,7 +64,7 @@ if (file.exists(jar)) {
   # prepare the occurrence-only records:
   xy <- data.frame(bigfoot.aea@coords[sel.ov,])
   # fit a MaxEnt model (can take few minutes!):
-  me <- maxent(predictors, xy, factors='globcov')
+  me <- maxent(predictors, xy, factors='globcov') # takes 1-2 mins;
   # predict distribution of Big Foot:
   bigfoot.pr <- predict(me, predictors, progress='window')
   par(mfrow=c(1,2), mar=c(.5,.5,3.5,0.5), oma=c(0,0,0,0))
@@ -92,7 +91,7 @@ if (file.exists(jar)) {
   dev.off()
   # prepare data for plotKML:
   hr <- calc(bigfoot.pr, fun=function(x){ifelse(x>threshold, 1, NA)})
-  bigfoot.hr <- rasterToPolygons(hr, dissolve=TRUE) # takes time!
+  bigfoot.hr <- rasterToPolygons(hr, dissolve=TRUE) # takes 3-4 mins!
   occ <- SpatialPoints(bigfoot.aea[sel.ov,]); proj4string(occ) = CRS(aea.prj)
   # create an object of type "SpatialMaxEntOutput":
   bigfoot.smo <- new("SpatialMaxEntOutput", sciname = "Sasquatch", occurrences = occ, 

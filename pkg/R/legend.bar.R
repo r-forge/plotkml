@@ -69,7 +69,9 @@ kml_legend.bar <- function(
   dev.off()
   }
   
-  else { stop("Numeric or factor vector required") }
+  else { 
+    stop("Vector of type 'numeric' or 'factor' expected") 
+  }
 }
 }
 
