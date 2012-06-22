@@ -107,13 +107,13 @@ kml_layer.Raster <- function(
   if(nchar(convert)==0){
     plotKML.env(silent = FALSE, show.env = FALSE)
     convert <- get("convert", envir = plotKML.opts)
-  }
-  # if it does manages to find ImageMagick:
-  if(!nchar(convert)==0){
+  } else {
+    # if it does manages to find ImageMagick:
+    if(!nchar(convert)==0){
       system(paste(convert, ' ', raster_name, ' -matte -transparent "#FFFFFF" ', raster_name, sep=""))
-  }
-  else{
-  warning("PNG transparency possibly ineffective. Install ImageMagick and add to PATH. See ?kml_layer.Raster for more info.")
+    } else {
+    warning("PNG transparency possibly ineffective. Install ImageMagick and add to PATH. See ?kml_layer.Raster for more info.")
+    }
   }
 
   # plot the legend (PNG)
