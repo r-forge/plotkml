@@ -77,17 +77,6 @@ setClass("SpatialPhotoOverlay", representation(filename = "character", pixmap = 
     }      
 })
 
-## A new class for models fitted in gstat:
-setClass("gstatModel", representation(regModel = "glm", sp = "SpatialPoints", vgmModel = "data.frame"), validity = function(object) {
-    cn = c("model", "psill", "range", "kappa", "ang1", "ang2", "ang3", "anis1", "anis2")
-    if(any(!(names(object@vgmModel) %in% cn)))
-      return(paste("Expecting only column names:", cn))
-    if(!all(cn %in% names(object@vgmModel))){
-      x <- cn[!(cn %in% names(object@vgmModel))]
-      return(paste("Missing column names:", x)) 
-      }
-})
-
 ## A new class for SpatialPredictions:
 setClass("SpatialPredictions", representation(variable = "character", observed = "SpatialPointsDataFrame", glm = "list", vgmModel = "data.frame", predicted = "SpatialPixelsDataFrame", validation = "SpatialPointsDataFrame"), validity = function(object) {
     if(any(!(object@variable %in% names(object@observed@data))))
@@ -182,10 +171,6 @@ if (!isGeneric("reproject")){
 
 if (!isGeneric("vect2rast")){
   setGeneric("vect2rast", function(obj, ...){standardGeneric("vect2rast")})
-}
-
-if (!isGeneric("fit.gstatModel")){
-  setGeneric("fit.gstatModel", function(observations, formulaString, covariates, ...){standardGeneric("fit.gstatModel")})
 }
 
 if (!isGeneric("plotKML")){

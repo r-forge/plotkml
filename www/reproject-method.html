@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="R.css">
 </head><body>
 
-<table width="100%" summary="page for reproject-methods {plotKML}"><tr><td>reproject-methods {plotKML}</td><td align="right">R Documentation</td></tr></table>
+<table width="100%" summary="page for reproject {plotKML}"><tr><td>reproject {plotKML}</td><td align="right">R Documentation</td></tr></table>
 
 <h2>Methods to reproject maps to a referent coordinate system (WGS84)</h2>
 
@@ -73,7 +73,6 @@
 
 <pre>
 # example with vector data
-library(rgdal)
 data(eberg)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
