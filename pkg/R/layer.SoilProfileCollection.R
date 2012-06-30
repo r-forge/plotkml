@@ -117,10 +117,10 @@ for(i.site in 1:length(obj@site[,obj@idcol])) {
   if(missing(color.name)){
     pal <- colorRampPalette(c("chocolate4", "darkgoldenrod1", "cornsilk")) 
     soil_color[[i.site]] <- col2kml(pal(length(xval)))
-    }
-    else { 
+  } 
+  else { 
     soil_color[[i.site]] <- col2kml(obj@horizons[prof.na[[i.site]], color.name])
-    }
+  }
   
   # horizon centre:
   Z <- max.depth - (htop+(hbot-htop)/2)

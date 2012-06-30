@@ -28,7 +28,7 @@
 \note{ \code{"SpatialPredictions"} saves results of predictions for a single target variable, which can be of type numeric or factor. Multiple variables can be combined into a list.
 }
 \author{ Tomislav Hengl }
-\seealso{ \code{\link{fit.gstatModel}}, \code{gstat::gstat-class}, \code{\link{RasterBrickSimulations-class}}
+\seealso{ \code{GSIF::fit.gstatModel}, \code{gstat::gstat-class}, \code{\link{RasterBrickSimulations-class}}
 }
 \examples{ 
 # load observations:
@@ -40,6 +40,7 @@ data(meuse.grid)
 gridded(meuse.grid) <- ~x+y
 proj4string(meuse.grid) <- CRS("+init=epsg:28992")
 # fit a model:
+library(GSIF)
 omm <- fit.gstatModel(observations = meuse, formulaString = om~dist, 
   family = gaussian(log), covariates = meuse.grid)
 show(omm@regModel)
