@@ -94,14 +94,15 @@ setClass("SpatialPredictions", representation(variable = "character", observed =
 setClass("SpatialVectorsSimulations", representation(realizations = "list", summaries = "SpatialGridDataFrame"), validity = function(object) {
    object.ov <- overlay(object@summaries, as(object@realizations[[1]], "SpatialPoints"))
     if(length(object.ov)==0)
-      return("'Realizations' and 'summaries' spatial objects do not overlap spatially")
+      return("'Realizations' and 'summaries' objects do not overlap spatially")
     if(length(names(object@summaries))<2)
       return("The 'summaries' slot should contain at least two layers (aggregate values and information entropy)")
 })
 
 setClass("RasterBrickSimulations", representation(variable = "character", sampled = "SpatialLines", realizations = "RasterBrick"), validity = function(object) {
-    if(ncol(object@realizations@data@values)<5)
-      warning("Using <5 simulations can result in artifacts")
+   object.ov <- extract(object@realizations, as(object@sampled, "SpatialPoints"))
+    if(length(object.ov)==0)
+      return("'Realizations' and 'sampled' objects do not overlap spatially")
 })
 
 

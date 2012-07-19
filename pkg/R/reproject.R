@@ -113,39 +113,39 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
         tf <- tempfile() 
         }
         else { 
-        tf <- paste(normalizeFilename(deparse(substitute(obj, env = parent.frame()))), names(obj)[i], sep="_")
+          tf <- paste(normalizeFilename(deparse(substitute(obj, env = parent.frame()))), names(obj)[i], sep="_")
        }
 
         # write SPDF to a file:
         if(is.factor(obj@data[,i])){
-        x <- obj[i]
-        x@data[,1] <- as.integer(x@data[,1])
-        writeGDAL(x, paste(tf, ".tif", sep=""), "GTiff")
+          x <- obj[i]
+          x@data[,1] <- as.integer(x@data[,1])
+          writeGDAL(x, paste(tf, ".tif", sep=""), "GTiff")
         }        
         else {
-        writeGDAL(obj[i], paste(tf, ".tif", sep=""), "GTiff")
+          writeGDAL(obj[i], paste(tf, ".tif", sep=""), "GTiff")
         }
         
         message(paste("Reprojecting to", CRS, "..."))
         # resample to WGS84 system:
         if(is.factor(obj@data[,i])){
-        system(paste(gdalwarp, ' ', tf, '.tif', ' -t_srs \"', CRS, '\" ', tf, '_ll.tif -dstnodata \"', NAflag, '\" -r near', sep=""), show.output.on.console = show.output.on.console)
+          system(paste(gdalwarp, ' ', tf, '.tif', ' -t_srs \"', CRS, '\" ', tf, '_ll.tif -dstnodata \"', NAflag, '\" -r near', sep=""), show.output.on.console = show.output.on.console)
         }
         else {
-        system(paste(gdalwarp, ' ', tf, '.tif', ' -t_srs \"', CRS, '\" ', tf, '_ll.tif -dstnodata \"', NAflag, '\" -r bilinear', sep=""), show.output.on.console = show.output.on.console)
+          system(paste(gdalwarp, ' ', tf, '.tif', ' -t_srs \"', CRS, '\" ', tf, '_ll.tif -dstnodata \"', NAflag, '\" -r bilinear', sep=""), show.output.on.console = show.output.on.console)
         }
         # read images back to R:
         if(i==1){
-        res <- readGDAL(paste(tf, "_ll.tif", sep=""), silent = TRUE)
-        names(res) <- names(obj)[i]
+          res <- readGDAL(paste(tf, "_ll.tif", sep=""), silent = TRUE)
+          names(res) <- names(obj)[i]
         }
         else{
-        res@data[names(obj)[i]] <- readGDAL(paste(tf, "_ll.tif", sep=""), silent = TRUE)$band1
+          res@data[names(obj)[i]] <- readGDAL(paste(tf, "_ll.tif", sep=""), silent = TRUE)$band1
         }
         
         # reformat to the original factors:
-        if(is.factor(obj@data[,i])){
-        res@data[,i] <- factor(res@data[,i], levels=levels(obj@data[,i]))
+          if(is.factor(obj@data[,i])){
+          res@data[,i] <- factor(res@data[,i], levels=levels(obj@data[,i]))
         }
       }
   } 

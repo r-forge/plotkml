@@ -54,8 +54,7 @@ The \code{eberg_grid25} data frame (regular grid at 25 m resolution) contains th
 \item  \url{http://geomorphometry.org/content/ebergotzen}
 }
 }
-\note{ Texture by hand method can be used to determine the content of soil earth fractions only to an accuracy of \enc{±}{+-}5-10\% (\href{https://www.soils.org/publications/sssaj/articles/65/4/1038}{Skaggs et al. 2001}). A surveyor distinguishes to which of the 32 texture classes a soil samples belongs to, and then estimates the content of fractions; e.g. texture class \code{St2} has 10\% clay, 25\% silt and 65\% sand (Ad-hoc-AG Boden, 2005). 
-}
+\note{Texture by hand method can be used to determine the content of soil earth fractions only to an accuracy of \enc{±}{+-}5-10\% (\href{https://www.soils.org/publications/sssaj/articles/65/4/1038}{Skaggs et al. 2001}). A surveyor distinguishes to which of the 32 texture classes a soil samples belongs to, and then estimates the content of fractions; e.g. texture class \code{St2} has 10\% clay, 25\% silt and 65\% sand (Ad-hoc-AG Boden, 2005).}
 \examples{
 data(eberg)
 data(eberg_grid)
