@@ -19,7 +19,7 @@ kml_layer.Raster <- function(
   # Checking the projection 
   prj.check <- check_projection(obj, control = TRUE)
 
-  # Parsing the call for "colour"
+  # Parsing the call:
   call <- substitute(list(...))
   call <- as.list(call)[-1]
 
@@ -54,13 +54,21 @@ kml_layer.Raster <- function(
     }
   }
 
+  # TH: this needs to be fixed
+  altitude <- charmatch("altitude", names(call))
+  
+  if(!is.na(altitude)){
+    altitude <- eval(call[["altitude"]], length(obj))
+    altitude <- kml_altitude(obj, altitude)
+  } else {
+    altitude <- kml_altitude(obj, altitude=NULL)
+  }
+  altitudeMode <- kml_altitude_mode(altitude, GroundOverlay=TRUE) 
+  
+
   # Trying to reproject data if the check was not successful
   if(!prj.check) {  obj <- reproject(obj) }
   x <- getValues(obj)
-
-  #   altitude <- eval(call[["altitude"]], obj@data)
-  altitude <- kml_altitude(obj, altitude = NULL)
-  altitudeMode <- kml_altitude_mode(altitude)
 
   pal <- charmatch("colour_scale", names(call))
   if (!is.na(pal))

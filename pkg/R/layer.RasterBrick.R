@@ -45,7 +45,7 @@ kml_layer.RasterBrick <- function(
 
   # Format the time slot for writing to KML:
   if(!any(class(getZ(obj)) %in% "POSIXct")|!any(class(getZ(obj)) %in% "character")){
-    if(any(getZ(obj)=="")){
+    if(any(getZ(obj)=="")|is.null(getZ(obj))){
       obj <- setZ(obj, format(as.POSIXct(rev(as.Date(Sys.time())-1:ncol(obj@data@values))), "%Y-%m-%dT%H:%M:%SZ"))
     }
       DateTime <- getZ(obj)[1:ncol(obj@data@values)]
