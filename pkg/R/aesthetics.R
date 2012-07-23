@@ -15,6 +15,7 @@
   width = 1,
   labels = "",
   altitude = 0,
+  altitudeMode = "",  
   balloon = FALSE
 )
 
@@ -162,7 +163,12 @@ kml_aes <- function(obj, ...) {
   }
 
   # AltitudeMode
-  aes[["altitudeMode"]] <- kml_altitude_mode(aes[['altitude']])
+  if ("altitudeMode" %in% called_aes) {
+    aes[["altitudeMode"]] <- parent_call[['altitudeMode']]
+  }
+  else {
+    aes[["altitudeMode"]] <- kml_altitude_mode(aes[['altitude']])
+  }
 
   # Balloon (pop ups)
   if ("balloon" %in% called_aes) {
