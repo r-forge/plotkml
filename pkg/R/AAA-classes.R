@@ -115,6 +115,8 @@ setClass("SpatialSamplingPattern", representation(method = "character", pattern 
 
 ## A new class for RasterBrickTimeSeries:
 setClass("RasterBrickTimeSeries", representation(variable = "character", sampled = "SpatialPointsDataFrame", rasters = "RasterBrick", TimeSpan.begin = "POSIXct", TimeSpan.end = "POSIXct"), validity = function(object) {
+    if(object@TimeSpan.begin > object@TimeSpan.end)
+      return("'TimeSpan.begin' must indicate time before or equal to 'TimeSpan.end'")
     if(!(length(object@TimeSpan.begin)==length(object@TimeSpan.end)&length(object@TimeSpan.begin)==ncol(object@rasters@data@values)))
       return("Length of the 'TimeSpan.begin' and 'TimeSpan.end' slots and the total number of rasters do not match")
     ov <- extract(object@rasters, object@sampled)
@@ -123,7 +125,9 @@ setClass("RasterBrickTimeSeries", representation(variable = "character", sampled
 })
 
 ### A new class for SpeciesDistributionMap:
-setClass("SpatialMaxEntOutput", representation(sciname = "character", occurrences = "SpatialPoints", TimeSpan.begin = "POSIXct", TimeSpan.end = "POSIXct", maxent = "MaxEnt", sp.domain = "SpatialPolygonsDataFrame", predicted = "RasterLayer"), validity = function(object) {
+setClass("SpatialMaxEntOutput", representation(sciname = "character", occurrences = "SpatialPoints", TimeSpan.begin = "POSIXct", TimeSpan.end = "POSIXct", maxent = "MaxEnt", sp.domain = "Spatial", predicted = "RasterLayer"), validity = function(object) {
+    if(object@TimeSpan.begin > object@TimeSpan.end)
+      return("'TimeSpan.begin' must indicate time before or equal to 'TimeSpan.end'")    
     if(length(object@occurrences) <5)
       warning("Occurences critically small (<5) for reliable validation")  
     object.ov <- extract(x=object@predicted, y=object@occurrences)

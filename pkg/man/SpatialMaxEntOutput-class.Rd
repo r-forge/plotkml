@@ -7,10 +7,10 @@
   \describe{
     \item{\code{sciname}:}{object of class \code{"character"}; vector of species name compatible with the \code{rgbif} package; usually latin "genus" and "species" name}
     \item{\code{occurrences}:}{object of class \code{"SpatialPoints"}; occurrence-only records}
-    \item{\code{TimeSpan.begin}:}{object of class \code{"POSIXct"}; begin of sampling}
-    \item{\code{TimeSpan.end}:}{object of class \code{"POSIXct"}; end of sampling}
+    \item{\code{TimeSpan.begin}:}{object of class \code{"POSIXct"}; begin of the sampling period}
+    \item{\code{TimeSpan.end}:}{object of class \code{"POSIXct"}; end of the sampling period}
     \item{\code{maxent}:}{object of class \code{"MaxEnt"} (species distribution model); produced as an output of the \code{dismo::maxent} function}
-    \item{\code{sp.domain}:}{object of class \code{"SpatialPolygonsDataFrame"}; assumed spatial domain that can be set by the user or estimated by MaxEnt (see examples below)}
+    \item{\code{sp.domain}:}{object of class \code{"Spatial"} (ideally \code{"SpatialPolygonsDataFrame"} or \code{"SpatialPixelsDataFrame"}); assumed spatial domain that can be set by the user or it will be estimated by MaxEnt (see examples below)}
     \item{\code{predicted}:}{object of class \code{"RasterLayer"}; contains results of prediction produced using the MaxEnt software}
   }
 }
@@ -29,7 +29,7 @@
 }
 }
 \author{ Tomislav Hengl }
-\seealso{ \code{dismo::maxent}, \code{rgbif::taxonsearch} 
+\seealso{ \code{dismo::maxent}, \code{rgbif::taxonsearch}, \code{GSIF::MaxEnt} 
 }
 \examples{ 
 # load occurences:

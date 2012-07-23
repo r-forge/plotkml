@@ -41,7 +41,7 @@ kml_layer.SpatialPoints <- function(
 
   # Parse ATTRIBUTE TABLE (for each placemark):
   if(is.null(html.table)){
-    if((is.logical(balloon) | class(balloon) %in% c('character','numeric')) & ("data" %in% slotNames(obj))){
+    if((balloon==TRUE | class(balloon) %in% c('character','numeric')) & ("data" %in% slotNames(obj))){
       html.table <- .df2htmltable(obj@data) 
     }}
 
