@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Writes SpatialPixels or SpatialGrid objects to KML</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body>
+
+<table width="100%" summary="page for kml_layer.SpatialPixels {plotKML}"><tr><td>kml_layer.SpatialPixels {plotKML}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Writes SpatialPixels or SpatialGrid objects to KML</h2>
+
+<h3>Description</h3>
+
+<p>Writes sp classes <code>"SpatialGrid"</code> or <code>"SpatialPixels"</code> to PNG images and makes a KML document (ground overlays). Target attributes can be specified using aesthetics arguments (e.g. <code>"colour"</code>).</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+kml_layer.SpatialPixels(obj, raster_name, plot.legend = TRUE, metadata = NULL, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+
+<table summary="R argblock">
+<tr valign="top"><td><code>obj</code></td>
+<td>
+<p>object of class <code>"RasterLayer"</code>, <code>"SpatialPixelsDataFrame"</code> or <code>"SpatialGridDataFrame"</code></p>
+</td></tr>
+<tr valign="top"><td><code>plot.legend</code></td>
+<td>
+<p>logical; specify whether a map legend should be generated automatically</p>
+</td></tr>
+<tr valign="top"><td><code>metadata</code></td>
+<td>
+<p>(optional) specify the metadata object</p>
+</td></tr>
+<tr valign="top"><td><code>raster_name</code></td>
+<td>
+<p>(optional) specify the output file name (PNG)</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>additional <code><a href="aesthetics.html">aesthetics</a></code> arguments</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Google Earth does not properly handle a 24-bit PNG file which has a single transparent color (read more at <a href="http://groups.google.com/group/earth-help/">Google Earth Help</a>). To force transparency, plotKML will try to set it using the <code>-matte -transparent "\#FFFFFF"</code> option in the <a href="http://www.imagemagick.org/Usage/masking/">ImageMagick convert program</a> (ImageMagick needs to be installed separately and located using <code>plotKML.env()</code>). The PNG export uses the 'cairographics', which will never use a palette and normally creates a larger 32-bit ARGB file, but then always allows transparancy.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Tomislav Hengl, Pierre Roudier and Dylan Beaudette</p>
+
+
+<h3>See Also</h3>
+
+ <p><code><a href="kml-method.html">kml-methods</a></code>, <code><a href="kml_open.html">kml_open</a></code>, <code><a href="layer.Raster.html">kml_layer.Raster</a></code> </p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(eberg_grid)
+coordinates(eberg_grid) &lt;- ~x+y
+gridded(eberg_grid) &lt;- TRUE
+proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
+data(SAGA_pal)
+## Not run: 
+# KML plot with a single raster:
+kml(eberg_grid, colour_scale = SAGA_pal[[1]], colour = TWISRT6) 
+# factor-type variable:
+kml(eberg_grid, colour_scale = SAGA_pal[[1]], colour = LNCCOR6)
+
+## End(Not run)
+</pre>
+
+<hr><div align="center">[Package <em>plotKML</em> version 0.2-4 <a href="00Index.html">Index</a>]</div>
+</body></html>
