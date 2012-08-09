@@ -74,7 +74,7 @@ echo $contents; } ?>
   <!-- #BeginDate format:Am1 -->August 9, 2012<!-- #EndDate -->
 </p>
 <p>This a short review of the plotKML functionality with examples of inputs and outputs. The plotKML (R package) <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. To learn more about the <strong>Global Soil Information Facilities</strong> (GSIF), visit the <a href="http://www.isric.org/projects/global-soil-information-facilities-gsif" target="_blank">main project page</a>. This tutorial only explains how to quickly plot various spatial and spatio-temporal data in Google Earth. To use the advanced  <strong><a href="00Index.html">functionality</a></strong>, refer to the  plotKML package documentation.</p>
-<p>Download the tutorial's  <a href="plotKML-method.html">R code </a>. </p>
+<p>Download the tutorial's  <a href="plotKML-method.html">R code</a>. </p>
 <p><em><a name="top" id="top"></a>Table of content:</em></p>
 <ul>
   <li><a href="#first_steps">Installation and first steps</a>
@@ -136,9 +136,10 @@ Loading required package: stringr
 Loading required package: RColorBrewer
 Loading required package: aqp
 Loading required package: reshape<br />...<br />plotKML version 0.2-4 (2012-08-09)<br />URL: http://plotkml.r-forge.r-project.org/</pre>
-<p>Note that plotKML has many dependencies. It largely builds on the sp and raster-related packages, but it tries to serve a number of packages that provide functionality for space-time data. The drawback of using many packages is that the package takes more time to load, and it is more sensitive to changes in the packages that it extends and depends on. </p>
+<p>Note that plotKML has many dependencies. It largely builds on the sp and raster-related packages, but it tries to serve a number of packages that either generate  space-time data or use them as an input to spatial analysis. The drawback of using many packages is that the package takes more time to load, and it is more sensitive to changes in the packages that it extends and depends on.</p>
+<p>plotKML is largely based on the <a href="http://cran.r-project.org/web/packages/XML/">XML</a> package. It basically consists of a number of low-level and wrapper functions to write space-time classes from R to KML. To learn more about <a href="https://developers.google.com/kml/documentation/kmlreference" target="_blank">KML</a> consider reading Wernecke's (2009) <a href="http://www.informit.com/store/product.aspx?isbn=0132651084" target="_blank">KML Hanbook</a>. </p>
 <h3><a name="external" id="external"></a>External applications and environmental settings </h3>
-<p>plotKML uses also a number of optional external packages that need to be installed independently: <a href="http://fwtools.maptools.org">FWTools</a> / GDAL utilities, <a href="http://www.saga-gis.org">SAGA GIS</a>, <a href="http://imagemagick.org" target="_blank">ImageMagick</a>, <a href="http://www.python.org/getit/" target="_blank">Python</a>, and (of course) <a href="http://www.google.com/earth/" target="_blank">Google Earth</a>. Before visualizing any data in plotKML, we advise you to first install any additional R and external software package that can speed up the processing and help you achieve the maximum result. These packages are a requirement and plotKML is suppose to be able to run most of operations without them, however, we recommended that you install and register on your machine all four external software packages. </p>
+<p>plotKML uses also a number of optional external packages that need to be installed independently: <a href="http://fwtools.maptools.org">FWTools</a> / GDAL utilities, <a href="http://www.saga-gis.org">SAGA GIS</a>, <a href="http://imagemagick.org" target="_blank">ImageMagick</a>, <a href="http://www.python.org/getit/" target="_blank">Python</a>, and (of course) <a href="http://www.google.com/earth/" target="_blank">Google Earth</a>. Before visualizing any data in plotKML, we advise you to first install any additional R and external software package that can speed up the processing and help you achieve the maximum result. These packages are NOT an requirement &#8212;  plotKML is suppose to be able to run most of operations without them, nevertheless, we recommended that you considet installing and registering on your machine all four external software.</p>
 <p>You can check if R has successfully located the external packages by using the <span class="R_code">plotKML.env()</span> command. For example, if you are running Windows OS, then the output of finding the <a href="plotKML.env.html">paths</a> would look something like this:</p>
 <pre class="R_code">&gt; paths()</pre>
 <pre class="R_env">Loading required package: animation
@@ -152,12 +153,12 @@ convert                     python
 1 &quot;C:\\Program Files\\ImageMagick-6.6.8-Q16\\convert.exe&quot; &quot;C:\\Python27\\python.exe&quot;
 saga_cmd
 1 C:\\PROGRA~1\\R\\R-214~1.1\\library\\RSAGA\\saga_vc\\saga_cmd.exe</pre>
-<p>This means that plotKML has managed to locate all external applications, which means that the package can be use up to 100% of its functionality. Note that, <strong>plotKML has to re-locate external applications every time new R session is started</strong>. To permanently preserve the plotKML environmental settings, you either need to save your session, or change settings in the Profile.site.</p>
+<p>This means that plotKML has managed to locate all external applications, which means that the package can be use up to 100% of its functionality. Note that, <strong>plotKML has to re-locate external applications every time new R session is started</strong>. To permanently preserve the plotKML environmental settings, you either need to save your session, or change settings in the <a href="http://stat.ethz.ch/R-manual/R-patched/library/base/html/Startup.html" target="_blank">Profile.site</a>.</p>
 <p>To access some standard parameter from plotKML, you can point to the plotKML options. For example, to obtain the default coordinate system (<a href="http://spatialreference.org/ref/epsg/4326/" target="_blank">WGS84</a>) used by Google Earth use:</p>
 <pre class="R_code">&gt; get(&quot;ref_CRS&quot;, envir = plotKML.opts)</pre>
 <pre class="R_env">[1] &quot;+proj=longlat +datum=WGS84&quot;</pre>
 <p>To further customize the plotKML options (on-load), consider putting: <span class="R_code">library(plotKML); plotKML.env(..., show.env = FALSE)</span> in your &quot;/etc/Rprofile.site&quot;.</p>
-<p>In principle, all KML parsing functions in plotKML are implemented via the corresponding <a href="http://stat.ethz.ch/R-manual/R-patched/library/methods/html/Classes.html" target="_blank">S4 classes</a>. Consequently, all <a href="kml_layer-method.html">kml_layer</a> methods require predefined structure in the data i.e. the data first needs to be converted to corresponding classes.</p>
+<p>In principle, all KML parsing functions in plotKML are implemented via the corresponding <a href="http://stat.ethz.ch/R-manual/R-patched/library/methods/html/Classes.html" target="_blank">S4 classes</a>. Consequently, all <a href="kml_layer-method.html">kml_layer</a> methods require predefined structure in the data i.e. the data first needs to be converted to the corresponding classes.</p>
 <table width="100%" border="0" cellspacing="0" cellpadding="10">
   <tr>
     <th scope="col"><div align="left">
@@ -236,7 +237,7 @@ Compressing to KMZ...</pre>
     <th scope="col"><img src="contour_plot.png" alt="contour_plot.png" width="550" /></th>
   </tr>
 </table>
-<p>When plotting  SpatialPolygons (as with points), both attributes and labels will be plotted by default: </p>
+<p>When plotting  SpatialPolygons (as in the case of points), both attributes and labels will be plotted by default: </p>
 <p class="R_code">&gt; data(eberg_zones)<br />
 &gt; plotKML(eberg_zones[&quot;ZONES&quot;])</p>
 <pre class="R_env">KML file header opened for parsing...
@@ -283,7 +284,7 @@ Compressing to KMZ...</pre>
 <p>This figure basically mimics SAGA GIS (<a href="http://saga-gis.org/en/about/references.html" target="_blank">Böhner et al., 2006</a>) because it shows a DEM parameter derived in SAGA GIS (SAGA Topographic Wetness Index), and it uses  the default SAGA GIS legend.</p>
 <table width="500" border="0" cellspacing="2" cellpadding="4">
   <caption class="caption" align="bottom">
-    Fig: SAGA GIS-derived Topographic Wetness Index visualized in Google Earth.
+    Fig: <a href="http://saga-gis.org" target="_blank">SAGA GIS</a>-derived Topographic Wetness Index visualized in Google Earth.
   </caption>
   <tr>
     <th scope="col"><img src="plot_pixels.png" alt="plot_pixels.png" width="550" /></th>
@@ -387,7 +388,7 @@ Closing  eberg_grid__LNCCOR6__.kml</pre>
   </tr>
 </table>
 <h3><a name="SoilProfileCollection" id="SoilProfileCollection"></a>Soil profile data</h3>
-<p>Via the  <a href="http://CRAN.r-project.org/package=aqp" target="_blank">aqp</a> package, we can construct &quot;<a href="cran.r-project.org/web/packages/aqp/" target="_blank">SoilProfile</a>&quot;-class objects that can also  be visualized via plotKML as 3D objects. Soil profiles are 3D samples of soil body, hence we need to attach elevation to different depths to be able to visualize soil profile data in Google Earth. This is an example:</p>
+<p>Via the  <a href="http://CRAN.r-project.org/package=aqp" target="_blank">aqp</a> package, we can construct &quot;<a href="cran.r-project.org/web/packages/aqp/" target="_blank">SoilProfile</a>&quot;-class objects that can also  be visualized via plotKML as three dimensional monoliths. Because soil profiles are 3D samples of soil body,  plotKML will attach elevation to different depths to be able to visualize soil profile data in Google Earth. This is an example:</p>
 <pre class="R_code">&gt; require(aqp)
 &gt; lon = 3.90; lat = 7.50; id = &quot;ISRIC:NG0017&quot;; FAO1988 = &quot;LXp&quot;<br />&gt; top = c(0, 18, 36, 65, 87, 127) 
 &gt; bottom = c(18, 36, 65, 87, 127, 181)
@@ -428,7 +429,7 @@ Closing  prof1.kml
 Compressing to KMZ... </pre>
 <table width="500" border="0" cellspacing="2" cellpadding="4">
   <caption class="caption" align="bottom">
-    Fig: Soil profile description data shown as a block. The soil colors represent exactly the colors estimated from the <a href="http://casoilresource.lawr.ucdavis.edu/drupal/node/201" target="_blank">Munsell color chart</a> values.
+    Fig: Soil profile description data shown as a block. The soil colors show the exact colors estimated from the <a href="http://casoilresource.lawr.ucdavis.edu/drupal/node/201" target="_blank">Munsell color chart</a> values.
   </caption>
   <tr>
     <th scope="col"><img src="soil_profile_plot.png" alt="soil_profile_plot.png" width="550" /></th>
@@ -781,7 +782,7 @@ Compressing to KMZ...</pre>
 &gt; gridded(bargrid) &lt;- TRUE
 &gt; proj4string(bargrid) &lt;- CRS(prj)
 &gt; Z.ovgm &lt;- vgm(psill=1352, model=&quot;Mat&quot;, range=650, nugget=0, kappa=1.2)
-&gt; sel &lt;- runif(length(barxyz$Z))&lt;.2  
+&gt; sel &lt;- runif(length(barxyz$Z))&lt;.2
 &gt; sims &lt;- krige(Z~1, barxyz[sel,], bargrid, model=Z.ovgm, nmax=20, nsim=10, debug.level=-1)</pre>
 <p class="R_env">  drawing 10 GLS realisations of beta...<br />
   [using conditional Gaussian simulation]<br />
@@ -809,7 +810,7 @@ Compressing to KMZ...</pre>
     <th scope="col"><img src="plot_RasterBrickSimulations.png" alt="plot_RasterBrickSimulations.png" width="550" /></th>
   </tr>
 </table>
-<p>Likewise, plotKML can also be used to visualize multiple realizations of vector features via the &quot;<a href="SpatialVectorsSimulations-class.html">SpatialVectorsSimulations</a>&quot; class objects. Here is an example with multiple stream networks derived using geostatistical simulations of DEMs shown previously (see <a href="http://dx.doi.org/10.5194/hess-14-1153-2010">Hengl et al, 2010</a> for more details):</p>
+<p>Likewise, plotKML can also be used to visualize multiple realizations of vector features via the &quot;<a href="SpatialVectorsSimulations-class.html">SpatialVectorsSimulations</a>&quot; class. Here is an example with multiple stream networks derived using geostatistical simulations of DEMs, shown previously (see <a href="http://dx.doi.org/10.5194/hess-14-1153-2010">Hengl et al, 2010</a> for more details):</p>
 <pre class="R_code">&gt; data(barstr)
 &gt; data(bargrid)
 &gt; coordinates(bargrid) &lt;- ~ x+y
@@ -838,7 +839,7 @@ Compressing to KMZ...</pre>
   </tr>
 </table>
 <h3><a name="SpatialMaxEntOutput" id="SpatialMaxEntOutput"></a>Species distribution modeling </h3>
-<p>A popular method to run the species distribution model to estimate potential distribution of a species is the MaxEnt software. Via the package dismo, one can run the modelling in R, and then visualize results in Google Earth by using:</p>
+<p>A popular method to run the species distribution model to estimate potential distribution of a species is the <a href="http://www.cs.princeton.edu/~schapire/maxent/" target="_blank">MaxEnt</a> software. Via the package <a href="http://CRAN.R-project.org/package=dismo" target="_blank">dismo</a> (<a href="http://cran.r-project.org/web/packages/dismo/vignettes/sdm.pdf" target="_blank">Hijmans and Elith, 2012</a>), one can run the modelling in R, and then visualize results in Google Earth by using:</p>
 <pre class="R_code">&gt; data(bigfoot)
 &gt; aea.prj &lt;- &quot;+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs&quot;
 &gt; coordinates(bigfoot) &lt;- ~Lon+Lat
@@ -861,7 +862,7 @@ Reprojecting to +proj=longlat +datum=WGS84 ...
 Parsing to KML...
 Closing  bigfoot.smo.kml
 Compressing to KMZ...</pre>
-<p>Note that the result are two maps: one showing the 'ecological' probability of Bigfoot's niche, and the second map showing the predicted domain (1 or missing) i.e. areas where the occurence of the species based on cross-validation is significant. </p>
+<p>Note that the result are two maps: one showing the 'ecological' probability of bigfoot's niche, and the second map showing the predicted domain (with values 1 or missing) i.e. areas where the occurence of the species based on cross-validation is significant.</p>
 <table width="500" border="0" cellspacing="2" cellpadding="4">
   <caption class="caption" align="bottom">
     Fig: Mapping distribution of the bigfoot using the  <a href="http://www.bfro.net/news/google_earth.asp" target="_blank">BigFoot Research Organization</a> (BFRO) data.
@@ -902,6 +903,7 @@ Compressing to KMZ...</pre>
   <li>Hijmans, R.J., (2012) <a href="http://cran.r-project.org/web/packages/raster/vignettes/Raster.pdf" target="_blank">Introduction to the 'raster' package</a>. Contributed R Achive Network (CRAN), p. 26.</li>
   <li>Pebesma, E., (2012) <a href="http://cran.r-project.org/web/packages/spacetime/spacetime.pdf" target="_blank">Classes and Methods for Spatio-Temporal Data in R</a>. Journal of Statistical Software, in press.</li>
   <li>Walvoort, D.J.J,  Brus, D.J.,  de Gruijter, J.J., (2010)  <a href="http://dx.doi.org/10.1016/j.cageo.2010.04.005">An R package for spatial coverage sampling and random sampling from compact geographical strata by k-means</a>. Computers &amp; Geosciences, <strong>36</strong>(10): 1261-1267.</li>
+  <li>Wernecke, J., (2009) <a href="http://www.informit.com/store/product.aspx?isbn=0321525590" target="_blank"><strong>The KML Hanbook: Geographic Visualization for the Web</strong></a>. Addison-Wesley, p. 331. </li>
 </ol>
 <p>&nbsp; </p>
 <hr />

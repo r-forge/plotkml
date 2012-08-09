@@ -86,7 +86,8 @@ ORCDRC = c(18.4, 4.4, 3.6, 3.6, 3.2, 1.2)
 hue = c("7.5YR", "7.5YR", "2.5YR", "5YR", "5YR", "10YR")
 value = c(3, 4, 5, 5, 5, 7); chroma = c(2, 4, 6, 8, 4, 3)
 # prepare a SoilProfileCollection:
-prof1 <- join(data.frame(id, top, bottom, ORCDRC, hue, value, chroma), data.frame(id, lon, lat, FAO1988), type='inner')
+prof1 <- join(data.frame(id, top, bottom, ORCDRC, hue, value, chroma), 
+   data.frame(id, lon, lat, FAO1988), type='inner')
 prof1$soil_color <- with(prof1, munsell2rgb(hue, value, chroma))
 depths(prof1) <- id ~ top + bottom
 site(prof1) <- ~ lon + lat + FAO1988 
@@ -117,7 +118,9 @@ coordinates(gpxbtour) <- ~lon+lat
 proj4string(gpxbtour) <- CRS("+proj=longlat +datum=WGS84")
 library(fossil)
 xy <- as.list(data.frame(t(coordinates(gpxbtour))))
-gpxbtour$dist.km <- sapply(xy, function(x) { deg.dist(long1=x[1], lat1=x[2], long2=xy[[1]][1], lat2=xy[[1]][2]) } )
+gpxbtour$dist.km <- sapply(xy, function(x) { 
+  deg.dist(long1=x[1], lat1=x[2], long2=xy[[1]][1], lat2=xy[[1]][2]) 
+} )
 # convert to a STTDF class:
 library(spacetime)
 library(adehabitat)
@@ -151,7 +154,8 @@ proj4string(pnts) <- CRS("+proj=longlat +datum=WGS84")
 # get the dates from the file names:
 LST_ll <- brick(LST_ll)
 LST_ll@title = "Time series of MODIS Land Surface Temperature (8-day mosaics) images"
-LST.ts <- new("RasterBrickTimeSeries", variable = "LST", sampled = pnts, rasters = LST_ll, TimeSpan.begin = TimeSpan.begin, TimeSpan.end = TimeSpan.end)
+LST.ts <- new("RasterBrickTimeSeries", variable = "LST", sampled = pnts, 
+    rasters = LST_ll, TimeSpan.begin = TimeSpan.begin, TimeSpan.end = TimeSpan.end)
 data(SAGA_pal)
 # plot MODIS images in Google Earth:
 plotKML(LST.ts, colour_scale=SAGA_pal[[1]])
@@ -166,7 +170,8 @@ gridded(meuse.grid) <- ~x+y
 proj4string(meuse.grid) <- CRS("+init=epsg:28992")
 # fit a model:
 library(GSIF)
-omm <- fit.gstatModel(observations = meuse, formulaString = om~dist, family = gaussian(log), covariates = meuse.grid)
+omm <- fit.gstatModel(observations = meuse, formulaString = om~dist, 
+   family = gaussian(log), covariates = meuse.grid)
 show(omm@regModel)
 # produce SpatialPredictions:
 om.rk <- predict(omm, predictionLocations = meuse.grid)
@@ -178,7 +183,8 @@ plotKML(om.rk)
 ## -------------- SpatialSamplingPattern --------- ##
 library(spcosa)
 # read a polygon map:
-shpFarmsum <- readOGR(dsn = system.file("maps", package = "spcosa"), layer = "farmsum")
+shpFarmsum <- readOGR(dsn = system.file("maps", package = "spcosa"), 
+  layer = "farmsum")
 # stratify `Farmsum' into 50 strata
 myStratification <- stratify(shpFarmsum, nStrata = 50)
 # sample two sampling units per stratum
@@ -189,10 +195,13 @@ nl.rd <- getURL("http://spatialreference.org/ref/sr-org/6781/proj4/")
 proj4string(mySamplingPattern@sample) <- CRS(nl.rd) 
 # prepare spatial domain (polygons):
 sp.domain <- as.SpatialPolygons.SpatialPixels(myStratification@cells)
-sp.domain <- SpatialPolygonsDataFrame(sp.domain, data.frame(ID=as.factor(myStratification@stratumId)), match.ID = FALSE)
+sp.domain <- SpatialPolygonsDataFrame(sp.domain, 
+   data.frame(ID=as.factor(myStratification@stratumId)), match.ID = FALSE)
 proj4string(sp.domain) <- CRS(nl.rd) 
 # create new object:
-mySamplingPattern.ssp <- new("SpatialSamplingPattern", method = class(mySamplingPattern), pattern = mySamplingPattern@sample, sp.domain = sp.domain)
+mySamplingPattern.ssp <- new("SpatialSamplingPattern", 
+   method = class(mySamplingPattern), pattern = mySamplingPattern@sample, 
+   sp.domain = sp.domain)
 # the same plot now in Google Earth:
 shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png"
 plotKML(mySamplingPattern.ssp, shape = shape)
@@ -200,7 +209,9 @@ plotKML(mySamplingPattern.ssp, shape = shape)
 ## -------------- RasterBrickSimulations --------- ##
 data(barxyz)
 # define the projection system:
-prj = "+proj=tmerc +lat_0=0 +lon_0=18 +k=0.9999 +x_0=6500000 +y_0=0 +ellps=bessel +units=m +towgs84=550.499,164.116,475.142,5.80967,2.07902,-11.62386,0.99999445824"
+prj = "+proj=tmerc +lat_0=0 +lon_0=18 +k=0.9999 +x_0=6500000 +y_0=0 
+  +ellps=bessel +units=m 
+  +towgs84=550.499,164.116,475.142,5.80967,2.07902,-11.62386,0.99999445824"
 coordinates(barxyz) <- ~x+y
 proj4string(barxyz) <- CRS(prj)
 data(bargrid)
@@ -209,8 +220,10 @@ gridded(bargrid) <- TRUE
 proj4string(bargrid) <- CRS(prj)
 # fit a variogram and generate simulations:
 Z.ovgm <- vgm(psill=1352, model="Mat", range=650, nugget=0, kappa=1.2)
-sel <- runif(length(barxyz$Z))<.2  # Note: this operation can be time consuming
-sims <- krige(Z~1, barxyz[sel,], bargrid, model=Z.ovgm, nmax=20, nsim=10, debug.level=-1)
+sel <- runif(length(barxyz$Z))<.2  
+# Note: this operation can be time consuming
+sims <- krige(Z~1, barxyz[sel,], bargrid, model=Z.ovgm, nmax=20, 
+   nsim=10, debug.level=-1)
 # specify the cross-section:
 t1 <- Line(matrix(c(bargrid@bbox[1,1],bargrid@bbox[1,2],5073012,5073012), ncol=2))
 transect <- SpatialLines(list(Lines(list(t1), ID="t")), CRS(prj))
@@ -230,7 +243,8 @@ gridded(bargrid) <- TRUE
 cell.size = bargrid@grid@cellsize[1]
 bbox = bargrid@bbox
 gridT = GridTopology(cellcentre.offset=bbox[,1], cellsize=c(cell.size,cell.size), 
-  cells.dim=c(round(abs(diff(bbox[1,])/cell.size), 0), ncols=round(abs(diff(bbox[2,])/cell.size), 0)))
+  cells.dim=c(round(abs(diff(bbox[1,])/cell.size), 0), 
+  ncols=round(abs(diff(bbox[2,])/cell.size), 0)))
 # derive summaries (observed frequency and the entropy or error):
 bar_sum <- aggregate(gridT, barstr[1:5]) 
 # NOTE: this operation can be time consuming!
@@ -239,7 +253,8 @@ plotKML(bar_sum, grid2poly = TRUE)
 
 ## -------------- SpatialMaxEntOutput --------- ##
 data(bigfoot)
-aea.prj <- "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"
+aea.prj <- "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 
+   +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"
 coordinates(bigfoot) <- ~Lon+Lat
 proj4string(bigfoot) <- CRS("+proj=latlon +datum=WGS84")
 bigfoot.aea <- as.ppp(spTransform(bigfoot, CRS(aea.prj)))
