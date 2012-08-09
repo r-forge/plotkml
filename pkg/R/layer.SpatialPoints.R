@@ -25,7 +25,7 @@ kml_layer.SpatialPoints <- function(
   prj.check <- check_projection(obj, control = TRUE)
 
   # Trying to reproject data if the check was not successful
-  if (prj.check==FALSE) {   obj <- reproject(obj)  }
+  if(prj.check==FALSE) {   obj <- reproject(obj)  }
 
   # Parsing the call for aesthetics
   aes <- kml_aes(obj, ...)

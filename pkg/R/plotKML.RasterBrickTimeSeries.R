@@ -4,7 +4,7 @@
 # Dev Status     : Alpha
 # Note           : plots are in the description tag;
 
-plotKML.RasterBrickTimeSeries <- function(
+setMethod("plotKML", "RasterBrickTimeSeries", function(
   obj,
   folder.name = normalizeFilename(deparse(substitute(obj, env=parent.frame()))),
   file.name = paste(normalizeFilename(deparse(substitute(obj, env=parent.frame()))), ".kml", sep=""),
@@ -63,8 +63,7 @@ plotKML.RasterBrickTimeSeries <- function(
   # open KML file in the default browser:
   kml_View(file.name)
   
-}
+})
 
-setMethod("plotKML", "RasterBrickTimeSeries", plotKML.RasterBrickTimeSeries)
 
 # end of script;

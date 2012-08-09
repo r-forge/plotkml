@@ -10,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>A class containing input and output data produced by running the <code>maxent</code> (Maximum Entropy) species distribution modeling algorithm. Object of this class can be directly visualized in Google Earth by using the <code><a href="plotKML-method.html">plotKML-methods</a></code>.</p>
+<p>A class containing input and output data produced by running the <code>maxent</code> (Maximum Entropy) species distribution modeling algorithm. Object of this class can be directly visualized in Google Earth by using the <code><a href="plotKML-method.html">plotKML-method</a></code>.</p>
 
 
 <h3>Slots</h3>
@@ -22,13 +22,13 @@
 </dd>
 <dt><code>occurrences</code>:</dt><dd><p>object of class <code>"SpatialPoints"</code>; occurrence-only records</p>
 </dd>
-<dt><code>TimeSpan.begin</code>:</dt><dd><p>object of class <code>"POSIXct"</code>; begin of sampling</p>
+<dt><code>TimeSpan.begin</code>:</dt><dd><p>object of class <code>"POSIXct"</code>; begin of the sampling period</p>
 </dd>
-<dt><code>TimeSpan.end</code>:</dt><dd><p>object of class <code>"POSIXct"</code>; end of sampling</p>
+<dt><code>TimeSpan.end</code>:</dt><dd><p>object of class <code>"POSIXct"</code>; end of the sampling period</p>
 </dd>
 <dt><code>maxent</code>:</dt><dd><p>object of class <code>"MaxEnt"</code> (species distribution model); produced as an output of the <code>dismo::maxent</code> function</p>
 </dd>
-<dt><code>sp.domain</code>:</dt><dd><p>object of class <code>"SpatialPolygonsDataFrame"</code>; assumed spatial domain that can be set by the user or estimated by MaxEnt (see examples below)</p>
+<dt><code>sp.domain</code>:</dt><dd><p>object of class <code>"Spatial"</code> (ideally <code>"SpatialPolygonsDataFrame"</code> or <code>"SpatialPixelsDataFrame"</code>); assumed spatial domain that can be set by the user or it will be estimated by MaxEnt (see examples below)</p>
 </dd>
 <dt><code>predicted</code>:</dt><dd><p>object of class <code>"RasterLayer"</code>; contains results of prediction produced using the MaxEnt software</p>
 </dd>
@@ -77,7 +77,7 @@
 
 <h3>See Also</h3>
 
- <p><code>dismo::maxent</code>, <code>rgbif::taxonsearch</code> 
+ <p><code>dismo::maxent</code>, <code>rgbif::taxonsearch</code>, <code>GSIF::MaxEnt</code> 
 </p>
 
 

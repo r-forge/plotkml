@@ -2,7 +2,7 @@
 \docType{class}
 \alias{SpatialMaxEntOutput-class}
 \title{A class for outputs of analysis produced using the dismo package (MaxEnt)}
-\description{A class containing input and output data produced by running the \code{maxent} (Maximum Entropy) species distribution modeling algorithm. Object of this class can be directly visualized in Google Earth by using the \code{\link{plotKML-methods}}.}
+\description{A class containing input and output data produced by running the \code{maxent} (Maximum Entropy) species distribution modeling algorithm. Object of this class can be directly visualized in Google Earth by using the \code{\link{plotKML-method}}.}
 \section{Slots}{
   \describe{
     \item{\code{sciname}:}{object of class \code{"character"}; vector of species name compatible with the \code{rgbif} package; usually latin "genus" and "species" name}

@@ -9,7 +9,7 @@
 setClass("sp.palette", representation(type = 'character', bounds = 'vector', color = 'character', names = 'character', icons = 'character'), validity = function(object) {
    if(!class(object@bounds)=="numeric")
       return('Vector with upper and lower limits required')
-   if((length(object@bounds)-1)!=length(object@color)|(length(object@bounds)-1)!=length(x@names))
+   if((length(object@bounds)-1)!=length(object@color)|(length(object@bounds)-1)!=length(object@names))
       return('Size of bounds (-1), colors and element names must be equal')
    if(any(nchar(object@color)<7|nchar(object@color)>9))
       return('Colors in the hex system required') 
@@ -19,8 +19,14 @@ setClass("sp.palette", representation(type = 'character', bounds = 'vector', col
 setClass("SpatialMetadata", representation(xml = "XMLInternalDocument", field.names = "character", palette = "sp.palette", sp = "Spatial"), validity = function(object) {
     if(!xmlName(xmlRoot(object@xml))=="metadata")
       return("XML file tagged 'metadata' not found")
-    if(!length(.getXMLnames(object@xml))==length(object@field.names))
-      return("Length of field names does not match the column names in xml slot")
+    # check the metadata names:
+    ny <- unlist(xmlToList(object@xml, addAttributes=FALSE))
+    met <- data.frame(metadata=gsub("\\.", "_", names(ny)), value=paste(ny))
+    # add friendly names:
+    mdnames <- read.table(system.file("mdnames.csv", package="plotKML"), sep=";")
+    field_names <- merge(met, mdnames[,c("metadata","field.names")], by="metadata", all.x=TRUE, all.y=FALSE)[,"field.names"]    
+    if(!any(field_names %in% object@field.names))
+      return("Field names does not match the column names in the xml slot")
     if(!class(object@field.names)=="character")
       return("Field names as character vector required")      
 })
@@ -115,7 +121,8 @@ setClass("SpatialSamplingPattern", representation(method = "character", pattern 
 
 ## A new class for RasterBrickTimeSeries:
 setClass("RasterBrickTimeSeries", representation(variable = "character", sampled = "SpatialPointsDataFrame", rasters = "RasterBrick", TimeSpan.begin = "POSIXct", TimeSpan.end = "POSIXct"), validity = function(object) {
-    if(object@TimeSpan.begin > object@TimeSpan.end)
+    sel <- !is.na(object@TimeSpan.begin)&!is.na(object@TimeSpan.end)
+    if(any(object@TimeSpan.begin[sel] > object@TimeSpan.end[sel]))
       return("'TimeSpan.begin' must indicate time before or equal to 'TimeSpan.end'")
     if(!(length(object@TimeSpan.begin)==length(object@TimeSpan.end)&length(object@TimeSpan.begin)==ncol(object@rasters@data@values)))
       return("Length of the 'TimeSpan.begin' and 'TimeSpan.end' slots and the total number of rasters do not match")
