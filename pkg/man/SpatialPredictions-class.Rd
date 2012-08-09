@@ -2,7 +2,7 @@
 \docType{class}
 \alias{SpatialPredictions-class}
 \title{A class for spatial predictions produced using \code{gstat} package}
-\description{A class containing input and output maps generated through the process of geostatistical mapping. Object of this class can be directly visualized in Google Earth by using the \code{\link{plotKML-methods}}.}
+\description{A class containing input and output maps generated through the process of geostatistical mapping. Object of this class can be directly visualized in Google Earth by using the \code{\link{plotKML-method}}.}
 \section{Slots}{
   \describe{
     \item{\code{variable}:}{object of class \code{"character"}; variable name}
