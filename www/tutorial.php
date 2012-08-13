@@ -71,7 +71,7 @@ echo $contents; } ?>
 <hr />
 <p class="style1">Prepared by: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">Tomislav Hengl</a><br />
   Last update:
-  <!-- #BeginDate format:Am1 -->August 9, 2012<!-- #EndDate -->
+  <!-- #BeginDate format:Am1 -->August 11, 2012<!-- #EndDate -->
 </p>
 <p>This a short review of the plotKML functionality with examples of inputs and outputs. The plotKML (R package) <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. To learn more about the <strong>Global Soil Information Facilities</strong> (GSIF), visit the <a href="http://www.isric.org/projects/global-soil-information-facilities-gsif" target="_blank">main project page</a>. This tutorial only explains how to quickly plot various spatial and spatio-temporal data in Google Earth. To use the advanced  <strong><a href="00Index.html">functionality</a></strong>, refer to the  plotKML package documentation.</p>
 <p>Download the tutorial's  <a href="plotKML-method.html">R code</a>. </p>
@@ -378,7 +378,12 @@ Closing  eberg_grid__LNCCOR6__.kml</pre>
    .. .. .. .. ..$ : chr [1:3] &quot;lon&quot; &quot;lat&quot; &quot;alt&quot;
    .. .. .. .. ..$ : chr [1:2] &quot;min&quot; &quot;max&quot;
    .. .. ..@ proj4string:Formal class 'CRS' [package &quot;sp&quot;] with 1 slots
-   .. .. .. .. ..@ projargs: chr &quot; +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0&quot;</pre>
+   .. .. .. .. ..@ projargs: chr &quot; +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0&quot;
+</pre>
+<pre class="R_code">&gt; plotKML(sm)</pre>
+<pre class="R_env">KML file header opened for parsing...
+Closing  sm.kml
+Compressing to KMZ...</pre>
 <table width="500" border="0" cellspacing="2" cellpadding="4">
   <caption class="caption" align="bottom">
     Fig: Soil profile photograph with all <a href="http://www.sno.phy.queensu.ca/~phil/exiftool/" target="_blank">EXIF</a> information obtained via the <a href="http://www.mediawiki.org/wiki/API" target="_blank">WikiMedia API</a>.
