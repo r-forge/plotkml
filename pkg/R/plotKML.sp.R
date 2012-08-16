@@ -112,7 +112,7 @@ setMethod("plotKML", "SpatialPolygonsDataFrame", function(obj, folder.name = nor
 })
 
 ## Pixels Grids Raster
-.plotKML.SpatialPixels <- function(obj, folder.name = normalizeFilename(deparse(substitute(obj, env=parent.frame()))), file.name = paste(normalizeFilename(deparse(substitute(obj, env=parent.frame()))), ".kml", sep=""), colour, colour_scale, raster_name, metadata = NULL, kmz = FALSE, ...){
+.plotKML.SpatialPixels <- function(obj, folder.name = normalizeFilename(deparse(substitute(obj, env=parent.frame()))), file.name = paste(normalizeFilename(deparse(substitute(obj, env=parent.frame()))), ".kml", sep=""), colour, raster_name, metadata = NULL, kmz = FALSE, ...){
 
   # the kml_layer.Raster works only with "Spatial" class:
   if(class(obj)=="RasterLayer"){
