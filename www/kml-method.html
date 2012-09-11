@@ -17,7 +17,18 @@
 
 <h3>Usage</h3>
 
-<pre>kml(obj, ...)</pre>
+<pre>
+## S4 method for signature 'Raster'
+kml(obj, folder.name, file.name, kmz, ...)
+## S4 method for signature 'Spatial'
+kml(obj, folder.name, file.name, kmz, ...)
+## S4 method for signature 'STIDF'
+kml(obj, folder.name, file.name, kmz, ...)
+## S4 method for signature 'SoilProfileCollection'
+kml(obj, folder.name, file.name, kmz, ...)
+## S4 method for signature 'SpatialPhotoOverlay'
+kml(obj, folder.name, file.name, kmz, ...)
+</pre>
 
 
 <h3>Arguments</h3>
@@ -27,6 +38,18 @@
 <tr valign="top"><td><code>obj</code></td>
 <td>
 <p>object inheriting from the <code>Spatial*</code> or the <code>Raster*</code> classes</p>
+</td></tr>
+<tr valign="top"><td><code>folder.name</code></td>
+<td>
+<p>character; folder name in the KML file</p>
+</td></tr>
+<tr valign="top"><td><code>file.name</code></td>
+<td>
+<p>character; output KML file name</p>
+</td></tr>
+<tr valign="top"><td><code>kmz</code></td>
+<td>
+<p>logical; specief whether to compress the KML file</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>

@@ -62,9 +62,10 @@ gridded(LST) &lt;- ~x+y
 proj4string(LST) &lt;- CRS("+proj=utm +zone=33 +datum=WGS84 +units=m")
 dates &lt;- sapply(strsplit(names(LST), "LST"), function(x){x[[2]]})
 datesf &lt;- format(as.Date(dates, "%Y_%m_%d"), "%Y-%m-%dT%H:%M:%SZ")
-## Not run: # begin / end dates +/- 4 days:
+# begin / end dates +/- 4 days:
 TimeSpan.begin = as.POSIXct(unclass(as.POSIXct(datesf))-4*24*60*60, origin="1970-01-01") 
 TimeSpan.end = as.POSIXct(unclass(as.POSIXct(datesf))+4*24*60*60, origin="1970-01-01")
+## Not run: # reproject (takes time):
 LST_ll &lt;- reproject(LST)
 # pick few climatic stations:
 data(HRtemp08)

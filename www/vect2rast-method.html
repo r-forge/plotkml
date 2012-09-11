@@ -16,7 +16,15 @@
 <h3>Usage</h3>
 
 <pre>
-vect2rast(obj, ... )
+## S4 method for signature 'SpatialPoints'
+vect2rast(obj, fname = names(obj)[1], cell.size, bbox, file.name, silent = FALSE, 
+      method = c("raster", "SAGA")[1], FIELD = 0, MULTIPLE = 1, LINE_TYPE = 0, GRID_TYPE = 2, ... )
+## S4 method for signature 'SpatialLines'
+vect2rast(obj, fname = names(obj)[1], cell.size, bbox, file.name, silent = FALSE, 
+      method = c("raster", "SAGA")[1], FIELD = 0, MULTIPLE = 1, LINE_TYPE = 1, GRID_TYPE = 2, ... )
+## S4 method for signature 'SpatialPolygons'
+vect2rast(obj, fname = names(obj)[1], cell.size, bbox, file.name, silent = FALSE, 
+      method = c("raster", "SAGA")[1], FIELD = 0, MULTIPLE = 0, LINE_TYPE = 1, GRID_TYPE = 2, ... )
 </pre>
 
 
@@ -28,6 +36,46 @@ vect2rast(obj, ... )
 <td>
 <p>Spatial-PointsDataFrame,-LinesDataFrame or -PolygonsDataFrame object</p>
 </td></tr>
+<tr valign="top"><td><code>fname</code></td>
+<td>
+<p>character; target variable</p>
+</td></tr>
+<tr valign="top"><td><code>cell.size</code></td>
+<td>
+<p>numeric; output cell size</p>
+</td></tr>
+<tr valign="top"><td><code>bbox</code></td>
+<td>
+<p>matrix; output bounding box</p>
+</td></tr>
+<tr valign="top"><td><code>file.name</code></td>
+<td>
+<p>character; (optional) output file name</p>
+</td></tr>
+<tr valign="top"><td><code>silent</code></td>
+<td>
+<p>logical; specifies whether to print the output</p>
+</td></tr> 
+<tr valign="top"><td><code>method</code></td>
+<td>
+<p>character; output rasterization engine (either raster package or SAGA GIS)</p>
+</td></tr>
+<tr valign="top"><td><code>FIELD</code></td>
+<td>
+<p>integer; target column in the output shape file (see <code>rsaga.get.usage("grid_gridding", 0)</code>)</p>
+</td></tr>
+<tr valign="top"><td><code>MULTIPLE</code></td>
+<td>
+<p>integer; method for multiple values (see <code>rsaga.get.usage("grid_gridding", 0)</code>)</p>
+</td></tr>
+<tr valign="top"><td><code>LINE_TYPE</code></td>
+<td>
+<p>integer; method for lines (see <code>rsaga.get.usage("grid_gridding", 0)</code>)</p>
+</td></tr>
+<tr valign="top"><td><code>GRID_TYPE</code></td>
+<td>
+<p>integer; preferred target grid type (see <code>rsaga.get.usage("grid_gridding", 0)</code>)</p>
+</td></tr>  
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>additional arguments that can be passed to the <code>raster::rasterize</code> command</p>
@@ -38,8 +86,7 @@ vect2rast(obj, ... )
 <h3>Details</h3>
 
 
-<p>This function basically extends the <code><a href="vect2rast-method.html">rasterize</a></code> function available in the raster package. The advantage of <code>vect2rast</code>, however, is that it requires no input from the user's side i.e. it automatically determines the grid cell size based on the properties of the input data set. <br>
-The optimal grid cell size is estimated based on the density/size of features in the map (<code>nndist</code> function in <a href="http://www.spatstat.org">spatstat</a> package): (a) in the case of <code>"SpatialPoints"</code> cell size is determined as half the mean distance between the nearest points; (b) in the case of <code>"SpatialLines"</code> half cell size is determined as half the mean distance between the lines; (c) in the case of polygon data cell size is determined as half the median size (area) of polygons of interest. For more details see <a href="http://dx.doi.org/10.1016/j.cageo.2005.11.008">Hengl (2006)</a>. To process larger vector maps consider using <code>method="SAGA"</code>.
+<p>This function basically extends the <code><a href="vect2rast-method.html">rasterize</a></code> function available in the raster package. The advantage of <code>vect2rast</code>, however, is that it requires no input from the user's side i.e. it automatically determines the grid cell size and the bounding box based on the properties of the input data set. The grid cell size is estimated based on the density/size of features in the map (<code>nndist</code> function in <a href="http://www.spatstat.org">spatstat</a> package): (a) in the case of <code>"SpatialPoints"</code> cell size is determined as half the mean distance between the nearest points; (b) in the case of <code>"SpatialLines"</code> half cell size is determined as half the mean distance between the lines; (c) in the case of polygon data cell size is determined as half the median size (area) of polygons of interest. For more details see <a href="http://dx.doi.org/10.1016/j.cageo.2005.11.008">Hengl (2006)</a>. To process larger vector maps consider using <code>method="SAGA"</code>.
 </p>
 
 
@@ -66,7 +113,7 @@ The optimal grid cell size is estimated based on the density/size of features in
 </li>
 <li><p> SpatStat package (<a href="http://www.spatstat.org">http://www.spatstat.org</a>)
 </p>
-</ul>
+</li></ul>
 
 
 
