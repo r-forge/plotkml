@@ -10,12 +10,29 @@
 
 <h3>Description</h3>
 
-<p>This wrapper function reprojects any vector or raster spatial data to some referent coordinate system (by default: geographic coordinates on the World Geodetic System of 1984 / WGS84 datum).</p>
+<p>This wrapper function reprojects any vector or raster spatial data to some referent coordinate system (by default: geographic coordinates on the <a href="http://spatialreference.org/ref/epsg/4326/">World Geodetic System of 1984 / WGS84</a> datum).</p>
 
 
 <h3>Usage</h3>
 
-<pre>reproject(obj, ...)</pre>
+<pre>
+## S4 method for signature 'SpatialPoints'
+reproject(obj, CRS, ...)
+## S4 method for signature 'SpatialPolygons'
+reproject(obj, CRS, ...)
+## S4 method for signature 'SpatialLines'
+reproject(obj, CRS, ...)
+## S4 method for signature 'RasterStack'
+reproject(obj, CRS, ...)
+## S4 method for signature 'RasterLayer'
+reproject(obj, CRS, program = "raster", tmp.file = TRUE, NAflag, show.output.on.console = FALSE, ...)
+## S4 method for signature 'RasterBrick'
+reproject(obj, CRS, ...)
+## S4 method for signature 'SpatialGridDataFrame'
+reproject(obj, CRS, tmp.file = TRUE, program = "raster", NAflag, show.output.on.console = FALSE, ...)
+## S4 method for signature 'SpatialPixelsDataFrame'
+reproject(obj, CRS, tmp.file = TRUE, program = "raster", NAflag, show.output.on.console = FALSE, ...)
+</pre>
 
 
 <h3>Arguments</h3>
@@ -25,6 +42,26 @@
 <tr valign="top"><td><code>obj</code></td>
 <td>
 <p>Spatial* or Raster* object</p>
+</td></tr>
+<tr valign="top"><td><code>CRS</code></td>
+<td>
+<p>object of class <code>"CRS"</code>; proj4 string</p>
+</td></tr>
+<tr valign="top"><td><code>program</code></td>
+<td>
+<p>reprojection engine; either raster package or FWTools</p>
+</td></tr>
+<tr valign="top"><td><code>tmp.file</code></td>
+<td>
+<p>logical; specifies whether to create a temporary file or not</p>
+</td></tr>
+<tr valign="top"><td><code>NAflag</code></td>
+<td>
+<p>character; missing value flag</p>
+</td></tr>
+<tr valign="top"><td><code>show.output.on.console</code></td>
+<td>
+<p>logical; specifies whether to print the progress</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -60,7 +97,7 @@
 </li>
 <li><p> FWTools (<a href="http://fwtools.maptools.org">http://fwtools.maptools.org</a>)
 </p>
-</ul>
+</li></ul>
 
 
 

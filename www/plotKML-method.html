@@ -15,7 +15,57 @@
 
 <h3>Usage</h3>
 
-<pre>plotKML(obj, ... )
+<pre>
+## S4 method for signature 'SpatialPointsDataFrame'
+plotKML(obj, folder.name, file.name, size, colour, points_names, 
+      shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png", 
+      metadata = NULL, kmz = TRUE, ...)
+## S4 method for signature 'SpatialLinesDataFrame'
+plotKML(obj, folder.name, file.name, metadata = NULL, kmz = TRUE, ...)
+## S4 method for signature 'SpatialPolygonsDataFrame'
+plotKML(obj, folder.name, file.name, colour, plot.labpt, labels, metadata = NULL, kmz = TRUE, ...)
+## S4 method for signature 'SpatialPixelsDataFrame'
+plotKML(obj, folder.name, file.name, colour, raster_name, metadata = NULL, kmz = FALSE, ...)
+## S4 method for signature 'SpatialGridDataFrame'
+plotKML(obj, folder.name, file.name, colour, raster_name, metadata = NULL, kmz = FALSE, ...)
+## S4 method for signature 'RasterLayer'
+plotKML(obj, folder.name, file.name, colour, raster_name, metadata = NULL, kmz = FALSE, ...)
+## S4 method for signature 'SpatialPhotoOverlay'
+plotKML(obj, folder.name, file.name, dae.name, kmz = TRUE, ...)
+## S4 method for signature 'SoilProfileCollection'
+plotKML(obj, folder.name, file.name, var.name, metadata = NULL, kmz = TRUE, ...)
+## S4 method for signature 'STIDF'
+plotKML(obj, folder.name, file.name, colour, shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png", 
+      points_names, kmz = TRUE, ...)
+## S4 method for signature 'STTDF'
+plotKML(obj, folder.name, file.name, colour, 
+      start.icon = "http://maps.google.com/mapfiles/kml/pal2/icon18.png", 
+      kmz = TRUE, ...)
+## S4 method for signature 'RasterBrickTimeSeries'
+plotKML(obj, folder.name, file.name, var.name = names(obj@sampled)[1],
+      pngwidth = 680, pngheight = 180, pngpointsize = 14, kmz = TRUE, ...)
+## S4 method for signature 'RasterBrickSimulations'
+plotKML(obj, folder.name, file.name, obj.summary = TRUE,
+      pngwidth = 680, pngheight = 200, pngpointsize = 14, kmz = TRUE, ...)
+## S4 method for signature 'SpatialMaxEntOutput'
+plotKML(obj, folder.name, file.name, html.file = obj@maxent@html, 
+      iframe.width = 800, iframe.height = 800, pngwidth = 280, 
+      pngheight = 280, pngpointsize = 14, colour, 
+      shape = "http://plotkml.r-forge.r-project.org/icon17.png", 
+      kmz = TRUE, TimeSpan.begin = obj@TimeSpan.begin, TimeSpan.end = obj@TimeSpan.end, ...)
+## S4 method for signature 'SpatialPredictions'
+plotKML(obj, folder.name, file.name, 
+      colour_scale_svar = get("colour_scale_svar", envir = plotKML.opts), grid2poly = FALSE, 
+      obj.summary = TRUE, plot.svar = FALSE, pngwidth = 210, 
+      pngheight = 580, pngpointsize = 14, kmz = TRUE, ...)
+## S4 method for signature 'SpatialSamplingPattern'
+plotKML(obj, folder.name, file.name, kmz = TRUE, 
+      var.name = names(obj@sp.domain)[1], ...)
+## S4 method for signature 'SpatialVectorsSimulations'
+plotKML(obj, folder.name, file.name, 
+      colour_scale_svar = get("colour_scale_svar", envir = plotKML.opts), 
+      grid2poly = FALSE, obj.summary = TRUE, plot.svar = FALSE, 
+      var.name = names(obj@summaries)[1], kmz = TRUE, ...)
 </pre>
 
 
@@ -26,6 +76,110 @@
 <tr valign="top"><td><code>obj</code></td>
 <td>
 <p>input object of specific class; either some <a href="http://cran.r-project.org/package=sp">sp</a> or <a href="http://cran.r-project.org/package=raster">raster</a> package class object, or plotKML composite objects containing both inputs and outputs of analysis</p>
+</td></tr>
+<tr valign="top"><td><code>folder.name</code></td>
+<td>
+<p>character; folder name in the KML file</p>
+</td></tr>
+<tr valign="top"><td><code>file.name</code></td>
+<td>
+<p>character; output KML file name</p>
+</td></tr>
+<tr valign="top"><td><code>size</code></td>
+<td>
+<p>for point objects for plotting (see <a href="aesthetics.html">aesthetics</a>)</p>
+</td></tr>
+<tr valign="top"><td><code>colour</code></td>
+<td>
+<p>colour variable for plotting (see <a href="aesthetics.html">aesthetics</a>)</p>
+</td></tr>
+<tr valign="top"><td><code>points_names</code></td>
+<td>
+<p>vector of characters that can be used as labels</p>
+</td></tr>
+<tr valign="top"><td><code>shape</code></td>
+<td>
+<p>character; icons used for plotting (see <a href="aesthetics.html">aesthetics</a>)</p>
+</td></tr>
+<tr valign="top"><td><code>raster_name</code></td>
+<td>
+<p>(optional) specify the output file name (PNG)</p>
+</td></tr>
+<tr valign="top"><td><code>metadata</code></td>
+<td>
+<p>(optional) the metadata object</p>
+</td></tr>
+<tr valign="top"><td><code>plot.labpt</code></td>
+<td>
+<p>logical; specifies whether to plot centroids for polygon data</p>
+</td></tr>
+<tr valign="top"><td><code>labels</code></td>
+<td>
+<p>character vector; list of labels that will attached to the centroids</p>
+</td></tr>
+<tr valign="top"><td><code>start.icon</code></td>
+<td>
+<p>icon for the start position (for trajectory data)</p>
+</td></tr>
+<tr valign="top"><td><code>dae.name</code></td>
+<td>
+<p>output DAE file name</p>
+</td></tr>
+<tr valign="top"><td><code>var.name</code></td>
+<td>
+<p>column name for the target variable</p>
+</td></tr>
+<tr valign="top"><td><code>html.file</code></td>
+<td>
+<p>specify the location of the html file containing report data (if the input object is of class <code>"SpatialMaxEntOutput"</code>)</p>
+</td></tr>
+<tr valign="top"><td><code>iframe.width</code></td>
+<td>
+<p>integer; width of the screen for iframe</p>
+</td></tr>
+<tr valign="top"><td><code>iframe.height</code></td>
+<td>
+<p>integer; height of the screen for iframe</p>
+</td></tr>
+<tr valign="top"><td><code>TimeSpan.begin</code></td>
+<td>
+<p>object of class <code>"POSIXct"</code>; begin of the sampling period</p>
+</td></tr>
+<tr valign="top"><td><code>TimeSpan.end</code></td>
+<td>
+<p>object of class <code>"POSIXct"</code>; end of the sampling period</p>
+</td></tr>
+<tr valign="top"><td><code>pngwidth</code></td>
+<td>
+<p>integer; width of the PNG plot</p>
+</td></tr>
+<tr valign="top"><td><code>pngheight</code></td>
+<td>
+<p>integer; height of the PNG plot</p>
+</td></tr>
+<tr valign="top"><td><code>pngpointsize</code></td>
+<td>
+<p>integer; text size in the PNG plot</p>
+</td></tr>
+<tr valign="top"><td><code>colour_scale_svar</code></td>
+<td>
+<p>colour palette for the model uncertainty (standard deviation)</p>
+</td></tr>
+<tr valign="top"><td><code>grid2poly</code></td>
+<td>
+<p>logical; specifies whether to convert gridded object to polygons</p>
+</td></tr>
+<tr valign="top"><td><code>obj.summary</code></td>
+<td>
+<p>logical; specifies whether to print the object summary</p>
+</td></tr>
+<tr valign="top"><td><code>plot.svar</code></td>
+<td>
+<p>logical; specifies whether to plot the model uncertainty</p>
+</td></tr>
+<tr valign="top"><td><code>kmz</code></td>
+<td>
+<p>logical; specifies whether to compress the output KML file</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
