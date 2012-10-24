@@ -28,7 +28,7 @@ reproject.RasterBrick <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
 
 reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), program = "raster", tmp.file = TRUE, NAflag = get("NAflag", envir = plotKML.opts), show.output.on.console = FALSE, ...) {
 
-  if (is.factor(obj)){  
+  if(is.factor(obj)){  
     method <- "ngb" 
   } else {  
     method <- "bilinear" 
@@ -79,6 +79,11 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
     # if multiple layers:
     if(ncol(obj) > 1) {
       r <- stack(obj)
+      for(j in 1:ncol(obj)){
+        if(is.factor(obj@data[,j])){
+          r[[j]] <- as.factor(r[[j]])
+        }
+      }
       r <- stack(lapply(r@layers, reproject, CRS = CRS, ...))
       res <- as(r, "SpatialGridDataFrame")
     ## TH: time consuming but would be preferred:
@@ -89,7 +94,13 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
     # single layer:
     else {
       r <- raster(obj)
-      res <- as(reproject(r, CRS = CRS, ...), "SpatialGridDataFrame")
+      if(is.factor(obj@data[,1])){
+        r <- as.factor(r)
+        res <- as(projectRaster(r, crs = CRS, method = "ngb"), "SpatialGridDataFrame")
+      } else {
+        res <- as(reproject(r, CRS = CRS, ...), "SpatialGridDataFrame")
+      }
+      
       names(res) <- names(obj)
     }
     

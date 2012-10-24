@@ -124,7 +124,7 @@ setClass("RasterBrickTimeSeries", representation(variable = "character", sampled
     sel <- !is.na(object@TimeSpan.begin)&!is.na(object@TimeSpan.end)
     if(any(object@TimeSpan.begin[sel] > object@TimeSpan.end[sel]))
       return("'TimeSpan.begin' must indicate time before or equal to 'TimeSpan.end'")
-    if(!(length(object@TimeSpan.begin)==length(object@TimeSpan.end)&length(object@TimeSpan.begin)==ncol(object@rasters@data@values)))
+    if(!(length(object@TimeSpan.begin)==length(object@TimeSpan.end)&length(object@TimeSpan.begin)==nlayers(object@rasters)))
       return("Length of the 'TimeSpan.begin' and 'TimeSpan.end' slots and the total number of rasters do not match")
     ov <- extract(object@rasters, object@sampled)
     if(!nrow(ov)==length(object@sampled))
@@ -167,6 +167,10 @@ if (!isGeneric("metadata2SLD")){
 
 if (!isGeneric("kml_layer")){
   setGeneric("kml_layer", function(obj, ...){standardGeneric("kml_layer")})
+}
+
+if (!isGeneric("kml_metadata")){
+  setGeneric("kml_metadata", function(obj, ...){standardGeneric("kml_metadata")})
 }
 
 if (!isGeneric("kml")){

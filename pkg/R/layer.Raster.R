@@ -51,10 +51,9 @@ kml_layer.Raster <- function(
   # TH: this needs to be fixed
   altitude <- charmatch("altitude", names(call))
   if(!is.na(altitude)){
-    altitude <- eval(call[["altitude"]], length(obj))
-    altitude <- kml_altitude(obj, altitude)
+    altitude <- eval(call[["altitude"]], nlayers(obj))
   } else {
-    altitude <- kml_altitude(obj, altitude=NULL)
+    altitude <- rep(.all_kml_aesthetics[["altitude"]], length.out = nlayers(obj))
   }
   altitudeMode <- kml_altitude_mode(altitude, GroundOverlay=TRUE) 
 

@@ -1,11 +1,11 @@
 Package: plotKML
-Version: 0.2-5
-Date: 2012-09-07
+Version: 0.3-0
+Date: 2012-10-25
 Title: Visualization of spatial and spatio-temporal objects in Google Earth
-Author: Tomislav Hengl <tom.hengl@wur.nl>, Contributions by: Pierre Roudier <roudierp@landcareresearch.co.nz>, Dylan Beaudette <debeaudette@ucdavis.edu>, Daniel Nuest <d.nuest@52north.org>
+Author: Tomislav Hengl <tom.hengl@wur.nl>, Contributions by: Pierre Roudier <roudierp@landcareresearch.co.nz>, Dylan Beaudette <debeaudette@ucdavis.edu>, Edzer Pebesma <edzer.pebesma@uni-muenster.de>
 Maintainer: Tomislav Hengl <tom.hengl@wur.nl>
-Depends: R (>= 2.13.0), rgdal, methods, XML, sp, pixmap, raster, plyr, colorspace, grDevices, plotrix, colorRamps, stringr, RColorBrewer, Hmisc, gstat, spacetime, xts, aqp, scales, dismo
-Suggests: utils, maptools, fossil, spcosa, zoo, rjson, animation, spatstat, RSAGA, RCurl, rgbif, GSIF
+Depends: R (>= 2.13.0), rgdal, methods, XML, sp, pixmap, raster, plyr, colorspace, grDevices, plotrix, colorRamps, stringr, RColorBrewer, Hmisc, spacetime, xts, aqp, scales, dismo
+Suggests: utils, adehabitat, maptools, fossil, spcosa, zoo, rjson, animation, gstat, spatstat, RSAGA, RCurl, rgbif, GSIF
 Enhances: sp, raster
 Description: Writes sp-class, spacetime-class, raster-class and similar spatial and spatio-temporal objects to KML following some basic cartographic rules. Suitable for visualization of complete analysis outputs.
 License: GPL

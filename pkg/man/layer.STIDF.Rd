@@ -35,7 +35,7 @@ tags will be inserted. Temporal support (\eqn{\Delta t}{dt}) is estimated using 
 data(HRtemp08)
 # format the time column:
 HRtemp08$ctime <- as.POSIXct(HRtemp08$DATE, format="\%Y-\%m-\%dT\%H:\%M:\%SZ")
-\dontrun{# create a STIDF object:
+# create a STIDF object:
 library(spacetime)
 sp <- SpatialPoints(HRtemp08[,c("Lon","Lat")])
 proj4string(sp) <- CRS("+proj=longlat +datum=WGS84")
@@ -49,9 +49,9 @@ library("maptools")
 fname <- system.file("shapes/sids.shp", package="maptools")[1]
 nc <- readShapePoly(fname, proj4string=CRS("+proj=longlat +datum=NAD27"))
 time <- as.POSIXct(strptime(c(rep("1974-01-01", length(nc)), 
-   rep("1979-01-01", length(nc))), format="%Y-%m-%d"), tz = "GMT")
+   rep("1979-01-01", length(nc))), format="\%Y-\%m-\%d"), tz = "GMT")
 data <- data.frame(BIR = c(nc$BIR74, nc$BIR79), NWBIR = c(nc$NWBIR74, nc$NWBIR79), 
-SID = c(nc$SID74, nc$SID79))
+   SID = c(nc$SID74, nc$SID79))
 # copy polygons:
 nc.poly <- rep(slot(nc, "polygons"), 2)
 # fix the polygon IDs:
@@ -61,6 +61,5 @@ sp <- SpatialPolygons(nc.poly, proj4string=CRS("+proj=longlat +datum=NAD27"))
 nct <- STIDF(sp, time = time, data = data)
 # write to a KML file:
 kml(nct, colour = SID)
-}
 }
 \keyword{spatial}

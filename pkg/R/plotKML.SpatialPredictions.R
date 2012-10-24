@@ -8,7 +8,7 @@
 setMethod("plotKML", "SpatialPredictions", function(
   obj,
   folder.name = normalizeFilename(deparse(substitute(obj, env=parent.frame()))),
-  file.name = paste(normalizeFilename(deparse(substitute(obj, env=parent.frame()))), ".kml", sep=""),
+  file.name = paste(folder.name, ".kml", sep=""),
   colour_scale_svar = get("colour_scale_svar", envir = plotKML.opts),
   grid2poly = FALSE,
   obj.summary = TRUE,
@@ -16,10 +16,11 @@ setMethod("plotKML", "SpatialPredictions", function(
   pngwidth = 210, 
   pngheight = 580,
   pngpointsize = 14,
-  kmz = TRUE,
+  kmz = get("kmz", envir = plotKML.opts),
   ...
 ){
 
+  require(GSIF)
   # objects to plot:
   varname <- paste(obj@variable)
   svarname <- paste(obj@variable, ".", "svar", sep="")
