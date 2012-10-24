@@ -7,7 +7,7 @@
 setMethod("plotKML", "SpatialMaxEntOutput", function(
   obj,
   folder.name = normalizeFilename(deparse(substitute(obj, env=parent.frame()))),
-  file.name = paste(normalizeFilename(deparse(substitute(obj, env=parent.frame()))), ".kml", sep=""),
+  file.name = paste(folder.name, ".kml", sep=""),
   html.file = obj@maxent@html,
   iframe.width = 800,
   iframe.height = 800,
@@ -16,7 +16,7 @@ setMethod("plotKML", "SpatialMaxEntOutput", function(
   pngpointsize = 14,
   colour,
   shape = "http://plotkml.r-forge.r-project.org/icon17.png",
-  kmz = TRUE,
+  kmz = get("kmz", envir = plotKML.opts),
   TimeSpan.begin = obj@TimeSpan.begin,
   TimeSpan.end = obj@TimeSpan.end,
   ...

@@ -100,9 +100,9 @@ for (i in 1:N.sim) {
   rsaga.fill.sinks(in.dem=paste("DEM", i, ".sgrd", sep=""), out.dem="DEMflt.sgrd")
   # extract the channel network SAGA GIS 2.0.6:
   rsaga.geoprocessor(lib="ta_channels", module=0, param=list(ELEVATION="DEMflt.sgrd", 
-  CHNLNTWRK=paste("channels", i, ".sgrd", sep=""), CHNLROUTE="channel_route.sgrd", 
-  SHAPES="channels.shp", INIT_GRID="DEMflt.sgrd", DIV_CELLS=3, MINLEN=40), 
-  show.output.on.console=FALSE)
+    CHNLNTWRK=paste("channels", i, ".sgrd", sep=""), CHNLROUTE="channel_route.sgrd", 
+    SHAPES="channels.shp", INIT_GRID="DEMflt.sgrd", DIV_CELLS=3, MINLEN=40), 
+    show.output.on.console=FALSE)
   stream.list[[i]] &lt;- readOGR("channels.shp", "channels", verbose=FALSE)
   proj4string(stream.list[[i]]) &lt;- barxyz@proj4string
 }
@@ -117,5 +117,5 @@ sp.layout=streams.plot)
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.2-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.3-0 <a href="00Index.html">Index</a>]</div>
 </body></html>

@@ -61,15 +61,15 @@
 data(eberg)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
-## Not run: # add metadata:
+names(eberg)
+# add metadata:
 eberg.md &lt;- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"), 
-Target_variable="SAND")
-GetPalette(eberg.md)
+  Target_variable="SNDMHT_A")
+p &lt;- GetPalette(eberg.md)
+str(p)
 x &lt;- summary(eberg.md)
-View(x)
-
-## End(Not run)
+str(x)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.2-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.3-0 <a href="00Index.html">Index</a>]</div>
 </body></html>

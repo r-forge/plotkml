@@ -27,14 +27,16 @@ kml_compress <- function(file.name, zip = "", files = "", rm = FALSE, ...){
   }
   
   # execute the command
-  execute_cmd <- try(system(cmd, intern = TRUE), silent = TRUE)
+  try(execute_cmd <- system(cmd, intern = TRUE), silent = TRUE)
 
   # Error handling
-  if (is(execute_cmd, "try-error")) {
-    if (missing(zip))
+  if(is(execute_cmd, "try-error")) {
+    if(zip==""|!nzchar(zip)){
       stop("KMZ generation failed. Your zip utility has not been found. You can specify it manually using the 'zip = ...' argument.")
-    else
+      }
+    else {
       stop("KMZ generation failed. Wrong command passed to 'zip = ... option'.")
+    }
   }
   # Otherwise removing temp files
   else {
@@ -46,3 +48,5 @@ kml_compress <- function(file.name, zip = "", files = "", rm = FALSE, ...){
   }
 
 }
+
+# end of script;

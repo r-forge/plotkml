@@ -15,8 +15,7 @@ kml_layer.STIDF <- function(
   if(all(dtime==0)) {  
     TimeSpan.begin = format(time(obj@time), "%Y-%m-%dT%H:%M:%SZ")
     TimeSpan.end = TimeSpan.begin
-  }
-  else {
+  } else {
     if(length(obj@time)>1&!nzchar(dtime)){
       period <- periodicity(obj@time) # estimate the time support (if not indicated)
       dtime <- period$frequency
