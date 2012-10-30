@@ -80,7 +80,7 @@ kml_layer.RasterBrick <- function(
     kml_legend.bar(x = z.lim, legend.file = legend_name, legend.pal = colour_scale_legend) 
   }
 
-  message("Parsing to KML...")
+  message("Writing to KML...")
   # Name of the object
   pl1 = newXMLNode("Folder", parent=kml.out[["Document"]])
   pl2 <- newXMLNode("name", paste(class(obj)), parent=pl1)
