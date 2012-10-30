@@ -33,17 +33,21 @@ tags will be inserted. Temporal support (\eqn{\Delta t}{dt}) is estimated using 
 \seealso{ \code{\link{kml_layer.STTDF}} }
 \examples{
 data(HRtemp08)
+
 # format the time column:
 HRtemp08$ctime <- as.POSIXct(HRtemp08$DATE, format="\%Y-\%m-\%dT\%H:\%M:\%SZ")
+
 # create a STIDF object:
 library(spacetime)
 sp <- SpatialPoints(HRtemp08[,c("Lon","Lat")])
 proj4string(sp) <- CRS("+proj=longlat +datum=WGS84")
 HRtemp08.st <- STIDF(sp, time = HRtemp08$ctime, data = HRtemp08[,c("NAME","TEMP")])
+
 # write to a KML file:
 HRtemp08_jan <- HRtemp08.st[1:500]
-shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png"
-kml(HRtemp08_jan, dtime = 24*3600, colour = TEMP, shape = shape, labels = "", kmz = TRUE)
+shape <- "http://maps.google.com/mapfiles/kml/pal2/icon18.png"
+kml(HRtemp08_jan, dtime = 24*3600, colour = TEMP, shape = shape, labels = "", kmz=TRUE)
+
 ## North Carolina SIDS data set:
 library("maptools")
 fname <- system.file("shapes/sids.shp", package="maptools")[1]

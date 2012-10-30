@@ -33,7 +33,7 @@ kml_layer.SoilProfileCollection <- function(
   metadata = NULL,
   html.table = NULL,
   plot.scalebar = TRUE,
-  scalebar = paste(get("home_url", envir = plotKML.opts), "soilprofile_scalebar.png", sep="")
+  scalebar = paste(get("home_url", envir = plotKML.opts), "soilprofile_scalebar.png", sep=""),
   ...) {
 
 	# some of these are loaded at start-up, consider removing
