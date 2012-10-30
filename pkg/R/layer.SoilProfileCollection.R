@@ -1,6 +1,6 @@
 # Purpose        : Parsing "SoilProfileCollection" objects to KML
-# Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
-# Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu);
+# Maintainer     : Dylan Beaudette (debeaudette@ucdavis.edu)
+# Contributions  : Tomislav Hengl (tom.hengl@wur.nl); Pierre Roudier (pierre.roudier@landcare.nz);
 # Status         : not tested yet
 # Note           : plots either a histogram or blocks (horizons);
 
@@ -33,37 +33,48 @@ kml_layer.SoilProfileCollection <- function(
   metadata = NULL,
   html.table = NULL,
   plot.scalebar = TRUE,
-  scalebar = paste(get("home_url", envir = plotKML.opts), "soilprofile_scalebar.png", sep=""),
-  ...)
-{
+  scalebar = paste(get("home_url", envir = plotKML.opts), "soilprofile_scalebar.png", sep="")
+  ...) {
 
+	# some of these are loaded at start-up, consider removing
   require(aqp)
   require(fossil)
+  
+  # deconstruct object
+  h <- horizons(obj)
+  s <- site(obj)
+  sp <- as(obj, 'SpatialPoints')
+  
   # TH: this function at the moment works only with numeric variables:
-  if(method=="depth_functions"&!is.numeric(obj@horizons[,var.name])) {
-  stop('numeric variable required')
+  if(method=="depth_functions" & !is.numeric(h[, var.name])) {
+  	stop('numeric variable required')
   }
 
   # get our invisible file connection from custom evnrionment
   kml.out <- get("kml.out", envir=plotKML.fileIO)
   
   # check the projection:
-  prj.check <- check_projection(obj@sp, control = TRUE) 
+  prj.check <- check_projection(sp, control = TRUE) 
 
   # Trying to reproject data if the check was not successful
-  if (!prj.check) { obj@sp <- reproject(obj@sp) }  
+  if (!prj.check)
+  	sp <- reproject(sp)
   
-  LON <- as.vector(coordinates(obj@sp)[,1])
-  LAT <- as.vector(coordinates(obj@sp)[,2])
+  # extract coordinates... for scale estimation
+  LON <- as.vector(coordinates(sp)[,1])
+  LAT <- as.vector(coordinates(sp)[,2])
+
   # convert meters to decimal degrees:
   new.ll <- new.lat.long(long = mean(LON), lat = mean(LAT), bearing = 90, distance = block.size/1000)
   block.size = new.ll[2] - mean(LON)
-  if(missing(x.min)){  x.min = block.size/100  }
+  if(missing(x.min))
+  	x.min = block.size/100
 
   if(missing(var.scale)) {   # scaling factor in x direction (estimate automatically)
-     var.range <- range(obj@horizons[,var.name], na.rm = TRUE, finite = TRUE)
-     var.scale <- 0.003/diff(var.range)
-  if(missing(var.min)) {   var.min <- var.range[1]-diff(var.range)/100 }
+    var.range <- range(h[, var.name], na.rm = TRUE, finite = TRUE)
+    var.scale <- 0.003/diff(var.range)
+  	if(missing(var.min))
+  		var.min <- var.range[1] - (diff(var.range)/100)
   }
 
   # Parsing the call for aesthetics
@@ -104,13 +115,13 @@ kml_layer.SoilProfileCollection <- function(
   prof.na <- NULL
   soil_color <- NULL
   
-for(i.site in 1:length(obj@site[,obj@idcol])) {
+for(i.site in 1:length(obj)) {
   
   # select columns of interest / mask out NA horizons:
-  prof.na[[i.site]] <- which(obj@horizons[obj@idcol]==site_names[i.site] & !is.na(obj@horizons[,var.name]))
-  xval <- obj@horizons[prof.na[[i.site]],var.name]
-  htop <- obj@horizons[prof.na[[i.site]],obj@depthcols[1]]
-  hbot <- obj@horizons[prof.na[[i.site]],obj@depthcols[2]]
+  prof.na[[i.site]] <- which(h[[idname(obj)]] == site_names[i.site] & !is.na(h[, var.name]))
+  xval <- h[prof.na[[i.site]], var.name]
+  htop <- h[prof.na[[i.site]], horizonDepths(obj)[1]]
+  hbot <- h[prof.na[[i.site]], horizonDepths(obj)[2]]
   
   if(plot.points==TRUE){
   points_names[[i.site]] <- signif(xval, 3)
@@ -121,19 +132,19 @@ for(i.site in 1:length(obj@site[,obj@idcol])) {
     soil_color[[i.site]] <- col2kml(pal(length(xval)))
   } 
   else { 
-    soil_color[[i.site]] <- col2kml(obj@horizons[prof.na[[i.site]], color.name])
+    soil_color[[i.site]] <- col2kml(h[prof.na[[i.site]], color.name])
   }
   
   # horizon centre:
   Z <- max.depth - (htop+(hbot-htop)/2)
     
     if(method=="soil_block"){   
-    X <- LON[i.site]
-    Y <- LAT[i.site]+((block.size/2)*sqrt(2)+x.min)
+    	X <- LON[i.site]
+    	Y <- LAT[i.site]+((block.size/2)*sqrt(2)+x.min)
     }
       else {
-    X <- round(LON[i.site]+var.scale*(xval-var.min), 6)
-    Y <- rep(LAT[i.site], length(prof.na[[i.site]]))
+    	X <- round(LON[i.site]+var.scale*(xval-var.min), 6)
+    	Y <- rep(LAT[i.site], length(prof.na[[i.site]]))
     }
   
     coords[[i.site]] <- paste(X, ',', Y, ',', z.scale*Z, collapse='\n ', sep = "")
@@ -155,7 +166,7 @@ for(i.site in 1:length(obj@site[,obj@idcol])) {
     }
   coords.pol[[i.site]] <- unlist(XYZp)
 
-  # skyscreeper:
+  # skyscraper:
   XB <- c(LON[i.site]-block.size/2, LON[i.site]+block.size/2, LON[i.site]+block.size/2, LON[i.site]-block.size/2, LON[i.site]-block.size/2)
   YB <- c(LAT[i.site]-(block.size/2)*sqrt(2), LAT[i.site]-(block.size/2)*sqrt(2), LAT[i.site]+(block.size/2)*sqrt(2), LAT[i.site]+(block.size/2)*sqrt(2), LAT[i.site]-(block.size/2)*sqrt(2))
   ZB <- rep(max.depth, 5)
@@ -178,7 +189,7 @@ for(i.site in 1:length(obj@site[,obj@idcol])) {
 
   # Parse ATTRIBUTE TABLE (for each placemark):
   if ((balloon == TRUE | class(balloon) %in% c('character','numeric')) & ("horizons" %in% slotNames(obj))){
-     html.table <- .df2htmltable(obj@horizons[unlist(prof.na),]) 
+     html.table <- .df2htmltable(h[unlist(prof.na),]) 
   }
 
   if(plot.points==TRUE){
@@ -213,7 +224,7 @@ for(i.site in 1:length(obj@site[,obj@idcol])) {
   txtm <- sprintf('<Placemark><name>monolith</name><Model id="%s"><altitudeMode>relativeToGround</altitudeMode><Location><longitude>%.5f</longitude><latitude>%.5f</latitude><altitude>%.0f</altitude></Location><Orientation><heading>%.1f</heading><tilt>%.1f</tilt><roll>%.1f</roll></Orientation><Scale><x>1</x><y>1</y><z>1</z></Scale><Link><href>%s</href><refreshMode>"once"</refreshMode></Link><ResourceMap><Alias><targetHref>%s</targetHref><sourceHref>%s</sourceHref></Alias></ResourceMap></Model></Placemark>', paste("scalebar", 1:length(LON), sep="_"), LON-x.min*10, LAT, rep(max.depth+100, length(LON)), rep(heading, length(LON)), rep(tilt, length(LON)), rep(roll, length(LON)), rep("scalebar.dae", length(LON)), rep(scalebar, length(LON)), rep(scalebar, length(LON))) 
   parseXMLAndAdd(txtm, parent=pl1)
   }
-
+  
   if(method=="soil_block"){
   # Polygon styles
   # =====================

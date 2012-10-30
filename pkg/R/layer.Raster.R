@@ -150,7 +150,7 @@ kml_layer.Raster <- function(
     }
   }
 
-  message("Parsing to KML...")
+  message("Writing to KML...")
   # Folder name
   pl1 = newXMLNode("Folder", parent=kml.out[["Document"]])
   pl2 <- newXMLNode("name", paste(class(obj)), parent = pl1)
