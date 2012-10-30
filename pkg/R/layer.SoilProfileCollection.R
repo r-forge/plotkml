@@ -1,6 +1,6 @@
 # Purpose        : Parsing "SoilProfileCollection" objects to KML
-# Maintainer     : Dylan Beaudette (debeaudette@ucdavis.edu)
-# Contributions  : Tomislav Hengl (tom.hengl@wur.nl); Pierre Roudier (pierre.roudier@landcare.nz);
+# Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
+# Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu);
 # Status         : not tested yet
 # Note           : plots either a histogram or blocks (horizons);
 
@@ -32,6 +32,8 @@ kml_layer.SoilProfileCollection <- function(
   roll = 0,
   metadata = NULL,
   html.table = NULL,
+  plot.scalebar = TRUE,
+  scalebar = paste(get("home_url", envir = plotKML.opts), "soilprofile_scalebar.png", sep=""),
   ...)
 {
 
@@ -192,6 +194,24 @@ for(i.site in 1:length(obj@site[,obj@idcol])) {
   # ========================== 
   txtc <- sprintf('<Placemark><name>%s</name><styleUrl>#pnt%s</styleUrl><description><![CDATA[%s]]></description><Point><extrude>%.0f</extrude><altitudeMode>%s</altitudeMode><coordinates>%s</coordinates></Point></Placemark>', paste(unlist(points_names)), paste(1:lp), html.table, rep(as.numeric(extrude), lp), rep(altitudeMode, lp), unlist(strsplit(unlist(coords[selp]), "\n")))   
   parseXMLAndAdd(txtc, parent=pl2b)
+  }
+  
+  # Scale bar - 59 x 2272 pixels PNG!
+  # ===========================
+  if(plot.scalebar==TRUE & method=="depth_function"){
+  scalebar.size = 200*59/2272
+  X1 = scalebar.size/2; X2 = -scalebar.size/2; X3 = scalebar.size/2; X4 = -scalebar.size/2
+  Y1 = 0; Y2 = 0; Y3 = 0; Y4 = 0
+  ALT1 = max.depth; ALT2 = max.depth; ALT3 = max.depth-200; ALT4 = max.depth-200 
+  coords.dae <- matrix(c(X=c(X1, X2, X3, X4), Z=c(ALT1, ALT2, ALT3, ALT4), Y=c(Y1, Y2, Y3, Y4)), ncol=3)
+  
+  # make a COLLADA file:
+  makeCOLLADA.rectangle(filename = "scalebar.dae", coords = coords.dae, href = scalebar)  
+  
+  # locate the scale bar in space:
+  txtv <- sprintf('<Camera><longitude>%.6f</longitude><latitude>%.6f</latitude><altitude>%f</altitude><heading>%.1f</heading><tilt>%.1f</tilt><roll>%.1f</roll></Camera>', LON[1], LAT[1]-camera.distance, max.depth, heading, tilt, roll)
+  txtm <- sprintf('<Placemark><name>monolith</name><Model id="%s"><altitudeMode>relativeToGround</altitudeMode><Location><longitude>%.5f</longitude><latitude>%.5f</latitude><altitude>%.0f</altitude></Location><Orientation><heading>%.1f</heading><tilt>%.1f</tilt><roll>%.1f</roll></Orientation><Scale><x>1</x><y>1</y><z>1</z></Scale><Link><href>%s</href><refreshMode>"once"</refreshMode></Link><ResourceMap><Alias><targetHref>%s</targetHref><sourceHref>%s</sourceHref></Alias></ResourceMap></Model></Placemark>', paste("scalebar", 1:length(LON), sep="_"), LON-x.min*10, LAT, rep(max.depth+100, length(LON)), rep(heading, length(LON)), rep(tilt, length(LON)), rep(roll, length(LON)), rep("scalebar.dae", length(LON)), rep(scalebar, length(LON)), rep(scalebar, length(LON))) 
+  parseXMLAndAdd(txtm, parent=pl1)
   }
 
   if(method=="soil_block"){

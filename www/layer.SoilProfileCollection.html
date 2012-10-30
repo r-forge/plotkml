@@ -29,7 +29,9 @@ kml_layer.SoilProfileCollection(obj,
      outline = TRUE, visibility = TRUE, extrude = TRUE, tessellate = TRUE, 
      altitudeMode = "relativeToGround", camera.distance = 0.01, 
      tilt = 90, heading = 0, roll = 0, 
-     metadata = NULL, html.table = NULL, ... )
+     metadata = NULL, html.table = NULL, plot.scalebar = TRUE,
+     scalebar = paste(get("home_url", envir = plotKML.opts), "soilprofile_scalebar.png", sep = ""), 
+     ... )
 </pre>
 
 
@@ -141,6 +143,14 @@ kml_layer.SoilProfileCollection(obj,
 <td>
 <p>(optional) tabular content (attributes) for each horizon</p>
 </td></tr>
+<tr valign="top"><td><code>plot.scalebar</code></td>
+<td>
+<p>logical; specifies whether to plot a scale bar next to the profile plot</p>
+</td></tr>
+<tr valign="top"><td><code>scalebar</code></td>
+<td>
+<p>default icon for the scale bar</p>
+</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>additional style arguments</p>
@@ -195,15 +205,13 @@ site(ca) &lt;- ~ mlra + ssa + lon + lat + cntrl_depth_to_top + cntrl_depth_to_bo
 coordinates(ca) &lt;- ~ lon + lat
 # assign CRS data
 proj4string(ca) &lt;- "+proj=latlong +datum=NAD83"
-## Not run: # plot changes in base saturation by sum of cations method (pH 8.2):
+# plot changes in base saturation by sum of cations method (pH 8.2):
 kml(ca, method = "depth_function", file.name = "ca_bs_8_2.kml", 
-var.name="bs_8.2", balloon = TRUE)
+  var.name="bs_8.2", balloon = TRUE)
 # plot changes in cation exchange capacity by sum of cations method (pH 8.2):
 kml(ca, file.name = "ca_CEC8_2.kml", var.name="CEC8.2", IconColor = "#ff009000")
 # plot soil profile as 'block':
 kml(ca, file.name = "ca_CEC8_2_block.kml", var.name="CEC8.2", balloon = TRUE)
-
-## End(Not run)
 </pre>
 
 <hr><div align="center">[Package <em>plotKML</em> version 0.3-0 <a href="00Index.html">Index</a>]</div>
