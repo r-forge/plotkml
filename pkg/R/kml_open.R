@@ -53,12 +53,14 @@ kml_close <- function(file.name, overwrite = FALSE, ...) {
 }
 
 ## Open the KML file using the default OS application:
+## this is untested on Mac OS X / UNIX
 kml_View <- function(file.name){
   if(.Platform$OS.type == "windows") {
-      require(raster)
+      require(raster) # why is there here?
       ext <- extension(file.name)
+      x <- NULL # set default value for error checking
       if(!inherits(try({ x <- utils::readRegistry(ext, hive="HCR") }, silent = TRUE), "try-error")){
-        if(nzchar(x[which(names(x) %in% 'Content Type')][[1]])){
+        if(! is.null(x[which(names(x) %in% c('Content Type', '(Default)'))])){
           system(paste("open ", shortPathName(normalizePath(paste(getwd(), "/", file.name, sep=""))), sep=""))
         }
       }
