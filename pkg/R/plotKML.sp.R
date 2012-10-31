@@ -39,7 +39,11 @@ setMethod("plotKML", "SpatialPointsDataFrame", function(obj, folder.name = norma
   kml_open(folder.name = folder.name, file.name = file.name, ...)
  
   # write layer:
-  kml_layer.SpatialPoints(obj, size = size, colour = colour, points_names = points_names, shape = shape, metadata = metadata, ...)
+  if(is.numeric(obj@data[,"colour"])){
+    kml_layer.SpatialPoints(obj, size = size, colour = colour, points_names = points_names, shape = shape, metadata = metadata, ...)
+  } else {
+    kml_layer.SpatialPoints(obj, colour = colour, points_names = points_names, shape = shape, metadata = metadata, ...)
+  }
 
   # close the file:
   kml_close(file.name = file.name)
