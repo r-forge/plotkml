@@ -5,6 +5,36 @@
 # Note           : plots either a histogram or blocks (horizons);
 
 
+## TODO: finish and integrate this into kml_layer.SoilProfileCollection
+SPC_to_images <- function(obj) {
+	#require(Cairo)
+	
+	# make container dir
+	cd <- 'images'
+	dir.create(cd)
+	
+	# pre-compute some values outside of the loop
+	ids <- profile_id(obj)
+	fn <- paste('soil-', ids, '.png', sep='')
+	fp <- paste(cd, fn, sep='/')
+	
+	# make links to images
+	image.links <- paste('<img src="', fp, '" width=150, height=300, border=0>', sep='')
+	
+	# iterate over profiles and save images
+	for(i in seq_along(ids)) {
+# 		CairoPNG(file=fp[i], height=300, width=150)
+		png(file=fp[i], height=300, width=150)
+		par(mar=c(0, 1, 0.5, 1.5))
+		plot(obj[i, ], cex.names=0.75, width=0.4)
+		dev.off()
+	}
+	
+	# clean-up
+	unlink(cd, recursive=TRUE)
+}
+
+
 kml_layer.SoilProfileCollection <- function(
   obj,
   var.name,
@@ -97,7 +127,7 @@ kml_layer.SoilProfileCollection <- function(
     txt <- sprintf('<description><![CDATA[%s]]></description>', md.txt)
     parseXMLAndAdd(txt, parent=pl1)
   }
-  message("Parsing to KML...")
+  message("Writing KML...")
 
   if(plot.points==TRUE){
     pl2b = newXMLNode("Folder", parent=pl1)
