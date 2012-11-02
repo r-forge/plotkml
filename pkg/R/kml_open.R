@@ -73,7 +73,7 @@ kml_View <- function(file.name){
         system(paste("open ", normalizePath(paste(getwd(), "/", file.name, sep="")), sep=""))
         }
       else{
-        system(paste("gnome-open ", normalizePath(paste(getwd(), "/", file.name, sep="")), sep=""))
+        system(paste("xdg-open ", normalizePath(paste(getwd(), "/", file.name, sep="")), sep=""))
       }
   }
 }
