@@ -34,7 +34,7 @@ tags will be inserted. Temporal support (\eqn{\Delta t}{dt}) is estimated using 
 }
 \references{
 \itemize{
-\item Pebesma, E. (2011) Classes and Methods for Spatio-Temporal Data in R. Journal of Statistical Software.
+\item \item Pebesma, E. (2012) \href{http://www.jstatsoft.org/v51/i07}{Classes and Methods for Spatio-Temporal Data in R}. Journal of Statistical Software. 51(7): 1-30.
 \item spacetime package (\url{http://CRAN.R-project.org/package=spacetime})
 }
 }
