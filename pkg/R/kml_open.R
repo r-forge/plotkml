@@ -1,7 +1,7 @@
 # Purpose        : Open and close KML file;
 # Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
-# Contributions  : Tomislav Hengl (tom.hengl@wur.nl); Dylan Beaudette (debeaudette@ucdavis.edu);  
-# Status         : tested
+# Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Tomislav Hengl (tom.hengl@wur.nl);   
+# Status         : tested (but not on the MacOS / Linux)
 # Note           : See [http://code.google.com/apis/kml/documentation/kmlreference.html] for more info.
 
 kml_open <- function(
@@ -53,10 +53,9 @@ kml_close <- function(file.name, overwrite = FALSE, ...) {
 }
 
 ## Open the KML file using the default OS application:
-## this is untested on Mac OS X / UNIX
 kml_View <- function(file.name){
   if(.Platform$OS.type == "windows") {
-      require(raster) # why is there here?
+      require(raster) 
       ext <- extension(file.name)
       x <- NULL # set default value for error checking
       if(!inherits(try({ x <- utils::readRegistry(ext, hive="HCR") }, silent = TRUE), "try-error")){
@@ -68,12 +67,14 @@ kml_View <- function(file.name){
         warning(paste("No MIME type detected for", ext, "file extension."))
       }
   } 
+
+  ## DB: this is untested on Mac OS X / UNIX!
   else {
       if(.Platform$pkgType == "mac.binary.leopard"){
-        system(paste("open ", normalizePath(paste(getwd(), "/", file.name, sep="")), sep=""))
+        try(system(paste("open ", normalizePath(paste(getwd(), "/", file.name, sep="")), sep="")))
         }
       else{
-        system(paste("xdg-open ", normalizePath(paste(getwd(), "/", file.name, sep="")), sep=""))
+        try(system(paste("gnome-open ", normalizePath(paste(getwd(), "/", file.name, sep="")), sep="")))
       }
   }
 }

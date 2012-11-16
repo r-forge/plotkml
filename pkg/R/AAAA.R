@@ -19,6 +19,7 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
      require(utils)
 
      #  Try locating SAGA GIS (R default setting)...
+     if(saga_cmd==""){
      if(require(RSAGA)){
      if(suppressWarnings(!is.null(x <- rsaga.env()))){ 
      if(.Platform$OS.type == "windows") {
@@ -30,9 +31,12 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
         if(nzchar(saga_cmd)){
           saga.version <- rsaga.get.version()
         }
-     }}
+     } else {
+        saga.version <- ""
+     }}}
      
      # Try locating path to ImageMagick (R default setting)...
+     if(convert==""){
      if(require(animation)){
         convert <- ani.options("convert")
      }
@@ -69,11 +73,13 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
         }
      } else { 
      if(show.paths){ message(system(convert,  show.output.on.console = FALSE, intern = TRUE)[1]) }
+    }
     }  
   
     # try to locate FWTools / Patyhon:
     if(.Platform$OS.type == "windows") {
-
+    if(gdalwarp==""|gdal_translate==""){
+    
      reg.paths <- names(utils::readRegistry("SOFTWARE"))
      # 64-bit software directory:
      x <- grep(reg.paths, pattern="WOW6432Node", ignore.case = TRUE)
@@ -108,9 +114,11 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
         gdalwarp = ""
         gdal_translate = ""    
        } 
-      }
+      }}
       
       # Python:
+      if(python==""){
+      x <- grep(reg.paths, pattern="WOW6432Node", ignore.case = TRUE)
       if(length(x)>0 & !inherits(try({ 
         py.paths <- utils::readRegistry(paste("SOFTWARE", reg.paths[x], "Python", sep="\\"), maxdepth=3)
         py.path = utils::readRegistry(paste("SOFTWARE", reg.paths[x], "Python", names(py.paths), names(py.paths[[1]]), "InstallPath", sep="\\"))[[1]] 
@@ -134,10 +142,12 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
         warning("Could not locate Python! Install program and add it to the Windows registry. See http://python.org for more info.")
         python = ""
       }}
+      }
        
       # 2nd chance to try to locate SAGA GIS (if not on a standard path):      
+      if(saga_cmd==""){
       if(require(RSAGA)){
-        if(!nzchar(saga_cmd)){
+        if(!nzchar(saga_cmd)&!nzchar(saga.version)){
         if(nzchar(prog <- Sys.getenv("ProgramFiles")) &&
           length(saga.dir <- list.files(prog, "^SAGA*"))>0 &&
           length(saga_cmd <- list.files(file.path(prog, saga.dir), pattern = "^saga_cmd\\.exe$", full.names = TRUE, recursive = TRUE))>0  
@@ -165,12 +175,13 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
      else {
         if(show.paths){ message(paste("Located SAGA GIS ", saga.version, " from the 'Program Files' directory: \"", shortPathName(saga_cmd), "\"", sep="")) }
      }
-    }
+    }}
     }
     
     ## UNIX:
     else {
     
+    if(gdalwarp==""|gdal_translate==""){
     if(!length(x <- grep(paths <- strsplit(Sys.getenv('PATH')[[1]], ":")[[1]], pattern="FWTools"))==0) {
     fw.dir <- paths[grep(paths, pattern="FWTools")[1]]
     gdalwarp = "gdalwarp"
@@ -181,8 +192,10 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
         warning("Install FWTools and add to PATH. See http://fwtools.maptools.org for more info.")
       gdalwarp = ""
       gdal_translate = ""
-      }
+    }
+    }
     
+    if(python==""){
     if(!length(x <- grep(paths <- strsplit(Sys.getenv('PATH')[[1]], ":")[[1]], pattern="Python"))==0) {
     py.dir <- paths[grep(paths, pattern="Python")[1]]
     python = "python"
@@ -191,17 +204,21 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
     else { 
         warning("Install Python and add to PATH. See http://python.org for more info.")
         python = ""
-      }
+    }
+    }
     
+    if(convert==""){
     if(is.null(im.dir)){ 
         warning("Install ImageMagick and add to PATH. See http://imagemagick.org for more info.")
         convert = ""
-        }
+    }
+    }
 
+    if(saga_cmd==""){
     if(!nzchar(saga_cmd)){
         warning("Install SAGA GIS and add to PATH. See http://www.saga-gis.org for more info.")
-        saga_cmd = ""
         } 
+    }
     }
 
     lt <- data.frame(gdalwarp, gdal_translate, convert, python, saga_cmd, stringsAsFactors = FALSE)
