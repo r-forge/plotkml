@@ -13,7 +13,7 @@ kml_layer.Raster <- function(
   ){
 
   require(RSAGA)
-  # get our invisible file connection from custom evnrionment
+  # get our invisible file connection from custom environment
   kml.out <- get("kml.out", envir=plotKML.fileIO)
 
   # Checking the projection 

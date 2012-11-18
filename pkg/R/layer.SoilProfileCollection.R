@@ -24,7 +24,7 @@ SPC_to_images <- function(obj) {
 	# iterate over profiles and save images
 	for(i in seq_along(ids)) {
 # 		CairoPNG(file=fp[i], height=300, width=150)
-		png(file=fp[i], height=300, width=150)
+		png(filename=fp[i], height=300, width=150)
 		par(mar=c(0, 1, 0.5, 1.5))
 		plot(obj[i, ], cex.names=0.75, width=0.4)
 		dev.off()
