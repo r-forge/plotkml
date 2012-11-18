@@ -5,7 +5,6 @@
 # Note           : p4s_parameters list of proj4 parameter/value strings; Uses the string parsing functionality from the 'plyr' package;
 
 .extractProjValue <- function(p4s_parameters, param){
-  require(rgdal)
   
   # Locating the current PROJ4 parameter
   query <- ldply(p4s_parameters, str_locate, pattern = param)
@@ -28,7 +27,6 @@
 
 ## parse string:
 parse_proj4 <- function(p4s, params){
-  require(rgdal)
 
   if(missing(params)) {
   ref_CRS = get("ref_CRS", envir = plotKML.opts)
@@ -58,7 +56,6 @@ getCRS.Spatial <- function(obj) {
 setMethod("getCRS", "Spatial", getCRS.Spatial)
 
 getCRS.Raster <- function(obj) {
-  require(raster)
   CRSargs(projection(obj, asText = FALSE))
 }
 
@@ -87,7 +84,6 @@ setMethod("is.projected", signature(obj = "Raster"),
 ## check proj4string
 check_projection <- function(obj, control = TRUE, ref_CRS = get("ref_CRS", envir = plotKML.opts)){
   
-  require(rgdal)
   if(is.na(proj4string(obj))){
     stop("Proj4 string missing")
   } 

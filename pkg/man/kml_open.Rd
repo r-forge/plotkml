@@ -28,6 +28,7 @@ kml_open(file.name, folder.name = file.name, kml_open = TRUE,
 \seealso{ \code{\link{kml-methods}} }
 \examples{
 data(eberg_grid)
+library(sp)
 coordinates(eberg_grid) <- ~x+y
 gridded(eberg_grid) <- TRUE
 proj4string(eberg_grid) <- CRS("+init=epsg:31467")

@@ -8,7 +8,7 @@
 \format{
 The \code{bigfoot} data frame contains the following columns:
   \describe{
-	\item{\code{Lon}}{a numeric vector; x-coordiante / longitude in the WGS84 system}
+	\item{\code{Lon}}{a numeric vector; x-coordinate / longitude in the WGS84 system}
 	\item{\code{Lat}}{a numeric vector; y-coordinate / latitude in the WGS84 system}
 	\item{\code{NAME}}{name assigned by the observer (usually referent month / year)}
 	\item{\code{DATE}}{'POSIXct' class vector}
@@ -40,11 +40,14 @@ The \code{USAWgrids} data frame (46,018 pixels; Washington, Oregon, Nevada and C
 }
 \examples{
 # Load the BFRO records:
+library(sp)
 data(bigfoot)
 aea.prj <- "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 
 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"
+library(sp)
 coordinates(bigfoot) <- ~Lon+Lat
 proj4string(bigfoot) <- CRS("+proj=latlon +datum=WGS84")
+library(rgdal)
 bigfoot.aea <- spTransform(bigfoot, CRS(aea.prj))
 # Load the covariates:
 data(USAWgrids)

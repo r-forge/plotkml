@@ -6,7 +6,7 @@
 
 
 ## TODO: finish and integrate this into kml_layer.SoilProfileCollection
-SPC_to_images <- function(obj) {
+.SPC_to_images <- function(obj) {
 	#require(Cairo)
 	
 	# make container dir
@@ -67,7 +67,6 @@ kml_layer.SoilProfileCollection <- function(
   ...) {
 
 	# some of these are loaded at start-up, consider removing
-  require(aqp)
   require(fossil)
   
   # deconstruct object

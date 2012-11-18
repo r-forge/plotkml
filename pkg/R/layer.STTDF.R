@@ -20,9 +20,6 @@ kml_layer.STTDF <- function(
   ...
   ){
   
-  require(xts)
-  require(grDevices)
-  
   # Get our invisible file connection from custom environment
   kml.out <- get('kml.out', envir=plotKML.fileIO)
   

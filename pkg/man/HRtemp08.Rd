@@ -29,6 +29,7 @@ The \code{HRtemp08} data frames contain the following columns:
 \examples{
 data(HRtemp08)
 HRtemp08[1,]
+library(XML)
 p1 = newXMLNode("Placemark")
 begin <- format(HRtemp08[1,"DATE"]-.5, "\%Y-\%m-\%dT\%H:\%M:\%SZ")
 end <- format(HRtemp08[1,"DATE"]+.5, "\%Y-\%m-\%dT\%H:\%M:\%SZ")

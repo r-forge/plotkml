@@ -29,6 +29,7 @@ kml_layer.RasterBrick(obj, plot.legend = TRUE, dtime = "", tz = "GMT",
 \seealso{ \code{\link{kml-methods}}, \code{\link{kml_open}}, \code{\link{kml_layer.Raster}} }
 \examples{
 data(LST)
+library(sp)
 coordinates(LST) <- ~x+y
 gridded(LST) <- TRUE
 proj4string(LST) <- CRS("+proj=utm +zone=33 +datum=WGS84 +units=m")

@@ -37,6 +37,7 @@ Writes any \code{Spatial*} object (from the sp package) or \code{Raster*} object
 \examples{
 # Plotting a SpatialPointsDataFrame object
 data(eberg)
+library(sp)
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")
 \dontrun{# Simple plot

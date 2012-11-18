@@ -141,6 +141,7 @@
 plotKML.env(silent = FALSE, kmz = FALSE)
 ## -------------- SpatialPointsDataFrame --------- ##
 data(eberg)
+library(sp)
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")
 ## subset to 20 percent:
@@ -166,6 +167,7 @@ plotKML(eberg_zones["ZONES"], altitude=zmin+runif(length(eberg_zones))*500)
 data(eberg_grid)
 gridded(eberg_grid) <- ~x+y
 proj4string(eberg_grid) <- CRS("+init=epsg:31467")
+library(raster) # EJP -- why is this needed?
 TWI <- reproject(eberg_grid["TWISRT6"])
 data(SAGA_pal)
 plotKML(TWI, colour_scale = SAGA_pal[[1]])

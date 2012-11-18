@@ -60,6 +60,7 @@ data(eberg)
 data(eberg_grid)
 data(eberg_zones)
 data(eberg_contours)
+library(sp)
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")
 gridded(eberg_grid) <- ~x+y

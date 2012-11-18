@@ -47,6 +47,7 @@ library(adehabitat)
 data(gpxbtour)
 # format the time column:
 gpxbtour$ctime <- as.POSIXct(gpxbtour$time, format="\%Y-\%m-\%dT\%H:\%M:\%SZ")
+library(sp)
 coordinates(gpxbtour) <- ~lon+lat
 proj4string(gpxbtour) <- CRS("+proj=longlat +datum=WGS84")
 # derive distance from origin:

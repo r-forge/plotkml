@@ -23,6 +23,7 @@
 # load a list of equiprobable streams:
 data(barstr)
 data(bargrid)
+library(sp)
 coordinates(bargrid) <- ~ x+y
 gridded(bargrid) <- TRUE
 # output topology:

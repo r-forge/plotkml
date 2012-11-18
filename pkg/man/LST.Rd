@@ -30,6 +30,7 @@ The \code{LST} data frame contains the following layers:
 where T is the separator between the date and the time, and the time zone is either Z (for UTC) or zzzzzz, which represents \enc{±}{+-}hh:mm in relation to UTC.}
 \examples{
 data(LST)
+library(sp)
 gridded(LST) <- ~x+y
 proj4string(LST) <- CRS("+proj=utm +zone=33 +datum=WGS84 +units=m")
 \dontrun{# get the dates from the file names:

@@ -67,11 +67,13 @@ kml_layer.SoilProfileCollection(obj,
 library(aqp)
 data(ca630)
 # Promote to SoilProfileCollection
+library(plyr)
 ca <- join(ca630$lab, ca630$site, type='inner')
 depths(ca) <- pedon_key ~ hzn_top + hzn_bot
 # extract site data
 site(ca) <- ~ mlra + ssa + lon + lat + cntrl_depth_to_top + cntrl_depth_to_bot + sampled_taxon_name
 # generate SpatialPoints
+library(sp)
 coordinates(ca) <- ~ lon + lat
 # assign CRS data
 proj4string(ca) <- "+proj=latlong +datum=NAD83"

@@ -23,6 +23,7 @@
 }
 \examples{
 data(LST)
+library(sp)
 gridded(LST) <- ~x+y
 proj4string(LST) <- CRS("+proj=utm +zone=33 +datum=WGS84 +units=m")
 dates <- sapply(strsplit(names(LST), "LST"), function(x){x[[2]]})

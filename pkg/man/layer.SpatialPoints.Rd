@@ -33,6 +33,7 @@ Optional aesthetics arguments are \code{shapes} (icons), \code{colour}, \code{si
 \examples{
 data(eberg)
 data(SAGA_pal)
+library(sp)
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")
 names(eberg)
