@@ -24,6 +24,8 @@ A cartographic projection is KML compatible if: (a) geographical coordinates are
 \seealso{\code{\link{reproject}}, \code{rgdal::CRS-class}}
 \examples{
 data(eberg)
+library(sp)
+library(rgdal)
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")
 check_projection(eberg)

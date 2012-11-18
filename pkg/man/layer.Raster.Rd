@@ -19,10 +19,12 @@ kml_layer.Raster(obj, plot.legend = TRUE, metadata = NULL, raster_name, \dots)
 \seealso{ \code{\link{kml-methods}}, \code{\link{kml_open}}, \code{\link{kml_layer.RasterBrick}} }
 \examples{
 data(eberg_grid)
+library(sp)
 coordinates(eberg_grid) <- ~x+y
 gridded(eberg_grid) <- TRUE
 proj4string(eberg_grid) <- CRS("+init=epsg:31467")
 data(SAGA_pal)
+library(raster)
 r <- raster(eberg_grid["TWISRT6"])
 \dontrun{
 # KML plot with a single raster:

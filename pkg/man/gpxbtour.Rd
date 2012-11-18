@@ -21,6 +21,7 @@
 }
 \examples{
 data(gpxbtour)
+library(sp)
 ## format the time column:
 gpxbtour$ctime <- as.POSIXct(gpxbtour$time, format="\%Y-\%m-\%dT\%H:\%M:\%SZ")
 coordinates(gpxbtour) <- ~lon+lat

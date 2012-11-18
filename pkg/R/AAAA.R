@@ -15,8 +15,6 @@ plotKML.opts <- new.env(hash=TRUE, parent = parent.frame())
 
 # Find paths to external packages;
 paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "", python = "", show.paths = TRUE){ 
-     
-     require(utils)
 
      #  Try locating SAGA GIS (R default setting)...
      if(saga_cmd==""){
@@ -254,11 +252,15 @@ plotKML.env <- function(
     silent = TRUE
     ){
     
-    require(RColorBrewer)
-    require(grDevices)
-    if(missing(colour_scale_numeric)) { colour_scale_numeric <- rev(brewer.pal(n = 5, name = "RdYlBu")) }
-    if(missing(colour_scale_factor)) { colour_scale_factor <- brewer.pal(n = 9, name = "Set1") }
-    if(missing(colour_scale_svar)) { colour_scale_svar <- brewer.pal(n = 5, name = "Oranges") }
+	brewer1 = c("#D7191C","#FDAE61","#FFFFBF","#ABD9E9","#2C7BB6")
+    #if(missing(colour_scale_numeric)) { colour_scale_numeric <- rev(brewer.pal(n = 5, name = "RdYlBu")) }
+    if(missing(colour_scale_numeric)) { colour_scale_numeric <- rev(brewer1) }
+	brewer2 = c("#E41A1C","#377EB8","#4DAF4A","#984EA3","#FF7F00","#FFFF33","#A65628","#F781BF","#999999")
+    #if(missing(colour_scale_factor)) { colour_scale_factor <- brewer.pal(n = 9, name = "Set1") }
+    if(missing(colour_scale_factor)) { colour_scale_factor <- brewer2 }
+	brewer3 = c("#FEEDDE","#FDBE85","#FD8D3C","#E6550D","#A63603")
+    #if(missing(colour_scale_svar)) { colour_scale_svar <- brewer.pal(n = 5, name = "Oranges") }
+    if(missing(colour_scale_svar)) { colour_scale_svar <- brewer3 }
     if(missing(ref_CRS)) { ref_CRS <- "+proj=longlat +datum=WGS84" }
     if(missing(NAflag)) { NAflag <- -99999 }
     if(missing(icon)) { icon <- "icon3.png" }   # "http://maps.google.com/mapfiles/kml/shapes/donut.png"

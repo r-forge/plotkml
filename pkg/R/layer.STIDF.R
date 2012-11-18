@@ -10,7 +10,6 @@ kml_layer.STIDF <- function(
   ...
   ){
 
-  require(xts)
   # Format the time slot for writing to KML:
   if(all(dtime==0)) {  
     TimeSpan.begin = format(time(obj@time), "%Y-%m-%dT%H:%M:%SZ")

@@ -46,6 +46,7 @@ This function basically extends the \code{\link{rasterize}} function available i
 \seealso{ \code{\link{vect2rast.SpatialPoints}}, \code{raster::rasterize}, \code{spatstat::nndist}}
 \examples{
 data(eberg)
+library(sp)
 coordinates(eberg) <- ~X+Y
 data(eberg_zones)
 \dontrun{# point map:

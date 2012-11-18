@@ -6,7 +6,6 @@
 
 
 reproject.SpatialPoints <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), ...) {
-  require(rgdal)
   message(paste("Reprojecting to", CRS, "..."))
   res <- spTransform(x = obj, CRSobj = CRS(CRS))
   return(res)
@@ -116,7 +115,6 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
   
   if(program=="FWTools"){
   gdalwarp <- get("gdalwarp", envir = plotKML.opts)
-  require(rgdal)
   
   # look for FWTools path:  
   if(nchar(gdalwarp)==0){

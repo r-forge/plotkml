@@ -23,6 +23,7 @@ grid2poly(obj, var.name = names(obj)[1], reproject = TRUE,
 \seealso{\code{\link{vect2rast}}, \code{raster::rasterToPolygons}}
 \examples{
 data(eberg_grid)
+library(sp)
 coordinates(eberg_grid) <- ~x+y
 gridded(eberg_grid) <- TRUE
 proj4string(eberg_grid) <- CRS("+init=epsg:31467")

@@ -7,9 +7,6 @@
 
 kml_legend.bar <- function(x, width, height, pointsize = 14, legend.file, legend.pal, z.lim = range(x, na.rm = TRUE, finite = TRUE), factor.labels){
 
-  require(colorspace)
-  require(plotrix)
-  
   ## Factor-type variables:
   if(class(x) == "factor" | class(x) == "character") {
  

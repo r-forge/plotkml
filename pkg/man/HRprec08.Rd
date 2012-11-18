@@ -29,6 +29,7 @@ The \code{HRprec08} data frames contain the following columns:
 \seealso{ \code{\link{HRtemp08}} }
 \examples{
 data(HRprec08)
+library(sp)
 \dontrun{# subset:
 prec.2008.05.01 <- HRprec08[HRprec08$DATE=="2008-05-01",]
 coordinates(prec.2008.05.01) <- ~Lon+Lat

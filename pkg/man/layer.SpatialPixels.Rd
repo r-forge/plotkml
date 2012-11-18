@@ -19,6 +19,7 @@ kml_layer.SpatialPixels(obj, raster_name, plot.legend = TRUE, metadata = NULL, \
 \seealso{ \code{\link{kml-methods}}, \code{\link{kml_open}}, \code{\link{kml_layer.Raster}} }
 \examples{
 data(eberg_grid)
+library(sp)
 coordinates(eberg_grid) <- ~x+y
 gridded(eberg_grid) <- TRUE
 proj4string(eberg_grid) <- CRS("+init=epsg:31467")

@@ -27,6 +27,7 @@
 \seealso{ \code{\link{spMetadata}}, \code{\link{metadata2SLD-methods}} }
 \examples{
 data(eberg)
+library(sp)
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")
 names(eberg)

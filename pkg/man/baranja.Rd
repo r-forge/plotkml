@@ -27,6 +27,7 @@ The \code{bargrid} data frame (regular grid at 30 m intervals) contains the foll
 \note{Consider using the 30 m resolution grid (see \code{bargrid}) as the target resolution (output maps). 
 }
 \examples{
+library(sp)
 library(gstat)
 # sampled elevations:
 data(barxyz)

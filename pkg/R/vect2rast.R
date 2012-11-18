@@ -9,7 +9,6 @@
 vect2rast.SpatialPoints <- function(obj, fname = names(obj)[1], cell.size, bbox, file.name, silent = FALSE, method = c("raster", "SAGA")[1], FIELD = 0, MULTIPLE = 1, LINE_TYPE = 0, GRID_TYPE = 2, ...){
 
     require(maptools)
-    require(rgdal)
     
     # add indicator value if missing data frame:
     if(!any(slotNames(obj) %in% "data")){
@@ -95,7 +94,6 @@ vect2rast.SpatialPoints <- function(obj, fname = names(obj)[1], cell.size, bbox,
 vect2rast.SpatialLines <- function(obj, fname = names(obj)[1], cell.size, bbox, file.name, silent = FALSE, method = c("raster", "SAGA")[1], FIELD = 0, MULTIPLE = 1, LINE_TYPE = 1, GRID_TYPE = 2, ...){
 
     require(maptools)
-    require(rgdal)
 
     # add indicator value if missing data frame:
     if(!any(slotNames(obj) %in% "data")){
@@ -182,7 +180,6 @@ vect2rast.SpatialLines <- function(obj, fname = names(obj)[1], cell.size, bbox, 
 vect2rast.SpatialPolygons <- function(obj, fname = names(obj)[1], cell.size, bbox, file.name, silent = FALSE, method = c("raster", "SAGA")[1], FIELD = 0, MULTIPLE = 0, LINE_TYPE = 1, GRID_TYPE = 2, ...){
 
     require(maptools)
-    require(rgdal)
     
     # add indicator value if missing data frame:
     if(!any(slotNames(obj) %in% "data")){
