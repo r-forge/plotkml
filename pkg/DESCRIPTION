@@ -2,8 +2,12 @@ Package: plotKML
 Version: 0.3-0
 Date: 2012-10-30
 Title: Visualization of spatial and spatio-temporal objects in Google Earth
-Author: Tomislav Hengl <tom.hengl@wur.nl>, Contributions by: Pierre Roudier <roudierp@landcareresearch.co.nz>, Dylan Beaudette <debeaudette@ucdavis.edu>, Edzer Pebesma <edzer.pebesma@uni-muenster.de>
-Maintainer: Tomislav Hengl <tom.hengl@wur.nl>
+Authors@R: c(
+	person("Tomislav", "Hengl", role = c("cre", "aut"),
+        email = "tom.hengl@wur.nl"),
+    person("Pierre", "Roudier", role = "aut"),
+    person("Dylan", "Beaudette", role = "aut"),
+	person("Edzer", "Pebesma", role = "aut))
 Depends: R (>= 2.13.0)
 Imports: methods, XML, sp, rgdal, spacetime, colorspace, plotrix, raster, dismo, aqp, pixmap, plyr, stringr, colorRamps, Hmisc, scales, zoo, xts, RColorBrewer
 Suggests: utils, adehabitat, maptools, fossil, spcosa, rjson, animation, gstat, spatstat, RSAGA, RCurl, rgbif, GSIF
