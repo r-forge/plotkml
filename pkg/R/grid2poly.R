@@ -43,10 +43,9 @@ grid2poly <- function(obj, var.name = names(obj)[1], reproject = TRUE, method = 
     
         else {
         obj <- as(obj[var.name], "SpatialPixelsDataFrame")
-        #pol <- as.SpatialPolygons.SpatialPixels(obj) # EJP: deprecated
-		                                              # should use: as(obj, "SpatialPolygons") instead
-        #pol <- SpatialPolygonsDataFrame(pol, data=data.frame(var.name = obj@data[,var.name]), match.ID=FALSE)
-		pol = as(obj, "SpatialPolygonsDataFrame")
+        # pol <- as.SpatialPolygons.SpatialPixels(obj) # EJP: deprecated
+        # pol <- SpatialPolygonsDataFrame(pol, data=data.frame(var.name = obj@data[,var.name]), match.ID=FALSE)
+		    pol = as(obj, "SpatialPolygonsDataFrame")
     }
     }
     
@@ -64,4 +63,4 @@ grid2poly <- function(obj, var.name = names(obj)[1], reproject = TRUE, method = 
     return(pol)
 } 
 
-# enf of script;
+# end of script;

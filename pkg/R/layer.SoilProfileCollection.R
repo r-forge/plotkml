@@ -66,7 +66,7 @@ kml_layer.SoilProfileCollection <- function(
   scalebar = paste(get("home_url", envir = plotKML.opts), "soilprofile_scalebar.png", sep=""),
   ...) {
 
-	# some of these are loaded at start-up, consider removing
+	# library to estimate scaling factor
   require(fossil)
   
   # deconstruct object
