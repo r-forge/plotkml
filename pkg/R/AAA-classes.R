@@ -192,5 +192,9 @@ if (!isGeneric("vect2rast")){
 if (!isGeneric("plotKML")){
   setGeneric("plotKML", function(obj, ...){standardGeneric("plotKML")})
  }
+ 
+if (!isGeneric("aggregate")){
+  setGeneric("aggregate", function(x, ...){standardGeneric("aggregate")})
+ }
 
 # end of script;
