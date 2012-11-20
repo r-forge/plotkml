@@ -72,6 +72,7 @@
 
 <pre>
 data(LST)
+library(sp)
 gridded(LST) &lt;- ~x+y
 proj4string(LST) &lt;- CRS("+proj=utm +zone=33 +datum=WGS84 +units=m")
 ## Not run: # get the dates from the file names:

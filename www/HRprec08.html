@@ -77,6 +77,7 @@
 
 <pre>
 data(HRprec08)
+library(sp)
 ## Not run: # subset:
 prec.2008.05.01 &lt;- HRprec08[HRprec08$DATE=="2008-05-01",]
 coordinates(prec.2008.05.01) &lt;- ~Lon+Lat

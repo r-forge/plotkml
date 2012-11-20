@@ -12,22 +12,9 @@ reproject.SpatialPoints <- function(obj, CRS = get("ref_CRS", envir = plotKML.op
 }
 
 
-reproject.RasterStack <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), ...) {
-  rs <- stack(lapply(obj@layers, reproject, CRS = CRS, ...))
-  return(rs)
-}
-
-
-reproject.RasterBrick <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), ...) {
-  r <- stack(obj)
-  rs <- brick(lapply(r@layers, reproject, CRS = CRS, ...))
-  return(rs)
-}
-
-
 reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), program = "raster", tmp.file = TRUE, NAflag = get("NAflag", envir = plotKML.opts), show.output.on.console = FALSE, ...) {
 
-  if(is.factor(obj)){  
+  if(raster::is.factor(obj)){  
     method <- "ngb" 
   } else {  
     method <- "bilinear" 
@@ -35,7 +22,7 @@ reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
   
   if(program=="raster"){
     message(paste("Reprojecting to", CRS, "..."))
-    res <- projectRaster(obj, crs = CRS, method = method, progress='text', ...)
+    res <- raster::projectRaster(obj, crs = CRS, method = method, progress='text', ...)
     layerNames(res) <- layerNames(obj)
   } else {
   
@@ -77,16 +64,17 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
 
     # if multiple layers:
     if(ncol(obj) > 1) {
-      r <- stack(obj)
+      r <- raster::stack(obj)
+      res <- list(NULL)
       for(j in 1:ncol(obj)){
         if(is.factor(obj@data[,j])){
-          r[[j]] <- as.factor(r[[j]])
+          r[[j]] <- raster::as.factor(r[[j]])
         }
+        res[[j]] <- reproject(r[[j]], CRS = CRS) 
       }
-      r <- stack(lapply(r@layers, reproject, CRS = CRS, ...)) # EJP: breaks
-      res <- as(r, "SpatialGridDataFrame")
-    ## TH: time consuming but would be preferred:
-    #  res <- as(res, "SpatialPixelsDataFrame")
+      res <- as(raster::stack(res), "SpatialGridDataFrame")
+      ## TH: time consuming but would be preferred:
+      #  res <- as(res, "SpatialPixelsDataFrame")
       names(res) <- names(obj)
     }
 
@@ -94,8 +82,9 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
     else {
       r <- raster(obj)
       if(is.factor(obj@data[,1])){
-        r <- as.factor(r)
-        res <- as(projectRaster(r, crs = CRS, method = "ngb"), "SpatialGridDataFrame")
+        r <- raster::as.factor(r)
+        message(paste("Reprojecting to", CRS, "..."))
+        res <- as(raster::projectRaster(r, crs = CRS, method = "ngb"), "SpatialGridDataFrame")
       } else {
         res <- as(reproject(r, CRS = CRS, ...), "SpatialGridDataFrame")
       }
@@ -106,9 +95,9 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
     # fix factor-type objects:
     for(j in 1:ncol(obj)){
       if(is.factor(obj@data[,j])){
-      # copy levels:
-      res@data[,j] <- as.factor(res@data[,j])
-      levels(res@data[,j]) = levels(as.factor(paste(obj@data[,j])))
+        # copy levels:
+        res@data[,j] <- as.factor(res@data[,j])
+        levels(res@data[,j]) = levels(as.factor(paste(obj@data[,j])))
       }
     }
   }
@@ -171,7 +160,8 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
   } 
   
   else {
-  stop("Could not locate FWTools. See 'plotKML.env()' for more info.") }
+    stop("Could not locate FWTools. See 'plotKML.env()' for more info.") 
+  }
   
   } 
   
@@ -180,14 +170,30 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
   return(res)
 }
 
+
+reproject.RasterStack <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts)) {
+  rs <- list(NULL)
+  for(j in 1:nlayers(obj)){
+    rs[[j]] <- reproject(obj[[j]], CRS = CRS)
+  }
+  return(stack(rs))
+}
+
+
+reproject.RasterBrick <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts)) {
+  r <- stack(obj)
+  rs <- reproject.RasterStack(r, CRS = CRS)
+  return(rs)
+}
+
 # connect all methods and classes:
 setMethod("reproject", "SpatialPoints", reproject.SpatialPoints)
 setMethod("reproject", "SpatialPolygons", reproject.SpatialPoints)
 setMethod("reproject", "SpatialLines", reproject.SpatialPoints)
-setMethod("reproject", "RasterStack", reproject.RasterStack)
 setMethod("reproject", "RasterLayer", reproject.RasterLayer)
-setMethod("reproject", "RasterBrick", reproject.RasterBrick)
 setMethod("reproject", "SpatialGridDataFrame", reproject.SpatialGrid)
 setMethod("reproject", "SpatialPixelsDataFrame", reproject.SpatialGrid)
+setMethod("reproject", "RasterStack", reproject.RasterStack)
+setMethod("reproject", "RasterBrick", reproject.RasterBrick)
 
 # end of script;

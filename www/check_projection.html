@@ -76,6 +76,8 @@
 
 <pre>
 data(eberg)
+library(sp)
+library(rgdal)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 check_projection(eberg)

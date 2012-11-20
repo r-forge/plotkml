@@ -90,6 +90,7 @@ kml_open(file.name, folder.name = file.name, kml_open = TRUE,
 
 <pre>
 data(eberg_grid)
+library(sp)
 coordinates(eberg_grid) &lt;- ~x+y
 gridded(eberg_grid) &lt;- TRUE
 proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")

@@ -54,9 +54,12 @@ getCRS(obj)
 
 <pre>
 data(eberg_grid)
+library(sp)
 coordinates(eberg_grid) &lt;- ~x+y
 gridded(eberg_grid) &lt;- TRUE
+library(rgdal)
 proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
+library(raster)
 r &lt;- raster(eberg_grid[1])
 getCRS(r)
 r.ll &lt;- reproject(r)

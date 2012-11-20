@@ -10,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>Converts a SpatialGridDataFrame object to a polygon map with each available grid node represented with a polygon. To allow further export to KML, <code>grid2poly</code> will, by default, convert any projected coordinates to the lat-lon system (geographic coordinates in the WGS84 system).</p>
+<p>Converts a <code>"SpatialGridDataFrame"</code> object to a polygon map with each available grid node represented with a polygon. To allow further export to KML, <code>grid2poly</code> will, by default, convert any projected coordinates to the lat-lon system (geographic coordinates in the WGS84 system).</p>
 
 
 <h3>Usage</h3>
@@ -28,7 +28,7 @@ grid2poly(obj, var.name = names(obj)[1], reproject = TRUE,
 <table summary="R argblock">
 <tr valign="top"><td><code>obj</code></td>
 <td>
-<p>SpatialGridDataFrame object</p>
+<p><code>"SpatialGridDataFrame"</code> object</p>
 </td></tr>
 <tr valign="top"><td><code>var.name</code></td>
 <td>
@@ -84,6 +84,7 @@ grid2poly(obj, var.name = names(obj)[1], reproject = TRUE,
 
 <pre>
 data(eberg_grid)
+library(sp)
 coordinates(eberg_grid) &lt;- ~x+y
 gridded(eberg_grid) &lt;- TRUE
 proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
@@ -92,9 +93,9 @@ data(SAGA_pal)
 system.time(dem_poly &lt;- grid2poly(eberg_grid, "DEMSRT6", method = "raster"))
 system.time(dem_poly &lt;- grid2poly(eberg_grid, "DEMSRT6", method = "sp"))
 system.time(dem_poly &lt;- grid2poly(eberg_grid, "DEMSRT6", method = "RSAGA"))
-# plotting large polygons in R -&gt; not a good idea
-## spplot(dem_poly, col.regions = SAGA_pal[[1]])
-# intead, we visualize the data in Google Earth:
+## plotting large polygons in R -&gt; not a good idea
+# spplot(dem_poly, col.regions = SAGA_pal[[1]])
+## visualize the data in Google Earth:
 kml(dem_poly, colour_scale = SAGA_pal[[1]], colour = DEMSRT6, kmz = TRUE)
 
 ## End(Not run)

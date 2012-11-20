@@ -131,7 +131,7 @@
   \item{kmz}{logical; specifies whether to compress the output KML file}
   \item{\dots}{(optional) arguments passed to the lower level functions}
 }
-\details{This is a generic function to plot various R objects that contain both inputs and outputs of spatial analysis. The resulting plots (referred to as \emph{`views'}) are usually cartographically complete as they contain legends, and data and model descriptions. In principle, \code{plotKML} works only with complex objects such as \code{"SpatialPredictions"}, \code{"SpatialVectorsSimulations"}, \code{"RasterBrickSimulations"}, \code{"RasterBrickTimeSeries"}, \code{"SpatialMaxEntOutput"} and similar. To further customize visualizations consider combining the lower level functions \code{\link{kml_open}}, \code{\link{kml_close}}, \code{\link{kml_compress}}, \code{\link{kml_screen}} into your own wrapper function.
+\details{This is a generic function to plot various R objects that contain both inputs and outputs of spatial analysis. The resulting plots (referred to as \emph{`views'}) are expected to be cartographically complete as they contain legends, and data and model descriptions. In principle, \code{plotKML} works with both simple spatial objects, and complex objects such as \code{"SpatialPredictions"}, \code{"SpatialVectorsSimulations"}, \code{"RasterBrickSimulations"}, \code{"RasterBrickTimeSeries"}, \code{"SpatialMaxEntOutput"} and similar. To further customize visualizations consider combining the lower level functions \code{\link{kml_open}}, \code{\link{kml_close}}, \code{\link{kml_compress}}, \code{\link{kml_screen}} into your own \code{plotKML()} method.
 }
 \note{Writting large spatial objects via plotKML can be time consuming. Please refer to the package documentation for more information.
 }
@@ -360,19 +360,22 @@ plotKML(bardem_sims, colour_scale = R_pal[[4]])
 ## -------------- SpatialVectorsSimulations --------- ##
 data(barstr)
 data(bargrid)
+library(sp)
 coordinates(bargrid) <- ~ x+y
 gridded(bargrid) <- TRUE
 # output topology:
 cell.size = bargrid@grid@cellsize[1]
 bbox = bargrid@bbox
+nrows = round(abs(diff(bbox[1,])/cell.size), 0) 
+ncols = round(abs(diff(bbox[2,])/cell.size), 0)
 gridT = GridTopology(cellcentre.offset=bbox[,1], cellsize=c(cell.size,cell.size), 
-  cells.dim=c(round(abs(diff(bbox[1,])/cell.size), 0), 
-  ncols=round(abs(diff(bbox[2,])/cell.size), 0)))
-# derive summaries (observed frequency and the entropy or error):
-bar_sum <- aggregate(gridT, barstr[1:5]) 
+  cells.dim=c(nrows, ncols))
+\dontrun{
+bar_sum <- count(gridT, vectL=barstr[1:5])
 # NOTE: this operation can be time consuming!
 # plot the whole project and open in Google Earth:
 plotKML(bar_sum)
+}
 
 ## -------------- SpatialMaxEntOutput --------- ##
 data(bigfoot)

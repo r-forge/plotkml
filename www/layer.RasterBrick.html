@@ -92,6 +92,7 @@ kml_layer.RasterBrick(obj, plot.legend = TRUE, dtime = "", tz = "GMT",
 
 <pre>
 data(LST)
+library(sp)
 coordinates(LST) &lt;- ~x+y
 gridded(LST) &lt;- TRUE
 proj4string(LST) &lt;- CRS("+proj=utm +zone=33 +datum=WGS84 +units=m")
