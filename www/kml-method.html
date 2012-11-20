@@ -86,6 +86,7 @@ kml(obj, folder.name, file.name, kmz, ...)
 <pre>
 # Plotting a SpatialPointsDataFrame object
 data(eberg)
+library(sp)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 ## Not run: # Simple plot

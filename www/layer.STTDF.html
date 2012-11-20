@@ -97,7 +97,8 @@ kml_layer.STTDF(obj, id.name = names(obj@data)[which(names(obj@data)== "burst")]
 
 
 <ul>
-<li><p> Pebesma, E. (2011) Classes and Methods for Spatio-Temporal Data in R. Journal of Statistical Software.
+<li> </li>
+<li><p> Pebesma, E. (2012) <a href="http://www.jstatsoft.org/v51/i07">Classes and Methods for Spatio-Temporal Data in R</a>. Journal of Statistical Software. 51(7): 1-30.
 </p>
 </li>
 <li><p> spacetime package (<a href="http://CRAN.R-project.org/package=spacetime">http://CRAN.R-project.org/package=spacetime</a>)
@@ -120,6 +121,7 @@ library(adehabitat)
 data(gpxbtour)
 # format the time column:
 gpxbtour$ctime &lt;- as.POSIXct(gpxbtour$time, format="%Y-%m-%dT%H:%M:%SZ")
+library(sp)
 coordinates(gpxbtour) &lt;- ~lon+lat
 proj4string(gpxbtour) &lt;- CRS("+proj=longlat +datum=WGS84")
 # derive distance from origin:

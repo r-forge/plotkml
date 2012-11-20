@@ -80,6 +80,7 @@ metadata2SLD.SpatialPixels(obj,
 <pre>
 ## Not run: # generate missing metadata
 data(eberg_grid)
+library(sp)
 coordinates(eberg_grid) &lt;- ~x+y
 gridded(eberg_grid) &lt;- TRUE
 proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")

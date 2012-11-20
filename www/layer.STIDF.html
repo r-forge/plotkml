@@ -64,7 +64,7 @@ kml_layer.STIDF(obj, dtime = "", ...)
 
 
 <ul>
-<li><p> Pebesma, E. (2011) Classes and Methods for Spatio-Temporal Data in R. Journal of Statistical Software.
+<li><p> Pebesma, E. (2012) <a href="http://www.jstatsoft.org/v51/i07">Classes and Methods for Spatio-Temporal Data in R</a>. Journal of Statistical Software. 51(7): 1-30.
 </p>
 </li>
 <li><p> spacetime package (<a href="http://CRAN.R-project.org/package=spacetime">http://CRAN.R-project.org/package=spacetime</a>)
@@ -82,17 +82,21 @@ kml_layer.STIDF(obj, dtime = "", ...)
 
 <pre>
 data(HRtemp08)
+
 # format the time column:
 HRtemp08$ctime &lt;- as.POSIXct(HRtemp08$DATE, format="%Y-%m-%dT%H:%M:%SZ")
+
 # create a STIDF object:
 library(spacetime)
 sp &lt;- SpatialPoints(HRtemp08[,c("Lon","Lat")])
 proj4string(sp) &lt;- CRS("+proj=longlat +datum=WGS84")
 HRtemp08.st &lt;- STIDF(sp, time = HRtemp08$ctime, data = HRtemp08[,c("NAME","TEMP")])
+
 # write to a KML file:
 HRtemp08_jan &lt;- HRtemp08.st[1:500]
-shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png"
-kml(HRtemp08_jan, dtime = 24*3600, colour = TEMP, shape = shape, labels = "", kmz = TRUE)
+shape &lt;- "http://maps.google.com/mapfiles/kml/pal2/icon18.png"
+kml(HRtemp08_jan, dtime = 24*3600, colour = TEMP, shape = shape, labels = "", kmz=TRUE)
+
 ## North Carolina SIDS data set:
 library("maptools")
 fname &lt;- system.file("shapes/sids.shp", package="maptools")[1]

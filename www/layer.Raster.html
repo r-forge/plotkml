@@ -67,10 +67,12 @@ kml_layer.Raster(obj, plot.legend = TRUE, metadata = NULL, raster_name, ...)
 
 <pre>
 data(eberg_grid)
+library(sp)
 coordinates(eberg_grid) &lt;- ~x+y
 gridded(eberg_grid) &lt;- TRUE
 proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
 data(SAGA_pal)
+library(raster)
 r &lt;- raster(eberg_grid["TWISRT6"])
 ## Not run: 
 # KML plot with a single raster:

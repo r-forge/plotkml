@@ -193,8 +193,8 @@ if (!isGeneric("plotKML")){
   setGeneric("plotKML", function(obj, ...){standardGeneric("plotKML")})
  }
  
-if (!isGeneric("aggregate")){
-  setGeneric("aggregate", function(x, ...){standardGeneric("aggregate")})
+if (!isGeneric("count")){
+  setGeneric("count", function(x, ...){standardGeneric("count")})
  }
 
 # end of script;

@@ -4,16 +4,16 @@ importFrom(RColorBrewer, brewer.pal)
 importFrom(scales, rescale)
 importFrom(colorspace, coords, hex, mixcolor, HSV)
 importFrom(plotrix, color.legend)
-importFrom(raster, rotate, shift, projectRaster, as.factor)
+importFrom(raster, stack, brick, rotate, nlayers, shift, layerNames, projectRaster, extension, is.factor, as.factor, count)
 importFrom(dismo, maxent)
 import(zoo)
 importFrom(xts, periodicity)
 importFrom(pixmap, pixmapIndexed, pixmapRGB)
 importFrom(sp, coordinates, overlay, bbox, spplot, is.projected, SpatialPixelsDataFrame)
+importFrom(plyr, aaply, laply, ldply)
 
 import(XML)
 import(rgdal)
-import(plyr)
 import(stringr)
 import(colorRamps)
 import(aqp)
@@ -40,7 +40,6 @@ exportMethods(
 	metadata2SLD,
 	plotKML,
 	vect2rast,
-	aggregate,
-	plot)
+	count)
 #export(check_projection, parse_proj4)
 exportPattern("^[^\\.]")

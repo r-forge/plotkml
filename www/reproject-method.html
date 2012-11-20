@@ -22,16 +22,16 @@ reproject(obj, CRS, ...)
 reproject(obj, CRS, ...)
 ## S4 method for signature 'SpatialLines'
 reproject(obj, CRS, ...)
-## S4 method for signature 'RasterStack'
-reproject(obj, CRS, ...)
 ## S4 method for signature 'RasterLayer'
 reproject(obj, CRS, program = "raster", tmp.file = TRUE, NAflag, show.output.on.console = FALSE, ...)
-## S4 method for signature 'RasterBrick'
-reproject(obj, CRS, ...)
 ## S4 method for signature 'SpatialGridDataFrame'
 reproject(obj, CRS, tmp.file = TRUE, program = "raster", NAflag, show.output.on.console = FALSE, ...)
 ## S4 method for signature 'SpatialPixelsDataFrame'
 reproject(obj, CRS, tmp.file = TRUE, program = "raster", NAflag, show.output.on.console = FALSE, ...)
+## S4 method for signature 'RasterBrick'
+reproject(obj, CRS)
+## S4 method for signature 'RasterStack'
+reproject(obj, CRS)
 </pre>
 
 
@@ -111,6 +111,7 @@ reproject(obj, CRS, tmp.file = TRUE, program = "raster", NAflag, show.output.on.
 <pre>
 # example with vector data
 data(eberg)
+library(sp)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 eberg.geo &lt;- reproject(eberg)

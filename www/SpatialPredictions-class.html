@@ -82,6 +82,7 @@
 
 <pre> 
 # load observations:
+library(sp)
 data(meuse)
 coordinates(meuse) &lt;- ~x+y
 proj4string(meuse) &lt;- CRS("+init=epsg:28992")

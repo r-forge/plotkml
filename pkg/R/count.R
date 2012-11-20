@@ -1,4 +1,4 @@
-# Purpose        : Estimate number of vector objects for some GridTopology 
+# Purpose        : Count the number of vector objects for some GridTopology 
 # Maintainer     : Tomislav Hengl (tom.hengl@wur.nl); 
 # Contributions  : Edzer Pebesma (edzer.pebesma@uni-muenster.de);
 # Dev Status     : Alpha
@@ -6,7 +6,7 @@
 
 
 ## get a summary of an object for a list of lines:
-setMethod("aggregate", signature(x = "GridTopology"), function(x, vectL, ...){
+setMethod("count", signature(x = "GridTopology"), function(x, vectL, ...){
     # rasterize each line separately:
     sg <- SpatialGridDataFrame(x, proj4string = vectL[[1]]@proj4string, data=data.frame(observed=rep(NA, x@cells.dim[1]*x@cells.dim[2]), observed.sd=rep(NA, x@cells.dim[1]*x@cells.dim[2])))
     xv <- NULL

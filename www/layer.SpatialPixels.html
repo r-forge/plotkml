@@ -67,6 +67,7 @@ kml_layer.SpatialPixels(obj, raster_name, plot.legend = TRUE, metadata = NULL, .
 
 <pre>
 data(eberg_grid)
+library(sp)
 coordinates(eberg_grid) &lt;- ~x+y
 gridded(eberg_grid) &lt;- TRUE
 proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")

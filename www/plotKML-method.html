@@ -235,7 +235,7 @@ plotKML(obj,
 
 <h3>Details</h3>
 
-<p>This is a generic function to plot various R objects that contain both inputs and outputs of spatial analysis. The resulting plots (referred to as <EM>&lsquo;views&rsquo;</EM>) are usually cartographically complete as they contain legends, and data and model descriptions. In principle, <code>plotKML</code> works only with complex objects such as <code>"SpatialPredictions"</code>, <code>"SpatialVectorsSimulations"</code>, <code>"RasterBrickSimulations"</code>, <code>"RasterBrickTimeSeries"</code>, <code>"SpatialMaxEntOutput"</code> and similar. To further customize visualizations consider combining the lower level functions <code><a href="kml_open.html">kml_open</a></code>, <code><a href="kml_open.html">kml_close</a></code>, <code><a href="kml_compress.html">kml_compress</a></code>, <code><a href="kml_screen.html">kml_screen</a></code> into your own wrapper function.
+<p>This is a generic function to plot various R objects that contain both inputs and outputs of spatial analysis. The resulting plots (referred to as <EM>&lsquo;views&rsquo;</EM>) are expected to be cartographically complete as they contain legends, and data and model descriptions. In principle, <code>plotKML</code> works with both simple spatial objects, and complex objects such as <code>"SpatialPredictions"</code>, <code>"SpatialVectorsSimulations"</code>, <code>"RasterBrickSimulations"</code>, <code>"RasterBrickTimeSeries"</code>, <code>"SpatialMaxEntOutput"</code> and similar. To further customize visualizations consider combining the lower level functions <code><a href="kml_open.html">kml_open</a></code>, <code><a href="kml_open.html">kml_close</a></code>, <code><a href="kml_compress.html">kml_compress</a></code>, <code><a href="kml_screen.html">kml_screen</a></code> into your own <code>plotKML()</code> method.
 </p>
 
 
@@ -257,6 +257,7 @@ plotKML(obj,
 plotKML.env(silent = FALSE, kmz = FALSE)
 ## -------------- SpatialPointsDataFrame --------- ##
 data(eberg)
+library(sp)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 ## subset to 20 percent:
@@ -282,6 +283,7 @@ plotKML(eberg_zones["ZONES"], altitude=zmin+runif(length(eberg_zones))*500)
 data(eberg_grid)
 gridded(eberg_grid) &lt;- ~x+y
 proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
+library(raster) # EJP -- why is this needed?
 TWI &lt;- reproject(eberg_grid["TWISRT6"])
 data(SAGA_pal)
 plotKML(TWI, colour_scale = SAGA_pal[[1]])
@@ -475,19 +477,23 @@ plotKML(bardem_sims, colour_scale = R_pal[[4]])
 ## -------------- SpatialVectorsSimulations --------- ##
 data(barstr)
 data(bargrid)
+library(sp)
 coordinates(bargrid) &lt;- ~ x+y
 gridded(bargrid) &lt;- TRUE
 # output topology:
 cell.size = bargrid@grid@cellsize[1]
 bbox = bargrid@bbox
+nrows = round(abs(diff(bbox[1,])/cell.size), 0) 
+ncols = round(abs(diff(bbox[2,])/cell.size), 0)
 gridT = GridTopology(cellcentre.offset=bbox[,1], cellsize=c(cell.size,cell.size), 
-  cells.dim=c(round(abs(diff(bbox[1,])/cell.size), 0), 
-  ncols=round(abs(diff(bbox[2,])/cell.size), 0)))
-# derive summaries (observed frequency and the entropy or error):
-bar_sum &lt;- aggregate(gridT, barstr[1:5]) 
+  cells.dim=c(nrows, ncols))
+## Not run: 
+bar_sum &lt;- count(gridT, vectL=barstr[1:5])
 # NOTE: this operation can be time consuming!
 # plot the whole project and open in Google Earth:
 plotKML(bar_sum)
+
+## End(Not run)
 
 ## -------------- SpatialMaxEntOutput --------- ##
 data(bigfoot)

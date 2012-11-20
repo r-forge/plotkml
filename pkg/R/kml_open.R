@@ -55,7 +55,7 @@ kml_close <- function(file.name, overwrite = FALSE, ...) {
 ## Open the KML file using the default OS application:
 kml_View <- function(file.name){
   if(.Platform$OS.type == "windows") {
-      ext <- extension(file.name)
+      ext <- raster::extension(file.name)
       x <- NULL # set default value for error checking
       if(!inherits(try({ x <- utils::readRegistry(ext, hive="HCR") }, silent = TRUE), "try-error")){
         if(! is.null(x[which(names(x) %in% c('Content Type', '(Default)'))])){

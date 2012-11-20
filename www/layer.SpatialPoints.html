@@ -96,6 +96,7 @@ Optional aesthetics arguments are <code>shapes</code> (icons), <code>colour</cod
 <pre>
 data(eberg)
 data(SAGA_pal)
+library(sp)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 names(eberg)

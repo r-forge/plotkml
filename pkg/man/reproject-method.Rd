@@ -21,11 +21,11 @@
 \S4method{reproject}{SpatialPoints}(obj, CRS, \dots)
 \S4method{reproject}{SpatialPolygons}(obj, CRS, \dots)
 \S4method{reproject}{SpatialLines}(obj, CRS, \dots)
-\S4method{reproject}{RasterStack}(obj, CRS, \dots)
 \S4method{reproject}{RasterLayer}(obj, CRS, program = "raster", tmp.file = TRUE, NAflag, show.output.on.console = FALSE, \dots)
-\S4method{reproject}{RasterBrick}(obj, CRS, \dots)
 \S4method{reproject}{SpatialGridDataFrame}(obj, CRS, tmp.file = TRUE, program = "raster", NAflag, show.output.on.console = FALSE, \dots)
 \S4method{reproject}{SpatialPixelsDataFrame}(obj, CRS, tmp.file = TRUE, program = "raster", NAflag, show.output.on.console = FALSE, \dots)
+\S4method{reproject}{RasterBrick}(obj, CRS)
+\S4method{reproject}{RasterStack}(obj, CRS)
 }
 \arguments{
   \item{obj}{Spatial* or Raster* object}

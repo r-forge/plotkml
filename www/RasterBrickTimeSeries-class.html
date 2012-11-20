@@ -58,6 +58,7 @@
 
 <pre>
 data(LST)
+library(sp)
 gridded(LST) &lt;- ~x+y
 proj4string(LST) &lt;- CRS("+proj=utm +zone=33 +datum=WGS84 +units=m")
 dates &lt;- sapply(strsplit(names(LST), "LST"), function(x){x[[2]]})
