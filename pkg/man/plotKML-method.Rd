@@ -314,7 +314,9 @@ if(urlExists){
   nl.rd <- getURL("http://spatialreference.org/ref/sr-org/6781/proj4/")
   proj4string(mySamplingPattern@sample) <- CRS(nl.rd) 
   # prepare spatial domain (polygons):
-  sp.domain <- as.SpatialPolygons.SpatialPixels(myStratification@cells)
+  # EJP: deprecate as.SpatialPolygons.SpatialPixels
+  #sp.domain <- as.SpatialPolygons.SpatialPixels(myStratification@cells)
+  sp.domain <- as(myStratification@cells, "SpatialPolygons")
   sp.domain <- SpatialPolygonsDataFrame(sp.domain, 
      data.frame(ID=as.factor(myStratification@stratumId)), match.ID = FALSE)
   proj4string(sp.domain) <- CRS(nl.rd) 
