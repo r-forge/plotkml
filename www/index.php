@@ -154,7 +154,7 @@ echo $contents; } ?>
   <tr valign="top">
     <td width="220"><div align="center">
       <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_gpxtour.jpg'><img src='Fig_gpxtourthumb.jpg' alt='GPX bicycle Wageningen Muenster' width='150' height="150" border="0"/></a></p>
-      <p class="R_code"><strong><a href="layer.STIDFtraj.html">STIDFtraj</a> </strong> <a href="gpxbtour_speed.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></p>
+      <p class="R_code"><strong><a href="layer.STTDF.html">STTDF</a> </strong> <a href="gpxbtour_speed.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></p>
     </div></td>
     <td width="220"><div align="center">
       <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_STIDF_polygons.jpg'><img src='Fig_STIDF_polygonsthumb.jpg' alt='Spacetime STIDF object polygons.png' width='150' height="139" border="0"/></a></p>
@@ -206,7 +206,7 @@ echo $contents; } ?>
   </tr>
 </table>
 <p class="style1"> Last update: 
-  <!-- #BeginDate format:Am1 -->October 24, 2012<!-- #EndDate -->
+  <!-- #BeginDate format:Am1 -->November 21, 2012<!-- #EndDate -->
 | contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">tom.hengl@wur.nl</a> | <a href="http://www.isric.org">ISRIC</a> - World Soil Information Institute </p>
 </body>
 </html>

@@ -41,5 +41,5 @@ exportMethods(
 	plotKML,
 	vect2rast,
 	count)
-#export(check_projection, parse_proj4)
+export(check_projection, parse_proj4)
 exportPattern("^[^\\.]")

@@ -2,7 +2,7 @@
 # Maintainer     : Tomislav Hengl (tom.hengl@wur.nl); 
 # Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Pierre Roudier (pierre.roudier@landcare.nz);
 # Dev Status     : Alpha
-# Note           : it basically requires only a single input object;
+# Note           : standard geostat plot;
 
 
 setMethod("plotKML", "SpatialPredictions", function(
@@ -11,7 +11,7 @@ setMethod("plotKML", "SpatialPredictions", function(
   file.name = paste(folder.name, ".kml", sep=""),
   colour_scale_svar = get("colour_scale_svar", envir = plotKML.opts),
   grid2poly = FALSE,
-  obj.summary = TRUE,
+  obj.summary = FALSE,
   plot.svar = FALSE,
   pngwidth = 210, 
   pngheight = 580,
@@ -20,7 +20,7 @@ setMethod("plotKML", "SpatialPredictions", function(
   ...
 ){
 
-  require(GSIF)
+  library(GSIF)
   # objects to plot:
   varname <- paste(obj@variable)
   svarname <- paste(obj@variable, ".", "svar", sep="")
@@ -34,11 +34,11 @@ setMethod("plotKML", "SpatialPredictions", function(
     
   # summary properties of the RK model:
   if(obj.summary==TRUE){
-    xx <- summary(obj)
+    xx <- GSIF::summary(obj)
     xd <- unlist(xx[!names(xx) %in% c("bonds", "breaks")])
     md <- data.frame(Names=attr(xd, "names"), Values=xd,  stringsAsFactors = FALSE)
     html <- kml_description(md, asText = TRUE, cwidth = 120, twidth = 240)
-  }
+  } 
   
   if(grid2poly == TRUE){
     pol <- grid2poly(pred)
@@ -46,11 +46,13 @@ setMethod("plotKML", "SpatialPredictions", function(
 
   kml_open(folder.name = folder.name, file.name = file.name)
   
+  if(obj.summary==TRUE){
   # add a description for the whole folder:
   kml.out <- get("kml.out", envir=plotKML.fileIO)
   description_txt <- sprintf('<description><![CDATA[%s]]></description>', html)
   parseXMLAndAdd(description_txt, parent=kml.out[["Document"]])  
   assign('kml.out', kml.out, envir=plotKML.fileIO)
+  }
   
   if(grid2poly == TRUE){ 
     kml_layer(obj = pol, colour = "predicted", ...)

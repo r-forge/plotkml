@@ -180,14 +180,18 @@ kml_aes <- function(obj, ...) {
   else {
 #     aes[['altitude']] <- rep(.all_kml_aesthetics[["altitude"]], length.out = length(obj))
     aes[['altitude']] <- kml_altitude(obj)
-  }
+  }                 
 
   # AltitudeMode
   if ("altitudeMode" %in% called_aes) {
-    aes[["altitudeMode"]] <- parent_call[['altitudeMode']]
+    if(is.call(parent_call[['altitude']])){
+      aes[["altitudeMode"]] <- kml_altitude_mode(eval(parent_call[['altitude']], obj@data)) 
+    } else {
+      aes[["altitudeMode"]] <- parent_call[['altitudeMode']]
+    }
   }
   else {
-    aes[["altitudeMode"]] <- kml_altitude_mode(aes[['altitude']])
+      aes[["altitudeMode"]] <- kml_altitude_mode(aes[['altitude']]) 
   }
 
   # Balloon (pop ups)
