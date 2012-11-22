@@ -48,7 +48,7 @@ kml(eberg, shape = shape, colour = SLTMHT_A, labels = "", colour_scale = SAGA_pa
 kml(eberg, shape = shape, size = CLYMHT_A, colour = SLTMHT_A, labels = "")
 # two aesthetics elements are effective in emphasizing hot-spots:
 kml(eberg, shape = shape, altitude = CLYMHT_A*10, extrude = TRUE, 
-colour = CLYMHT_A, labels = CLYMHT_A, kmz = TRUE)
+  colour = CLYMHT_A, labels = CLYMHT_A, kmz = TRUE)
 }
 }
 \keyword{spatial}

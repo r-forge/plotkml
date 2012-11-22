@@ -88,7 +88,7 @@
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
       file.name = paste(folder.name, ".kml", sep=""), 
       colour_scale_svar = get("colour_scale_svar", envir = plotKML.opts), grid2poly = FALSE, 
-      obj.summary = TRUE, plot.svar = FALSE, pngwidth = 210, 
+      obj.summary = FALSE, plot.svar = FALSE, pngwidth = 210, 
       pngheight = 580, pngpointsize = 14, kmz = get("kmz", envir = plotKML.opts), \dots)
 \S4method{plotKML}{SpatialSamplingPattern}(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
@@ -287,16 +287,14 @@ data(meuse.grid)
 gridded(meuse.grid) <- ~x+y
 proj4string(meuse.grid) <- CRS("+init=epsg:28992")
 # fit a model:
-library(GSIF)
+if(require(GSIF)){
 omm <- fit.gstatModel(observations = meuse, formulaString = om~dist, 
    family = gaussian(log), covariates = meuse.grid)
-show(omm@regModel)
 # produce SpatialPredictions:
 om.rk <- predict(omm, predictionLocations = meuse.grid)
-# overview of the prediction process:
-show(om.rk)
 # plot the whole geostatical mapping project in Google Earth:
 plotKML(om.rk)
+}
 
 ## -------------- SpatialSamplingPattern --------- ##
 library(spcosa)
@@ -392,7 +390,7 @@ data(USAWgrids)
 gridded(USAWgrids) <- ~s1+s2
 proj4string(USAWgrids) <- CRS(aea.prj)
 sel.grids <- c("globedem","nlights03","sdroads","gcarb","twi","globcov")
-library(GSIF)
+if(require(GSIF)){
 # run MaxEnt analysis:
 jar <- paste(system.file(package="dismo"), "/java/maxent.jar", sep='')
 if(file.exists(jar)){
@@ -400,6 +398,7 @@ if(file.exists(jar)){
   icon = "http://plotkml.r-forge.r-project.org/bigfoot.png"
   data(R_pal)
   plotKML(bigfoot.smo, colour_scale = R_pal[["bpy_colors"]], shape = icon)
+}
 }
 }
 \keyword{spatial}
