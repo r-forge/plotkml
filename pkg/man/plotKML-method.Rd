@@ -231,6 +231,7 @@ str(HRtemp08_jan)
 plotKML(HRtemp08_jan[,,"TEMP"], dtime = 24*3600, LabelScale = .4)
 
 ## -------------- STTDF --------- ##
+\dontrun{
 library(fossil)
 library(spacetime)
 library(adehabitat)
@@ -250,6 +251,7 @@ gpx.st$speed <- gpxbtour$speed
 gpx.st@sp@proj4string <- CRS("+proj=longlat +datum=WGS84")
 str(gpx.st)
 plotKML(gpx.st, colour="speed")
+}
 
 ## -------------- Spatial Metadata --------- ##
 eberg.md <- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"),
