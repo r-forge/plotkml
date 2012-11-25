@@ -17,7 +17,7 @@
   }
 }
 \author{ Tomislav Hengl }
-\seealso{ \code{spcosa::spsample}, \code{\link{plotKML-method}}
+\seealso{ \code{\link{plotKML-method}}, \code{spcosa::spsample}, \code{\link{plotKML-method}}
 }
 \examples{ 
 # read a polygon map:

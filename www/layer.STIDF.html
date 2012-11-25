@@ -75,7 +75,7 @@ kml_layer.STIDF(obj, dtime = "", ...)
 
 <h3>See Also</h3>
 
- <p><code><a href="layer.STTDF.html">kml_layer.STTDF</a></code> </p>
+ <p><code><a href="layer.STTDF.html">kml_layer.STTDF</a></code>, <code><a href="plotKML-method.html">plotKML-method</a></code> </p>
 
 
 <h3>Examples</h3>
@@ -98,7 +98,7 @@ shape &lt;- "http://maps.google.com/mapfiles/kml/pal2/icon18.png"
 kml(HRtemp08_jan, dtime = 24*3600, colour = TEMP, shape = shape, labels = "", kmz=TRUE)
 
 ## North Carolina SIDS data set:
-library("maptools")
+library(maptools)
 fname &lt;- system.file("shapes/sids.shp", package="maptools")[1]
 nc &lt;- readShapePoly(fname, proj4string=CRS("+proj=longlat +datum=NAD27"))
 time &lt;- as.POSIXct(strptime(c(rep("1974-01-01", length(nc)), 

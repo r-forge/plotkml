@@ -28,23 +28,4 @@ The \code{LST} data frame contains the following layers:
 \code{yyyy-mm-ddThh:mm:sszzzzzz}\cr
 
 where T is the separator between the date and the time, and the time zone is either Z (for UTC) or zzzzzz, which represents \enc{±}{+-}hh:mm in relation to UTC.}
-\examples{
-data(LST)
-library(sp)
-gridded(LST) <- ~x+y
-proj4string(LST) <- CRS("+proj=utm +zone=33 +datum=WGS84 +units=m")
-\dontrun{# get the dates from the file names:
-dates <- sapply(strsplit(names(LST), "LST"), function(x){x[[2]]})
-LST <- brick(LST)
-LST@title = "Time series of MODIS Land Surface Temperature (8-day mosaics) images"
-LST <- setZ(LST, format(as.Date(dates, "\%Y_\%m_\%d"), "\%Y-\%m-\%dT\%H:\%M:\%SZ"))
-data(SAGA_pal)
-# plot MODIS images in Google Earth:
-LST_ll <- reproject(LST)  # reprojecting rasters takes few minutes!
-# copy the dates:
-LST_ll <- setZ(LST_ll, getZ(LST))
-# KML plot with block temporal support of 8 days:
-kml(LST_ll, colour_scale=SAGA_pal[[1]], dtime=8*24*60^2)
-}
-}
 \keyword{datasets}

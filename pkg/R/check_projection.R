@@ -4,7 +4,7 @@
 # Dev Status     : Alpha
 # Note           : p4s_parameters list of proj4 parameter/value strings; Uses the string parsing functionality from the 'plyr' package;
 
-.extractProjValue <- function(p4s_parameters, param){
+extractProjValue <- function(p4s_parameters, param){
   
   # Locating the current PROJ4 parameter
   query <- ldply(p4s_parameters, str_locate, pattern = param)
@@ -39,7 +39,7 @@ parse_proj4 <- function(p4s, params){
   # Splitting the whole PROJ4 string
   p4s_parameters <- str_split(p4s, " ")[[1]]
   # Extraction of the values of parameters specified above
-  x <- laply(params, .extractProjValue, p4s_parameters = p4s_parameters)
+  x <- laply(params, extractProjValue, p4s_parameters = p4s_parameters)
   # colnames for better looking result
   value <- sapply(sapply(params, strsplit, "\\+"), function(x){x[2]})
   param_names <- sapply(strsplit(value, "="), function(x){x[1]})

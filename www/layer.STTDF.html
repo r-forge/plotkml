@@ -109,40 +109,7 @@ kml_layer.STTDF(obj, id.name = names(obj@data)[which(names(obj@data)== "burst")]
 
 <h3>See Also</h3>
 
- <p><code><a href="readGPX.html">readGPX</a></code> </p>
-
-
-<h3>Examples</h3>
-
-<pre>
-library(fossil)
-library(spacetime)
-library(adehabitat)
-data(gpxbtour)
-# format the time column:
-gpxbtour$ctime &lt;- as.POSIXct(gpxbtour$time, format="%Y-%m-%dT%H:%M:%SZ")
-library(sp)
-coordinates(gpxbtour) &lt;- ~lon+lat
-proj4string(gpxbtour) &lt;- CRS("+proj=longlat +datum=WGS84")
-# derive distance from origin:
-xy &lt;- as.list(data.frame(t(coordinates(gpxbtour))))
-gpxbtour$dist.km &lt;- sapply(xy, function(x) 
-  deg.dist(long1=x[1], lat1=x[2], long2=xy[[1]][1], lat2=xy[[1]][2]))
-plot(gpxbtour$dist.km, gpxbtour$speed, type="l", 
-  xlab="Distance from origin in km", ylab="speed in km per hour")
-# convert to a STTDF class:
-gpx.ltraj &lt;- as.ltraj(coordinates(gpxbtour), gpxbtour$ctime, id = "th")
-gpx.st &lt;- as(gpx.ltraj, "STTDF")
-gpx.st$speed &lt;- gpxbtour$speed
-gpx.st@sp@proj4string &lt;- CRS("+proj=longlat +datum=WGS84")
-# open KML file:
-kml_open("gpxbtour_speed.kml")
-# plot trajectory with speed as colour attribute:
-kml_layer(obj = gpx.st, colour = speed, z.lim = c(18,32))
-# close KML:
-kml_close("gpxbtour_speed.kml")
-kml_compress("gpxbtour_speed.kml")
-</pre>
+ <p><code><a href="readGPX.html">readGPX</a></code>, <code><a href="plotKML-method.html">plotKML-method</a></code>  </p>
 
 <hr><div align="center">[Package <em>plotKML</em> version 0.3-0 <a href="00Index.html">Index</a>]</div>
 </body></html>

@@ -109,9 +109,10 @@ reproject(obj, CRS)
 <h3>Examples</h3>
 
 <pre>
-# example with vector data
+## Not run: # example with vector data
 data(eberg)
 library(sp)
+library(rgdal)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 eberg.geo &lt;- reproject(eberg)
@@ -119,7 +120,7 @@ eberg.geo &lt;- reproject(eberg)
 data(eberg_grid25)
 gridded(eberg_grid25) &lt;- ~x+y
 proj4string(eberg_grid25) &lt;- CRS("+init=epsg:31467")
-## Not run: # reproject to geographical coords (can take few minutes!):
+# reproject to geographical coords (can take few minutes!):
 eberg_grid_ll &lt;- reproject(eberg_grid25)
 # much faster when using FWTools:
 eberg_grid_ll2 &lt;- reproject(eberg_grid25, program = "FWTools")

@@ -85,23 +85,17 @@ kml(obj, folder.name, file.name, kmz, ...)
 
 <pre>
 # Plotting a SpatialPointsDataFrame object
+library(rgdal)
 data(eberg)
+eberg &lt;- eberg[runif(nrow(eberg))&lt;.1,]
 library(sp)
+library(rgdal)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
-## Not run: # Simple plot
+# Simple plot
 kml(eberg, file = "eberg-0.kml")
 # Plot using aesthetics
 kml(eberg, colour = SNDMHT_A, size = CLYMHT_A, alpha = 0.75, file = "eberg-1.kml")
-
-## End(Not run)
-data(eberg_grid)
-gridded(eberg_grid) &lt;- ~x+y
-proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
-## Not run: # Plotting a SpatialPixelsDataFrame or a Raster* object
-kml(eberg_grid, colour = DEMSRT6, file = "eberg_grid-0.kml")
-
-## End(Not run)
 </pre>
 
 <hr><div align="center">[Package <em>plotKML</em> version 0.3-0 <a href="00Index.html">Index</a>]</div>

@@ -81,17 +81,18 @@ If no internal ZIP program exists, the function looks for the system ZIP program
 <h3>Examples</h3>
 
 <pre>
-## Not run: # get image info from Wikimedia:
-imagename = "Soil_monolith.jpg"
-x1 &lt;- getWikiMedia.ImageInfo(imagename)
-sm &lt;- spPhoto(filename = x1$url$url, exif.info = x1$metadata)
-kml_open("sm.kml")
-kml_layer(sm, method="monolith")
-kml_close("sm.kml")
-# compress together both the KML file and the auxiliary COLLADA file:
-kml_compress("sm.kml", files="Soil_monolith_jpg.dae")
-
-## End(Not run)
+data(eberg)
+eberg &lt;- eberg[runif(nrow(eberg))&lt;.1,] 
+library(sp)
+library(rgdal)
+library(raster)
+coordinates(eberg) &lt;- ~X+Y
+proj4string(eberg) &lt;- CRS("+init=epsg:31467")
+kml_open("eberg.kml")
+kml_layer(eberg, colour = CLYMHT_A)
+kml_close("eberg.kml")
+# compress:
+kml_compress("eberg.kml")
 </pre>
 
 <hr><div align="center">[Package <em>plotKML</em> version 0.3-0 <a href="00Index.html">Index</a>]</div>

@@ -58,6 +58,7 @@
 <h3>Examples</h3>
 
 <pre>
+## Not run: 
 data(eberg)
 library(sp)
 coordinates(eberg) &lt;- ~X+Y
@@ -65,11 +66,13 @@ proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 names(eberg)
 # add metadata:
 eberg.md &lt;- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"), 
-  Target_variable="SNDMHT_A")
+    Target_variable="SNDMHT_A")
 p &lt;- GetPalette(eberg.md)
 str(p)
 x &lt;- summary(eberg.md)
 str(x)
+
+## End(Not run)
 </pre>
 
 <hr><div align="center">[Package <em>plotKML</em> version 0.3-0 <a href="00Index.html">Index</a>]</div>

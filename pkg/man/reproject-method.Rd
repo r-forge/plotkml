@@ -49,9 +49,10 @@ In the case of raster and/or gridded maps, by selecting \code{program = "FWTools
 \section{Warning}{\code{obj} needs to have a proper proj4 string (CRS), otherwise \code{reproject} will not run.}
 \seealso{\code{\link{paths}}, \code{raster::projectRaster}, \code{rgdal::spTransform}, \code{rgdal::CRS-class}}
 \examples{
-# example with vector data
+\dontrun{# example with vector data
 data(eberg)
 library(sp)
+library(rgdal)
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")
 eberg.geo <- reproject(eberg)
@@ -59,7 +60,7 @@ eberg.geo <- reproject(eberg)
 data(eberg_grid25)
 gridded(eberg_grid25) <- ~x+y
 proj4string(eberg_grid25) <- CRS("+init=epsg:31467")
-\dontrun{# reproject to geographical coords (can take few minutes!):
+# reproject to geographical coords (can take few minutes!):
 eberg_grid_ll <- reproject(eberg_grid25)
 # much faster when using FWTools:
 eberg_grid_ll2 <- reproject(eberg_grid25, program = "FWTools")

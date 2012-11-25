@@ -26,6 +26,7 @@
 \author{ Tomislav Hengl }
 \seealso{ \code{\link{spMetadata}}, \code{\link{metadata2SLD-methods}} }
 \examples{
+\dontrun{
 data(eberg)
 library(sp)
 coordinates(eberg) <- ~X+Y
@@ -33,10 +34,11 @@ proj4string(eberg) <- CRS("+init=epsg:31467")
 names(eberg)
 # add metadata:
 eberg.md <- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"), 
-  Target_variable="SNDMHT_A")
+    Target_variable="SNDMHT_A")
 p <- GetPalette(eberg.md)
 str(p)
 x <- summary(eberg.md)
 str(x)
+}
 }
 \keyword{classes}

@@ -94,7 +94,7 @@
 <h3>Examples</h3>
 
 <pre>
-# Load the BFRO records:
+## Not run: # Load the BFRO records:
 library(sp)
 data(bigfoot)
 aea.prj &lt;- "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 
@@ -108,7 +108,7 @@ bigfoot.aea &lt;- spTransform(bigfoot, CRS(aea.prj))
 data(USAWgrids)
 gridded(USAWgrids) &lt;- ~s1+s2
 proj4string(USAWgrids) &lt;- CRS(aea.prj)
-## Not run: # Visualize data:
+# Visualize data:
 data(SAGA_pal)
 pnts &lt;- list("sp.points", bigfoot.aea, pch="+", col="yellow")
 spplot(USAWgrids[2], col.regions=rev(SAGA_pal[[3]]), sp.layout=pnts)

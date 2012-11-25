@@ -16,7 +16,7 @@ kml_layer.Raster(obj, plot.legend = TRUE, metadata = NULL, raster_name, \dots)
 \details{Google Earth does not properly handle a 24-bit PNG file which has a single transparent color (read more at \href{http://groups.google.com/group/earth-help/}{Google Earth Help}). To force transparency, plotKML will try to set it using the \code{-matte -transparent "\#FFFFFF"} option in the \href{http://www.imagemagick.org/Usage/masking/}{ImageMagick convert program} (ImageMagick needs to be installed separately and located using \code{plotKML.env()}).
 }
 \author{Tomislav Hengl, Pierre Roudier and Dylan Beaudette}
-\seealso{ \code{\link{kml-methods}}, \code{\link{kml_open}}, \code{\link{kml_layer.RasterBrick}} }
+\seealso{ \code{\link{kml-methods}}, \code{\link{kml_open}}, \code{\link{kml_layer.RasterBrick}}, \code{\link{plotKML-method}} }
 \examples{
 data(eberg_grid)
 library(sp)
@@ -26,9 +26,7 @@ proj4string(eberg_grid) <- CRS("+init=epsg:31467")
 data(SAGA_pal)
 library(raster)
 r <- raster(eberg_grid["TWISRT6"])
-\dontrun{
 # KML plot with a single raster:
 kml(r, colour_scale = SAGA_pal[[1]], colour = TWISRT6) 
-}
 }
 \keyword{spatial}

@@ -88,7 +88,7 @@
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
       file.name = paste(folder.name, ".kml", sep=""), 
       colour_scale_svar = get("colour_scale_svar", envir = plotKML.opts), grid2poly = FALSE, 
-      obj.summary = FALSE, plot.svar = FALSE, pngwidth = 210, 
+      obj.summary = TRUE, plot.svar = FALSE, pngwidth = 210, 
       pngheight = 580, pngpointsize = 14, kmz = get("kmz", envir = plotKML.opts), \dots)
 \S4method{plotKML}{SpatialSamplingPattern}(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
@@ -140,8 +140,9 @@
 \examples{
 plotKML.env(silent = FALSE, kmz = FALSE)
 ## -------------- SpatialPointsDataFrame --------- ##
-data(eberg)
 library(sp)
+library(rgdal)
+data(eberg)
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")
 ## subset to 20 percent:
@@ -164,10 +165,11 @@ zmin = 230
 plotKML(eberg_zones["ZONES"], altitude=zmin+runif(length(eberg_zones))*500)
 
 ## -------------- SpatialPixelsDataFrame --------- ##
+library(rgdal)
+library(raster)
 data(eberg_grid)
 gridded(eberg_grid) <- ~x+y
 proj4string(eberg_grid) <- CRS("+init=epsg:31467")
-library(raster) # EJP -- why is this needed?
 TWI <- reproject(eberg_grid["TWISRT6"])
 data(SAGA_pal)
 plotKML(TWI, colour_scale = SAGA_pal[[1]])
@@ -194,7 +196,8 @@ if(urlExists){
 }
 
 ## -------------- SoilProfileCollection --------- ##
-require(aqp)
+library(aqp)
+library(plyr)
 # sample profile from Nigeria:
 lon = 3.90; lat = 7.50; id = "ISRIC:NG0017"; FAO1988 = "LXp" 
 top = c(0, 18, 36, 65, 87, 127) 
@@ -214,11 +217,11 @@ prof1
 plotKML(prof1, var.name="ORCDRC", color.name="soil_color")
 
 ## -------------- STIDF --------- ##
+library(spacetime)
 data(HRtemp08)
 # format the time column:
 HRtemp08$ctime <- as.POSIXct(HRtemp08$DATE, format="\%Y-\%m-\%dT\%H:\%M:\%SZ")
 # create a STIDF object:
-library(spacetime)
 sp <- SpatialPoints(HRtemp08[,c("Lon","Lat")])
 proj4string(sp) <- CRS("+proj=longlat +datum=WGS84")
 HRtemp08.st <- STIDF(sp, time = HRtemp08$ctime, data = HRtemp08[,c("NAME","TEMP")])
@@ -254,6 +257,8 @@ eberg.md <- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML
 plotKML(eberg[1:100,"CLYMHT_A"], metadata=eberg.md)
 
 ## -------------- RasterBrickTimeSeries --------- ##
+library(raster)
+library(sp)
 data(LST)
 gridded(LST) <- ~x+y
 proj4string(LST) <- CRS("+proj=utm +zone=33 +datum=WGS84 +units=m")
@@ -279,6 +284,8 @@ data(SAGA_pal)
 plotKML(LST.ts, colour_scale=SAGA_pal[[1]])
 
 ## -------------- Spatial Predictions --------- ##
+library(sp)
+library(rgdal)
 data(meuse)
 coordinates(meuse) <- ~x+y
 proj4string(meuse) <- CRS("+init=epsg:28992")
@@ -298,6 +305,7 @@ plotKML(om.rk)
 
 ## -------------- SpatialSamplingPattern --------- ##
 library(spcosa)
+library(sp)
 # read a polygon map:
 shpFarmsum <- readOGR(dsn = system.file("maps", package = "spcosa"), 
   layer = "farmsum")
@@ -328,6 +336,8 @@ if(urlExists){
 }
 
 ## -------------- RasterBrickSimulations --------- ##
+library(sp)
+library(gstat)
 data(barxyz)
 # define the projection system:
 prj = "+proj=tmerc +lat_0=0 +lon_0=18 +k=0.9999 +x_0=6500000 +y_0=0 
@@ -378,17 +388,22 @@ plotKML(bar_sum)
 }
 
 ## -------------- SpatialMaxEntOutput --------- ##
+library(maptools)
 data(bigfoot)
 aea.prj <- "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 
    +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"
+data(USAWgrids)
+gridded(USAWgrids) <- ~s1+s2
+proj4string(USAWgrids) <- CRS(aea.prj)
+bbox <- spTransform(USAWgrids, CRS("+proj=latlon +datum=WGS84"))@bbox
+sel = bigfoot$Lon > bbox[1,1] & bigfoot$Lon < bbox[1,2] &
+    bigfoot$Lat > bbox[2,1] & bigfoot$Lat < bbox[2,2]
+bigfoot <- bigfoot[sel,]
 coordinates(bigfoot) <- ~Lon+Lat
 proj4string(bigfoot) <- CRS("+proj=latlon +datum=WGS84")
 library(spatstat)
 bigfoot.aea <- as.ppp(spTransform(bigfoot, CRS(aea.prj)))
 # Load the covariates:
-data(USAWgrids)
-gridded(USAWgrids) <- ~s1+s2
-proj4string(USAWgrids) <- CRS(aea.prj)
 sel.grids <- c("globedem","nlights03","sdroads","gcarb","twi","globcov")
 if(require(GSIF)){
 # run MaxEnt analysis:
