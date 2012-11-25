@@ -97,16 +97,16 @@ kml_screen(image.file, sname = "",
 <h3>Examples</h3>
 
 <pre>
+library(rgdal)
+library(sp)
 data(eberg_zones)
-## Not run: # add logo in the top-center:
-kml_open("eberg_zones.kml")
+# add logo in the top-center:
+kml_open("eberg_screen.kml")
 kml_layer(eberg_zones)
 logo = "http://meta.isric.org/images/ISRIC_right.png"
 kml_screen(image.file = logo, position = "TC", sname = "ISRIC logo")
-kml_close("eberg_zones.kml")
-kml_compress("eberg_zones.kml")
-
-## End(Not run)
+kml_close("eberg_screen.kml")
+kml_compress("eberg_screen.kml")
 </pre>
 
 <hr><div align="center">[Package <em>plotKML</em> version 0.3-0 <a href="00Index.html">Index</a>]</div>

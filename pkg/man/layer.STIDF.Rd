@@ -30,7 +30,7 @@ tags will be inserted. Temporal support (\eqn{\Delta t}{dt}) is estimated using 
 }
 }
 \author{Tomislav Hengl }
-\seealso{ \code{\link{kml_layer.STTDF}} }
+\seealso{ \code{\link{kml_layer.STTDF}}, \code{\link{plotKML-method}} }
 \examples{
 data(HRtemp08)
 
@@ -49,7 +49,7 @@ shape <- "http://maps.google.com/mapfiles/kml/pal2/icon18.png"
 kml(HRtemp08_jan, dtime = 24*3600, colour = TEMP, shape = shape, labels = "", kmz=TRUE)
 
 ## North Carolina SIDS data set:
-library("maptools")
+library(maptools)
 fname <- system.file("shapes/sids.shp", package="maptools")[1]
 nc <- readShapePoly(fname, proj4string=CRS("+proj=longlat +datum=NAD27"))
 time <- as.POSIXct(strptime(c(rep("1974-01-01", length(nc)), 

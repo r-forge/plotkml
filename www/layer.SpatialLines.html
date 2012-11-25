@@ -76,19 +76,19 @@ Use the same time values for both <code>TimeSpan.begin</code> and <code>TimeSpan
 
 <h3>See Also</h3>
 
- <p><code><a href="kml-method.html">kml-methods</a></code>, <code><a href="kml_open.html">kml_open</a></code>, <code><a href="layer.SpatialPolygons.html">kml_layer.SpatialPolygons</a></code> </p>
+ <p><code><a href="kml-method.html">kml-methods</a></code>, <code><a href="kml_open.html">kml_open</a></code>, <code><a href="layer.SpatialPolygons.html">kml_layer.SpatialPolygons</a></code>, <code><a href="plotKML-method.html">plotKML-method</a></code> </p>
 
 
 <h3>Examples</h3>
 
 <pre>
+library(rgdal)
+library(sp)
 data(eberg_contours)
 data(SAGA_pal)
 names(eberg_contours)
-## Not run: # KML plot with elevations used as 'colour' argument:
+# KML plot with elevations used as 'colour' argument:
 kml(eberg_contours, colour_scale = SAGA_pal[[1]], colour = Z, kmz = TRUE)
-
-## End(Not run)
 </pre>
 
 <hr><div align="center">[Package <em>plotKML</em> version 0.3-0 <a href="00Index.html">Index</a>]</div>

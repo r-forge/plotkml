@@ -39,7 +39,7 @@ The \code{USAWgrids} data frame (46,018 pixels; Washington, Oregon, Nevada and C
 \note{According to the \href{http://newsfeed.time.com/2011/10/11/scientists-95-sure-bigfoot-lives-in-russian-tundra}{Time.com}, a team of a dozen-plus experts from as far afield as Canada and Sweden have proclaimed themselves 95 percent certain of the mythical animal's existence on Kemerovo region territory some 3,000 kilometers east of Moscow (announced at the Tashtagol conference in 2011).
 }
 \examples{
-# Load the BFRO records:
+\dontrun{# Load the BFRO records:
 library(sp)
 data(bigfoot)
 aea.prj <- "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 
@@ -53,7 +53,7 @@ bigfoot.aea <- spTransform(bigfoot, CRS(aea.prj))
 data(USAWgrids)
 gridded(USAWgrids) <- ~s1+s2
 proj4string(USAWgrids) <- CRS(aea.prj)
-\dontrun{# Visualize data:
+# Visualize data:
 data(SAGA_pal)
 pnts <- list("sp.points", bigfoot.aea, pch="+", col="yellow")
 spplot(USAWgrids[2], col.regions=rev(SAGA_pal[[3]]), sp.layout=pnts)

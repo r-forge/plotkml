@@ -61,13 +61,13 @@ kml_layer.SoilProfileCollection(obj,
 }
 }
 \author{Tomislav Hengl, Dylan Beaudette and Pierre Roudier}
-\seealso{ \code{\link{kml_layer.SpatialPhotoOverlay}} }
+\seealso{ \code{\link{kml_layer.SpatialPhotoOverlay}}, \code{\link{plotKML-method}} }
 \examples{
 # install.packages("aqp", repos="http://R-Forge.R-project.org")
 library(aqp)
+library(plyr)
 data(ca630)
 # Promote to SoilProfileCollection
-library(plyr)
 ca <- join(ca630$lab, ca630$site, type='inner')
 depths(ca) <- pedon_key ~ hzn_top + hzn_bot
 # extract site data

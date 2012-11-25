@@ -80,8 +80,8 @@ p1 = newXMLNode("Placemark")
 begin &lt;- format(HRtemp08[1,"DATE"]-.5, "%Y-%m-%dT%H:%M:%SZ")
 end &lt;- format(HRtemp08[1,"DATE"]+.5, "%Y-%m-%dT%H:%M:%SZ")
 txt &lt;- sprintf('&lt;name&gt;%s&lt;/name&gt;&lt;TimeStamp&gt;&lt;begin&gt;%s&lt;/begin&gt;&lt;end&gt;%s&lt;/end&gt;&lt;/TimeStamp&gt;
-&lt;Point&gt;&lt;coordinates&gt;%.4f,%.4f,%.0f&lt;/coordinates&gt;&lt;/Point&gt;', HRtemp08[1,"NAME"], 
-begin, end, HRtemp08[1,"Lon"], HRtemp08[1,"Lat"], 0)
+    &lt;Point&gt;&lt;coordinates&gt;%.4f,%.4f,%.0f&lt;/coordinates&gt;&lt;/Point&gt;', HRtemp08[1,"NAME"], 
+    begin, end, HRtemp08[1,"Lon"], HRtemp08[1,"Lat"], 0)
 parseXMLAndAdd(txt, parent=p1)
 p1
 </pre>

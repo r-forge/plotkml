@@ -60,7 +60,7 @@ kml_layer.SpatialPixels(obj, raster_name, plot.legend = TRUE, metadata = NULL, .
 
 <h3>See Also</h3>
 
- <p><code><a href="kml-method.html">kml-methods</a></code>, <code><a href="kml_open.html">kml_open</a></code>, <code><a href="layer.Raster.html">kml_layer.Raster</a></code> </p>
+ <p><code><a href="kml-method.html">kml-methods</a></code>, <code><a href="kml_open.html">kml_open</a></code>, <code><a href="layer.Raster.html">kml_layer.Raster</a></code>, <code><a href="plotKML-method.html">plotKML-method</a></code> </p>
 
 
 <h3>Examples</h3>
@@ -68,17 +68,16 @@ kml_layer.SpatialPixels(obj, raster_name, plot.legend = TRUE, metadata = NULL, .
 <pre>
 data(eberg_grid)
 library(sp)
+library(rgdal)
+library(raster)
 coordinates(eberg_grid) &lt;- ~x+y
 gridded(eberg_grid) &lt;- TRUE
 proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
 data(SAGA_pal)
-## Not run: 
 # KML plot with a single raster:
 kml(eberg_grid, colour_scale = SAGA_pal[[1]], colour = TWISRT6) 
 # factor-type variable:
 kml(eberg_grid, colour_scale = SAGA_pal[[1]], colour = LNCCOR6)
-
-## End(Not run)
 </pre>
 
 <hr><div align="center">[Package <em>plotKML</em> version 0.3-0 <a href="00Index.html">Index</a>]</div>

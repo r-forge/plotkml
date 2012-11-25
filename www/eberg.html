@@ -133,9 +133,10 @@ coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 gridded(eberg_grid) &lt;- ~x+y
 proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
-## Not run: # visualize the maps:
+# visualize the maps:
 data(SAGA_pal)
 l.sp &lt;- list("sp.lines", eberg_contours, col="black")
+## Not run: 
 spplot(eberg_grid["DEMSRT6"], col.regions = SAGA_pal[[1]], sp.layout=l.sp)
 spplot(eberg_zones, sp.layout=list("sp.points", eberg, col="black", pch="+"))
 

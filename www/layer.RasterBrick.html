@@ -85,35 +85,7 @@ kml_layer.RasterBrick(obj, plot.legend = TRUE, dtime = "", tz = "GMT",
 
 <h3>See Also</h3>
 
- <p><code><a href="kml-method.html">kml-methods</a></code>, <code><a href="kml_open.html">kml_open</a></code>, <code><a href="layer.Raster.html">kml_layer.Raster</a></code> </p>
-
-
-<h3>Examples</h3>
-
-<pre>
-data(LST)
-library(sp)
-coordinates(LST) &lt;- ~x+y
-gridded(LST) &lt;- TRUE
-proj4string(LST) &lt;- CRS("+proj=utm +zone=33 +datum=WGS84 +units=m")
-## Not run: # get the dates from the file names:
-dates &lt;- sapply(strsplit(names(LST), "LST"), function(x){x[[2]]})
-LST &lt;- brick(LST)
-LST@title = "Time series of MODIS Land Surface Temperature images"
-LST &lt;- setZ(LST, format(as.Date(dates, "%Y_%m_%d"), "%Y-%m-%dT%H:%M:%SZ"))
-data(SAGA_pal)
-# time dimension defined via zvalue slot:
-getZ(LST)[c(1,12,24)]
-# subset to 3 images:
-LSTs &lt;- brick(raster(LST, 1), raster(LST, 12), raster(LST, 24))
-LST_ll &lt;- reproject(LSTs, program="FWTools")
-# copy the dates:
-LST_ll &lt;- setZ(LST_ll, getZ(LST)[c(1,12,24)])
-# KML plot with block temporal support of 8 days:
-kml(LST_ll, colour_scale=SAGA_pal[[1]], dtime=8*24*60^2)
-
-## End(Not run)
-</pre>
+ <p><code><a href="kml-method.html">kml-methods</a></code>, <code><a href="kml_open.html">kml_open</a></code>, <code><a href="layer.Raster.html">kml_layer.Raster</a></code>, <code><a href="plotKML-method.html">plotKML-method</a></code> </p>
 
 <hr><div align="center">[Package <em>plotKML</em> version 0.3-0 <a href="00Index.html">Index</a>]</div>
 </body></html>

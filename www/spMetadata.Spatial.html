@@ -117,11 +117,13 @@
 <h3>Examples</h3>
 
 <pre>
+## Not run: 
 data(eberg)
 library(sp)
+library(rgdal)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
-## Not run: # (a) no metadata file exist:
+# (a) no metadata file exist:
 eberg.md &lt;- spMetadata(eberg, Target_variable="SNDMHT_A")
 # (b) with localy prepared metadata file:
 eberg.md &lt;- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"), 

@@ -83,28 +83,7 @@ kml_open(file.name, folder.name = file.name, kml_open = TRUE,
 
 <h3>See Also</h3>
 
- <p><code><a href="kml-method.html">kml-methods</a></code> </p>
-
-
-<h3>Examples</h3>
-
-<pre>
-data(eberg_grid)
-library(sp)
-coordinates(eberg_grid) &lt;- ~x+y
-gridded(eberg_grid) &lt;- TRUE
-proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
-## Not run: # Open, write layer and view KML file:
-kml_open("eberg_grid_DEM.kml")
-kml_layer(eberg_grid, colour=DEMSRT6)
-kml_close("eberg_grid_DEM.kml")
-# print the result:
-xmlRoot(xmlTreeParse("eberg_grid_DEM.kml"))[["Document"]]
-# open in Google Earth:
-kml_View("eberg_grid_DEM.kml")
-
-## End(Not run)
-</pre>
+ <p><code><a href="kml_layer-method.html">kml_layer</a></code>, <code><a href="kml-method.html">kml-methods</a></code> </p>
 
 <hr><div align="center">[Package <em>plotKML</em> version 0.3-0 <a href="00Index.html">Index</a>]</div>
 </body></html>

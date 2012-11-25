@@ -187,7 +187,7 @@ kml_layer.SoilProfileCollection(obj,
 
 <h3>See Also</h3>
 
- <p><code><a href="layer.SpatialPhotoOverlay.html">kml_layer.SpatialPhotoOverlay</a></code> </p>
+ <p><code><a href="layer.SpatialPhotoOverlay.html">kml_layer.SpatialPhotoOverlay</a></code>, <code><a href="plotKML-method.html">plotKML-method</a></code> </p>
 
 
 <h3>Examples</h3>
@@ -195,9 +195,9 @@ kml_layer.SoilProfileCollection(obj,
 <pre>
 # install.packages("aqp", repos="http://R-Forge.R-project.org")
 library(aqp)
+library(plyr)
 data(ca630)
 # Promote to SoilProfileCollection
-library(plyr)
 ca &lt;- join(ca630$lab, ca630$site, type='inner')
 depths(ca) &lt;- pedon_key ~ hzn_top + hzn_bot
 # extract site data

@@ -97,7 +97,7 @@ plotKML(obj,
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
       file.name = paste(folder.name, ".kml", sep=""), 
       colour_scale_svar = get("colour_scale_svar", envir = plotKML.opts), grid2poly = FALSE, 
-      obj.summary = FALSE, plot.svar = FALSE, pngwidth = 210, 
+      obj.summary = TRUE, plot.svar = FALSE, pngwidth = 210, 
       pngheight = 580, pngpointsize = 14, kmz = get("kmz", envir = plotKML.opts), ...)
 ## S4 method for signature 'SpatialSamplingPattern'
 plotKML(obj, 
@@ -256,8 +256,9 @@ plotKML(obj,
 <pre>
 plotKML.env(silent = FALSE, kmz = FALSE)
 ## -------------- SpatialPointsDataFrame --------- ##
-data(eberg)
 library(sp)
+library(rgdal)
+data(eberg)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 ## subset to 20 percent:
@@ -280,10 +281,11 @@ zmin = 230
 plotKML(eberg_zones["ZONES"], altitude=zmin+runif(length(eberg_zones))*500)
 
 ## -------------- SpatialPixelsDataFrame --------- ##
+library(rgdal)
+library(raster)
 data(eberg_grid)
 gridded(eberg_grid) &lt;- ~x+y
 proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
-library(raster) # EJP -- why is this needed?
 TWI &lt;- reproject(eberg_grid["TWISRT6"])
 data(SAGA_pal)
 plotKML(TWI, colour_scale = SAGA_pal[[1]])
@@ -310,7 +312,8 @@ if(urlExists){
 }
 
 ## -------------- SoilProfileCollection --------- ##
-require(aqp)
+library(aqp)
+library(plyr)
 # sample profile from Nigeria:
 lon = 3.90; lat = 7.50; id = "ISRIC:NG0017"; FAO1988 = "LXp" 
 top = c(0, 18, 36, 65, 87, 127) 
@@ -330,11 +333,11 @@ prof1
 plotKML(prof1, var.name="ORCDRC", color.name="soil_color")
 
 ## -------------- STIDF --------- ##
+library(spacetime)
 data(HRtemp08)
 # format the time column:
 HRtemp08$ctime &lt;- as.POSIXct(HRtemp08$DATE, format="%Y-%m-%dT%H:%M:%SZ")
 # create a STIDF object:
-library(spacetime)
 sp &lt;- SpatialPoints(HRtemp08[,c("Lon","Lat")])
 proj4string(sp) &lt;- CRS("+proj=longlat +datum=WGS84")
 HRtemp08.st &lt;- STIDF(sp, time = HRtemp08$ctime, data = HRtemp08[,c("NAME","TEMP")])
@@ -370,6 +373,8 @@ eberg.md &lt;- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plot
 plotKML(eberg[1:100,"CLYMHT_A"], metadata=eberg.md)
 
 ## -------------- RasterBrickTimeSeries --------- ##
+library(raster)
+library(sp)
 data(LST)
 gridded(LST) &lt;- ~x+y
 proj4string(LST) &lt;- CRS("+proj=utm +zone=33 +datum=WGS84 +units=m")
@@ -395,6 +400,8 @@ data(SAGA_pal)
 plotKML(LST.ts, colour_scale=SAGA_pal[[1]])
 
 ## -------------- Spatial Predictions --------- ##
+library(sp)
+library(rgdal)
 data(meuse)
 coordinates(meuse) &lt;- ~x+y
 proj4string(meuse) &lt;- CRS("+init=epsg:28992")
@@ -414,6 +421,7 @@ plotKML(om.rk)
 
 ## -------------- SpatialSamplingPattern --------- ##
 library(spcosa)
+library(sp)
 # read a polygon map:
 shpFarmsum &lt;- readOGR(dsn = system.file("maps", package = "spcosa"), 
   layer = "farmsum")
@@ -428,7 +436,9 @@ if(urlExists){
   nl.rd &lt;- getURL("http://spatialreference.org/ref/sr-org/6781/proj4/")
   proj4string(mySamplingPattern@sample) &lt;- CRS(nl.rd) 
   # prepare spatial domain (polygons):
-  sp.domain &lt;- as.SpatialPolygons.SpatialPixels(myStratification@cells)
+  # EJP: deprecate as.SpatialPolygons.SpatialPixels
+  #sp.domain &lt;- as.SpatialPolygons.SpatialPixels(myStratification@cells)
+  sp.domain &lt;- as(myStratification@cells, "SpatialPolygons")
   sp.domain &lt;- SpatialPolygonsDataFrame(sp.domain, 
      data.frame(ID=as.factor(myStratification@stratumId)), match.ID = FALSE)
   proj4string(sp.domain) &lt;- CRS(nl.rd) 
@@ -442,6 +452,8 @@ if(urlExists){
 }
 
 ## -------------- RasterBrickSimulations --------- ##
+library(sp)
+library(gstat)
 data(barxyz)
 # define the projection system:
 prj = "+proj=tmerc +lat_0=0 +lon_0=18 +k=0.9999 +x_0=6500000 +y_0=0 
@@ -494,17 +506,22 @@ plotKML(bar_sum)
 ## End(Not run)
 
 ## -------------- SpatialMaxEntOutput --------- ##
+library(maptools)
 data(bigfoot)
 aea.prj &lt;- "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 
    +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"
+data(USAWgrids)
+gridded(USAWgrids) &lt;- ~s1+s2
+proj4string(USAWgrids) &lt;- CRS(aea.prj)
+bbox &lt;- spTransform(USAWgrids, CRS("+proj=latlon +datum=WGS84"))@bbox
+sel = bigfoot$Lon &gt; bbox[1,1] &amp; bigfoot$Lon &lt; bbox[1,2] &amp;
+    bigfoot$Lat &gt; bbox[2,1] &amp; bigfoot$Lat &lt; bbox[2,2]
+bigfoot &lt;- bigfoot[sel,]
 coordinates(bigfoot) &lt;- ~Lon+Lat
 proj4string(bigfoot) &lt;- CRS("+proj=latlon +datum=WGS84")
 library(spatstat)
 bigfoot.aea &lt;- as.ppp(spTransform(bigfoot, CRS(aea.prj)))
 # Load the covariates:
-data(USAWgrids)
-gridded(USAWgrids) &lt;- ~s1+s2
-proj4string(USAWgrids) &lt;- CRS(aea.prj)
 sel.grids &lt;- c("globedem","nlights03","sdroads","gcarb","twi","globcov")
 if(require(GSIF)){
 # run MaxEnt analysis:

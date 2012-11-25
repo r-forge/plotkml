@@ -29,16 +29,17 @@ For observations at point support (a single moment in time), use the same time v
 Optional aesthetics arguments are \code{shapes} (icons), \code{colour}, \code{sizes}, \code{altitude} (if not a 3D object; variable to be used to specify altitude above ground), \code{altitudeMode} (altitude mode type (\code{clampToGround}, \code{relativeToGround} or \code{absolute}). Although this function can be used to plot over five variables, more than three aesthetics arguments is not recommended (e.g. limit to size and colour).
 }
 \author{Pierre Roudier, Tomislav Hengl and Dylan Beaudette }
-\seealso{ \code{\link{kml_layer.STTDF}} }
+\seealso{ \code{\link{kml_layer.STTDF}}, \code{\link{plotKML-method}} }
 \examples{
 data(eberg)
 data(SAGA_pal)
 library(sp)
+library(rgdal)
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")
 names(eberg)
-\dontrun{# subset to 20 percent:
-eberg <- eberg[runif(nrow(eberg))<.2,]
+# subset to 10 percent:
+eberg <- eberg[runif(nrow(eberg))<.1,]
 # plot the measured CLAY content:
 kml(eberg, labels = CLYMHT_A)
 shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png"
@@ -49,7 +50,6 @@ kml(eberg, shape = shape, size = CLYMHT_A, colour = SLTMHT_A, labels = "")
 # two aesthetics elements are effective in emphasizing hot-spots:
 kml(eberg, shape = shape, altitude = CLYMHT_A*10, extrude = TRUE, 
   colour = CLYMHT_A, labels = CLYMHT_A, kmz = TRUE)
-}
 }
 \keyword{spatial}
 

@@ -36,6 +36,7 @@ kml_layer(obj, \dots)
 \code{\link{kml_layer.SpatialPoints}}, \code{\link{kml_layer.Raster}}, \code{\link{kml_layer.SpatialLines}}, \code{\link{kml_layer.SpatialPolygons}}, \code{\link{kml_layer.STIDF}}, \code{\link{kml_layer.STTDF}}, \code{\link{kml_layer.SoilProfileCollection}}, \code{\link{kml-methods}}, \code{\link{kml_open}}, \code{\link{kml_close}}
 }
 \examples{
+library(rgdal)
 data(eberg_grid)
 library(sp)
 library(raster)
