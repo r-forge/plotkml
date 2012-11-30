@@ -12,8 +12,8 @@ The \code{LST} data frame contains the following layers:
 	\item{\code{LST2008_01_01}}{8-day MODIS LST mosaick for period 2007-12-29 to 2008-01-04}
 	\item{\code{LST2008_01_09}}{8-day MODIS LST mosaick for period 2008-01-05 to 2008-01-13}
 	\item{\code{\dots}}{subsequent bands}
-  \item{\code{x}}{a numeric vector; x-coordinate (m) in the UTM system }
-  \item{\code{y}}{a numeric vector; y-coordinate (m) in the UTM system }
+  \item{\code{lon}}{a numeric vector; x-coordinate (m) in the WGS84 system }
+  \item{\code{lat}}{a numeric vector; y-coordinate (m) in the WGS84 system }
   }
 } 
 \author{ Tomislav Hengl and Melita Percec Tadic }

@@ -23,7 +23,7 @@ reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
   if(program=="raster"){
     message(paste("Reprojecting to", CRS, "..."))
     res <- raster::projectRaster(obj, crs = CRS, method = method, progress='text', ...)
-    layerNames(res) <- layerNames(obj)
+    names(res) <- names(obj)
   } else {
   
   if(program=="FWTools"){
@@ -48,7 +48,7 @@ reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
         message(paste("Reprojecting to", CRS, "..."))
         system(paste(gdalwarp, " ", tf, ".tif", " -t_srs \"", CRS, "\" ", tf, "_ll.tif -dstnodata \"", NAflag, "\" ", " -r ", method, sep=""), show.output.on.console = show.output.on.console)
         res <- raster(paste(tf, "_ll.tif", sep=""), silent = TRUE)
-        layerNames(res) <- layerNames(obj)
+        names(res) <- names(obj)
       } else {
         stop("Could not locate FWTools. See 'plotKML.env()' for more info.") }
   }
