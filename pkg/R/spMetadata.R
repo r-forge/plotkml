@@ -218,7 +218,7 @@ spMetadata.Raster <- function(obj, Target_variable, bounds = NULL, color = NULL,
       i_layer <- 1
       }
       else {
-      i_layer <- which(layerNames(obj) == Target_variable)
+      i_layer <- which(names(obj) == Target_variable)
       }
       obj <- raster(obj, layer = i_layer)
     }

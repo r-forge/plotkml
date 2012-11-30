@@ -77,12 +77,12 @@ echo $contents; } ?>
 <p>To install this package from <a href="https://r-forge.r-project.org/R/?group_id=1106" target="_blank">R-forge</a> use (works only on<strong> &gt;= R 2.14!</strong>):</p>
 <pre class="R_code">&gt; install.packages(&quot;plotKML&quot;, repos=c(&quot;http://R-Forge.R-project.org&quot;)) </pre>
 <p>Alternatively, you can install the most recent snapshot of the package directly from the source by using e.g.:</p>
-<pre class="R_code">&gt; download.file(&quot;http://plotkml.r-forge.r-project.org/plotKML_0.3-0.tar.gz&quot;, &quot;plotKML_0.3-0.tar.gz&quot;)
-&gt; system(&quot;R CMD INSTALL plotKML_0.3-0.tar.gz&quot;) </pre>
+<pre class="R_code">&gt; download.file(&quot;http://plotkml.r-forge.r-project.org/plotKML_0.3-1.tar.gz&quot;, &quot;plotKML_0.3-1.tar.gz&quot;)
+&gt; system(&quot;R CMD INSTALL plotKML_0.3-1.tar.gz&quot;) </pre>
 <p><iframe src="https://docs.google.com/present/embed?id=dhbpzjb4_91cvx3x2f2" frameborder="0" width="410" height="342"></iframe></p>
 <p><strong>News:</strong></p>
 <ul>
-  <li>Nove 26, 2012: plotKML version 03 sent to CRAN (package now 90% complete / but with still many bugs); </li>
+  <li>Nove 26, 2012: plotKML version 03 sent to CRAN (package now 90% complete / but with still some bugs); </li>
   <li>Sept 10-12, 2012: <a href="http://www.geostat-course.org/R_development_workshop" target="_blank">R development workshop</a>  at IfGI Muenster (<a href="http://www.geostat-course.org/R_development_workshop" target="_blank"></a>sign-up to join this workshop); </li>
   <li>Aug 2012: added a <a href="tutorial.php"><strong>plotKML tutorial</strong></a>; </li>
   <li>Jun 20, 2012: <strong>the package has been published via <a href="http://cran.r-project.org/web/packages/plotKML/" target="_blank">CRAN</a></strong>;  </li>
@@ -200,7 +200,7 @@ echo $contents; } ?>
   </tr>
 </table>
 <p class="style1"> Last update: 
-  <!-- #BeginDate format:Am1 -->November 28, 2012<!-- #EndDate -->
+  <!-- #BeginDate format:Am1 -->November 30, 2012<!-- #EndDate -->
 | contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">tom.hengl@wur.nl</a> | <a href="http://www.isric.org">ISRIC</a> - World Soil Information Institute </p>
 </body>
 </html>

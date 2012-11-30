@@ -347,6 +347,7 @@ str(HRtemp08_jan)
 plotKML(HRtemp08_jan[,,"TEMP"], dtime = 24*3600, LabelScale = .4)
 
 ## -------------- STTDF --------- ##
+## Not run: 
 library(fossil)
 library(spacetime)
 library(adehabitat)
@@ -367,6 +368,8 @@ gpx.st@sp@proj4string &lt;- CRS("+proj=longlat +datum=WGS84")
 str(gpx.st)
 plotKML(gpx.st, colour="speed")
 
+## End(Not run)
+
 ## -------------- Spatial Metadata --------- ##
 eberg.md &lt;- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"),
   Target_variable="SNDMHT_A")
@@ -376,14 +379,13 @@ plotKML(eberg[1:100,"CLYMHT_A"], metadata=eberg.md)
 library(raster)
 library(sp)
 data(LST)
-gridded(LST) &lt;- ~x+y
-proj4string(LST) &lt;- CRS("+proj=utm +zone=33 +datum=WGS84 +units=m")
+gridded(LST) &lt;- ~lon+lat
+proj4string(LST) &lt;- CRS("+proj=longlat +datum=WGS84")
 dates &lt;- sapply(strsplit(names(LST), "LST"), function(x){x[[2]]})
 datesf &lt;- format(as.Date(dates, "%Y_%m_%d"), "%Y-%m-%dT%H:%M:%SZ")
 # begin / end dates +/- 4 days:
 TimeSpan.begin = as.POSIXct(unclass(as.POSIXct(datesf))-4*24*60*60, origin="1970-01-01") 
 TimeSpan.end = as.POSIXct(unclass(as.POSIXct(datesf))+4*24*60*60, origin="1970-01-01")
-LST_ll &lt;- reproject(LST[1:5])
 # pick climatic stations in the area:
 pnts &lt;- HRtemp08[which(HRtemp08$NAME=="Pazin")[1],]
 pnts &lt;- rbind(pnts, HRtemp08[which(HRtemp08$NAME=="Crni Lug - NP Risnjak")[1],])
@@ -391,7 +393,7 @@ pnts &lt;- rbind(pnts, HRtemp08[which(HRtemp08$NAME=="Cres")[1],])
 coordinates(pnts) &lt;- ~Lon + Lat
 proj4string(pnts) &lt;- CRS("+proj=longlat +datum=WGS84")
 # get the dates from the file names:
-LST_ll &lt;- brick(LST_ll)
+LST_ll &lt;- brick(LST[1:5])
 LST_ll@title = "Time series of MODIS Land Surface Temperature (8-day mosaics) images"
 LST.ts &lt;- new("RasterBrickTimeSeries", variable = "LST", sampled = pnts, 
     rasters = LST_ll, TimeSpan.begin = TimeSpan.begin[1:5], TimeSpan.end = TimeSpan.end[1:5])
@@ -400,6 +402,7 @@ data(SAGA_pal)
 plotKML(LST.ts, colour_scale=SAGA_pal[[1]])
 
 ## -------------- Spatial Predictions --------- ##
+## Not run: 
 library(sp)
 library(rgdal)
 data(meuse)
@@ -410,16 +413,18 @@ data(meuse.grid)
 gridded(meuse.grid) &lt;- ~x+y
 proj4string(meuse.grid) &lt;- CRS("+init=epsg:28992")
 # fit a model:
-if(require(GSIF)){
+library(GSIF)
 omm &lt;- fit.gstatModel(observations = meuse, formulaString = om~dist, 
    family = gaussian(log), covariates = meuse.grid)
 # produce SpatialPredictions:
 om.rk &lt;- predict(omm, predictionLocations = meuse.grid)
 # plot the whole geostatical mapping project in Google Earth:
 plotKML(om.rk)
-}
+
+## End(Not run)
 
 ## -------------- SpatialSamplingPattern --------- ##
+## Not run: 
 library(spcosa)
 library(sp)
 # read a polygon map:
@@ -451,7 +456,10 @@ if(urlExists){
   plotKML(mySamplingPattern.ssp, shape = shape)
 }
 
+## End(Not run)
+
 ## -------------- RasterBrickSimulations --------- ##
+## Not run: 
 library(sp)
 library(gstat)
 data(barxyz)
@@ -465,7 +473,6 @@ data(bargrid)
 coordinates(bargrid) &lt;- ~x+y
 gridded(bargrid) &lt;- TRUE
 proj4string(bargrid) &lt;- CRS(prj)
-## Not run: 
 # fit a variogram and generate simulations:
 Z.ovgm &lt;- vgm(psill=1352, model="Mat", range=650, nugget=0, kappa=1.2)
 sel &lt;- runif(length(barxyz$Z))&lt;.2  
@@ -485,6 +492,7 @@ plotKML(bardem_sims, colour_scale = R_pal[[4]])
 ## End(Not run)
 
 ## -------------- SpatialVectorsSimulations --------- ##
+## Not run: 
 data(barstr)
 data(bargrid)
 library(sp)
@@ -497,7 +505,6 @@ nrows = round(abs(diff(bbox[1,])/cell.size), 0)
 ncols = round(abs(diff(bbox[2,])/cell.size), 0)
 gridT = GridTopology(cellcentre.offset=bbox[,1], cellsize=c(cell.size,cell.size), 
   cells.dim=c(nrows, ncols))
-## Not run: 
 bar_sum &lt;- count(gridT, vectL=barstr[1:5])
 # NOTE: this operation can be time consuming!
 # plot the whole project and open in Google Earth:
@@ -506,6 +513,7 @@ plotKML(bar_sum)
 ## End(Not run)
 
 ## -------------- SpatialMaxEntOutput --------- ##
+## Not run: 
 library(maptools)
 data(bigfoot)
 aea.prj &lt;- "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 
@@ -523,7 +531,7 @@ library(spatstat)
 bigfoot.aea &lt;- as.ppp(spTransform(bigfoot, CRS(aea.prj)))
 # Load the covariates:
 sel.grids &lt;- c("globedem","nlights03","sdroads","gcarb","twi","globcov")
-if(require(GSIF)){
+library(GSIF)
 # run MaxEnt analysis:
 jar &lt;- paste(system.file(package="dismo"), "/java/maxent.jar", sep='')
 if(file.exists(jar)){
@@ -532,8 +540,9 @@ if(file.exists(jar)){
   data(R_pal)
   plotKML(bigfoot.smo, colour_scale = R_pal[["bpy_colors"]], shape = icon)
 }
-}
+
+## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.3-0 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.3-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

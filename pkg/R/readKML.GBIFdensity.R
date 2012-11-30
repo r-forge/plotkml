@@ -67,17 +67,17 @@ readKML.GBIFdensity <- function(kml.file, gbif.url = FALSE, silent = FALSE){
   r <- raster(r.sp)
   # rasterize - convert points to a raster map:
   out.r <- rasterize(out, r, "nrecs", fun=mean)
-  layerNames(out.r) <- lname
+  names(out.r) <- lname
 
   if(gbif.url == TRUE){
   out2.r <- rasterize(out, r, "cellid")
   out2.r@data@isfactor <- TRUE
   out2.r@legend@values <- levels(as.factor(cellid))
-  layerNames(out.r) <- "cellid"
+  names(out.r) <- "cellid"
   out3.r <- rasterize(out, r, "taxonconceptkey")
   out3.r@data@isfactor <- TRUE
   out3.r@legend@values <- levels(as.factor(taxonconceptkey))
-  layerNames(out3.r) <- "taxonconceptkey"  
+  names(out3.r) <- "taxonconceptkey"  
   out.r <- brick(out.r, out2.r, out3.r)
   }
 

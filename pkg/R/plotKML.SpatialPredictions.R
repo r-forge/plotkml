@@ -20,7 +20,7 @@ setMethod("plotKML", "SpatialPredictions", function(
   ...
 ){
 
-  library(GSIF)
+  require(GSIF)
   # objects to plot:
   varname <- paste(obj@variable)
   svarname <- paste(obj@variable, ".", "svar", sep="")

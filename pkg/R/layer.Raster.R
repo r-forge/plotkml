@@ -29,8 +29,8 @@ kml_layer.Raster <- function(
   }
 
   if(is.call(call[["colour"]])|is.name(call[["colour"]])){
-    x <- data.frame(values(obj))
-    names(x) <- layerNames(obj)
+    x <- data.frame(getValues(obj))
+    names(x) <- names(obj)
     x <- eval(call[["colour"]], x)
     obj <- raster(obj)
     values(obj) <- x
@@ -42,7 +42,7 @@ kml_layer.Raster <- function(
     }
   } else { 
   if(is.character(call[["colour"]])) {
-    i_layer <- which(layerNames(obj) == call[["colour"]])
+    i_layer <- which(names(obj) == call[["colour"]])
     if (nlayers(obj) > 1) {
       obj <- raster(obj, layer = i_layer)
     }
@@ -77,7 +77,7 @@ kml_layer.Raster <- function(
   if(is.factor(obj)){
     if(length(labels(obj))==0){
       warning("RasterLayer of type factor missing labels")
-      colour_scale <- colorRampPalette(pal)(length(levels(as.factor(values(obj)))))      
+      colour_scale <- colorRampPalette(pal)(length(levels(as.factor(getValues(obj)))))      
     } else {
       colour_scale <- colorRampPalette(pal)(length(labels(obj)[[1]]))
     }
@@ -134,18 +134,18 @@ kml_layer.Raster <- function(
       legend_name <- paste(strsplit(raster_name, "\\.")[[1]][1], "legend.png", sep="_")      
     }
     if(is.factor(obj)){
-      x <- as.factor(values(obj))
+      x <- as.factor(getValues(obj))
       if(length(labels(obj))==0){
-        levels(x) <- levels(as.factor(values(obj)))
+        levels(x) <- levels(as.factor(getValues(obj)))
       } else {
         levels(x) = labels(obj)[[1]]
       }      
       kml_legend.bar(x = x, legend.file = legend_name, legend.pal = colour_scale)
     } else {
       if(!is.na(charmatch("z.lim", names(call)))){
-        kml_legend.bar(x = values(obj), legend.file = legend_name, legend.pal = colour_scale, z.lim = eval(call[["z.lim"]]))
+        kml_legend.bar(x = getValues(obj), legend.file = legend_name, legend.pal = colour_scale, z.lim = eval(call[["z.lim"]]))
        } else {
-        kml_legend.bar(x = values(obj), legend.file = legend_name, legend.pal = colour_scale)
+        kml_legend.bar(x = getValues(obj), legend.file = legend_name, legend.pal = colour_scale)
        } 
     }
   }

@@ -262,14 +262,13 @@ plotKML(eberg[1:100,"CLYMHT_A"], metadata=eberg.md)
 library(raster)
 library(sp)
 data(LST)
-gridded(LST) <- ~x+y
-proj4string(LST) <- CRS("+proj=utm +zone=33 +datum=WGS84 +units=m")
+gridded(LST) <- ~lon+lat
+proj4string(LST) <- CRS("+proj=longlat +datum=WGS84")
 dates <- sapply(strsplit(names(LST), "LST"), function(x){x[[2]]})
 datesf <- format(as.Date(dates, "\%Y_\%m_\%d"), "\%Y-\%m-\%dT\%H:\%M:\%SZ")
 # begin / end dates +/- 4 days:
 TimeSpan.begin = as.POSIXct(unclass(as.POSIXct(datesf))-4*24*60*60, origin="1970-01-01") 
 TimeSpan.end = as.POSIXct(unclass(as.POSIXct(datesf))+4*24*60*60, origin="1970-01-01")
-LST_ll <- reproject(LST[1:5])
 # pick climatic stations in the area:
 pnts <- HRtemp08[which(HRtemp08$NAME=="Pazin")[1],]
 pnts <- rbind(pnts, HRtemp08[which(HRtemp08$NAME=="Crni Lug - NP Risnjak")[1],])
@@ -277,7 +276,7 @@ pnts <- rbind(pnts, HRtemp08[which(HRtemp08$NAME=="Cres")[1],])
 coordinates(pnts) <- ~Lon + Lat
 proj4string(pnts) <- CRS("+proj=longlat +datum=WGS84")
 # get the dates from the file names:
-LST_ll <- brick(LST_ll)
+LST_ll <- brick(LST[1:5])
 LST_ll@title = "Time series of MODIS Land Surface Temperature (8-day mosaics) images"
 LST.ts <- new("RasterBrickTimeSeries", variable = "LST", sampled = pnts, 
     rasters = LST_ll, TimeSpan.begin = TimeSpan.begin[1:5], TimeSpan.end = TimeSpan.end[1:5])
@@ -286,6 +285,7 @@ data(SAGA_pal)
 plotKML(LST.ts, colour_scale=SAGA_pal[[1]])
 
 ## -------------- Spatial Predictions --------- ##
+\dontrun{
 library(sp)
 library(rgdal)
 data(meuse)
@@ -296,7 +296,7 @@ data(meuse.grid)
 gridded(meuse.grid) <- ~x+y
 proj4string(meuse.grid) <- CRS("+init=epsg:28992")
 # fit a model:
-if(require(GSIF)){
+library(GSIF)
 omm <- fit.gstatModel(observations = meuse, formulaString = om~dist, 
    family = gaussian(log), covariates = meuse.grid)
 # produce SpatialPredictions:
@@ -306,6 +306,7 @@ plotKML(om.rk)
 }
 
 ## -------------- SpatialSamplingPattern --------- ##
+\dontrun{
 library(spcosa)
 library(sp)
 # read a polygon map:
@@ -336,8 +337,10 @@ if(urlExists){
   shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png"
   plotKML(mySamplingPattern.ssp, shape = shape)
 }
+}
 
 ## -------------- RasterBrickSimulations --------- ##
+\dontrun{
 library(sp)
 library(gstat)
 data(barxyz)
@@ -351,7 +354,6 @@ data(bargrid)
 coordinates(bargrid) <- ~x+y
 gridded(bargrid) <- TRUE
 proj4string(bargrid) <- CRS(prj)
-\dontrun{
 # fit a variogram and generate simulations:
 Z.ovgm <- vgm(psill=1352, model="Mat", range=650, nugget=0, kappa=1.2)
 sel <- runif(length(barxyz$Z))<.2  
@@ -370,6 +372,7 @@ plotKML(bardem_sims, colour_scale = R_pal[[4]])
 }
 
 ## -------------- SpatialVectorsSimulations --------- ##
+\dontrun{
 data(barstr)
 data(bargrid)
 library(sp)
@@ -382,7 +385,6 @@ nrows = round(abs(diff(bbox[1,])/cell.size), 0)
 ncols = round(abs(diff(bbox[2,])/cell.size), 0)
 gridT = GridTopology(cellcentre.offset=bbox[,1], cellsize=c(cell.size,cell.size), 
   cells.dim=c(nrows, ncols))
-\dontrun{
 bar_sum <- count(gridT, vectL=barstr[1:5])
 # NOTE: this operation can be time consuming!
 # plot the whole project and open in Google Earth:
@@ -390,6 +392,7 @@ plotKML(bar_sum)
 }
 
 ## -------------- SpatialMaxEntOutput --------- ##
+\dontrun{
 library(maptools)
 data(bigfoot)
 aea.prj <- "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 
@@ -407,7 +410,7 @@ library(spatstat)
 bigfoot.aea <- as.ppp(spTransform(bigfoot, CRS(aea.prj)))
 # Load the covariates:
 sel.grids <- c("globedem","nlights03","sdroads","gcarb","twi","globcov")
-if(require(GSIF)){
+library(GSIF)
 # run MaxEnt analysis:
 jar <- paste(system.file(package="dismo"), "/java/maxent.jar", sep='')
 if(file.exists(jar)){
