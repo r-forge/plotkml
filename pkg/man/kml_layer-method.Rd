@@ -44,7 +44,7 @@ gridded(eberg_grid) <- ~x+y
 proj4string(eberg_grid) <- CRS("+init=epsg:31467")
 data(SAGA_pal)
 data(R_pal)
-# Plot two layers one after the other:
+\dontrun{# Plot two layers one after the other:
 kml_open("eberg_grids.kml")
 kml_layer(eberg_grid, colour=DEMSRT6, colour_scale=R_pal[["terrain_colors"]])
 kml_layer(eberg_grid, colour=TWISRT6, colour_scale=SAGA_pal[[1]])
@@ -52,6 +52,7 @@ kml_close("eberg_grids.kml")
 # print the result:
 library(XML)
 xmlRoot(xmlTreeParse("eberg_grids.kml"))[["Document"]]
+}
 }
 \keyword{spatial}
 \keyword{methods}

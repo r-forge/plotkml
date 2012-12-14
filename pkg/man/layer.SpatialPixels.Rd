@@ -26,9 +26,8 @@ coordinates(eberg_grid) <- ~x+y
 gridded(eberg_grid) <- TRUE
 proj4string(eberg_grid) <- CRS("+init=epsg:31467")
 data(SAGA_pal)
-# KML plot with a single raster:
+\dontrun{# KML plot with a single raster:
 kml(eberg_grid, colour_scale = SAGA_pal[[1]], colour = TWISRT6) 
-# factor-type variable:
-kml(eberg_grid, colour_scale = SAGA_pal[[1]], colour = LNCCOR6)
+}
 }
 \keyword{spatial}                          

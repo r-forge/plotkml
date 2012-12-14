@@ -20,7 +20,7 @@
 \seealso{ \code{\link{SpatialVectorsSimulations-class}}, \code{\link{RasterBrickTimeSeries-class}}, \code{\link{plotKML-method}}
 }
 \examples{ 
-# load input data:
+\dontrun{# load input data:
 data(barxyz)
 # define the projection system:
 prj = "+proj=tmerc +lat_0=0 +lon_0=18 +k=0.9999 +x_0=6500000 +y_0=0 +ellps=bessel +units=m 
@@ -32,7 +32,7 @@ data(bargrid)
 coordinates(bargrid) <- ~x+y
 gridded(bargrid) <- TRUE
 proj4string(bargrid) <- CRS(prj)
-\dontrun{# fit a variogram and generate simulations:
+# fit a variogram and generate simulations:
 library(gstat)
 Z.ovgm <- vgm(psill=1352, model="Mat", range=650, nugget=0, kappa=1.2)
 sel <- runif(length(barxyz$Z))<.2  # Note: this operation can be time consuming

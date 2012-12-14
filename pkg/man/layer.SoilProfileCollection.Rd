@@ -63,7 +63,7 @@ kml_layer.SoilProfileCollection(obj,
 \author{Tomislav Hengl, Dylan Beaudette and Pierre Roudier}
 \seealso{ \code{\link{kml_layer.SpatialPhotoOverlay}}, \code{\link{plotKML-method}} }
 \examples{
-# install.packages("aqp", repos="http://R-Forge.R-project.org")
+\dontrun{# install.packages("aqp", repos="http://R-Forge.R-project.org")
 library(aqp)
 library(plyr)
 data(ca630)
@@ -84,6 +84,7 @@ kml(ca, method = "depth_function", file.name = "ca_bs_8_2.kml",
 kml(ca, file.name = "ca_CEC8_2.kml", var.name="CEC8.2", IconColor = "#ff009000")
 # plot soil profile as 'block':
 kml(ca, file.name = "ca_CEC8_2_block.kml", var.name="CEC8.2", balloon = TRUE)
+}
 }
 \keyword{spatial}
 

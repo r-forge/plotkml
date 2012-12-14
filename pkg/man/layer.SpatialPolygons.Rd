@@ -38,9 +38,10 @@ library(rgdal)
 library(sp)
 data(eberg_zones)
 names(eberg_zones)
-# visualize zones using random colors:
+\dontrun{# visualize zones using random colors:
 kml(eberg_zones, colorMode = "random")
 # with labels:
 kml(eberg_zones, colour = ZONES, plot.labpt = TRUE, labels = ZONES, kmz = TRUE)
+}
 }
 \keyword{spatial}
