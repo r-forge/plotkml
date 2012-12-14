@@ -43,10 +43,11 @@ library(sp)
 library(rgdal)
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")
-# Simple plot
+\dontrun{# Simple plot
 kml(eberg, file = "eberg-0.kml")
 # Plot using aesthetics
 kml(eberg, colour = SNDMHT_A, size = CLYMHT_A, alpha = 0.75, file = "eberg-1.kml")
+}
 }
 \keyword{spatial}
 \keyword{methods}

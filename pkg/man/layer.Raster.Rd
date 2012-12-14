@@ -26,7 +26,8 @@ proj4string(eberg_grid) <- CRS("+init=epsg:31467")
 data(SAGA_pal)
 library(raster)
 r <- raster(eberg_grid["TWISRT6"])
-# KML plot with a single raster:
+\dontrun{# KML plot with a single raster:
 kml(r, colour_scale = SAGA_pal[[1]], colour = TWISRT6) 
+}
 }
 \keyword{spatial}

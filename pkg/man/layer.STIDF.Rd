@@ -32,6 +32,7 @@ tags will be inserted. Temporal support (\eqn{\Delta t}{dt}) is estimated using 
 \author{Tomislav Hengl }
 \seealso{ \code{\link{kml_layer.STTDF}}, \code{\link{plotKML-method}} }
 \examples{
+\dontrun{
 data(HRtemp08)
 
 # format the time column:
@@ -65,5 +66,6 @@ sp <- SpatialPolygons(nc.poly, proj4string=CRS("+proj=longlat +datum=NAD27"))
 nct <- STIDF(sp, time = time, data = data)
 # write to a KML file:
 kml(nct, colour = SID)
+}
 }
 \keyword{spatial}

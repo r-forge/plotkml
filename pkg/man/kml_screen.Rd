@@ -32,11 +32,12 @@ kml_screen(image.file, sname = "",
 library(rgdal)
 library(sp)
 data(eberg_zones)
-# add logo in the top-center:
+\dontrun{# add logo in the top-center:
 kml_open("eberg_screen.kml")
 kml_layer(eberg_zones)
 logo = "http://meta.isric.org/images/ISRIC_right.png"
 kml_screen(image.file = logo, position = "TC", sname = "ISRIC logo")
 kml_close("eberg_screen.kml")
 kml_compress("eberg_screen.kml")
+}
 }
