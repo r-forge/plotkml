@@ -187,13 +187,13 @@ kml_layer.SoilProfileCollection(obj,
 
 <h3>See Also</h3>
 
- <p><code><a href="layer.SpatialPhotoOverlay.html">kml_layer.SpatialPhotoOverlay</a></code>, <code><a href="plotKML-method.html">plotKML-method</a></code> </p>
+ <p><code><a href="layer.SpatialPhotoOverlay.html">kml_layer.SpatialPhotoOverlay</a></code>, <code><a href="plotKML.html">plotKML-method</a></code> </p>
 
 
 <h3>Examples</h3>
 
 <pre>
-# install.packages("aqp", repos="http://R-Forge.R-project.org")
+## Not run: # install.packages("aqp", repos="http://R-Forge.R-project.org")
 library(aqp)
 library(plyr)
 data(ca630)
@@ -214,7 +214,9 @@ kml(ca, method = "depth_function", file.name = "ca_bs_8_2.kml",
 kml(ca, file.name = "ca_CEC8_2.kml", var.name="CEC8.2", IconColor = "#ff009000")
 # plot soil profile as 'block':
 kml(ca, file.name = "ca_CEC8_2_block.kml", var.name="CEC8.2", balloon = TRUE)
+
+## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.3-1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.3-3 <a href="00Index.html">Index</a>]</div>
 </body></html>

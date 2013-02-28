@@ -100,7 +100,7 @@ kml_layer.SpatialPolygons(obj, extrude = TRUE, tessellate = FALSE,
 
 <h3>See Also</h3>
 
- <p><code><a href="layer.SpatialLines.html">kml_layer.SpatialLines</a></code>, <code><a href="layer.STIDF.html">kml_layer.STIDF</a></code>, , <code><a href="plotKML-method.html">plotKML-method</a></code> </p>
+ <p><code><a href="layer.SpatialLines.html">kml_layer.SpatialLines</a></code>, <code><a href="layer.STIDF.html">kml_layer.STIDF</a></code>, , <code><a href="plotKML.html">plotKML-method</a></code> </p>
 
 
 <h3>Examples</h3>
@@ -110,11 +110,13 @@ library(rgdal)
 library(sp)
 data(eberg_zones)
 names(eberg_zones)
-# visualize zones using random colors:
+## Not run: # visualize zones using random colors:
 kml(eberg_zones, colorMode = "random")
 # with labels:
 kml(eberg_zones, colour = ZONES, plot.labpt = TRUE, labels = ZONES, kmz = TRUE)
+
+## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.3-1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.3-3 <a href="00Index.html">Index</a>]</div>
 </body></html>

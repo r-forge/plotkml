@@ -89,16 +89,17 @@ vect2rast.SpatialPoints(obj, fname = names(obj)[1], cell.size, bbox,
 
 <h3>See Also</h3>
 
-<p><code><a href="vect2rast-method.html">vect2rast</a></code></p>
+<p><code><a href="vect2rast.html">vect2rast</a></code></p>
 
 
 <h3>Examples</h3>
 
 <pre>
+## Not run: 
 library(sp)
 data(meuse)
 coordinates(meuse) &lt;- ~x+y
-## Not run: # point map:
+# point map:
 x &lt;- vect2rast(meuse, fname = "om")
 data(SAGA_pal)
 sp.p &lt;- list("sp.points", meuse, pch="+", cex=1.5, col="black")
@@ -107,5 +108,5 @@ spplot(x, col.regions=SAGA_pal[[1]], sp.layout=sp.p)
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.3-1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.3-3 <a href="00Index.html">Index</a>]</div>
 </body></html>
