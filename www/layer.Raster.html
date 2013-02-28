@@ -60,7 +60,7 @@ kml_layer.Raster(obj, plot.legend = TRUE, metadata = NULL, raster_name, ...)
 
 <h3>See Also</h3>
 
- <p><code><a href="kml-method.html">kml-methods</a></code>, <code><a href="kml_open.html">kml_open</a></code>, <code><a href="layer.RasterBrick.html">kml_layer.RasterBrick</a></code>, <code><a href="plotKML-method.html">plotKML-method</a></code> </p>
+ <p><code><a href="kml.html">kml-methods</a></code>, <code><a href="kml_open.html">kml_open</a></code>, <code><a href="layer.RasterBrick.html">kml_layer.RasterBrick</a></code>, <code><a href="plotKML.html">plotKML-method</a></code> </p>
 
 
 <h3>Examples</h3>
@@ -74,9 +74,11 @@ proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
 data(SAGA_pal)
 library(raster)
 r &lt;- raster(eberg_grid["TWISRT6"])
-# KML plot with a single raster:
+## Not run: # KML plot with a single raster:
 kml(r, colour_scale = SAGA_pal[[1]], colour = TWISRT6) 
+
+## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.3-1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.3-3 <a href="00Index.html">Index</a>]</div>
 </body></html>

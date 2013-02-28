@@ -88,7 +88,7 @@ Optional aesthetics arguments are <code>shapes</code> (icons), <code>colour</cod
 
 <h3>See Also</h3>
 
- <p><code><a href="layer.STTDF.html">kml_layer.STTDF</a></code>, <code><a href="plotKML-method.html">plotKML-method</a></code> </p>
+ <p><code><a href="layer.STTDF.html">kml_layer.STTDF</a></code>, <code><a href="plotKML.html">plotKML-method</a></code> </p>
 
 
 <h3>Examples</h3>
@@ -103,7 +103,7 @@ proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 names(eberg)
 # subset to 10 percent:
 eberg &lt;- eberg[runif(nrow(eberg))&lt;.1,]
-# plot the measured CLAY content:
+## Not run: # plot the measured CLAY content:
 kml(eberg, labels = CLYMHT_A)
 shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png"
 # color only:
@@ -113,7 +113,9 @@ kml(eberg, shape = shape, size = CLYMHT_A, colour = SLTMHT_A, labels = "")
 # two aesthetics elements are effective in emphasizing hot-spots:
 kml(eberg, shape = shape, altitude = CLYMHT_A*10, extrude = TRUE, 
   colour = CLYMHT_A, labels = CLYMHT_A, kmz = TRUE)
+
+## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.3-1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.3-3 <a href="00Index.html">Index</a>]</div>
 </body></html>

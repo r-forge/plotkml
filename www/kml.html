@@ -92,11 +92,13 @@ library(sp)
 library(rgdal)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
-# Simple plot
+## Not run: # Simple plot
 kml(eberg, file = "eberg-0.kml")
 # Plot using aesthetics
 kml(eberg, colour = SNDMHT_A, size = CLYMHT_A, alpha = 0.75, file = "eberg-1.kml")
+
+## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.3-1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.3-3 <a href="00Index.html">Index</a>]</div>
 </body></html>

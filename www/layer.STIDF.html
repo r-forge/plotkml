@@ -75,12 +75,13 @@ kml_layer.STIDF(obj, dtime = "", ...)
 
 <h3>See Also</h3>
 
- <p><code><a href="layer.STTDF.html">kml_layer.STTDF</a></code>, <code><a href="plotKML-method.html">plotKML-method</a></code> </p>
+ <p><code><a href="layer.STTDF.html">kml_layer.STTDF</a></code>, <code><a href="plotKML.html">plotKML-method</a></code> </p>
 
 
 <h3>Examples</h3>
 
 <pre>
+## Not run: 
 data(HRtemp08)
 
 # format the time column:
@@ -114,7 +115,9 @@ sp &lt;- SpatialPolygons(nc.poly, proj4string=CRS("+proj=longlat +datum=NAD27"))
 nct &lt;- STIDF(sp, time = time, data = data)
 # write to a KML file:
 kml(nct, colour = SID)
+
+## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.3-1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.3-3 <a href="00Index.html">Index</a>]</div>
 </body></html>

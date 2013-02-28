@@ -11,7 +11,7 @@
 <h3>Description</h3>
 
 
-<p>The <code>spMetadata</code> function will try to generate missing metadata (bounding box, location info, session info, metadata creator info and similar) for any <code>Spatial*</code> object (from the sp package) or <code>Raster*</code> object (from the raster package). The resulting object of class <code><a href="SpatialMetadata-class.html">SpatialMetadata-class</a></code> can be used e.g. to generate a Layer description documents (<code>&lt;description&gt;</code> tag).<br>
+<p>The <code>spMetadata</code> function will try to generate missing metadata (bounding box, location info, session info, metadata creator info and similar) for any <code>Spatial*</code> object (from the sp package) or <code>Raster*</code> object (from the raster package). The resulting object of class <code><a href="SpatialMetadata.html">SpatialMetadata-class</a></code> can be used e.g. to generate a Layer description documents (<code>&lt;description&gt;</code> tag).<br>
 The <code>read.metadata</code> function can be used to read the formatted metadata (<code>.xml</code>), prepared following to the <a href="http://www.fgdc.gov/metadata/csdgm/">Federal Geographic Data Committee (FGDC) Content Standard for Digital Geospatial Metadata</a>, and convert them to a more readble format (data frame).
 </p>
 
@@ -161,7 +161,7 @@ spMetadata(obj, xml.file, generate.missing = TRUE, Citation_title,
 
 <h3>See Also</h3>
 
- <p><code><a href="kml_metadata.html">kml_metadata</a></code>, <code><a href="SpatialMetadata-class.html">SpatialMetadata-class</a></code>, <code><a href="spMetadata.Spatial.html">spMetadata.Spatial</a></code>, <code>sp::Spatial</code>, <code><a href="kml_open.html">kml_open</a></code> </p>
+ <p><code><a href="kml_metadata.html">kml_metadata</a></code>, <code><a href="SpatialMetadata.html">SpatialMetadata-class</a></code>, <code><a href="spMetadata.Spatial.html">spMetadata.Spatial</a></code>, <code>sp::Spatial</code>, <code><a href="kml_open.html">kml_open</a></code> </p>
 
 
 <h3>Examples</h3>
@@ -191,5 +191,5 @@ kml(eberg, file.name = "eberg_md.kml", colour = SNDMHT_A, metadata = eberg.md, k
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.3-1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.3-3 <a href="00Index.html">Index</a>]</div>
 </body></html>

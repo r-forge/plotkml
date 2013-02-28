@@ -247,7 +247,7 @@ plotKML(obj,
 
 <h3>See Also</h3>
 
- <p><code><a href="SpatialPredictions-class.html">SpatialPredictions-class</a></code>, <code><a href="SpatialVectorsSimulations-class.html">SpatialVectorsSimulations-class</a></code>, <code><a href="RasterBrickSimulations-class.html">RasterBrickSimulations-class</a></code>, <code><a href="RasterBrickTimeSeries-class.html">RasterBrickTimeSeries-class</a></code>, <code><a href="SpatialMaxEntOutput-class.html">SpatialMaxEntOutput-class</a></code>, <code><a href="SpatialSamplingPattern-class.html">SpatialSamplingPattern-class</a></code>   
+ <p><code><a href="SpatialPredictions.html">SpatialPredictions-class</a></code>, <code><a href="SpatialVectorsSimulations.html">SpatialVectorsSimulations-class</a></code>, <code><a href="RasterBrickSimulations.html">RasterBrickSimulations-class</a></code>, <code><a href="RasterBrickTimeSeries.html">RasterBrickTimeSeries-class</a></code>, <code><a href="SpatialMaxEntOutput.html">SpatialMaxEntOutput-class</a></code>, <code><a href="SpatialSamplingPattern.html">SpatialSamplingPattern-class</a></code>   
 </p>
 
 
@@ -262,23 +262,32 @@ data(eberg)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 ## subset to 20 percent:
-eberg &lt;- eberg[runif(nrow(eberg))&lt;.2,]
+eberg &lt;- eberg[runif(nrow(eberg))&lt;.1,]
 ## bubble type plot:
+## Not run: 
 plotKML(eberg["CLYMHT_A"])
 plotKML(eberg["CLYMHT_A"], colour_scale=rep("#FFFF00", 2), points_names="")
 
+## End(Not run)
+
 ## -------------- SpatialLinesDataFrame --------- ##
 data(eberg_contours)
+## Not run: 
 plotKML(eberg_contours)
 ## plot contour lines with actual altitudes:
 plotKML(eberg_contours, colour=Z, altitude=Z)
 
+## End(Not run)
+
 ## -------------- SpatialPolygonsDataFrame --------- ##
 data(eberg_zones)
+## Not run: 
 plotKML(eberg_zones["ZONES"])
 ## add altitude:
 zmin = 230
 plotKML(eberg_zones["ZONES"], altitude=zmin+runif(length(eberg_zones))*500)
+
+## End(Not run)
 
 ## -------------- SpatialPixelsDataFrame --------- ##
 library(rgdal)
@@ -288,9 +297,12 @@ gridded(eberg_grid) &lt;- ~x+y
 proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
 TWI &lt;- reproject(eberg_grid["TWISRT6"])
 data(SAGA_pal)
+## Not run: 
 plotKML(TWI, colour_scale = SAGA_pal[[1]])
 ## set limits manually:
 plotKML(TWI, z.lim=c(12,20), colour_scale = SAGA_pal[[1]])
+
+## End(Not run)
 ## categorical data:
 eberg_grid$LNCCOR6 &lt;- as.factor(paste(eberg_grid$LNCCOR6))
 levels(eberg_grid$LNCCOR6)
@@ -298,9 +310,13 @@ data(worldgrids_pal)
 # attr(worldgrids_pal["corine2k"][[1]], "names")
 pal = as.character(worldgrids_pal["corine2k"][[1]][c(1,11,13,14,16,17,18)])
 LNCCOR6 &lt;- reproject(eberg_grid["LNCCOR6"])
+## Not run: 
 plotKML(LNCCOR6, colour_scale=pal)
 
+## End(Not run)
+
 ## -------------- SpatialPhotoOverlay --------- ##
+## Not run: 
 library(RCurl)
 imagename = "Soil_monolith.jpg"
 urlExists = url.exists("http://commons.wikimedia.org")
@@ -310,6 +326,8 @@ if(urlExists){
   # str(sm)
   plotKML(sm)
 }
+
+## End(Not run)
 
 ## -------------- SoilProfileCollection --------- ##
 library(aqp)
@@ -330,7 +348,10 @@ site(prof1) &lt;- ~ lon + lat + FAO1988
 coordinates(prof1) &lt;- ~ lon + lat
 proj4string(prof1) &lt;- CRS("+proj=longlat +datum=WGS84")
 prof1
+## Not run: 
 plotKML(prof1, var.name="ORCDRC", color.name="soil_color")
+
+## End(Not run)
 
 ## -------------- STIDF --------- ##
 library(spacetime)
@@ -341,10 +362,13 @@ HRtemp08$ctime &lt;- as.POSIXct(HRtemp08$DATE, format="%Y-%m-%dT%H:%M:%SZ")
 sp &lt;- SpatialPoints(HRtemp08[,c("Lon","Lat")])
 proj4string(sp) &lt;- CRS("+proj=longlat +datum=WGS84")
 HRtemp08.st &lt;- STIDF(sp, time = HRtemp08$ctime, data = HRtemp08[,c("NAME","TEMP")])
-# subset to 500 records:
+# subset to first 500 records:
 HRtemp08_jan &lt;- HRtemp08.st[1:500]
 str(HRtemp08_jan)
+## Not run: 
 plotKML(HRtemp08_jan[,,"TEMP"], dtime = 24*3600, LabelScale = .4)
+
+## End(Not run)
 
 ## -------------- STTDF --------- ##
 ## Not run: 
@@ -371,11 +395,15 @@ plotKML(gpx.st, colour="speed")
 ## End(Not run)
 
 ## -------------- Spatial Metadata --------- ##
+## Not run: 
 eberg.md &lt;- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"),
   Target_variable="SNDMHT_A")
 plotKML(eberg[1:100,"CLYMHT_A"], metadata=eberg.md)
 
+## End(Not run)
+
 ## -------------- RasterBrickTimeSeries --------- ##
+## Not run: 
 library(raster)
 library(sp)
 data(LST)
@@ -400,6 +428,8 @@ LST.ts &lt;- new("RasterBrickTimeSeries", variable = "LST", sampled = pnts,
 data(SAGA_pal)
 # plot MODIS images in Google Earth:
 plotKML(LST.ts, colour_scale=SAGA_pal[[1]])
+
+## End(Not run)
 
 ## -------------- Spatial Predictions --------- ##
 ## Not run: 
@@ -544,5 +574,5 @@ if(file.exists(jar)){
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.3-1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.3-3 <a href="00Index.html">Index</a>]</div>
 </body></html>

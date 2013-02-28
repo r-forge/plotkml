@@ -10,7 +10,7 @@
 
 <h3>Description</h3>
 
-<p>A class containing input and output maps containing multiple realizations of the same feature. Objects of this class can be directly visualized in Google Earth by using the <code><a href="plotKML-method.html">plotKML-method</a></code>.</p>
+<p>A class containing input and output maps containing multiple realizations of the same feature. Objects of this class can be directly visualized in Google Earth by using the <code><a href="plotKML.html">plotKML-method</a></code>.</p>
 
 
 <h3>Slots</h3>
@@ -46,14 +46,14 @@
 
 <h3>See Also</h3>
 
- <p><code><a href="SpatialVectorsSimulations-class.html">SpatialVectorsSimulations-class</a></code>, <code><a href="RasterBrickTimeSeries-class.html">RasterBrickTimeSeries-class</a></code>, <code><a href="plotKML-method.html">plotKML-method</a></code>
+ <p><code><a href="SpatialVectorsSimulations.html">SpatialVectorsSimulations-class</a></code>, <code><a href="RasterBrickTimeSeries.html">RasterBrickTimeSeries-class</a></code>, <code><a href="plotKML.html">plotKML-method</a></code>
 </p>
 
 
 <h3>Examples</h3>
 
 <pre> 
-# load input data:
+## Not run: # load input data:
 data(barxyz)
 # define the projection system:
 prj = "+proj=tmerc +lat_0=0 +lon_0=18 +k=0.9999 +x_0=6500000 +y_0=0 +ellps=bessel +units=m 
@@ -65,7 +65,7 @@ data(bargrid)
 coordinates(bargrid) &lt;- ~x+y
 gridded(bargrid) &lt;- TRUE
 proj4string(bargrid) &lt;- CRS(prj)
-## Not run: # fit a variogram and generate simulations:
+# fit a variogram and generate simulations:
 library(gstat)
 Z.ovgm &lt;- vgm(psill=1352, model="Mat", range=650, nugget=0, kappa=1.2)
 sel &lt;- runif(length(barxyz$Z))&lt;.2  # Note: this operation can be time consuming
@@ -83,5 +83,5 @@ plotKML(bardem_sims, colour_scale = R_pal[[4]])
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.3-1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.3-3 <a href="00Index.html">Index</a>]</div>
 </body></html>

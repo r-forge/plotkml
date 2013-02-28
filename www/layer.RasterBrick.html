@@ -17,11 +17,11 @@
 
 <pre>
 kml_layer.RasterBrick(obj, plot.legend = TRUE, dtime = "", tz = "GMT", 
-          z.lim = c(min(obj@data@min, na.rm = TRUE),
-          max(obj@data@max, na.rm = TRUE)), 
+          z.lim = c(min(minValue(obj), na.rm=TRUE), max(maxValue(obj), na.rm=TRUE)), 
           colour_scale = get("colour_scale_numeric", envir = plotKML.opts),
           home_url = get("home_url", envir = plotKML.opts),
-          metadata = NULL, html.table = NULL, ...)
+          metadata = NULL, html.table = NULL,
+          altitudeMode = "clampToGround", balloon = FALSE, ...)
 </pre>
 
 
@@ -31,7 +31,7 @@ kml_layer.RasterBrick(obj, plot.legend = TRUE, dtime = "", tz = "GMT",
 <table summary="R argblock">
 <tr valign="top"><td><code>obj</code></td>
 <td>
-<p>object of class <code>"RasterBrick"</code> (a time series of images)</p>
+<p>object of class <code>"RasterBrick"</code> (e.g. a time series of images)</p>
 </td></tr>
 <tr valign="top"><td><code>plot.legend</code></td>
 <td>
@@ -65,6 +65,14 @@ kml_layer.RasterBrick(obj, plot.legend = TRUE, dtime = "", tz = "GMT",
 <td>
 <p>(optional) the description block (html)</p>
 </td></tr>
+<tr valign="top"><td><code>altitudeMode</code></td>
+<td>
+<p>character; the default altitudeMode</p>
+</td></tr>
+<tr valign="top"><td><code>balloon</code></td>
+<td>
+<p>logical; specifies whether to display balloon for each element</p>
+</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>additional arguments (see <code>aesthetics</code>)</p>
@@ -85,7 +93,7 @@ kml_layer.RasterBrick(obj, plot.legend = TRUE, dtime = "", tz = "GMT",
 
 <h3>See Also</h3>
 
- <p><code><a href="kml-method.html">kml-methods</a></code>, <code><a href="kml_open.html">kml_open</a></code>, <code><a href="layer.Raster.html">kml_layer.Raster</a></code>, <code><a href="plotKML-method.html">plotKML-method</a></code> </p>
+ <p><code><a href="kml.html">kml-methods</a></code>, <code><a href="kml_open.html">kml_open</a></code>, <code><a href="layer.Raster.html">kml_layer.Raster</a></code>, <code><a href="plotKML.html">plotKML-method</a></code> </p>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.3-1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.3-3 <a href="00Index.html">Index</a>]</div>
 </body></html>
