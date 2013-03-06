@@ -166,7 +166,7 @@ echo $contents; } ?>
     </div></td>
     <td width="220"><div align="center">
       <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3AMetadata_in_GoogleEarth.png.jpg'></a><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_SpatialPredictions_meuse.jpg'><img src='Fig_SpatialPredictions_meusethumb.jpg' alt='SpatialPredictions in Google Earth' width='150' height="162" border="0"/></a></p>
-      <p><span class="R_code"><strong><a href="SpatialPredictions-class.html">SpatialPredictions</a> </strong> <a href="om.rk.kml"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
+      <p><span class="R_code"><strong><a href="SpatialPredictions.html">SpatialPredictions</a> </strong> <a href="om.rk.kml"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
   </tr>
 </table>
@@ -174,23 +174,23 @@ echo $contents; } ?>
   <tr valign="top">
     <td width="220"><div align="center">
       <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_simulations_streams.jpg'><img src='Fig_simulations_streamsthumb.jpg' alt='Simulated streams' width='150' height="150" border="0"/></a></p>
-      <p class="R_code"><strong><a href="SpatialVectorsSimulations-class.html">VectorsSimulations</a> </strong> <a href="bar_sum.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></p>
+      <p class="R_code"><strong><a href="SpatialVectorsSimulations.html">VectorsSimulations</a> </strong> <a href="bar_sum.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></p>
     </div></td>
     <td width="220"><div align="center">
       <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_rasterbricksimulations.jpg'><img src='Fig_rasterbricksimulationsthumb.jpg' alt='Rasterbricksimulations' width='150' height="183" border="0"/></a></p>
-      <p><span class="R_code"><strong><a href="RasterBrickSimulations-class.html">RasterBrickSimulations</a> </strong> <a href="bardem_sims.kml"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
+      <p><span class="R_code"><strong><a href="RasterBrickSimulations.html">RasterBrickSimulations</a> </strong> <a href="bardem_sims.kml"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
     <td width="220"><div align="center">
       <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_RasterBrickTimeSeries.jpg'><img src='Fig_RasterBrickTimeSeriesthumb.jpg' alt='RasterBrickTimeSeries' width='150' height="150" border="0"/></a></p>
-      <p><span class="R_code"><strong><a href="RasterBrickTimeSeries-class.html">RasterBrickTimeSeries</a> </strong> <a href="LST.ts.kml"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
+      <p><span class="R_code"><strong><a href="RasterBrickTimeSeries.html">RasterBrickTimeSeries</a> </strong> <a href="LST.ts.kml"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
     <td width="220"><div align="center">
       <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_SpatialMaxEntOutput.jpg'><img src='Fig_SpatialMaxEntOutputthumb.jpg' alt='SpatialMaxEntOutput' width='150' height="123" border="0"/></a></p>
-      <p><span class="R_code"><strong><a href="SpatialMaxEntOutput-class.html">SpatialMaxEntOutput</a> </strong> <a href="bigfoot.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
+      <p><span class="R_code"><strong><a href="SpatialMaxEntOutput.html">SpatialMaxEntOutput</a> </strong> <a href="bigfoot.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
     <td width="220"><div align="center">
       <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3AMetadata_in_GoogleEarth.png.jpg'></a><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='Fig_SpatialSamplingPattern.jpg'><img src='Fig_SpatialSamplingPatternthumb.jpg' alt='SpatialSamplingPattern' width='150' height="102" border="0"/></a></p>
-      <p><span class="R_code"><strong><a href="SpatialSamplingPattern-class.html">SpatialSamplingPattern</a> </strong> <a href="mySamplingPattern.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
+      <p><span class="R_code"><strong><a href="SpatialSamplingPattern.html">SpatialSamplingPattern</a> </strong> <a href="mySamplingPattern.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
   </tr>
 </table>
