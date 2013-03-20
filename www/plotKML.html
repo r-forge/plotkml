@@ -111,11 +111,18 @@ plotKML(obj,
       colour_scale_svar = get("colour_scale_svar", envir = plotKML.opts), 
       grid2poly = FALSE, obj.summary = TRUE, plot.svar = FALSE, 
       kmz = get("kmz", envir = plotKML.opts), ...)
+## S4 method for signature 'list'
+plotKML(obj, 
+      folder.name = normalizeFilename(deparse(substitute(obj, env=parent.frame()))),
+      file.name = paste(folder.name, ".kml", sep=""), 
+      size = NULL, colour, points_names = "",
+      shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png",
+      plot.labpt = TRUE, labels = "", metadata = NULL, 
+      kmz = get("kmz", envir = plotKML.opts), ...)
 </pre>
 
 
 <h3>Arguments</h3>
-
 
 <table summary="R argblock">
 <tr valign="top"><td><code>obj</code></td>
@@ -235,13 +242,13 @@ plotKML(obj,
 
 <h3>Details</h3>
 
-<p>This is a generic function to plot various R objects that contain both inputs and outputs of spatial analysis. The resulting plots (referred to as <EM>&lsquo;views&rsquo;</EM>) are expected to be cartographically complete as they contain legends, and data and model descriptions. In principle, <code>plotKML</code> works with both simple spatial objects, and complex objects such as <code>"SpatialPredictions"</code>, <code>"SpatialVectorsSimulations"</code>, <code>"RasterBrickSimulations"</code>, <code>"RasterBrickTimeSeries"</code>, <code>"SpatialMaxEntOutput"</code> and similar. To further customize visualizations consider combining the lower level functions <code><a href="kml_open.html">kml_open</a></code>, <code><a href="kml_open.html">kml_close</a></code>, <code><a href="kml_compress.html">kml_compress</a></code>, <code><a href="kml_screen.html">kml_screen</a></code> into your own <code>plotKML()</code> method.
+<p>This is a generic function to plot various spatial and spatio-temporal R objects that contain both inputs and outputs of spatial analysis. The resulting plots (referred to as <EM>&lsquo;views&rsquo;</EM>) are expected to be cartographically complete as they should contain legends, and data and model descriptions. In principle, <code>plotKML</code> works with both simple spatial objects, and complex objects such as <code>"SpatialPredictions"</code>, <code>"SpatialVectorsSimulations"</code>, <code>"RasterBrickSimulations"</code>, <code>"RasterBrickTimeSeries"</code>, <code>"SpatialMaxEntOutput"</code> and similar. To further customize visualizations consider combining the lower level functions <code><a href="kml_open.html">kml_open</a></code>, <code><a href="kml_open.html">kml_close</a></code>, <code><a href="kml_compress.html">kml_compress</a></code>, <code><a href="kml_screen.html">kml_screen</a></code> into your own <code>plotKML()</code> method.
 </p>
 
 
 <h3>Note</h3>
 
-<p>Writting large spatial objects via plotKML can be time consuming. Please refer to the package documentation for more information.
+<p>To prepare a list of objects of class <code>"SpatialPointsDataFrame"</code>, <code>"SpatialLinesDataFrame"</code>, <code>"SpatialPolygonsDataFrame"</code>, or <code>"SpatialPixelsDataFrame"</code> consider using the <code>GSIF::tile</code> function. Writting large spatial objects via plotKML can be time consuming. Please refer to the package manual for more information.
 </p>
 
 
@@ -471,8 +478,6 @@ if(urlExists){
   nl.rd &lt;- getURL("http://spatialreference.org/ref/sr-org/6781/proj4/")
   proj4string(mySamplingPattern@sample) &lt;- CRS(nl.rd) 
   # prepare spatial domain (polygons):
-  # EJP: deprecate as.SpatialPolygons.SpatialPixels
-  #sp.domain &lt;- as.SpatialPolygons.SpatialPixels(myStratification@cells)
   sp.domain &lt;- as(myStratification@cells, "SpatialPolygons")
   sp.domain &lt;- SpatialPolygonsDataFrame(sp.domain, 
      data.frame(ID=as.factor(myStratification@stratumId)), match.ID = FALSE)
