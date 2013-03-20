@@ -18,9 +18,7 @@ kml_layer.RasterBrick <- function(
   balloon = FALSE,
   ...
   ){
-  
-  require(RSAGA)
-  
+   
   if(!is.numeric(obj@data@values)){
     stop('Values of class "numeric" required.') 
   }
@@ -95,7 +93,7 @@ kml_layer.RasterBrick <- function(
     png(filename = raster_name[j], bg = "transparent", type="cairo-png")
     par(mar = c(0, 0, 0, 0), xaxs = "i", yaxs = "i")
     colour_scale_legend <- colorRampPalette(colour_scale)(50)
-    image(raster(obj, j), col = colour_scale_legend, zlim = z.lim, frame.plot = FALSE)
+    raster::image(raster(obj, j), col = colour_scale_legend, zlim = z.lim, frame.plot = FALSE, main="")
     dev.off()
   }
 

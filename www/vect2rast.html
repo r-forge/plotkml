@@ -30,7 +30,6 @@ vect2rast(obj, fname = names(obj)[1], cell.size, bbox, file.name, silent = FALSE
 
 <h3>Arguments</h3>
 
-
 <table summary="R argblock">
 <tr valign="top"><td><code>obj</code></td>
 <td>
@@ -85,7 +84,6 @@ vect2rast(obj, fname = names(obj)[1], cell.size, bbox, file.name, silent = FALSE
 
 <h3>Details</h3>
 
-
 <p>This function basically extends the <code><a href="vect2rast.html">rasterize</a></code> function available in the raster package. The advantage of <code>vect2rast</code>, however, is that it requires no input from the user's side i.e. it automatically determines the grid cell size and the bounding box based on the properties of the input data set. The grid cell size is estimated based on the density/size of features in the map (<code>nndist</code> function in <a href="http://www.spatstat.org">spatstat</a> package): (a) in the case of <code>"SpatialPoints"</code> cell size is determined as half the mean distance between the nearest points; (b) in the case of <code>"SpatialLines"</code> half cell size is determined as half the mean distance between the lines; (c) in the case of polygon data cell size is determined as half the median size (area) of polygons of interest. For more details see <a href="http://dx.doi.org/10.1016/j.cageo.2005.11.008">Hengl (2006)</a>. To process larger vector maps consider using <code>method="SAGA"</code>.
 </p>
 
@@ -101,7 +99,6 @@ vect2rast(obj, fname = names(obj)[1], cell.size, bbox, file.name, silent = FALSE
 
 
 <h3>References</h3>
-
 
 
 <ul>

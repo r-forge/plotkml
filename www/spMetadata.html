@@ -10,7 +10,6 @@
 
 <h3>Description</h3>
 
-
 <p>The <code>spMetadata</code> function will try to generate missing metadata (bounding box, location info, session info, metadata creator info and similar) for any <code>Spatial*</code> object (from the sp package) or <code>Raster*</code> object (from the raster package). The resulting object of class <code><a href="SpatialMetadata.html">SpatialMetadata-class</a></code> can be used e.g. to generate a Layer description documents (<code>&lt;description&gt;</code> tag).<br>
 The <code>read.metadata</code> function can be used to read the formatted metadata (<code>.xml</code>), prepared following to the <a href="http://www.fgdc.gov/metadata/csdgm/">Federal Geographic Data Committee (FGDC) Content Standard for Digital Geospatial Metadata</a>, and convert them to a more readble format (data frame).
 </p>
@@ -31,7 +30,6 @@ spMetadata(obj, xml.file, generate.missing = TRUE, Citation_title,
 
 
 <h3>Arguments</h3>
-
 
 <table summary="R argblock">
 <tr valign="top"><td><code>obj</code></td>
@@ -111,7 +109,6 @@ spMetadata(obj, xml.file, generate.missing = TRUE, Citation_title,
 
 <h3>Details</h3>
 
-
 <p><code>spMetadata</code> tries to locate a metadata file in the working directory (it looks for a metadata file with the same name as the object name). If no <code>.xml</code> file exists, it will load the template xml file available in the system folder (<code>system.file("FGDC.xml", package="plotKML")</code>). The <code>FGDC.xml</code> file contains typical metadata entries with description and examples. For practical purposes, one metadata object in plotKML can be associated with only one variable i.e. one column in the <code>"data"</code> slot (specified via <code>Target_variable</code>). To prepare a metadata xml file for the layer of interest, consider using the <a href="http://plotkml.r-forge.r-project.org/FGDC.xml">FGDC.xml</a> template file; to enter the missing fields use e.g. the <a href="http://geology.usgs.gov/tools/metadata/tools/doc/tkme.html">Tkme</a> software: Another editor for formal metadata, by Peter N. Schweitzer (U.S. Geological Survey). Before commiting the metadata file, try also running a <a href="http://geo-nsdi.er.usgs.gov/validation/">validation test</a>.<br>
 <code>spMetadata</code> tries to automatically generate the most usefull information, so that a user can easily find out about the input data and procedures followed to generate the visualization (KML). Typical metadata entries include e.g.:
 </p>
@@ -137,7 +134,6 @@ spMetadata(obj, xml.file, generate.missing = TRUE, Citation_title,
 
 
 <h3>References</h3>
-
 
 
 <ul>
