@@ -110,15 +110,15 @@ echo $contents; } ?>
         <p><span class="R_code"><strong><a href="layer.SpatialPhotoOverlay.html">SpatialPhotoOverlay </a></strong> <a href="af.kmz"></a></span><a href="af.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></p>
     </div></td>
     <td width="220"><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_monolith.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=103&amp;h=120&amp;t=1361983802&amp;media=wiki:fig_monolith.jpg' alt='GroundPhoto in Google Earth.png' width='103' height="120" border="0"/></a></p>
+      <p><a href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_monolith.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=103&amp;h=120&amp;t=1361983802&amp;media=wiki:fig_monolith.jpg' alt='GroundPhoto in Google Earth.png' width='103' height="120" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="layer.SpatialPhotoOverlay.html">SpatialPhotoOverlay</a> </strong> <a href="sm.kmz"></a></span><a href="sm.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></p>
     </div></td>
     <td width="220"><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_soilprofilecollection_hist.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=99&amp;t=1362682237&amp;media=wiki:fig_soilprofilecollection_hist.jpg' alt='SoilProfileCollection histogram in Google Earth.png' width='120' height="99" border="0"/></a></p>
+      <p><a href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_soilprofilecollection_hist.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=99&amp;t=1362682237&amp;media=wiki:fig_soilprofilecollection_hist.jpg' alt='SoilProfileCollection histogram in Google Earth.png' width='120' height="99" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="layer.SoilProfileCollection.html">SoilProfileCollection</a> </strong> <a href="ca_bs_8_2.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
     <td width="220"><div align="center">
-        <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_soilprofilecollection_block.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=99&amp;t=1361983123&amp;media=wiki:fig_soilprofilecollection_block.jpg' alt='SoilProfileCollection block visualized in Google Earth.png' width='120' height="99" border="0"/></a></p>
+        <p><a href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_soilprofilecollection_block.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=99&amp;t=1361983123&amp;media=wiki:fig_soilprofilecollection_block.jpg' alt='SoilProfileCollection block visualized in Google Earth.png' width='120' height="99" border="0"/></a></p>
         <p><span class="R_code"><strong><a href="layer.SoilProfileCollection.html">SoilProfileCollection</a> </strong> <a href="ca_CEC8_2_block.kmz"> <img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
   </tr>
@@ -126,11 +126,11 @@ echo $contents; } ?>
 <table border="0" cellspacing="0" cellpadding="10">
   <tr valign="top">
     <td width="220"><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_eberg_lines.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=107&amp;t=1363802022&amp;media=wiki:fig_eberg_lines.jpg' alt='Ebergotzen contour lines' width='120' height="107" border="0"/></a></p>
+      <p><a href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_eberg_lines.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=107&amp;t=1363802022&amp;media=wiki:fig_eberg_lines.jpg' alt='Ebergotzen contour lines' width='120' height="107" border="0"/></a></p>
       <p class="R_code"> <strong> <a href="layer.SpatialLines.html">SpatialLines</a> </strong> <a href="eberg_contours.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></p>
     </div></td>
     <td width="220"><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_eberg_polygons.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=99&amp;t=1362682030&amp;media=wiki:fig_eberg_polygons.jpg' alt='Ebergotzen soil units polygons.png' width='120' height="99" border="0"/></a></p>
+      <p><a href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_eberg_polygons.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=99&amp;t=1362682030&amp;media=wiki:fig_eberg_polygons.jpg' alt='Ebergotzen soil units polygons.png' width='120' height="99" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="layer.SpatialPolygons.html">SpatialPolygons</a> </strong> <a href="eberg_zones.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
     <td width="220"><div align="center">
@@ -138,11 +138,11 @@ echo $contents; } ?>
       <p><span class="R_code"><strong><a href="grid2poly.html">grid2poly</a> </strong> <a href="dem_poly.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
     <td width="220"><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_layerraster_legend.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=118&amp;t=1362682103&amp;media=wiki:fig_layerraster_legend.jpg' alt='TWI layerRaster in Google Earth' width='120' height="118" border="0"/></a></p>
+      <p><a href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_layerraster_legend.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=118&amp;t=1362682103&amp;media=wiki:fig_layerraster_legend.jpg' alt='TWI layerRaster in Google Earth' width='120' height="118" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="layer.Raster.html">Raster</a> </strong> <a href="eberg_grid.kml"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
     <td width="220"><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_metadata_googleearth.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=95&amp;t=1362682125&amp;media=wiki:fig_metadata_googleearth.jpg' alt='Metadata in GoogleEarth.png' width='120' height="95" border="0"/></a></p>
+      <p><a href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_metadata_googleearth.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=95&amp;t=1362682125&amp;media=wiki:fig_metadata_googleearth.jpg' alt='Metadata in GoogleEarth.png' width='120' height="95" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="spMetadata.html">spMetadata</a> </strong> <a href="eberg_md.kmz"> <img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
   </tr>
@@ -150,23 +150,23 @@ echo $contents; } ?>
 <table border="0" cellspacing="0" cellpadding="10">
   <tr valign="top">
     <td width="220"><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_gpxtour.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=120&amp;t=1362682080&amp;media=wiki:fig_gpxtour.jpg' alt='GPX bicycle Wageningen Muenster' width='120' height="120" border="0"/></a></p>
+      <p><a href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_gpxtour.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=120&amp;t=1362682080&amp;media=wiki:fig_gpxtour.jpg' alt='GPX bicycle Wageningen Muenster' width='120' height="120" border="0"/></a></p>
       <p class="R_code"><strong><a href="layer.STTDF.html">STTDF</a> </strong> <a href="gpxbtour_speed.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></p>
     </div></td>
     <td width="220"><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_stidf_polygons.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=111&amp;t=1362682325&amp;media=wiki:fig_stidf_polygons.jpg' alt='Spacetime STIDF object polygons.png' width='120' height="111" border="0"/></a></p>
+      <p><a href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_stidf_polygons.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=111&amp;t=1362682325&amp;media=wiki:fig_stidf_polygons.jpg' alt='Spacetime STIDF object polygons.png' width='120' height="111" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="layer.STIDF.html">STIDF Polygons</a> </strong> <a href="nct.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
     <td width="220"><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_spacetime_hrtemp08.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=114&amp;t=1362682251&amp;media=wiki:fig_spacetime_hrtemp08.jpg' alt='Spatiotemporal changes in HRtemp08.png' width='120' height="114" border="0"/></a></p>
+      <p><a href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_spacetime_hrtemp08.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=114&amp;t=1362682251&amp;media=wiki:fig_spacetime_hrtemp08.jpg' alt='Spatiotemporal changes in HRtemp08.png' width='120' height="114" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="layer.STIDF.html">STIDF Points</a> </strong> <a href="HRtemp08_jan.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
     <td width="220"><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_time_series_rasters_lst.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=118&amp;t=1362682340&amp;media=wiki:fig_time_series_rasters_lst.jpg' alt='Time series of MODIS LST rasters in Google Earth' width='120' height="118" border="0"/></a></p>
+      <p><a href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_time_series_rasters_lst.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=118&amp;t=1362682340&amp;media=wiki:fig_time_series_rasters_lst.jpg' alt='Time series of MODIS LST rasters in Google Earth' width='120' height="118" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="layer.RasterBrick.html">RasterBrick</a> </strong> <a href="LST_ll.kml"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
     <td width="220"><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3AMetadata_in_GoogleEarth.png.jpg'></a><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_spatialpredictions_meuse.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=111&amp;h=120&amp;t=1362682290&amp;media=wiki:fig_spatialpredictions_meuse.jpg' alt='SpatialPredictions in Google Earth' width='111' height="120" border="0"/></a></p>
+      <p><a href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_spatialpredictions_meuse.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=111&amp;h=120&amp;t=1362682290&amp;media=wiki:fig_spatialpredictions_meuse.jpg' alt='SpatialPredictions in Google Earth' width='111' height="120" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="SpatialPredictions.html">SpatialPredictions</a> </strong> <a href="om.rk.kml"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
   </tr>
@@ -174,23 +174,23 @@ echo $contents; } ?>
 <table border="0" cellpadding="10" cellspacing="0">
   <tr valign="top">
     <td width="220"><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_simulations_streams.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=119&amp;t=1362682203&amp;media=wiki:fig_simulations_streams.jpg' alt='Simulated streams' width='120' height="119" border="0"/></a></p>
+      <p><a href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:fig_simulations_streams.jpg'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=119&amp;t=1362682203&amp;media=wiki:fig_simulations_streams.jpg' alt='Simulated streams' width='120' height="119" border="0"/></a></p>
       <p class="R_code"><strong><a href="SpatialVectorsSimulations.html">VectorsSimulations</a> </strong> <a href="bar_sum.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></p>
     </div></td>
     <td width="220"><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:plot_rasterbricksimulations.png'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=117&amp;t=1362682448&amp;media=wiki:plot_rasterbricksimulations.png' alt='Rasterbricksimulations' width='120' height="117" border="0"/></a></p>
+      <p><a href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:plot_rasterbricksimulations.png'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=117&amp;t=1362682448&amp;media=wiki:plot_rasterbricksimulations.png' alt='Rasterbricksimulations' width='120' height="117" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="RasterBrickSimulations.html">RasterBrickSimulations</a> </strong> <a href="bardem_sims.kml"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
     <td width="220"><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:plot_lst.png'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=117&amp;t=1362682410&amp;media=wiki:plot_lst.png' alt='RasterBrickTimeSeries' width='120' height="117" border="0"/></a></p>
+      <p><a href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:plot_lst.png'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=117&amp;t=1362682410&amp;media=wiki:plot_lst.png' alt='RasterBrickTimeSeries' width='120' height="117" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="RasterBrickTimeSeries.html">RasterBrickTimeSeries</a> </strong> <a href="LST.ts.kml"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
     <td width="220"><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:plot_spatialmaxentoutput.png'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=116&amp;t=1362682473&amp;media=wiki:plot_spatialmaxentoutput.png' alt='SpatialMaxEntOutput' width='120' height="116" border="0"/></a></p>
+      <p><a href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:plot_spatialmaxentoutput.png'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=116&amp;t=1362682473&amp;media=wiki:plot_spatialmaxentoutput.png' alt='SpatialMaxEntOutput' width='120' height="116" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="SpatialMaxEntOutput.html">SpatialMaxEntOutput</a> </strong> <a href="bigfoot.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
     <td width="220"><div align="center">
-      <p><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://commons.wikimedia.org/wiki/File%3AMetadata_in_GoogleEarth.png.jpg'></a><a title='By Tomislav Hengl (Own work) [CC-BY-SA-3.0 (www.creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons' href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:plot_sampling_pattern.png'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=117&amp;t=1362682461&amp;media=wiki:plot_sampling_pattern.png' alt='SpatialSamplingPattern' width='120' height="117" border="0"/></a></p>
+      <p><a href='http://gsif.isric.org/lib/exe/fetch.php?media=wiki:plot_sampling_pattern.png'><img src='http://gsif.isric.org/lib/exe/fetch.php?w=120&amp;h=117&amp;t=1362682461&amp;media=wiki:plot_sampling_pattern.png' alt='SpatialSamplingPattern' width='120' height="117" border="0"/></a></p>
       <p><span class="R_code"><strong><a href="SpatialSamplingPattern.html">SpatialSamplingPattern</a> </strong> <a href="mySamplingPattern.kmz"><img src="ge_icon.png" alt="GE_icon" width="24" height="24" border="0" /></a></span></p>
     </div></td>
   </tr>
@@ -203,7 +203,7 @@ echo $contents; } ?>
   </tr>
 </table>
 <p class="style1"> Last update: 
-  <!-- #BeginDate format:Am1 -->March 20, 2013<!-- #EndDate -->
+  <!-- #BeginDate format:Am1 -->March 21, 2013<!-- #EndDate -->
 | contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">tom.hengl@wur.nl</a> | <a href="http://www.isric.org">ISRIC</a> - World Soil Information Institute </p>
 </body>
 </html>
