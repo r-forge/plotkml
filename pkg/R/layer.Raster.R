@@ -104,9 +104,11 @@ kml_layer.Raster <- function(
   if(!is.na(charmatch("z.lim", names(call)))){ 
     z.lim <- eval(call[["z.lim"]])
     obj <- calc(obj, fun=function(x){ x[x < z.lim[1]] <- z.lim[1]; return(x)}) 
-    obj <- calc(obj, fun=function(x){ x[x > z.lim[2]] <- z.lim[2]; return(x)}) 
+    obj <- calc(obj, fun=function(x){ x[x > z.lim[2]] <- z.lim[2]; return(x)})
+    raster::image(obj, col = colour_scale, zlim = z.lim, frame.plot = FALSE, main="") 
+  } else {
+    raster::image(obj, col = colour_scale, frame.plot = FALSE, main="")
   }
-  raster::image(obj, col = colour_scale, zlim = z.lim, frame.plot = FALSE, main="")
   dev.off()
 
   ## There is a bug in Google Earth that does not allow transparency of PNGs:
