@@ -9,7 +9,7 @@ importFrom("dismo", maxent)
 import(zoo)
 importFrom("xts", periodicity)
 importFrom("pixmap", pixmapIndexed, pixmapRGB)
-importFrom("sp", coordinates, overlay, bbox, spplot, is.projected, SpatialPixelsDataFrame)
+importFrom("sp", coordinates, over, bbox, spplot, is.projected, SpatialPixelsDataFrame)
 importFrom("plyr", aaply, laply, llply, ldply)
 importFrom("RSAGA", set.file.extension, rsaga.env, rsaga.get.version, rsaga.geoprocessor)
 
