@@ -16,7 +16,9 @@
 <h3>Usage</h3>
 
 <pre>
-kml_layer.SpatialPixels(obj, raster_name, plot.legend = TRUE, metadata = NULL, ...)
+kml_layer.SpatialPixels(obj, raster_name, plot.legend = TRUE, metadata = NULL, 
+     png.width = gridparameters(obj)[1,"cells.dim"], 
+     png.height = gridparameters(obj)[2,"cells.dim"], ...)
 </pre>
 
 
@@ -38,6 +40,14 @@ kml_layer.SpatialPixels(obj, raster_name, plot.legend = TRUE, metadata = NULL, .
 <tr valign="top"><td><code>raster_name</code></td>
 <td>
 <p>(optional) specify the output file name (PNG)</p>
+</td></tr>
+<tr valign="top"><td><code>png.width</code></td>
+<td>
+<p>(optional) width of the PNG file</p>
+</td></tr>
+<tr valign="top"><td><code>png.height</code></td>
+<td>
+<p>(optional) height of the PNG file</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -73,8 +83,11 @@ coordinates(eberg_grid) &lt;- ~x+y
 gridded(eberg_grid) &lt;- TRUE
 proj4string(eberg_grid) &lt;- CRS("+init=epsg:31467")
 data(SAGA_pal)
-## Not run: # KML plot with a single raster:
-kml(eberg_grid, colour_scale = SAGA_pal[[1]], colour = TWISRT6) 
+## Not run: ## KML plot with a single raster:
+kml(eberg_grid, colour_scale = SAGA_pal[[1]], colour = TWISRT6)
+## make a larger image:
+kml(eberg_grid, colour_scale = SAGA_pal[[1]], colour = TWISRT6, 
+  png.width = 600, png.height = 600)
 
 ## End(Not run)
 </pre>

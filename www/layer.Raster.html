@@ -16,7 +16,8 @@
 <h3>Usage</h3>
 
 <pre>
-kml_layer.Raster(obj, plot.legend = TRUE, metadata = NULL, raster_name, ...)
+kml_layer.Raster(obj, plot.legend = TRUE, metadata = NULL, raster_name, 
+     png.width = ncol(obj), png.height = nrow(obj), ...)
 </pre>
 
 
@@ -38,6 +39,14 @@ kml_layer.Raster(obj, plot.legend = TRUE, metadata = NULL, raster_name, ...)
 <tr valign="top"><td><code>raster_name</code></td>
 <td>
 <p>(optional) specify the output file name (PNG)</p>
+</td></tr>
+<tr valign="top"><td><code>png.width</code></td>
+<td>
+<p>(optional) width of the PNG file</p>
+</td></tr>
+<tr valign="top"><td><code>png.height</code></td>
+<td>
+<p>(optional) height of the PNG file</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
