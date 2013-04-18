@@ -92,7 +92,7 @@ kml_layer.SpatialPixels <- function(
   }
 
   # Plotting the image
-  png(filename = raster_name, bg = "transparent", type="cairo-png", width=png.width, height=png.height)
+  png(filename = raster_name, bg = "transparent", type = "cairo-png", width = png.width, height = png.height)
   par(mar = c(0, 0, 0, 0), xaxs = "i", yaxs = "i")
   if(!is.na(charmatch("z.lim", names(call)))){ 
     z.lim <- eval(call[["z.lim"]]) 
