@@ -21,7 +21,8 @@ kml_layer.RasterBrick(obj, plot.legend = TRUE, dtime = "", tz = "GMT",
           colour_scale = get("colour_scale_numeric", envir = plotKML.opts),
           home_url = get("home_url", envir = plotKML.opts),
           metadata = NULL, html.table = NULL,
-          altitudeMode = "clampToGround", balloon = FALSE, ...)
+          altitudeMode = "clampToGround", balloon = FALSE,
+          png.width, png.height, ...)
 </pre>
 
 
@@ -72,6 +73,14 @@ kml_layer.RasterBrick(obj, plot.legend = TRUE, dtime = "", tz = "GMT",
 <td>
 <p>logical; specifies whether to display balloon for each element</p>
 </td></tr>
+<tr valign="top"><td><code>png.width</code></td>
+<td>
+<p>(optional) width of the PNG files</p>
+</td></tr>
+<tr valign="top"><td><code>png.height</code></td>
+<td>
+<p>(optional) height of the PNG files</p>
+</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>additional arguments (see <code>aesthetics</code>)</p>
@@ -94,5 +103,5 @@ kml_layer.RasterBrick(obj, plot.legend = TRUE, dtime = "", tz = "GMT",
 
  <p><code><a href="kml.html">kml-methods</a></code>, <code><a href="kml_open.html">kml_open</a></code>, <code><a href="layer.Raster.html">kml_layer.Raster</a></code>, <code><a href="plotKML.html">plotKML-method</a></code> </p>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.3-5 <a href="00Index.html">Index</a>]</div>
 </body></html>
