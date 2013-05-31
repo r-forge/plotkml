@@ -77,12 +77,13 @@ echo $contents; } ?>
 <p>To install this package from <a href="https://r-forge.r-project.org/R/?group_id=1106" target="_blank">R-forge</a> use (works only on<strong> &gt;= R 2.14!</strong>):</p>
 <pre class="R_code">&gt; install.packages(&quot;plotKML&quot;, repos=c(&quot;http://R-Forge.R-project.org&quot;)) </pre>
 <p>Alternatively, you can install the most recent snapshot of the package directly from the source by using e.g.:</p>
-<pre class="R_code">&gt; download.file(&quot;http://plotkml.r-forge.r-project.org/plotKML_0.3-4.tar.gz&quot;, &quot;plotKML_0.3-4.tar.gz&quot;)
-&gt; system(&quot;R CMD INSTALL plotKML_0.3-4.tar.gz&quot;) </pre>
+<pre class="R_code">&gt; download.file(&quot;http://plotkml.r-forge.r-project.org/plotKML_0.3-5.tar.gz&quot;, &quot;plotKML_0.3-5.tar.gz&quot;)
+&gt; system(&quot;R CMD INSTALL plotKML_0.3-5.tar.gz&quot;) </pre>
 <p><iframe src="https://docs.google.com/present/embed?id=dhbpzjb4_91cvx3x2f2" frameborder="0" width="410" height="342"></iframe></p>
 <p><strong>News:</strong></p>
 <ul>
-  <li>Marc 20 2013: added <a href="http://gsif.isric.org/doku.php?id=wiki:tutorial_plotkml" target="_blank">tiling examples</a> to the plotKML tutorial; </li>
+  <li>May 28 2013: plotKML tutorials run on the <a href="http://geostat-course.org/Quebec_2013" target="_blank">GEOSTAT Quebec City 2013</a>; </li>
+  <li>Mar 20 2013: added <a href="http://gsif.isric.org/doku.php?id=wiki:tutorial_plotkml" target="_blank">tiling examples</a> to the plotKML tutorial; </li>
   <li>Feb 15 2013: plotKML article (JSS 1079) submitted to the Journal of Statistical Software (special issue 
     spatial and spatio-temporal data); </li>
   <li>Nove 26, 2012: plotKML version 03 sent to CRAN (package now 90% complete / but with still some bugs); </li>
@@ -203,7 +204,7 @@ echo $contents; } ?>
   </tr>
 </table>
 <p class="style1"> Last update: 
-  <!-- #BeginDate format:Am1 -->March 21, 2013<!-- #EndDate -->
+  <!-- #BeginDate format:Am1 -->May 31, 2013<!-- #EndDate -->
 | contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">tom.hengl@wur.nl</a> | <a href="http://www.isric.org">ISRIC</a> - World Soil Information Institute </p>
 </body>
 </html>
