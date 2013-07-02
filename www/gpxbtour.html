@@ -52,28 +52,27 @@
 <h3>Examples</h3>
 
 <pre>
-## Not run: # load the data:
+## Not run: ## load the data:
 data(gpxbtour)
 library(sp)
-# format the time column:
+## format the time column:
 gpxbtour$ctime &lt;- as.POSIXct(gpxbtour$time, format="%Y-%m-%dT%H:%M:%SZ")
 coordinates(gpxbtour) &lt;- ~lon+lat
 proj4string(gpxbtour) &lt;- CRS("+proj=longlat +datum=WGS84")
-# convert to a STTDF class:
+## convert to a STTDF class:
 library(spacetime)
 library(adehabitat)
 gpx.ltraj &lt;- as.ltraj(coordinates(gpxbtour), gpxbtour$ctime, id = "th")
 gpx.st &lt;- as(gpx.ltraj, "STTDF")
-# Google maps plot:
+## Google maps plot:
 library(RgoogleMaps)
 llc &lt;- c(mean(gpx.st@sp@bbox[2,]), mean(gpx.st@sp@bbox[1,]))
 MyMap &lt;- GetMap.bbox(center=llc, zoom=8, destfile="map.png")
 PlotOnStaticMap(MyMap, lat=gpx.st@sp@coords[,2], lon=gpx.st@sp@coords[,1], 
   FUN=lines, col="black", lwd=4)
-spplot(gpx.st)
 
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.3-6 <a href="00Index.html">Index</a>]</div>
 </body></html>

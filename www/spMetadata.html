@@ -22,10 +22,12 @@ The <code>read.metadata</code> function can be used to read the formatted metada
 spMetadata(obj, Target_variable, bounds, color, ... )
 ## S4 method for signature 'Spatial'
 spMetadata(obj, xml.file, generate.missing = TRUE, Citation_title,
-    Target_variable, Attribute_Measurement_Resolution = 1, Attribute_Units_of_Measure = "NA",
+    Target_variable, Attribute_Measurement_Resolution = 1, 
+    Attribute_Units_of_Measure = "NA",
     Indirect_Spatial_Reference = "", GoogleGeocode = FALSE, 
     Enduser_license_URL = get("license_url", envir = plotKML.opts),
-    signif.digit = 3, colour_scale, bounds, legend_names, icons, validate.schema = FALSE)
+    signif.digit = 3, colour_scale, bounds, legend_names, icons, 
+    validate.schema = FALSE)
 </pre>
 
 
@@ -163,29 +165,29 @@ spMetadata(obj, xml.file, generate.missing = TRUE, Citation_title,
 <h3>Examples</h3>
 
 <pre>
-## Not run: # read metadata from the system file:
+## Not run: ## read metadata from the system file:
 x &lt;- read.metadata(system.file("FGDC.xml", package="plotKML"))
 str(x)
-# generate missing metadata
+## generate missing metadata
 data(eberg)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
-# no metadata file specified:
+## no metadata file specified:
 eberg.md &lt;- spMetadata(eberg, Target_variable="SNDMHT_A")
-# with localy prepared metadata file:
+## with localy prepared metadata file:
 eberg.md &lt;- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"), 
 Target_variable="SNDMHT_A")
-# print the results of validation (it needs to be able to connect to a URL with schema):
+## print the results of validation (it needs to be able to connect to a URL with schema):
 eberg.md &lt;- spMetadata(eberg, Target_variable="SNDMHT_A", validate.schema = TRUE)
-# write the metadata to a file:
+## write the metadata to a file:
 saveXML(metadata(eberg.md), "eberg_SAND.xml")
-# export to SLD format:
+## export to SLD format:
 metadata2SLD(eberg.md, "eberg.sld")
-# plot the layer with the metadata:
+## plot the layer with the metadata:
 kml(eberg, file.name = "eberg_md.kml", colour = SNDMHT_A, metadata = eberg.md, kmz = TRUE)
 
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.3-6 <a href="00Index.html">Index</a>]</div>
 </body></html>
