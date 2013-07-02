@@ -33,7 +33,7 @@ ncols = round(abs(diff(bbox[2,])/cell.size), 0)
 gridT = GridTopology(cellcentre.offset=bbox[,1], cellsize=c(cell.size,cell.size), 
   cells.dim=c(nrows, ncols))
 \dontrun{# derive summaries (observed frequency and the entropy or error):
-bar_sum <- count(gridT, vectL=barstr[1:5]) # NOTE: this operation can be time consuming!
+bar_sum <- count.GridTopology(gridT, vectL=barstr[1:5]) # NOTE: this operation can be time consuming!
 # plot the whole project and open in Google Earth:
 plotKML(bar_sum, grid2poly = TRUE)
 }

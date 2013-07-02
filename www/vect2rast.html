@@ -17,14 +17,17 @@
 
 <pre>
 ## S4 method for signature 'SpatialPoints'
-vect2rast(obj, fname = names(obj)[1], cell.size, bbox, file.name, silent = FALSE, 
-      method = c("raster", "SAGA")[1], FIELD = 0, MULTIPLE = 1, LINE_TYPE = 0, GRID_TYPE = 2, ... )
+vect2rast(obj, fname = names(obj)[1], cell.size, bbox, 
+      file.name, silent = FALSE, method = c("raster", "SAGA")[1], 
+      FIELD = 0, MULTIPLE = 1, LINE_TYPE = 0, GRID_TYPE = 2, ... )
 ## S4 method for signature 'SpatialLines'
-vect2rast(obj, fname = names(obj)[1], cell.size, bbox, file.name, silent = FALSE, 
-      method = c("raster", "SAGA")[1], FIELD = 0, MULTIPLE = 1, LINE_TYPE = 1, GRID_TYPE = 2, ... )
+vect2rast(obj, fname = names(obj)[1], cell.size, bbox, 
+      file.name, silent = FALSE, method = c("raster", "SAGA")[1], 
+      FIELD = 0, MULTIPLE = 1, LINE_TYPE = 1, GRID_TYPE = 2, ... )
 ## S4 method for signature 'SpatialPolygons'
-vect2rast(obj, fname = names(obj)[1], cell.size, bbox, file.name, silent = FALSE, 
-      method = c("raster", "SAGA")[1], FIELD = 0, MULTIPLE = 0, LINE_TYPE = 1, GRID_TYPE = 2, ... )
+vect2rast(obj, fname = names(obj)[1], cell.size, bbox,
+      file.name, silent = FALSE, method = c("raster", "SAGA")[1], 
+      FIELD = 0, MULTIPLE = 0, LINE_TYPE = 1, GRID_TYPE = 2, ... )
 </pre>
 
 
@@ -139,5 +142,5 @@ x &lt;- vect2rast(eberg_zones, method = "SAGA")
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.3-6 <a href="00Index.html">Index</a>]</div>
 </body></html>

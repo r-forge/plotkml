@@ -193,7 +193,7 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
     
     if(python==""){
     if(!length(x <- grep(paths <- strsplit(Sys.getenv('PATH')[[1]], ":")[[1]], pattern="Python", ignore.case=TRUE))==0) {
-    py.dir <- paths[grep(paths, pattern="Python", ignore.case=TRUE)[1]]
+    py.dir <- paths[grep(paths, pattern="Python", ignore.case=TRUE)[1]] 
     python = "python"
     if(show.paths){ message(paste("Located Python from the path: \"", py.dir, "\"", sep="")) }
       }

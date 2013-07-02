@@ -23,11 +23,14 @@ reproject(obj, CRS, ...)
 ## S4 method for signature 'SpatialLines'
 reproject(obj, CRS, ...)
 ## S4 method for signature 'RasterLayer'
-reproject(obj, CRS, program = "raster", tmp.file = TRUE, NAflag, show.output.on.console = FALSE, ...)
+reproject(obj, CRS, program = "raster", tmp.file = TRUE, 
+      NAflag, show.output.on.console = FALSE, ...)
 ## S4 method for signature 'SpatialGridDataFrame'
-reproject(obj, CRS, tmp.file = TRUE, program = "raster", NAflag, show.output.on.console = FALSE, ...)
+reproject(obj, CRS, tmp.file = TRUE, program = "raster", 
+      NAflag, show.output.on.console = FALSE, ...)
 ## S4 method for signature 'SpatialPixelsDataFrame'
-reproject(obj, CRS, tmp.file = TRUE, program = "raster", NAflag, show.output.on.console = FALSE, ...)
+reproject(obj, CRS, tmp.file = TRUE, program = "raster", 
+      NAflag, show.output.on.console = FALSE, ...)
 ## S4 method for signature 'RasterBrick'
 reproject(obj, CRS)
 ## S4 method for signature 'RasterStack'
@@ -100,33 +103,33 @@ reproject(obj, CRS)
 
 <h3>See Also</h3>
 
-<p><code><a href="plotKML.env.html">paths</a></code>, <code>raster::projectRaster</code>, <code>rgdal::spTransform</code>, <code>rgdal::CRS-class</code></p>
+<p><a href="plotKML.env.html">paths</a>, <a href="../../raster/html/projectRaster.html">projectRaster</a>, <a href="../../sp/html/spTransform.html">spTransform</a>, <a href="../../sp/html/CRS%2dclass.html">CRS-class</a></p>
 
 
 <h3>Examples</h3>
 
 <pre>
-## Not run: # example with vector data:
+## Not run: ## example with vector data:
 data(eberg)
 library(sp)
 library(rgdal)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 eberg.geo &lt;- reproject(eberg)
-# example with raster data:
+## example with raster data:
 data(eberg_grid25)
 gridded(eberg_grid25) &lt;- ~x+y
 proj4string(eberg_grid25) &lt;- CRS("+init=epsg:31467")
-# reproject to geographical coords (can take few minutes!):
+## reproject to geographical coords (can take few minutes!):
 eberg_grid_ll &lt;- reproject(eberg_grid25)
-# much faster when using FWTools:
+## much faster when using FWTools:
 eberg_grid_ll2 &lt;- reproject(eberg_grid25, program = "FWTools")
-# optional: compare processing times:
+## optional: compare processing times:
 system.time(eberg_grid_ll &lt;- reproject(eberg_grid25[1]))
 system.time(eberg_grid_ll2 &lt;- reproject(eberg_grid25[1], program="FWTools"))
 
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.3-6 <a href="00Index.html">Index</a>]</div>
 </body></html>
