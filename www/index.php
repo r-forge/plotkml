@@ -77,8 +77,8 @@ echo $contents; } ?>
 <p>To install this package from <a href="https://r-forge.r-project.org/R/?group_id=1106" target="_blank">R-forge</a> use (works only on<strong> &gt;= R 2.14!</strong>):</p>
 <pre class="R_code">&gt; install.packages(&quot;plotKML&quot;, repos=c(&quot;http://R-Forge.R-project.org&quot;)) </pre>
 <p>Alternatively, you can install the most recent snapshot of the package directly from the source by using e.g.:</p>
-<pre class="R_code">&gt; download.file(&quot;http://plotkml.r-forge.r-project.org/plotKML_0.3-5.tar.gz&quot;, &quot;plotKML_0.3-5.tar.gz&quot;)
-&gt; system(&quot;R CMD INSTALL plotKML_0.3-5.tar.gz&quot;) </pre>
+<pre class="R_code">&gt; download.file(&quot;http://plotkml.r-forge.r-project.org/plotKML_0.3-7.tar.gz&quot;, &quot;plotKML_0.3-7.tar.gz&quot;)
+&gt; system(&quot;R CMD INSTALL plotKML_0.3-7.tar.gz&quot;) </pre>
 <p><iframe src="https://docs.google.com/present/embed?id=dhbpzjb4_91cvx3x2f2" frameborder="0" width="410" height="342"></iframe></p>
 <p><strong>News:</strong></p>
 <ul>
