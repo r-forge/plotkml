@@ -28,9 +28,10 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
         if(nzchar(saga_cmd)){
           saga.version <- rsaga.get.version()
         }
-      }} else {
+      } else {
         saga.version <- ""
         }
+      }
      }
      
      # Try locating path to ImageMagick (R default setting)...

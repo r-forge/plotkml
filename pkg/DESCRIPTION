@@ -8,8 +8,8 @@ Authors@R: c(person("Tomislav", "Hengl", role = c("cre", "aut"),
     person("Dylan", "Beaudette", role = "ctb"),
 	person("Edzer", "Pebesma", role = "ctb"))
 Depends: R (>= 2.13.0)
-Imports: methods, XML, sp, rgdal, spacetime, colorspace, plotrix, raster, dismo, aqp, pixmap, plyr, stringr, colorRamps, Hmisc, scales, gstat, zoo, xts, RColorBrewer, RSAGA
-Suggests: utils, adehabitat, maptools, fossil, spcosa, rjson, animation, spatstat, RCurl, rgbif, GSIF
+Imports: sp, raster, XML, rgdal, spacetime, colorspace, plotrix, dismo, aqp, pixmap, plyr, stringr, colorRamps, scales, gstat, zoo, xts, RColorBrewer, RSAGA
+Suggests: utils, adehabitat, maptools, fossil, spcosa, rjson, animation, spatstat, RCurl, rgbif, Hmisc, GSIF
 Enhances: sp, raster 
 Description: Writes sp-class, spacetime-class, raster-class and similar spatial and spatio-temporal objects to KML following some basic cartographic rules. Suitable for visualization of complete analysis outputs.
 License: GPL
