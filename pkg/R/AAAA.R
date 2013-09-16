@@ -18,7 +18,7 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
 
      #  Try locating SAGA GIS (R default setting)...
      if(saga_cmd==""){
-      if(!inherits(try({ suppressWarnings( x <- rsaga.env() ) }, silent = TRUE), "try-error")){
+      if(!inherits(try( suppressWarnings( x <- rsaga.env() ), silent = TRUE), "try-error")){
         if(!is.null(x)){ 
           if(.Platform$OS.type == "windows") {
             saga_cmd <- shortPathName(normalizePath(paste(rsaga.env()$path, rsaga.env()$cmd, sep="/"))) 

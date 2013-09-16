@@ -206,7 +206,7 @@ site(ca) &lt;- ~ mlra + ssa + lon + lat + cntrl_depth_to_top + cntrl_depth_to_bo
 library(sp)
 coordinates(ca) &lt;- ~ lon + lat
 ## assign CRS data
-proj4string(ca) &lt;- "+proj=latlong +datum=NAD83"
+proj4string(ca) &lt;- "+proj=longlat +datum=NAD83"
 ## plot changes in base saturation by sum of cations method (pH 8.2):
 kml(ca, method = "depth_function", file.name = "ca_bs_8_2.kml", 
   var.name="bs_8.2", balloon = TRUE)
@@ -218,5 +218,5 @@ kml(ca, file.name = "ca_CEC8_2_block.kml", var.name="CEC8.2", balloon = TRUE)
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.3-6 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.3-8 <a href="00Index.html">Index</a>]</div>
 </body></html>
