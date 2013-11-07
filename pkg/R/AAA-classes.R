@@ -90,9 +90,9 @@ setClass("SpatialPredictions", representation(variable = "character", observed =
     if(any(!(object@variable %in% names(object@predicted@data))))
       return("Variable name not available in the 'predicted' slot")
     if(length(object@validation) <50)
-      warning("Validation data critically small (<50) for reliable validation")  
+      warning("Validation data critically small (<50) for reliable validation") 
     require(sp)
-    object.ov <- over(object@predicted, object@observed)
+    object.ov <- over(x=object@observed, y=object@predicted)
     if(length(object.ov)==0)
       return("'Predicted' and 'observed' spatial objects do not overlap spatially")
 })
@@ -100,7 +100,7 @@ setClass("SpatialPredictions", representation(variable = "character", observed =
 ## New classes for SpatialSimulations:
 setClass("SpatialVectorsSimulations", representation(realizations = "list", summaries = "SpatialGridDataFrame"), validity = function(object) {
    require(sp)
-   object.ov <- over(object@summaries, as(object@realizations[[1]], "SpatialPoints"))
+   object.ov <- over(y=object@summaries, x=as(object@realizations[[1]], "SpatialPoints"))
     if(length(object.ov)==0)
       return("'Realizations' and 'summaries' objects do not overlap spatially")
     if(length(names(object@summaries))<2)
@@ -117,7 +117,7 @@ setClass("RasterBrickSimulations", representation(variable = "character", sample
 
 ## A new class for SamplingPatterns:
 setClass("SpatialSamplingPattern", representation(method = "character", pattern = "SpatialPoints", sp.domain = "SpatialPolygonsDataFrame"), validity = function(object) {
-    ov <- over(object@sp.domain, object@pattern)
+    ov <- over(y=object@sp.domain, x=object@pattern)
     if(length(ov)==0)
       return("'Pattern' and 'sp.domain' do not overlap spatially")
 })

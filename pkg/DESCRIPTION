@@ -1,6 +1,6 @@
 Package: plotKML
-Version: 0.3-8
-Date: 2013-09-16
+Version: 0.4-0
+Date: 2013-11-7
 Title: Visualization of spatial and spatio-temporal objects in Google Earth
 Author: Tomislav Hengl, Pierre Roudier, Dylan Beaudette, Edzer Pebesma
 Authors@R: c(person("Tomislav", "Hengl", role = c("cre", "aut"),
