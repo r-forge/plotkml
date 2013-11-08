@@ -92,9 +92,14 @@ setClass("SpatialPredictions", representation(variable = "character", observed =
     if(length(object@validation) <50)
       warning("Validation data critically small (<50) for reliable validation") 
     require(sp)
+    if(length(object@observed)<5000){
     object.ov <- over(x=object@observed, y=object@predicted)
-    if(length(object.ov)==0)
-      return("'Predicted' and 'observed' spatial objects do not overlap spatially")
+      if(length(object.ov)==0){
+        return("'Predicted' and 'observed' spatial objects do not overlap spatially")
+      }
+    } else {
+      warning("Large object (number of sampling locations > 5000). Skipping overlay test for grids and points...")
+    }
 })
 
 ## New classes for SpatialSimulations:
@@ -129,9 +134,14 @@ setClass("RasterBrickTimeSeries", representation(variable = "character", sampled
       return("'TimeSpan.begin' must indicate time before or equal to 'TimeSpan.end'")
     if(!(length(object@TimeSpan.begin)==length(object@TimeSpan.end)&length(object@TimeSpan.begin)==nlayers(object@rasters)))
       return("Length of the 'TimeSpan.begin' and 'TimeSpan.end' slots and the total number of rasters do not match")
-    ov <- extract(object@rasters, object@sampled)
-    if(!nrow(ov)==length(object@sampled))
-      return("Not all points can be overlaid using the data in the @rasters slot")
+    if(length(object@sampled)<5000){
+      ov <- extract(object@rasters, object@sampled)
+      if(!nrow(ov)==length(object@sampled)){
+        return("Not all points can be overlaid using the data in the @rasters slot")
+      }
+    } else {
+      warning("Large object (number of sampling locations > 5000). Skipping overlay test for grids and points...")
+    }
 })
 
 ### A new class for SpeciesDistributionMap:
