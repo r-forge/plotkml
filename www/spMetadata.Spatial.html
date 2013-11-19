@@ -21,7 +21,14 @@
     Indirect_Spatial_Reference = "", GoogleGeocode = FALSE, 
     Enduser_license_URL = get("license_url", envir = plotKML.opts),
     signif.digit = 3, colour_scale, bounds, legend_names, icons, 
-    validate.schema = FALSE)
+    validate.schema = FALSE, Target_variable_descr = "NA", 
+    Geosp_Data_Presentation_Form, Edition, Purpose, Abstract, 
+    Supplinf, Publisher, Pub_Place, Temp_Ext,
+    Update_Freq = c("Unknown", "Continually", "Daily", "Weekly", 
+    "Monthly", "Annually", "As needed", "Irregular", "None planned"), 
+    Stat_Progress = c("Complete", "In work", "Planned"), 
+    Spatial_Represent_Type = c("Point", "Vector", "Raster"),
+    Keyw_theme, Keyw_place)
 </pre>
 
 
@@ -92,6 +99,62 @@
 <td>
 <p>logical; specieis whether R should try to validate your xml file</p>
 </td></tr>  
+<tr valign="top"><td><code>Target_variable_descr</code></td>
+<td>
+<p>character; specifies target variable description for eainfo-node 'attrdef'</p>
+</td></tr>
+<tr valign="top"><td><code>Geosp_Data_Presentation_Form</code></td>
+<td>
+<p>character; defines node 'geoform'</p>
+</td></tr>
+<tr valign="top"><td><code>Edition</code></td>
+<td>
+<p> defines the version of the title</p>
+</td></tr>
+<tr valign="top"><td><code>Purpose</code></td>
+<td>
+<p> defines the purpose of the given layer</p>
+</td></tr>
+<tr valign="top"><td><code>Abstract</code></td>
+<td>
+<p> defines the abstract of the given layer</p>
+</td></tr>
+<tr valign="top"><td><code>Supplinf</code></td>
+<td>
+<p> defines the supplemental information of the given layer</p>
+</td></tr>
+<tr valign="top"><td><code>Publisher</code></td>
+<td>
+<p> defines publishing organization (or individual)</p>
+</td></tr>
+<tr valign="top"><td><code>Pub_Place</code></td>
+<td>
+<p> defines publication place ('pubplace')</p>
+</td></tr>
+<tr valign="top"><td><code>Temp_Ext</code></td>
+<td>
+<p> defines temporal extent start/end</p>
+</td></tr>
+<tr valign="top"><td><code>Update_Freq</code></td>
+<td>
+<p> defines update frequency</p>
+</td></tr>
+<tr valign="top"><td><code>Stat_Progress</code></td>
+<td>
+<p> defines progress status</p>
+</td></tr>
+<tr valign="top"><td><code>Spatial_Represent_Type</code></td>
+<td>
+<p> defines direct node (direct spatial reference method)</p>
+</td></tr>
+<tr valign="top"><td><code>Keyw_theme</code></td>
+<td>
+<p> defines node(s) 'themekey'</p>
+</td></tr>
+<tr valign="top"><td><code>Keyw_place</code></td>
+<td>
+<p> defines node(s) 'placekey'</p>
+</td></tr>
 </table>
 
 
@@ -103,7 +166,7 @@
 
 <h3>Author(s)</h3>
 
-<p>Tomislav Hengl</p>
+<p>Tomislav Hengl and Michael Blaschek</p>
 
 
 <h3>See Also</h3>
@@ -130,5 +193,5 @@ Target_variable="SNDMHT_A")
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.3-8 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.4-1 <a href="00Index.html">Index</a>]</div>
 </body></html>
