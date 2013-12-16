@@ -159,27 +159,22 @@ proj4string(eberg) <- CRS("+init=epsg:31467")
 ## subset to 20 percent:
 eberg <- eberg[runif(nrow(eberg))<.1,]
 ## bubble type plot:
-\dontrun{
 plotKML(eberg["CLYMHT_A"])
 plotKML(eberg["CLYMHT_A"], colour_scale=rep("#FFFF00", 2), points_names="")
-}
+
 
 ## -------------- SpatialLinesDataFrame --------- ##
 data(eberg_contours)
-\dontrun{
 plotKML(eberg_contours)
 ## plot contour lines with actual altitudes:
 plotKML(eberg_contours, colour=Z, altitude=Z)
-}
 
 ## -------------- SpatialPolygonsDataFrame --------- ##
 data(eberg_zones)
-\dontrun{
 plotKML(eberg_zones["ZONES"])
 ## add altitude:
 zmin = 230
 plotKML(eberg_zones["ZONES"], altitude=zmin+runif(length(eberg_zones))*500)
-}
 
 ## -------------- SpatialPixelsDataFrame --------- ##
 library(rgdal)
@@ -189,10 +184,11 @@ gridded(eberg_grid) <- ~x+y
 proj4string(eberg_grid) <- CRS("+init=epsg:31467")
 TWI <- reproject(eberg_grid["TWISRT6"])
 data(SAGA_pal)
-\dontrun{
 plotKML(TWI, colour_scale = SAGA_pal[[1]])
-## set limits manually:
-plotKML(TWI, z.lim=c(12,20), colour_scale = SAGA_pal[[1]])
+\dontrun{## set limits manually (increase resolution):
+plotKML(TWI, z.lim=c(12,20), colour_scale = SAGA_pal[[1]],
+  png.width = gridparameters(TWI)[1,"cells.dim"]*5, 
+  png.height = gridparameters(TWI)[2,"cells.dim"]*5)
 }
 ## categorical data:
 eberg_grid$LNCCOR6 <- as.factor(paste(eberg_grid$LNCCOR6))
@@ -201,9 +197,7 @@ data(worldgrids_pal)
 ## attr(worldgrids_pal["corine2k"][[1]], "names")
 pal = as.character(worldgrids_pal["corine2k"][[1]][c(1,11,13,14,16,17,18)])
 LNCCOR6 <- reproject(eberg_grid["LNCCOR6"])
-\dontrun{
 plotKML(LNCCOR6, colour_scale=pal)
-}
 
 ## -------------- SpatialPhotoOverlay --------- ##
 \dontrun{
@@ -237,12 +231,11 @@ site(prof1) <- ~ lon + lat + FAO1988
 coordinates(prof1) <- ~ lon + lat
 proj4string(prof1) <- CRS("+proj=longlat +datum=WGS84")
 prof1
-\dontrun{
 plotKML(prof1, var.name="ORCDRC", color.name="soil_color")
-}
 
 ## -------------- STIDF --------- ##
 library(spacetime)
+## daily temperatures for Croatia:
 data(HRtemp08)
 ## format the time column:
 HRtemp08$ctime <- as.POSIXct(HRtemp08$DATE, format="\%Y-\%m-\%dT\%H:\%M:\%SZ")
@@ -253,9 +246,20 @@ HRtemp08.st <- STIDF(sp, time = HRtemp08$ctime, data = HRtemp08[,c("NAME","TEMP"
 ## subset to first 500 records:
 HRtemp08_jan <- HRtemp08.st[1:500]
 str(HRtemp08_jan)
-\dontrun{
 plotKML(HRtemp08_jan[,,"TEMP"], dtime = 24*3600, LabelScale = .4)
-}
+
+## foot-and-mouth disease data:
+library(stpp)
+data(fmd)
+fmd0  <- data.frame(fmd)
+coordinates(fmd0) <- c("X", "Y")
+proj4string(fmd0) <- CRS("+init=epsg:27700")
+fmd_sp <- as(fmd0, "SpatialPoints")
+dates <- as.Date("2001-02-18")+fmd0$ReportedDay
+library(spacetime)
+fmd_ST <- STIDF(fmd_sp, dates, data.frame(ReportedDay=fmd0$ReportedDay))
+data(SAGA_pal)
+plotKML(fmd_ST, colour_scale=SAGA_pal[[1]])
 
 ## -------------- STTDF --------- ##
 \dontrun{
@@ -283,12 +287,11 @@ plotKML(gpx.st, colour="speed")
 ## -------------- Spatial Metadata --------- ##
 \dontrun{
 eberg.md <- spMetadata(eberg, xml.file=system.file("eberg.xml", package="plotKML"),
-  Target_variable="SNDMHT_A")
+  Target_variable="SNDMHT_A", Citation_title="Ebergotzen profiles")
 plotKML(eberg[1:100,"CLYMHT_A"], metadata=eberg.md)
 }
 
 ## -------------- RasterBrickTimeSeries --------- ##
-\dontrun{
 library(raster)
 library(sp)
 data(LST)
@@ -307,13 +310,13 @@ coordinates(pnts) <- ~Lon + Lat
 proj4string(pnts) <- CRS("+proj=longlat +datum=WGS84")
 ## get the dates from the file names:
 LST_ll <- brick(LST[1:5])
-LST_ll@title = "Time series of MODIS Land Surface Temperature (8-day mosaics) images"
+LST_ll@title = "Time series of MODIS Land Surface Temperature images"
 LST.ts <- new("RasterBrickTimeSeries", variable = "LST", sampled = pnts, 
-    rasters = LST_ll, TimeSpan.begin = TimeSpan.begin[1:5], TimeSpan.end = TimeSpan.end[1:5])
+    rasters = LST_ll, TimeSpan.begin = TimeSpan.begin[1:5], 
+    TimeSpan.end = TimeSpan.end[1:5])
 data(SAGA_pal)
 ## plot MODIS images in Google Earth:
 plotKML(LST.ts, colour_scale=SAGA_pal[[1]])
-}
 
 ## -------------- Spatial Predictions --------- ##
 \dontrun{
@@ -395,9 +398,10 @@ sel <- runif(length(barxyz$Z))<.2
 sims <- krige(Z~1, barxyz[sel,], bargrid, model=Z.ovgm, nmax=20, 
    nsim=10, debug.level=-1)
 ## specify the cross-section:
-t1 <- Line(matrix(c(bargrid@bbox[1,1],bargrid@bbox[1,2],5073012,5073012), ncol=2))
+t1 <- Line(matrix(c(bargrid@bbox[1,1], bargrid@bbox[1,2], 5073012, 5073012), ncol=2))
 transect <- SpatialLines(list(Lines(list(t1), ID="t")), CRS(prj))
 ## glue to a RasterBrickSimulations object:
+library(raster)
 bardem_sims <- new("RasterBrickSimulations", variable = "elevations", 
   sampled = transect, realizations = brick(sims))
 ## plot the whole project and open in Google Earth:
@@ -417,41 +421,49 @@ cell.size = bargrid@grid@cellsize[1]
 bbox = bargrid@bbox
 nrows = round(abs(diff(bbox[1,])/cell.size), 0) 
 ncols = round(abs(diff(bbox[2,])/cell.size), 0)
-gridT = GridTopology(cellcentre.offset=bbox[,1], cellsize=c(cell.size,cell.size), 
+gridT = GridTopology(cellcentre.offset=bbox[,1], 
+  cellsize=c(cell.size,cell.size), 
   cells.dim=c(nrows, ncols))
 bar_sum <- count.GridTopology(gridT, vectL=barstr[1:5])
 ## NOTE: this operation can be time consuming!
 ## plot the whole project and open in Google Earth:
-plotKML(bar_sum)
+plotKML(bar_sum,
+    png.width = gridparameters(bargrid)[1,"cells.dim"]*5, 
+    png.height = gridparameters(bargrid)[2,"cells.dim"]*5)
 }
 
 ## -------------- SpatialMaxEntOutput --------- ##
 \dontrun{
 library(maptools)
+library(rgdal)
 data(bigfoot)
 aea.prj <- "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 
    +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"
 data(USAWgrids)
 gridded(USAWgrids) <- ~s1+s2
 proj4string(USAWgrids) <- CRS(aea.prj)
-bbox <- spTransform(USAWgrids, CRS("+proj=latlon +datum=WGS84"))@bbox
+bbox <- spTransform(USAWgrids, CRS("+proj=longlat +datum=WGS84"))@bbox
 sel = bigfoot$Lon > bbox[1,1] & bigfoot$Lon < bbox[1,2] &
     bigfoot$Lat > bbox[2,1] & bigfoot$Lat < bbox[2,2]
 bigfoot <- bigfoot[sel,]
 coordinates(bigfoot) <- ~Lon+Lat
-proj4string(bigfoot) <- CRS("+proj=latlon +datum=WGS84")
+proj4string(bigfoot) <- CRS("+proj=longlat +datum=WGS84")
 library(spatstat)
 bigfoot.aea <- as.ppp(spTransform(bigfoot, CRS(aea.prj)))
 ## Load the covariates:
 sel.grids <- c("globedem","nlights03","sdroads","gcarb","twi","globcov")
 library(GSIF)
+library(dismo)
 ## run MaxEnt analysis:
 jar <- paste(system.file(package="dismo"), "/java/maxent.jar", sep='')
 if(file.exists(jar)){
   bigfoot.smo <- MaxEnt(bigfoot.aea, USAWgrids[sel.grids])
   icon = "http://plotkml.r-forge.r-project.org/bigfoot.png"
   data(R_pal)
-  plotKML(bigfoot.smo, colour_scale = R_pal[["bpy_colors"]], shape = icon)
+  plotKML(bigfoot.smo, colour_scale = R_pal[["bpy_colors"]], 
+    png.width = gridparameters(USAWgrids)[1,"cells.dim"]*5, 
+    png.height = gridparameters(USAWgrids)[2,"cells.dim"]*5,
+    shape = icon)
 }
 }
 }
