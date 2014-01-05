@@ -24,8 +24,10 @@ kml_layer.STIDF <- function(
   }
   
   # Check the data type:
-  if(class(obj@sp)=="SpatialPoints"|class(obj@sp)=="SpatialPointsDataFrame"){
-    sp <- SpatialPointsDataFrame(obj@sp, obj@data)   
+  if (is(obj@sp, "SpatialGrid"))
+  	fullgrid(obj@sp) = FALSE # coerce to SpatialPixels
+  if (is(obj@sp, "SpatialPoints")) { # TRUE also if obj@sp is SpatialPixels:
+    sp <- SpatialPointsDataFrame(obj@sp, obj@data)
     kml_layer.SpatialPoints(obj = sp, TimeSpan.begin = TimeSpan.begin, TimeSpan.end = TimeSpan.end,  ...)
   } 
   else {
