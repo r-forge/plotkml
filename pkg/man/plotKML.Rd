@@ -11,6 +11,7 @@
 \alias{plotKML,RasterLayer-method}
 \alias{plotKML,SpatialPhotoOverlay-method}
 \alias{plotKML,STIDF-method}
+\alias{plotKML,STFDF-method}
 \alias{plotKML,STTDF-method}
 \alias{plotKML,SpatialPredictions-method}
 \alias{plotKML,RasterBrickSimulations-method}
@@ -58,6 +59,11 @@
       file.name = paste(folder.name, ".kml", sep=""), 
       var.name, metadata = NULL, kmz = get("kmz", envir = plotKML.opts), \dots)
 \S4method{plotKML}{STIDF}(obj, 
+      folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
+      file.name = paste(folder.name, ".kml", sep=""), 
+      colour, shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png", 
+      points_names, kmz = get("kmz", envir = plotKML.opts), \dots)
+\S4method{plotKML}{STFDF}(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
       file.name = paste(folder.name, ".kml", sep=""), 
       colour, shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png", 
@@ -260,6 +266,43 @@ library(spacetime)
 fmd_ST <- STIDF(fmd_sp, dates, data.frame(ReportedDay=fmd0$ReportedDay))
 data(SAGA_pal)
 plotKML(fmd_ST, colour_scale=SAGA_pal[[1]])
+
+## -------------- STFDF --------- ##
+
+## results of krigeST:
+library(gstat)
+library(sp)
+library(spacetime)
+library(raster)
+## define space-time variogram
+sumMetricVgm <- vgmST("sumMetric",
+                      space=vgm( 4.4, "Lin", 196.6,  3),
+                      time =vgm( 2.2, "Lin",   1.1,  2),
+                      joint=vgm(34.6, "Exp", 136.6, 12),
+                      stAni=51.7)
+## example from the gstat package:
+data(air)
+rr <- rural[,"2005-06-01/2005-06-03"]
+rr <- as(rr,"STSDF")
+x1 <- seq(from=6,to=15,by=1)
+x2 <- seq(from=48,to=55,by=1)
+DE_gridded <- SpatialPoints(cbind(rep(x1,length(x2)), rep(x2,each=length(x1))), 
+                           proj4string=CRS(proj4string(rr@sp)))
+gridded(DE_gridded) <- TRUE
+DE_pred <- STF(sp=as(DE_gridded,"SpatialPoints"), time=rr@time)
+DE_kriged <- krigeST(PM10~1, data=rr, newdata=DE_pred,
+                     modelList=sumMetricVgm)
+gridded(DE_kriged@sp) <- TRUE
+stplot(DE_kriged)
+## plot in Google Earth:
+png.width = DE_kriged@sp@grid@cells.dim[1]*20
+png.height = DE_kriged@sp@grid@cells.dim[2]*20
+z.lim = range(DE_kriged@data, na.rm=TRUE)
+plotKML(DE_kriged, png.width=png.width, 
+        png.height=png.height, z.lim=z.lim)
+## add observations points:
+rr.sti <- as(rr, "STIDF")
+plotKML(rr.sti, z.lim=z.lim)
 
 ## -------------- STTDF --------- ##
 \dontrun{
