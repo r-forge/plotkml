@@ -1,7 +1,7 @@
 # Purpose        : Writing of irregular space-time objects to KML
 # Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
-# Contributions  : Pierre Roudier (pierre.roudier@landcare.nz); Dylan Beaudette (debeaudette@ucdavis.edu); 
-# Status         : Pre-Alpha
+# Contributions  : Pierre Roudier (pierre.roudier@landcare.nz); Edzer Pebesma (edzer.pebesma@uni-muenster.de); 
+# Status         : Alpha
 # Note           : This method works only with the Space time irregular data frame class objects from the spacetime package;
 
 kml_layer.STIDF <- function(
@@ -24,9 +24,7 @@ kml_layer.STIDF <- function(
   }
   
   # Check the data type:
-  if (is(obj@sp, "SpatialGrid"))
-  	fullgrid(obj@sp) = FALSE # coerce to SpatialPixels
-  if (is(obj@sp, "SpatialPoints")) { # TRUE also if obj@sp is SpatialPixels:
+  if(is(obj@sp, "SpatialPoints")) { # TRUE also if obj@sp is SpatialPixels:
     sp <- SpatialPointsDataFrame(obj@sp, obj@data)
     kml_layer.SpatialPoints(obj = sp, TimeSpan.begin = TimeSpan.begin, TimeSpan.end = TimeSpan.end,  ...)
   } 
