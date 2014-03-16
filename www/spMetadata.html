@@ -11,7 +11,7 @@
 <h3>Description</h3>
 
 <p>The <code>spMetadata</code> function will try to generate missing metadata (bounding box, location info, session info, metadata creator info and similar) for any <code>Spatial*</code> object (from the sp package) or <code>Raster*</code> object (from the raster package). The resulting object of class <code><a href="SpatialMetadata.html">SpatialMetadata-class</a></code> can be used e.g. to generate a Layer description documents (<code>&lt;description&gt;</code> tag).<br>
-The <code>read.metadata</code> function can be used to read the formatted metadata (<code>.xml</code>), prepared following to the <a href="http://www.fgdc.gov/metadata/csdgm/">Federal Geographic Data Committee (FGDC) Content Standard for Digital Geospatial Metadata</a>, and convert them to a more readble format (data frame).
+The <code>read.metadata</code> function reads the formatted metadata (<code>.xml</code>), prepared following e.g. the <a href="http://www.fgdc.gov/metadata/csdgm/">Federal Geographic Data Committee (FGDC) Content Standard for Digital Geospatial Metadata</a> or INSPIRE standard, and converts them to a data frame.
 </p>
 
 
@@ -142,16 +142,13 @@ spMetadata(obj, xml.file, out.xml.file,
 <li><p> Content Standard for Digital Geospatial Metadata (<a href="http://www.fgdc.gov/metadata/csdgm/">http://www.fgdc.gov/metadata/csdgm/</a>)
 </p>
 </li>
+<li><p> Tkme metadata editor (<a href="http://geology.usgs.gov/tools/metadata/tools/doc/tkme.html">http://geology.usgs.gov/tools/metadata/tools/doc/tkme.html</a>)
+</p>
+</li>
 <li><p> INSPIRE, INS MD, <a href="http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2008:326:0012:0030:EN:PDF">Commission Regulation (EC) No 1205/2008 of 3 December 2008 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards metadata</a> (Text with EEA relevance). See also Corrigendum to INSPIRE Metadata Regulation.
 </p>
 </li>
 <li><p> INSPIRE, INS MDTG, (2013) <a href="http://inspire.jrc.ec.europa.eu/documents/Metadata/MD_IR_and_ISO_20131029.pdf">INSPIRE Metadata Implementing Rules: Technical Guidelines based on EN ISO 19115 and EN ISO 19119, v1.3</a>
-</p>
-</li>
-<li><p> Tkme metadata editor (<a href="http://geology.usgs.gov/tools/metadata/tools/doc/tkme.html">http://geology.usgs.gov/tools/metadata/tools/doc/tkme.html</a>)
-</p>
-</li>
-<li><p> Creative Commons licenses (<a href="http://creativecommons.org/licenses/">http://creativecommons.org/licenses/</a>)
 </p>
 </li></ul>
 
@@ -189,7 +186,9 @@ eberg.md &lt;- spMetadata(eberg["SNDMHT_A"],
 eberg.md &lt;- spMetadata(eberg["SNDMHT_A"], 
   Citation_title = 'Ebergotzen data set',
   Citation_URL = 'http://geomorphometry.org/content/ebergotzen')
-
+## Complete list of names:
+mdnames &lt;- read.csv(system.file("mdnames.csv", package="plotKML"))
+mdnames$field.names
 
 ## write data and metadata to a file:
 library(rgdal)
