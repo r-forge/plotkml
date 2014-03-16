@@ -11,7 +11,7 @@
 \title{Methods to generate spatial metadata}
 \description{
 The \code{spMetadata} function will try to generate missing metadata (bounding box, location info, session info, metadata creator info and similar) for any \code{Spatial*} object (from the sp package) or \code{Raster*} object (from the raster package). The resulting object of class \code{\link{SpatialMetadata-class}} can be used e.g. to generate a Layer description documents (\code{<description>} tag).\cr
-The \code{read.metadata} function can be used to read the formatted metadata (\code{.xml}), prepared following to the \href{http://www.fgdc.gov/metadata/csdgm/}{Federal Geographic Data Committee (FGDC) Content Standard for Digital Geospatial Metadata}, and convert them to a more readble format (data frame).
+The \code{read.metadata} function reads the formatted metadata (\code{.xml}), prepared following e.g. the \href{http://www.fgdc.gov/metadata/csdgm/}{Federal Geographic Data Committee (FGDC) Content Standard for Digital Geospatial Metadata} or INSPIRE standard, and converts them to a data frame.
 }
 \usage{ 
 \S4method{spMetadata}{RasterLayer}(obj, bounds, color, \dots )
@@ -52,17 +52,15 @@ and for INSPIRE metadata:
 \item \code{metadata[["identificationInfo"]][["MD_DataIdentification"]]
 [["extent"]][["EX_Extent"]][["geographicElement"]][["EX_GeographicBoundingBox"]]} --- Bounding box in the WGS84 geographical coordinates estimated by reprojecting the original bounding box.
 }
-
 By default, plotKML uses the Creative Commons license, but this can be adjusted by setting the \code{Use_Constraints} argument.
 }
 \references{
 \itemize{
 \item The Federal Geographic Data Committee, (2006) FGDC Don't Duck Metadata --- A short reference guide for writing quality metadata. Vers. 1, \url{http://www.fgdc.gov/metadata/documents/MetadataQuickGuide.pdf}
 \item Content Standard for Digital Geospatial Metadata (\url{http://www.fgdc.gov/metadata/csdgm/})
+\item Tkme metadata editor (\url{http://geology.usgs.gov/tools/metadata/tools/doc/tkme.html})
 \item INSPIRE, INS MD, \href{http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2008:326:0012:0030:EN:PDF}{Commission Regulation (EC) No 1205/2008 of 3 December 2008 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards metadata} (Text with EEA relevance). See also Corrigendum to INSPIRE Metadata Regulation.
 \item INSPIRE, INS MDTG, (2013) \href{http://inspire.jrc.ec.europa.eu/documents/Metadata/MD_IR_and_ISO_20131029.pdf}{INSPIRE Metadata Implementing Rules: Technical Guidelines based on EN ISO 19115 and EN ISO 19119, v1.3}
-\item Tkme metadata editor (\url{http://geology.usgs.gov/tools/metadata/tools/doc/tkme.html})
-\item Creative Commons licenses (\url{http://creativecommons.org/licenses/})
 }
 }
 \author{Tomislav Hengl and Michael Blaschek}
@@ -92,7 +90,9 @@ eberg.md <- spMetadata(eberg["SNDMHT_A"],
 eberg.md <- spMetadata(eberg["SNDMHT_A"], 
   Citation_title = 'Ebergotzen data set',
   Citation_URL = 'http://geomorphometry.org/content/ebergotzen')
-
+## Complete list of names:
+mdnames <- read.csv(system.file("mdnames.csv", package="plotKML"))
+mdnames$field.names
 
 ## write data and metadata to a file:
 library(rgdal)
