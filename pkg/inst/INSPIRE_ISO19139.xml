@@ -223,7 +223,7 @@
 							<gmd:specification>
 								<gmd:CI_Citation>
 									<gmd:title>
-										<gco:CharacterString>Full reference to document containing the data quality report.</gco:CharacterString>
+										<gco:CharacterString>Commission Regulation (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services</gco:CharacterString>
 									</gmd:title>
 									<gmd:date>
 										<gmd:CI_Date>

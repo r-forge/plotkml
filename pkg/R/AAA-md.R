@@ -46,7 +46,7 @@ metadata.env <- function(
    Time_period_end = "",
    CI_Online_resource_URL = "",
    DQ_Scope_code = "",
-   DQ_Citation_title = "",
+   DQ_Citation_title = "Commission Regulation (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services",
    DQ_Citation_date = "",
    DQ_Citation_date_type = "publication",
    DQ_Conformance_result = "",
