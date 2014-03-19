@@ -11,7 +11,7 @@
 \title{Methods to generate spatial metadata}
 \description{
 The \code{spMetadata} function will try to generate missing metadata (bounding box, location info, session info, metadata creator info and similar) for any \code{Spatial*} object (from the sp package) or \code{Raster*} object (from the raster package). The resulting object of class \code{\link{SpatialMetadata-class}} can be used e.g. to generate a Layer description documents (\code{<description>} tag).\cr
-The \code{read.metadata} function reads the formatted metadata (\code{.xml}), prepared following e.g. the \href{http://www.fgdc.gov/metadata/csdgm/}{Federal Geographic Data Committee (FGDC) Content Standard for Digital Geospatial Metadata} or INSPIRE standard, and converts them to a data frame.
+The \code{read.metadata} function reads the formatted metadata (\code{.xml}), prepared following e.g. the \href{http://www.fgdc.gov/metadata/csdgm/}{Federal Geographic Data Committee (FGDC) Content Standard for Digital Geospatial Metadata} or \href{http://inspire.ec.europa.eu/}{INSPIRE} standard, and converts them to a data frame.
 }
 \usage{ 
 \S4method{spMetadata}{RasterLayer}(obj, bounds, color, \dots )
@@ -93,6 +93,9 @@ eberg.md <- spMetadata(eberg["SNDMHT_A"],
 ## Complete list of names:
 mdnames <- read.csv(system.file("mdnames.csv", package="plotKML"))
 mdnames$field.names
+## these can be assigned to the "metadata" environment by using:
+metadata.env(CI_Citation_title = 'Ebergotzen data set')
+get("CI_Citation_title", metadata)
 
 ## write data and metadata to a file:
 library(rgdal)
