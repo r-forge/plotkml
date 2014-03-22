@@ -177,43 +177,33 @@ setMethod("GetPalette", "SpatialMetadata", function(obj){obj@palette})
         xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][[xx[2]]][["MD_Resolution"]][["distance"]][["Distance"]]) <- MD_Resolution
         xmlAttrs(ml[["identificationInfo"]][["MD_DataIdentification"]][[xx[2]]][["MD_Resolution"]][["distance"]][["Distance"]])[[1]] <- "#m"
       }
-      ## Contact organization:
-      xmlValue(ml[["contact"]][["CI_ResponsibleParty"]][["organisationName"]][[1]]) <- get("CI_Organisation_name", envir = metadata)
-      xmlValue(ml[["contact"]][["CI_ResponsibleParty"]][["role"]][["CI_RoleCode"]][[1]]) <- get("CI_Role", envir = metadata)
+      ## (Metadata!) contact organization:
+      xmlValue(ml[["contact"]][["CI_ResponsibleParty"]][["organisationName"]][[1]]) <- get("MD_Organisation_name", envir = metadata)
+      xmlValue(ml[["contact"]][["CI_ResponsibleParty"]][["role"]][["CI_RoleCode"]][[1]]) <- get("MD_Role", envir = metadata)
       MD_Electronic_mail_address <- get("MD_Electronic_mail_address", envir = metadata) 
       if(!MD_Electronic_mail_address==""){
         xmlValue(ml[["contact"]][["CI_ResponsibleParty"]][["contactInfo"]][["CI_Contact"]][["address"]][["CI_Address"]][["electronicMailAddress"]][[1]]) <- MD_Electronic_mail_address
       }
       ## Thesaurus:
+      MD_Keyword <- get("MD_Keyword", envir = metadata)
+      if(!MD_Keyword==""){
+        xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["descriptiveKeywords"]][["MD_Keywords"]][["keyword"]][[1]]) <- MD_Keyword[1]
+      }
       xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["descriptiveKeywords"]][["MD_Keywords"]][["thesaurusName"]][["CI_Citation"]][["title"]][[1]]) <- get("MD_Thesaurus_name", envir = metadata)
       xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["descriptiveKeywords"]][["MD_Keywords"]][["thesaurusName"]][["CI_Citation"]][["date"]][["CI_Date"]][["date"]][["Date"]]) <- get("MD_Thesaurus_date", envir = metadata)
       xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["descriptiveKeywords"]][["MD_Keywords"]][["thesaurusName"]][["CI_Citation"]][["date"]][["CI_Date"]][["dateType"]][["CI_DateTypeCode"]]) <- get("MD_Thesaurus_date_type", envir = metadata)
-      ## Language:
-      xmlValue(ml[["language"]][["LanguageCode"]]) <- get("Language_code", envir = metadata)
-      xmlAttrs(ml[["language"]][["LanguageCode"]])[[2]] <- get("Language_code", envir = metadata)
+      ## Language (dataset!):
+      xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["language"]][["LanguageCode"]]) <- get("Language_code", envir = metadata)
+      xmlAttrs(ml[["identificationInfo"]][["MD_DataIdentification"]][["language"]][["LanguageCode"]])[[2]] <- get("Language_code", envir = metadata)
       xmlValue(ml[["characterSet"]][["MD_CharacterSetCode"]][[1]]) <- get("MD_Character_set_code", envir = metadata)
       xmlValue(ml[["hierarchyLevel"]][["MD_ScopeCode"]][[1]]) <- get("MD_scope_code", envir = metadata)
       ## Citation date:
       xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["citation"]][["CI_Citation"]][["date"]][["CI_Date"]][["date"]][["Date"]]) <- get("CI_Citation_date", envir = metadata)
-      xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["language"]][["LanguageCode"]]) <- get("MD_Language_code", envir = metadata)
-      xmlAttrs(ml[["identificationInfo"]][["MD_DataIdentification"]][["language"]][["LanguageCode"]])[[2]] <- get("MD_Language_code", envir = metadata)
-      ## All topic categories:
+      xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["citation"]][["CI_Citation"]][["date"]][["CI_Date"]][["dateType"]][["CI_DateTypeCode"]]) <- get("CI_Citation_date_type", envir = metadata)
+      xmlAttrs(ml[["identificationInfo"]][["MD_DataIdentification"]][["citation"]][["CI_Citation"]][["date"]][["CI_Date"]][["dateType"]][["CI_DateTypeCode"]])[[2]] <- get("CI_Citation_date_type", envir = metadata)
+      ## Topic category code:
       MD_Topic_category_code <- get("MD_Topic_category_code", envir = metadata)
       xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["topicCategory"]][["MD_TopicCategoryCode"]]) <- MD_Topic_category_code[1]
-      if(length(MD_Topic_category_code) > 1) {
-        xi <- length(MD_Topic_category_code) - 1
-        xt <- as.vector(which(names(ml[["identificationInfo"]][["MD_DataIdentification"]]) == "topicCategory")[1])
-        xm <- xmlSize(ml[["identificationInfo"]][["MD_DataIdentification"]])
-        j <- 0
-        for (i in (xt + 1):xm) {
-          ml[["identificationInfo"]][["MD_DataIdentification"]][xm + xi + j][[1]] <- ml[["identificationInfo"]][["MD_DataIdentification"]][i][[1]]
-          j <- j + 1
-        }
-        for(i in 2:length(MD_Topic_category_code)) {
-          ml[["identificationInfo"]][["MD_DataIdentification"]][xt + i - 1][[1]] <- ml[["identificationInfo"]][["MD_DataIdentification"]][["topicCategory"]]
-          xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][xt + i - 1][[1]][["MD_TopicCategoryCode"]]) <- MD_Topic_category_code[i]
-       }
-      }
       ## Data quality info:
       DQ_Citation_title <- get("DQ_Citation_title", envir = metadata)
       if(!DQ_Citation_title==""){
@@ -224,23 +214,23 @@ setMethod("GetPalette", "SpatialMetadata", function(obj){obj@palette})
         xmlValue(ml[["dataQualityInfo"]][["DQ_DataQuality"]][["report"]][["DQ_DomainConsistency"]][["result"]][["DQ_ConformanceResult"]][["specification"]][["CI_Citation"]][["date"]][["CI_Date"]][["date"]][["Date"]]) <- DQ_Citation_date
       }
       xmlValue(ml[["dataQualityInfo"]][["DQ_DataQuality"]][["report"]][["DQ_DomainConsistency"]][["result"]][["DQ_ConformanceResult"]][["specification"]][["CI_Citation"]][["date"]][["CI_Date"]][["dateType"]][["CI_DateTypeCode"]]) <- get("DQ_Citation_date_type", envir = metadata)
-     ## Resource locator...
-     CI_Online_resource_URL <- get("CI_Online_resource_URL", envir = metadata) 
-     if(!CI_Online_resource_URL==""){
+      ## Resource locator...
+      CI_Online_resource_URL <- get("CI_Online_resource_URL", envir = metadata) 
+      if(!CI_Online_resource_URL==""){
         xmlValue(ml[["distributionInfo"]][["MD_Distribution"]][["transferOptions"]][["MD_DigitalTransferOptions"]][["onLine"]][["CI_OnlineResource"]][["linkage"]][["URL"]]) <- CI_Online_resource_URL
-     }
-     if(validate.schema==TRUE){
-       try.connection <- try(url(CI_Online_resource_URL, open = 'rb'))
-       try.error <- inherits(try.connection, "try-error")
-       if(try.error == T){
-         warning("'CI_Online_resource_URL' points to an invalid URL.")
-       }
-     }
-     ## Bounding box:
-     xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["extent"]][["EX_Extent"]][["geographicElement"]][["EX_GeographicBoundingBox"]][["westBoundLongitude"]][["Decimal"]]) <- west
-     xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["extent"]][["EX_Extent"]][["geographicElement"]][["EX_GeographicBoundingBox"]][["eastBoundLongitude"]][["Decimal"]]) <- east
-     xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["extent"]][["EX_Extent"]][["geographicElement"]][["EX_GeographicBoundingBox"]][["northBoundLatitude"]][["Decimal"]]) <- north
-     xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["extent"]][["EX_Extent"]][["geographicElement"]][["EX_GeographicBoundingBox"]][["southBoundLatitude"]][["Decimal"]]) <- south
+      }
+      if(validate.schema==TRUE){
+        try.connection <- try(url(CI_Online_resource_URL, open = 'rb'))
+        try.error <- inherits(try.connection, "try-error")
+        if(try.error == T){
+          warning("'CI_Online_resource_URL' points to an invalid URL.")
+        }
+      }
+      ## Bounding box:
+      xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["extent"]][["EX_Extent"]][["geographicElement"]][["EX_GeographicBoundingBox"]][["westBoundLongitude"]][["Decimal"]]) <- west
+      xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["extent"]][["EX_Extent"]][["geographicElement"]][["EX_GeographicBoundingBox"]][["eastBoundLongitude"]][["Decimal"]]) <- east
+      xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["extent"]][["EX_Extent"]][["geographicElement"]][["EX_GeographicBoundingBox"]][["northBoundLatitude"]][["Decimal"]]) <- north
+      xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["extent"]][["EX_Extent"]][["geographicElement"]][["EX_GeographicBoundingBox"]][["southBoundLatitude"]][["Decimal"]]) <- south
       ## Dates:
       Time_period_begin <- get("Time_period_begin", envir = metadata) 
       if(!Time_period_begin==""){
@@ -248,18 +238,26 @@ setMethod("GetPalette", "SpatialMetadata", function(obj){obj@palette})
       }
       Time_period_end <- get("Time_period_end", envir = metadata) 
       if(!Time_period_end==""){
-        xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["extent"]][["EX_Extent"]][["temporalElement"]][["EX_TemporalExtent"]][["extent"]][["TimePeriod"]][["endPosition"]]) <- Time_period_begin
+        xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["extent"]][["EX_Extent"]][["temporalElement"]][["EX_TemporalExtent"]][["extent"]][["TimePeriod"]][["endPosition"]]) <- Time_period_end
       }
-      ## Metadata standard:
+      ## Metadata standard and language:
       xmlValue(ml[["metadataStandardName"]][[1]]) <- get("MD_Standard_name", envir = metadata)
       xmlValue(ml[["metadataStandardVersion"]][[1]]) <- get("MD_Standard_version", envir = metadata)
-      ## Contact:
-      xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["pointOfContact"]][["CI_ResponsibleParty"]][["role"]][["CI_RoleCode"]]) <- get("MD_Role", envir = metadata)
-     xmlAttrs(ml[["identificationInfo"]][["MD_DataIdentification"]][["pointOfContact"]][["CI_ResponsibleParty"]][["role"]][["CI_RoleCode"]])[[2]] <- get("MD_Role", envir = metadata)
-     ## Use constraints:
-     xx <- which(names(ml[["identificationInfo"]][["MD_DataIdentification"]]) == "resourceConstraints")  ## TH: there are two nodes of the same name!
-     xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][[xx[2]]][["MD_LegalConstraints"]][["accessConstraints"]][["MD_RestrictionCode"]]) <- get("MD_Access_constraints", envir = metadata)
-     xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][[xx[2]]][["MD_LegalConstraints"]][["otherConstraints"]][[1]]) <- get("MD_Other_restrictions", envir = metadata)
+      xmlValue(ml[["language"]][["LanguageCode"]]) <- get("MD_Language_code", envir = metadata)
+      xmlAttrs(ml[["language"]][["LanguageCode"]])[[2]] <- get("MD_Language_code", envir = metadata)
+      ## Contact (dataset!):
+      CI_Electronic_mail_address <- get("CI_Electronic_mail_address", envir = metadata) 
+      if(!CI_Electronic_mail_address==""){
+        xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["pointOfContact"]][["CI_ResponsibleParty"]][["contactInfo"]][["CI_Contact"]][["address"]][["CI_Address"]][["electronicMailAddress"]][[1]]) <- CI_Electronic_mail_address
+      }
+      xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["pointOfContact"]][["CI_ResponsibleParty"]][["organisationName"]][[1]]) <- get("CI_Organisation_name", envir = metadata)
+      xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["pointOfContact"]][["CI_ResponsibleParty"]][["role"]][["CI_RoleCode"]]) <- get("CI_Role", envir = metadata)
+      xmlAttrs(ml[["identificationInfo"]][["MD_DataIdentification"]][["pointOfContact"]][["CI_ResponsibleParty"]][["role"]][["CI_RoleCode"]])[[2]] <- get("CI_Role", envir = metadata)
+      ## Use constraints:
+      xx <- which(names(ml[["identificationInfo"]][["MD_DataIdentification"]]) == "resourceConstraints")  ## TH: there are two nodes of the same name!
+      xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][[xx[2]]][["MD_LegalConstraints"]][["accessConstraints"]][["MD_RestrictionCode"]]) <- get("MD_Access_constraints", envir = metadata)
+      xmlAttrs(ml[["identificationInfo"]][["MD_DataIdentification"]][[xx[2]]][["MD_LegalConstraints"]][["accessConstraints"]][["MD_RestrictionCode"]])[[2]] <- get("MD_Access_constraints", envir = metadata)
+      xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][[xx[2]]][["MD_LegalConstraints"]][["otherConstraints"]][[1]]) <- get("MD_Other_restrictions", envir = metadata)
   
     }
              
