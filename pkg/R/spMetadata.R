@@ -32,6 +32,20 @@ setMethod("GetPalette", "SpatialMetadata", function(obj){obj@palette})
     stop("Object of class 'Spatial*DataFrame' required.")
   }  
 
+  ## Load static metadata entries (if they do not exist already):
+  metadata.env(..., show.env = FALSE)
+  
+  ## Target variable: 
+  Target_variable <- names(obj)[1] 
+  ## Measurement resolution:
+  Attribute_Measurement_Resolution <- get("Attribute_Measurement_Resolution", envir = metadata)
+  if(Attribute_Measurement_Resolution==""){
+    ## Estimate the numeric resolution by using the optimal number of bins in the histogram:
+    if(is.numeric(obj@data[,Target_variable])){
+      Attribute_Measurement_Resolution <- signif(diff(quantile(obj@data[,Target_variable], na.rm=TRUE, prob=c(.025,.975)))/(length(hist(obj@data[,Target_variable], breaks="FD", plot=FALSE)$breaks)*2), 2)
+    }
+  }
+
   ## Use metadata file if it does exit:
   if(!missing(xml.file)){
     if(file.exists(xml.file)){
@@ -107,21 +121,9 @@ setMethod("GetPalette", "SpatialMetadata", function(obj){obj@palette})
     }
     ml <- xmlRoot(ret) 
     
-    ## Load static metadata entries (if they do not exist already):
-    metadata.env(..., show.env = FALSE)
-    ## Target variable: 
-    Target_variable <- names(obj)[1] 
     ## Generate a name for the output XML file:
     if(missing(out.xml.file)){ 
       out.xml.file <- paste(normalizeFilename(deparse(substitute(obj, env=parent.frame()))), ".xml", sep="") 
-    }
-    ## Measurement resolution:
-    Attribute_Measurement_Resolution <- get("Attribute_Measurement_Resolution", envir = metadata)
-    if(Attribute_Measurement_Resolution==""){
-      ## Estimate the numeric resolution by using the optimal number of bins in the histogram:
-      if(is.numeric(obj@data[,Target_variable])){
-         Attribute_Measurement_Resolution <- signif(diff(quantile(obj@data[,Target_variable], na.rm=TRUE, prob=c(.025,.975)))/(length(hist(obj@data[,Target_variable], breaks="FD", plot=FALSE)$breaks)*2), 2)
-      }
     }
        
     ## Estimate the bounding box:

@@ -7,21 +7,22 @@
 \description{Writes an object of class \code{"STIDF"} (unstructured/irregular spatio-temporal data) to a KML file with a possibility to parse attribute variables using several aesthetics arguments.
 }
 \usage{
-kml_layer.STIDF(obj, \dots)
+kml_layer.STIDF(obj, dtime, \dots)
 }
 \arguments{
-  \item{obj}{space-time object of class \code{"STID"} (spatio-temporal irregular data frame)}
+  \item{obj}{space-time object of class \code{"STIDF"} (spatio-temporal irregular data frame) or class \code{"STFDF"} (spatio-temporal full data frame)}
+  \item{dtime}{temporal support (point or block) expressed in seconds}
   \item{\dots}{additional arguments that can be passed to the \code{kml_layer.Spatial} method}
 }
 \details{An object of class \code{"STIDF"} contains a slot of type \code{"Spatial*"}, which is parsed via the \code{kml_layer} method depending on the type of spatial object (points, lines, polygons). The dateTime is defined as:\cr 
 
 \code{yyyy-mm-ddThh:mm:sszzzzzz}\cr
 
-where \code{T} is the separator between the date and the time, and the time zone is either \code{Z} (for UTC) or \code{zzzzzz}, which represents \enc{?}{+-}hh:mm in relation to UTC. For more info on how Time Stamps work see \url{http://kml-samples.googlecode.com}. If the time is measured at block support, then:\cr 
+where \code{T} is the separator between the date and the time, and the time zone is either \code{Z} (for UTC) or \code{zzzzzz}, which represents \enc{±}{+-}hh:mm in relation to UTC. For more info on how Time Stamps work see \url{http://kml-samples.googlecode.com}. If the time is measured at block support, then:\cr 
 
 \code{<TimeStamp><begin> </begin><end> </end></TimeStamp>}\cr
 
-tags will be inserted. Temporal support (\eqn{\Delta t}{dt}) is estimated using the \code{xts::periodicity} function (median time between observations). The begin time is then derived as \eqn{t_1 = t - .5\cdot \Delta t}{t1 = t - .5 d t}.
+tags will be inserted. Temporal support for any spacetime class, if not specified by the user, is determined as a difference between the \code{"time"} (indicating begin time) and \code{"endTime"} slots.
 }
 \references{
 \itemize{
@@ -29,7 +30,7 @@ tags will be inserted. Temporal support (\eqn{\Delta t}{dt}) is estimated using 
 \item spacetime package (\url{http://CRAN.R-project.org/package=spacetime})
 }
 }
-\author{Tomislav Hengl }
+\author{Tomislav Hengl and Benedikt \enc{Gräler}{Graeler}}
 \seealso{ \code{\link{kml_layer.STTDF}}, \code{\link{plotKML-method}} }
 \examples{
 \dontrun{
