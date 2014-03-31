@@ -6,22 +6,22 @@
 
 kml_layer.STIDF <- function(
   obj,
-  dtime = "", # time support
+#  dtime = "", # time support BG: all ST* objects have a slot endTime
   ...
   ){
 
   # Format the time slot for writing to KML:
-  if(all(dtime==0)) {  
+#   if(all(dtime==0)) {  
     TimeSpan.begin = format(time(obj@time), "%Y-%m-%dT%H:%M:%SZ")
-    TimeSpan.end = TimeSpan.begin
-  } else {
-    if(length(obj@time)>1&!nzchar(dtime)){
-      period <- periodicity(obj@time) # estimate the time support (if not indicated)
-      dtime <- period$frequency
-    }
-    TimeSpan.begin <- format(as.POSIXct(unclass(as.POSIXct(time(obj@time))) - dtime/2, origin="1970-01-01"), "%Y-%m-%dT%H:%M:%SZ")
-    TimeSpan.end <- format(as.POSIXct(unclass(as.POSIXct(time(obj@time))) + dtime/2, origin="1970-01-01"), "%Y-%m-%dT%H:%M:%SZ")
-  }
+    TimeSpan.end = format(as.Date(obj@endTime), "%Y-%m-%dT%H:%M:%SZ")
+#   } else {
+#     if(length(obj@time)>1&!nzchar(dtime)){
+#       period <- periodicity(obj@time) # estimate the time support (if not indicated)
+#       dtime <- period$frequency
+#     }
+#     TimeSpan.begin <- format(as.POSIXct(unclass(as.POSIXct(time(obj@time))) - dtime/2, origin="1970-01-01"), "%Y-%m-%dT%H:%M:%SZ")
+#     TimeSpan.end <- format(as.POSIXct(unclass(as.POSIXct(time(obj@time))) + dtime/2, origin="1970-01-01"), "%Y-%m-%dT%H:%M:%SZ")
+#   }
   
   # Check the data type:
   if(is(obj@sp, "SpatialPoints")) { # TRUE also if obj@sp is SpatialPixels:
@@ -39,11 +39,12 @@ kml_layer.STIDF <- function(
       kml_layer.SpatialLines(obj = sp, TimeSpan.begin = TimeSpan.begin, TimeSpan.end = TimeSpan.end,  ...)
   }
   else { 
-  stop("The STIDF object does not extend SpatialPoints*, SpatialLines* or SpatialPolygons*")
+  stop("The 'sp' slot of the ST-object does not extend SpatialPoints*, SpatialLines* or SpatialPolygons*")
   }}}
 
 }
 
 setMethod("kml_layer", "STIDF", kml_layer.STIDF)
+setMethod("kml_layer", "STSDF", function(obj, ...) kml_layer.STIDF(as(obj, "STIDF"), ...))
 
 # end of script;
