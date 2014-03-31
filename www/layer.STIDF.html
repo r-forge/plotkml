@@ -17,7 +17,7 @@
 <h3>Usage</h3>
 
 <pre>
-kml_layer.STIDF(obj, dtime = "", ...)
+kml_layer.STIDF(obj, dtime, ...)
 </pre>
 
 
@@ -26,11 +26,11 @@ kml_layer.STIDF(obj, dtime = "", ...)
 <table summary="R argblock">
 <tr valign="top"><td><code>obj</code></td>
 <td>
-<p>space-time object of class <code>"STID"</code> (spatio-temporal irregular data frame)</p>
+<p>space-time object of class <code>"STIDF"</code> (spatio-temporal irregular data frame) or class <code>"STFDF"</code> (spatio-temporal full data frame)</p>
 </td></tr>
 <tr valign="top"><td><code>dtime</code></td>
 <td>
-<p>temporal support size (in seconds)</p>
+<p>temporal support (point or block) expressed in seconds</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -49,13 +49,13 @@ kml_layer.STIDF(obj, dtime = "", ...)
 </p>
 <p><code>&lt;TimeStamp&gt;&lt;begin&gt; &lt;/begin&gt;&lt;end&gt; &lt;/end&gt;&lt;/TimeStamp&gt;</code><br>
 </p>
-<p>tags will be inserted. Temporal support (<i>dt</i>) is estimated using the <code>xts::periodicity</code> function (median time between observations). The begin time is then derived as <i>t1 = t - .5 d t</i>.
+<p>tags will be inserted. Temporal support for any spacetime class, if not specified by the user, is determined as a difference between the <code>"time"</code> (indicating begin time) and <code>"endTime"</code> slots.
 </p>
 
 
 <h3>Author(s)</h3>
 
-<p>Tomislav Hengl </p>
+<p>Tomislav Hengl and Benedikt Gräler</p>
 
 
 <h3>References</h3>

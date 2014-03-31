@@ -64,7 +64,11 @@
       file.name = paste(folder.name, ".kml", sep=""), 
       colour, shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png", 
       points_names, kmz = get("kmz", envir = plotKML.opts), \dots)
-\S4method{plotKML}{STFDF}(obj, \dots)
+\S4method{plotKML}{STFDF}(obj, 
+      folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
+      file.name = paste(folder.name, ".kml", sep=""), 
+      colour, shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png", 
+      points_names, kmz = get("kmz", envir = plotKML.opts), \dots)
 \S4method{plotKML}{STSDF}(obj, \dots)
 \S4method{plotKML}{STTDF}(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
@@ -315,7 +319,7 @@ z.lim = range(DE_kriged@data, na.rm=TRUE)
 plotKML(DE_kriged, png.width=png.width, 
         png.height=png.height, z.lim=z.lim)
 ## add observations points:
-plotKML(rr.sti, z.lim=z.lim)
+plotKML(rr, z.lim=z.lim)
 }
 
 ## -------------- STTDF --------- ##

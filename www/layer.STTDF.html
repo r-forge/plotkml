@@ -18,7 +18,7 @@
 
 <pre>
 kml_layer.STTDF(obj, id.name = names(obj@data)[which(names(obj@data)== "burst")],
-    dtime = "", extrude = FALSE, 
+    dtime, extrude = FALSE, 
     start.icon = paste(get("home_url", envir = plotKML.opts),
          "3Dballyellow.png", sep = ""), 
     end.icon = paste(get("home_url", envir = plotKML.opts), 
@@ -84,7 +84,7 @@ kml_layer.STTDF(obj, id.name = names(obj@data)[which(names(obj@data)== "burst")]
 </p>
 <p><code>&lt;TimeStamp&gt;&lt;begin&gt; &lt;/begin&gt;&lt;end&gt; &lt;/end&gt;&lt;/TimeStamp&gt;</code> <br>
 </p>
-<p>tags will be inserted. Temporal support (<i>dt</i>) is estimated using the <code>xts::periodicity</code> function (median time between observations). The begin time is then derived as <i>t1 = t - .5 d t</i>.
+<p>tags will be inserted. Temporal support for any spacetime class, if not specified by the user, is determined as a difference between the <code>"time"</code> (indicating begin time) and <code>"endTime"</code> slots.
 </p>
 
 

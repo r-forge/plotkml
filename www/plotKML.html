@@ -71,6 +71,8 @@ plotKML(obj,
       file.name = paste(folder.name, ".kml", sep=""), 
       colour, shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png", 
       points_names, kmz = get("kmz", envir = plotKML.opts), ...)
+## S4 method for signature 'STSDF'
+plotKML(obj, ...)
 ## S4 method for signature 'STTDF'
 plotKML(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
@@ -136,7 +138,7 @@ plotKML(obj,
 <table summary="R argblock">
 <tr valign="top"><td><code>obj</code></td>
 <td>
-<p>input object of specific class; either some <a href="http://cran.r-project.org/package=sp">sp</a> or <a href="http://cran.r-project.org/package=raster">raster</a> package class object, or plotKML composite objects containing both inputs and outputs of analysis</p>
+<p>input object of specific class; either some <a href="http://cran.r-project.org/package=sp">sp</a>, or <a href="http://cran.r-project.org/package=raster">raster</a> or <a href="http://cran.r-project.org/package=spacetime">spacetime</a> package class object, or plotKML composite objects containing both inputs and outputs of analysis</p>
 </td></tr>
 <tr valign="top"><td><code>folder.name</code></td>
 <td>
@@ -252,6 +254,8 @@ plotKML(obj,
 <h3>Details</h3>
 
 <p>This is a generic function to plot various spatial and spatio-temporal R objects that contain both inputs and outputs of spatial analysis. The resulting plots (referred to as <EM>&lsquo;views&rsquo;</EM>) are expected to be cartographically complete as they should contain legends, and data and model descriptions. In principle, <code>plotKML</code> works with both simple spatial objects, and complex objects such as <code>"SpatialPredictions"</code>, <code>"SpatialVectorsSimulations"</code>, <code>"RasterBrickSimulations"</code>, <code>"RasterBrickTimeSeries"</code>, <code>"SpatialMaxEntOutput"</code> and similar. To further customize visualizations consider combining the lower level functions <code><a href="kml_open.html">kml_open</a></code>, <code><a href="kml_open.html">kml_close</a></code>, <code><a href="kml_compress.html">kml_compress</a></code>, <code><a href="kml_screen.html">kml_screen</a></code> into your own <code>plotKML()</code> method.
+</p>
+<p>All ST-classes are coerced to the STIDF format.
 </p>
 
 
@@ -370,6 +374,7 @@ plotKML(prof1, var.name="ORCDRC", color.name="soil_color")
 ## End(Not run)
 
 ## -------------- STIDF --------- ##
+library(sp)
 library(spacetime)
 ## daily temperatures for Croatia:
 data(HRtemp08)
@@ -383,7 +388,7 @@ HRtemp08.st &lt;- STIDF(sp, time = HRtemp08$ctime, data = HRtemp08[,c("NAME","TE
 HRtemp08_jan &lt;- HRtemp08.st[1:500]
 str(HRtemp08_jan)
 ## Not run: 
-plotKML(HRtemp08_jan[,,"TEMP"], dtime = 24*3600, LabelScale = .4)
+plotKML(HRtemp08_jan[,,"TEMP"], LabelScale = .4)
 
 ## End(Not run)
 
@@ -438,8 +443,7 @@ z.lim = range(DE_kriged@data, na.rm=TRUE)
 plotKML(DE_kriged, png.width=png.width, 
         png.height=png.height, z.lim=z.lim)
 ## add observations points:
-rr.sti &lt;- as(rr, "STIDF")
-plotKML(rr.sti, z.lim=z.lim)
+plotKML(rr, z.lim=z.lim)
 
 ## End(Not run)
 
