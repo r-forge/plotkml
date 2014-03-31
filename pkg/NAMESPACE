@@ -13,7 +13,9 @@ importFrom("pixmap", pixmapIndexed, pixmapRGB)
 importFrom("plyr", aaply, laply, llply, ldply)
 importFrom("RSAGA", set.file.extension, rsaga.env, rsaga.get.version, rsaga.geoprocessor)
 importFrom("raster", extract, stack, brick, rotate, nlayers, shift, projectRaster, extension, is.factor, as.factor, removeTmpFiles, rasterToPolygons, raster, projection, rasterize, writeRaster, extent, calc, getValues, "values<-", getZ, setZ, minValue, maxValue, image, ncol, nrow, ncell)
-importFrom("sp", coordinates, over, bbox, spplot, is.projected, SpatialPixelsDataFrame, gridparameters, GridTopology)
+# importFrom("sp", coordinates, over, bbox, spplot, is.projected, SpatialPixelsDataFrame, gridparameters, GridTopology)
+# + CRS, SpatialPointsDataFrame, SpatialPolygonsDataFrame, ... and probably more
+import("sp")
 
 import(XML)
 import(rgdal)

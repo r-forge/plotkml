@@ -7,18 +7,17 @@
 \description{Writes an object of class \code{"STIDF"} (unstructured/irregular spatio-temporal data) to a KML file with a possibility to parse attribute variables using several aesthetics arguments.
 }
 \usage{
-kml_layer.STIDF(obj, dtime = "", \dots)
+kml_layer.STIDF(obj, \dots)
 }
 \arguments{
   \item{obj}{space-time object of class \code{"STID"} (spatio-temporal irregular data frame)}
-  \item{dtime}{temporal support size (in seconds)}
   \item{\dots}{additional arguments that can be passed to the \code{kml_layer.Spatial} method}
 }
 \details{An object of class \code{"STIDF"} contains a slot of type \code{"Spatial*"}, which is parsed via the \code{kml_layer} method depending on the type of spatial object (points, lines, polygons). The dateTime is defined as:\cr 
 
 \code{yyyy-mm-ddThh:mm:sszzzzzz}\cr
 
-where \code{T} is the separator between the date and the time, and the time zone is either \code{Z} (for UTC) or \code{zzzzzz}, which represents \enc{±}{+-}hh:mm in relation to UTC. For more info on how Time Stamps work see \url{http://kml-samples.googlecode.com}. If the time is measured at block support, then:\cr 
+where \code{T} is the separator between the date and the time, and the time zone is either \code{Z} (for UTC) or \code{zzzzzz}, which represents \enc{?}{+-}hh:mm in relation to UTC. For more info on how Time Stamps work see \url{http://kml-samples.googlecode.com}. If the time is measured at block support, then:\cr 
 
 \code{<TimeStamp><begin> </begin><end> </end></TimeStamp>}\cr
 
