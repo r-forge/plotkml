@@ -64,11 +64,7 @@
       file.name = paste(folder.name, ".kml", sep=""), 
       colour, shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png", 
       points_names, kmz = get("kmz", envir = plotKML.opts), \dots)
-\S4method{plotKML}{STFDF}(obj, 
-      folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
-      file.name = paste(folder.name, ".kml", sep=""), 
-      colour, shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png", 
-      points_names, kmz = get("kmz", envir = plotKML.opts), \dots)
+\S4method{plotKML}{STFDF}(obj, \dots)
 \S4method{plotKML}{STSDF}(obj, \dots)
 \S4method{plotKML}{STTDF}(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
@@ -152,7 +148,7 @@
 }
 \details{This is a generic function to plot various spatial and spatio-temporal R objects that contain both inputs and outputs of spatial analysis. The resulting plots (referred to as \emph{`views'}) are expected to be cartographically complete as they should contain legends, and data and model descriptions. In principle, \code{plotKML} works with both simple spatial objects, and complex objects such as \code{"SpatialPredictions"}, \code{"SpatialVectorsSimulations"}, \code{"RasterBrickSimulations"}, \code{"RasterBrickTimeSeries"}, \code{"SpatialMaxEntOutput"} and similar. To further customize visualizations consider combining the lower level functions \code{\link{kml_open}}, \code{\link{kml_close}}, \code{\link{kml_compress}}, \code{\link{kml_screen}} into your own \code{plotKML()} method.
 
-All ST-classes are coerced to the STIDF format.
+All ST-classes are coerced to the STIDF format and hence use the plotKML method for STIDFs.
 }
 \note{To prepare a list of objects of class \code{"SpatialPointsDataFrame"}, \code{"SpatialLinesDataFrame"}, \code{"SpatialPolygonsDataFrame"}, or \code{"SpatialPixelsDataFrame"} consider using the \code{GSIF::tile} function. Writting large spatial objects via plotKML can be time consuming. Please refer to the package manual for more information.
 }
