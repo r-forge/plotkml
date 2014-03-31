@@ -19,7 +19,7 @@ kml_layer.STIDF <- function(
   }
   
   # Check the data type:
-  if(is(obj@sp, "SpatialPixels")){
+  if(is(obj@sp, "SpatialPixels")) {
     ## construct stack of rasters:
     r <- brick(lapply(unique(index(obj@time)), 
                       function(x) {
@@ -32,7 +32,7 @@ kml_layer.STIDF <- function(
     units(dtime) <- "secs"
     kml_layer.RasterBrick(obj = r, dtime=as.numeric(dtime), ...)
   } else {
-    if(is(obj@sp, "SpatialPoints")) { # TRUE also if obj@sp is SpatialPixels:
+    if(is(obj@sp, "SpatialPoints")) {
       sp <- SpatialPointsDataFrame(obj@sp, obj@data)
       kml_layer.SpatialPoints(obj = sp, TimeSpan.begin = TimeSpan.begin, TimeSpan.end = TimeSpan.end,  ...)
     } else {
@@ -49,11 +49,10 @@ kml_layer.STIDF <- function(
       }
     }
   }
-  
 }
 
 setMethod("kml_layer", "STIDF", kml_layer.STIDF)
-setMethod("kml_layer", "STFDF", kml_layer.STIDF)
+setMethod("kml_layer", "STFDF", function(obj, ...) kml_layer.STIDF(as(obj, "STIDF"), ...))
 setMethod("kml_layer", "STSDF", function(obj, ...) kml_layer.STIDF(as(obj, "STIDF"), ...))
 
 # end of script;
