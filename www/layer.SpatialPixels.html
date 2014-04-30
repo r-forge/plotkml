@@ -18,7 +18,8 @@
 <pre>
 kml_layer.SpatialPixels(obj, raster_name, plot.legend = TRUE, metadata = NULL, 
      png.width = gridparameters(obj)[1,"cells.dim"], 
-     png.height = gridparameters(obj)[2,"cells.dim"], ...)
+     png.height = gridparameters(obj)[2,"cells.dim"], 
+     min.png.width = 800, ...)
 </pre>
 
 
@@ -48,6 +49,10 @@ kml_layer.SpatialPixels(obj, raster_name, plot.legend = TRUE, metadata = NULL,
 <tr valign="top"><td><code>png.height</code></td>
 <td>
 <p>(optional) height of the PNG file</p>
+</td></tr>
+<tr valign="top"><td><code>min.png.width</code></td>
+<td>
+<p>(optional) minimum width of the PNG file</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -92,5 +97,5 @@ kml(eberg_grid, colour_scale = SAGA_pal[[1]], colour = TWISRT6,
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.4-3 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.4-5 <a href="00Index.html">Index</a>]</div>
 </body></html>
