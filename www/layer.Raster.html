@@ -17,7 +17,8 @@
 
 <pre>
 kml_layer.Raster(obj, plot.legend = TRUE, metadata = NULL, raster_name, 
-     png.width = ncol(obj), png.height = nrow(obj), ...)
+     png.width = ncol(obj), png.height = nrow(obj), 
+     min.png.width = 800, ...)
 </pre>
 
 
@@ -47,6 +48,10 @@ kml_layer.Raster(obj, plot.legend = TRUE, metadata = NULL, raster_name,
 <tr valign="top"><td><code>png.height</code></td>
 <td>
 <p>(optional) height of the PNG file</p>
+</td></tr>
+<tr valign="top"><td><code>min.png.width</code></td>
+<td>
+<p>(optional) minimum width of the PNG file</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -88,5 +93,5 @@ kml(r, colour_scale = SAGA_pal[[1]], colour = TWISRT6)
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.4-3 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.4-5 <a href="00Index.html">Index</a>]</div>
 </body></html>
