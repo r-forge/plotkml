@@ -86,11 +86,12 @@ pnt = list("sp.points", barxyz, col="black", pch="+")
 spplot(bargrid[1], sp.layout=pnt, col.regions = R_pal[["blue_grey_red"]])
 # Deriving stream networks using geostatistical simulations:
 Z.ovgm &lt;- vgm(psill=1831, model="Mat", range=1051, nugget=0, kappa=1.2)
-vt.gt &lt;- gstat(id=c("Z"), formula=Z~1, data=barxyz, model=Z.ovgm, nmax=30)
-# geostatistical simulations:
+sel &lt;- runif(length(barxyz$Z))&lt;.2
 N.sim &lt;- 10
-DEM.sim &lt;- predict.gstat(vt.gt, bargrid, nsim=N.sim, debug.level=-1)
-fullgrid(DEM.sim) &lt;- TRUE
+## Note: this operation can be time consuming
+# geostatistical simulations:
+DEM.sim &lt;- krige(Z~1, barxyz[sel,], bargrid, model=Z.ovgm, nmax=20, 
+   nsim=N.sim, debug.level=-1)
 stream.list &lt;- list(rep(NA, N.sim))
 # derive stream networks in SAGA GIS 2.0.8:
 for (i in 1:N.sim) {
@@ -106,7 +107,7 @@ for (i in 1:N.sim) {
   proj4string(stream.list[[i]]) &lt;- barxyz@proj4string
 }
 # plot all derived streams at top of each other:
-stream.plot &lt;- as.list(rep(NA, N.sim))
+streams.plot &lt;- as.list(rep(NA, N.sim))
 for(i in 1:N.sim){
   streams.plot[[i]] &lt;- list("sp.lines", stream.list[[i]])
 }
@@ -116,5 +117,5 @@ sp.layout=streams.plot)
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.4-5 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.4-4 <a href="00Index.html">Index</a>]</div>
 </body></html>
