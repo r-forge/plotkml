@@ -38,5 +38,65 @@ txt <- sprintf('<name>\%s</name><TimeStamp><begin>\%s</begin><end>\%s</end></Tim
     begin, end, HRtemp08[1,"Lon"], HRtemp08[1,"Lat"], 0)
 parseXMLAndAdd(txt, parent=p1)
 p1
+
+\dontrun{
+## examples from: http://dx.doi.org/10.1007/s00704-011-0464-2 
+library(spacetime)
+library(gstat)
+library(sp)
+sp <- SpatialPoints(HRtemp08[,c("Lon","Lat")])
+proj4string(sp) <- CRS("+proj=longlat +datum=WGS84")
+HRtemp08.st <- STIDF(sp, time = HRtemp08$DATE-.5, data = HRtemp08[,c("NAME","TEMP")], endTime = as.POSIXct(HRtemp08$DATE+.5))
+
+## Load covariates:
+con <- url("http://dailymeteo.org/sites/default/files/HRgrid1km.rda")
+load(con)
+str(HRgrid1km)
+sel.s <- c("HRdem","HRdsea","HRtwi","Lat","Lon")
+## Prepare static covariates:
+begin <- as.Date("2008-01-01")  
+endTime <- as.POSIXct(as.Date("2008-12-31"))
+sp.grid <- as(HRgrid1km, "SpatialPixels")
+HRgrid1km.st0 <- STFDF(sp.grid, time=begin, 
+    data=HRgrid1km@data[,sel.s], endTime=endTime)
+## Prepare dynamic covariates:
+sel.d <- which(!names(HRgrid1km) %in% sel.s)
+dates <- sapply(names(HRgrid1km)[sel.d], 
+     function(x){strsplit(x, "LST")[[1]][2]}
+)
+dates <- as.Date(dates, format="%Y_%m_%d")
+## Sort values of MODIS LST bands:
+m <- data.frame(MODIS.LST = as.vector(unlist(HRgrid1km@data[,sel.d])))
+## >10M values!
+## Create an object of type STFDF:
+HRgrid1km.stD <- STFDF(sp.grid, time=dates-4, data=m, endTime=as.POSIXct(dates+4))
+
+## Overlay:
+HRtemp08.stxy <- spTransform(HRtemp08.st, CRS(proj4string(HRgrid1km)))
+ov.s <- over(HRtemp08.stxy, HRgrid1km.st0)
+ov.d <- over(HRtemp08.stxy, HRgrid1km.stD)
+## Prepare the regression matrix:
+regm <- do.call(cbind, list(HRtemp08.stxy@data, ov.s, ov.d))
+## Estimate cumulative days:
+regm$cday <- floor(unclass(HRtemp08.stxy@endTime)/86400-.5)
+str(regm)
+## Plot a single station:
+scatter.smooth(regm$cday[regm$NAME=="Zavi<c5><be>an"], 
+    regm$TEMP[regm$NAME=="Zavi<c5><be>an"], 
+    xlab="Cumulative days", 
+    ylab="Mean daily temperature (\260C)", 
+    ylim=c(-12,28), main="GL039 (Zavi\236an)", 
+    col="grey")
+## We run PCA so we can later on filter all missing pixels in the MODIS.LST images:
+pca <- prcomp(~HRdem+HRdsea+Lat+Lon+HRtwi+MODIS.LST, 
+    data=regm, scale.=TRUE)
+regm.pca <- cbind(regm[-pca$na.action,c("TEMP","cday")], 
+    as.data.frame(pca$x))
+## Fit a spatio-temporal regression model:
+theta <- min(regm.pca$cday)
+lm.HRtemp08 <- lm(TEMP~PC1+PC2+PC3+PC4+PC5+PC6 
+     +cos((cday-theta)*pi/180), data=regm.pca)
+summary(lm.HRtemp08)
+}
 }
 \keyword{datasets}
