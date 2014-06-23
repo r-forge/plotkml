@@ -60,11 +60,11 @@ sp.grid <- as(HRgrid1km, "SpatialPixels")
 HRgrid1km.st0 <- STFDF(sp.grid, time=begin, 
     data=HRgrid1km@data[,sel.s], endTime=endTime)
 ## Prepare dynamic covariates:
-sel.d <- which(!names(HRgrid1km) %in% sel.s)
+sel.d <- which(!names(HRgrid1km) \%in\% sel.s)
 dates <- sapply(names(HRgrid1km)[sel.d], 
      function(x){strsplit(x, "LST")[[1]][2]}
 )
-dates <- as.Date(dates, format="%Y_%m_%d")
+dates <- as.Date(dates, format="\%Y_\%m_\%d")
 ## Sort values of MODIS LST bands:
 m <- data.frame(MODIS.LST = as.vector(unlist(HRgrid1km@data[,sel.d])))
 ## >10M values!
