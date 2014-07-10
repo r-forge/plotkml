@@ -62,7 +62,7 @@
 
 \begin{document}
 
-\VignetteIndexEntry{ plotKML: Scientific Visualization of Spatio-temporal Data }
+%\VignetteIndexEntry{ plotKML: Scientific Visualization of Spatio-temporal Data }
 %% jss options, see http://www.jstatsoft.org/style
 
 %% make sure all packages are there already, if not go and get them
