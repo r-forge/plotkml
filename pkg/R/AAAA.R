@@ -13,7 +13,7 @@ plotKML.fileIO <- new.env(hash=TRUE, parent = parent.frame())
 ## setup the plotKML environment:
 plotKML.opts <- new.env(hash=TRUE, parent = parent.frame())
 
-## Find paths to external packages;
+## Find paths to external packages:
 paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "", python = "", show.paths = TRUE){ 
 
      ## Try locating SAGA GIS (R default setting)...
@@ -53,7 +53,7 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
         if(!length(x) == 0) {
           im.dir <- paths[grep(paths, pattern="Magick", ignore.case = TRUE)[1]]
           convert = shQuote(shortPathName(normalizePath(file.path(im.dir, "convert.exe"))))
-          if(show.paths){ 
+          if(show.paths&file.exists(convert)){ 
             try( om <- system(convert,  show.output.on.console = FALSE, intern = TRUE)[1] )
             if(!class(.Last.value)[1]=="try-error"){
               message( paste(om) ) 
@@ -69,7 +69,7 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
           if(!length(x <- grep(paths <- strsplit(Sys.getenv('PATH')[[1]], ":")[[1]], pattern="Magick", ignore.case = TRUE))==0) {
             im.dir <- paths[grep(paths, pattern="Magick", ignore.case = TRUE)[1]]
             convert = "convert"
-            if(show.paths){ 
+            if(show.paths&file.exists(convert)){ 
               try( om <- system(convert,  show.output.on.console = FALSE, intern = TRUE)[1] )
               if(!class(.Last.value)[1]=="try-error"){
                 message( paste(om) ) 
@@ -85,7 +85,7 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
         convert = ""
         }
      } else { 
-     if(show.paths){ 
+     if(show.paths&file.exists(convert)){ 
        try( om <- system(convert,  show.output.on.console = FALSE, intern = TRUE)[1] )
        if(!class(.Last.value)[1]=="try-error"){
          message( paste(om) ) 
