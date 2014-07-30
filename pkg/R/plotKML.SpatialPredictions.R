@@ -66,12 +66,7 @@ setMethod("plotKML", "SpatialPredictions", function(
     parseXMLAndAdd(description_txt, parent=kml.out[["Document"]])  
     assign('kml.out', kml.out, envir=plotKML.fileIO)
   }
-  
-  ## Parsing the call:
-  call.lst <- substitute(list(...))
-  #call.lst <- as.list(call.lst)[-1]
-  print(call.lst)
-  
+   
   if(grid2poly == TRUE){ 
     kml_layer(pol, colour = colour, ...)
   }
