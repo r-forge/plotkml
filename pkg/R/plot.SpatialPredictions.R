@@ -4,7 +4,7 @@
 # Dev Status     : pre-Alpha
 # Note           : ;
 
-plot.SpatialPredictions <- function(x, plot.predictions=TRUE, vertical=FALSE, ...){
+plot.SpatialPredictions <- function(x, plot.predictions=TRUE, vertical=FALSE, col=SAGA_pal[[1]], ...){
   if(plot.predictions==TRUE){    
     par(mfrow=c(2,2))
   } else { if(vertical==TRUE){
@@ -17,9 +17,9 @@ plot.SpatialPredictions <- function(x, plot.predictions=TRUE, vertical=FALSE, ..
   
   if(plot.predictions==TRUE){
     if(any(names(x@predicted) %in% x@variable)){
-      plot(raster(x@predicted[x@variable]), col=SAGA_pal[[1]])
+      plot(raster(x@predicted[x@variable]), col=col)
     } else {
-      plot(raster(x@predicted[1]), col=SAGA_pal[[1]])
+      plot(raster(x@predicted[1]), col=col)
     }
     points(x@observed, pch="+", cex=.8)
   }
