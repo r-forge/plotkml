@@ -70,18 +70,19 @@ echo $contents; } ?>
 <p class="style1">Contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">Tomislav Hengl</a>, </p>
 <p class="style1">Contributions by: <a href="http://www.landcareresearch.co.nz/research/staff_page.asp?staff_num=2132" target="_blank">Pierre Roudier</a>, <a href="http://casoilresource.lawr.ucdavis.edu/drupal/node/905" target="_blank">Dylan Beaudette</a> &amp; <a href="http://ifgi.uni-muenster.de/staff/edzer-pebesma" target="_blank">Edzer Pebesma</a></p>
 <p>This package has been developed as a part of the <a href="http://isric.org/projects/global-soil-information-facilities-gsif" target="_blank">Global Soil Information Facilities</a>, which are developed jointly by the ISRIC Institute and collaborators. ISRIC is a non-profit organization with a mandate to serve the international community as custodian of global soil information and to increase awareness and understanding of the role of soils in major global issues.</p>
-<p>The <strong>plotKML project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. See the complete list of <strong><a href="00Index.html">functions</a></strong> and a list of <a href="settings.php"><strong>additional settings</strong></a>. To submit a software bug, use the official <a href="http://r-forge.r-project.org/tracker/?group_id=1106" target="_blank"><strong>package tracker</strong></a>. The fastest way to learn how plotKML works is to follow this <a href="http://gsif.isric.org/doku.php?id=wiki:tutorial_plotkml" target="_blank"><strong>tutorial</strong></a>.</p>
+<p>The <strong>plotKML project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. See the complete list of <strong><a href="00Index.html">functions</a></strong> and a list of <a href="settings.php"><strong>additional settings</strong></a>. To submit a software bug, use the official <a href="http://r-forge.r-project.org/tracker/?group_id=1106" target="_blank"><strong>package tracker</strong></a>. The fastest way to learn how plotKML works is to follow this <a href="http://gsif.isric.org/doku.php?id=wiki:tutorial_plotkml" target="_blank"><strong>tutorial</strong></a>. There is also a <a href="http://cran.r-project.org/web/packages/plotKML/vignettes/jss1079.pdf" target="_blank">paper in the JSS on plotKML</a> package functionality.</p>
 <p>To submit a bug or future request please use the <strong><a href="https://r-forge.r-project.org/tracker/?group_id=1106" target="_blank">package tracker</a></strong>. The package is continuously updated and it is expected to become fully operational by early 2013. </p>
 <p><strong>Installation:</strong></p>
 <p>Get the <a href="http://cran.at.r-project.org/package=plotKML" target="_blank"><strong>stable release from CRAN</strong></a>. </p>
 <p>To install this package from <a href="https://r-forge.r-project.org/R/?group_id=1106" target="_blank">R-forge</a> use (works only on<strong> &gt;= R 2.14!</strong>):</p>
 <pre class="R_code">&gt; install.packages(&quot;plotKML&quot;, repos=c(&quot;http://R-Forge.R-project.org&quot;)) </pre>
 <p>Alternatively, you can install the most recent snapshot of the package directly from the source by using e.g.:</p>
-<pre class="R_code">&gt; download.file(&quot;http://plotkml.r-forge.r-project.org/plotKML_0.3-8.tar.gz&quot;, &quot;plotKML_0.3-8.tar.gz&quot;)
-&gt; system(&quot;R CMD INSTALL plotKML_0.3-8.tar.gz&quot;) </pre>
+<pre class="R_code">&gt; download.file(&quot;http://plotkml.r-forge.r-project.org/plotKML_0.4-6.tar.gz&quot;, &quot;plotKML_0.4-6.tar.gz&quot;)
+&gt; system(&quot;R CMD INSTALL plotKML_0.4-6.tar.gz&quot;) </pre>
 <p><iframe src="https://docs.google.com/present/embed?id=dhbpzjb4_91cvx3x2f2" frameborder="0" width="410" height="342"></iframe></p>
 <p><strong>News:</strong></p>
 <ul>
+  <li>August 2014: <a href="https://www.youtube.com/playlist?list=PLxVwQCAyQyxxdtkkjayMNV479UBPhls5z" target="_blank">GEOSTAT summer school video recordings</a> available on-line;</li>
   <li>July 2013: <a href="http://www.youtube.com/watch?v=to0Kxmz_7dM" target="_blank">plotKML video tutorial</a> now available on a youtube channel;</li>
   <li>May 28 2013: plotKML tutorials run on the <a href="http://geostat-course.org/Quebec_2013" target="_blank">GEOSTAT Quebec City 2013</a>; </li>
   <li>Mar 20 2013: added <a href="http://gsif.isric.org/doku.php?id=wiki:tutorial_plotkml" target="_blank">tiling examples</a> to the plotKML tutorial; </li>
@@ -96,8 +97,9 @@ echo $contents; } ?>
 </ul>
 <p><strong>Documents</strong>:</p>
 <ul>
+  <li>Tomislav Hengl, Pierre Roudier, Dylan Beaudette, Edzer Pebesma (2014) <strong><a href="http://cran.r-project.org/web/packages/plotKML/vignettes/jss1079.pdf" target="_blank">plotKML: Scientific Visualization of Spatio-temporal Data</a></strong>. Journal of Statistical Software, 50(??), accepted for publication. </li>
   <li>Poster at DSM 2012 conference: <a href="poster_plotKML_DSM2012.pdf">&quot;plotKML: a platform for scientific visualization of 2D and 3D soil
-  data in Google Earth&quot;</a> (PDF)</li>
+    data in Google Earth&quot;</a> (PDF)</li>
   <li>Poster at UseR 2011: <a href="poster-plotKML-UseR2011.pdf">&quot;plotKML: a framework for visualization of space-time data&quot;</a> (PDF)</li>
 </ul>
 <hr />
@@ -205,7 +207,7 @@ echo $contents; } ?>
   </tr>
 </table>
 <p class="style1"> Last update: 
-  <!-- #BeginDate format:Am1 -->May 31, 2013<!-- #EndDate -->
+  <!-- #BeginDate format:Am1 -->September 14, 2014<!-- #EndDate -->
 | contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">tom.hengl@wur.nl</a> | <a href="http://www.isric.org">ISRIC</a> - World Soil Information Institute </p>
 </body>
 </html>
