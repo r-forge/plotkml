@@ -60,6 +60,11 @@ reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
 
 reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), tmp.file = TRUE, program = "raster", NAflag = get("NAflag", envir = plotKML.opts), show.output.on.console = FALSE, ...) {
 
+  ## convert all character vectors to factors:
+  for(j in 1:ncol(obj)){ 
+    if(is.character(obj@data[,j])){ obj@data[,j] <- as.factor(obj@data[,j]) }
+  }
+
   if(program=="raster"){
 
     # if multiple layers:
@@ -82,7 +87,7 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
     else {
       r <- raster(obj)
       if(is.factor(obj@data[,1])){
-        r <- raster::as.factor(r)
+        if(!is.raster(r)){ r <- raster::as.factor(r) }
         message(paste("Reprojecting to", CRS, "..."))
         res <- as(raster::projectRaster(r, crs = CRS, method = "ngb"), "SpatialGridDataFrame")
       } else {
@@ -97,7 +102,7 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
       if(is.factor(obj@data[,j])){
         # copy levels:
         res@data[,j] <- as.factor(res@data[,j])
-        levels(res@data[,j]) = levels(as.factor(paste(obj@data[,j])))
+        levels(res@data[,j]) = levels(obj@data[,j])
       }
     }
   }
@@ -152,7 +157,7 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
         # reformat to the original factors:
           if(is.factor(obj@data[,j])){
             res@data[,j] <- as.factor(res@data[,j])
-            levels(res@data[,j]) = levels(as.factor(paste(obj@data[,j])))
+            levels(res@data[,j]) = levels(obj@data[,j])
         }
         unlink(paste(tf, ".tif", sep=""))
         unlink(paste(tf, "_ll.tif", sep=""))        
