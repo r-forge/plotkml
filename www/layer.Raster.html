@@ -16,9 +16,11 @@
 <h3>Usage</h3>
 
 <pre>
-kml_layer.Raster(obj, plot.legend = TRUE, metadata = NULL, raster_name, 
+kml_layer.Raster(obj, subfolder.name = paste(class(obj)), plot.legend = TRUE, 
+     metadata = NULL, raster_name, 
      png.width = ncol(obj), png.height = nrow(obj), 
-     min.png.width = 800, ...)
+     min.png.width = 800, TimeSpan.begin, TimeSpan.end,
+     layer.name, ...)
 </pre>
 
 
@@ -29,6 +31,10 @@ kml_layer.Raster(obj, plot.legend = TRUE, metadata = NULL, raster_name,
 <td>
 <p>object of class <code>"RasterLayer"</code>, <code>"SpatialPixelsDataFrame"</code> or <code>"SpatialGridDataFrame"</code></p>
 </td></tr>
+<tr valign="top"><td><code>subfolder.name</code></td>
+<td>
+<p>character; optional subfolder name</p>
+</td></tr> 
 <tr valign="top"><td><code>plot.legend</code></td>
 <td>
 <p>logical; specify whether a map legend should be generated automatically</p>
@@ -53,6 +59,18 @@ kml_layer.Raster(obj, plot.legend = TRUE, metadata = NULL, raster_name,
 <td>
 <p>(optional) minimum width of the PNG file</p>
 </td></tr>
+<tr valign="top"><td><code>TimeSpan.begin</code></td>
+<td>
+<p>object of class <code>"POSIXct"</code>; (optional) begin of the sampling period</p>
+</td></tr>
+<tr valign="top"><td><code>TimeSpan.end</code></td>
+<td>
+<p>object of class <code>"POSIXct"</code>; (optional) end of the sampling period</p>
+</td></tr>
+<tr valign="top"><td><code>layer.name</code></td>
+<td>
+<p>character; optional layer name</p>
+</td></tr> 
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>additional <code><a href="aesthetics.html">aesthetics</a></code> arguments</p>
@@ -93,5 +111,5 @@ kml(r, colour_scale = SAGA_pal[[1]], colour = TWISRT6)
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.4-5 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.4-6 <a href="00Index.html">Index</a>]</div>
 </body></html>
