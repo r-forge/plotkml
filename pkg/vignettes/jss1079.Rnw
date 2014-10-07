@@ -166,9 +166,9 @@ For \citet{Erwig1999GeoInformatica} spatio-temporal data sets and corresponding 
 
 \citet[pp.28--55]{Bivand2008Springer} and \citet{Pebesma2010Ifgi} implemented classes for spatial and spatio-temporal data in \proglang{R} via the \pkg{sp} and \pkg{spacetime} packages. These classes are also highly extendable and are already widely used inside the \proglang{R} spatial data analysis community. The \pkg{sp} package \citep{pebesma2005classes} is currently one of the top 10 packages with highest number of dependencies on CRAN\footnote{See blog by Dirk Eddelb\"{u}ttel published at \url{http://dirk.eddelbuettel.com} on Thursday, 16th August 2012.}, and has been used as the main starting point for building visualization functionality in \pkg{plotKML}. \par
 
-\begin{table*}[!htb]\label{Fig:spacetime_objects_types} 
+\begin{table*}[!htb]\label{Fig:spacetime_objects_types}
 \begin{center}
-\includegraphics[width=\textwidth]{Fig_spacetime_objects_types.pdf} 
+\includegraphics[width=\textwidth]{Fig_spacetime_objects_types.pdf}
 \vspace{6pt}
 \caption{Types of spatio-temporal objects (points and regions) based on the number of dimensions (2D, 3D, 2D+T and 3D+T) and support type and corresponding \proglang{R} classes. \texttt{STFDF} stands for a class for spatio-temporal data with full space-time grid, \texttt{STIDF} stands for a class for unstructured spatio-temporal or irregular data, and \texttt{STTDF} stands for a class for spatio-temporal trajectory data \citep{Pebesma2010Ifgi}. $\star$ --- classes not yet available in \proglang{R}.}
 \end{center}
@@ -567,14 +567,14 @@ Reprojecting to +proj=longlat +datum=WGS84 ...
 \end{CodeOutput}
 \end{CodeChunk}
 
-Next, we can select two climatic stations in the area (to allow for visualization of time-series data) and prepare an object of class \verb'"RasterBrickTimeSeries"':
+Next, we can select three climatic stations in the area (to allow for visualization of time-series data) and prepare an object of class \verb'"RasterBrickTimeSeries"':
 
 \begin{CodeChunk}
 \begin{CodeInput}
-R> pnts <- HRtemp08[which(HRtemp08$NAME=="Pazin")[1],]
-R> st.names <- c("Crni Lug - NP Risnjak", "Cres")
-R> pnts <- rbind(pnts, HRtemp08[which(HRtemp08$NAME==st.names[1])[1],])
+R> st.names <- c("Pazin", "Crni Lug - NP Risnjak", "Cres")
+R> pnts <- HRtemp08[which(HRtemp08$NAME==st.names[1])[1],]
 R> pnts <- rbind(pnts, HRtemp08[which(HRtemp08$NAME==st.names[2])[1],])
+R> pnts <- rbind(pnts, HRtemp08[which(HRtemp08$NAME==st.names[3])[1],])
 R> coordinates(pnts) <- ~Lon + Lat
 R> proj4string(pnts) <- CRS("+proj=longlat +datum=WGS84")
 R> LST_ll <- brick(LST_ll)
@@ -585,7 +585,7 @@ R> LST.ts <- new("RasterBrickTimeSeries", variable = "LST", sampled = pnts,
 \end{CodeInput}
 \end{CodeChunk}
 
-So that we can plot the MODIS images in Google Earth by running:
+\noindent so that we can plot the MODIS images in Google Earth by running:
 
 \begin{CodeChunk}
 \begin{CodeInput}
