@@ -16,7 +16,8 @@
 <h3>Usage</h3>
 
 <pre>
-kml_layer.SpatialLines(obj, extrude = FALSE, z.scale = 1, metadata = NULL, 
+kml_layer.SpatialLines(obj, subfolder.name = paste(class(obj)), 
+  extrude = FALSE, z.scale = 1, metadata = NULL, 
   html.table = NULL, TimeSpan.begin = "", TimeSpan.end = "", ...)
 </pre>
 
@@ -27,6 +28,10 @@ kml_layer.SpatialLines(obj, extrude = FALSE, z.scale = 1, metadata = NULL,
 <tr valign="top"><td><code>obj</code></td>
 <td>
 <p>object of class <code>"SpatialLines*"</code></p>
+</td></tr>
+<tr valign="top"><td><code>subfolder.name</code></td>
+<td>
+<p>character; optional subfolder name</p>
 </td></tr>
 <tr valign="top"><td><code>extrude</code></td>
 <td>
@@ -90,5 +95,5 @@ names(eberg_contours)
 kml(eberg_contours, colour_scale = SAGA_pal[[1]], colour = Z, kmz = TRUE)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.4-5 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.4-6 <a href="00Index.html">Index</a>]</div>
 </body></html>
