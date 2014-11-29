@@ -33,19 +33,19 @@
 \arguments{
   \item{obj}{Spatial* or Raster* object}
   \item{CRS}{object of class \code{"CRS"}; proj4 string}
-  \item{program}{reprojection engine; either raster package or FWTools}
+  \item{program}{reprojection engine; either raster package or GDAL}
   \item{tmp.file}{logical; specifies whether to create a temporary file or not}
   \item{NAflag}{character; missing value flag}
   \item{show.output.on.console}{logical; specifies whether to print the progress}
   \item{\dots}{arguments evaluated in the context of function \code{projectRaster} from the raster package}
 }
 \details{
-In the case of raster and/or gridded maps, by selecting \code{program = "FWTools"} \code{gdalwarp} functionality will be initiated (otherwise it tries to reproject via the package raster). This requires that \href{http://fwtools.maptools.org}{FWTools} are installed and located from R via \code{paths()}. FWTools includes OpenEV, GDAL, MapServer, PROJ.4 and OGDI, and can be installed on Windows and Unix-type operating systems.
+In the case of raster and/or gridded maps, by selecting \code{program = "GDAL"} \code{gdalwarp} functionality will be initiated (otherwise it tries to reproject via the package raster). This requires that \href{http://gdal.org}{GDAL} are installed and located from R via \code{paths()}. GDAL includes OpenEV, GDAL, MapServer, PROJ.4 and OGDI, and can be installed on Windows and Unix-type operating systems.
 }
 \references{
 \itemize{
 \item Raster package (\url{http://CRAN.R-project.org/package=raster})
-\item FWTools (\url{http://fwtools.maptools.org})
+\item GDAL (\url{http://GDAL.org})
 }
 }
 \author{Pierre Roudier, Tomislav Hengl and Dylan Beaudette}
@@ -65,11 +65,11 @@ gridded(eberg_grid25) <- ~x+y
 proj4string(eberg_grid25) <- CRS("+init=epsg:31467")
 ## reproject to geographical coords (can take few minutes!):
 eberg_grid_ll <- reproject(eberg_grid25)
-## much faster when using FWTools:
-eberg_grid_ll2 <- reproject(eberg_grid25, program = "FWTools")
+## much faster when using GDAL:
+eberg_grid_ll2 <- reproject(eberg_grid25, program = "GDAL")
 ## optional: compare processing times:
 system.time(eberg_grid_ll <- reproject(eberg_grid25[1]))
-system.time(eberg_grid_ll2 <- reproject(eberg_grid25[1], program="FWTools"))
+system.time(eberg_grid_ll2 <- reproject(eberg_grid25[1], program="GDAL"))
 }
 }
 \keyword{spatial}

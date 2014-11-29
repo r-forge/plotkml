@@ -76,9 +76,7 @@ echo $contents; } ?>
 <p>Get the <a href="http://cran.at.r-project.org/package=plotKML" target="_blank"><strong>stable release from CRAN</strong></a>. </p>
 <p>To install this package from <a href="https://r-forge.r-project.org/R/?group_id=1106" target="_blank">R-forge</a> use (works only on<strong> &gt;= R 2.14!</strong>):</p>
 <pre class="R_code">&gt; install.packages(&quot;plotKML&quot;, repos=c(&quot;http://R-Forge.R-project.org&quot;)) </pre>
-<p>Alternatively, you can install the most recent snapshot of the package directly from the source by using e.g.:</p>
-<pre class="R_code">&gt; download.file(&quot;http://plotkml.r-forge.r-project.org/plotKML_0.4-6.tar.gz&quot;, &quot;plotKML_0.4-6.tar.gz&quot;)
-&gt; system(&quot;R CMD INSTALL plotKML_0.4-6.tar.gz&quot;) </pre>
+<p>Alternatively, you can install the most recent snapshot of the package directly from the source code.</p>
 <p><iframe src="https://docs.google.com/present/embed?id=dhbpzjb4_91cvx3x2f2" frameborder="0" width="410" height="342"></iframe></p>
 <p><strong>News:</strong></p>
 <ul>
@@ -207,7 +205,7 @@ echo $contents; } ?>
   </tr>
 </table>
 <p class="style1"> Last update: 
-  <!-- #BeginDate format:Am1 -->September 14, 2014<!-- #EndDate -->
+  <!-- #BeginDate format:Am1 -->November 29, 2014<!-- #EndDate -->
 | contact: <a href="http://www.wewur.wur.nl/popups/vcard.aspx?id=HENGL001" target="_blank">tom.hengl@wur.nl</a> | <a href="http://www.isric.org">ISRIC</a> - World Soil Information Institute </p>
 </body>
 </html>

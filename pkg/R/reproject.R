@@ -2,7 +2,7 @@
 # Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
 # Contributions  : Tomislav Hengl (tom.hengl@wur.nl); Dylan Beaudette (debeaudette@ucdavis.edu); 
 # Status         : tested
-# Note           : in the case of gridded data, bounding box and cell size are estimated by the program (raster / FWTools);
+# Note           : in the case of gridded data, bounding box and cell size are estimated by the program (raster / GDAL);
 
 
 reproject.SpatialPoints <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts), ...) {
@@ -26,10 +26,10 @@ reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
     names(res) <- names(obj)
   } else {
   
-  if(program=="FWTools"){
+  if(program=="GDAL"){
     gdalwarp <- get("gdalwarp", envir = plotKML.opts)
   
-    # look for FWTools path:  
+    # look for GDAL path:  
     if(nchar(gdalwarp)==0){
       plotKML.env(silent = FALSE, show.env = FALSE)
       gdalwarp <- get("gdalwarp", envir = plotKML.opts)
@@ -50,7 +50,7 @@ reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
         res <- raster(paste(tf, "_ll.tif", sep=""), silent = TRUE)
         names(res) <- names(obj)
       } else {
-        stop("Could not locate FWTools. See 'plotKML.env()' for more info.") }
+        stop("Could not locate GDAL. See 'plotKML.env()' for more info.") }
   }
   }
   
@@ -107,10 +107,10 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
     }
   }
   
-  if(program=="FWTools"){
+  if(program=="GDAL"){
   gdalwarp <- get("gdalwarp", envir = plotKML.opts)
   
-  # look for FWTools path:  
+  # look for GDAL path:  
   if(nchar(gdalwarp)==0){
     plotKML.env(silent = FALSE)
     gdalwarp <- get("gdalwarp", envir = plotKML.opts)
@@ -165,7 +165,7 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
   } 
   
   else {
-    stop("Could not locate FWTools. See 'plotKML.env()' for more info.") 
+    stop("Could not locate GDAL. See 'plotKML.env()' for more info.") 
   }
   
   } 
