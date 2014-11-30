@@ -114,6 +114,7 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
         
         ## Python:
         if(python==""){
+        reg.paths <- names(utils::readRegistry("SOFTWARE"))
         x <- grep(reg.paths, pattern="WOW6432Node", ignore.case = TRUE)
         if(length(x)>0 & !inherits(try({ 
           py.paths <- utils::readRegistry(paste("SOFTWARE", reg.paths[x], "Python", sep="\\"), maxdepth=3)

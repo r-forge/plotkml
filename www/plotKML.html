@@ -22,49 +22,50 @@ plotKML(obj,
       file.name = paste(folder.name, ".kml", sep=""), 
       size, colour, points_names, 
       shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png", 
-      metadata = NULL, kmz = get("kmz", envir = plotKML.opts), ...)
+      metadata = NULL, kmz = get("kmz", envir = plotKML.opts), open.kml = TRUE, ...)
 ## S4 method for signature 'SpatialLinesDataFrame'
 plotKML(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
       file.name = paste(folder.name, ".kml", sep=""),
-      metadata = NULL, kmz = get("kmz", envir = plotKML.opts), ...)
+      metadata = NULL, kmz = get("kmz", envir = plotKML.opts), open.kml = TRUE, ...)
 ## S4 method for signature 'SpatialPolygonsDataFrame'
 plotKML(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
       file.name = paste(folder.name, ".kml", sep=""), 
       colour, plot.labpt, labels, metadata = NULL, 
-      kmz = get("kmz", envir = plotKML.opts), ...)
+      kmz = get("kmz", envir = plotKML.opts), open.kml = TRUE, ...)
 ## S4 method for signature 'SpatialPixelsDataFrame'
 plotKML(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
       file.name = paste(folder.name, ".kml", sep=""), 
-      colour, raster_name, metadata = NULL, kmz = FALSE, ...)
+      colour, raster_name, metadata = NULL, kmz = FALSE, open.kml = TRUE, ...)
 ## S4 method for signature 'SpatialGridDataFrame'
 plotKML(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
       file.name = paste(folder.name, ".kml", sep=""), 
-      colour, raster_name, metadata = NULL, kmz = FALSE, ...)
+      colour, raster_name, metadata = NULL, kmz = FALSE, open.kml = TRUE, ...)
 ## S4 method for signature 'RasterLayer'
 plotKML(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
       file.name = paste(folder.name, ".kml", sep=""), 
-      colour, raster_name, metadata = NULL, kmz = FALSE, ...)
+      colour, raster_name, metadata = NULL, kmz = FALSE, open.kml = TRUE, ...)
 ## S4 method for signature 'SpatialPhotoOverlay'
 plotKML(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
       file.name = paste(folder.name, ".kml", sep=""), 
-      dae.name, kmz = get("kmz", envir = plotKML.opts), ...)
+      dae.name, kmz = get("kmz", envir = plotKML.opts), open.kml = TRUE, ...)
 ## S4 method for signature 'SoilProfileCollection'
 plotKML(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
       file.name = paste(folder.name, ".kml", sep=""), 
-      var.name, metadata = NULL, kmz = get("kmz", envir = plotKML.opts), ...)
+      var.name, metadata = NULL, kmz = get("kmz", envir = plotKML.opts), 
+      open.kml = TRUE, ...)
 ## S4 method for signature 'STIDF'
 plotKML(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
       file.name = paste(folder.name, ".kml", sep=""), 
       colour, shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png", 
-      points_names, kmz = get("kmz", envir = plotKML.opts), ...)
+      points_names, kmz = get("kmz", envir = plotKML.opts), open.kml = TRUE, ...)
 ## S4 method for signature 'STFDF'
 plotKML(obj, ...)
 ## S4 method for signature 'STSDF'
@@ -74,20 +75,20 @@ plotKML(obj,
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
       file.name = paste(folder.name, ".kml", sep=""), 
       colour, start.icon = "http://maps.google.com/mapfiles/kml/pal2/icon18.png", 
-      kmz = get("kmz", envir = plotKML.opts), ...)
+      kmz = get("kmz", envir = plotKML.opts), open.kml = TRUE, ...)
 ## S4 method for signature 'RasterBrickTimeSeries'
 plotKML(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
       file.name = paste(folder.name, ".kml", sep=""),
       pngwidth = 680, pngheight = 180, pngpointsize = 14, 
-      kmz = get("kmz", envir = plotKML.opts), ...)
+      kmz = get("kmz", envir = plotKML.opts), open.kml = TRUE, ...)
 ## S4 method for signature 'RasterBrickSimulations'
 plotKML(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
       file.name = paste(folder.name, ".kml", sep=""), 
       obj.summary = TRUE,
       pngwidth = 680, pngheight = 200, pngpointsize = 14, 
-      kmz = get("kmz", envir = plotKML.opts), ...)
+      kmz = get("kmz", envir = plotKML.opts), open.kml = TRUE, ...)
 ## S4 method for signature 'SpatialMaxEntOutput'
 plotKML(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
@@ -96,7 +97,7 @@ plotKML(obj,
       iframe.width = 800, iframe.height = 800, pngwidth = 280, 
       pngheight = 280, pngpointsize = 14, colour, 
       shape = "http://plotkml.r-forge.r-project.org/icon17.png", 
-      kmz = get("kmz", envir = plotKML.opts), 
+      kmz = get("kmz", envir = plotKML.opts), open.kml = TRUE, 
       TimeSpan.begin = obj@TimeSpan.begin, TimeSpan.end = obj@TimeSpan.end, ...)
 ## S4 method for signature 'SpatialPredictions'
 plotKML(obj, 
@@ -105,19 +106,19 @@ plotKML(obj,
       scale_svar = get("colour_scale_svar", envir = plotKML.opts), 
       grid2poly = FALSE, obj.summary = TRUE, plot.svar = FALSE, 
       pngwidth = 210, pngheight = 580, pngpointsize = 14, 
-      metadata = NULL, kmz = get("kmz", envir = plotKML.opts), ...)
+      metadata = NULL, kmz = get("kmz", envir = plotKML.opts), open.kml = TRUE, ...)
 ## S4 method for signature 'SpatialSamplingPattern'
 plotKML(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
       file.name = paste(folder.name, ".kml", sep=""),
-      colour, kmz = get("kmz", envir = plotKML.opts), ...)
+      colour, kmz = get("kmz", envir = plotKML.opts), open.kml = TRUE, ...)
 ## S4 method for signature 'SpatialVectorsSimulations'
 plotKML(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
       file.name = paste(folder.name, ".kml", sep=""), colour, 
       scale_svar = get("colour_scale_svar", envir = plotKML.opts), 
       grid2poly = FALSE, obj.summary = TRUE, plot.svar = FALSE, 
-      kmz = get("kmz", envir = plotKML.opts), ...)
+      kmz = get("kmz", envir = plotKML.opts), open.kml = TRUE, ...)
 ## S4 method for signature 'list'
 plotKML(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env=parent.frame()))),
@@ -125,7 +126,7 @@ plotKML(obj,
       size = NULL, colour, points_names = "",
       shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png",
       plot.labpt = TRUE, labels = "", metadata = NULL, 
-      kmz = get("kmz", envir = plotKML.opts), ...)
+      kmz = get("kmz", envir = plotKML.opts), open.kml = TRUE, ...)
 </pre>
 
 
@@ -239,6 +240,10 @@ plotKML(obj,
 <tr valign="top"><td><code>kmz</code></td>
 <td>
 <p>logical; specifies whether to compress the output KML file</p>
+</td></tr>
+<tr valign="top"><td><code>open.kml</code></td>
+<td>
+<p>logical; specifies whether to directly open the output KML file (i.e. in Google Earth)</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -646,5 +651,5 @@ if(file.exists(jar)){
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.4-5 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.4-7 <a href="00Index.html">Index</a>]</div>
 </body></html>
