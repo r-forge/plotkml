@@ -51,7 +51,7 @@ reproject(obj, CRS)
 </td></tr>
 <tr valign="top"><td><code>program</code></td>
 <td>
-<p>reprojection engine; either raster package or FWTools</p>
+<p>reprojection engine; either raster package or GDAL</p>
 </td></tr>
 <tr valign="top"><td><code>tmp.file</code></td>
 <td>
@@ -74,7 +74,7 @@ reproject(obj, CRS)
 
 <h3>Details</h3>
 
-<p>In the case of raster and/or gridded maps, by selecting <code>program = "FWTools"</code> <code>gdalwarp</code> functionality will be initiated (otherwise it tries to reproject via the package raster). This requires that <a href="http://fwtools.maptools.org">FWTools</a> are installed and located from R via <code>paths()</code>. FWTools includes OpenEV, GDAL, MapServer, PROJ.4 and OGDI, and can be installed on Windows and Unix-type operating systems.
+<p>In the case of raster and/or gridded maps, by selecting <code>program = "GDAL"</code> <code>gdalwarp</code> functionality will be initiated (otherwise it tries to reproject via the package raster). This requires that <a href="http://gdal.org">GDAL</a> are installed and located from R via <code>paths()</code>. GDAL includes OpenEV, GDAL, MapServer, PROJ.4 and OGDI, and can be installed on Windows and Unix-type operating systems.
 </p>
 
 
@@ -95,7 +95,7 @@ reproject(obj, CRS)
 <li><p> Raster package (<a href="http://CRAN.R-project.org/package=raster">http://CRAN.R-project.org/package=raster</a>)
 </p>
 </li>
-<li><p> FWTools (<a href="http://fwtools.maptools.org">http://fwtools.maptools.org</a>)
+<li><p> GDAL (<a href="http://GDAL.org">http://GDAL.org</a>)
 </p>
 </li></ul>
 
@@ -109,27 +109,27 @@ reproject(obj, CRS)
 <h3>Examples</h3>
 
 <pre>
-## Not run: ## example with vector data:
+## example with vector data:
 data(eberg)
 library(sp)
 library(rgdal)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 eberg.geo &lt;- reproject(eberg)
-## example with raster data:
+## Not run: ## example with raster data:
 data(eberg_grid25)
 gridded(eberg_grid25) &lt;- ~x+y
 proj4string(eberg_grid25) &lt;- CRS("+init=epsg:31467")
 ## reproject to geographical coords (can take few minutes!):
-eberg_grid_ll &lt;- reproject(eberg_grid25)
-## much faster when using FWTools:
-eberg_grid_ll2 &lt;- reproject(eberg_grid25, program = "FWTools")
+eberg_grid_ll &lt;- reproject(eberg_grid25[1])
+## much faster when using GDAL:
+eberg_grid_ll2 &lt;- reproject(eberg_grid25[1], program = "GDAL")
 ## optional: compare processing times:
 system.time(eberg_grid_ll &lt;- reproject(eberg_grid25[1]))
-system.time(eberg_grid_ll2 &lt;- reproject(eberg_grid25[1], program="FWTools"))
+system.time(eberg_grid_ll2 &lt;- reproject(eberg_grid25[1], program="GDAL"))
 
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.4-5 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.4-7 <a href="00Index.html">Index</a>]</div>
 </body></html>

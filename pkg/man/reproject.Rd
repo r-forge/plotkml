@@ -52,21 +52,21 @@ In the case of raster and/or gridded maps, by selecting \code{program = "GDAL"} 
 \section{Warning}{\code{obj} needs to have a proper proj4 string (CRS), otherwise \code{reproject} will not run.}
 \seealso{\link{paths}, \link[raster]{projectRaster}, \link[sp]{spTransform}, \link[sp]{CRS-class}}
 \examples{
-\dontrun{## example with vector data:
+## example with vector data:
 data(eberg)
 library(sp)
 library(rgdal)
 coordinates(eberg) <- ~X+Y
 proj4string(eberg) <- CRS("+init=epsg:31467")
 eberg.geo <- reproject(eberg)
-## example with raster data:
+\dontrun{## example with raster data:
 data(eberg_grid25)
 gridded(eberg_grid25) <- ~x+y
 proj4string(eberg_grid25) <- CRS("+init=epsg:31467")
 ## reproject to geographical coords (can take few minutes!):
-eberg_grid_ll <- reproject(eberg_grid25)
+eberg_grid_ll <- reproject(eberg_grid25[1])
 ## much faster when using GDAL:
-eberg_grid_ll2 <- reproject(eberg_grid25, program = "GDAL")
+eberg_grid_ll2 <- reproject(eberg_grid25[1], program = "GDAL")
 ## optional: compare processing times:
 system.time(eberg_grid_ll <- reproject(eberg_grid25[1]))
 system.time(eberg_grid_ll2 <- reproject(eberg_grid25[1], program="GDAL"))

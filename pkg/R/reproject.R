@@ -45,6 +45,7 @@ reproject.RasterLayer <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
       if(method == "ngb") { method <- "near" }
         writeRaster(obj, paste(tf, ".tif", sep=""), overwrite=TRUE, NAflag=NAflag)
         # resample to WGS84 system:
+        message(paste("Using gdalwarp function:", gdalwarp))
         message(paste("Reprojecting to", CRS, "..."))
         system(paste(gdalwarp, " ", tf, ".tif", " -t_srs \"", CRS, "\" ", tf, "_ll.tif -dstnodata \"", NAflag, "\" ", " -r ", method, sep=""), show.output.on.console = show.output.on.console)
         res <- raster(paste(tf, "_ll.tif", sep=""), silent = TRUE)
@@ -97,24 +98,24 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
       names(res) <- names(obj)
     }
     
-    # fix factor-type objects:
+    # try to fix factor-type objects:
     for(j in 1:ncol(obj)){
       if(is.factor(obj@data[,j])){
         # copy levels:
         res@data[,j] <- as.factor(res@data[,j])
-        levels(res@data[,j]) = levels(obj@data[,j])
+        try( levels(res@data[,j]) <- levels(obj@data[,j]), silent = TRUE )
       }
     }
   }
   
   if(program=="GDAL"){
   gdalwarp <- get("gdalwarp", envir = plotKML.opts)
-  
-  # look for GDAL path:  
+  # look for GDAL path if missing:  
   if(nchar(gdalwarp)==0){
     plotKML.env(silent = FALSE)
     gdalwarp <- get("gdalwarp", envir = plotKML.opts)
   }
+  message(paste("Using gdalwarp function:", gdalwarp))
   
   if(!nchar(gdalwarp)==0){
   
@@ -131,7 +132,11 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
         if(is.factor(obj@data[,j])){
           x <- obj[j]
           x@data[,1] <- as.integer(x@data[,1])
-          writeGDAL(x, paste(tf, ".tif", sep=""), "GTiff")
+          if(max(x@data[,1], na.rm=TRUE)<254){
+            writeGDAL(x, paste(tf, ".tif", sep=""), "GTiff", mvFlag = 255, type="Byte")
+          } else {
+            writeGDAL(x, paste(tf, ".tif", sep=""), "GTiff")
+          }
         }        
         else {
           writeGDAL(obj[j], paste(tf, ".tif", sep=""), "GTiff")
@@ -145,7 +150,7 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
         else {
           system(paste(gdalwarp, ' ', tf, '.tif', ' -t_srs \"', CRS, '\" ', tf, '_ll.tif -dstnodata \"', NAflag, '\" -r bilinear', sep=""), show.output.on.console = show.output.on.console)
         }
-        # read images back to R:
+        ## read images back to R:
         if(j==1){
           res <- readGDAL(paste(tf, "_ll.tif", sep=""), silent = TRUE)
           names(res) <- names(obj)[j]
@@ -154,10 +159,10 @@ reproject.SpatialGrid <- function(obj, CRS = get("ref_CRS", envir = plotKML.opts
           res@data[names(obj)[j]] <- readGDAL(paste(tf, "_ll.tif", sep=""), silent = TRUE)$band1
         }
         
-        # reformat to the original factors:
+        ## reformat to the original factors:
           if(is.factor(obj@data[,j])){
             res@data[,j] <- as.factor(res@data[,j])
-            levels(res@data[,j]) = levels(obj@data[,j])
+            try( levels(res@data[,j]) <- levels(obj@data[,j]) , silent = TRUE)
         }
         unlink(paste(tf, ".tif", sep=""))
         unlink(paste(tf, "_ll.tif", sep=""))        
