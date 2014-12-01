@@ -100,7 +100,7 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
     if(.Platform$OS.type == "windows") {
       if(gdalwarp==""|gdal_translate==""){
         require(gdalUtils)
-        gdal_setInstallation(search_path=gdal.dir, rescan=TRUE)
+        gdalUtils::gdal_setInstallation(search_path=gdal.dir, rescan=TRUE)
         x <- getOption("gdalUtils_gdalPath")
         if(!is.null(x[[1]]$path)){
           gdalwarp = shQuote(shortPathName(normalizePath(file.path(x[[1]]$path, "gdalwarp.exe"))))
