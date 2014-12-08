@@ -125,7 +125,6 @@ om.rk <- predict(omm, meuse.grid)
 ###################################################
 ### code chunk number 15: jss1079.Rnw:475-489
 ###################################################
-library("stpp")
 data("fmd")
 fmd0 <- data.frame(fmd)
 coordinates(fmd0) <- c("X", "Y")
