@@ -1,10 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Gets EXIF information</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="R.css">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Gets EXIF information</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
 </head><body>
 
-<table width="100%" summary="page for getWikiMedia.ImageInfo {plotKML}"><tr><td>getWikiMedia.ImageInfo {plotKML}</td><td align="right">R Documentation</td></tr></table>
+<table width="100%" summary="page for getWikiMedia.ImageInfo {plotKML}"><tr><td>getWikiMedia.ImageInfo {plotKML}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
 <h2>Gets EXIF information</h2>
 
@@ -51,12 +50,12 @@
 
 <h3>Details</h3>
 
-<p>Although this is often not visible in picture editing programs, almost any image uploaded to Wikimedia contains usefull EXIF metadata. However, it is highly recommended that you insert the some important tags in the image header yourself, by using e.g. the <a href="http://www.sno.phy.queensu.ca/~phil/exiftool/">EXIF tool</a> (courtesy of Phil Harvey), before uploading the files to Wikimedia. The <code>getWikiMedia.ImageInfo</code> function assumes that all required metadata has already been entered by the user before the upload, hence no further changes in the metadata will be possible. Examples of how to embed EXIF tags into an image file are available <a href="http://commons.wikimedia.org/wiki/Commons:EXIF">here</a>.<br> 
-To geocode an uploaded image consider adding:<br> 
+<p>Although this is often not visible in picture editing programs, almost any image uploaded to Wikimedia contains usefull EXIF metadata. However, it is highly recommended that you insert the some important tags in the image header yourself, by using e.g. the <a href="http://www.sno.phy.queensu.ca/~phil/exiftool/">EXIF tool</a> (courtesy of Phil Harvey), before uploading the files to Wikimedia. The <code>getWikiMedia.ImageInfo</code> function assumes that all required metadata has already been entered by the user before the upload, hence no further changes in the metadata will be possible. Examples of how to embed EXIF tags into an image file are available <a href="http://commons.wikimedia.org/wiki/Commons:EXIF">here</a>.<br /> 
+To geocode an uploaded image consider adding:<br /> 
 </p>
-<p><code>{{location|lat deg|lat min|lat sec|NS|long deg|long min|long sec|EW}}</code> <br>
+<p><code>{{location|lat deg|lat min|lat sec|NS|long deg|long min|long sec|EW}}</code> <br />
 </p>
-<p>tag to the file description, in which case <code>getWikiMedia.ImageInfo</code> will automatically look for the attached coordinates via the external links. For practical purposes and because the image properties information determined by the Wikimedia system can are more reliable, the function will rewrite some important EXIF metadata (image width and height) using the actual values determined by Wikimedia server.<br> 
+<p>tag to the file description, in which case <code>getWikiMedia.ImageInfo</code> will automatically look for the attached coordinates via the external links. For practical purposes and because the image properties information determined by the Wikimedia system can are more reliable, the function will rewrite some important EXIF metadata (image width and height) using the actual values determined by Wikimedia server.<br /> 
 For a list of modules and parameters that can be used via <code>getWikiMedia.ImageInfo</code>, please refer to <a href="http://www.mediawiki.org/wiki/API">Wikimedia API manual</a>.
 </p>
 
@@ -100,5 +99,5 @@ x$metadata[grep(names(x$metadata), pattern="GPS")]
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.4-7 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>plotKML</em> version 0.5-0 <a href="00Index.html">Index</a>]</div>
 </body></html>

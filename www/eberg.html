@@ -1,16 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Ebergotzen - soil mapping case study</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="R.css">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Ebergotzen - soil mapping case study</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
 </head><body>
 
-<table width="100%" summary="page for eberg {plotKML}"><tr><td>eberg {plotKML}</td><td align="right">R Documentation</td></tr></table>
+<table width="100%" summary="page for eberg {plotKML}"><tr><td>eberg {plotKML}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
 <h2>Ebergotzen &mdash; soil mapping case study</h2>
 
 <h3>Description</h3>
 
-<p>Ebergötzen is 10 by 10 km study area in the vicinity of the city of Göttingen in Central Germany. This area has been extensively surveyed over the years, mainly for the purposes of developing operational digital soil mapping techniques (Gehrt and Böhner, 2001), and has been used by the SAGA GIS development team to demonstrate various processing steps. <br>
+<p>Ebergötzen is 10 by 10 km study area in the vicinity of the city of Göttingen in Central Germany. This area has been extensively surveyed over the years, mainly for the purposes of developing operational digital soil mapping techniques (Gehrt and Böhner, 2001), and has been used by the SAGA GIS development team to demonstrate various processing steps. <br />
 <code>eberg</code> table contains 3670 observations (augers) of soil textures at five depths (0-10, 10-30, 30-50, 50-70, and 70-90), and field records of soil types according to the German soil classification system. <code>eberg_grid</code> contains gridded maps at 100 m resolution that can be used as covariates for spatial prediction of soil variables. <code>eberg_grid25</code> contains grids at finer resolution (25 m). <code>eberg_zones</code> is a polygon map showing the distribution of parent material (Silt and sand, Sandy material, Clayey derivats, Clay and loess). <code>eberg_contours</code> shows contour lines derived from the 25 m DEM of the area using 10 m equidistance.</p>
 
 
@@ -141,5 +140,5 @@ spplot(eberg_zones, sp.layout=list("sp.points", eberg, col="black", pch="+"))
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.4-7 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>plotKML</em> version 0.5-0 <a href="00Index.html">Index</a>]</div>
 </body></html>
