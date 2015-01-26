@@ -1,10 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Compress a KML file with auxiliary files</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="R.css">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Compress a KML file with auxiliary files</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
 </head><body>
 
-<table width="100%" summary="page for kml_compress {plotKML}"><tr><td>kml_compress {plotKML}</td><td align="right">R Documentation</td></tr></table>
+<table width="100%" summary="page for kml_compress {plotKML}"><tr><td>kml_compress {plotKML}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
 <h2>Compress a KML file with auxiliary files</h2>
 
@@ -48,10 +47,10 @@ kml_compress(file.name, zip = "", files = "", rm = FALSE, ...)
 
 <h3>Details</h3>
 
-<p>The KMZ file can carry the model files (<code>.dae</code>), textures and ground overlay images. For practical purposes, we recommend that you, instead of compressing the images together with the KML file, consider serving the ground overlay images via a server i.e. as network links. <br>
-If no internal ZIP program exists, the function looks for the system ZIP program:<br> 
+<p>The KMZ file can carry the model files (<code>.dae</code>), textures and ground overlay images. For practical purposes, we recommend that you, instead of compressing the images together with the KML file, consider serving the ground overlay images via a server i.e. as network links. <br />
+If no internal ZIP program exists, the function looks for the system ZIP program:<br /> 
 </p>
-<p><code>Sys.getenv("R_ZIPCMD", "zip")</code><br>
+<p><code>Sys.getenv("R_ZIPCMD", "zip")</code><br />
 </p>
 <p>External ZIP program can also be specified via the <code>zip</code> argument.</p>
 
@@ -93,5 +92,5 @@ kml_close("eberg.kml")
 kml_compress("eberg.kml")
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.4-7 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>plotKML</em> version 0.5-0 <a href="00Index.html">Index</a>]</div>
 </body></html>
