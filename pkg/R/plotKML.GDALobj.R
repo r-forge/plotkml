@@ -34,16 +34,16 @@ plotKML.GDALobj <- function(obj, file.name, block.x, tiles=NULL, tiles.sel=NULL,
   ## write all tiles:
   if(requireNamespace("snowfall", quietly = TRUE)&requireNamespace("parallel", quietly = TRUE)){  
     if(missing(cpus)){ cpus <- parallel::detectCores(all.tests = FALSE, logical = FALSE) }
-    sfInit(parallel=TRUE, cpus=cpus)
-    sfExport("GDALobj.file", "tiles", "tiles.sel", "breaks.lst", "altitude", "colour_scale", "z.lim", "overwrite")
-    sfLibrary(package="rgdal", character.only=TRUE)
-    sfLibrary(package="sp", character.only=TRUE)
-    sfLibrary(package="plotKML", character.only=TRUE)
-    sfLibrary(package="XML", character.only=TRUE)
-    sfLibrary(package="RSAGA", character.only=TRUE)
-    sfLibrary(package="raster", character.only=TRUE)
-    lst <- sfLapply(tiles.sel, .kml_SpatialGrid_tile, GDALobj.file=GDALobj.file, tiles=tiles, altitude=altitude, colour_scale=colour_scale, breaks.lst=breaks.lst, z.lim=z.lim, overwrite=overwrite)
-    sfStop()
+    snowfall::sfInit(parallel=TRUE, cpus=cpus)
+    snowfall::sfExport("GDALobj.file", "tiles", "tiles.sel", "breaks.lst", "altitude", "colour_scale", "z.lim", "overwrite")
+    snowfall::sfLibrary(package="rgdal", character.only=TRUE)
+    snowfall::sfLibrary(package="sp", character.only=TRUE)
+    snowfall::sfLibrary(package="plotKML", character.only=TRUE)
+    snowfall::sfLibrary(package="XML", character.only=TRUE)
+    snowfall::sfLibrary(package="RSAGA", character.only=TRUE)
+    snowfall::sfLibrary(package="raster", character.only=TRUE)
+    lst <- snowfall::sfLapply(tiles.sel, .kml_SpatialGrid_tile, GDALobj.file=GDALobj.file, tiles=tiles, altitude=altitude, colour_scale=colour_scale, breaks.lst=breaks.lst, z.lim=z.lim, overwrite=overwrite)
+    snowfall::sfStop()
     lst <- do.call(rbind, lst)
   } else {
     lst <- list(NULL)
