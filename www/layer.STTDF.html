@@ -1,9 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Write a space-time trajectory to KML</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="R.css" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Write a space-time trajectory to KML</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
 </head><body>
 
-<table width="100%" summary="page for kml_layer.STTDF {plotKML}"><tr><td>kml_layer.STTDF {plotKML}</td><td style="text-align: right;">R Documentation</td></tr></table>
+<table width="100%" summary="page for kml_layer.STTDF {plotKML}"><tr><td>kml_layer.STTDF {plotKML}</td><td align="right">R Documentation</td></tr></table>
 
 <h2>Write a space-time trajectory to KML</h2>
 
@@ -79,9 +80,9 @@ kml_layer.STTDF(obj, id.name = names(obj@data)[which(names(obj@data)== "burst")]
 
 <h3>Details</h3>
 
-<p>The dateTime is defined as <code>yyyy-mm-ddThh:mm:sszzzzzz</code>, where <code>T</code> is the separator between the date and the time, and the time zone is either <code>Z</code> (for UTC) or <code>zzzzzz</code>, which represents ±hh:mm in relation to UTC. For more info on how Time Stamps work see <a href="http://kml-samples.googlecode.com">http://kml-samples.googlecode.com</a>. If the time is measured at block support, then:<br /> 
+<p>The dateTime is defined as <code>yyyy-mm-ddThh:mm:sszzzzzz</code>, where <code>T</code> is the separator between the date and the time, and the time zone is either <code>Z</code> (for UTC) or <code>zzzzzz</code>, which represents ±hh:mm in relation to UTC. For more info on how Time Stamps work see <a href="http://kml-samples.googlecode.com">http://kml-samples.googlecode.com</a>. If the time is measured at block support, then:<br> 
 </p>
-<p><code>&lt;TimeStamp&gt;&lt;begin&gt; &lt;/begin&gt;&lt;end&gt; &lt;/end&gt;&lt;/TimeStamp&gt;</code> <br />
+<p><code>&lt;TimeStamp&gt;&lt;begin&gt; &lt;/begin&gt;&lt;end&gt; &lt;/end&gt;&lt;/TimeStamp&gt;</code> <br>
 </p>
 <p>tags will be inserted. Temporal support for any spacetime class, if not specified by the user, is determined as a difference between the <code>"time"</code> (indicating begin time) and <code>"endTime"</code> slots.
 </p>
@@ -110,5 +111,5 @@ kml_layer.STTDF(obj, id.name = names(obj@data)[which(names(obj@data)== "burst")]
 
  <p><code><a href="readGPX.html">readGPX</a></code>, <code><a href="plotKML.html">plotKML-method</a></code>  </p>
 
-<hr /><div style="text-align: center;">[Package <em>plotKML</em> version 0.5-0 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>plotKML</em> version 0.5-0 <a href="00Index.html">Index</a>]</div>
 </body></html>
