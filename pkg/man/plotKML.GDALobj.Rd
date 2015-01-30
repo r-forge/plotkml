@@ -25,9 +25,9 @@ plotKML.GDALobj(obj, file.name, block.x, tiles=NULL,
   \item{open.kml}{logical; specifies whether to open the KML file after writing}
 }
 \value{Returns a list of KML files.}
-\note{This operation can be time-consuming for processing very large rasters e.g. more than 10,000 by 10,000 pixels. To speed up writing of KMLs install and load snowfall package.}
+\note{This operation can be time-consuming for processing very large rasters e.g. more than 10,000 by 10,000 pixels. To speed up writing of KMLs, use the snowfall package.}
 \author{Tomislav Hengl }
-\seealso{\code{\link{plotKML}}}
+\seealso{\code{\link{plotKML}}, \code{\link{kml.tiles}}}
 \examples{
 \dontrun{
 library(sp)

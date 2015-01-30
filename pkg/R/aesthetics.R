@@ -38,7 +38,6 @@ kml_aes <- function(obj, ...) {
 
   # Parse the current call
   called_aes <- .parse_call_for_aes(parent_call)
-
   aes <- list()
 
   # Names
