@@ -18,7 +18,7 @@ plotKML.GDALobj <- function(obj, file.name, block.x, tiles=NULL, tiles.sel=NULL,
     if(!is.numeric(z.lim)&length(z.lim)==2){ stop("Please specify 'z.lim' argument") }
   }
 
-  if(!length(colour_scale)==(length(breaks.lst)-1)&!is.null(breaks.lst)){ stop("'colour_scale' and 'breaks.lst' of equal length required") }
+  if(!length(colour_scale)==(length(breaks.lst)-1)&!is.null(breaks.lst)){ stop("'length(colour_scale)' and 'length(breaks.lst)-1' of equal length required") }
   GDALobj.file <- attr(obj, "file")
   if(is.null(tiles)){
     if(requireNamespace("GSIF", quietly = TRUE)){
@@ -88,8 +88,8 @@ plotKML.GDALobj <- function(obj, file.name, block.x, tiles=NULL, tiles.sel=NULL,
   if(is.null(breaks.lst)){
     kml_legend.bar(x=seq(z.lim[1], z.lim[2], length.out=25), legend.file=kml.legend, legend.pal=colour_scale)
   } else {
-    breaks.s <- seq(1:length(breaks.lst), length.out=15)
-    kml_legend.bar(x=as.factor(breaks.lst[breaks.s]), legend.file=kml.legend, legend.pal=colour_scale[breaks.s[-length(breaks.s)]])
+    breaks.s <- seq(1, length(breaks.lst), length.out=15)
+    kml_legend.bar(x=as.factor(breaks.lst[breaks.s]), legend.file=kml.legend, legend.pal=colour_scale[breaks.s])
   }
   kml_screen(image.file = kml.legend, position = "UL", sname = "legend")
   if(!missing(kml.logo)){ kml_screen(image.file = kml.logo, position = "UR", sname = "logo") }
