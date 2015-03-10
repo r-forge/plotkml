@@ -7,7 +7,7 @@
 kml.tiles <- function(obj, 
   folder.name,
   file.name, 
-  block.x, 
+  block.x,
   kml.logo, 
   cpus, 
   home.url=".", 
@@ -65,7 +65,7 @@ kml.tiles <- function(obj,
     x <- snowfall::sfLapply(1:length(obj.lst), function(j){kml(obj.lst[[j]], file.name=file.lst[j], ...)})
     snowfall::sfStop()
   } else {
-    x <- lapply(1:length(obj.lst), function(j){kml(obj.lst[j], folder.name=folder.lst[j], file.name=file.lst[j], ...)})
+    x <- lapply(1:length(obj.lst), function(j){kml(obj.lst[j], folder.name=folder.lst[j], file.name=file.lst[j], z.lim=z.lim, ...)})
   }
   lst <- data.frame(kml.tile=file.lst, north=north, south=south, east=east, west=west)
   
