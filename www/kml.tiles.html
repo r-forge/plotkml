@@ -1,10 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Write vector object as tiled KML</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="R.css">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Write vector object as tiled KML</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
 </head><body>
 
-<table width="100%" summary="page for kml.tiles {plotKML}"><tr><td>kml.tiles {plotKML}</td><td align="right">R Documentation</td></tr></table>
+<table width="100%" summary="page for kml.tiles {plotKML}"><tr><td>kml.tiles {plotKML}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
 <h2>Write vector object as tiled KML</h2>
 
@@ -16,8 +15,7 @@
 <h3>Usage</h3>
 
 <pre>
-kml.tiles(obj, folder.name = normalizeFilename(deparse(substitute(obj, env=parent.frame()))), 
-   file.name = paste(normalizeFilename(deparse(substitute(obj, env=parent.frame()))), ".kml", sep=""), 
+kml.tiles(obj, folder.name, file.name, 
    block.x, kml.logo, cpus, home.url=".", desc=NULL, 
    open.kml=TRUE, return.list=FALSE, ...)
 </pre>
@@ -68,7 +66,7 @@ kml.tiles(obj, folder.name = normalizeFilename(deparse(substitute(obj, env=paren
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>(optional) <a href="aesthetics.html">aesthetics</a> arguments</p>
+<p>(optional) <a href="aesthetics.html">aesthetics</a> arguments (see <code><a href="aesthetics.html">aesthetics</a></code>)</p>
 </td></tr>  
 </table>
 
@@ -101,22 +99,23 @@ library(sp)
 library(snowfall)
 library(GSIF)
 library(rgdal)
+
 data(eberg)
 coordinates(eberg) &lt;- ~X+Y
 proj4string(eberg) &lt;- CRS("+init=epsg:31467")
 ## plot using tiles:
 shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png"
 tiles.p &lt;- kml.tiles(eberg["SNDMHT_A"], block.x=0.05, 
-   size=0.8, colour=SNDMHT_A, shape=shape, labels=SNDMHT_A, 
-   return.list=TRUE)
+   size=0.8, z.lim=c(20,50), colour=SNDMHT_A, shape=shape, 
+   labels=SNDMHT_A, return.list=TRUE)
 ## Returns a list of tiles
 data(eberg_contours)
 tiles.l &lt;- kml.tiles(eberg_contours, block.x=0.05, 
-   colour=Z, colour_scale=SAGA_pal[[1]],
-   return.list=TRUE)
+   colour=Z, z.lim=range(eberg_contours$Z), 
+   colour_scale=SAGA_pal[[1]], return.list=TRUE)
 
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.5-1 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>plotKML</em> version 0.5-1 <a href="00Index.html">Index</a>]</div>
 </body></html>
