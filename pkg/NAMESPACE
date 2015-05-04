@@ -1,5 +1,5 @@
 #import(Hmisc)
-import(stats, utils, methods)
+import(stats, utils, methods, tools)
 importFrom("RColorBrewer", brewer.pal)
 importFrom("scales", rescale)
 importFrom("colorspace", coords, hex, mixcolor, HSV)
@@ -42,7 +42,7 @@ exportMethods(
 	metadata2SLD,
 	plotKML,
 	vect2rast,
-  summary, 
+  summary,
   plot)
 S3method(plot, SpatialPredictions)
 export(check_projection, parse_proj4)
