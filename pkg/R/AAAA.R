@@ -45,22 +45,22 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
      if(is.null(convert)){
         im.dir <- NULL
         if(.Platform$OS.type == "windows") {
-        ## get paths and check for ImageMagick
-        paths <- strsplit(Sys.getenv('PATH')[[1]], ";")[[1]]
-        x <- grep(paths, pattern="Magick", ignore.case = TRUE)
-        
-        ## if present
-        if(!length(x) == 0) {
-          im.dir <- paths[grep(paths, pattern="Magick", ignore.case = TRUE)[1]]
-          convert = shQuote(shortPathName(normalizePath(file.path(im.dir, "convert.exe"))))
-          if(show.paths&file.exists(convert)){ 
-            try( om <- system(convert,  show.output.on.console = FALSE, intern = TRUE)[1] )
-            if(!class(.Last.value)[1]=="try-error"){
-              message( paste(om) ) 
-            } else {
-              convert <- NULL
+          ## get paths and check for ImageMagick
+          paths <- strsplit(Sys.getenv('PATH')[[1]], ";")[[1]]
+          x <- grep(paths, pattern="Magick", ignore.case = TRUE)
+          
+          ## if present
+          if(!length(x) == 0) {
+            im.dir <- paths[grep(paths, pattern="Magick", ignore.case = TRUE)[1]]
+            convert = shQuote(shortPathName(normalizePath(file.path(im.dir, "convert.exe"))))
+            if(show.paths&file.exists(convert)){ 
+              try( om <- system(convert,  show.output.on.console = FALSE, intern = TRUE)[1] )
+              if(!class(.Last.value)[1]=="try-error"){
+                message( paste(om) ) 
+              } else {
+                convert <- NULL
+              }
             }
-          }
           }
         } ## end checking for Imagemagick on Windows
         
@@ -77,6 +77,8 @@ paths <- function(gdalwarp = "", gdal_translate = "", convert = "", saga_cmd = "
                 convert <- NULL
               } 
             }
+          } else {
+            im.dir <- NULL
           }
         }
     
