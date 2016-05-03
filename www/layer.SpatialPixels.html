@@ -1,10 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Writes SpatialPixels or SpatialGrid objects to KML</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="R.css">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Writes SpatialPixels or SpatialGrid objects to KML</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
 </head><body>
 
-<table width="100%" summary="page for kml_layer.SpatialPixels {plotKML}"><tr><td>kml_layer.SpatialPixels {plotKML}</td><td align="right">R Documentation</td></tr></table>
+<table width="100%" summary="page for kml_layer.SpatialPixels {plotKML}"><tr><td>kml_layer.SpatialPixels {plotKML}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
 <h2>Writes SpatialPixels or SpatialGrid objects to KML</h2>
 
@@ -21,7 +20,7 @@ kml_layer.SpatialPixels(obj, subfolder.name = paste(class(obj)), raster_name,
      png.width = gridparameters(obj)[1,"cells.dim"], 
      png.height = gridparameters(obj)[2,"cells.dim"], 
      min.png.width = 800, TimeSpan.begin, TimeSpan.end,
-     layer.name, ...)
+     layer.name, png.type = "cairo-png", ...)
 </pre>
 
 
@@ -71,6 +70,10 @@ kml_layer.SpatialPixels(obj, subfolder.name = paste(class(obj)), raster_name,
 <tr valign="top"><td><code>layer.name</code></td>
 <td>
 <p>character; optional layer name</p>
+</td></tr>
+<tr valign="top"><td><code>png.type</code></td>
+<td>
+<p>character; PNG type</p>
 </td></tr>   
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -81,7 +84,7 @@ kml_layer.SpatialPixels(obj, subfolder.name = paste(class(obj)), raster_name,
 
 <h3>Details</h3>
 
-<p>Google Earth does not properly handle a 24-bit PNG file which has a single transparent color (read more at <a href="http://groups.google.com/group/earth-help/">Google Earth Help</a>). To force transparency, plotKML will try to set it using the <code>-matte -transparent "\#FFFFFF"</code> option in the <a href="http://www.imagemagick.org/Usage/masking/">ImageMagick convert program</a> (ImageMagick needs to be installed separately and located using <code>plotKML.env()</code>). The PNG export uses the 'cairographics', which will never use a palette and normally creates a larger 32-bit ARGB file, but then always allows transparancy.
+<p>Google Earth does not properly handle a 24-bit PNG file which has a single transparent color (read more at <a href="http://groups.google.com/group/earth-help/">Google Earth Help</a>). To force transparency, plotKML will try to set it using the <code>-matte -transparent "\#FFFFFF"</code> option in the <a href="http://www.imagemagick.org/Usage/masking/">ImageMagick convert program</a> (ImageMagick needs to be installed separately and located using <code>plotKML.env()</code>). The PNG export uses the 'cairographics', which will never use a palette and normally creates a larger 32-bit ARGB file, but then always allows transparancy. On some Unix run machines the <code>png.type</code> argument has to be set manually to avoid producing empty PNGs.
 </p>
 
 
@@ -115,5 +118,5 @@ kml(eberg_grid, colour_scale = SAGA_pal[[1]], colour = TWISRT6,
 ## End(Not run)
 </pre>
 
-<hr><div align="center">[Package <em>plotKML</em> version 0.5-0 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>plotKML</em> version 0.5-6 <a href="00Index.html">Index</a>]</div>
 </body></html>

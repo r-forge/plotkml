@@ -102,7 +102,6 @@ plotKML(obj,
 plotKML(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
       file.name = paste(folder.name, ".kml", sep=""), colour, 
-      scale_svar = get("colour_scale_svar", envir = plotKML.opts), 
       grid2poly = FALSE, obj.summary = TRUE, plot.svar = FALSE, 
       pngwidth = 210, pngheight = 580, pngpointsize = 14, 
       metadata = NULL, kmz = get("kmz", envir = plotKML.opts), open.kml = TRUE, ...)
@@ -115,7 +114,6 @@ plotKML(obj,
 plotKML(obj, 
       folder.name = normalizeFilename(deparse(substitute(obj, env = parent.frame()))), 
       file.name = paste(folder.name, ".kml", sep=""), colour, 
-      scale_svar = get("colour_scale_svar", envir = plotKML.opts), 
       grid2poly = FALSE, obj.summary = TRUE, plot.svar = FALSE, 
       kmz = get("kmz", envir = plotKML.opts), open.kml = TRUE, ...)
 ## S4 method for signature 'list'
@@ -219,10 +217,6 @@ plotKML(obj,
 <tr valign="top"><td><code>pngpointsize</code></td>
 <td>
 <p>integer; text size in the PNG plot (screen image)</p>
-</td></tr>
-<tr valign="top"><td><code>scale_svar</code></td>
-<td>
-<p>colour palette for the model uncertainty (usually standardized prediction variance)</p>
 </td></tr>
 <tr valign="top"><td><code>grid2poly</code></td>
 <td>
@@ -429,6 +423,7 @@ sumMetricVgm &lt;- vgmST("sumMetric",
                       stAni=51.7)
 ## example from the gstat package:
 data(air)
+rural = STFDF(stations, dates, data.frame(PM10 = as.vector(air)))
 rr &lt;- rural[,"2005-06-01/2005-06-03"]
 rr &lt;- as(rr,"STSDF")
 x1 &lt;- seq(from=6,to=15,by=1)
@@ -658,5 +653,5 @@ if(file.exists(jar)){
 ## End(Not run)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>plotKML</em> version 0.5-1 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>plotKML</em> version 0.5-6 <a href="00Index.html">Index</a>]</div>
 </body></html>
