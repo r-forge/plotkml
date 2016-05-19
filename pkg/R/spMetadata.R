@@ -225,14 +225,16 @@ setMethod("GetPalette", "SpatialMetadata", function(obj){obj@palette})
       }
       
       ## Thesaurus:
-      xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["descriptiveKeywords"]][["MD_Keywords"]][["thesaurusName"]][["CI_Citation"]][["title"]][[1]]) <- get("MD_Thesaurus_name", envir = metadata)
-      xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["descriptiveKeywords"]][["MD_Keywords"]][["thesaurusName"]][["CI_Citation"]][["date"]][["CI_Date"]][["date"]][["Date"]]) <- get("MD_Thesaurus_date", envir = metadata)
-      xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["descriptiveKeywords"]][["MD_Keywords"]][["thesaurusName"]][["CI_Citation"]][["date"]][["CI_Date"]][["dateType"]][["CI_DateTypeCode"]]) <- get("MD_Thesaurus_date_type", envir = metadata)
+      xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["descriptiveKeywords"]][["thesaurusName"]][["CI_Citation"]][["title"]][[1]]) <- get("MD_Thesaurus_name", envir = metadata)
+      xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["descriptiveKeywords"]][["thesaurusName"]][["CI_Citation"]][["date"]][["CI_Date"]][["date"]][["Date"]]) <- get("MD_Thesaurus_date", envir = metadata)
+      xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["descriptiveKeywords"]][["thesaurusName"]][["CI_Citation"]][["date"]][["CI_Date"]][["dateType"]][["CI_DateTypeCode"]]) <- get("MD_Thesaurus_date_type", envir = metadata)
+      ## Keywords:
       MD_Keyword <- get("MD_Keyword", envir = metadata)
-      if(!MD_Keyword==""){
-        xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["descriptiveKeywords"]][["MD_Keywords"]][["keyword"]][[1]]) <- MD_Keyword
+      if(!all(MD_Keyword=="")){
+        for(i in 1:length(MD_Keyword)){
+          xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["descriptiveKeywords"]][["MD_Keywords"]][[i]][["CharacterString"]]) = MD_Keyword[i]
+        }
       }
-      
       ## Language:
       xmlValue(ml[["language"]][["LanguageCode"]]) <- get("Language_code", envir = metadata)
       xmlAttrs(ml[["language"]][["LanguageCode"]])[[2]] <- get("Language_code", envir = metadata)
@@ -386,7 +388,7 @@ setMethod("GetPalette", "SpatialMetadata", function(obj){obj@palette})
       }
       ## keywords theme:
       Theme_Keyword <- get("Theme_Keyword", envir = metadata)
-      if(!Theme_Keyword==""){
+      if(!all(Theme_Keyword=="")){
         for(i in 1:length(Theme_Keyword)) {
           if(i != length(Theme_Keyword)) {
             ml[['idinfo']][['keywords']][['theme']][i+2] <- ml[['idinfo']][['keywords']][['theme']][i+1]
@@ -395,7 +397,7 @@ setMethod("GetPalette", "SpatialMetadata", function(obj){obj@palette})
        }
       }
       Theme_Keyword_Thesaurus <- get("Theme_Keyword_Thesaurus", envir = metadata)    
-      if(!Theme_Keyword_Thesaurus==""){
+      if(!all(Theme_Keyword_Thesaurus=="")){
         for(i in 1:length(Theme_Keyword_Thesaurus)){
           if(i != length(Theme_Keyword_Thesaurus)) {
             ml[['idinfo']][['keywords']][['place']][i+2] <- ml[['idinfo']][['keywords']][['place']][i+1]
