@@ -154,6 +154,9 @@ setMethod("GetPalette", "SpatialMetadata", function(obj){obj@palette})
           xmlValue(ml[["fileIdentifier"]][[1]]) <- uuid::UUIDgenerate(use.time = FALSE)
         }
       }
+      ## Date stamp:
+      xmlValue(ml[["dateStamp"]][["Date"]]) <- get("Date_stamp", envir = metadata)
+      ## RS identifier:
       CI_RS_identifier <- get("CI_RS_identifier", envir = metadata)
       if(CI_RS_identifier==""){
         xmlValue(ml[["identificationInfo"]][["MD_DataIdentification"]][["citation"]][["CI_Citation"]][["identifier"]][["RS_Identifier"]][["code"]][[1]]) <- uuid::UUIDgenerate(use.time = FALSE)
