@@ -24,7 +24,7 @@
 </dd>
 <dt><code>TimeSpan.end</code>:</dt><dd><p>object of class <code>"POSIXct"</code>; end of the sampling period</p>
 </dd>
-<dt><code>maxent</code>:</dt><dd><p>object of class <code>"MaxEnt"</code> (species distribution model); produced as an output of the <code>dismo::maxent</code> function</p>
+<dt><code>maxent</code>:</dt><dd><p>object of class <code>"MaxEnt"</code> (species distribution model); produced as an output of the <code>dismo::maxent</code> function or similar</p>
 </dd>
 <dt><code>sp.domain</code>:</dt><dd><p>object of class <code>"Spatial"</code> (ideally <code>"SpatialPolygonsDataFrame"</code> or <code>"SpatialPixelsDataFrame"</code>); assumed spatial domain that can be set by the user or it will be estimated by MaxEnt (see examples below)</p>
 </dd>
@@ -46,7 +46,7 @@
 
 <h3>Note</h3>
 
-<p>MaxEnt requires the <code>maxent.jar</code> file to be in the 'java' folder of the dismo package (see: <code>system.file("java", package="dismo")</code>). For more info refer to the dismo package documentation.
+<p>MaxEnt requires the <code>maxent.jar</code> file to be in the 'java' folder of the dismo package (see: <code>system.file("java", package="dismo")</code>). For more info refer to the dismo package documentation. Alternatively use the <code>maxlike</code> package (Royle et al. 2012), which does not require Java.
 </p>
 
 
@@ -59,10 +59,16 @@
 
 
 <ul>
-<li><p> Hijmans, R.J, Elith, J., (2012) <a href="http://cran.r-project.org/web/packages/dismo/vignettes/sdm.pdf">Species distribution modeling with R</a>. CRAN, Vignette for the dismo package, 72 p.  
+<li><p> Hijmans, R.J, Elith, J., (2012) <a href="http://cran.r-project.org/web/packages/dismo/vignettes/sdm.pdf">Species distribution modeling with R</a>. CRAN, Vignette for the dismo package, 72 p. 
+</p>
+</li>
+<li><p> Royle, J.A., Chandler, R.B., Yackulic, C. and J. D. Nichols. (2012) <a href="http://dx.doi.org/10.1111/j.2041-210X.2011.00182.x">Likelihood analysis of species occurrence probability from presence-only data for modelling species distributions</a>. Methods in Ecology and Evolution.
 </p>
 </li>
 <li><p> dismo package (<a href="http://CRAN.R-project.org/package=dismo">http://CRAN.R-project.org/package=dismo</a>)
+</p>
+</li>
+<li><p> maxlike package (<a href="http://CRAN.R-project.org/package=maxlike">http://CRAN.R-project.org/package=maxlike</a>)
 </p>
 </li>
 <li><p> rgbif package (<a href="http://CRAN.R-project.org/package=rgbif">http://CRAN.R-project.org/package=rgbif</a>)
@@ -73,8 +79,8 @@
 
 <h3>See Also</h3>
 
- <p><code><a href="plotKML.html">plotKML-method</a></code>, <code>dismo::maxent</code>, <code>rgbif::taxonsearch</code>, <code>GSIF::MaxEnt</code> 
+ <p><code><a href="plotKML.html">plotKML-method</a></code>, <code>dismo::maxent</code>, <code>maxlike::maxlike</code>, <code>rgbif::taxonsearch</code> 
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>plotKML</em> version 0.5-6 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>plotKML</em> version 0.5-8 <a href="00Index.html">Index</a>]</div>
 </body></html>
