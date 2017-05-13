@@ -23,7 +23,7 @@
 }
 \references{
 \itemize{
-\item Hijmans, R.J, Elith, J., (2012) \href{https://cran.r-project.org/web/packages/dismo/vignettes/sdm.pdf}{Species distribution modeling with R}. CRAN, Vignette for the dismo package, 72 p. 
+\item Hijmans, R.J, Elith, J., (2012) \href{https://CRAN.R-project.org/package=dismo}{Species distribution modeling with R}. CRAN, Vignette for the dismo package, 72 p. 
 \item Royle, J.A., Chandler, R.B., Yackulic, C. and J. D. Nichols. (2012) \href{http://dx.doi.org/10.1111/j.2041-210X.2011.00182.x}{Likelihood analysis of species occurrence probability from presence-only data for modelling species distributions}. Methods in Ecology and Evolution.
 \item dismo package (\url{https://CRAN.R-project.org/package=dismo})
 \item maxlike package (\url{https://CRAN.R-project.org/package=maxlike})
