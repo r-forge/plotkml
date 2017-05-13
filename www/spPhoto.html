@@ -131,7 +131,7 @@
 <h3>Details</h3>
 
 <p>The most effective way to import a field photograph to <code>SpatialPhotoOverlay</code> for parsing to KML is to: (<strong>a</strong>) use the <a href="http://www.sno.phy.queensu.ca/~phil/exiftool/">EXIF tool</a> (courtesy of Phil Harvey) to add any important tags in the image file, (<strong>b</strong>) once you've added all important tags, you can upload your image either to a local installation of Mediawiki or to a public portal such as the <a href="http://commons.wikimedia.org/wiki/Special:UploadWizard">Wikimedia Commons</a>, (<strong>c</strong>) enter the missing information if necessary and add an image description. Once the image is on the server, you only need to record its unique name and then read all metadata from the Wikimedia server following the examples below.<br /> 
-You can also consider importing images to R by using the <code>pixmap</code> package, and reading the technical information via e.g. the <a href="https://cran.r-project.org/web/packages/exif/"><code>exif</code></a> package. If the image is taken using a GPS enabled camera, by getting the EXIF metadata you can generate the complete <code>SpatialPhotoOverlay</code> object with minimum user interaction. Otherwise, you need to at least specify: creation date, file name, and location of the focal point of the camera (e.g. by creating <code>"SpatialPoints"</code> object).
+You can also consider importing images to R by using the <code>pixmap</code> package, and reading the technical information via e.g. the <a href="https://cran.r-project.org/package=exif"><code>exif</code></a> package. If the image is taken using a GPS enabled camera, by getting the EXIF metadata you can generate the complete <code>SpatialPhotoOverlay</code> object with minimum user interaction. Otherwise, you need to at least specify: creation date, file name, and location of the focal point of the camera (e.g. by creating <code>"SpatialPoints"</code> object).
 </p>
 
 
@@ -214,5 +214,5 @@ kml(af)
 ## End(Not run)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>plotKML</em> version 0.5-6 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>plotKML</em> version 0.5-8 <a href="00Index.html">Index</a>]</div>
 </body></html>
