@@ -29,6 +29,6 @@
 }
 }
 \author{ Tomislav Hengl }
-\seealso{ \code{\link{plotKML-method}}, \code{dismo::maxent}, \code{rgbif::taxonsearch}, \code{GSIF::MaxEnt} 
+\seealso{ \code{\link{plotKML-method}}, \code{dismo::maxent}, \code{rgbif::taxonsearch} 
 }
 \keyword{classes}
