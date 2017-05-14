@@ -311,37 +311,4 @@ plotKML(bar_sum,
     png.width = gridparameters(bargrid)[1,"cells.dim"]*5, 
     png.height = gridparameters(bargrid)[2,"cells.dim"]*5)
 
-## -------------- SpatialMaxEntOutput --------- ##
-library(maptools)
-library(rgdal)
-data(bigfoot)
-aea.prj <- "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 
-   +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"
-data(USAWgrids)
-gridded(USAWgrids) <- ~s1+s2
-proj4string(USAWgrids) <- CRS(aea.prj)
-bbox <- spTransform(USAWgrids, CRS("+proj=longlat +datum=WGS84"))@bbox
-sel = bigfoot$Lon > bbox[1,1] & bigfoot$Lon < bbox[1,2] &
-    bigfoot$Lat > bbox[2,1] & bigfoot$Lat < bbox[2,2]
-bigfoot <- bigfoot[sel,]
-coordinates(bigfoot) <- ~Lon+Lat
-proj4string(bigfoot) <- CRS("+proj=longlat +datum=WGS84")
-library(spatstat)
-bigfoot.aea <- as.ppp(spTransform(bigfoot, CRS(aea.prj)))
-## Load the covariates:
-sel.grids <- c("globedem","nlights03","sdroads","gcarb","twi","globcov")
-library(GSIF)
-library(dismo)
-## run MaxEnt analysis:
-jar <- paste(system.file(package="dismo"), "/java/maxent.jar", sep='')
-if(file.exists(jar)){
-  bigfoot.smo <- MaxEnt(bigfoot.aea, USAWgrids[sel.grids])
-  icon = "http://plotkml.r-forge.r-project.org/bigfoot.png"
-  data(R_pal)
-  plotKML(bigfoot.smo, colour_scale = R_pal[["bpy_colors"]], 
-    png.width = gridparameters(USAWgrids)[1,"cells.dim"]*5, 
-    png.height = gridparameters(USAWgrids)[2,"cells.dim"]*5,
-    shape = icon)
-}
-
 ## end of tutorial;
