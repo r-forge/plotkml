@@ -19,9 +19,17 @@ kml_layer.RasterBrick <- function(
   png.width, 
   png.height,
   min.png.width = 800,
-  png.type = "cairo-png",
+  png.type,
   ...
-  ){
+ ){
+  ## PNG type
+  if(missing(png.type)){ 
+    if(.Platform$OS.type == "windows") { 
+      png.type = "cairo-png" 
+    } else {
+      png.type = "cairo"
+    }
+  }
    
   if(!is.numeric(obj@data@values)){
     stop('Values of class "numeric" required.') 
