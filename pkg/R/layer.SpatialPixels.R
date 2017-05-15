@@ -16,10 +16,17 @@ kml_layer.SpatialPixels <- function(
   TimeSpan.begin,
   TimeSpan.end,
   layer.name,
-  png.type = "cairo-png",
+  png.type,
   ...
   ){
-
+  ## PNG type
+  if(missing(png.type)){ 
+    if(.Platform$OS.type == "windows") { 
+      png.type = "cairo-png" 
+    } else {
+      png.type = "cairo"
+    }
+  }
   ## get our invisible file connection from custom evnrionment
   kml.out <- get("kml.out", envir=plotKML.fileIO)
 
