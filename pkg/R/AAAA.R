@@ -1,5 +1,5 @@
 # Purpose        : Initial settings;
-# Maintainer     : Tomislav Hengl (tom.hengl@wur.nl)
+# Maintainer     : Tomislav Hengl (tom.hengl@opengeohub.org)
 # Contributions  : Pierre Roudier (pierre.roudier@landcare.nz); Dylan Beaudette (debeaudette@ucdavis.edu); 
 # Dev Status     : Pre-Alpha
 # Note           : for more info see [http://cran.r-project.org/doc/manuals/R-exts.html]; this code was prepared for SAGA GIS 2.0.8

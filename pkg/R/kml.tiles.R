@@ -1,5 +1,5 @@
 # Purpose        : Generic methods to plot large vectors;
-# Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
+# Maintainer     : Tomislav Hengl (tom.hengl@opengeohub.org);
 # Contributions  : ;
 # Dev Status     : Alpha
 # Note           : Implemented for parallel processing;

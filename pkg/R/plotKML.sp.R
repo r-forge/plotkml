@@ -1,5 +1,5 @@
 # Purpose        : Default methods to plot sp-type objects;
-# Maintainer     : Tomislav Hengl (tom.hengl@wur.nl); 
+# Maintainer     : Tomislav Hengl (tom.hengl@opengeohub.org); 
 # Contributions  : ;
 # Dev Status     : pre-Alpha
 # Note           : these functions can be further customized;

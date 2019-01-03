@@ -1,6 +1,6 @@
 # Purpose        : Automatic reprojection of vector and raster features to geographic coordinates;
 # Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
-# Contributions  : Tomislav Hengl (tom.hengl@wur.nl); Dylan Beaudette (debeaudette@ucdavis.edu); 
+# Contributions  : Tomislav Hengl (tom.hengl@opengeohub.org); Dylan Beaudette (debeaudette@ucdavis.edu); 
 # Status         : tested
 # Note           : in the case of gridded data, bounding box and cell size are estimated by the program (raster / GDAL);
 

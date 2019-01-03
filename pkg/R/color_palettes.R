@@ -1,5 +1,5 @@
 # Purpose        : Color palettes for visualization of numeric (continuous, binary, ordinary) and categorical variables;
-# Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
+# Maintainer     : Tomislav Hengl (tom.hengl@opengeohub.org);
 # Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Pierre Roudier (pierre.roudier@landcare.nz); 
 # Status         : pre-alpha
 # Note           : a gallery of color palettes is available at [http://plotkml.r-forge.r-project.org/];

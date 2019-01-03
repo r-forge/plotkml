@@ -1,5 +1,5 @@
 # Purpose        : shortest path between two points on WGS84 ellipsoid;
-# Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
+# Maintainer     : Tomislav Hengl (tom.hengl@opengeohub.org);
 # Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); 
 # Status         : pre-alpha
 # Note           : usefull for plotting airroutes or networks between geographically distant places;

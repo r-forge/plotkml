@@ -325,7 +325,7 @@ plotKML(rr, z.lim=z.lim)
 \dontrun{
 library(fossil)
 library(spacetime)
-library(adehabitat)
+library(adehabitatLT)
 data(gpxbtour)
 ## format the time column:
 gpxbtour$ctime <- as.POSIXct(gpxbtour$time, format="\%Y-\%m-\%dT\%H:\%M:\%SZ")

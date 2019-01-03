@@ -1,5 +1,5 @@
 # Purpose        : Convert SGDF/raster map to a polygon map (grid cells);
-# Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
+# Maintainer     : Tomislav Hengl (tom.hengl@opengeohub.org);
 # Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Pierre Roudier (pierre.roudier@landcare.nz); 
 # Status         : working version
 # Note           : Not recommended for large grids;

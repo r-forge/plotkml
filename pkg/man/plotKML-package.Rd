@@ -14,7 +14,7 @@ LazyLoad: \tab yes\cr
 }
 }
 \author{
-Tomislav Hengl (\email{tom.hengl@wur.nl}), Pierre Roudier (\email{pierre.roudier@landcare.nz}), Dylan Beaudette (\email{debeaudette@ucdavis.edu}), Edzer Pebesma (\email{edzer.pebesma@uni-muenster.de})
+Tomislav Hengl (\email{tom.hengl@opengeohub.org}), Pierre Roudier (\email{pierre.roudier@landcare.nz}), Dylan Beaudette (\email{debeaudette@ucdavis.edu}), Edzer Pebesma (\email{edzer.pebesma@uni-muenster.de})
 }
 \references{
 \itemize{

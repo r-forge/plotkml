@@ -1,6 +1,6 @@
 # Purpose        : Write polygon-objects (SpatialPolygons) to KML;
 # Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
-# Contributions  : Tomislav Hengl (tom.hengl@wur.nl); Dylan Beaudette (debeaudette@ucdavis.edu); 
+# Contributions  : Tomislav Hengl (tom.hengl@opengeohub.org); Dylan Beaudette (debeaudette@ucdavis.edu); 
 # Status         : pre-alpha
 # Note           : this operation can be time consuming for large grids!;
 

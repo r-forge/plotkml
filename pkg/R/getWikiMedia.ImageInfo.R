@@ -1,5 +1,5 @@
 # Purpose        : Get EXIF info from Wikimedia 
-# Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
+# Maintainer     : Tomislav Hengl (tom.hengl@opengeohub.org);
 # Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); Pierre Roudier (pierre.roudier@landcare.nz); 
 # Dev Status     : Pre-Alpha
 # Note           : The URLs might change in the near future;
