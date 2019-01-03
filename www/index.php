@@ -202,7 +202,7 @@ echo $contents; } ?>
 <hr />
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <th scope="col"><div align="left"><a href="https://opengeohub.org" target="_blank"><img src="http://opengeohub.org/themes/gavias_edubiz/logo.png" alt="OpenGeoHub logo" width="363" height="98" border="0" longdesc="https://opengeohub.org/" /></a></div></th>
+    <th scope="col"><div align="left"><a href="https://opengeohub.org" target="_blank"><img src="http://opengeohub.org/themes/gavias_edubiz/logo.png" alt="OpenGeoHub logo" width="222" height="42" border="0" longdesc="https://opengeohub.org/" /></a></div></th>
   </tr>
 </table>
 <p class="style1"> Last update: 
