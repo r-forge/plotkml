@@ -1,5 +1,5 @@
 # Purpose        : Adds different types of screen overlays to KML;
-# Maintainer     : Tomislav Hengl (tom.hengl@wur.nl)
+# Maintainer     : Tomislav Hengl (tom.hengl@opengeohub.org)
 # Contributions  : Pierre Roudier (pierre.roudier@landcare.nz); Dylan Beaudette (debeaudette@ucdavis.edu); 
 # Status         : pre-alpha
 # Note           : for more info see [http://code.google.com/apis/kml/documentation/kmlreference.html#screenoverlay];

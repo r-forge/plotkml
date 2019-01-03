@@ -1,5 +1,5 @@
 # Purpose        : Write a SpatialPixels object to KML;
-# Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
+# Maintainer     : Tomislav Hengl (tom.hengl@opengeohub.org);
 # Contributions  : ; 
 # Status         : pre-alpha
 # Note           : ;

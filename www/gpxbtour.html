@@ -9,7 +9,7 @@
 
 <h3>Description</h3>
 
-<p>GPS log of a bike tour from Wageningen (the Netherlands) to Münster (Germany). The table contains 3228 records of GPS locations, speed and elevation.</p>
+<p>GPS log of a bike tour from Wageningen (the Netherlands) to M?nster (Germany). The table contains 3228 records of GPS locations, speed and elevation.</p>
 
 
 <h3>Usage</h3>
@@ -60,7 +60,7 @@ coordinates(gpxbtour) &lt;- ~lon+lat
 proj4string(gpxbtour) &lt;- CRS("+proj=longlat +datum=WGS84")
 ## convert to a STTDF class:
 library(spacetime)
-library(adehabitat)
+library(adehabitatLT)
 gpx.ltraj &lt;- as.ltraj(coordinates(gpxbtour), gpxbtour$ctime, id = "th")
 gpx.st &lt;- as(gpx.ltraj, "STTDF")
 ## Google maps plot:
@@ -73,5 +73,5 @@ PlotOnStaticMap(MyMap, lat=gpx.st@sp@coords[,2], lon=gpx.st@sp@coords[,1],
 ## End(Not run)
 </pre>
 
-<hr /><div style="text-align: center;">[Package <em>plotKML</em> version 0.5-8 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>plotKML</em> version 0.5-9 <a href="00Index.html">Index</a>]</div>
 </body></html>

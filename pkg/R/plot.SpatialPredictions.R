@@ -1,5 +1,5 @@
 # Purpose        : Standard plots of a geostatistical model;
-# Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
+# Maintainer     : Tomislav Hengl (tom.hengl@opengeohub.org);
 # Contributions  : ;
 # Dev Status     : pre-Alpha
 # Note           : ;

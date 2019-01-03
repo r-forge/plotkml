@@ -1,5 +1,5 @@
 # Purpose        : Produce a PNG legend file for whitening;
-# Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
+# Maintainer     : Tomislav Hengl (tom.hengl@opengeohub.org);
 # Contributions  : Dylan Beaudette (debeaudette@ucdavis.edu); 
 # Status         : pre-alpha
 # Note           : this technique requires a special 2D legend;

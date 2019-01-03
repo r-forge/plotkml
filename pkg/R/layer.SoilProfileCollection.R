@@ -1,6 +1,6 @@
 # Purpose        : Parsing "SoilProfileCollection" objects to KML
 # Maintainer     : Dylan Beaudette (debeaudette@ucdavis.edu)
-# Contributions  : Tomislav Hengl (tom.hengl@wur.nl); Pierre Roudier (pierre.roudier@landcare.nz);
+# Contributions  : Tomislav Hengl (tom.hengl@opengeohub.org); Pierre Roudier (pierre.roudier@landcare.nz);
 # Status         : not tested yet
 # Note           : plots either a histogram or blocks (horizons);
 

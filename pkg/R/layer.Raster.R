@@ -1,6 +1,6 @@
 # Purpose        : Write a raster layer to KML;
 # Maintainer     : Pierre Roudier (pierre.roudier@landcare.nz);
-# Contributions  : Tomislav Hengl (tom.hengl@wur.nl); Dylan Beaudette (debeaudette@ucdavis.edu); 
+# Contributions  : Tomislav Hengl (tom.hengl@opengeohub.org); Dylan Beaudette (debeaudette@ucdavis.edu); 
 # Status         : pre-alpha
 # Note           : Rasters can also be written as polygons; see "?grid2poly";
 

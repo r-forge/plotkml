@@ -1,5 +1,5 @@
 # Purpose        : Generic method to plot Species distribution models in Google Earth 
-# Maintainer     : Tomislav Hengl (tom.hengl@wur.nl); 
+# Maintainer     : Tomislav Hengl (tom.hengl@opengeohub.org); 
 # Contributions  : ;
 # Dev Status     : Alpha
 # Note           : Only Google Earth 5.0 (and later) supports plain text content, as well as full HTML and JavaScript, within description balloons;

@@ -1,5 +1,5 @@
 # Purpose        : Clean up / closing settings;
-# Maintainer     : Tomislav Hengl (tom.hengl@wur.nl);
+# Maintainer     : Tomislav Hengl (tom.hengl@opengeohub.org);
 # Contributions  : ; 
 # Status         : pre-alpha
 # Note           : for more info see [http://cran.r-project.org/doc/manuals/R-exts.html];
