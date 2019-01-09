@@ -16,4 +16,5 @@ BuildType: Package
 PackageUseDevtools: Yes
 PackagePath: pkg
 PackageInstallArgs: --no-multiarch --with-keep.source
+PackageBuildArgs: --compact-vignettes="gs+qpdf"
 PackageCheckArgs: --as-cran

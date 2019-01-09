@@ -30,7 +30,7 @@ tags will be inserted. Temporal support for any spacetime class, if not specifie
 \item spacetime package (\url{https://CRAN.R-project.org/package=spacetime})
 }
 }
-\author{Tomislav Hengl and Benedikt \enc{Gräler}{Graeler}}
+\author{Tomislav Hengl and Benedikt Graeler}
 \seealso{ \code{\link{kml_layer.STTDF}}, \code{\link{plotKML-method}} }
 \examples{
 \dontrun{

@@ -2533,7 +2533,7 @@ detaching ‘package:rgdal’, ‘package:sp’
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  6.793 0.24 7.214 0.252 0.018 
+Time elapsed:  6.952 0.292 7.428 0.267 0.02 
 > grDevices::dev.off()
 null device 
           1 

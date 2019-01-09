@@ -2,7 +2,7 @@
 * using R version 3.5.1 (2018-07-02)
 * using platform: x86_64-pc-linux-gnu (64-bit)
 * using session charset: UTF-8
-* using options ‘--no-manual --as-cran’
+* using option ‘--as-cran’
 * checking for file ‘plotKML/DESCRIPTION’ ... OK
 * this is package ‘plotKML’ version ‘0.5-9’
 * checking CRAN incoming feasibility ... NOTE
@@ -62,5 +62,6 @@ Old maintainer(s):
 * checking for unstated dependencies in vignettes ... OK
 * checking package vignettes in ‘inst/doc’ ... OK
 * checking re-building of vignette outputs ... OK
+* checking PDF version of manual ... OK
 * DONE
 Status: 1 NOTE

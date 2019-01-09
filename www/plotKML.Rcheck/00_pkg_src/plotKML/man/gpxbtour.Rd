@@ -4,7 +4,7 @@
 \alias{gpxbtour}
 \alias{trajectory}
 \title{GPS log of a bike tour}
-\description{GPS log of a bike tour from Wageningen (the Netherlands) to \enc{M?nster}{Muenster} (Germany). The table contains 3228 records of GPS locations, speed and elevation.}
+\description{GPS log of a bike tour from Wageningen (the Netherlands) to \enc{Münster}{Muenster} (Germany). The table contains 3228 records of GPS locations, speed and elevation.}
 \format{
   The data frame contains the following columns:
   \describe{

@@ -1,5 +1,4 @@
 ### R code from vignette source 'jss1079.Rnw'
-### Encoding: ISO8859-1
 
 ###################################################
 ### code chunk number 1: jss1079.Rnw:69-73
