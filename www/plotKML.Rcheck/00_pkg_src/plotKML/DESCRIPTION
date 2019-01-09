@@ -23,7 +23,7 @@ URL: http://plotkml.r-forge.r-project.org/
 LazyLoad: yes
 RoxygenNote: 6.0.1
 NeedsCompilation: no
-Packaged: 2019-01-04 16:43:50 UTC; tomislav
+Packaged: 2019-01-09 16:03:31 UTC; tomislav
 Author: Tomislav Hengl [cre, aut],
   Pierre Roudier [ctb],
   Dylan Beaudette [ctb],
