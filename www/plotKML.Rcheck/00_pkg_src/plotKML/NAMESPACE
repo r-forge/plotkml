@@ -23,7 +23,6 @@ import("sp")
 import(rgdal)
 import(stringr)
 import(colorRamps)
-import(aqp)
 importClassFrom(spacetime, STTDF, STIDF)
 
 exportClasses(SpatialMetadata,
