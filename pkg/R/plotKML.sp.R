@@ -196,29 +196,29 @@ setMethod("plotKML", "SpatialPhotoOverlay", function(obj, folder.name = normaliz
 })
 
 
-setMethod("plotKML", "SoilProfileCollection", function(obj, folder.name = normalizeFilename(deparse(substitute(obj, env=parent.frame()))), file.name = paste(folder.name, ".kml", sep=""), var.name, metadata = NULL, kmz = get("kmz", envir = plotKML.opts), open.kml = TRUE, ...){
-  
-  if(missing(var.name)){ var.name <- names(obj@horizons)[!(names(obj@horizons) %in% c(obj@idcol, obj@depthcols))][1] }
-    
-  # open for writing:
-  kml_open(folder.name = folder.name, file.name = file.name)
- 
-  # write layer:
-  kml_layer.SoilProfileCollection(obj, var.name = var.name, balloon = TRUE, metadata = metadata, ...)
-
-  # close the file:
-  kml_close(file.name = file.name)
-  if (kmz == TRUE){
-      kml_compress(file.name = file.name)
-  }
-  # open KML file in the default browser:
-  if(open.kml==TRUE){
-    kml_View(file.name)
-  } else {
-    message(paste("Object written to:", file.name))
-  }
-
-})
+# setMethod("plotKML", "SoilProfileCollection", function(obj, folder.name = normalizeFilename(deparse(substitute(obj, env=parent.frame()))), file.name = paste(folder.name, ".kml", sep=""), var.name, metadata = NULL, kmz = get("kmz", envir = plotKML.opts), open.kml = TRUE, ...){
+#   
+#   if(missing(var.name)){ var.name <- names(obj@horizons)[!(names(obj@horizons) %in% c(obj@idcol, obj@depthcols))][1] }
+#     
+#   # open for writing:
+#   kml_open(folder.name = folder.name, file.name = file.name)
+#  
+#   # write layer:
+#   kml_layer.SoilProfileCollection(obj, var.name = var.name, balloon = TRUE, metadata = metadata, ...)
+# 
+#   # close the file:
+#   kml_close(file.name = file.name)
+#   if (kmz == TRUE){
+#       kml_compress(file.name = file.name)
+#   }
+#   # open KML file in the default browser:
+#   if(open.kml==TRUE){
+#     kml_View(file.name)
+#   } else {
+#     message(paste("Object written to:", file.name))
+#   }
+# 
+# })
 
 ## spacetime irregular vectors / spacetime full data frames...
 .plotKML.ST <- function(obj, folder.name = normalizeFilename(deparse(substitute(obj, env=parent.frame()))), file.name = paste(folder.name, ".kml", sep=""), colour, shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png", points_names, kmz = get("kmz", envir = plotKML.opts), open.kml = TRUE, ...){

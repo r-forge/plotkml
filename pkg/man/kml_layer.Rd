@@ -14,7 +14,7 @@
 \alias{kml_layer,STFDF-method}
 \alias{kml_layer,STSDF-method}
 \alias{kml_layer,STTDF-method}
-\alias{kml_layer,SoilProfileCollection-method}
+%\alias{kml_layer,SoilProfileCollection-method}
 \alias{kml_layer,SpatialGrid-method}
 \alias{kml_layer,SpatialLines-method}
 \alias{kml_layer,SpatialPhotoOverlay-method}
@@ -35,7 +35,8 @@ kml_layer(obj, \dots)
 \value{An XML object that can be further parsed to a KML file (via an open connection).}
 \author{Pierre Roudier, Tomislav Hengl and Dylan Beaudette}
 \seealso{
-\code{\link{kml_layer.SpatialPoints}}, \code{\link{kml_layer.Raster}}, \code{\link{kml_layer.SpatialLines}}, \code{\link{kml_layer.SpatialPolygons}}, \code{\link{kml_layer.STIDF}}, \code{\link{kml_layer.STTDF}}, \code{\link{kml_layer.SoilProfileCollection}}, \code{\link{kml-methods}}, \code{\link{kml_open}}, \code{\link{kml_close}}
+\code{\link{kml_layer.SpatialPoints}}, \code{\link{kml_layer.Raster}}, \code{\link{kml_layer.SpatialLines}}, \code{\link{kml_layer.SpatialPolygons}}, \code{\link{kml_layer.STIDF}}, \code{\link{kml_layer.STTDF}}, \code{\link{kml-methods}}, \code{\link{kml_open}}, \code{\link{kml_close}}
+%% \code{\link{kml_layer.SoilProfileCollection}}
 }
 \examples{
 library(rgdal)

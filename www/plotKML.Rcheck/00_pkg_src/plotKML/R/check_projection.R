@@ -14,8 +14,6 @@ extractProjValue <- function(p4s_parameters, param){
     value <- strsplit(param_value, param)[[1]]
     value <- value[value != ""]
   }
-  else { stop(paste("Proj4string does not contain", param, "parameter.\n Consider converting to the referent CRS", get("ref_CRS", envir = plotKML.opts),"manually."))
-  }
 
   return(value)
 }
