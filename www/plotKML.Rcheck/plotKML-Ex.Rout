@@ -33,7 +33,7 @@ Type 'q()' to quit R.
 > 
 > ### * </HEADER>
 > library('plotKML')
-plotKML version 0.5-9 (2019-01-04)
+plotKML version 0.6-0 (2019-11-04)
 URL: http://plotkml.r-forge.r-project.org/
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
@@ -500,12 +500,12 @@ detaching ‘package:gstat’, ‘package:sp’
 > data(eberg)
 > library(sp)
 > library(rgdal)
-rgdal: version: 1.3-3, (SVN revision 759)
+rgdal: version: 1.4-7, (SVN revision 845)
  Geospatial Data Abstraction Library extensions to R successfully loaded
- Loaded GDAL runtime: GDAL 2.2.3, released 2017/11/20
- Path to GDAL shared files: /usr/share/gdal/2.2
+ Loaded GDAL runtime: GDAL 2.4.2, released 2019/06/28
+ Path to GDAL shared files: /usr/share/gdal
  GDAL binary built with GEOS: TRUE 
- Loaded PROJ.4 runtime: Rel. 4.9.3, 15 August 2016, [PJ_VERSION: 493]
+ Loaded PROJ.4 runtime: Rel. 5.2.0, September 15th, 2018, [PJ_VERSION: 520]
  Path to PROJ.4 shared files: (autodetected)
  Linking to sp version: 1.3-1 
 > coordinates(eberg) <- ~X+Y
@@ -514,10 +514,10 @@ rgdal: version: 1.3-3, (SVN revision 759)
 [1] FALSE
 > # not yet ready for export to KML;
 > parse_proj4(proj4string(eberg))
-     proj     datum 
-  "tmerc" "potsdam" 
+    proj    ellps 
+ "tmerc" "bessel" 
 > eberg.geo <- reproject(eberg)
-Reprojecting to +proj=longlat +datum=WGS84 ...
+Reprojecting to +proj=longlat +ellps=WGS84 ...
 > check_projection(eberg.geo)
 [1] TRUE
 > # ... now ready for export
@@ -710,23 +710,23 @@ detaching ‘package:fossil’, ‘package:shapefiles’, ‘package:foreign’,
 > coordinates(eberg_grid) <- ~x+y
 > gridded(eberg_grid) <- TRUE
 > library(rgdal)
-rgdal: version: 1.3-3, (SVN revision 759)
+rgdal: version: 1.4-7, (SVN revision 845)
  Geospatial Data Abstraction Library extensions to R successfully loaded
- Loaded GDAL runtime: GDAL 2.2.3, released 2017/11/20
- Path to GDAL shared files: /usr/share/gdal/2.2
+ Loaded GDAL runtime: GDAL 2.4.2, released 2019/06/28
+ Path to GDAL shared files: /usr/share/gdal
  GDAL binary built with GEOS: TRUE 
- Loaded PROJ.4 runtime: Rel. 4.9.3, 15 August 2016, [PJ_VERSION: 493]
+ Loaded PROJ.4 runtime: Rel. 5.2.0, September 15th, 2018, [PJ_VERSION: 520]
  Path to PROJ.4 shared files: (autodetected)
  Linking to sp version: 1.3-1 
 > proj4string(eberg_grid) <- CRS("+init=epsg:31467")
 > library(raster)
 > r <- raster(eberg_grid[1])
 > getCRS(r)
-[1] "+init=epsg:31467 +proj=tmerc +lat_0=0 +lon_0=9 +k=1 +x_0=3500000 +y_0=0 +datum=potsdam +units=m +no_defs +ellps=bessel +towgs84=598.1,73.7,418.2,0.202,0.045,-2.455,6.7"
+[1] "+init=epsg:31467 +proj=tmerc +lat_0=0 +lon_0=9 +k=1 +x_0=3500000 +y_0=0 +datum=potsdam +units=m +no_defs +ellps=bessel +nadgrids=@BETA2007.gsb"
 > r.ll <- reproject(r)
-Reprojecting to +proj=longlat +datum=WGS84 ...
+Reprojecting to +proj=longlat +ellps=WGS84 ...
 > getCRS(r.ll)
-[1] "+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0"
+[1] "+proj=longlat +ellps=WGS84"
 > 
 > 
 > 
@@ -857,12 +857,12 @@ detaching ‘package:sp’
 > # Plotting a SpatialPointsDataFrame object
 > library(rgdal)
 Loading required package: sp
-rgdal: version: 1.3-3, (SVN revision 759)
+rgdal: version: 1.4-7, (SVN revision 845)
  Geospatial Data Abstraction Library extensions to R successfully loaded
- Loaded GDAL runtime: GDAL 2.2.3, released 2017/11/20
- Path to GDAL shared files: /usr/share/gdal/2.2
+ Loaded GDAL runtime: GDAL 2.4.2, released 2019/06/28
+ Path to GDAL shared files: /usr/share/gdal
  GDAL binary built with GEOS: TRUE 
- Loaded PROJ.4 runtime: Rel. 4.9.3, 15 August 2016, [PJ_VERSION: 493]
+ Loaded PROJ.4 runtime: Rel. 5.2.0, September 15th, 2018, [PJ_VERSION: 520]
  Path to PROJ.4 shared files: (autodetected)
  Linking to sp version: 1.3-1 
 > data(eberg)
@@ -944,12 +944,12 @@ detaching ‘package:rgdal’, ‘package:sp’
 > eberg <- eberg[runif(nrow(eberg))<.1,] 
 > library(sp)
 > library(rgdal)
-rgdal: version: 1.3-3, (SVN revision 759)
+rgdal: version: 1.4-7, (SVN revision 845)
  Geospatial Data Abstraction Library extensions to R successfully loaded
- Loaded GDAL runtime: GDAL 2.2.3, released 2017/11/20
- Path to GDAL shared files: /usr/share/gdal/2.2
+ Loaded GDAL runtime: GDAL 2.4.2, released 2019/06/28
+ Path to GDAL shared files: /usr/share/gdal
  GDAL binary built with GEOS: TRUE 
- Loaded PROJ.4 runtime: Rel. 4.9.3, 15 August 2016, [PJ_VERSION: 493]
+ Loaded PROJ.4 runtime: Rel. 5.2.0, September 15th, 2018, [PJ_VERSION: 520]
  Path to PROJ.4 shared files: (autodetected)
  Linking to sp version: 1.3-1 
 > library(raster)
@@ -958,7 +958,7 @@ rgdal: version: 1.3-3, (SVN revision 759)
 > kml_open("eberg.kml")
 KML file opened for writing...
 > kml_layer(eberg, colour = CLYMHT_A)
-Reprojecting to +proj=longlat +datum=WGS84 ...
+Reprojecting to +proj=longlat +ellps=WGS84 ...
 Writing to KML...
 > kml_close("eberg.kml")
 Closing  eberg.kml
@@ -986,22 +986,22 @@ detaching ‘package:raster’, ‘package:rgdal’, ‘package:sp’
 > ###   kml_shape kml_size kml_layer,RasterBrick-method
 > ###   kml_layer,RasterLayer-method kml_layer,RasterStack-method
 > ###   kml_layer,STIDF-method kml_layer,STFDF-method kml_layer,STSDF-method
-> ###   kml_layer,STTDF-method kml_layer,SoilProfileCollection-method
-> ###   kml_layer,SpatialGrid-method kml_layer,SpatialLines-method
-> ###   kml_layer,SpatialPhotoOverlay-method kml_layer,SpatialPixels-method
-> ###   kml_layer,SpatialPoints-method kml_layer,SpatialPolygons-method
+> ###   kml_layer,STTDF-method kml_layer,SpatialGrid-method
+> ###   kml_layer,SpatialLines-method kml_layer,SpatialPhotoOverlay-method
+> ###   kml_layer,SpatialPixels-method kml_layer,SpatialPoints-method
+> ###   kml_layer,SpatialPolygons-method
 > ### Keywords: spatial methods
 > 
 > ### ** Examples
 > 
 > library(rgdal)
 Loading required package: sp
-rgdal: version: 1.3-3, (SVN revision 759)
+rgdal: version: 1.4-7, (SVN revision 845)
  Geospatial Data Abstraction Library extensions to R successfully loaded
- Loaded GDAL runtime: GDAL 2.2.3, released 2017/11/20
- Path to GDAL shared files: /usr/share/gdal/2.2
+ Loaded GDAL runtime: GDAL 2.4.2, released 2019/06/28
+ Path to GDAL shared files: /usr/share/gdal
  GDAL binary built with GEOS: TRUE 
- Loaded PROJ.4 runtime: Rel. 4.9.3, 15 August 2016, [PJ_VERSION: 493]
+ Loaded PROJ.4 runtime: Rel. 5.2.0, September 15th, 2018, [PJ_VERSION: 520]
  Path to PROJ.4 shared files: (autodetected)
  Linking to sp version: 1.3-1 
 > data(eberg_grid)
@@ -1044,12 +1044,12 @@ detaching ‘package:raster’, ‘package:rgdal’, ‘package:sp’
 > 
 > library(rgdal)
 Loading required package: sp
-rgdal: version: 1.3-3, (SVN revision 759)
+rgdal: version: 1.4-7, (SVN revision 845)
  Geospatial Data Abstraction Library extensions to R successfully loaded
- Loaded GDAL runtime: GDAL 2.2.3, released 2017/11/20
- Path to GDAL shared files: /usr/share/gdal/2.2
+ Loaded GDAL runtime: GDAL 2.4.2, released 2019/06/28
+ Path to GDAL shared files: /usr/share/gdal
  GDAL binary built with GEOS: TRUE 
- Loaded PROJ.4 runtime: Rel. 4.9.3, 15 August 2016, [PJ_VERSION: 493]
+ Loaded PROJ.4 runtime: Rel. 5.2.0, September 15th, 2018, [PJ_VERSION: 520]
  Path to PROJ.4 shared files: (autodetected)
  Linking to sp version: 1.3-1 
 > library(sp)
@@ -1161,49 +1161,6 @@ detaching ‘package:raster’, ‘package:sp’
 > base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 > base::cat("layer.STIDF", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
-> nameEx("layer.SoilProfileCollection")
-> ### * layer.SoilProfileCollection
-> 
-> flush(stderr()); flush(stdout())
-> 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: kml_layer.SoilProfileCollection
-> ### Title: Writes a list of soil profiles to KML
-> ### Aliases: kml_layer.SoilProfileCollection SoilProfileCollection
-> ### Keywords: spatial
-> 
-> ### ** Examples
-> 
-> ## Not run: 
-> ##D ## install.packages("aqp", repos="http://R-Forge.R-project.org")
-> ##D library(aqp)
-> ##D library(fossil)
-> ##D library(plyr)
-> ##D data(ca630)
-> ##D ## Promote to SoilProfileCollection
-> ##D ca <- join(ca630$lab, ca630$site, type='inner')
-> ##D depths(ca) <- pedon_key ~ hzn_top + hzn_bot
-> ##D ## extract site data
-> ##D site(ca) <- ~ mlra + ssa + lon + lat + cntrl_depth_to_top + cntrl_depth_to_bot + sampled_taxon_name
-> ##D # generate SpatialPoints
-> ##D library(sp)
-> ##D coordinates(ca) <- ~ lon + lat
-> ##D ## assign CRS data
-> ##D proj4string(ca) <- "+proj=longlat +datum=NAD83"
-> ##D ## plot changes in base saturation by sum of cations method (pH 8.2):
-> ##D kml(ca, method = "depth_function", file.name = "ca_bs_8_2.kml", 
-> ##D   var.name="bs_8.2", balloon = TRUE)
-> ##D ## plot changes in cation exchange capacity by sum of cations method (pH 8.2):
-> ##D kml(ca, file.name = "ca_CEC8_2.kml", var.name="CEC8.2", IconColor = "#ff009000")
-> ##D ## plot soil profile as 'block':
-> ##D kml(ca, file.name = "ca_CEC8_2_block.kml", var.name="CEC8.2", balloon = TRUE)
-> ## End(Not run)
-> 
-> 
-> 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("layer.SoilProfileCollection", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
-> cleanEx()
 > nameEx("layer.SpatialLines")
 > ### * layer.SpatialLines
 > 
@@ -1219,12 +1176,12 @@ detaching ‘package:raster’, ‘package:sp’
 > 
 > library(rgdal)
 Loading required package: sp
-rgdal: version: 1.3-3, (SVN revision 759)
+rgdal: version: 1.4-7, (SVN revision 845)
  Geospatial Data Abstraction Library extensions to R successfully loaded
- Loaded GDAL runtime: GDAL 2.2.3, released 2017/11/20
- Path to GDAL shared files: /usr/share/gdal/2.2
+ Loaded GDAL runtime: GDAL 2.4.2, released 2019/06/28
+ Path to GDAL shared files: /usr/share/gdal
  GDAL binary built with GEOS: TRUE 
- Loaded PROJ.4 runtime: Rel. 4.9.3, 15 August 2016, [PJ_VERSION: 493]
+ Loaded PROJ.4 runtime: Rel. 5.2.0, September 15th, 2018, [PJ_VERSION: 520]
  Path to PROJ.4 shared files: (autodetected)
  Linking to sp version: 1.3-1 
 > library(sp)
@@ -1235,7 +1192,7 @@ rgdal: version: 1.3-3, (SVN revision 759)
 > # KML plot with elevations used as 'colour' argument:
 > kml(eberg_contours, colour_scale = SAGA_pal[[1]], colour = Z, kmz = TRUE)
 KML file opened for writing...
-Reprojecting to +proj=longlat +datum=WGS84 ...
+Reprojecting to +proj=longlat +ellps=WGS84 ...
 Writing to KML...
 Closing  eberg_contours.kml
   adding: data/git/plotkml/www/plotKML.Rcheck/eberg_contours.kml (deflated 68%)
@@ -1293,12 +1250,12 @@ detaching ‘package:rgdal’, ‘package:sp’
 > data(eberg_grid)
 > library(sp)
 > library(rgdal)
-rgdal: version: 1.3-3, (SVN revision 759)
+rgdal: version: 1.4-7, (SVN revision 845)
  Geospatial Data Abstraction Library extensions to R successfully loaded
- Loaded GDAL runtime: GDAL 2.2.3, released 2017/11/20
- Path to GDAL shared files: /usr/share/gdal/2.2
+ Loaded GDAL runtime: GDAL 2.4.2, released 2019/06/28
+ Path to GDAL shared files: /usr/share/gdal
  GDAL binary built with GEOS: TRUE 
- Loaded PROJ.4 runtime: Rel. 4.9.3, 15 August 2016, [PJ_VERSION: 493]
+ Loaded PROJ.4 runtime: Rel. 5.2.0, September 15th, 2018, [PJ_VERSION: 520]
  Path to PROJ.4 shared files: (autodetected)
  Linking to sp version: 1.3-1 
 > library(raster)
@@ -1339,12 +1296,12 @@ detaching ‘package:raster’, ‘package:rgdal’, ‘package:sp’
 > data(SAGA_pal)
 > library(sp)
 > library(rgdal)
-rgdal: version: 1.3-3, (SVN revision 759)
+rgdal: version: 1.4-7, (SVN revision 845)
  Geospatial Data Abstraction Library extensions to R successfully loaded
- Loaded GDAL runtime: GDAL 2.2.3, released 2017/11/20
- Path to GDAL shared files: /usr/share/gdal/2.2
+ Loaded GDAL runtime: GDAL 2.4.2, released 2019/06/28
+ Path to GDAL shared files: /usr/share/gdal
  GDAL binary built with GEOS: TRUE 
- Loaded PROJ.4 runtime: Rel. 4.9.3, 15 August 2016, [PJ_VERSION: 493]
+ Loaded PROJ.4 runtime: Rel. 5.2.0, September 15th, 2018, [PJ_VERSION: 520]
  Path to PROJ.4 shared files: (autodetected)
  Linking to sp version: 1.3-1 
 > coordinates(eberg) <- ~X+Y
@@ -1418,12 +1375,12 @@ detaching ‘package:XML’, ‘package:rgdal’, ‘package:sp’
 > 
 > library(rgdal)
 Loading required package: sp
-rgdal: version: 1.3-3, (SVN revision 759)
+rgdal: version: 1.4-7, (SVN revision 845)
  Geospatial Data Abstraction Library extensions to R successfully loaded
- Loaded GDAL runtime: GDAL 2.2.3, released 2017/11/20
- Path to GDAL shared files: /usr/share/gdal/2.2
+ Loaded GDAL runtime: GDAL 2.4.2, released 2019/06/28
+ Path to GDAL shared files: /usr/share/gdal
  GDAL binary built with GEOS: TRUE 
- Loaded PROJ.4 runtime: Rel. 4.9.3, 15 August 2016, [PJ_VERSION: 493]
+ Loaded PROJ.4 runtime: Rel. 5.2.0, September 15th, 2018, [PJ_VERSION: 520]
  Path to PROJ.4 shared files: (autodetected)
  Linking to sp version: 1.3-1 
 > library(sp)
@@ -1433,14 +1390,14 @@ rgdal: version: 1.3-3, (SVN revision 759)
 > ## visualize zones using random colors:
 > kml(eberg_zones, colorMode = "random")
 KML file opened for writing...
-Reprojecting to +proj=longlat +datum=WGS84 ...
+Reprojecting to +proj=longlat +ellps=WGS84 ...
 Writing to KML...
 Closing  eberg_zones.kml
 > ## with labels:
 > kml(eberg_zones, colour = ZONES, plot.labpt = TRUE, 
 +    labels = ZONES, kmz = TRUE, balloon=TRUE)
 KML file opened for writing...
-Reprojecting to +proj=longlat +datum=WGS84 ...
+Reprojecting to +proj=longlat +ellps=WGS84 ...
 Writing to KML...
 Closing  eberg_zones.kml
   adding: data/git/plotkml/www/plotKML.Rcheck/eberg_zones.kml (deflated 77%)
@@ -1629,7 +1586,7 @@ $colour_scale_svar
 [1] "#FEEDDE" "#FDBE85" "#FD8D3C" "#E6550D" "#A63603"
 
 $ref_CRS
-[1] "+proj=longlat +datum=WGS84"
+[1] "+proj=longlat +ellps=WGS84"
 
 $NAflag
 [1] -99999
@@ -1699,12 +1656,12 @@ $home_url
 > ## -------------- SpatialPointsDataFrame --------- ##
 > library(sp)
 > library(rgdal)
-rgdal: version: 1.3-3, (SVN revision 759)
+rgdal: version: 1.4-7, (SVN revision 845)
  Geospatial Data Abstraction Library extensions to R successfully loaded
- Loaded GDAL runtime: GDAL 2.2.3, released 2017/11/20
- Path to GDAL shared files: /usr/share/gdal/2.2
+ Loaded GDAL runtime: GDAL 2.4.2, released 2019/06/28
+ Path to GDAL shared files: /usr/share/gdal
  GDAL binary built with GEOS: TRUE 
- Loaded PROJ.4 runtime: Rel. 4.9.3, 15 August 2016, [PJ_VERSION: 493]
+ Loaded PROJ.4 runtime: Rel. 5.2.0, September 15th, 2018, [PJ_VERSION: 520]
  Path to PROJ.4 shared files: (autodetected)
  Linking to sp version: 1.3-1 
 > data(eberg)
@@ -1723,7 +1680,7 @@ rgdal: version: 1.3-3, (SVN revision 759)
 KML file opened for writing...
 > kml_layer(eberg["CLYMHT_A"], colour=CLYMHT_A, z.lim=c(20,60),
 +    colour_scale=SAGA_pal[[1]], shape=shape, points_names="")
-Reprojecting to +proj=longlat +datum=WGS84 ...
+Reprojecting to +proj=longlat +ellps=WGS84 ...
 Writing to KML...
 > kml_legend.bar(x=eberg$CLYMHT_A, legend.file="kml_legend.png",
 +    legend.pal=SAGA_pal[[1]], z.lim=c(20,60))
@@ -1757,7 +1714,7 @@ Closing  eberg_CLYMHT_A.kml
 > gridded(eberg_grid) <- ~x+y
 > proj4string(eberg_grid) <- CRS("+init=epsg:31467")
 > TWI <- reproject(eberg_grid["TWISRT6"])
-Reprojecting to +proj=longlat +datum=WGS84 ...
+Reprojecting to +proj=longlat +ellps=WGS84 ...
 > data(SAGA_pal)
 > ## Not run: 
 > ##D ## set limits manually (increase resolution):
@@ -1775,7 +1732,7 @@ Reprojecting to +proj=longlat +datum=WGS84 ...
 > ## attr(worldgrids_pal["corine2k"][[1]], "names")
 > pal = as.character(worldgrids_pal["corine2k"][[1]][c(1,11,13,14,16,17,18)])
 > LNCCOR6 <- reproject(eberg_grid["LNCCOR6"])
-Reprojecting to +proj=longlat +datum=WGS84 ...
+Reprojecting to +proj=longlat +ellps=WGS84 ...
 > ## Not run: 
 > ##D plotKML(LNCCOR6, colour_scale=pal)
 > ## End(Not run)
@@ -2278,18 +2235,18 @@ detaching ‘package:gstat’, ‘package:spacetime’, ‘package:plyr’,
 > data(eberg)
 > library(sp)
 > library(rgdal)
-rgdal: version: 1.3-3, (SVN revision 759)
+rgdal: version: 1.4-7, (SVN revision 845)
  Geospatial Data Abstraction Library extensions to R successfully loaded
- Loaded GDAL runtime: GDAL 2.2.3, released 2017/11/20
- Path to GDAL shared files: /usr/share/gdal/2.2
+ Loaded GDAL runtime: GDAL 2.4.2, released 2019/06/28
+ Path to GDAL shared files: /usr/share/gdal
  GDAL binary built with GEOS: TRUE 
- Loaded PROJ.4 runtime: Rel. 4.9.3, 15 August 2016, [PJ_VERSION: 493]
+ Loaded PROJ.4 runtime: Rel. 5.2.0, September 15th, 2018, [PJ_VERSION: 520]
  Path to PROJ.4 shared files: (autodetected)
  Linking to sp version: 1.3-1 
 > coordinates(eberg) <- ~X+Y
 > proj4string(eberg) <- CRS("+init=epsg:31467")
 > eberg.geo <- reproject(eberg)
-Reprojecting to +proj=longlat +datum=WGS84 ...
+Reprojecting to +proj=longlat +ellps=WGS84 ...
 > ## Not run: 
 > ##D ## example with raster data:
 > ##D data(eberg_grid25)
@@ -2533,7 +2490,7 @@ detaching ‘package:rgdal’, ‘package:sp’
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  6.952 0.292 7.428 0.267 0.02 
+Time elapsed:  7.81 0.807 8.822 0.269 0.024 
 > grDevices::dev.off()
 null device 
           1 

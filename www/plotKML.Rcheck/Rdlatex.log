@@ -1,45 +1,42 @@
 Hmm ... looks like a package
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./Rd2.tex
-LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 5 language(s) loaded.
+LaTeX2e <2018-12-01>
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
-Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/bk10.clo))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2018/09/03 v1.4i Standard LaTeX document class
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/bk10.clo))
 (/opt/microsoft/ropen/3.5.1/lib64/R/share/texmf/tex/latex/Rd.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def))
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/zi4.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/ifthen.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/tools/longtable.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/tools/bm.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/alltt.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/tools/verbatim.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/url/url.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/ts1enc.def
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/ts1enc.dfu)))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/inconsolata/zi4.sty
 `inconsolata-zi4' v1.112, 2017/01/04 Text macros for Inconsolata (msharpe)
-(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/keyval.tex)))))
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def))
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
-(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/xkeyval/keyval.tex)))))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/graphics/color.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
 
 Package hyperref Warning: Option `hyperindex' has already been used,
 (hyperref)                setting the option has no effect on input line 366.
@@ -48,837 +45,764 @@ Package hyperref Warning: Option `hyperindex' has already been used,
 Package hyperref Warning: Option `pagebackref' has already been used,
 (hyperref)                setting the option has no effect on input line 366.
 
-) (/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu)
-(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu)
-(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu)
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.dfu))
-(/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def))
+) (/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/makeidx.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/inputenc.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/latin1.def))
 Writing index file Rd2.idx
 No file Rd2.aux.
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
-(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [1{/var/lib/texmf/fonts
-/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (20.03957pt too wide) in paragraph at lines 65--66
-[]\T1/ptm/m/n/10 Tomislav Hengl (\T1/zi4/m/n/10 <tom.hengl@opengeohub.org>\T1/p
-tm/m/n/10 ), Pierre Roudier (\T1/zi4/m/n/10 <pierre.roudier@landcare.nz>\T1/ptm
-/m/n/10 ),
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/inconsolata/ot1zi4.fd)
 
-Overfull \hbox (33.51947pt too wide) in paragraph at lines 65--66
-\T1/ptm/m/n/10 Dy-lan Beaudette (\T1/zi4/m/n/10 <debeaudette@ucdavis.edu>\T1/pt
-m/m/n/10 ), Edzer Pebesma (\T1/zi4/m/n/10 <edzer.pebesma@uni-muenster.de>\T1/pt
-m/m/n/10 ) 
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [2]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [3] [4]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [5]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [6] [7]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [8]
-Overfull \hbox (25.25978pt too wide) in paragraph at lines 439--440
-[]\T1/ptm/m/n/10 list of vec-tors of class \T1/zi4/m/n/10 "SpatialPoint*"\T1/pt
-m/m/n/10 , \T1/zi4/m/n/10 "SpatialLines*" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 "Spa
-tialPolygons*"
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [9]
-(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/ts1zi4.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [10] [11]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [12]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+LaTeX Font Warning: Font shape `OML/zi4/m/n' undefined
+(Font)              using `OML/cmm/m/it' instead
+(Font)              for symbol `textless' on input line 20.
+
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/utf8.def) [1{/home/tomislav/
+.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (43.75346pt too wide) in paragraph at lines 65--66
+[]\OT1/cmr/m/n/10 Tomislav Hengl (\OML/zi4/m/n/10 <\OT1/zi4/m/n/10 tom.hengl@op
+engeohub.org\OML/zi4/m/n/10 >\OT1/cmr/m/n/10 ), Pierre Roudier (\OML/zi4/m/n/10
+ <\OT1/zi4/m/n/10 pierre.roudier@landcare.nz\OML/zi4/m/n/10 >\OT1/cmr/m/n/10 ),
+
+
+Overfull \hbox (59.80905pt too wide) in paragraph at lines 65--66
+\OT1/cmr/m/n/10 Dy-lan Beaudette (\OML/zi4/m/n/10 <\OT1/zi4/m/n/10 debeaudette@
+ucdavis.edu\OML/zi4/m/n/10 >\OT1/cmr/m/n/10 ), Edzer Pebesma (\OML/zi4/m/n/10 <
+\OT1/zi4/m/n/10 edzer.pebesma@uni-muenster.de\OML/zi4/m/n/10 >\OT1/cmr/m/n/10 )
+ 
+
+Overfull \hbox (5.53117pt too wide) in paragraph at lines 72--73
+[]\OT1/cmr/b/n/10 Google Earth Out-reach \OT1/cmr/m/n/10 project ([][]$\OT1/zi4
+/m/n/10 http : / / earth . google . com / outreach / tutorials . html$[][]\OT1/
+cmr/m/n/10 ) 
+[2] [3] [4] [5]
+Overfull \hbox (6.17052pt too wide) in paragraph at lines 282--283
+[]\OT1/cmr/m/n/10 Lozier, J.D., Aniello, P., Hick-er-son, M.J., (2009) [][]Pre-
+dict-ing the dis-tri-bu-tion of Sasquatch
+[6]
+Underfull \hbox (badness 1117) in paragraph at lines 314--314
+[]\OT1/cmr/m/it/10 Extracts the proj4 pa-ram-e-ters and checks if the pro-jec-t
+ion
+[7] [8]
+Overfull \hbox (31.99544pt too wide) in paragraph at lines 439--440
+[]\OT1/cmr/m/n/10 list of vec-tors of class \OT1/zi4/m/n/10 "SpatialPoint*"\OT1
+/cmr/m/n/10 , \OT1/zi4/m/n/10 "SpatialLines*" \OT1/cmr/m/n/10 or \OT1/zi4/m/n/1
+0 "SpatialPolygons*"
+[9] (/home/tomislav/.TinyTeX/texmf-dist/tex/latex/inconsolata/ts1zi4.fd)
+[10]
+Overfull \hbox (1.46487pt too wide) in paragraph at lines 545--546
+[]\OT1/cmr/m/n/10 The \OT1/zi4/m/n/10 eberg[]grid \OT1/cmr/m/n/10 data frame (r
+eg-u-lar grid at 100 m res-o-lu-tion) con-tains the fol-low-ing columns: 
+[11] [12] [13]
 Underfull \hbox (badness 10000) in paragraph at lines 671--672
 
-[13]
+
 Underfull \hbox (badness 10000) in paragraph at lines 673--674
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (11.79866pt too wide) in paragraph at lines 739--740
-[]\T1/ptm/m/n/10 For more de-tails about the PROJ.4 pa-ram-e-ters re-fer to the
- [][]$\T1/zi4/m/n/10 https : / / proj4 . org / usage / projections .
-[14] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+[14] [15]
 Underfull \hbox (badness 10000) in paragraph at lines 792--794
 
-[15]
+
+LaTeX Font Warning: Font shape `OMS/zi4/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 795.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 795--796
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [16]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [17] [18]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [19]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [20] [21]
+[16] [17] [18] [19]
+Overfull \hbox (0.26768pt too wide) in paragraph at lines 995--996
+[]\OT1/cmr/m/n/10 Zaninovic K., Gajic-Capka, M., Percec Tadic, M. et al., (2010
+) [][]Kli-matski at-las Hrvatske
+[20] [21]
 Underfull \vbox (badness 10000) has occurred while \output is active [22]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [23]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (2.92038pt too wide) in paragraph at lines 1281--1282
-[]\T1/zi4/m/n/10 "SpatialPoints*" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 "SpatialLine
-s*" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 "SpatialPolygons*"\T1/ptm/m/n/10 ; vec-tor
- layer 
-[24] [25] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+[23] [24] [25]
 Underfull \hbox (badness 10000) in paragraph at lines 1361--1363
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1364--1365
 
-[26] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [27]
-Overfull \hbox (50.84094pt too wide) in paragraph at lines 1489--1490
-[][][]\T1/zi4/m/n/10 kml_layer.SpatialPoints[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/
-m/n/10 kml_layer.Raster[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 kml_layer.Spat
-ialLines[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 kml_layer.SpatialPolygons[][]
-[]\T1/ptm/m/n/10 ,
+[26] [27]
+Overfull \hbox (4.58698pt too wide) in paragraph at lines 1463--1464
+[]\OT1/cmr/m/n/10 Writes any \OT1/zi4/m/n/10 Spatial* \OT1/cmr/m/n/10 ob-ject (
+from the sp pack-age), spatio-temporal ob-ject (from the [][]\OT1/zi4/m/n/10 ST
+-class[][][]
 
-Overfull \hbox (25.12097pt too wide) in paragraph at lines 1489--1490
-[][]\T1/zi4/m/n/10 kml_layer.STIDF[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 kml
-_layer.STTDF[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 kml_layer.SoilProfileColl
-ection[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 kml-methods[][][]\T1/ptm/m/n/10
- , [][]\T1/zi4/m/n/10 kml_open[][][]\T1/ptm/m/n/10 ,
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [28]
-Overfull \hbox (6.3869pt too wide) in paragraph at lines 1520--1521
-[]\T1/ptm/m/n/10 Writes rasters to PNG im-ages and makes a KML code (ground ove
-r-lays). Works with \T1/zi4/m/n/10 "RasterLayer"
-
-Overfull \hbox (51.61015pt too wide) in paragraph at lines 1535--1536
-[]\T1/ptm/m/n/10 object of class \T1/zi4/m/n/10 "RasterLayer"\T1/ptm/m/n/10 , \
-T1/zi4/m/n/10 "SpatialPixelsDataFrame" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 "Spatia
-lGridDataFrame" 
-[29] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [30]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [31] [32]
-Overfull \hbox (27.73488pt too wide) in paragraph at lines 1734--1734
- []\T1/zi4/m/n/9 site(ca) <- ~ mlra + ssa + lon + lat + cntrl_depth_to_top + cn
-trl_depth_to_bot + sampled_taxon_name[] 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [33]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [34] [35]
-Overfull \hbox (14.98964pt too wide) in paragraph at lines 1871--1872
-[]\T1/ptm/m/n/10 KML Ref-er-ence ([][]$\T1/zi4/m/n/10 http : / / code . google 
-. com / apis / kml / documentation / kmlreference . html$[][]\T1/ptm/m/n/10 ) 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (7.28754pt too wide) in paragraph at lines 1902--1903
-\T1/ptm/m/n/10 ment (ground over-lays). Tar-get at-tributes can be spec-i-fied 
-us-ing aes-thet-ics ar-gu-ments (e.g. \T1/zi4/m/n/10 "colour"\T1/ptm/m/n/10 ). 
+Overfull \hbox (47.62538pt too wide) in paragraph at lines 1488--1489
+[][][]\OT1/zi4/m/n/10 kml[]layer.SpatialPoints[][][]\OT1/cmr/m/n/10 , [][]\OT1/
+zi4/m/n/10 kml[]layer.Raster[][][]\OT1/cmr/m/n/10 , [][]\OT1/zi4/m/n/10 kml[]la
+yer.SpatialLines[][][]\OT1/cmr/m/n/10 , [][]\OT1/zi4/m/n/10 kml[]layer.SpatialP
+olygons[][][]\OT1/cmr/m/n/10 ,
+[28]
+Overfull \hbox (57.41206pt too wide) in paragraph at lines 1535--1536
+[]\OT1/cmr/m/n/10 object of class \OT1/zi4/m/n/10 "RasterLayer"\OT1/cmr/m/n/10 
+, \OT1/zi4/m/n/10 "SpatialPixelsDataFrame" \OT1/cmr/m/n/10 or \OT1/zi4/m/n/10 "
+SpatialGridDataFrame" 
+[29] [30] [31] [32] [33]
+Overfull \hbox (57.41206pt too wide) in paragraph at lines 1799--1800
+[]\OT1/cmr/m/n/10 object of class \OT1/zi4/m/n/10 "RasterLayer"\OT1/cmr/m/n/10 
+, \OT1/zi4/m/n/10 "SpatialPixelsDataFrame" \OT1/cmr/m/n/10 or \OT1/zi4/m/n/10 "
+SpatialGridDataFrame" 
+[34] [35]
+Underfull \hbox (badness 10000) in paragraph at lines 1882--1883
 
 
-Overfull \hbox (51.61015pt too wide) in paragraph at lines 1918--1919
-[]\T1/ptm/m/n/10 object of class \T1/zi4/m/n/10 "RasterLayer"\T1/ptm/m/n/10 , \
-T1/zi4/m/n/10 "SpatialPixelsDataFrame" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 "Spatia
-lGridDataFrame" 
-[36] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [37]
-Underfull \hbox (badness 10000) in paragraph at lines 2001--2002
+Underfull \hbox (badness 10000) in paragraph at lines 1884--1885
+
+[36] [37]
+Underfull \hbox (badness 10000) in paragraph at lines 1976--1978
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2003--2004
+Underfull \hbox (badness 10000) in paragraph at lines 1979--1980
 
-[38] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [39]
-Underfull \hbox (badness 10000) in paragraph at lines 2095--2097
+[38]
+Overfull \hbox (2.79022pt too wide) in paragraph at lines 2025--2026
+[]\OT1/cmr/m/n/10 additional ar-gu-ments that can be passed to the \OT1/zi4/m/n
+/10 kml[]layer.Spatial \OT1/cmr/m/n/10 method 
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 2098--2099
-
-[40] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Underfull \hbox (badness 10000) in paragraph at lines 2149--2150
+Underfull \hbox (badness 10000) in paragraph at lines 2030--2031
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2151--2152
+Underfull \hbox (badness 10000) in paragraph at lines 2032--2033
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2153--2154
+Underfull \hbox (badness 10000) in paragraph at lines 2034--2035
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2155--2156
+Underfull \hbox (badness 10000) in paragraph at lines 2036--2037
 
-[41] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (3.10059pt too wide) in paragraph at lines 2229--2229
- []\T1/zi4/m/n/10 kml_layer.STTDF(obj, id.name = names(obj@data)[which(names(ob
-j@data)== "burst")],[] 
-[42]
-Underfull \hbox (badness 10000) in paragraph at lines 2257--2258
+[39] [40]
+Overfull \hbox (3.10059pt too wide) in paragraph at lines 2110--2110
+ []\OT1/zi4/m/n/10 kml_layer.STTDF(obj, id.name = names(obj@data)[which(names(o
+bj@data)== "burst")],[] 
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 2259--2260
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [43]
-Overfull \hbox (13.06992pt too wide) in paragraph at lines 2292--2292
- []     \T1/zi4/m/n/10 z.lim = range(x, na.rm=TRUE, finite=TRUE), factor.labels
-, png.type = "cairo-png")[] 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [44] [45]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [46]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (1.37617pt too wide) in paragraph at lines 2477--2478
-[]\T1/ptm/m/n/10 These lower level func-tions can be used to cre-ate cus-tomize
-d multi-layered KML files. See plotKML
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [47] [48]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Underfull \hbox (badness 10000) in paragraph at lines 2586--2587
+Underfull \hbox (badness 10000) in paragraph at lines 2138--2139
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2588--2589
+Underfull \hbox (badness 10000) in paragraph at lines 2140--2141
 
-[49] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [50]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [51] [52]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [53]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2867--2867
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+[41]
+Overfull \hbox (13.06992pt too wide) in paragraph at lines 2173--2173
+ []     \OT1/zi4/m/n/10 z.lim = range(x, na.rm=TRUE, finite=TRUE), factor.label
+s, png.type = "cairo-png")[] 
+[42] [43] [44] [45] [46]
+Underfull \hbox (badness 10000) in paragraph at lines 2467--2468
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2874--2874
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2879--2879
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Underfull \hbox (badness 10000) in paragraph at lines 2469--2470
+
+[47] [48] [49] [50] [51]
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2748--2748
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2755--2755
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2760--2760
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+[52]
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2766--2766
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2771--2771
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2776--2776
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2781--2781
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2786--2786
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2792--2792
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2802--2802
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2808--2808
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Underfull \vbox (badness 10000) has occurred while \output is active [53]
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2814--2814
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2821--2821
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2831--2831
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2838--2838
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2843--2843
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (9.75021pt too wide) in paragraph at lines 2849--2849
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env=parent.frame()))),[] 
 [54]
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2885--2885
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (17.41249pt too wide) in paragraph at lines 2868--2869
+[]\OT1/cmr/m/n/10 target vari-able name (only valid for vi-su-al-iza-tion of \O
+T1/zi4/m/n/10 "SoilProfileCollection"
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2890--2890
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (2.39212pt too wide) in paragraph at lines 2898--2899
+\OT1/zi4/m/n/10 "SpatialPolygonsDataFrame"\OT1/cmr/m/n/10 , or \OT1/zi4/m/n/10 
+"SpatialPixelsDataFrame" \OT1/cmr/m/n/10 con-sider us-ing the \OT1/zi4/m/n/10 G
+SIF::tile
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2895--2895
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (33.00313pt too wide) in paragraph at lines 2902--2903
+[][][]\OT1/zi4/m/n/10 SpatialPredictions-class[][][]\OT1/cmr/m/n/10 , [][]\OT1/
+zi4/m/n/10 SpatialVectorsSimulations-class[][][]\OT1/cmr/m/n/10 , [][]\OT1/zi4/
+m/n/10 RasterBrickSimulations-class[][][]\OT1/cmr/m/n/10 ,
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2900--2900
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (15.22534pt too wide) in paragraph at lines 2902--2903
+[][]\OT1/zi4/m/n/10 RasterBrickTimeSeries-class[][][]\OT1/cmr/m/n/10 , [][]\OT1
+/zi4/m/n/10 SpatialMaxEntOutput-class[][][]\OT1/cmr/m/n/10 , [][]\OT1/zi4/m/n/1
+0 SpatialSamplingPattern-class[][][] 
+[55] [56]
+Underfull \vbox (badness 10000) has occurred while \output is active [57]
+Underfull \vbox (badness 10000) has occurred while \output is active [58]
+Underfull \vbox (badness 10000) has occurred while \output is active [59]
+Underfull \vbox (badness 10000) has occurred while \output is active [60]
+Underfull \vbox (badness 10000) has occurred while \output is active [61]
+[62] [63] [64] [65] [66] [67] [68]
+Overfull \hbox (27.77168pt too wide) in paragraph at lines 3680--3680
+ []\OT1/zi4/m/n/9 # download.file(paste("http://data.gbif.org/occurrences/taxon
+/celldensity/", kml.file, sep=""),[] 
+[69] [70pdfTeX warning (ext4): destination with the same identifier (name{Rfn.r
+eproject,SpatialPixelsDataFrame.Rdash.method}) has been already used, duplicate
+ ignored
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2905--2905
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.3744 ## S4 method for signature 'RasterBrick'
+                                               ] [71]
+Overfull \hbox (24.58698pt too wide) in paragraph at lines 3833--3835
+\OT1/cmr/m/n/10 Pos-si-bly the most used palettes for vi-su-al-iza-tion of nu-m
+eric vari-ables are \OT1/zi4/m/n/10 rev(rainbow(65)[1:48])
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2911--2911
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (45.39134pt too wide) in paragraph at lines 3838--3839
+\OT1/cmr/m/n/10 R. All pal-letes de-scribed here were pre-pared for R by Tomis-
+lav Hengl (\OML/zi4/m/n/10 <\OT1/zi4/m/n/10 tom.hengl@opengeohub.org\OML/zi4/m/
+n/10 >\OT1/cmr/m/n/10 ). 
+[72]
+Overfull \hbox (12.97467pt too wide) in paragraph at lines 3877--3878
+[]\OT1/cmr/m/n/10 A class for color palette that can be fur-ther used to cre-at
+e an ob-ject of class \OT1/zi4/m/n/10 "SpatialMetadata"\OT1/cmr/m/n/10 . 
+[73]
+Overfull \hbox (71.86435pt too wide) in paragraph at lines 3920--3921
+[]\OT1/cmr/m/n/10 object of class \OT1/zi4/m/n/10 "Spatial" \OT1/cmr/m/n/10 (id
+e-ally \OT1/zi4/m/n/10 "SpatialPolygonsDataFrame" \OT1/cmr/m/n/10 or \OT1/zi4/m
+/n/10 "SpatialPixelsDataFrame"\OT1/cmr/m/n/10 );
+[74] [75] [76]
+Overfull \hbox (43.61435pt too wide) in paragraph at lines 4080--4081
+[]\OT1/cmr/m/n/10 object of class \OT1/zi4/m/n/10 "SpatialPointsDataFrame" \OT1
+/cmr/m/n/10 (must be 2D); see \OT1/zi4/m/n/10 sp::SpatialPointsDataFrame 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2921--2921
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (20.44757pt too wide) in paragraph at lines 4120--4121
+[][][]\OT1/zi4/m/n/10 plotKML-method[][][]\OT1/cmr/m/n/10 , \OT1/zi4/m/n/10 GSI
+F::fit.gstatModel\OT1/cmr/m/n/10 , \OT1/zi4/m/n/10 gstat::gstat-class\OT1/cmr/m
+/n/10 , [][]\OT1/zi4/m/n/10 RasterBrickSimulations-class[][][] 
+[77] [78] [79]
+Overfull \hbox (13.50496pt too wide) in paragraph at lines 4265--4266
+[]\OT1/cmr/m/n/10 logical; spec-i-fies whether to val-i-date the schema us-ing 
+the \OT1/zi4/m/n/10 xmlSchemaValidate 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2927--2927
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (56.63496pt too wide) in paragraph at lines 4271--4273
+\OT1/cmr/m/n/10 or \OT1/zi4/m/n/10 system.file("INSPIRE[]ISO19139.xml", package
+="plotKML")\OT1/cmr/m/n/10 ). The \OT1/zi4/m/n/10 FGDC.xml\OT1/cmr/m/n/10 /\OT1
+/zi4/m/n/10 INSPIRE[]ISO19139.xml
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2933--2933
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (4.58667pt too wide) in paragraph at lines 4284--4285
+[]\OT1/zi4/m/n/10 metadata[["fileIdentifier"]][["CharacterString"]] \OT1/cmr/m/
+n/10 --- Meta-data file iden-ti-fier (not
+[80]
+Overfull \hbox (8.5035pt too wide) in paragraph at lines 4285--4286
+[]\OT1/zi4/m/n/10 metadata[["dateStamp"]][["Date"]] \OT1/cmr/m/n/10 --- Meta-da
+ta date stamp cre-ated us-ing Sys.Date(). 
 
-Underfull \vbox (badness 10000) has occurred while \output is active [55]
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2940--2940
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (320.91083pt too wide) in paragraph at lines 4287--4288
+[]\OT1/zi4/m/n/10 metadata[["identificationInfo"]][["MD[]DataIdentification"]] 
+[["extent"]][["EX[]Extent"]][["geographicElement"]][["EX[]GeographicBoundingBox
+"]]
+[81] [82] [83] [84]
+Overfull \hbox (74.5182pt too wide) in paragraph at lines 4513--4514
+[]\OT1/cmr/m/n/10 integer; tar-get col-umn in the out-put shape file (see \OT1/
+zi4/m/n/10 rsaga.get.usage("grid[]gridding", 0)\OT1/cmr/m/n/10 ) 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2950--2950
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (28.12926pt too wide) in paragraph at lines 4514--4515
+[]\OT1/cmr/m/n/10 integer; method for mul-ti-ple val-ues (see \OT1/zi4/m/n/10 r
+saga.get.usage("grid[]gridding", 0)\OT1/cmr/m/n/10 ) 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2957--2957
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (22.6292pt too wide) in paragraph at lines 4516--4517
+[]\OT1/cmr/m/n/10 integer; pre-ferred tar-get grid type (see \OT1/zi4/m/n/10 rs
+aga.get.usage("grid[]gridding", 0)\OT1/cmr/m/n/10 ) 
+[85] [86] [87] [88]
+Overfull \hbox (10.2537pt too wide) in paragraph at lines 4712--4713
+[]\OT1/cmr/m/n/10 Color palette used for the most gen-eral land use classes at 
+scale 1:250k (TOP250NL). 
+[89]
+No file Rd2.ind.
+[90] (./Rd2.aux)
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2962--2962
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
 
-Overfull \hbox (9.75021pt too wide) in paragraph at lines 2968--2968
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env=parent.frame()))),[] 
-[56]
-Overfull \hbox (0.41872pt too wide) in paragraph at lines 2987--2988
-[]\T1/ptm/m/n/10 target vari-able name (only valid for vi-su-al-iza-tion of \T1
-/zi4/m/n/10 "SoilProfileCollection"
 
-Overfull \hbox (36.38719pt too wide) in paragraph at lines 3011--3012
-\T1/ptm/m/n/10 ci-ple, \T1/zi4/m/n/10 plotKML \T1/ptm/m/n/10 works with both si
-m-ple spa-tial ob-jects, and com-plex ob-jects such as \T1/zi4/m/n/10 "SpatialP
-redictions"\T1/ptm/m/n/10 ,
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Overfull \hbox (93.34094pt too wide) in paragraph at lines 3011--3012
-\T1/zi4/m/n/10 "SpatialVectorsSimulations"\T1/ptm/m/n/10 , \T1/zi4/m/n/10 "Rast
-erBrickSimulations"\T1/ptm/m/n/10 , \T1/zi4/m/n/10 "RasterBrickTimeSeries"\T1/p
-tm/m/n/10 , \T1/zi4/m/n/10 "SpatialMaxEntOutput"
+ )
+(see the transcript file for additional information)pdfTeX warning (dest): name
+{Rfn.CRS.Rdash.class} has been referenced but does not exist, replaced by a fix
+ed one
 
-Overfull \hbox (31.32092pt too wide) in paragraph at lines 3021--3022
-[][][]\T1/zi4/m/n/10 SpatialPredictions-class[][][]\T1/ptm/m/n/10 , [][]\T1/zi4
-/m/n/10 SpatialVectorsSimulations-class[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/1
-0 RasterBrickSimulations-class[][][]\T1/ptm/m/n/10 ,
+pdfTeX warning (dest): name{Rfn.spTransform} has been referenced but does not e
+xist, replaced by a fixed one
 
-Overfull \hbox (13.82092pt too wide) in paragraph at lines 3021--3022
-[][]\T1/zi4/m/n/10 RasterBrickTimeSeries-class[][][]\T1/ptm/m/n/10 , [][]\T1/zi
-4/m/n/10 SpatialMaxEntOutput-class[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 Spa
-tialSamplingPattern-class[][][] 
-[57] [58]
+pdfTeX warning (dest): name{Rfn.projectRaster} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.ST.Rdash.class} has been referenced but does no
+t exist, replaced by a fixed one
+
+{/home/tomislav/.TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc} </h
+ome/tomislav/.TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk>{/ho
+me/tomislav/.TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-ot1-0.enc}</home
+/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.p
+fb></home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb
+></home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
+</home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
+/home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb>
+</home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></h
+ome/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></hom
+e/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></home
+/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></home/
+tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/t
+omislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></home/tom
+islav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on Rd2.pdf (90 pages, 382695 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.15 [TeX Live 2018] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (352 entries accepted, 50 rejected).
+Sorting entries......done (3249 comparisons).
+Generating output file Rd2.ind....done (523 lines written, 4 warnings).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./Rd2.tex
+LaTeX2e <2018-12-01>
+
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2018/09/03 v1.4i Standard LaTeX document class
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/bk10.clo))
+(/opt/microsoft/ropen/3.5.1/lib64/R/share/texmf/tex/latex/Rd.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/ifthen.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/tools/longtable.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/tools/bm.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/alltt.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/tools/verbatim.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/url/url.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/ts1enc.def
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/ts1enc.dfu)))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.112, 2017/01/04 Text macros for Inconsolata (msharpe)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/xkeyval/keyval.tex)))))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/graphics/color.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/makeidx.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/inputenc.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/latin1.def))
+Writing index file Rd2.idx
+(./Rd2.aux) (/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(./Rd2.out) (./Rd2.out)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/inconsolata/ot1zi4.fd)
+
+LaTeX Font Warning: Font shape `OML/zi4/m/n' undefined
+(Font)              using `OML/cmm/m/it' instead
+(Font)              for symbol `textless' on input line 20.
+
+(./Rd2.toc [1{/home/tomislav/.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.
+map}] [2]) (/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (43.75346pt too wide) in paragraph at lines 65--66
+[]\OT1/cmr/m/n/10 Tomislav Hengl (\OML/zi4/m/n/10 <\OT1/zi4/m/n/10 tom.hengl@op
+engeohub.org\OML/zi4/m/n/10 >\OT1/cmr/m/n/10 ), Pierre Roudier (\OML/zi4/m/n/10
+ <\OT1/zi4/m/n/10 pierre.roudier@landcare.nz\OML/zi4/m/n/10 >\OT1/cmr/m/n/10 ),
+
+
+Overfull \hbox (59.80905pt too wide) in paragraph at lines 65--66
+\OT1/cmr/m/n/10 Dy-lan Beaudette (\OML/zi4/m/n/10 <\OT1/zi4/m/n/10 debeaudette@
+ucdavis.edu\OML/zi4/m/n/10 >\OT1/cmr/m/n/10 ), Edzer Pebesma (\OML/zi4/m/n/10 <
+\OT1/zi4/m/n/10 edzer.pebesma@uni-muenster.de\OML/zi4/m/n/10 >\OT1/cmr/m/n/10 )
+ 
+
+Overfull \hbox (5.53117pt too wide) in paragraph at lines 72--73
+[]\OT1/cmr/b/n/10 Google Earth Out-reach \OT1/cmr/m/n/10 project ([][]$\OT1/zi4
+/m/n/10 http : / / earth . google . com / outreach / tutorials . html$[][]\OT1/
+cmr/m/n/10 ) 
+[3] [4] [5] [6]
+Overfull \hbox (6.17052pt too wide) in paragraph at lines 282--283
+[]\OT1/cmr/m/n/10 Lozier, J.D., Aniello, P., Hick-er-son, M.J., (2009) [][]Pre-
+dict-ing the dis-tri-bu-tion of Sasquatch
+[7]
+Underfull \hbox (badness 1117) in paragraph at lines 314--314
+[]\OT1/cmr/m/it/10 Extracts the proj4 pa-ram-e-ters and checks if the pro-jec-t
+ion
+[8] [9]
+Overfull \hbox (31.99544pt too wide) in paragraph at lines 439--440
+[]\OT1/cmr/m/n/10 list of vec-tors of class \OT1/zi4/m/n/10 "SpatialPoint*"\OT1
+/cmr/m/n/10 , \OT1/zi4/m/n/10 "SpatialLines*" \OT1/cmr/m/n/10 or \OT1/zi4/m/n/1
+0 "SpatialPolygons*"
+[10] (/home/tomislav/.TinyTeX/texmf-dist/tex/latex/inconsolata/ts1zi4.fd)
+[11]
+Overfull \hbox (1.46487pt too wide) in paragraph at lines 545--546
+[]\OT1/cmr/m/n/10 The \OT1/zi4/m/n/10 eberg[]grid \OT1/cmr/m/n/10 data frame (r
+eg-u-lar grid at 100 m res-o-lu-tion) con-tains the fol-low-ing columns: 
+[12] [13] [14]
+Underfull \hbox (badness 10000) in paragraph at lines 671--672
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 673--674
+
+[15] [16]
+Underfull \hbox (badness 10000) in paragraph at lines 792--794
+
+
+LaTeX Font Warning: Font shape `OMS/zi4/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 795.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 795--796
+
+[17] [18] [19] [20]
+Overfull \hbox (0.26768pt too wide) in paragraph at lines 995--996
+[]\OT1/cmr/m/n/10 Zaninovic K., Gajic-Capka, M., Percec Tadic, M. et al., (2010
+) [][]Kli-matski at-las Hrvatske
+[21] [22]
+Underfull \vbox (badness 10000) has occurred while \output is active [23]
+[24] [25] [26]
+Underfull \hbox (badness 10000) in paragraph at lines 1361--1363
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1364--1365
+
+[27] [28]
+Overfull \hbox (4.58698pt too wide) in paragraph at lines 1463--1464
+[]\OT1/cmr/m/n/10 Writes any \OT1/zi4/m/n/10 Spatial* \OT1/cmr/m/n/10 ob-ject (
+from the sp pack-age), spatio-temporal ob-ject (from the [][]\OT1/zi4/m/n/10 ST
+-class[][][]
+
+Overfull \hbox (47.62538pt too wide) in paragraph at lines 1488--1489
+[][][]\OT1/zi4/m/n/10 kml[]layer.SpatialPoints[][][]\OT1/cmr/m/n/10 , [][]\OT1/
+zi4/m/n/10 kml[]layer.Raster[][][]\OT1/cmr/m/n/10 , [][]\OT1/zi4/m/n/10 kml[]la
+yer.SpatialLines[][][]\OT1/cmr/m/n/10 , [][]\OT1/zi4/m/n/10 kml[]layer.SpatialP
+olygons[][][]\OT1/cmr/m/n/10 ,
+[29]
+Overfull \hbox (57.41206pt too wide) in paragraph at lines 1535--1536
+[]\OT1/cmr/m/n/10 object of class \OT1/zi4/m/n/10 "RasterLayer"\OT1/cmr/m/n/10 
+, \OT1/zi4/m/n/10 "SpatialPixelsDataFrame" \OT1/cmr/m/n/10 or \OT1/zi4/m/n/10 "
+SpatialGridDataFrame" 
+[30] [31] [32] [33] [34]
+Overfull \hbox (57.41206pt too wide) in paragraph at lines 1799--1800
+[]\OT1/cmr/m/n/10 object of class \OT1/zi4/m/n/10 "RasterLayer"\OT1/cmr/m/n/10 
+, \OT1/zi4/m/n/10 "SpatialPixelsDataFrame" \OT1/cmr/m/n/10 or \OT1/zi4/m/n/10 "
+SpatialGridDataFrame" 
+[35] [36]
+Underfull \hbox (badness 10000) in paragraph at lines 1882--1883
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1884--1885
+
+[37] [38]
+Underfull \hbox (badness 10000) in paragraph at lines 1976--1978
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1979--1980
+
+[39]
+Overfull \hbox (2.79022pt too wide) in paragraph at lines 2025--2026
+[]\OT1/cmr/m/n/10 additional ar-gu-ments that can be passed to the \OT1/zi4/m/n
+/10 kml[]layer.Spatial \OT1/cmr/m/n/10 method 
+
+Underfull \hbox (badness 10000) in paragraph at lines 2030--2031
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2032--2033
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2034--2035
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2036--2037
+
+[40] [41]
+Overfull \hbox (3.10059pt too wide) in paragraph at lines 2110--2110
+ []\OT1/zi4/m/n/10 kml_layer.STTDF(obj, id.name = names(obj@data)[which(names(o
+bj@data)== "burst")],[] 
+
+Underfull \hbox (badness 10000) in paragraph at lines 2138--2139
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2140--2141
+
+[42]
+Overfull \hbox (13.06992pt too wide) in paragraph at lines 2173--2173
+ []     \OT1/zi4/m/n/10 z.lim = range(x, na.rm=TRUE, finite=TRUE), factor.label
+s, png.type = "cairo-png")[] 
+[43] [44] [45] [46] [47]
+Underfull \hbox (badness 10000) in paragraph at lines 2467--2468
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2469--2470
+
+[48] [49] [50] [51] [52]
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2748--2748
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2755--2755
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2760--2760
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+[53]
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2766--2766
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2771--2771
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2776--2776
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2781--2781
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2786--2786
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2792--2792
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2802--2802
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2808--2808
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Underfull \vbox (badness 10000) has occurred while \output is active [54]
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2814--2814
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2821--2821
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2831--2831
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2838--2838
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2843--2843
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+
+Overfull \hbox (9.75021pt too wide) in paragraph at lines 2849--2849
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env=parent.frame()))),[] 
+[55]
+Overfull \hbox (17.41249pt too wide) in paragraph at lines 2868--2869
+[]\OT1/cmr/m/n/10 target vari-able name (only valid for vi-su-al-iza-tion of \O
+T1/zi4/m/n/10 "SoilProfileCollection"
+
+Overfull \hbox (2.39212pt too wide) in paragraph at lines 2898--2899
+\OT1/zi4/m/n/10 "SpatialPolygonsDataFrame"\OT1/cmr/m/n/10 , or \OT1/zi4/m/n/10 
+"SpatialPixelsDataFrame" \OT1/cmr/m/n/10 con-sider us-ing the \OT1/zi4/m/n/10 G
+SIF::tile
+
+Overfull \hbox (33.00313pt too wide) in paragraph at lines 2902--2903
+[][][]\OT1/zi4/m/n/10 SpatialPredictions-class[][][]\OT1/cmr/m/n/10 , [][]\OT1/
+zi4/m/n/10 SpatialVectorsSimulations-class[][][]\OT1/cmr/m/n/10 , [][]\OT1/zi4/
+m/n/10 RasterBrickSimulations-class[][][]\OT1/cmr/m/n/10 ,
+
+Overfull \hbox (15.22534pt too wide) in paragraph at lines 2902--2903
+[][]\OT1/zi4/m/n/10 RasterBrickTimeSeries-class[][][]\OT1/cmr/m/n/10 , [][]\OT1
+/zi4/m/n/10 SpatialMaxEntOutput-class[][][]\OT1/cmr/m/n/10 , [][]\OT1/zi4/m/n/1
+0 SpatialSamplingPattern-class[][][] 
+[56] [57]
+Underfull \vbox (badness 10000) has occurred while \output is active [58]
 Underfull \vbox (badness 10000) has occurred while \output is active [59]
 Underfull \vbox (badness 10000) has occurred while \output is active [60]
 Underfull \vbox (badness 10000) has occurred while \output is active [61]
 Underfull \vbox (badness 10000) has occurred while \output is active [62]
-Underfull \vbox (badness 10000) has occurred while \output is active [63]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [64] [65]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [66] [67]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [68]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [69]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [70]
-Overfull \hbox (27.77168pt too wide) in paragraph at lines 3799--3799
- []\T1/zi4/m/n/9 # download.file(paste("http://data.gbif.org/occurrences/taxon/
-celldensity/", kml.file, sep=""),[] 
-[71] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [72pdfTeX warning 
-(ext4): destination with the same identifier (name{Rfn.reproject,SpatialPixelsD
-ataFrame.Rdash.method}) has been already used, duplicate ignored
+[63] [64] [65] [66] [67] [68] [69]
+Overfull \hbox (27.77168pt too wide) in paragraph at lines 3680--3680
+ []\OT1/zi4/m/n/9 # download.file(paste("http://data.gbif.org/occurrences/taxon
+/celldensity/", kml.file, sep=""),[] 
+[70] [71pdfTeX warning (ext4): destination with the same identifier (name{Rfn.r
+eproject,SpatialPixelsDataFrame.Rdash.method}) has been already used, duplicate
+ ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.3879 \item[\code{...}]
-                         arguments evaluated in the context of function \cod...
-] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [73]
-Overfull \hbox (2.05736pt too wide) in paragraph at lines 3952--3954
-\T1/ptm/m/n/10 Pos-si-bly the most used palettes for vi-su-al-iza-tion of nu-me
-ric vari-ables are \T1/zi4/m/n/10 rev(rainbow(65)[1:48])
-[74] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [75]
-Overfull \hbox (35.54791pt too wide) in paragraph at lines 4038--4039
-[]\T1/ptm/m/n/10 object of class \T1/zi4/m/n/10 "MaxEnt" \T1/ptm/m/n/10 (specie
-s dis-tri-bu-tion model); pro-duced as an out-put of the \T1/zi4/m/n/10 dismo::
-maxent
+l.3744 ## S4 method for signature 'RasterBrick'
+                                               ] [72]
+Overfull \hbox (24.58698pt too wide) in paragraph at lines 3833--3835
+\OT1/cmr/m/n/10 Pos-si-bly the most used palettes for vi-su-al-iza-tion of nu-m
+eric vari-ables are \OT1/zi4/m/n/10 rev(rainbow(65)[1:48])
 
-Overfull \hbox (63.60951pt too wide) in paragraph at lines 4039--4040
-[]\T1/ptm/m/n/10 object of class \T1/zi4/m/n/10 "Spatial" \T1/ptm/m/n/10 (ide-a
-lly \T1/zi4/m/n/10 "SpatialPolygonsDataFrame" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 
-"SpatialPixelsDataFrame"\T1/ptm/m/n/10 );
+Overfull \hbox (45.39134pt too wide) in paragraph at lines 3838--3839
+\OT1/cmr/m/n/10 R. All pal-letes de-scribed here were pre-pared for R by Tomis-
+lav Hengl (\OML/zi4/m/n/10 <\OT1/zi4/m/n/10 tom.hengl@opengeohub.org\OML/zi4/m/
+n/10 >\OT1/cmr/m/n/10 ). 
+[73]
+Overfull \hbox (12.97467pt too wide) in paragraph at lines 3877--3878
+[]\OT1/cmr/m/n/10 A class for color palette that can be fur-ther used to cre-at
+e an ob-ject of class \OT1/zi4/m/n/10 "SpatialMetadata"\OT1/cmr/m/n/10 . 
+[74]
+Overfull \hbox (71.86435pt too wide) in paragraph at lines 3920--3921
+[]\OT1/cmr/m/n/10 object of class \OT1/zi4/m/n/10 "Spatial" \OT1/cmr/m/n/10 (id
+e-ally \OT1/zi4/m/n/10 "SpatialPolygonsDataFrame" \OT1/cmr/m/n/10 or \OT1/zi4/m
+/n/10 "SpatialPixelsDataFrame"\OT1/cmr/m/n/10 );
+[75] [76] [77]
+Overfull \hbox (43.61435pt too wide) in paragraph at lines 4080--4081
+[]\OT1/cmr/m/n/10 object of class \OT1/zi4/m/n/10 "SpatialPointsDataFrame" \OT1
+/cmr/m/n/10 (must be 2D); see \OT1/zi4/m/n/10 sp::SpatialPointsDataFrame 
 
-Overfull \hbox (140.27791pt too wide) in paragraph at lines 4056--4057
-[]\T1/ptm/m/n/10 MaxEnt re-quires the \T1/zi4/m/n/10 maxent.jar \T1/ptm/m/n/10 
-file to be in the 'java' folder of the dismo pack-age (see: \T1/zi4/m/n/10 syst
-em.file("java", package="dismo")\T1/ptm/m/n/10 ).
-[76] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [77]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (33.83939pt too wide) in paragraph at lines 4199--4200
-[]\T1/ptm/m/n/10 object of class \T1/zi4/m/n/10 "SpatialPointsDataFrame" \T1/pt
-m/m/n/10 (must be 2D); see \T1/zi4/m/n/10 sp::SpatialPointsDataFrame 
-[78]
-Overfull \hbox (18.34094pt too wide) in paragraph at lines 4239--4240
-[][][]\T1/zi4/m/n/10 plotKML-method[][][]\T1/ptm/m/n/10 , \T1/zi4/m/n/10 GSIF::
-fit.gstatModel\T1/ptm/m/n/10 , \T1/zi4/m/n/10 gstat::gstat-class\T1/ptm/m/n/10 
-, [][]\T1/zi4/m/n/10 RasterBrickSimulations-class[][][] 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [79]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [80]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (42.0706pt too wide) in paragraph at lines 4390--4392
-\T1/zi4/m/n/10 system.file("INSPIRE_ISO19139.xml", package="plotKML")\T1/ptm/m/
-n/10 ). The \T1/zi4/m/n/10 FGDC.xml\T1/ptm/m/n/10 /\T1/zi4/m/n/10 INSPIRE_ISO19
-139.xml
+Overfull \hbox (20.44757pt too wide) in paragraph at lines 4120--4121
+[][][]\OT1/zi4/m/n/10 plotKML-method[][][]\OT1/cmr/m/n/10 , \OT1/zi4/m/n/10 GSI
+F::fit.gstatModel\OT1/cmr/m/n/10 , \OT1/zi4/m/n/10 gstat::gstat-class\OT1/cmr/m
+/n/10 , [][]\OT1/zi4/m/n/10 RasterBrickSimulations-class[][][] 
+[78] [79] [80]
+Overfull \hbox (13.50496pt too wide) in paragraph at lines 4265--4266
+[]\OT1/cmr/m/n/10 logical; spec-i-fies whether to val-i-date the schema us-ing 
+the \OT1/zi4/m/n/10 xmlSchemaValidate 
+
+Overfull \hbox (56.63496pt too wide) in paragraph at lines 4271--4273
+\OT1/cmr/m/n/10 or \OT1/zi4/m/n/10 system.file("INSPIRE[]ISO19139.xml", package
+="plotKML")\OT1/cmr/m/n/10 ). The \OT1/zi4/m/n/10 FGDC.xml\OT1/cmr/m/n/10 /\OT1
+/zi4/m/n/10 INSPIRE[]ISO19139.xml
+
+Overfull \hbox (4.58667pt too wide) in paragraph at lines 4284--4285
+[]\OT1/zi4/m/n/10 metadata[["fileIdentifier"]][["CharacterString"]] \OT1/cmr/m/
+n/10 --- Meta-data file iden-ti-fier (not
 [81]
-Overfull \hbox (325.11081pt too wide) in paragraph at lines 4406--4407
-[]\T1/zi4/m/n/10 metadata[["identificationInfo"]][["MD_DataIdentification"]] [[
-"extent"]][["EX_Extent"]][["geographicElement"]][["EX_GeographicBoundingBox"]]
-
-Overfull \hbox (6.47845pt too wide) in paragraph at lines 4421--4422
-[]\T1/ptm/m/n/10 Content Stan-dard for Dig-i-tal Geospa-tial Meta-data ([][]$\T
-1/zi4/m/n/10 http : / / www . fgdc . gov / metadata / csdgm/$[][]\T1/ptm/m/n/10
- ) 
-
-Overfull \hbox (11.89981pt too wide) in paragraph at lines 4422--4423
-[]\T1/ptm/m/n/10 Tkme meta-data ed-i-tor ([][]$\T1/zi4/m/n/10 http : / / geolog
-y . usgs . gov / tools / metadata / tools / doc / tkme . html$[][]\T1/ptm/m/n/1
-0 ) 
-[82] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [83] [84] [85]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (56.20879pt too wide) in paragraph at lines 4632--4633
-[]\T1/ptm/m/n/10 integer; tar-get col-umn in the out-put shape file (see \T1/zi
-4/m/n/10 rsaga.get.usage("grid_gridding", 0)\T1/ptm/m/n/10 ) 
-
-Overfull \hbox (17.10895pt too wide) in paragraph at lines 4633--4634
-[]\T1/ptm/m/n/10 integer; method for mul-ti-ple val-ues (see \T1/zi4/m/n/10 rsa
-ga.get.usage("grid_gridding", 0)\T1/ptm/m/n/10 ) 
-[86]
-Overfull \hbox (9.36926pt too wide) in paragraph at lines 4635--4636
-[]\T1/ptm/m/n/10 integer; pre-ferred tar-get grid type (see \T1/zi4/m/n/10 rsag
-a.get.usage("grid_gridding", 0)\T1/ptm/m/n/10 ) 
-[87] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [88]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [89]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [90]
-No file Rd2.ind.
-[91] (./Rd2.aux)
-
-Package rerunfilecheck Warning: File `Rd2.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
- )
-(see the transcript file for additional information)pdfTeX warning (dest): name
-{Rfn.CRS.Rdash.class} has been referenced but does not exist, replaced by a fix
-ed one
-
-pdfTeX warning (dest): name{Rfn.spTransform} has been referenced but does not e
-xist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Rfn.projectRaster} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Rfn.ST.Rdash.class} has been referenced but does no
-t exist, replaced by a fixed one
-
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/
-texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/usr/share/texlive/texmf-dis
-t/fonts/enc/dvips/inconsolata/i4-t1-0.enc}</usr/share/texlive/texmf-dist/fonts/
-type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
-w/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf
--dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (91 pages, 293516 bytes).
-Transcript written on Rd2.log.
-This is makeindex, version 2.15 [TeX Live 2017] (kpathsea + Thai support).
-Scanning input file Rd2.idx....done (358 entries accepted, 51 rejected).
-Sorting entries......done (3235 comparisons).
-Generating output file Rd2.ind....done (535 lines written, 2 warnings).
-Output written in Rd2.ind.
-Transcript written in Rd2.ilg.
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex)
- restricted \write18 enabled.
-entering extended mode
-(./Rd2.tex
-LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 5 language(s) loaded.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
-Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/bk10.clo))
-(/opt/microsoft/ropen/3.5.1/lib64/R/share/texmf/tex/latex/Rd.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def))
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/zi4.sty
-`inconsolata-zi4' v1.112, 2017/01/04 Text macros for Inconsolata (msharpe)
-(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/keyval.tex)))))
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def))
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
-(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
-
-Package hyperref Warning: Option `hyperindex' has already been used,
-(hyperref)                setting the option has no effect on input line 366.
-
-
-Package hyperref Warning: Option `pagebackref' has already been used,
-(hyperref)                setting the option has no effect on input line 366.
-
-) (/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu)
-(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu)
-(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu)
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.dfu))
-(/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def))
-Writing index file Rd2.idx
-(./Rd2.aux) (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
-(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
-(./Rd2.out) (./Rd2.out)
-(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd) (./Rd2.toc [1{/var/li
-b/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2])
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (20.03957pt too wide) in paragraph at lines 65--66
-[]\T1/ptm/m/n/10 Tomislav Hengl (\T1/zi4/m/n/10 <tom.hengl@opengeohub.org>\T1/p
-tm/m/n/10 ), Pierre Roudier (\T1/zi4/m/n/10 <pierre.roudier@landcare.nz>\T1/ptm
-/m/n/10 ),
-
-Overfull \hbox (33.51947pt too wide) in paragraph at lines 65--66
-\T1/ptm/m/n/10 Dy-lan Beaudette (\T1/zi4/m/n/10 <debeaudette@ucdavis.edu>\T1/pt
-m/m/n/10 ), Edzer Pebesma (\T1/zi4/m/n/10 <edzer.pebesma@uni-muenster.de>\T1/pt
-m/m/n/10 ) 
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [3]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [4] [5]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [6] [7]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [8]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [9]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (25.25978pt too wide) in paragraph at lines 439--440
-[]\T1/ptm/m/n/10 list of vec-tors of class \T1/zi4/m/n/10 "SpatialPoint*"\T1/pt
-m/m/n/10 , \T1/zi4/m/n/10 "SpatialLines*" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 "Spa
-tialPolygons*"
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [10]
-(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/ts1zi4.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [11] [12] [13]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [14]
-Underfull \hbox (badness 10000) in paragraph at lines 671--672
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 673--674
-
-[15] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (11.79866pt too wide) in paragraph at lines 739--740
-[]\T1/ptm/m/n/10 For more de-tails about the PROJ.4 pa-ram-e-ters re-fer to the
- [][]$\T1/zi4/m/n/10 https : / / proj4 . org / usage / projections .
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [16]
-Underfull \hbox (badness 10000) in paragraph at lines 792--794
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 795--796
-
-[17] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [18]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [19]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [20]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [21] [22]
-Underfull \vbox (badness 10000) has occurred while \output is active [23]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [24]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [25]
-Overfull \hbox (2.92038pt too wide) in paragraph at lines 1281--1282
-[]\T1/zi4/m/n/10 "SpatialPoints*" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 "SpatialLine
-s*" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 "SpatialPolygons*"\T1/ptm/m/n/10 ; vec-tor
- layer 
-[26] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Underfull \hbox (badness 10000) in paragraph at lines 1361--1363
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1364--1365
-
-[27] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [28]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (50.84094pt too wide) in paragraph at lines 1489--1490
-[][][]\T1/zi4/m/n/10 kml_layer.SpatialPoints[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/
-m/n/10 kml_layer.Raster[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 kml_layer.Spat
-ialLines[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 kml_layer.SpatialPolygons[][]
-[]\T1/ptm/m/n/10 ,
-
-Overfull \hbox (25.12097pt too wide) in paragraph at lines 1489--1490
-[][]\T1/zi4/m/n/10 kml_layer.STIDF[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 kml
-_layer.STTDF[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 kml_layer.SoilProfileColl
-ection[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 kml-methods[][][]\T1/ptm/m/n/10
- , [][]\T1/zi4/m/n/10 kml_open[][][]\T1/ptm/m/n/10 ,
-[29] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (6.3869pt too wide) in paragraph at lines 1520--1521
-[]\T1/ptm/m/n/10 Writes rasters to PNG im-ages and makes a KML code (ground ove
-r-lays). Works with \T1/zi4/m/n/10 "RasterLayer"
-
-Overfull \hbox (51.61015pt too wide) in paragraph at lines 1535--1536
-[]\T1/ptm/m/n/10 object of class \T1/zi4/m/n/10 "RasterLayer"\T1/ptm/m/n/10 , \
-T1/zi4/m/n/10 "SpatialPixelsDataFrame" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 "Spatia
-lGridDataFrame" 
-[30] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [31]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [32] [33]
-Overfull \hbox (27.73488pt too wide) in paragraph at lines 1734--1734
- []\T1/zi4/m/n/9 site(ca) <- ~ mlra + ssa + lon + lat + cntrl_depth_to_top + cn
-trl_depth_to_bot + sampled_taxon_name[] 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [34] [35]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [36]
-Overfull \hbox (14.98964pt too wide) in paragraph at lines 1871--1872
-[]\T1/ptm/m/n/10 KML Ref-er-ence ([][]$\T1/zi4/m/n/10 http : / / code . google 
-. com / apis / kml / documentation / kmlreference . html$[][]\T1/ptm/m/n/10 ) 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [37]
-Overfull \hbox (7.28754pt too wide) in paragraph at lines 1902--1903
-\T1/ptm/m/n/10 ment (ground over-lays). Tar-get at-tributes can be spec-i-fied 
-us-ing aes-thet-ics ar-gu-ments (e.g. \T1/zi4/m/n/10 "colour"\T1/ptm/m/n/10 ). 
-
-
-Overfull \hbox (51.61015pt too wide) in paragraph at lines 1918--1919
-[]\T1/ptm/m/n/10 object of class \T1/zi4/m/n/10 "RasterLayer"\T1/ptm/m/n/10 , \
-T1/zi4/m/n/10 "SpatialPixelsDataFrame" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 "Spatia
-lGridDataFrame" 
-[38] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Underfull \hbox (badness 10000) in paragraph at lines 2001--2002
-
-[39]
-Underfull \hbox (badness 10000) in paragraph at lines 2003--2004
-
-[40] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Underfull \hbox (badness 10000) in paragraph at lines 2095--2097
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2098--2099
-
-[41] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Underfull \hbox (badness 10000) in paragraph at lines 2149--2150
-
-[42]
-Underfull \hbox (badness 10000) in paragraph at lines 2151--2152
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2153--2154
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2155--2156
-
-[43] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (3.10059pt too wide) in paragraph at lines 2229--2229
- []\T1/zi4/m/n/10 kml_layer.STTDF(obj, id.name = names(obj@data)[which(names(ob
-j@data)== "burst")],[] 
-
-Underfull \hbox (badness 10000) in paragraph at lines 2257--2258
-
-[44]
-Underfull \hbox (badness 10000) in paragraph at lines 2259--2260
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (13.06992pt too wide) in paragraph at lines 2292--2292
- []     \T1/zi4/m/n/10 z.lim = range(x, na.rm=TRUE, finite=TRUE), factor.labels
-, png.type = "cairo-png")[] 
-[45] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [46]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [47]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [48]
-Overfull \hbox (1.37617pt too wide) in paragraph at lines 2477--2478
-[]\T1/ptm/m/n/10 These lower level func-tions can be used to cre-ate cus-tomize
-d multi-layered KML files. See plotKML
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [49]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [50]
-Underfull \hbox (badness 10000) in paragraph at lines 2586--2587
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2588--2589
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [51] [52]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [53] [54]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [55]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2867--2867
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2874--2874
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2879--2879
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-[56]
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2885--2885
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2890--2890
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2895--2895
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2900--2900
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2905--2905
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2911--2911
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2921--2921
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2927--2927
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2933--2933
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-
-Underfull \vbox (badness 10000) has occurred while \output is active [57]
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2940--2940
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2950--2950
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2957--2957
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2962--2962
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-
-Overfull \hbox (9.75021pt too wide) in paragraph at lines 2968--2968
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env=parent.frame()))),[] 
-[58]
-Overfull \hbox (0.41872pt too wide) in paragraph at lines 2987--2988
-[]\T1/ptm/m/n/10 target vari-able name (only valid for vi-su-al-iza-tion of \T1
-/zi4/m/n/10 "SoilProfileCollection"
-
-Overfull \hbox (36.38719pt too wide) in paragraph at lines 3011--3012
-\T1/ptm/m/n/10 ci-ple, \T1/zi4/m/n/10 plotKML \T1/ptm/m/n/10 works with both si
-m-ple spa-tial ob-jects, and com-plex ob-jects such as \T1/zi4/m/n/10 "SpatialP
-redictions"\T1/ptm/m/n/10 ,
-
-Overfull \hbox (93.34094pt too wide) in paragraph at lines 3011--3012
-\T1/zi4/m/n/10 "SpatialVectorsSimulations"\T1/ptm/m/n/10 , \T1/zi4/m/n/10 "Rast
-erBrickSimulations"\T1/ptm/m/n/10 , \T1/zi4/m/n/10 "RasterBrickTimeSeries"\T1/p
-tm/m/n/10 , \T1/zi4/m/n/10 "SpatialMaxEntOutput"
-
-Overfull \hbox (31.32092pt too wide) in paragraph at lines 3021--3022
-[][][]\T1/zi4/m/n/10 SpatialPredictions-class[][][]\T1/ptm/m/n/10 , [][]\T1/zi4
-/m/n/10 SpatialVectorsSimulations-class[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/1
-0 RasterBrickSimulations-class[][][]\T1/ptm/m/n/10 ,
-
-Overfull \hbox (13.82092pt too wide) in paragraph at lines 3021--3022
-[][]\T1/zi4/m/n/10 RasterBrickTimeSeries-class[][][]\T1/ptm/m/n/10 , [][]\T1/zi
-4/m/n/10 SpatialMaxEntOutput-class[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 Spa
-tialSamplingPattern-class[][][] 
-[59] [60]
-Underfull \vbox (badness 10000) has occurred while \output is active [61]
-Underfull \vbox (badness 10000) has occurred while \output is active [62]
-Underfull \vbox (badness 10000) has occurred while \output is active [63]
-Underfull \vbox (badness 10000) has occurred while \output is active [64]
-Underfull \vbox (badness 10000) has occurred while \output is active [65]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [66] [67]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [68] [69]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [70]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [71]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [72]
-Overfull \hbox (27.77168pt too wide) in paragraph at lines 3799--3799
- []\T1/zi4/m/n/9 # download.file(paste("http://data.gbif.org/occurrences/taxon/
-celldensity/", kml.file, sep=""),[] 
-[73] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [74pdfTeX warning 
-(ext4): destination with the same identifier (name{Rfn.reproject,SpatialPixelsD
-ataFrame.Rdash.method}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.3879 \item[\code{...}]
-                         arguments evaluated in the context of function \cod...
-] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [75]
-Overfull \hbox (2.05736pt too wide) in paragraph at lines 3952--3954
-\T1/ptm/m/n/10 Pos-si-bly the most used palettes for vi-su-al-iza-tion of nu-me
-ric vari-ables are \T1/zi4/m/n/10 rev(rainbow(65)[1:48])
-[76] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [77]
-Overfull \hbox (35.54791pt too wide) in paragraph at lines 4038--4039
-[]\T1/ptm/m/n/10 object of class \T1/zi4/m/n/10 "MaxEnt" \T1/ptm/m/n/10 (specie
-s dis-tri-bu-tion model); pro-duced as an out-put of the \T1/zi4/m/n/10 dismo::
-maxent
-
-Overfull \hbox (63.60951pt too wide) in paragraph at lines 4039--4040
-[]\T1/ptm/m/n/10 object of class \T1/zi4/m/n/10 "Spatial" \T1/ptm/m/n/10 (ide-a
-lly \T1/zi4/m/n/10 "SpatialPolygonsDataFrame" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 
-"SpatialPixelsDataFrame"\T1/ptm/m/n/10 );
-
-Overfull \hbox (140.27791pt too wide) in paragraph at lines 4056--4057
-[]\T1/ptm/m/n/10 MaxEnt re-quires the \T1/zi4/m/n/10 maxent.jar \T1/ptm/m/n/10 
-file to be in the 'java' folder of the dismo pack-age (see: \T1/zi4/m/n/10 syst
-em.file("java", package="dismo")\T1/ptm/m/n/10 ).
-[78] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [79]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (33.83939pt too wide) in paragraph at lines 4199--4200
-[]\T1/ptm/m/n/10 object of class \T1/zi4/m/n/10 "SpatialPointsDataFrame" \T1/pt
-m/m/n/10 (must be 2D); see \T1/zi4/m/n/10 sp::SpatialPointsDataFrame 
-[80]
-Overfull \hbox (18.34094pt too wide) in paragraph at lines 4239--4240
-[][][]\T1/zi4/m/n/10 plotKML-method[][][]\T1/ptm/m/n/10 , \T1/zi4/m/n/10 GSIF::
-fit.gstatModel\T1/ptm/m/n/10 , \T1/zi4/m/n/10 gstat::gstat-class\T1/ptm/m/n/10 
-, [][]\T1/zi4/m/n/10 RasterBrickSimulations-class[][][] 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [81]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [82]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (42.0706pt too wide) in paragraph at lines 4390--4392
-\T1/zi4/m/n/10 system.file("INSPIRE_ISO19139.xml", package="plotKML")\T1/ptm/m/
-n/10 ). The \T1/zi4/m/n/10 FGDC.xml\T1/ptm/m/n/10 /\T1/zi4/m/n/10 INSPIRE_ISO19
-139.xml
-[83]
-Overfull \hbox (325.11081pt too wide) in paragraph at lines 4406--4407
-[]\T1/zi4/m/n/10 metadata[["identificationInfo"]][["MD_DataIdentification"]] [[
-"extent"]][["EX_Extent"]][["geographicElement"]][["EX_GeographicBoundingBox"]]
-
-Overfull \hbox (6.47845pt too wide) in paragraph at lines 4421--4422
-[]\T1/ptm/m/n/10 Content Stan-dard for Dig-i-tal Geospa-tial Meta-data ([][]$\T
-1/zi4/m/n/10 http : / / www . fgdc . gov / metadata / csdgm/$[][]\T1/ptm/m/n/10
- ) 
-
-Overfull \hbox (11.89981pt too wide) in paragraph at lines 4422--4423
-[]\T1/ptm/m/n/10 Tkme meta-data ed-i-tor ([][]$\T1/zi4/m/n/10 http : / / geolog
-y . usgs . gov / tools / metadata / tools / doc / tkme . html$[][]\T1/ptm/m/n/1
-0 ) 
-[84] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [85] [86] [87]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (56.20879pt too wide) in paragraph at lines 4632--4633
-[]\T1/ptm/m/n/10 integer; tar-get col-umn in the out-put shape file (see \T1/zi
-4/m/n/10 rsaga.get.usage("grid_gridding", 0)\T1/ptm/m/n/10 ) 
-
-Overfull \hbox (17.10895pt too wide) in paragraph at lines 4633--4634
-[]\T1/ptm/m/n/10 integer; method for mul-ti-ple val-ues (see \T1/zi4/m/n/10 rsa
-ga.get.usage("grid_gridding", 0)\T1/ptm/m/n/10 ) 
-[88]
-Overfull \hbox (9.36926pt too wide) in paragraph at lines 4635--4636
-[]\T1/ptm/m/n/10 integer; pre-ferred tar-get grid type (see \T1/zi4/m/n/10 rsag
-a.get.usage("grid_gridding", 0)\T1/ptm/m/n/10 ) 
-[89] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [90]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [91]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [92] (./Rd2.ind
-[93]
-
-LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 90.
-
+Overfull \hbox (8.5035pt too wide) in paragraph at lines 4285--4286
+[]\OT1/zi4/m/n/10 metadata[["dateStamp"]][["Date"]] \OT1/cmr/m/n/10 --- Meta-da
+ta date stamp cre-ated us-ing Sys.Date(). 
+
+Overfull \hbox (320.91083pt too wide) in paragraph at lines 4287--4288
+[]\OT1/zi4/m/n/10 metadata[["identificationInfo"]][["MD[]DataIdentification"]] 
+[["extent"]][["EX[]Extent"]][["geographicElement"]][["EX[]GeographicBoundingBox
+"]]
+[82] [83] [84] [85]
+Overfull \hbox (74.5182pt too wide) in paragraph at lines 4513--4514
+[]\OT1/cmr/m/n/10 integer; tar-get col-umn in the out-put shape file (see \OT1/
+zi4/m/n/10 rsaga.get.usage("grid[]gridding", 0)\OT1/cmr/m/n/10 ) 
+
+Overfull \hbox (28.12926pt too wide) in paragraph at lines 4514--4515
+[]\OT1/cmr/m/n/10 integer; method for mul-ti-ple val-ues (see \OT1/zi4/m/n/10 r
+saga.get.usage("grid[]gridding", 0)\OT1/cmr/m/n/10 ) 
+
+Overfull \hbox (22.6292pt too wide) in paragraph at lines 4516--4517
+[]\OT1/cmr/m/n/10 integer; pre-ferred tar-get grid type (see \OT1/zi4/m/n/10 rs
+aga.get.usage("grid[]gridding", 0)\OT1/cmr/m/n/10 ) 
+[86] [87] [88] [89]
+Overfull \hbox (10.2537pt too wide) in paragraph at lines 4712--4713
+[]\OT1/cmr/m/n/10 Color palette used for the most gen-eral land use classes at 
+scale 1:250k (TOP250NL). 
+[90] (./Rd2.ind [91]
+
+LaTeX Font Warning: Font shape `OT1/zi4/m/it' undefined
+(Font)              using `OT1/zi4/m/n' instead on input line 88.
+
+[92] [93]
+Overfull \hbox (3.43166pt too wide) in paragraph at lines 334--336
+\OT1/cmr/m/it/10 (\OT1/zi4/m/it/10 RasterBrickSimulations-class\OT1/cmr/m/it/10
+ )\OT1/cmr/m/n/10 , 
+
+Overfull \hbox (5.8567pt too wide) in paragraph at lines 358--360
+[]\OT1/zi4/m/it/10 plotKML,SpatialPolygonsDataFrame-method 
+
+Overfull \hbox (3.43166pt too wide) in paragraph at lines 362--364
+\OT1/cmr/m/it/10 (\OT1/zi4/m/it/10 SpatialSamplingPattern-class\OT1/cmr/m/it/10
+ )\OT1/cmr/m/n/10 , 
+
+Overfull \hbox (18.43166pt too wide) in paragraph at lines 366--368
+\OT1/cmr/m/it/10 (\OT1/zi4/m/it/10 SpatialVectorsSimulations-class\OT1/cmr/m/it
+/10 )\OT1/cmr/m/n/10 , 
+
+Overfull \hbox (10.8567pt too wide) in paragraph at lines 368--370
+[]\OT1/zi4/m/it/10 plotKML,SpatialVectorsSimulations-method 
 [94]
-Overfull \hbox (0.8567pt too wide) in paragraph at lines 217--219
-[]\T1/zi4/m/it/10 kml_layer,SoilProfileCollection-method 
-[95]
-Overfull \hbox (5.8567pt too wide) in paragraph at lines 367--369
-[]\T1/zi4/m/it/10 plotKML,SpatialPolygonsDataFrame-method 
-
-Overfull \hbox (15.01662pt too wide) in paragraph at lines 375--377
-\T1/ptm/m/it/10 (\T1/zi4/m/it/10 SpatialVectorsSimulations-class\T1/ptm/m/it/10
- )\T1/ptm/m/n/10 , 
-
-Overfull \hbox (10.8567pt too wide) in paragraph at lines 377--379
-[]\T1/zi4/m/it/10 plotKML,SpatialVectorsSimulations-method 
-[96]
-Overfull \hbox (5.8567pt too wide) in paragraph at lines 431--433
-[]\T1/zi4/m/it/10 reproject,SpatialPixelsDataFrame-method 
-
-Overfull \hbox (15.01662pt too wide) in paragraph at lines 452--454
-\T1/ptm/m/it/10 (\T1/zi4/m/it/10 kml_layer.SoilProfileCollection\T1/ptm/m/it/10
- )\T1/ptm/m/n/10 , 
-[97]) (./Rd2.aux)
+Overfull \hbox (5.8567pt too wide) in paragraph at lines 422--424
+[]\OT1/zi4/m/it/10 reproject,SpatialPixelsDataFrame-method 
+[95]) (./Rd2.aux)
 
 Package rerunfilecheck Warning: File `Rd2.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -901,65 +825,69 @@ pdfTeX warning (dest): name{Rfn.projectRaster} has been referenced but does not
 pdfTeX warning (dest): name{Rfn.ST.Rdash.class} has been referenced but does no
 t exist, replaced by a fixed one
 
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/
-texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/usr/share/texlive/texmf-dis
-t/fonts/enc/dvips/inconsolata/i4-t1-0.enc}</usr/share/texlive/texmf-dist/fonts/
-type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
-s/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (97 pages, 328247 bytes).
+{/home/tomislav/.TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc} </h
+ome/tomislav/.TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk>{/ho
+me/tomislav/.TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-ot1-0.enc}</home
+/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.p
+fb></home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb
+></home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
+</home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
+/home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb>
+</home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></h
+ome/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></hom
+e/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></home
+/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></home/
+tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></home/t
+omislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/to
+mislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></home/tomi
+slav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on Rd2.pdf (95 pages, 419762 bytes).
 Transcript written on Rd2.log.
-This is makeindex, version 2.15 [TeX Live 2017] (kpathsea + Thai support).
-Scanning input file Rd2.idx....done (358 entries accepted, 51 rejected).
-Sorting entries......done (3235 comparisons).
-Generating output file Rd2.ind....done (534 lines written, 3 warnings).
+This is makeindex, version 2.15 [TeX Live 2018] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (352 entries accepted, 50 rejected).
+Sorting entries......done (3248 comparisons).
+Generating output file Rd2.ind....done (523 lines written, 4 warnings).
 Output written in Rd2.ind.
 Transcript written in Rd2.ilg.
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./Rd2.tex
-LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 5 language(s) loaded.
+LaTeX2e <2018-12-01>
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
-Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/bk10.clo))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2018/09/03 v1.4i Standard LaTeX document class
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/bk10.clo))
 (/opt/microsoft/ropen/3.5.1/lib64/R/share/texmf/tex/latex/Rd.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def))
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/zi4.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/ifthen.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/tools/longtable.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/tools/bm.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/alltt.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/tools/verbatim.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/url/url.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/ts1enc.def
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/ts1enc.dfu)))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/inconsolata/zi4.sty
 `inconsolata-zi4' v1.112, 2017/01/04 Text macros for Inconsolata (msharpe)
-(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/keyval.tex)))))
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def))
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
-(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/xkeyval/keyval.tex)))))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/graphics/color.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
 
 Package hyperref Warning: Option `hyperindex' has already been used,
 (hyperref)                setting the option has no effect on input line 366.
@@ -968,391 +896,351 @@ Package hyperref Warning: Option `hyperindex' has already been used,
 Package hyperref Warning: Option `pagebackref' has already been used,
 (hyperref)                setting the option has no effect on input line 366.
 
-) (/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu)
-(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu)
-(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu)
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.dfu))
-(/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def))
+) (/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/makeidx.sty)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/inputenc.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/latin1.def))
 Writing index file Rd2.idx
-(./Rd2.aux) (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
-(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(./Rd2.aux) (/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
 (./Rd2.out) (./Rd2.out)
-(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd) (./Rd2.toc [1{/var/li
-b/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2])
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (20.03957pt too wide) in paragraph at lines 65--66
-[]\T1/ptm/m/n/10 Tomislav Hengl (\T1/zi4/m/n/10 <tom.hengl@opengeohub.org>\T1/p
-tm/m/n/10 ), Pierre Roudier (\T1/zi4/m/n/10 <pierre.roudier@landcare.nz>\T1/ptm
-/m/n/10 ),
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/inconsolata/ot1zi4.fd)
 
-Overfull \hbox (33.51947pt too wide) in paragraph at lines 65--66
-\T1/ptm/m/n/10 Dy-lan Beaudette (\T1/zi4/m/n/10 <debeaudette@ucdavis.edu>\T1/pt
-m/m/n/10 ), Edzer Pebesma (\T1/zi4/m/n/10 <edzer.pebesma@uni-muenster.de>\T1/pt
-m/m/n/10 ) 
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [3]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [4] [5]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [6] [7]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [8]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [9]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (25.25978pt too wide) in paragraph at lines 439--440
-[]\T1/ptm/m/n/10 list of vec-tors of class \T1/zi4/m/n/10 "SpatialPoint*"\T1/pt
-m/m/n/10 , \T1/zi4/m/n/10 "SpatialLines*" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 "Spa
-tialPolygons*"
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [10]
-(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/ts1zi4.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [11] [12] [13]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [14]
+LaTeX Font Warning: Font shape `OML/zi4/m/n' undefined
+(Font)              using `OML/cmm/m/it' instead
+(Font)              for symbol `textless' on input line 20.
+
+(./Rd2.toc [1{/home/tomislav/.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.
+map}] [2]) (/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (43.75346pt too wide) in paragraph at lines 65--66
+[]\OT1/cmr/m/n/10 Tomislav Hengl (\OML/zi4/m/n/10 <\OT1/zi4/m/n/10 tom.hengl@op
+engeohub.org\OML/zi4/m/n/10 >\OT1/cmr/m/n/10 ), Pierre Roudier (\OML/zi4/m/n/10
+ <\OT1/zi4/m/n/10 pierre.roudier@landcare.nz\OML/zi4/m/n/10 >\OT1/cmr/m/n/10 ),
+
+
+Overfull \hbox (59.80905pt too wide) in paragraph at lines 65--66
+\OT1/cmr/m/n/10 Dy-lan Beaudette (\OML/zi4/m/n/10 <\OT1/zi4/m/n/10 debeaudette@
+ucdavis.edu\OML/zi4/m/n/10 >\OT1/cmr/m/n/10 ), Edzer Pebesma (\OML/zi4/m/n/10 <
+\OT1/zi4/m/n/10 edzer.pebesma@uni-muenster.de\OML/zi4/m/n/10 >\OT1/cmr/m/n/10 )
+ 
+
+Overfull \hbox (5.53117pt too wide) in paragraph at lines 72--73
+[]\OT1/cmr/b/n/10 Google Earth Out-reach \OT1/cmr/m/n/10 project ([][]$\OT1/zi4
+/m/n/10 http : / / earth . google . com / outreach / tutorials . html$[][]\OT1/
+cmr/m/n/10 ) 
+[3] [4] [5] [6]
+Overfull \hbox (6.17052pt too wide) in paragraph at lines 282--283
+[]\OT1/cmr/m/n/10 Lozier, J.D., Aniello, P., Hick-er-son, M.J., (2009) [][]Pre-
+dict-ing the dis-tri-bu-tion of Sasquatch
+[7]
+Underfull \hbox (badness 1117) in paragraph at lines 314--314
+[]\OT1/cmr/m/it/10 Extracts the proj4 pa-ram-e-ters and checks if the pro-jec-t
+ion
+[8] [9]
+Overfull \hbox (31.99544pt too wide) in paragraph at lines 439--440
+[]\OT1/cmr/m/n/10 list of vec-tors of class \OT1/zi4/m/n/10 "SpatialPoint*"\OT1
+/cmr/m/n/10 , \OT1/zi4/m/n/10 "SpatialLines*" \OT1/cmr/m/n/10 or \OT1/zi4/m/n/1
+0 "SpatialPolygons*"
+[10] (/home/tomislav/.TinyTeX/texmf-dist/tex/latex/inconsolata/ts1zi4.fd)
+[11]
+Overfull \hbox (1.46487pt too wide) in paragraph at lines 545--546
+[]\OT1/cmr/m/n/10 The \OT1/zi4/m/n/10 eberg[]grid \OT1/cmr/m/n/10 data frame (r
+eg-u-lar grid at 100 m res-o-lu-tion) con-tains the fol-low-ing columns: 
+[12] [13] [14]
 Underfull \hbox (badness 10000) in paragraph at lines 671--672
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 673--674
 
-[15] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (11.79866pt too wide) in paragraph at lines 739--740
-[]\T1/ptm/m/n/10 For more de-tails about the PROJ.4 pa-ram-e-ters re-fer to the
- [][]$\T1/zi4/m/n/10 https : / / proj4 . org / usage / projections .
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [16]
+[15] [16]
 Underfull \hbox (badness 10000) in paragraph at lines 792--794
+
+
+LaTeX Font Warning: Font shape `OMS/zi4/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 795.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 795--796
 
-[17] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [18]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [19]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [20]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [21] [22]
+[17] [18] [19] [20]
+Overfull \hbox (0.26768pt too wide) in paragraph at lines 995--996
+[]\OT1/cmr/m/n/10 Zaninovic K., Gajic-Capka, M., Percec Tadic, M. et al., (2010
+) [][]Kli-matski at-las Hrvatske
+[21] [22]
 Underfull \vbox (badness 10000) has occurred while \output is active [23]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [24]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [25]
-Overfull \hbox (2.92038pt too wide) in paragraph at lines 1281--1282
-[]\T1/zi4/m/n/10 "SpatialPoints*" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 "SpatialLine
-s*" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 "SpatialPolygons*"\T1/ptm/m/n/10 ; vec-tor
- layer 
-[26] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+[24] [25] [26]
 Underfull \hbox (badness 10000) in paragraph at lines 1361--1363
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1364--1365
 
-[27] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [28]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (50.84094pt too wide) in paragraph at lines 1489--1490
-[][][]\T1/zi4/m/n/10 kml_layer.SpatialPoints[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/
-m/n/10 kml_layer.Raster[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 kml_layer.Spat
-ialLines[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 kml_layer.SpatialPolygons[][]
-[]\T1/ptm/m/n/10 ,
+[27] [28]
+Overfull \hbox (4.58698pt too wide) in paragraph at lines 1463--1464
+[]\OT1/cmr/m/n/10 Writes any \OT1/zi4/m/n/10 Spatial* \OT1/cmr/m/n/10 ob-ject (
+from the sp pack-age), spatio-temporal ob-ject (from the [][]\OT1/zi4/m/n/10 ST
+-class[][][]
 
-Overfull \hbox (25.12097pt too wide) in paragraph at lines 1489--1490
-[][]\T1/zi4/m/n/10 kml_layer.STIDF[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 kml
-_layer.STTDF[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 kml_layer.SoilProfileColl
-ection[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 kml-methods[][][]\T1/ptm/m/n/10
- , [][]\T1/zi4/m/n/10 kml_open[][][]\T1/ptm/m/n/10 ,
-[29] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (6.3869pt too wide) in paragraph at lines 1520--1521
-[]\T1/ptm/m/n/10 Writes rasters to PNG im-ages and makes a KML code (ground ove
-r-lays). Works with \T1/zi4/m/n/10 "RasterLayer"
-
-Overfull \hbox (51.61015pt too wide) in paragraph at lines 1535--1536
-[]\T1/ptm/m/n/10 object of class \T1/zi4/m/n/10 "RasterLayer"\T1/ptm/m/n/10 , \
-T1/zi4/m/n/10 "SpatialPixelsDataFrame" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 "Spatia
-lGridDataFrame" 
-[30] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [31]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [32] [33]
-Overfull \hbox (27.73488pt too wide) in paragraph at lines 1734--1734
- []\T1/zi4/m/n/9 site(ca) <- ~ mlra + ssa + lon + lat + cntrl_depth_to_top + cn
-trl_depth_to_bot + sampled_taxon_name[] 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [34] [35]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [36]
-Overfull \hbox (14.98964pt too wide) in paragraph at lines 1871--1872
-[]\T1/ptm/m/n/10 KML Ref-er-ence ([][]$\T1/zi4/m/n/10 http : / / code . google 
-. com / apis / kml / documentation / kmlreference . html$[][]\T1/ptm/m/n/10 ) 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [37]
-Overfull \hbox (7.28754pt too wide) in paragraph at lines 1902--1903
-\T1/ptm/m/n/10 ment (ground over-lays). Tar-get at-tributes can be spec-i-fied 
-us-ing aes-thet-ics ar-gu-ments (e.g. \T1/zi4/m/n/10 "colour"\T1/ptm/m/n/10 ). 
+Overfull \hbox (47.62538pt too wide) in paragraph at lines 1488--1489
+[][][]\OT1/zi4/m/n/10 kml[]layer.SpatialPoints[][][]\OT1/cmr/m/n/10 , [][]\OT1/
+zi4/m/n/10 kml[]layer.Raster[][][]\OT1/cmr/m/n/10 , [][]\OT1/zi4/m/n/10 kml[]la
+yer.SpatialLines[][][]\OT1/cmr/m/n/10 , [][]\OT1/zi4/m/n/10 kml[]layer.SpatialP
+olygons[][][]\OT1/cmr/m/n/10 ,
+[29]
+Overfull \hbox (57.41206pt too wide) in paragraph at lines 1535--1536
+[]\OT1/cmr/m/n/10 object of class \OT1/zi4/m/n/10 "RasterLayer"\OT1/cmr/m/n/10 
+, \OT1/zi4/m/n/10 "SpatialPixelsDataFrame" \OT1/cmr/m/n/10 or \OT1/zi4/m/n/10 "
+SpatialGridDataFrame" 
+[30] [31] [32] [33] [34]
+Overfull \hbox (57.41206pt too wide) in paragraph at lines 1799--1800
+[]\OT1/cmr/m/n/10 object of class \OT1/zi4/m/n/10 "RasterLayer"\OT1/cmr/m/n/10 
+, \OT1/zi4/m/n/10 "SpatialPixelsDataFrame" \OT1/cmr/m/n/10 or \OT1/zi4/m/n/10 "
+SpatialGridDataFrame" 
+[35] [36]
+Underfull \hbox (badness 10000) in paragraph at lines 1882--1883
 
 
-Overfull \hbox (51.61015pt too wide) in paragraph at lines 1918--1919
-[]\T1/ptm/m/n/10 object of class \T1/zi4/m/n/10 "RasterLayer"\T1/ptm/m/n/10 , \
-T1/zi4/m/n/10 "SpatialPixelsDataFrame" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 "Spatia
-lGridDataFrame" 
-[38] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Underfull \hbox (badness 10000) in paragraph at lines 2001--2002
+Underfull \hbox (badness 10000) in paragraph at lines 1884--1885
+
+[37] [38]
+Underfull \hbox (badness 10000) in paragraph at lines 1976--1978
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1979--1980
 
 [39]
-Underfull \hbox (badness 10000) in paragraph at lines 2003--2004
+Overfull \hbox (2.79022pt too wide) in paragraph at lines 2025--2026
+[]\OT1/cmr/m/n/10 additional ar-gu-ments that can be passed to the \OT1/zi4/m/n
+/10 kml[]layer.Spatial \OT1/cmr/m/n/10 method 
 
-[40] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Underfull \hbox (badness 10000) in paragraph at lines 2095--2097
+Underfull \hbox (badness 10000) in paragraph at lines 2030--2031
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2098--2099
+Underfull \hbox (badness 10000) in paragraph at lines 2032--2033
 
-[41] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Underfull \hbox (badness 10000) in paragraph at lines 2149--2150
+
+Underfull \hbox (badness 10000) in paragraph at lines 2034--2035
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2036--2037
+
+[40] [41]
+Overfull \hbox (3.10059pt too wide) in paragraph at lines 2110--2110
+ []\OT1/zi4/m/n/10 kml_layer.STTDF(obj, id.name = names(obj@data)[which(names(o
+bj@data)== "burst")],[] 
+
+Underfull \hbox (badness 10000) in paragraph at lines 2138--2139
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2140--2141
 
 [42]
-Underfull \hbox (badness 10000) in paragraph at lines 2151--2152
+Overfull \hbox (13.06992pt too wide) in paragraph at lines 2173--2173
+ []     \OT1/zi4/m/n/10 z.lim = range(x, na.rm=TRUE, finite=TRUE), factor.label
+s, png.type = "cairo-png")[] 
+[43] [44] [45] [46] [47]
+Underfull \hbox (badness 10000) in paragraph at lines 2467--2468
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2153--2154
+Underfull \hbox (badness 10000) in paragraph at lines 2469--2470
 
+[48] [49] [50] [51] [52]
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2748--2748
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2155--2156
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2755--2755
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
 
-[43] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (3.10059pt too wide) in paragraph at lines 2229--2229
- []\T1/zi4/m/n/10 kml_layer.STTDF(obj, id.name = names(obj@data)[which(names(ob
-j@data)== "burst")],[] 
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2760--2760
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
+[53]
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2766--2766
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2257--2258
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2771--2771
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
 
-[44]
-Underfull \hbox (badness 10000) in paragraph at lines 2259--2260
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2776--2776
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (13.06992pt too wide) in paragraph at lines 2292--2292
- []     \T1/zi4/m/n/10 z.lim = range(x, na.rm=TRUE, finite=TRUE), factor.labels
-, png.type = "cairo-png")[] 
-[45] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [46]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [47]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [48]
-Overfull \hbox (1.37617pt too wide) in paragraph at lines 2477--2478
-[]\T1/ptm/m/n/10 These lower level func-tions can be used to cre-ate cus-tomize
-d multi-layered KML files. See plotKML
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [49]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [50]
-Underfull \hbox (badness 10000) in paragraph at lines 2586--2587
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2781--2781
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
 
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2786--2786
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2588--2589
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2792--2792
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [51] [52]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [53] [54]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [55]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2867--2867
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2802--2802
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2874--2874
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2808--2808
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2879--2879
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-[56]
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2885--2885
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Underfull \vbox (badness 10000) has occurred while \output is active [54]
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2814--2814
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2890--2890
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2821--2821
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2895--2895
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2831--2831
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2900--2900
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2838--2838
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2905--2905
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2843--2843
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2911--2911
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (9.75021pt too wide) in paragraph at lines 2849--2849
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env=parent.frame()))),[] 
+[55]
+Overfull \hbox (17.41249pt too wide) in paragraph at lines 2868--2869
+[]\OT1/cmr/m/n/10 target vari-able name (only valid for vi-su-al-iza-tion of \O
+T1/zi4/m/n/10 "SoilProfileCollection"
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2921--2921
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (2.39212pt too wide) in paragraph at lines 2898--2899
+\OT1/zi4/m/n/10 "SpatialPolygonsDataFrame"\OT1/cmr/m/n/10 , or \OT1/zi4/m/n/10 
+"SpatialPixelsDataFrame" \OT1/cmr/m/n/10 con-sider us-ing the \OT1/zi4/m/n/10 G
+SIF::tile
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2927--2927
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (33.00313pt too wide) in paragraph at lines 2902--2903
+[][][]\OT1/zi4/m/n/10 SpatialPredictions-class[][][]\OT1/cmr/m/n/10 , [][]\OT1/
+zi4/m/n/10 SpatialVectorsSimulations-class[][][]\OT1/cmr/m/n/10 , [][]\OT1/zi4/
+m/n/10 RasterBrickSimulations-class[][][]\OT1/cmr/m/n/10 ,
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2933--2933
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-
-Underfull \vbox (badness 10000) has occurred while \output is active [57]
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2940--2940
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2950--2950
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2957--2957
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2962--2962
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
-
-Overfull \hbox (9.75021pt too wide) in paragraph at lines 2968--2968
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env=parent.frame()))),[] 
-[58]
-Overfull \hbox (0.41872pt too wide) in paragraph at lines 2987--2988
-[]\T1/ptm/m/n/10 target vari-able name (only valid for vi-su-al-iza-tion of \T1
-/zi4/m/n/10 "SoilProfileCollection"
-
-Overfull \hbox (36.38719pt too wide) in paragraph at lines 3011--3012
-\T1/ptm/m/n/10 ci-ple, \T1/zi4/m/n/10 plotKML \T1/ptm/m/n/10 works with both si
-m-ple spa-tial ob-jects, and com-plex ob-jects such as \T1/zi4/m/n/10 "SpatialP
-redictions"\T1/ptm/m/n/10 ,
-
-Overfull \hbox (93.34094pt too wide) in paragraph at lines 3011--3012
-\T1/zi4/m/n/10 "SpatialVectorsSimulations"\T1/ptm/m/n/10 , \T1/zi4/m/n/10 "Rast
-erBrickSimulations"\T1/ptm/m/n/10 , \T1/zi4/m/n/10 "RasterBrickTimeSeries"\T1/p
-tm/m/n/10 , \T1/zi4/m/n/10 "SpatialMaxEntOutput"
-
-Overfull \hbox (31.32092pt too wide) in paragraph at lines 3021--3022
-[][][]\T1/zi4/m/n/10 SpatialPredictions-class[][][]\T1/ptm/m/n/10 , [][]\T1/zi4
-/m/n/10 SpatialVectorsSimulations-class[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/1
-0 RasterBrickSimulations-class[][][]\T1/ptm/m/n/10 ,
-
-Overfull \hbox (13.82092pt too wide) in paragraph at lines 3021--3022
-[][]\T1/zi4/m/n/10 RasterBrickTimeSeries-class[][][]\T1/ptm/m/n/10 , [][]\T1/zi
-4/m/n/10 SpatialMaxEntOutput-class[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 Spa
-tialSamplingPattern-class[][][] 
-[59] [60]
+Overfull \hbox (15.22534pt too wide) in paragraph at lines 2902--2903
+[][]\OT1/zi4/m/n/10 RasterBrickTimeSeries-class[][][]\OT1/cmr/m/n/10 , [][]\OT1
+/zi4/m/n/10 SpatialMaxEntOutput-class[][][]\OT1/cmr/m/n/10 , [][]\OT1/zi4/m/n/1
+0 SpatialSamplingPattern-class[][][] 
+[56] [57]
+Underfull \vbox (badness 10000) has occurred while \output is active [58]
+Underfull \vbox (badness 10000) has occurred while \output is active [59]
+Underfull \vbox (badness 10000) has occurred while \output is active [60]
 Underfull \vbox (badness 10000) has occurred while \output is active [61]
 Underfull \vbox (badness 10000) has occurred while \output is active [62]
-Underfull \vbox (badness 10000) has occurred while \output is active [63]
-Underfull \vbox (badness 10000) has occurred while \output is active [64]
-Underfull \vbox (badness 10000) has occurred while \output is active [65]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [66] [67]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [68] [69]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [70]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [71]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [72]
-Overfull \hbox (27.77168pt too wide) in paragraph at lines 3799--3799
- []\T1/zi4/m/n/9 # download.file(paste("http://data.gbif.org/occurrences/taxon/
-celldensity/", kml.file, sep=""),[] 
-[73] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [74pdfTeX warning 
-(ext4): destination with the same identifier (name{Rfn.reproject,SpatialPixelsD
-ataFrame.Rdash.method}) has been already used, duplicate ignored
+[63] [64] [65] [66] [67] [68] [69]
+Overfull \hbox (27.77168pt too wide) in paragraph at lines 3680--3680
+ []\OT1/zi4/m/n/9 # download.file(paste("http://data.gbif.org/occurrences/taxon
+/celldensity/", kml.file, sep=""),[] 
+[70] [71pdfTeX warning (ext4): destination with the same identifier (name{Rfn.r
+eproject,SpatialPixelsDataFrame.Rdash.method}) has been already used, duplicate
+ ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.3879 \item[\code{...}]
-                         arguments evaluated in the context of function \cod...
-] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [75]
-Overfull \hbox (2.05736pt too wide) in paragraph at lines 3952--3954
-\T1/ptm/m/n/10 Pos-si-bly the most used palettes for vi-su-al-iza-tion of nu-me
-ric vari-ables are \T1/zi4/m/n/10 rev(rainbow(65)[1:48])
-[76] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [77]
-Overfull \hbox (35.54791pt too wide) in paragraph at lines 4038--4039
-[]\T1/ptm/m/n/10 object of class \T1/zi4/m/n/10 "MaxEnt" \T1/ptm/m/n/10 (specie
-s dis-tri-bu-tion model); pro-duced as an out-put of the \T1/zi4/m/n/10 dismo::
-maxent
+l.3744 ## S4 method for signature 'RasterBrick'
+                                               ] [72]
+Overfull \hbox (24.58698pt too wide) in paragraph at lines 3833--3835
+\OT1/cmr/m/n/10 Pos-si-bly the most used palettes for vi-su-al-iza-tion of nu-m
+eric vari-ables are \OT1/zi4/m/n/10 rev(rainbow(65)[1:48])
 
-Overfull \hbox (63.60951pt too wide) in paragraph at lines 4039--4040
-[]\T1/ptm/m/n/10 object of class \T1/zi4/m/n/10 "Spatial" \T1/ptm/m/n/10 (ide-a
-lly \T1/zi4/m/n/10 "SpatialPolygonsDataFrame" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 
-"SpatialPixelsDataFrame"\T1/ptm/m/n/10 );
+Overfull \hbox (45.39134pt too wide) in paragraph at lines 3838--3839
+\OT1/cmr/m/n/10 R. All pal-letes de-scribed here were pre-pared for R by Tomis-
+lav Hengl (\OML/zi4/m/n/10 <\OT1/zi4/m/n/10 tom.hengl@opengeohub.org\OML/zi4/m/
+n/10 >\OT1/cmr/m/n/10 ). 
+[73]
+Overfull \hbox (12.97467pt too wide) in paragraph at lines 3877--3878
+[]\OT1/cmr/m/n/10 A class for color palette that can be fur-ther used to cre-at
+e an ob-ject of class \OT1/zi4/m/n/10 "SpatialMetadata"\OT1/cmr/m/n/10 . 
+[74]
+Overfull \hbox (71.86435pt too wide) in paragraph at lines 3920--3921
+[]\OT1/cmr/m/n/10 object of class \OT1/zi4/m/n/10 "Spatial" \OT1/cmr/m/n/10 (id
+e-ally \OT1/zi4/m/n/10 "SpatialPolygonsDataFrame" \OT1/cmr/m/n/10 or \OT1/zi4/m
+/n/10 "SpatialPixelsDataFrame"\OT1/cmr/m/n/10 );
+[75] [76] [77]
+Overfull \hbox (43.61435pt too wide) in paragraph at lines 4080--4081
+[]\OT1/cmr/m/n/10 object of class \OT1/zi4/m/n/10 "SpatialPointsDataFrame" \OT1
+/cmr/m/n/10 (must be 2D); see \OT1/zi4/m/n/10 sp::SpatialPointsDataFrame 
 
-Overfull \hbox (140.27791pt too wide) in paragraph at lines 4056--4057
-[]\T1/ptm/m/n/10 MaxEnt re-quires the \T1/zi4/m/n/10 maxent.jar \T1/ptm/m/n/10 
-file to be in the 'java' folder of the dismo pack-age (see: \T1/zi4/m/n/10 syst
-em.file("java", package="dismo")\T1/ptm/m/n/10 ).
-[78] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [79]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (33.83939pt too wide) in paragraph at lines 4199--4200
-[]\T1/ptm/m/n/10 object of class \T1/zi4/m/n/10 "SpatialPointsDataFrame" \T1/pt
-m/m/n/10 (must be 2D); see \T1/zi4/m/n/10 sp::SpatialPointsDataFrame 
-[80]
-Overfull \hbox (18.34094pt too wide) in paragraph at lines 4239--4240
-[][][]\T1/zi4/m/n/10 plotKML-method[][][]\T1/ptm/m/n/10 , \T1/zi4/m/n/10 GSIF::
-fit.gstatModel\T1/ptm/m/n/10 , \T1/zi4/m/n/10 gstat::gstat-class\T1/ptm/m/n/10 
-, [][]\T1/zi4/m/n/10 RasterBrickSimulations-class[][][] 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [81]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [82]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (42.0706pt too wide) in paragraph at lines 4390--4392
-\T1/zi4/m/n/10 system.file("INSPIRE_ISO19139.xml", package="plotKML")\T1/ptm/m/
-n/10 ). The \T1/zi4/m/n/10 FGDC.xml\T1/ptm/m/n/10 /\T1/zi4/m/n/10 INSPIRE_ISO19
-139.xml
-[83]
-Overfull \hbox (325.11081pt too wide) in paragraph at lines 4406--4407
-[]\T1/zi4/m/n/10 metadata[["identificationInfo"]][["MD_DataIdentification"]] [[
-"extent"]][["EX_Extent"]][["geographicElement"]][["EX_GeographicBoundingBox"]]
+Overfull \hbox (20.44757pt too wide) in paragraph at lines 4120--4121
+[][][]\OT1/zi4/m/n/10 plotKML-method[][][]\OT1/cmr/m/n/10 , \OT1/zi4/m/n/10 GSI
+F::fit.gstatModel\OT1/cmr/m/n/10 , \OT1/zi4/m/n/10 gstat::gstat-class\OT1/cmr/m
+/n/10 , [][]\OT1/zi4/m/n/10 RasterBrickSimulations-class[][][] 
+[78] [79] [80]
+Overfull \hbox (13.50496pt too wide) in paragraph at lines 4265--4266
+[]\OT1/cmr/m/n/10 logical; spec-i-fies whether to val-i-date the schema us-ing 
+the \OT1/zi4/m/n/10 xmlSchemaValidate 
 
-Overfull \hbox (6.47845pt too wide) in paragraph at lines 4421--4422
-[]\T1/ptm/m/n/10 Content Stan-dard for Dig-i-tal Geospa-tial Meta-data ([][]$\T
-1/zi4/m/n/10 http : / / www . fgdc . gov / metadata / csdgm/$[][]\T1/ptm/m/n/10
- ) 
+Overfull \hbox (56.63496pt too wide) in paragraph at lines 4271--4273
+\OT1/cmr/m/n/10 or \OT1/zi4/m/n/10 system.file("INSPIRE[]ISO19139.xml", package
+="plotKML")\OT1/cmr/m/n/10 ). The \OT1/zi4/m/n/10 FGDC.xml\OT1/cmr/m/n/10 /\OT1
+/zi4/m/n/10 INSPIRE[]ISO19139.xml
 
-Overfull \hbox (11.89981pt too wide) in paragraph at lines 4422--4423
-[]\T1/ptm/m/n/10 Tkme meta-data ed-i-tor ([][]$\T1/zi4/m/n/10 http : / / geolog
-y . usgs . gov / tools / metadata / tools / doc / tkme . html$[][]\T1/ptm/m/n/1
-0 ) 
-[84] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [85] [86] [87]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
-Overfull \hbox (56.20879pt too wide) in paragraph at lines 4632--4633
-[]\T1/ptm/m/n/10 integer; tar-get col-umn in the out-put shape file (see \T1/zi
-4/m/n/10 rsaga.get.usage("grid_gridding", 0)\T1/ptm/m/n/10 ) 
+Overfull \hbox (4.58667pt too wide) in paragraph at lines 4284--4285
+[]\OT1/zi4/m/n/10 metadata[["fileIdentifier"]][["CharacterString"]] \OT1/cmr/m/
+n/10 --- Meta-data file iden-ti-fier (not
+[81]
+Overfull \hbox (8.5035pt too wide) in paragraph at lines 4285--4286
+[]\OT1/zi4/m/n/10 metadata[["dateStamp"]][["Date"]] \OT1/cmr/m/n/10 --- Meta-da
+ta date stamp cre-ated us-ing Sys.Date(). 
 
-Overfull \hbox (17.10895pt too wide) in paragraph at lines 4633--4634
-[]\T1/ptm/m/n/10 integer; method for mul-ti-ple val-ues (see \T1/zi4/m/n/10 rsa
-ga.get.usage("grid_gridding", 0)\T1/ptm/m/n/10 ) 
-[88]
-Overfull \hbox (9.36926pt too wide) in paragraph at lines 4635--4636
-[]\T1/ptm/m/n/10 integer; pre-ferred tar-get grid type (see \T1/zi4/m/n/10 rsag
-a.get.usage("grid_gridding", 0)\T1/ptm/m/n/10 ) 
-[89] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [90]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [91]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [92] (./Rd2.ind
-[93]
+Overfull \hbox (320.91083pt too wide) in paragraph at lines 4287--4288
+[]\OT1/zi4/m/n/10 metadata[["identificationInfo"]][["MD[]DataIdentification"]] 
+[["extent"]][["EX[]Extent"]][["geographicElement"]][["EX[]GeographicBoundingBox
+"]]
+[82] [83] [84] [85]
+Overfull \hbox (74.5182pt too wide) in paragraph at lines 4513--4514
+[]\OT1/cmr/m/n/10 integer; tar-get col-umn in the out-put shape file (see \OT1/
+zi4/m/n/10 rsaga.get.usage("grid[]gridding", 0)\OT1/cmr/m/n/10 ) 
 
-LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 90.
+Overfull \hbox (28.12926pt too wide) in paragraph at lines 4514--4515
+[]\OT1/cmr/m/n/10 integer; method for mul-ti-ple val-ues (see \OT1/zi4/m/n/10 r
+saga.get.usage("grid[]gridding", 0)\OT1/cmr/m/n/10 ) 
 
+Overfull \hbox (22.6292pt too wide) in paragraph at lines 4516--4517
+[]\OT1/cmr/m/n/10 integer; pre-ferred tar-get grid type (see \OT1/zi4/m/n/10 rs
+aga.get.usage("grid[]gridding", 0)\OT1/cmr/m/n/10 ) 
+[86] [87] [88] [89]
+Overfull \hbox (10.2537pt too wide) in paragraph at lines 4712--4713
+[]\OT1/cmr/m/n/10 Color palette used for the most gen-eral land use classes at 
+scale 1:250k (TOP250NL). 
+[90] (./Rd2.ind [91]
+
+LaTeX Font Warning: Font shape `OT1/zi4/m/it' undefined
+(Font)              using `OT1/zi4/m/n' instead on input line 88.
+
+[92] [93]
+Overfull \hbox (3.43166pt too wide) in paragraph at lines 334--336
+\OT1/cmr/m/it/10 (\OT1/zi4/m/it/10 RasterBrickSimulations-class\OT1/cmr/m/it/10
+ )\OT1/cmr/m/n/10 , 
+
+Overfull \hbox (5.8567pt too wide) in paragraph at lines 358--360
+[]\OT1/zi4/m/it/10 plotKML,SpatialPolygonsDataFrame-method 
+
+Overfull \hbox (3.43166pt too wide) in paragraph at lines 362--364
+\OT1/cmr/m/it/10 (\OT1/zi4/m/it/10 SpatialSamplingPattern-class\OT1/cmr/m/it/10
+ )\OT1/cmr/m/n/10 , 
+
+Overfull \hbox (18.43166pt too wide) in paragraph at lines 366--368
+\OT1/cmr/m/it/10 (\OT1/zi4/m/it/10 SpatialVectorsSimulations-class\OT1/cmr/m/it
+/10 )\OT1/cmr/m/n/10 , 
+
+Overfull \hbox (10.8567pt too wide) in paragraph at lines 368--370
+[]\OT1/zi4/m/it/10 plotKML,SpatialVectorsSimulations-method 
 [94]
-Overfull \hbox (0.8567pt too wide) in paragraph at lines 217--219
-[]\T1/zi4/m/it/10 kml_layer,SoilProfileCollection-method 
-[95]
-Overfull \hbox (5.8567pt too wide) in paragraph at lines 366--368
-[]\T1/zi4/m/it/10 plotKML,SpatialPolygonsDataFrame-method 
-
-Overfull \hbox (15.01662pt too wide) in paragraph at lines 374--376
-\T1/ptm/m/it/10 (\T1/zi4/m/it/10 SpatialVectorsSimulations-class\T1/ptm/m/it/10
- )\T1/ptm/m/n/10 , 
-
-Overfull \hbox (10.8567pt too wide) in paragraph at lines 376--378
-[]\T1/zi4/m/it/10 plotKML,SpatialVectorsSimulations-method 
-[96]
-Overfull \hbox (5.8567pt too wide) in paragraph at lines 430--432
-[]\T1/zi4/m/it/10 reproject,SpatialPixelsDataFrame-method 
-
-Overfull \hbox (15.01662pt too wide) in paragraph at lines 451--453
-\T1/ptm/m/it/10 (\T1/zi4/m/it/10 kml_layer.SoilProfileCollection\T1/ptm/m/it/10
- )\T1/ptm/m/n/10 , 
-[97]) (./Rd2.aux)
+Overfull \hbox (5.8567pt too wide) in paragraph at lines 422--424
+[]\OT1/zi4/m/it/10 reproject,SpatialPixelsDataFrame-method 
+[95]) (./Rd2.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -1370,18 +1258,25 @@ pdfTeX warning (dest): name{Rfn.projectRaster} has been referenced but does not
 pdfTeX warning (dest): name{Rfn.ST.Rdash.class} has been referenced but does no
 t exist, replaced by a fixed one
 
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/
-texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/usr/share/texlive/texmf-dis
-t/fonts/enc/dvips/inconsolata/i4-t1-0.enc}</usr/share/texlive/texmf-dist/fonts/
-type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
-s/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (97 pages, 329189 bytes).
+{/home/tomislav/.TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc} </h
+ome/tomislav/.TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk>{/ho
+me/tomislav/.TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-ot1-0.enc}</home
+/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.p
+fb></home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb
+></home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
+</home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
+/home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb>
+</home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></h
+ome/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></hom
+e/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></home
+/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></home/
+tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></home/t
+omislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/to
+mislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></home/tomi
+slav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on Rd2.pdf (95 pages, 420075 bytes).
 Transcript written on Rd2.log.
 Saving output to ‘plotKML-manual.pdf’ ...
 Done
-You may want to clean up by 'rm -Rf /data/RTMP/Rtmpn8bRsC/Rd2pdf2fe4dd43dd5'
+You may want to clean up by 'rm -Rf /data/RTMP/RtmpNAmsA7/Rd2pdf30e965f6d7e1'

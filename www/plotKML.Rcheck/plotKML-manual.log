@@ -1,26 +1,25 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.28)  9 JAN 2019 17:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.7)  4 NOV 2019 18:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **Rd2.tex
 (./Rd2.tex
-LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 5 language(s) loaded.
+LaTeX2e <2018-12-01>
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
-Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/bk10.clo
-File: bk10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2018/09/03 v1.4i Standard LaTeX document class
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/bk10.clo
+File: bk10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 )
-\c@part=\count79
-\c@chapter=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
+\c@part=\count80
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\c@figure=\count87
+\c@table=\count88
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
@@ -28,28 +27,28 @@ File: bk10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 (/opt/microsoft/ropen/3.5.1/lib64/R/share/texmf/tex/latex/Rd.sty
 Package: Rd 
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
-Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)+ FMi change
 \LTleft=\skip43
 \LTright=\skip44
 \LTpre=\skip45
 \LTpost=\skip46
-\LTchunksize=\count88
+\LTchunksize=\count89
 \LTcapwidth=\dimen103
-\LT@head=\box26
-\LT@firsthead=\box27
-\LT@foot=\box28
-\LT@lastfoot=\box29
-\LT@cols=\count89
-\LT@rows=\count90
-\c@LT@tables=\count91
-\c@LT@chunks=\count92
+\LT@head=\box27
+\LT@firsthead=\box28
+\LT@foot=\box29
+\LT@lastfoot=\box30
+\LT@cols=\count90
+\LT@rows=\count91
+\c@LT@tables=\count92
+\c@LT@chunks=\count93
 \LT@p@ftn=\toks14
 )
-(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/tools/bm.sty
 Package: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
 \symboldoperators=\mathgroup4
 \symboldletters=\mathgroup5
@@ -57,21 +56,21 @@ Package: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
 LaTeX Info: Redefining \bm on input line 207.
 )
-(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/alltt.sty
 Package: alltt 1997/06/16 v2.0g defines alltt environment
 )
-(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks15
 \verbatim@line=\toks16
 \verbatim@in@stream=\read1
 )
-(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
-Package: textcomp 2017/04/05 v2.0i Standard LaTeX package
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2018/08/11 v2.0j Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
 (textcomp)               5 = only ISO-Adobe without \textcurrency
 (textcomp)               4 = 5 + \texteuro
@@ -85,548 +84,13 @@ Package textcomp Info: Sub-encoding information:
 (textcomp)             See the documentation for details.
 Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/ts1enc.def
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
-)
-LaTeX Info: Redefining \oldstylenums on input line 334.
-Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
-Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
-Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
-Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
-Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
-Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
-Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
-Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
-Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
-Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
-Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
-Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
-Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
-Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
-Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
-Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
-Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
-Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
-Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
-Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
-Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
-Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
-Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
-Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
-
-Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
-Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
-Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
-Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
-Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
-Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
-Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
-Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
-Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
-Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
-Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
-Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
-Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
-Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
-Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
-Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
-Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
-Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
-Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
-Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
-Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
-Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
-Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
-Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
-Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
-Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
-Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
-Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
-Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
-Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
-Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
-Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
-Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
-Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
-Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
-Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
-Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
-)
-\ldescriptionwidth=\skip47
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
-File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
-))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty
-Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
-)
-(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/zi4.sty
-Package: zi4 2017/01/04 v1.112
-
-`inconsolata-zi4' v1.112, 2017/01/04 Text macros for Inconsolata (msharpe)
-(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
-Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
-
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks17
-\XKV@tempa@toks=\toks18
-
-(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/keyval.tex))
-\XKV@depth=\count93
-File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-))
-\zifour@ocount=\count94
-)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package color Info: Driver file: pdftex.def on input line 147.
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
-))
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2018/02/06 v6.86b Hypertext links for LaTeX
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
-
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
-Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
-Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
-Package ifvtex Info: VTeX not detected.
-Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
-Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
-Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
-)
-Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
-Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
-)
-Package hobsub Info: Skipping package `hobsub' (already loaded).
-Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
-Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
-Package: xcolor-patch 2016/05/16 xcolor patch
-Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
-Package atveryend Info: \enddocument detected (standard20110627).
-Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
-Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
-Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
-Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
-)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
-Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
-)
-\@linkdim=\dimen104
-\Hy@linkcounter=\count95
-\Hy@pagecounter=\count96
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
-)
-\Hy@SavedSpaceFactor=\count97
-
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
-File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
-)
-Package hyperref Info: Hyper figures OFF on input line 4509.
-Package hyperref Info: Link nesting OFF on input line 4514.
-Package hyperref Info: Hyper index ON on input line 4517.
-Package hyperref Info: Plain pages OFF on input line 4524.
-Package hyperref Info: Backreferencing OFF on input line 4529.
-Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4762.
-\c@Hy@tempcnt=\count98
-LaTeX Info: Redefining \url on input line 5115.
-\XeTeXLinkMargin=\dimen105
-\Fld@menulength=\count99
-\Field@Width=\dimen106
-\Fld@charsize=\dimen107
-Package hyperref Info: Hyper figures OFF on input line 6369.
-Package hyperref Info: Link nesting OFF on input line 6374.
-Package hyperref Info: Hyper index ON on input line 6377.
-Package hyperref Info: backreferencing OFF on input line 6384.
-Package hyperref Info: Link coloring OFF on input line 6389.
-Package hyperref Info: Link coloring with OCG OFF on input line 6394.
-Package hyperref Info: PDF/A mode OFF on input line 6399.
-LaTeX Info: Redefining \ref on input line 6439.
-LaTeX Info: Redefining \pageref on input line 6443.
-\Hy@abspage=\count100
-\c@Item=\count101
-\c@Hfootnote=\count102
-)
-Package hyperref Info: Driver (autodetected): hpdftex.
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2018/02/06 v6.86b Hyperref driver for pdfTeX
-\Fld@listcount=\count103
-\c@bookmark@seq@number=\count104
-
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
-Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
-82.
-)
-\Hy@SectionHShift=\skip48
-)
-
-Package hyperref Warning: Option `hyperindex' has already been used,
-(hyperref)                setting the option has no effect on input line 366.
-
-Package hyperref Info: Option `colorlinks' set `true' on input line 366.
-
-Package hyperref Warning: Option `pagebackref' has already been used,
-(hyperref)                setting the option has no effect on input line 366.
-
-Package hyperref Info: Option `linktocpage' set `true' on input line 366.
-Package hyperref Info: Option `plainpages' set `false' on input line 366.
-) (/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty
-Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2015/03/17 v1.2c Input encoding file
-\inpenc@prehook=\toks19
-\inpenc@posthook=\toks20
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-Now handling font encoding OML ...
-... no UTF-8 mapping file for font encoding OML
-Now handling font encoding T1 ...
-... processing UTF-8 mapping file for font encoding T1
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
-File: t1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
-   defining Unicode char U+00A0 (decimal 160)
-   defining Unicode char U+00A1 (decimal 161)
-   defining Unicode char U+00A3 (decimal 163)
-   defining Unicode char U+00AB (decimal 171)
-   defining Unicode char U+00AD (decimal 173)
-   defining Unicode char U+00BB (decimal 187)
-   defining Unicode char U+00BF (decimal 191)
-   defining Unicode char U+00C0 (decimal 192)
-   defining Unicode char U+00C1 (decimal 193)
-   defining Unicode char U+00C2 (decimal 194)
-   defining Unicode char U+00C3 (decimal 195)
-   defining Unicode char U+00C4 (decimal 196)
-   defining Unicode char U+00C5 (decimal 197)
-   defining Unicode char U+00C6 (decimal 198)
-   defining Unicode char U+00C7 (decimal 199)
-   defining Unicode char U+00C8 (decimal 200)
-   defining Unicode char U+00C9 (decimal 201)
-   defining Unicode char U+00CA (decimal 202)
-   defining Unicode char U+00CB (decimal 203)
-   defining Unicode char U+00CC (decimal 204)
-   defining Unicode char U+00CD (decimal 205)
-   defining Unicode char U+00CE (decimal 206)
-   defining Unicode char U+00CF (decimal 207)
-   defining Unicode char U+00D0 (decimal 208)
-   defining Unicode char U+00D1 (decimal 209)
-   defining Unicode char U+00D2 (decimal 210)
-   defining Unicode char U+00D3 (decimal 211)
-   defining Unicode char U+00D4 (decimal 212)
-   defining Unicode char U+00D5 (decimal 213)
-   defining Unicode char U+00D6 (decimal 214)
-   defining Unicode char U+00D8 (decimal 216)
-   defining Unicode char U+00D9 (decimal 217)
-   defining Unicode char U+00DA (decimal 218)
-   defining Unicode char U+00DB (decimal 219)
-   defining Unicode char U+00DC (decimal 220)
-   defining Unicode char U+00DD (decimal 221)
-   defining Unicode char U+00DE (decimal 222)
-   defining Unicode char U+00DF (decimal 223)
-   defining Unicode char U+00E0 (decimal 224)
-   defining Unicode char U+00E1 (decimal 225)
-   defining Unicode char U+00E2 (decimal 226)
-   defining Unicode char U+00E3 (decimal 227)
-   defining Unicode char U+00E4 (decimal 228)
-   defining Unicode char U+00E5 (decimal 229)
-   defining Unicode char U+00E6 (decimal 230)
-   defining Unicode char U+00E7 (decimal 231)
-   defining Unicode char U+00E8 (decimal 232)
-   defining Unicode char U+00E9 (decimal 233)
-   defining Unicode char U+00EA (decimal 234)
-   defining Unicode char U+00EB (decimal 235)
-   defining Unicode char U+00EC (decimal 236)
-   defining Unicode char U+00ED (decimal 237)
-   defining Unicode char U+00EE (decimal 238)
-   defining Unicode char U+00EF (decimal 239)
-   defining Unicode char U+00F0 (decimal 240)
-   defining Unicode char U+00F1 (decimal 241)
-   defining Unicode char U+00F2 (decimal 242)
-   defining Unicode char U+00F3 (decimal 243)
-   defining Unicode char U+00F4 (decimal 244)
-   defining Unicode char U+00F5 (decimal 245)
-   defining Unicode char U+00F6 (decimal 246)
-   defining Unicode char U+00F8 (decimal 248)
-   defining Unicode char U+00F9 (decimal 249)
-   defining Unicode char U+00FA (decimal 250)
-   defining Unicode char U+00FB (decimal 251)
-   defining Unicode char U+00FC (decimal 252)
-   defining Unicode char U+00FD (decimal 253)
-   defining Unicode char U+00FE (decimal 254)
-   defining Unicode char U+00FF (decimal 255)
-   defining Unicode char U+0100 (decimal 256)
-   defining Unicode char U+0101 (decimal 257)
-   defining Unicode char U+0102 (decimal 258)
-   defining Unicode char U+0103 (decimal 259)
-   defining Unicode char U+0104 (decimal 260)
-   defining Unicode char U+0105 (decimal 261)
-   defining Unicode char U+0106 (decimal 262)
-   defining Unicode char U+0107 (decimal 263)
-   defining Unicode char U+0108 (decimal 264)
-   defining Unicode char U+0109 (decimal 265)
-   defining Unicode char U+010A (decimal 266)
-   defining Unicode char U+010B (decimal 267)
-   defining Unicode char U+010C (decimal 268)
-   defining Unicode char U+010D (decimal 269)
-   defining Unicode char U+010E (decimal 270)
-   defining Unicode char U+010F (decimal 271)
-   defining Unicode char U+0110 (decimal 272)
-   defining Unicode char U+0111 (decimal 273)
-   defining Unicode char U+0112 (decimal 274)
-   defining Unicode char U+0113 (decimal 275)
-   defining Unicode char U+0114 (decimal 276)
-   defining Unicode char U+0115 (decimal 277)
-   defining Unicode char U+0116 (decimal 278)
-   defining Unicode char U+0117 (decimal 279)
-   defining Unicode char U+0118 (decimal 280)
-   defining Unicode char U+0119 (decimal 281)
-   defining Unicode char U+011A (decimal 282)
-   defining Unicode char U+011B (decimal 283)
-   defining Unicode char U+011C (decimal 284)
-   defining Unicode char U+011D (decimal 285)
-   defining Unicode char U+011E (decimal 286)
-   defining Unicode char U+011F (decimal 287)
-   defining Unicode char U+0120 (decimal 288)
-   defining Unicode char U+0121 (decimal 289)
-   defining Unicode char U+0122 (decimal 290)
-   defining Unicode char U+0123 (decimal 291)
-   defining Unicode char U+0124 (decimal 292)
-   defining Unicode char U+0125 (decimal 293)
-   defining Unicode char U+0128 (decimal 296)
-   defining Unicode char U+0129 (decimal 297)
-   defining Unicode char U+012A (decimal 298)
-   defining Unicode char U+012B (decimal 299)
-   defining Unicode char U+012C (decimal 300)
-   defining Unicode char U+012D (decimal 301)
-   defining Unicode char U+012E (decimal 302)
-   defining Unicode char U+012F (decimal 303)
-   defining Unicode char U+0130 (decimal 304)
-   defining Unicode char U+0131 (decimal 305)
-   defining Unicode char U+0132 (decimal 306)
-   defining Unicode char U+0133 (decimal 307)
-   defining Unicode char U+0134 (decimal 308)
-   defining Unicode char U+0135 (decimal 309)
-   defining Unicode char U+0136 (decimal 310)
-   defining Unicode char U+0137 (decimal 311)
-   defining Unicode char U+0139 (decimal 313)
-   defining Unicode char U+013A (decimal 314)
-   defining Unicode char U+013B (decimal 315)
-   defining Unicode char U+013C (decimal 316)
-   defining Unicode char U+013D (decimal 317)
-   defining Unicode char U+013E (decimal 318)
-   defining Unicode char U+0141 (decimal 321)
-   defining Unicode char U+0142 (decimal 322)
-   defining Unicode char U+0143 (decimal 323)
-   defining Unicode char U+0144 (decimal 324)
-   defining Unicode char U+0145 (decimal 325)
-   defining Unicode char U+0146 (decimal 326)
-   defining Unicode char U+0147 (decimal 327)
-   defining Unicode char U+0148 (decimal 328)
-   defining Unicode char U+014A (decimal 330)
-   defining Unicode char U+014B (decimal 331)
-   defining Unicode char U+014C (decimal 332)
-   defining Unicode char U+014D (decimal 333)
-   defining Unicode char U+014E (decimal 334)
-   defining Unicode char U+014F (decimal 335)
-   defining Unicode char U+0150 (decimal 336)
-   defining Unicode char U+0151 (decimal 337)
-   defining Unicode char U+0152 (decimal 338)
-   defining Unicode char U+0153 (decimal 339)
-   defining Unicode char U+0154 (decimal 340)
-   defining Unicode char U+0155 (decimal 341)
-   defining Unicode char U+0156 (decimal 342)
-   defining Unicode char U+0157 (decimal 343)
-   defining Unicode char U+0158 (decimal 344)
-   defining Unicode char U+0159 (decimal 345)
-   defining Unicode char U+015A (decimal 346)
-   defining Unicode char U+015B (decimal 347)
-   defining Unicode char U+015C (decimal 348)
-   defining Unicode char U+015D (decimal 349)
-   defining Unicode char U+015E (decimal 350)
-   defining Unicode char U+015F (decimal 351)
-   defining Unicode char U+0160 (decimal 352)
-   defining Unicode char U+0161 (decimal 353)
-   defining Unicode char U+0162 (decimal 354)
-   defining Unicode char U+0163 (decimal 355)
-   defining Unicode char U+0164 (decimal 356)
-   defining Unicode char U+0165 (decimal 357)
-   defining Unicode char U+0168 (decimal 360)
-   defining Unicode char U+0169 (decimal 361)
-   defining Unicode char U+016A (decimal 362)
-   defining Unicode char U+016B (decimal 363)
-   defining Unicode char U+016C (decimal 364)
-   defining Unicode char U+016D (decimal 365)
-   defining Unicode char U+016E (decimal 366)
-   defining Unicode char U+016F (decimal 367)
-   defining Unicode char U+0170 (decimal 368)
-   defining Unicode char U+0171 (decimal 369)
-   defining Unicode char U+0172 (decimal 370)
-   defining Unicode char U+0173 (decimal 371)
-   defining Unicode char U+0174 (decimal 372)
-   defining Unicode char U+0175 (decimal 373)
-   defining Unicode char U+0176 (decimal 374)
-   defining Unicode char U+0177 (decimal 375)
-   defining Unicode char U+0178 (decimal 376)
-   defining Unicode char U+0179 (decimal 377)
-   defining Unicode char U+017A (decimal 378)
-   defining Unicode char U+017B (decimal 379)
-   defining Unicode char U+017C (decimal 380)
-   defining Unicode char U+017D (decimal 381)
-   defining Unicode char U+017E (decimal 382)
-   defining Unicode char U+01CD (decimal 461)
-   defining Unicode char U+01CE (decimal 462)
-   defining Unicode char U+01CF (decimal 463)
-   defining Unicode char U+01D0 (decimal 464)
-   defining Unicode char U+01D1 (decimal 465)
-   defining Unicode char U+01D2 (decimal 466)
-   defining Unicode char U+01D3 (decimal 467)
-   defining Unicode char U+01D4 (decimal 468)
-   defining Unicode char U+01E2 (decimal 482)
-   defining Unicode char U+01E3 (decimal 483)
-   defining Unicode char U+01E6 (decimal 486)
-   defining Unicode char U+01E7 (decimal 487)
-   defining Unicode char U+01E8 (decimal 488)
-   defining Unicode char U+01E9 (decimal 489)
-   defining Unicode char U+01EA (decimal 490)
-   defining Unicode char U+01EB (decimal 491)
-   defining Unicode char U+01F0 (decimal 496)
-   defining Unicode char U+01F4 (decimal 500)
-   defining Unicode char U+01F5 (decimal 501)
-   defining Unicode char U+0218 (decimal 536)
-   defining Unicode char U+0219 (decimal 537)
-   defining Unicode char U+021A (decimal 538)
-   defining Unicode char U+021B (decimal 539)
-   defining Unicode char U+0232 (decimal 562)
-   defining Unicode char U+0233 (decimal 563)
-   defining Unicode char U+1E02 (decimal 7682)
-   defining Unicode char U+1E03 (decimal 7683)
-   defining Unicode char U+200C (decimal 8204)
-   defining Unicode char U+2010 (decimal 8208)
-   defining Unicode char U+2011 (decimal 8209)
-   defining Unicode char U+2012 (decimal 8210)
-   defining Unicode char U+2013 (decimal 8211)
-   defining Unicode char U+2014 (decimal 8212)
-   defining Unicode char U+2015 (decimal 8213)
-   defining Unicode char U+2018 (decimal 8216)
-   defining Unicode char U+2019 (decimal 8217)
-   defining Unicode char U+201A (decimal 8218)
-   defining Unicode char U+201C (decimal 8220)
-   defining Unicode char U+201D (decimal 8221)
-   defining Unicode char U+201E (decimal 8222)
-   defining Unicode char U+2030 (decimal 8240)
-   defining Unicode char U+2031 (decimal 8241)
-   defining Unicode char U+2039 (decimal 8249)
-   defining Unicode char U+203A (decimal 8250)
-   defining Unicode char U+2423 (decimal 9251)
-   defining Unicode char U+1E20 (decimal 7712)
-   defining Unicode char U+1E21 (decimal 7713)
-)
-Now handling font encoding OT1 ...
-... processing UTF-8 mapping file for font encoding OT1
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
-File: ot1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
-   defining Unicode char U+00A0 (decimal 160)
-   defining Unicode char U+00A1 (decimal 161)
-   defining Unicode char U+00A3 (decimal 163)
-   defining Unicode char U+00AD (decimal 173)
-   defining Unicode char U+00B8 (decimal 184)
-   defining Unicode char U+00BF (decimal 191)
-   defining Unicode char U+00C5 (decimal 197)
-   defining Unicode char U+00C6 (decimal 198)
-   defining Unicode char U+00D8 (decimal 216)
-   defining Unicode char U+00DF (decimal 223)
-   defining Unicode char U+00E6 (decimal 230)
-   defining Unicode char U+00EC (decimal 236)
-   defining Unicode char U+00ED (decimal 237)
-   defining Unicode char U+00EE (decimal 238)
-   defining Unicode char U+00EF (decimal 239)
-   defining Unicode char U+00F8 (decimal 248)
-   defining Unicode char U+0131 (decimal 305)
-   defining Unicode char U+0141 (decimal 321)
-   defining Unicode char U+0142 (decimal 322)
-   defining Unicode char U+0152 (decimal 338)
-   defining Unicode char U+0153 (decimal 339)
-   defining Unicode char U+0174 (decimal 372)
-   defining Unicode char U+0175 (decimal 373)
-   defining Unicode char U+0176 (decimal 374)
-   defining Unicode char U+0177 (decimal 375)
-   defining Unicode char U+0218 (decimal 536)
-   defining Unicode char U+0219 (decimal 537)
-   defining Unicode char U+021A (decimal 538)
-   defining Unicode char U+021B (decimal 539)
-   defining Unicode char U+2013 (decimal 8211)
-   defining Unicode char U+2014 (decimal 8212)
-   defining Unicode char U+2018 (decimal 8216)
-   defining Unicode char U+2019 (decimal 8217)
-   defining Unicode char U+201C (decimal 8220)
-   defining Unicode char U+201D (decimal 8221)
-)
-Now handling font encoding OMS ...
-... processing UTF-8 mapping file for font encoding OMS
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
-File: omsenc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
-   defining Unicode char U+00A7 (decimal 167)
-   defining Unicode char U+00B6 (decimal 182)
-   defining Unicode char U+00B7 (decimal 183)
-   defining Unicode char U+2020 (decimal 8224)
-   defining Unicode char U+2021 (decimal 8225)
-   defining Unicode char U+2022 (decimal 8226)
-)
-Now handling font encoding OMX ...
-... no UTF-8 mapping file for font encoding OMX
-Now handling font encoding U ...
-... no UTF-8 mapping file for font encoding U
 Now handling font encoding TS1 ...
 ... processing UTF-8 mapping file for font encoding TS1
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.dfu
-File: ts1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/ts1enc.dfu
+File: ts1enc.dfu 2018/10/05 v1.2f UTF-8 support for inputenc
    defining Unicode char U+00A2 (decimal 162)
    defining Unicode char U+00A3 (decimal 163)
    defining Unicode char U+00A4 (decimal 164)
@@ -696,22 +160,234 @@ File: ts1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+25E6 (decimal 9702)
    defining Unicode char U+25EF (decimal 9711)
    defining Unicode char U+266A (decimal 9834)
+   defining Unicode char U+FEFF (decimal 65279)
+))
+LaTeX Info: Redefining \oldstylenums on input line 334.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
+Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 )
+\ldescriptionwidth=\skip47
+
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/inconsolata/zi4.sty
+Package: zi4 2017/01/04 v1.112
+
+`inconsolata-zi4' v1.112, 2017/01/04 Text macros for Inconsolata (msharpe)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks17
+\XKV@tempa@toks=\toks18
+
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/xkeyval/keyval.tex))
+\XKV@depth=\count94
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+\zifour@ocount=\count95
+)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
+
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+)
+\@linkdim=\dimen104
+\Hy@linkcounter=\count96
+\Hy@pagecounter=\count97
+
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
-   defining Unicode char U+00A9 (decimal 169)
-   defining Unicode char U+00AA (decimal 170)
-   defining Unicode char U+00AE (decimal 174)
-   defining Unicode char U+00BA (decimal 186)
-   defining Unicode char U+02C6 (decimal 710)
-   defining Unicode char U+02DC (decimal 732)
-   defining Unicode char U+200C (decimal 8204)
-   defining Unicode char U+2026 (decimal 8230)
-   defining Unicode char U+2122 (decimal 8482)
-   defining Unicode char U+2423 (decimal 9251)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2015/03/17 v1.2c Input encoding file
+\Hy@SavedSpaceFactor=\count98
+
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4519.
+Package hyperref Info: Link nesting OFF on input line 4524.
+Package hyperref Info: Hyper index ON on input line 4527.
+Package hyperref Info: Plain pages OFF on input line 4534.
+Package hyperref Info: Backreferencing OFF on input line 4539.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4772.
+\c@Hy@tempcnt=\count99
+LaTeX Info: Redefining \url on input line 5125.
+\XeTeXLinkMargin=\dimen105
+\Fld@menulength=\count100
+\Field@Width=\dimen106
+\Fld@charsize=\dimen107
+Package hyperref Info: Hyper figures OFF on input line 6380.
+Package hyperref Info: Link nesting OFF on input line 6385.
+Package hyperref Info: Hyper index ON on input line 6388.
+Package hyperref Info: backreferencing OFF on input line 6395.
+Package hyperref Info: Link coloring OFF on input line 6400.
+Package hyperref Info: Link coloring with OCG OFF on input line 6405.
+Package hyperref Info: PDF/A mode OFF on input line 6410.
+LaTeX Info: Redefining \ref on input line 6450.
+LaTeX Info: Redefining \pageref on input line 6454.
+\Hy@abspage=\count101
+\c@Item=\count102
+\c@Hfootnote=\count103
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2018/11/30 v6.88e Hyperref driver for pdfTeX
+\Fld@listcount=\count104
+\c@bookmark@seq@number=\count105
+
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip48
+)
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+Package hyperref Info: Option `colorlinks' set `true' on input line 366.
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+Package hyperref Info: Option `linktocpage' set `true' on input line 366.
+Package hyperref Info: Option `plainpages' set `false' on input line 366.
+) (/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/makeidx.sty
+Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
+)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks19
+\inpenc@posthook=\toks20
+
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2018/08/11 v1.3c Input encoding file
 ))
 \@indexfile=\write3
 \openout3 = `Rd2.idx'.
@@ -735,40 +411,22 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 8.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 8.
- (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+ (/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 8.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 8.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
-File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
-)
-(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count105
-\scratchdimen=\dimen108
-\scratchbox=\box30
-\nofMPsegments=\count106
-\nofMParguments=\count107
-\everyMPshowfont=\toks21
-\MPscratchCnt=\count108
-\MPscratchDim=\dimen109
-\MPnumerator=\count109
-\makeMPintoPDFobject=\count110
-\everyMPtoPDFconversion=\toks22
-)
 \AtBeginShipoutBox=\box31
 Package hyperref Info: Link coloring ON on input line 8.
- (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+(/home/tomislav/.TinyTeX/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count111
+\c@section@level=\count106
 )
 LaTeX Info: Redefining \ref on input line 8.
 LaTeX Info: Redefining \pageref on input line 8.
@@ -778,105 +436,95 @@ LaTeX Info: Redefining \nameref on input line 8.
 \@outlinefile=\write4
 \openout4 = `Rd2.out'.
 
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 9.
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 11.
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 11.
-LaTeX Font Info:    Try loading font information for T1+zi4 on input line 20.
+LaTeX Font Info:    Try loading font information for OT1+zi4 on input line 20.
 
-(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/t1zi4.fd
-File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
+(/home/tomislav/.TinyTeX/texmf-dist/tex/latex/inconsolata/ot1zi4.fd
+File: ot1zi4.fd 2018/01/14 OT1/zi4 (Inconsolata)
 )
-LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
+LaTeX Font Info:    Font shape `OT1/zi4/m/n' will be
 (Font)              scaled to size 10.0pt on input line 20.
+LaTeX Font Info:    Try loading font information for OML+zi4 on input line 20.
+LaTeX Font Info:    No file OMLzi4.fd. on input line 20.
+
+
+LaTeX Font Warning: Font shape `OML/zi4/m/n' undefined
+(Font)              using `OML/cmm/m/it' instead
+(Font)              for symbol `textless' on input line 20.
+
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 30.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 30.
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 40.
-LaTeX Font Info:    Try loading font information for T1+phv on input line 40.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
-File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
-) (./Rd2.toc [1
+(./Rd2.toc [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2])
+{/home/tomislav/.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2])
 \tf@toc=\write5
 \openout5 = `Rd2.toc'.
 
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+ (/home/tomislav/.TinyTeX/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2018/10/05 v1.2f UTF-8 support for inputenc
 )
-Overfull \hbox (20.03957pt too wide) in paragraph at lines 65--66
-[]\T1/ptm/m/n/10 Tomislav Hengl (\T1/zi4/m/n/10 <tom.hengl@opengeohub.org>\T1/p
-tm/m/n/10 ), Pierre Roudier (\T1/zi4/m/n/10 <pierre.roudier@landcare.nz>\T1/ptm
-/m/n/10 ),
+Overfull \hbox (43.75346pt too wide) in paragraph at lines 65--66
+[]\OT1/cmr/m/n/10 Tomislav Hengl (\OML/zi4/m/n/10 <\OT1/zi4/m/n/10 tom.hengl@op
+engeohub.org\OML/zi4/m/n/10 >\OT1/cmr/m/n/10 ), Pierre Roudier (\OML/zi4/m/n/10
+ <\OT1/zi4/m/n/10 pierre.roudier@landcare.nz\OML/zi4/m/n/10 >\OT1/cmr/m/n/10 ),
+
  []
 
 
-Overfull \hbox (33.51947pt too wide) in paragraph at lines 65--66
-\T1/ptm/m/n/10 Dy-lan Beaudette (\T1/zi4/m/n/10 <debeaudette@ucdavis.edu>\T1/pt
-m/m/n/10 ), Edzer Pebesma (\T1/zi4/m/n/10 <edzer.pebesma@uni-muenster.de>\T1/pt
-m/m/n/10 ) 
+Overfull \hbox (59.80905pt too wide) in paragraph at lines 65--66
+\OT1/cmr/m/n/10 Dy-lan Beaudette (\OML/zi4/m/n/10 <\OT1/zi4/m/n/10 debeaudette@
+ucdavis.edu\OML/zi4/m/n/10 >\OT1/cmr/m/n/10 ), Edzer Pebesma (\OML/zi4/m/n/10 <
+\OT1/zi4/m/n/10 edzer.pebesma@uni-muenster.de\OML/zi4/m/n/10 >\OT1/cmr/m/n/10 )
+ 
  []
 
-LaTeX Font Info:    Try loading font information for TS1+ptm on input line 71.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [3]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [4]
-LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
+
+Overfull \hbox (5.53117pt too wide) in paragraph at lines 72--73
+[]\OT1/cmr/b/n/10 Google Earth Out-reach \OT1/cmr/m/n/10 project ([][]$\OT1/zi4
+/m/n/10 http : / / earth . google . com / outreach / tutorials . html$[][]\OT1/
+cmr/m/n/10 ) 
+ []
+
+[3] [4]
+LaTeX Font Info:    Font shape `OT1/zi4/m/n' will be
 (Font)              scaled to size 9.0pt on input line 161.
- [5]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [6] [7]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [8]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [9]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-)
-Overfull \hbox (25.25978pt too wide) in paragraph at lines 439--440
-[]\T1/ptm/m/n/10 list of vec-tors of class \T1/zi4/m/n/10 "SpatialPoint*"\T1/pt
-m/m/n/10 , \T1/zi4/m/n/10 "SpatialLines*" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 "Spa
-tialPolygons*"
+ [5] [6]
+Overfull \hbox (6.17052pt too wide) in paragraph at lines 282--283
+[]\OT1/cmr/m/n/10 Lozier, J.D., Aniello, P., Hick-er-son, M.J., (2009) [][]Pre-
+dict-ing the dis-tri-bu-tion of Sasquatch
  []
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [10]
+[7]
+Underfull \hbox (badness 1117) in paragraph at lines 314--314
+[]\OT1/cmr/m/it/10 Extracts the proj4 pa-ram-e-ters and checks if the pro-jec-t
+ion
+ []
+
+[8] [9]
+Overfull \hbox (31.99544pt too wide) in paragraph at lines 439--440
+[]\OT1/cmr/m/n/10 list of vec-tors of class \OT1/zi4/m/n/10 "SpatialPoint*"\OT1
+/cmr/m/n/10 , \OT1/zi4/m/n/10 "SpatialLines*" \OT1/cmr/m/n/10 or \OT1/zi4/m/n/1
+0 "SpatialPolygons*"
+ []
+
+[10]
 LaTeX Font Info:    Try loading font information for TS1+zi4 on input line 502.
 
-
-(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/ts1zi4.fd
+ (/home/tomislav/.TinyTeX/texmf-dist/tex/latex/inconsolata/ts1zi4.fd
 File: ts1zi4.fd 2018/01/14 TS1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `TS1/zi4/m/n' will be
 (Font)              scaled to size 9.0pt on input line 502.
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [11] [12] [13]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [14]
+[11]
+Overfull \hbox (1.46487pt too wide) in paragraph at lines 545--546
+[]\OT1/cmr/m/n/10 The \OT1/zi4/m/n/10 eberg[]grid \OT1/cmr/m/n/10 data frame (r
+eg-u-lar grid at 100 m res-o-lu-tion) con-tains the fol-low-ing columns: 
+ []
+
+[12] [13] [14]
 Underfull \hbox (badness 10000) in paragraph at lines 671--672
 
  []
@@ -886,59 +534,38 @@ Underfull \hbox (badness 10000) in paragraph at lines 673--674
 
  []
 
-[15] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-)
+[15]
 LaTeX Font Info:    Font shape `TS1/zi4/m/n' will be
 (Font)              scaled to size 10.0pt on input line 725.
-
-Overfull \hbox (11.79866pt too wide) in paragraph at lines 739--740
-[]\T1/ptm/m/n/10 For more de-tails about the PROJ.4 pa-ram-e-ters re-fer to the
- [][]$\T1/zi4/m/n/10 https : / / proj4 . org / usage / projections .
- []
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [16]
+ [16]
 Underfull \hbox (badness 10000) in paragraph at lines 792--794
 
  []
+
+LaTeX Font Info:    Try loading font information for OMS+zi4 on input line 795.
+
+LaTeX Font Info:    No file OMSzi4.fd. on input line 795.
+
+LaTeX Font Warning: Font shape `OMS/zi4/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 795.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 795--796
 
  []
 
-[17] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [18]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [19]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [20]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [21] [22]
+[17] [18] [19] [20]
+Overfull \hbox (0.26768pt too wide) in paragraph at lines 995--996
+[]\OT1/cmr/m/n/10 Zaninovic K., Gajic-Capka, M., Percec Tadic, M. et al., (2010
+) [][]Kli-matski at-las Hrvatske
+ []
+
+[21] [22]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [23]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [24]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [25]
-Overfull \hbox (2.92038pt too wide) in paragraph at lines 1281--1282
-[]\T1/zi4/m/n/10 "SpatialPoints*" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 "SpatialLine
-s*" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 "SpatialPolygons*"\T1/ptm/m/n/10 ; vec-tor
- layer 
- []
-
-[26] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-)
+[24] [25] [26]
 Underfull \hbox (badness 10000) in paragraph at lines 1361--1363
 
  []
@@ -948,578 +575,434 @@ Underfull \hbox (badness 10000) in paragraph at lines 1364--1365
 
  []
 
-[27] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [28]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-)
-Overfull \hbox (50.84094pt too wide) in paragraph at lines 1489--1490
-[][][]\T1/zi4/m/n/10 kml_layer.SpatialPoints[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/
-m/n/10 kml_layer.Raster[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 kml_layer.Spat
-ialLines[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 kml_layer.SpatialPolygons[][]
-[]\T1/ptm/m/n/10 ,
+[27] [28]
+Overfull \hbox (4.58698pt too wide) in paragraph at lines 1463--1464
+[]\OT1/cmr/m/n/10 Writes any \OT1/zi4/m/n/10 Spatial* \OT1/cmr/m/n/10 ob-ject (
+from the sp pack-age), spatio-temporal ob-ject (from the [][]\OT1/zi4/m/n/10 ST
+-class[][][]
  []
 
 
-Overfull \hbox (25.12097pt too wide) in paragraph at lines 1489--1490
-[][]\T1/zi4/m/n/10 kml_layer.STIDF[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 kml
-_layer.STTDF[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 kml_layer.SoilProfileColl
-ection[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 kml-methods[][][]\T1/ptm/m/n/10
- , [][]\T1/zi4/m/n/10 kml_open[][][]\T1/ptm/m/n/10 ,
+Overfull \hbox (47.62538pt too wide) in paragraph at lines 1488--1489
+[][][]\OT1/zi4/m/n/10 kml[]layer.SpatialPoints[][][]\OT1/cmr/m/n/10 , [][]\OT1/
+zi4/m/n/10 kml[]layer.Raster[][][]\OT1/cmr/m/n/10 , [][]\OT1/zi4/m/n/10 kml[]la
+yer.SpatialLines[][][]\OT1/cmr/m/n/10 , [][]\OT1/zi4/m/n/10 kml[]layer.SpatialP
+olygons[][][]\OT1/cmr/m/n/10 ,
  []
 
-[29] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-)
-Overfull \hbox (6.3869pt too wide) in paragraph at lines 1520--1521
-[]\T1/ptm/m/n/10 Writes rasters to PNG im-ages and makes a KML code (ground ove
-r-lays). Works with \T1/zi4/m/n/10 "RasterLayer"
+[29]
+Overfull \hbox (57.41206pt too wide) in paragraph at lines 1535--1536
+[]\OT1/cmr/m/n/10 object of class \OT1/zi4/m/n/10 "RasterLayer"\OT1/cmr/m/n/10 
+, \OT1/zi4/m/n/10 "SpatialPixelsDataFrame" \OT1/cmr/m/n/10 or \OT1/zi4/m/n/10 "
+SpatialGridDataFrame" 
  []
 
-
-Overfull \hbox (51.61015pt too wide) in paragraph at lines 1535--1536
-[]\T1/ptm/m/n/10 object of class \T1/zi4/m/n/10 "RasterLayer"\T1/ptm/m/n/10 , \
-T1/zi4/m/n/10 "SpatialPixelsDataFrame" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 "Spatia
-lGridDataFrame" 
+[30] [31] [32] [33] [34]
+Overfull \hbox (57.41206pt too wide) in paragraph at lines 1799--1800
+[]\OT1/cmr/m/n/10 object of class \OT1/zi4/m/n/10 "RasterLayer"\OT1/cmr/m/n/10 
+, \OT1/zi4/m/n/10 "SpatialPixelsDataFrame" \OT1/cmr/m/n/10 or \OT1/zi4/m/n/10 "
+SpatialGridDataFrame" 
  []
 
-[30] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [31]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [32] [33]
-Overfull \hbox (27.73488pt too wide) in paragraph at lines 1734--1734
- []\T1/zi4/m/n/9 site(ca) <- ~ mlra + ssa + lon + lat + cntrl_depth_to_top + cn
-trl_depth_to_bot + sampled_taxon_name[] 
- []
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [34] [35]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [36]
-Overfull \hbox (14.98964pt too wide) in paragraph at lines 1871--1872
-[]\T1/ptm/m/n/10 KML Ref-er-ence ([][]$\T1/zi4/m/n/10 http : / / code . google 
-. com / apis / kml / documentation / kmlreference . html$[][]\T1/ptm/m/n/10 ) 
- []
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [37]
-Overfull \hbox (7.28754pt too wide) in paragraph at lines 1902--1903
-\T1/ptm/m/n/10 ment (ground over-lays). Tar-get at-tributes can be spec-i-fied 
-us-ing aes-thet-ics ar-gu-ments (e.g. \T1/zi4/m/n/10 "colour"\T1/ptm/m/n/10 ). 
+[35] [36]
+Underfull \hbox (badness 10000) in paragraph at lines 1882--1883
 
  []
 
 
-Overfull \hbox (51.61015pt too wide) in paragraph at lines 1918--1919
-[]\T1/ptm/m/n/10 object of class \T1/zi4/m/n/10 "RasterLayer"\T1/ptm/m/n/10 , \
-T1/zi4/m/n/10 "SpatialPixelsDataFrame" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 "Spatia
-lGridDataFrame" 
+Underfull \hbox (badness 10000) in paragraph at lines 1884--1885
+
  []
 
-[38] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-)
-Underfull \hbox (badness 10000) in paragraph at lines 2001--2002
+[37] [38]
+Underfull \hbox (badness 10000) in paragraph at lines 1976--1978
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1979--1980
 
  []
 
 [39]
-Underfull \hbox (badness 10000) in paragraph at lines 2003--2004
-
- []
-
-[40] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-)
-Underfull \hbox (badness 10000) in paragraph at lines 2095--2097
-
+Overfull \hbox (2.79022pt too wide) in paragraph at lines 2025--2026
+[]\OT1/cmr/m/n/10 additional ar-gu-ments that can be passed to the \OT1/zi4/m/n
+/10 kml[]layer.Spatial \OT1/cmr/m/n/10 method 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2098--2099
+Underfull \hbox (badness 10000) in paragraph at lines 2030--2031
 
  []
 
-[41] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-)
-Underfull \hbox (badness 10000) in paragraph at lines 2149--2150
+
+Underfull \hbox (badness 10000) in paragraph at lines 2032--2033
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2034--2035
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2036--2037
+
+ []
+
+[40] [41]
+Overfull \hbox (3.10059pt too wide) in paragraph at lines 2110--2110
+ []\OT1/zi4/m/n/10 kml_layer.STTDF(obj, id.name = names(obj@data)[which(names(o
+bj@data)== "burst")],[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2138--2139
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2140--2141
 
  []
 
 [42]
-Underfull \hbox (badness 10000) in paragraph at lines 2151--2152
+Overfull \hbox (13.06992pt too wide) in paragraph at lines 2173--2173
+ []     \OT1/zi4/m/n/10 z.lim = range(x, na.rm=TRUE, finite=TRUE), factor.label
+s, png.type = "cairo-png")[] 
+ []
+
+[43] [44] [45] [46] [47]
+Underfull \hbox (badness 10000) in paragraph at lines 2467--2468
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2153--2154
+Underfull \hbox (badness 10000) in paragraph at lines 2469--2470
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 2155--2156
-
- []
-
-[43] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-)
-Overfull \hbox (3.10059pt too wide) in paragraph at lines 2229--2229
- []\T1/zi4/m/n/10 kml_layer.STTDF(obj, id.name = names(obj@data)[which(names(ob
-j@data)== "burst")],[] 
+[48] [49] [50] [51] [52]
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2748--2748
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2257--2258
-
- []
-
-[44]
-Underfull \hbox (badness 10000) in paragraph at lines 2259--2260
-
- []
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-)
-Overfull \hbox (13.06992pt too wide) in paragraph at lines 2292--2292
- []     \T1/zi4/m/n/10 z.lim = range(x, na.rm=TRUE, finite=TRUE), factor.labels
-, png.type = "cairo-png")[] 
- []
-
-[45] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [46]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [47]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [48]
-Overfull \hbox (1.37617pt too wide) in paragraph at lines 2477--2478
-[]\T1/ptm/m/n/10 These lower level func-tions can be used to cre-ate cus-tomize
-d multi-layered KML files. See plotKML
- []
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [49]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [50]
-Underfull \hbox (badness 10000) in paragraph at lines 2586--2587
-
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2755--2755
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2588--2589
-
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2760--2760
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
  []
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [51] [52]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-)
-LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 2671.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [53] [54]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [55]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-)
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2867--2867
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+[53]
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2766--2766
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
  []
 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2874--2874
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2771--2771
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
  []
 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2879--2879
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
- []
-
-[56]
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2885--2885
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2776--2776
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
  []
 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2890--2890
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2781--2781
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
  []
 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2895--2895
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2786--2786
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
  []
 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2900--2900
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2792--2792
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
  []
 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2905--2905
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2802--2802
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
  []
 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2911--2911
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
- []
-
-
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2921--2921
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
- []
-
-
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2927--2927
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
- []
-
-
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2933--2933
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2808--2808
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [57]
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2940--2940
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+ [54]
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2814--2814
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
  []
 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2950--2950
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2821--2821
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
  []
 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2957--2957
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2831--2831
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
  []
 
 
-Overfull \hbox (16.41006pt too wide) in paragraph at lines 2962--2962
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env = parent.frame()))),[] 
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2838--2838
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
  []
 
 
-Overfull \hbox (9.75021pt too wide) in paragraph at lines 2968--2968
- []      \T1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj,
- env=parent.frame()))),[] 
- []
-
-[58]
-Overfull \hbox (0.41872pt too wide) in paragraph at lines 2987--2988
-[]\T1/ptm/m/n/10 target vari-able name (only valid for vi-su-al-iza-tion of \T1
-/zi4/m/n/10 "SoilProfileCollection"
+Overfull \hbox (16.41006pt too wide) in paragraph at lines 2843--2843
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env = parent.frame()))),[] 
  []
 
 
-Overfull \hbox (36.38719pt too wide) in paragraph at lines 3011--3012
-\T1/ptm/m/n/10 ci-ple, \T1/zi4/m/n/10 plotKML \T1/ptm/m/n/10 works with both si
-m-ple spa-tial ob-jects, and com-plex ob-jects such as \T1/zi4/m/n/10 "SpatialP
-redictions"\T1/ptm/m/n/10 ,
+Overfull \hbox (9.75021pt too wide) in paragraph at lines 2849--2849
+ []      \OT1/zi4/m/n/10 folder.name = normalizeFilename(deparse(substitute(obj
+, env=parent.frame()))),[] 
+ []
+
+[55]
+Overfull \hbox (17.41249pt too wide) in paragraph at lines 2868--2869
+[]\OT1/cmr/m/n/10 target vari-able name (only valid for vi-su-al-iza-tion of \O
+T1/zi4/m/n/10 "SoilProfileCollection"
  []
 
 
-Overfull \hbox (93.34094pt too wide) in paragraph at lines 3011--3012
-\T1/zi4/m/n/10 "SpatialVectorsSimulations"\T1/ptm/m/n/10 , \T1/zi4/m/n/10 "Rast
-erBrickSimulations"\T1/ptm/m/n/10 , \T1/zi4/m/n/10 "RasterBrickTimeSeries"\T1/p
-tm/m/n/10 , \T1/zi4/m/n/10 "SpatialMaxEntOutput"
+Overfull \hbox (2.39212pt too wide) in paragraph at lines 2898--2899
+\OT1/zi4/m/n/10 "SpatialPolygonsDataFrame"\OT1/cmr/m/n/10 , or \OT1/zi4/m/n/10 
+"SpatialPixelsDataFrame" \OT1/cmr/m/n/10 con-sider us-ing the \OT1/zi4/m/n/10 G
+SIF::tile
  []
 
 
-Overfull \hbox (31.32092pt too wide) in paragraph at lines 3021--3022
-[][][]\T1/zi4/m/n/10 SpatialPredictions-class[][][]\T1/ptm/m/n/10 , [][]\T1/zi4
-/m/n/10 SpatialVectorsSimulations-class[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/1
-0 RasterBrickSimulations-class[][][]\T1/ptm/m/n/10 ,
+Overfull \hbox (33.00313pt too wide) in paragraph at lines 2902--2903
+[][][]\OT1/zi4/m/n/10 SpatialPredictions-class[][][]\OT1/cmr/m/n/10 , [][]\OT1/
+zi4/m/n/10 SpatialVectorsSimulations-class[][][]\OT1/cmr/m/n/10 , [][]\OT1/zi4/
+m/n/10 RasterBrickSimulations-class[][][]\OT1/cmr/m/n/10 ,
  []
 
 
-Overfull \hbox (13.82092pt too wide) in paragraph at lines 3021--3022
-[][]\T1/zi4/m/n/10 RasterBrickTimeSeries-class[][][]\T1/ptm/m/n/10 , [][]\T1/zi
-4/m/n/10 SpatialMaxEntOutput-class[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 Spa
-tialSamplingPattern-class[][][] 
+Overfull \hbox (15.22534pt too wide) in paragraph at lines 2902--2903
+[][]\OT1/zi4/m/n/10 RasterBrickTimeSeries-class[][][]\OT1/cmr/m/n/10 , [][]\OT1
+/zi4/m/n/10 SpatialMaxEntOutput-class[][][]\OT1/cmr/m/n/10 , [][]\OT1/zi4/m/n/1
+0 SpatialSamplingPattern-class[][][] 
  []
 
-[59] [60]
+[56] [57]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [58]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [59]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [60]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [61]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [62]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [63]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [64]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [65]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [66] [67]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [68] [69]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [70]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [71]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [72]
-Overfull \hbox (27.77168pt too wide) in paragraph at lines 3799--3799
- []\T1/zi4/m/n/9 # download.file(paste("http://data.gbif.org/occurrences/taxon/
-celldensity/", kml.file, sep=""),[] 
+[63] [64] [65] [66] [67] [68] [69]
+Overfull \hbox (27.77168pt too wide) in paragraph at lines 3680--3680
+ []\OT1/zi4/m/n/9 # download.file(paste("http://data.gbif.org/occurrences/taxon
+/celldensity/", kml.file, sep=""),[] 
  []
 
-[73] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [74pdfTeX warning (ext4): destination with the same identifier (name{Rfn.repr
-oject,SpatialPixelsDataFrame.Rdash.method}) has been already used, duplicate ig
-nored
+[70] [71pdfTeX warning (ext4): destination with the same identifier (name{Rfn.r
+eproject,SpatialPixelsDataFrame.Rdash.method}) has been already used, duplicate
+ ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.3879 \item[\code{...}]
-                         arguments evaluated in the context of function \cod...
-] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [75]
-Overfull \hbox (2.05736pt too wide) in paragraph at lines 3952--3954
-\T1/ptm/m/n/10 Pos-si-bly the most used palettes for vi-su-al-iza-tion of nu-me
-ric vari-ables are \T1/zi4/m/n/10 rev(rainbow(65)[1:48])
- []
-
-[76] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [77]
-Overfull \hbox (35.54791pt too wide) in paragraph at lines 4038--4039
-[]\T1/ptm/m/n/10 object of class \T1/zi4/m/n/10 "MaxEnt" \T1/ptm/m/n/10 (specie
-s dis-tri-bu-tion model); pro-duced as an out-put of the \T1/zi4/m/n/10 dismo::
-maxent
+l.3744 ## S4 method for signature 'RasterBrick'
+                                               ] [72]
+Overfull \hbox (24.58698pt too wide) in paragraph at lines 3833--3835
+\OT1/cmr/m/n/10 Pos-si-bly the most used palettes for vi-su-al-iza-tion of nu-m
+eric vari-ables are \OT1/zi4/m/n/10 rev(rainbow(65)[1:48])
  []
 
 
-Overfull \hbox (63.60951pt too wide) in paragraph at lines 4039--4040
-[]\T1/ptm/m/n/10 object of class \T1/zi4/m/n/10 "Spatial" \T1/ptm/m/n/10 (ide-a
-lly \T1/zi4/m/n/10 "SpatialPolygonsDataFrame" \T1/ptm/m/n/10 or \T1/zi4/m/n/10 
-"SpatialPixelsDataFrame"\T1/ptm/m/n/10 );
+Overfull \hbox (45.39134pt too wide) in paragraph at lines 3838--3839
+\OT1/cmr/m/n/10 R. All pal-letes de-scribed here were pre-pared for R by Tomis-
+lav Hengl (\OML/zi4/m/n/10 <\OT1/zi4/m/n/10 tom.hengl@opengeohub.org\OML/zi4/m/
+n/10 >\OT1/cmr/m/n/10 ). 
+ []
+
+[73]
+Overfull \hbox (12.97467pt too wide) in paragraph at lines 3877--3878
+[]\OT1/cmr/m/n/10 A class for color palette that can be fur-ther used to cre-at
+e an ob-ject of class \OT1/zi4/m/n/10 "SpatialMetadata"\OT1/cmr/m/n/10 . 
+ []
+
+[74]
+Overfull \hbox (71.86435pt too wide) in paragraph at lines 3920--3921
+[]\OT1/cmr/m/n/10 object of class \OT1/zi4/m/n/10 "Spatial" \OT1/cmr/m/n/10 (id
+e-ally \OT1/zi4/m/n/10 "SpatialPolygonsDataFrame" \OT1/cmr/m/n/10 or \OT1/zi4/m
+/n/10 "SpatialPixelsDataFrame"\OT1/cmr/m/n/10 );
+ []
+
+[75] [76] [77]
+Overfull \hbox (43.61435pt too wide) in paragraph at lines 4080--4081
+[]\OT1/cmr/m/n/10 object of class \OT1/zi4/m/n/10 "SpatialPointsDataFrame" \OT1
+/cmr/m/n/10 (must be 2D); see \OT1/zi4/m/n/10 sp::SpatialPointsDataFrame 
  []
 
 
-Overfull \hbox (140.27791pt too wide) in paragraph at lines 4056--4057
-[]\T1/ptm/m/n/10 MaxEnt re-quires the \T1/zi4/m/n/10 maxent.jar \T1/ptm/m/n/10 
-file to be in the 'java' folder of the dismo pack-age (see: \T1/zi4/m/n/10 syst
-em.file("java", package="dismo")\T1/ptm/m/n/10 ).
+Overfull \hbox (20.44757pt too wide) in paragraph at lines 4120--4121
+[][][]\OT1/zi4/m/n/10 plotKML-method[][][]\OT1/cmr/m/n/10 , \OT1/zi4/m/n/10 GSI
+F::fit.gstatModel\OT1/cmr/m/n/10 , \OT1/zi4/m/n/10 gstat::gstat-class\OT1/cmr/m
+/n/10 , [][]\OT1/zi4/m/n/10 RasterBrickSimulations-class[][][] 
  []
 
-[78] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [79]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-)
-Overfull \hbox (33.83939pt too wide) in paragraph at lines 4199--4200
-[]\T1/ptm/m/n/10 object of class \T1/zi4/m/n/10 "SpatialPointsDataFrame" \T1/pt
-m/m/n/10 (must be 2D); see \T1/zi4/m/n/10 sp::SpatialPointsDataFrame 
- []
-
-[80]
-Overfull \hbox (18.34094pt too wide) in paragraph at lines 4239--4240
-[][][]\T1/zi4/m/n/10 plotKML-method[][][]\T1/ptm/m/n/10 , \T1/zi4/m/n/10 GSIF::
-fit.gstatModel\T1/ptm/m/n/10 , \T1/zi4/m/n/10 gstat::gstat-class\T1/ptm/m/n/10 
-, [][]\T1/zi4/m/n/10 RasterBrickSimulations-class[][][] 
- []
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [81]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [82]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-)
-Overfull \hbox (42.0706pt too wide) in paragraph at lines 4390--4392
-\T1/zi4/m/n/10 system.file("INSPIRE_ISO19139.xml", package="plotKML")\T1/ptm/m/
-n/10 ). The \T1/zi4/m/n/10 FGDC.xml\T1/ptm/m/n/10 /\T1/zi4/m/n/10 INSPIRE_ISO19
-139.xml
- []
-
-[83]
-Overfull \hbox (325.11081pt too wide) in paragraph at lines 4406--4407
-[]\T1/zi4/m/n/10 metadata[["identificationInfo"]][["MD_DataIdentification"]] [[
-"extent"]][["EX_Extent"]][["geographicElement"]][["EX_GeographicBoundingBox"]]
+[78] [79] [80]
+Overfull \hbox (13.50496pt too wide) in paragraph at lines 4265--4266
+[]\OT1/cmr/m/n/10 logical; spec-i-fies whether to val-i-date the schema us-ing 
+the \OT1/zi4/m/n/10 xmlSchemaValidate 
  []
 
 
-Overfull \hbox (6.47845pt too wide) in paragraph at lines 4421--4422
-[]\T1/ptm/m/n/10 Content Stan-dard for Dig-i-tal Geospa-tial Meta-data ([][]$\T
-1/zi4/m/n/10 http : / / www . fgdc . gov / metadata / csdgm/$[][]\T1/ptm/m/n/10
- ) 
+Overfull \hbox (56.63496pt too wide) in paragraph at lines 4271--4273
+\OT1/cmr/m/n/10 or \OT1/zi4/m/n/10 system.file("INSPIRE[]ISO19139.xml", package
+="plotKML")\OT1/cmr/m/n/10 ). The \OT1/zi4/m/n/10 FGDC.xml\OT1/cmr/m/n/10 /\OT1
+/zi4/m/n/10 INSPIRE[]ISO19139.xml
  []
 
 
-Overfull \hbox (11.89981pt too wide) in paragraph at lines 4422--4423
-[]\T1/ptm/m/n/10 Tkme meta-data ed-i-tor ([][]$\T1/zi4/m/n/10 http : / / geolog
-y . usgs . gov / tools / metadata / tools / doc / tkme . html$[][]\T1/ptm/m/n/1
-0 ) 
+Overfull \hbox (4.58667pt too wide) in paragraph at lines 4284--4285
+[]\OT1/zi4/m/n/10 metadata[["fileIdentifier"]][["CharacterString"]] \OT1/cmr/m/
+n/10 --- Meta-data file iden-ti-fier (not
  []
 
-[84] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [85] [86] [87]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-)
-Overfull \hbox (56.20879pt too wide) in paragraph at lines 4632--4633
-[]\T1/ptm/m/n/10 integer; tar-get col-umn in the out-put shape file (see \T1/zi
-4/m/n/10 rsaga.get.usage("grid_gridding", 0)\T1/ptm/m/n/10 ) 
+[81]
+Overfull \hbox (8.5035pt too wide) in paragraph at lines 4285--4286
+[]\OT1/zi4/m/n/10 metadata[["dateStamp"]][["Date"]] \OT1/cmr/m/n/10 --- Meta-da
+ta date stamp cre-ated us-ing Sys.Date(). 
  []
 
 
-Overfull \hbox (17.10895pt too wide) in paragraph at lines 4633--4634
-[]\T1/ptm/m/n/10 integer; method for mul-ti-ple val-ues (see \T1/zi4/m/n/10 rsa
-ga.get.usage("grid_gridding", 0)\T1/ptm/m/n/10 ) 
+Overfull \hbox (320.91083pt too wide) in paragraph at lines 4287--4288
+[]\OT1/zi4/m/n/10 metadata[["identificationInfo"]][["MD[]DataIdentification"]] 
+[["extent"]][["EX[]Extent"]][["geographicElement"]][["EX[]GeographicBoundingBox
+"]]
  []
 
-[88]
-Overfull \hbox (9.36926pt too wide) in paragraph at lines 4635--4636
-[]\T1/ptm/m/n/10 integer; pre-ferred tar-get grid type (see \T1/zi4/m/n/10 rsag
-a.get.usage("grid_gridding", 0)\T1/ptm/m/n/10 ) 
- []
-
-[89] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [90]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [91]
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [92] (./Rd2.ind
-[93]
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 3.
-
-
-LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 90.
-
-LaTeX Font Info:    Font shape `T1/zi4/m/it' will be
-(Font)              scaled to size 10.0pt on input line 92.
-[94
-
-]
-Overfull \hbox (0.8567pt too wide) in paragraph at lines 217--219
-[]\T1/zi4/m/it/10 kml_layer,SoilProfileCollection-method 
- []
-
-[95]
-Overfull \hbox (5.8567pt too wide) in paragraph at lines 366--368
-[]\T1/zi4/m/it/10 plotKML,SpatialPolygonsDataFrame-method 
+[82] [83] [84] [85]
+Overfull \hbox (74.5182pt too wide) in paragraph at lines 4513--4514
+[]\OT1/cmr/m/n/10 integer; tar-get col-umn in the out-put shape file (see \OT1/
+zi4/m/n/10 rsaga.get.usage("grid[]gridding", 0)\OT1/cmr/m/n/10 ) 
  []
 
 
-Overfull \hbox (15.01662pt too wide) in paragraph at lines 374--376
-\T1/ptm/m/it/10 (\T1/zi4/m/it/10 SpatialVectorsSimulations-class\T1/ptm/m/it/10
- )\T1/ptm/m/n/10 , 
+Overfull \hbox (28.12926pt too wide) in paragraph at lines 4514--4515
+[]\OT1/cmr/m/n/10 integer; method for mul-ti-ple val-ues (see \OT1/zi4/m/n/10 r
+saga.get.usage("grid[]gridding", 0)\OT1/cmr/m/n/10 ) 
  []
 
 
-Overfull \hbox (10.8567pt too wide) in paragraph at lines 376--378
-[]\T1/zi4/m/it/10 plotKML,SpatialVectorsSimulations-method 
+Overfull \hbox (22.6292pt too wide) in paragraph at lines 4516--4517
+[]\OT1/cmr/m/n/10 integer; pre-ferred tar-get grid type (see \OT1/zi4/m/n/10 rs
+aga.get.usage("grid[]gridding", 0)\OT1/cmr/m/n/10 ) 
  []
 
-[96]
-Overfull \hbox (5.8567pt too wide) in paragraph at lines 430--432
-[]\T1/zi4/m/it/10 reproject,SpatialPixelsDataFrame-method 
+[86] [87] [88] [89]
+Overfull \hbox (10.2537pt too wide) in paragraph at lines 4712--4713
+[]\OT1/cmr/m/n/10 Color palette used for the most gen-eral land use classes at 
+scale 1:250k (TOP250NL). 
+ []
+
+[90] (./Rd2.ind [91]
+
+LaTeX Font Warning: Font shape `OT1/zi4/m/it' undefined
+(Font)              using `OT1/zi4/m/n' instead on input line 88.
+
+LaTeX Font Info:    Font shape `OT1/zi4/m/it' will be
+(Font)              scaled to size 10.0pt on input line 90.
+[92
+
+] [93]
+Overfull \hbox (3.43166pt too wide) in paragraph at lines 334--336
+\OT1/cmr/m/it/10 (\OT1/zi4/m/it/10 RasterBrickSimulations-class\OT1/cmr/m/it/10
+ )\OT1/cmr/m/n/10 , 
  []
 
 
-Overfull \hbox (15.01662pt too wide) in paragraph at lines 451--453
-\T1/ptm/m/it/10 (\T1/zi4/m/it/10 kml_layer.SoilProfileCollection\T1/ptm/m/it/10
- )\T1/ptm/m/n/10 , 
+Overfull \hbox (5.8567pt too wide) in paragraph at lines 358--360
+[]\OT1/zi4/m/it/10 plotKML,SpatialPolygonsDataFrame-method 
  []
 
-[97])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4877.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 4877.
+
+Overfull \hbox (3.43166pt too wide) in paragraph at lines 362--364
+\OT1/cmr/m/it/10 (\OT1/zi4/m/it/10 SpatialSamplingPattern-class\OT1/cmr/m/it/10
+ )\OT1/cmr/m/n/10 , 
+ []
+
+
+Overfull \hbox (18.43166pt too wide) in paragraph at lines 366--368
+\OT1/cmr/m/it/10 (\OT1/zi4/m/it/10 SpatialVectorsSimulations-class\OT1/cmr/m/it
+/10 )\OT1/cmr/m/n/10 , 
+ []
+
+
+Overfull \hbox (10.8567pt too wide) in paragraph at lines 368--370
+[]\OT1/zi4/m/it/10 plotKML,SpatialVectorsSimulations-method 
+ []
+
+[94]
+Overfull \hbox (5.8567pt too wide) in paragraph at lines 422--424
+[]\OT1/zi4/m/it/10 reproject,SpatialPixelsDataFrame-method 
+ []
+
+[95])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4758.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 4758.
  (./Rd2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 4877.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 4877.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 4758.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 4758.
 
 Package rerunfilecheck Info: File `Rd2.out' has not changed.
-(rerunfilecheck)             Checksum: 755DF247E116123B531B56E5BAB1A35C;4440.
+(rerunfilecheck)             Checksum: C68B2CC05567288E7F83772A48A4937A;4338.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 4877.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 4758.
  ) 
 Here is how much of TeX's memory you used:
- 7651 strings out of 494880
- 115090 string characters out of 6179600
- 173875 words of memory out of 5000000
- 9895 multiletter control sequences out of 15000+600000
- 47224 words of font info for 56 fonts, out of 8000000 for 9000
- 36 hyphenation exceptions out of 8191
- 38i,6n,36p,1237b,592s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 6613 strings out of 494562
+ 99121 string characters out of 6177814
+ 176078 words of memory out of 5000000
+ 9373 multiletter control sequences out of 15000+600000
+ 12116 words of font info for 42 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 38i,6n,36p,1232b,592s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Rfn.CRS.Rdash.class} has been referenced but does
  not exist, replaced by a fixed one
 
@@ -1532,20 +1015,27 @@ pdfTeX warning (dest): name{Rfn.projectRaster} has been referenced but does not
 pdfTeX warning (dest): name{Rfn.ST.Rdash.class} has been referenced but does no
 t exist, replaced by a fixed one
 
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/
-texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/usr/share/texlive/texmf-dis
-t/fonts/enc/dvips/inconsolata/i4-t1-0.enc}</usr/share/texlive/texmf-dist/fonts/
-type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
-s/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (97 pages, 329189 bytes).
+{/home/tomislav/.TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc} </h
+ome/tomislav/.TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk>{/ho
+me/tomislav/.TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-ot1-0.enc}</home
+/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.p
+fb></home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb
+></home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
+</home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
+/home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb>
+</home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/home/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></h
+ome/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></hom
+e/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></home
+/tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></home/
+tomislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></home/t
+omislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/to
+mislav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></home/tomi
+slav/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on Rd2.pdf (95 pages, 420075 bytes).
 PDF statistics:
- 2305 PDF objects out of 2487 (max. 8388607)
- 2176 compressed objects within 22 object streams
- 841 named destinations out of 1000 (max. 500000)
- 529 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2301 PDF objects out of 2487 (max. 8388607)
+ 2164 compressed objects within 22 object streams
+ 826 named destinations out of 1000 (max. 500000)
+ 521 words of extra memory for PDF output out of 10000 (max. 10000000)
 
