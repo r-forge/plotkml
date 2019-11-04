@@ -3,7 +3,7 @@
 extractProjValue <- function(p4s_parameters, param){
   
   # Locating the current PROJ4 parameter
-  query <- ldply(p4s_parameters, str_locate, pattern = param)
+  query <- plyr::ldply(p4s_parameters, stringr::str_locate, pattern = param)
   idx <- which(!is.na(query[, 1]) & !is.na(query[, 2]))
   
   # If the PROJ4 parameter is found we extract its value
@@ -23,17 +23,17 @@ extractProjValue <- function(p4s_parameters, param){
 parse_proj4 <- function(p4s, params){
 
   if(missing(params)) {
-  ref_CRS = get("ref_CRS", envir = plotKML.opts)
-  value <- strsplit(ref_CRS, "\\+")[[1]]
-  value <- value[value != ""]
-  param_names <- sapply(strsplit(value, "="), function(x){x[1]})
-  params <- as.list(paste("\\+", sapply(strsplit(value, "="), function(x){x[1]}), "=", sep="")) 
+    ref_CRS = get("ref_CRS", envir = plotKML.opts)
+    value <- strsplit(ref_CRS, "\\+")[[1]]
+    value <- value[value != ""]
+    param_names <- sapply(strsplit(value, "="), function(x){x[1]})
+    params <- as.list(paste("\\+", sapply(strsplit(value, "="), function(x){x[1]}), "=", sep="")) 
   }
 
   # Splitting the whole PROJ4 string
-  p4s_parameters <- str_split(p4s, " ")[[1]]
+  p4s_parameters <- stringr::str_split(p4s, " ")[[1]]
   # Extraction of the values of parameters specified above
-  x <- laply(params, extractProjValue, p4s_parameters = p4s_parameters)
+  x <- plyr::laply(params, extractProjValue, p4s_parameters = p4s_parameters)
   # colnames for better looking result
   value <- sapply(sapply(params, strsplit, "\\+"), function(x){x[2]})
   param_names <- sapply(strsplit(value, "="), function(x){x[1]})

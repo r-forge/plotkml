@@ -853,10 +853,10 @@ base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 ###   kml_shape kml_size kml_layer,RasterBrick-method
 ###   kml_layer,RasterLayer-method kml_layer,RasterStack-method
 ###   kml_layer,STIDF-method kml_layer,STFDF-method kml_layer,STSDF-method
-###   kml_layer,STTDF-method kml_layer,SoilProfileCollection-method
-###   kml_layer,SpatialGrid-method kml_layer,SpatialLines-method
-###   kml_layer,SpatialPhotoOverlay-method kml_layer,SpatialPixels-method
-###   kml_layer,SpatialPoints-method kml_layer,SpatialPolygons-method
+###   kml_layer,STTDF-method kml_layer,SpatialGrid-method
+###   kml_layer,SpatialLines-method kml_layer,SpatialPhotoOverlay-method
+###   kml_layer,SpatialPixels-method kml_layer,SpatialPoints-method
+###   kml_layer,SpatialPolygons-method
 ### Keywords: spatial methods
 
 ### ** Examples
@@ -1000,49 +1000,6 @@ base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 
 base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 base::cat("layer.STIDF", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
-cleanEx()
-nameEx("layer.SoilProfileCollection")
-### * layer.SoilProfileCollection
-
-flush(stderr()); flush(stdout())
-
-base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-### Name: kml_layer.SoilProfileCollection
-### Title: Writes a list of soil profiles to KML
-### Aliases: kml_layer.SoilProfileCollection SoilProfileCollection
-### Keywords: spatial
-
-### ** Examples
-
-## Not run: 
-##D ## install.packages("aqp", repos="http://R-Forge.R-project.org")
-##D library(aqp)
-##D library(fossil)
-##D library(plyr)
-##D data(ca630)
-##D ## Promote to SoilProfileCollection
-##D ca <- join(ca630$lab, ca630$site, type='inner')
-##D depths(ca) <- pedon_key ~ hzn_top + hzn_bot
-##D ## extract site data
-##D site(ca) <- ~ mlra + ssa + lon + lat + cntrl_depth_to_top + cntrl_depth_to_bot + sampled_taxon_name
-##D # generate SpatialPoints
-##D library(sp)
-##D coordinates(ca) <- ~ lon + lat
-##D ## assign CRS data
-##D proj4string(ca) <- "+proj=longlat +datum=NAD83"
-##D ## plot changes in base saturation by sum of cations method (pH 8.2):
-##D kml(ca, method = "depth_function", file.name = "ca_bs_8_2.kml", 
-##D   var.name="bs_8.2", balloon = TRUE)
-##D ## plot changes in cation exchange capacity by sum of cations method (pH 8.2):
-##D kml(ca, file.name = "ca_CEC8_2.kml", var.name="CEC8.2", IconColor = "#ff009000")
-##D ## plot soil profile as 'block':
-##D kml(ca, file.name = "ca_CEC8_2_block.kml", var.name="CEC8.2", balloon = TRUE)
-## End(Not run)
-
-
-
-base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-base::cat("layer.SoilProfileCollection", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 cleanEx()
 nameEx("layer.SpatialLines")
 ### * layer.SpatialLines
