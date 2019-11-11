@@ -6,7 +6,7 @@ kml_compress <- function(file.name, zip = Sys.getenv("R_ZIPCMD", "zip"), files =
   kmz <- stringr::str_replace(file.name, extension, "kmz") # switch the extension to kmz
 	
   # use R's zip wrapper
-  try( x <- zip(zipfile=utils::shortPathName(kmz), files=utils::shortPathName(file.name), zip=zip) )
+  try( x <- zip(zipfile = utils::shortPathName(kmz), files= utils::shortPathName(file.name), zip = zip) )
   # Error handling
   if(is(.Last.value, "try-error")| x==127) {
     if(zip==""|!nzchar(zip)){
