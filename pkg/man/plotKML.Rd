@@ -316,7 +316,7 @@ DE_pred <- STF(sp=as(DE_gridded,"SpatialPoints"), time=rr@time)
 DE_kriged <- krigeST(PM10~1, data=rr, newdata=DE_pred,
                      modelList=sumMetricVgm)
 gridded(DE_kriged@sp) <- TRUE
-stplot(DE_kriged)
+#stplot(DE_kriged)
 ## plot in Google Earth:
 z.lim = range(DE_kriged@data, na.rm=TRUE)
 \dontrun{
