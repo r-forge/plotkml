@@ -69,7 +69,7 @@ kml_View <- function(file.name){
         }
       else{
         ## http://askubuntu.com/questions/101965/what-is-the-replacement-for-gnome-open-in-gnome
-        if(inherits( try(system(paste("xdg-open ", utils::shortPathName(file.name), sep="")), silent = TRUE), "try-error")){
+        if(inherits( try(system(paste("xdg-open ", file.name, sep="")), silent = TRUE), "try-error")){
           warning(paste("'xdg-open' resulted in a try-error. Consider re-installing the default", ext, "browser."))
          } 
       }
