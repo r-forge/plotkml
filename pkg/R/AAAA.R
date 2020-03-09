@@ -302,4 +302,3 @@ plotKML.env <- function(
 ## generate all environmental settings:
 plotKML.env(show.env = FALSE)
 
-# end of script;
